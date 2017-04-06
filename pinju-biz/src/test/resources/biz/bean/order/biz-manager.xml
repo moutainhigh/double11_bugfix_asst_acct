@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	
+	<!-- 订单管理 -->
+	<bean id="orderBusinessManager" class="com.yuwang.pinju.core.order.manager.impl.OrderBusinessManagerImpl"/>
+
+    <bean id="orderCreationManager" class="com.yuwang.pinju.core.order.manager.impl.OrderCreationManagerImpl"/>
+
+	<bean id="orderUpDateManager" class="com.yuwang.pinju.core.order.manager.impl.OrderUpDateManagerImpl"/>
+	
+	<bean id="orderLogManager" class="com.yuwang.pinju.core.order.manager.impl.OrderLogManagerImpl"/>
+	<!-- 订单状态更新效验管理 -->
+	<bean id="orderStateManager" class="com.yuwang.pinju.core.order.manager.check.impl.OrderStateManagerImpl"/>
+	<!-- 订单生成效验管理 -->
+	<bean id="orderCheckManager" class="com.yuwang.pinju.core.order.manager.check.impl.OrderCheckManagerImpl"/>
+
+	<!-- 订单查询管理 -->
+	<bean id="orderQueryManager" class="com.yuwang.pinju.core.order.manager.impl.OrderQueryManagerImpl"/>
+
+	<bean id="payManager" class="com.yuwang.pinju.core.order.manager.pay.impl.PayManagerImpl"/>
+	
+	
+	<!-- 物流管理 -->		
+	<bean id="logisticsServiceManager" class="com.yuwang.pinju.core.order.manager.impl.LogisticsServiceManagerImpl"/>
+
+	<bean id="serviceSoapLogistics" class="com.yuwang.pinju.core.order.manager.impl.LogisticsService.ServiceSoapProxy">
+		<property name="webserviceURL"  value= "${pinju.logisticsWebServiceURL}"/>
+    	<property name="key"  value="${pinju.logisticsWebServiceKEY}"/>
+    </bean>
+	
+	
+	<!-- 订单生成管理助手 -->
+	<bean id="orderActivityManager" class="com.yuwang.pinju.core.order.manager.helper.impl.OrderActivityManagerImpl"/>
+	
+	<bean id="orderAdManager" class="com.yuwang.pinju.core.order.manager.helper.impl.OrderAdManagerImpl"/>
+	
+	<bean id="orderChannelManager" class="com.yuwang.pinju.core.order.manager.helper.impl.OrderChannelManagerImpl"/>
+	
+	<bean id="orderDiscountManager" class="com.yuwang.pinju.core.order.manager.helper.impl.OrderDiscountManagerImpl"/>
+	
+	<bean id="orderSplitAssistantManager" class="com.yuwang.pinju.core.order.manager.helper.impl.OrderSplitAssistantManagerImpl"/>
+
+	<bean id="orderSplitManager" class="com.yuwang.pinju.core.order.manager.helper.impl.OrderSplitManagerImpl"/>
+	
+	<bean id="orderCategoryManager" class="com.yuwang.pinju.core.order.manager.helper.impl.OrderCategoryManagerImpl"/>
+</beans>

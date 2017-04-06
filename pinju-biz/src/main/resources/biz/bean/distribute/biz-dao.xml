@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="distributorDAO" class="com.yuwang.pinju.core.distribute.dao.impl.DistributorDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClientMySQL" />
+	</bean>
+	<bean id="distributeSupplierDAO" class="com.yuwang.pinju.core.distribute.dao.impl.DistributeSupplierDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClientMySQL" />
+	</bean>
+	<bean id="distributeChannelDAO" class="com.yuwang.pinju.core.distribute.dao.impl.DistributeChannelDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClientMySQL" />
+	</bean>
+	<bean id="distributeSupplierItemDAO" class="com.yuwang.pinju.core.distribute.dao.impl.DistributeSupplierItemDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClientMySQL" />
+	</bean>
+	<bean id="distributeChannelItemDAO" class="com.yuwang.pinju.core.distribute.dao.impl.DistributeChannelItemDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClientMySQL" />
+	</bean>
+</beans>

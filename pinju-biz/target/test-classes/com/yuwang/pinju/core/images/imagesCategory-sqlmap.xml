@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="imagesCategory">
+
+	<typeAlias alias="ImagesCategoryDO" type="com.yuwang.pinju.domain.images.ImagesCategoryDO" />
+
+	<resultMap id="ImagesCategoryResult" class="ImagesCategoryDO">
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="userSize" column="USESIZE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtMobified" column="GMT_MODIFIED" />
+		<result property="firstCategory" column="FIRST_CATEGORY" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="secondCategory" column="SECOND_CATEGORY" />
+	</resultMap>
+	
+	<sql id="selectAllCategory"><![CDATA[SELECT 	  ID,
+												      MEMBER_ID,
+												      MEMBER_NAME,
+													  FIRST_CATEGORY,
+													  SECOND_CATEGORY,
+													  USESIZE,
+													  GMT_CREATE,
+		  											  GMT_MODIFIED FROM IMAGES_CATEGORY
+		  									]]>
+	</sql>
+	
+	<insert id="insertImagesCategory" parameterClass="ImagesCategoryDO">
+		<![CDATA[
+				insert into IMAGES_CATEGORY(
+											  MEMBER_ID,
+											  MEMBER_NAME,
+											  FIRST_CATEGORY,
+											  SECOND_CATEGORY,
+											  USESIZE,
+											  GMT_CREATE,
+  											  GMT_MODIFIED
+  									)values(	
+												#memberId#,
+												#memberName#,
+												#firstCategory#,
+												#secondCategory#,
+												#userSize#,
+												SYSDATE(),
+												SYSDATE()
+											)
+		]]>
+		<selectKey resultClass="long" type="post" keyProperty="id">
+	   	 <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+	    </selectKey>  
+	</insert>
+	  <select id="getImagesCategorySeqId" resultClass="java.lang.Long">
+		<![CDATA[SELECT SEQ_IMAGES_CATEGORY_ID.NEXTVAL from dual]]>
+  	</select>
+  	<select id="getImagesCategory" parameterClass="ImagesCategoryDO" resultMap="ImagesCategoryResult">
+  		<include refid="selectAllCategory" />
+		<![CDATA[
+			WHERE MEMBER_ID = #memberId#
+		]]>
+  	</select>
+  	<update id="updateImageCategory" parameterClass="ImagesCategoryDO">
+							UPDATE IMAGES_CATEGORY SET	GMT_MODIFIED = SYSDATE()	
+										<isNotEmpty  prepend="," property="firstCategory">
+			  								<![CDATA[FIRST_CATEGORY = #firstCategory#]]>
+										</isNotEmpty>
+										<isNotEmpty  prepend="," property="secondCategory">
+											<![CDATA[SECOND_CATEGORY = #secondCategory#]]>
+										</isNotEmpty>
+										<isNotEmpty  prepend="," property="userSize">
+												<![CDATA[USESIZE = #userSize#]]>
+										</isNotEmpty>
+										<![CDATA[
+											WHERE MEMBER_ID = #memberId#
+										]]>
+		
+	</update>
+	<update id="updateUserSize" parameterClass="ImagesCategoryDO">
+							UPDATE IMAGES_CATEGORY SET	GMT_MODIFIED = SYSDATE(),	
+										<isEqual property="isType" compareValue="0">
+												<![CDATA[USESIZE = GREATEST(0,IFNULL(USESIZE,0) - #userSize#)]]>
+										</isEqual>
+										<isEqual property="isType" compareValue="1">
+												<![CDATA[USESIZE = USESIZE + #userSize#]]>
+										</isEqual>
+										<![CDATA[
+											WHERE MEMBER_ID = #memberId#
+										]]>
+	</update>
+	
+</sqlMap>
+

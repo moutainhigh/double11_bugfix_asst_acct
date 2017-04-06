@@ -1,0 +1,67 @@
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_item_snapshot">
+
+	<typeAlias alias="ItemItemSnapshot" type="com.yuwang.pinju.domain.item.ItemSnapshotDO" />
+
+	<resultMap id="ItemItemSnapshotResult" class="ItemItemSnapshot">
+		<result property="id" column="ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="catetoryId" column="CATETORY_ID" />
+		<result property="spuId" column="SPU_ID" />
+		<result property="title" column="TITLE" />
+		<result property="storeCategories" column="STORE_CATEGORIES" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="propertyValuePair" column="PROPERTY_VALUE_PAIR" />
+		<result property="itemType" column="ITEM_TYPE" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="picUrl" column="PIC_URL" />
+		<result property="picColor" column="PIC_COLOR" />
+		<result property="price" column="PRICE" />
+		<result property="provinces" column="PROVINCES" />
+		<result property="city" column="CITY" />
+		<result property="deliveryCosts" column="DELIVERY_COSTS" />
+		<result property="mailCosts" column="MAIL_COSTS" />
+		<result property="emsCosts" column="EMS_COSTS" />
+		<result property="freeTemplateId" column="FREE_TEMPLATE_ID" />
+		<result property="startTime" column="START_TIME" javaType="java.util.Date"/>
+		<result property="endTime" column="END_TIME" javaType="java.util.Date"/>
+		<result property="itemDegree" column="ITEM_DEGREE" />
+		<result property="recommendedStatus" column="RECOMMENDED_STATUS" />
+		<result property="collectionNumber" column="COLLECTION_NUMBER" />
+		<result property="features" column="FEATURES" />
+		<result property="expiredDate" column="EXPIRED_DATE"/>
+		<result property="lastModified" column="LAST_MODIFIED" javaType="java.util.Date"/>
+		<result property="gmtModified" column="GMT_MODIFIED" javaType="java.util.Date"/>
+		<result property="gmtCreate" column="GMT_CREATE" javaType="java.util.Date"/>
+		<result property="code" column="CODE" />
+		<result property="sellerNick" column="SELLER_NICK" />
+	</resultMap>
+	
+	<select id="getItemSnapshotByItemId" resultMap="ItemItemSnapshotResult" parameterClass="long" >
+		<![CDATA[
+			SELECT * FROM ITEM_ITEM_SNAPSHOT WHERE ITEM_ID = #itemId# ORDER BY LAST_MODIFIED DESC LIMIT 0,1
+		]]>
+	</select>
+
+	<insert id="insertItemItemSnapshot" parameterClass="ItemItemSnapshot">
+		<![CDATA[
+			INSERT INTO ITEM_ITEM_SNAPSHOT 
+				(ITEM_ID,CATETORY_ID,SPU_ID,TITLE,STORE_CATEGORIES,DESCRIPTION,PROPERTY_VALUE_PAIR,ITEM_TYPE,
+					SELLER_ID,PIC_URL,PIC_COLOR,PRICE,PROVINCES,CITY,DELIVERY_COSTS,
+					MAIL_COSTS,EMS_COSTS,FREE_TEMPLATE_ID,START_TIME,END_TIME,ITEM_DEGREE,RECOMMENDED_STATUS,
+					COLLECTION_NUMBER,FEATURES,EXPIRED_DATE,LAST_MODIFIED,GMT_MODIFIED,GMT_CREATE,CODE,SELLER_NICK) 
+			VALUES (#itemId#,#catetoryId#,#spuId#,#title#,#storeCategories#,#description#,#propertyValuePair#,
+				#itemType#,#sellerId#,#picUrl#,#picColor#,#price#,#provinces#,#city#,#deliveryCosts#,#mailCosts#,#emsCosts#,
+				#freeTemplateId#,#startTime#,#endTime#,#itemDegree#,#recommendedStatus#,#collectionNumber#,#features#,
+				#expiredDate#,#lastModified#,#gmtModified#,#gmtCreate#,#code#,#sellerNick#)
+		]]>
+		<selectKey resultClass="long" type="post" keyProperty="id">
+	   	 <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+	    </selectKey>  
+	</insert>
+
+</sqlMap>
+
+

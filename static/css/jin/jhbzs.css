@@ -1,0 +1,78 @@
+﻿
+/*-----------------------jhbzs-------------------------*/
+/*-----------------------Ver0804-------------------------*/
+/*-----------------------jhbzs-------------------------*/
+body {background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_bg.jpg) no-repeat center top;}
+body { background-color:#c70000;}
+
+.jhbzs_main { width:1000px; margin:0 auto;}
+.jhbzs_main .head { height:379px;background-image: url(http://static.pinju.com/html_images/jhb_images/jhbzs_02.jpg); background-repeat:no-repeat;}
+.jhbzs_main .head  .nav{ width:384px; height:62px; background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_01.jpg) no-repeat center top; margin:0 0 0 299px;}
+	.jhbzs_main .head  .nav a { display:block; width:90px; height:62px;}
+	
+	.jhbzs_main .head  .nav a.shouye { float:left;background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_shouye.jpg) no-repeat;}
+	.jhbzs_main .head  .nav a:hover.shouye{ float:left;background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_shouye_11.jpg) no-repeat;}
+	
+	.jhbzs_main .head  .nav a.jhb { float:right;background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_huoban.jpg) no-repeat;}
+	.jhbzs_main .head  .nav a:hover.jhb{ float:right;background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_huoban_11.jpg) no-repeat;}
+	
+.jhbzs_main .title	{height:317px;background-image: url(http://static.pinju.com/html_images/jhb_images/jhbzs_05.jpg); background-repeat:no-repeat;}
+
+.jhbzs_main .title .button { float:right; width:200px;height:100px;background-image: url(http://static.pinju.com/html_images/jhb_images/button_jhbzs.png); background-repeat:no-repeat;}
+.jhbzs_main .title a:hover { display:block;width:200px;height:100px;background-image: url(http://static.pinju.com/html_images/jhb_images/button_jhbzs_11.png); background-repeat:no-repeat;}
+
+.jhbzs_main .info	{height:260px; border-bottom:1px dashed #ff4926;}
+.jhbzs_main .info .info_deta { float:left; width:564px;height:260px; overflow:hidden;}
+	.jhbzs_main .info .info_deta .info_deta_top {height:134px;background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_08.jpg) no-repeat top; overflow:hidden;}
+	.jhbzs_main .info .info_deta .info_deta_top span { display:inline;}
+	.jhbzs_main .info .info_deta .info_deta_top a { color:#36F; text-decoration:none; display:inline;}
+	.jhbzs_main .info .info_deta .info_deta_top a:hover { color:#36F; font-weight:bold; text-decoration:none;display:inline;}
+	.jhbzs_main .info .info_deta .info_deta_top ul { padding:10px 0 0 70px; *padding:7px 0 0 70px; }
+	.jhbzs_main .info .info_deta .info_deta_top li { padding-bottom:2px;}
+	
+	.jhbzs_main .info .info_deta .info_deta_bottom {height:126px;background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_13.jpg) no-repeat top;}
+
+.jhbzs_main .info .info_add { float:left; width:436px;height:260px;background: url(http://static.pinju.com/html_images/jhb_images/jhbzs_10.jpg) no-repeat top; display:inline;}
+
+.jhbzs_main .jhbzs_ask { padding:10px;}
+
+.jhbzs_main .jhbzs_media {height:174px;background-image: url(http://static.pinju.com/html_images/jhb_images/jhbzs_26.jpg); }
+.jhbzs_main .jhbzs_media .media_top { width:1000px; height:20px; background-position:0 0;}
+.jhbzs_main .jhbzs_media .media_body{ width:1000px;background-position:0 -20px; background-repeat:repeat-y;}
+.jhbzs_main .jhbzs_media .media_bot{ width:1000px; height:1px; background-position:0 -154px;}
+.jhbzs_main .jhbzs_media span,a,p{ display:block;}
+.jhbzs_main .jhbzs_media p{ float:left; width:745px; padding:2px 5px;}
+.jhbzs_main .jhbzs_media a,.jhbzs_main .jhbzs_media span { background-image:url(http://static.pinju.com/html_images/jhb_images/jhb_zs_png.png); background-repeat:no-repeat;display:block; margin:0 5px;}
+
+.jhbzs_main .jhbzs_media .list01 { height:50px;margin:0 60px 0 70px;  border-bottom:1px dashed #cd8a7f; padding-top:20px; overflow:hidden}
+.jhbzs_main .jhbzs_media .list02 { height:65px;margin:0 60px 0 70px; padding-top:5px; overflow:hidden}
+.jhbzs_main .jhbzs_media span.title_major { float:left; width:100px; height:50px;background-position:0 0px; }
+.jhbzs_main .jhbzs_media span.title_coo { float:left; margin-left:5px; width:100px; height:50px;background-position:0 -100px; }
+.jhbzs_main .jhbzs_media span.title_hold { float:left;margin-left:5px; width:100px; height:50px;background-position:0 -200px; }
+.jhbzs_main .jhbzs_media span.title_assist
+ { float:left; width:100px; height:65px;background-position:-150px 0px; }
+
+.jhbzs_main .jhbzs_media a.pinju { float:left; width:105px; height:50px;background-position:0 -50px; }
+.jhbzs_main .jhbzs_media a.pinju { float:left; width:105px; height:50px;background-position:0 -50px; }
+.jhbzs_main .jhbzs_media a.weiya { float:left; width:71px; height:50px;background-position:0 -150px; }
+.jhbzs_main .jhbzs_media a.ire { float:left; width:76px; height:50px;background-position:0 -250px; }
+.jhbzs_main .jhbzs_media a.snda { float:left; width:116px; height:35px;background-position:0 -300px; margin-top:15px;}
+.jhbzs_main .jhbzs_media a.sft { float:left; width:116px; height:35px;background-position:0 -350px; margin-top:10px;}
+.jhbzs_main .jhbzs_media a.xm { float:left; width:67px; height:35px;background-position:-150px -100px;}
+.jhbzs_main .jhbzs_media a.xm { float:left; width:67px; height:35px;background-position:-150px -100px;}
+.jhbzs_main .jhbzs_media a.sina { float:left; width:100px; height:35px;background-position:-150px -150px;}
+.jhbzs_main .jhbzs_media a.wangyi { float:left; width:81px; height:35px;background-position:-150px -200px;}
+.jhbzs_main .jhbzs_media a.tt_t { float:left; width:100px; height:35px;background-position:-150px -250px;}
+.jhbzs_main .jhbzs_media a.sohu { float:left; width:68px; height:35px;background-position:-150px -300px;}
+.jhbzs_main .jhbzs_media a.hx { float:left; width:55px; height:35px;background-position:-150px -350px;}
+.jhbzs_main .jhbzs_media a.tt_e { float:left; width:94px; height:35px;background-position:-150px -400px;}
+.jhbzs_main .jhbzs_media a.phonix { float:left; width:81px; height:35px;background-position:-150px -450px;}
+.jhbzs_main .jhbzs_media a.sina_2 { float:left; width:92px; height:35px;background-position:-150px -500px;}
+.jhbzs_main .jhbzs_media a.pchome { float:left; width:80px; height:35px;background-position:-150px -550px;}
+.jhbzs_main .jhbzs_media a.yesky { float:left; width:80px; height:35px;background-position:-150px -600px;}
+.jhbzs_main .jhbzs_media a.sutu { float:left; width:80px; height:35px;background-position:-150px -650px;}
+.jhbzs_main .jhbzs_media a.eb { float:left; width:95px; height:35px;background-position:-150px -700px;}
+.jhbzs_main .jhbzs_media a.bt { float:left; width:80px; height:35px;background-position:-150px -750px;}
+.jhbzs_main .jhbzs_media a.wslm { float:left; width:100px; height:35px;background-position:-150px -800px;}
+
+

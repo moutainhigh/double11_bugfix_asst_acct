@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="shopModulePrototype">
+
+    <typeAlias alias="ModulePrototypeDO" type="com.yuwang.pinju.domain.shop.ShopModulePrototypeDO"/>
+
+    <resultMap id="modulePrototypeResult" class="ModulePrototypeDO">
+        <result property="id" column="ID"/>
+        <result property="name" column="NAME" />
+	    <result property="pageId" column="PAGE_ID"  />
+	    <result property="moduleId" column="MODULE_ID"  />
+	    <result property="sortId" column="SORT_ID"  />
+	    <result property="author" column="AUTHOR"  />
+	    <result property="sponsor" column="SPONSOR"  />
+        <result property="image" column="IMAGE" />
+        <result property="type" column="TYPE" />
+        <result property="moduleType" column="MODULE_TYPE" />
+        <result property="title" column="TITLE" />
+        <result property="version" column="VERSION" />
+	    <result property="editHtml" column="EDIT_HTML"  />
+        <result property="shortName" column="SHORT_NAME" />
+	    <result property="description" column="DESCRIPTION" />
+		<result property="configuration" column="CONFIGURATION" />
+    </resultMap>
+
+	<sql id="selectModulePrototypeAll"><![CDATA[SELECT ID, NAME, PAGE_ID, TITLE, DESCRIPTION, MODULE_ID, SHORT_NAME, VERSION, AUTHOR, IMAGE, SPONSOR, TYPE, SORT_ID, EDIT_HTML, MODULE_TYPE, CONFIGURATION FROM SHOP_MODULE_PROTOTYPE]]></sql>
+
+	<select id="getDesignerModuleByPage" resultMap="modulePrototypeResult" parameterClass="com.yuwang.pinju.domain.shop.ShopModulePrototypeDO">
+		<include refid="selectModulePrototypeAll" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="pageId">
+				<![CDATA[PAGE_ID = #pageId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="type">
+				<![CDATA[TYPE = #type#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getCustomModuleByPage" resultMap="modulePrototypeResult" parameterClass="com.yuwang.pinju.domain.shop.ShopModulePrototypeDO">
+		<include refid="selectModulePrototypeAll" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="pageId">
+				<![CDATA[PAGE_ID = #pageId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="type">
+				<![CDATA[TYPE = #type#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	
+	<update id="saveCustomModuleByPage" parameterClass="com.yuwang.pinju.domain.shop.ShopBusinessOpenStepDO">
+		<![CDATA[UPDATE  SHOP_MODULE_PROTOTYE]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="editHtml">
+				<![CDATA[EDIT_HTML = #editHtml#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE USER_ID = #userId#]]>
+	</update>
+	
+</sqlMap>
+

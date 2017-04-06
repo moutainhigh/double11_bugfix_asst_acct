@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="expires" content="0" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="baiduspider" content="all" />
+	<meta name="keywords" content="页面关键字" />
+	<meta name="description" content="页面描述" />
+	<title>品聚 - 店铺搜索</title>
+	<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+	<link href="http://static.pinju.com/css/base.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="http://static.pinju.com/css/common.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="http://static.pinju.com/css/mypj/mypj-v1.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+
+	<div class="top_bar">
+		<div class="top_bar_box cf">
+			<div class="login_status">
+				<span class="welcome">您好！欢迎来到品聚</span>
+				<span>[ <a href="#">注册</a> ]</span>
+				<span>[ <a href="#">登陆</a> ]</span>
+			</div>
+			<div class="liaison">
+				<a href="#">加入我们</a>|<a href="#">联系我们</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
+		<div class="logo">
+			<img class="logo_pic" width="147" height="47" src="http://static.pinju.com/img/logo_redtext.png" />
+		</div>
+		
+		<div class="search-panel"> 
+			<div class="tabs"> 
+				<ul> 
+					<li><a href="##">宝贝</a></li> 
+					<li><a href="##" class="active">店铺</a></li> 
+				</ul> 
+			</div> 
+			<form name="search" action=""> 
+				<div class="search-fields"> 
+					<label class="hidden" for="q"></label> 
+					<input value="请输入" accesskey="s" id="q" name="q">
+				</div> 
+				<input type="submit" value="搜&nbsp;&nbsp;索" class="btn">
+			</form>
+		</div> 
+	</div>
+	
+	<div class="pj_nav">
+		<div class="nav_l"></div>
+		<ul class="nav_list">
+			<li id="main-nav" class="focus"><a href="http://www.pinju.com/">我的品聚
+			<li><a href="#">社区广场</a></li>
+			<li><a href="#">步行街</a></li>
+			<li><a href="#">问答</a></li>
+			<li><a href="#">圈子</a></li>
+			<li><a href="#">达人</a></li>
+			<li><a href="#">随便逛逛</a></li>
+			<li><a href="#">求推荐</a></li>
+		</ul>
+		<div class="nav_r"></div>
+	</div>
+	
+	<div class="wrap-fullcon cf">
+		<div class="bar-left">
+			<ul class="mypj">
+				<li><a href="#">我关注的</a></li>
+				<li><a href="#">提到我的</a></li>
+				<li><a href="#">评论我的</a></li>
+				<li><a href="#">我的问答</a></li>
+				<li><a href="#">我的圈子</a></li>
+				<li><a href="#">我的客户</a></li>
+				<li><a href="#">我发布的</a></li>
+			</ul>
+			<ul class="tab">
+				<li class="buyer"><a href="#">我是买家</a></li>
+				<li class="seller current"><a href="#">我是卖家</a></li>
+			</ul>
+			<ul class="bar-list">
+				<!--商品管理-->
+				<h3>商品管理</h3>
+				<li><a href="/itemReleased/categoryList.htm">发布商品</a></li>
+				<li name="sell_item"><a href="/item/itemList.htm?itemQuery.type=0">出售中的商品</a></li>
+				<li name="storage_item"><a href="/item/itemList.htm?itemQuery.type=2">仓库中的商品</a></li>
+					  <!--交易管理-->
+				<h3>交易管理</h3>
+				<li name="logistics-tool"><a href="/logistics/listTemplateTool.htm">物流工具</a></li>
+					  <!--店铺管理-->
+					  <h3>店铺管理</h3>
+					 
+					 <li name="red_shopOpen" class="count"><a href="/shop/showShopOpenAction.htm">我要开店</a></li>
+					 <li><a target="_blank" href="/shopDecoration/viewShop.htm">查看我的店铺</a></li>
+					 <li><a target="_blank" href="/shopDecoration/shopDecorationAction.htm">店铺装修</a></li>
+					 <li name="red_shopCategory"><a href="/shop/shopCategory.htm">店铺分类管理</a></li>
+					 <li name="red_shopInfo"><a href="/shop/showShopInfo.htm" id="shopBaseInfoId">店铺基本设置</a></li>
+					  <!--分销管理-->
+					  <!--退款维权-->
+					  <!-- 保证金管理 -->
+				 <h3>保证金管理</h3>
+				 <li name="mymargin">
+					<a href="/margin/mymargin.htm">我的保证金</a>
+				 </li>
+				<!--营销中心-->
+			</ul>
+		</div>
+		<div class="contents fullcontents">
+			<div class="main">
+				<div class="toptip cf">
+					<iframe src="my-pj-tip.html" width="442" height="29" class="newstips" frameborder="no">
+						<p>您的浏览器不支持此模块。</p>
+					</iframe>
+					<div class="tsub"><a class="btn_orange" href="#" title="设“我是卖家”为首页"><span>设“我是卖家”为首页</span></a></div>
+				</div>
+				<div class="container">
+					<div class="content cf">
+						<div class="storelogo"><img src="media/store-logo.jpg" height="120" width="120" alt="name" /></div>
+						<div class="storedetails">
+							<h2><span class="storelevel_1"></span>神马神马店铺<span>（创立于2011-08-01）</span></h2>
+							<p>店铺性质：品牌店 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;店铺所属类目：女装/女士精品</p>
+							<p><a href="#" title="text">查看我的卖家积分</a></p>
+							<p>已绑定盛付通帐号：<a href="#" title="alfsandy@zba.com">alfsandy@zba.com</a> <a class="btn_gray" href="#" title=""><span>更换绑定帐号</span></a></p>
+							<p>我的保证金余额：<strong>8000.00元</strong></p>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="title">
+						<h3>交易提醒</h3>
+						<div class="exinfo">
+							<a href="#" title="一周销售报表">一周销售报表</a>
+						</div>
+					</div>
+					<div class="content orderform cf">						
+						<ul>
+							<li>
+								<dl>
+									<dt>待处理订单：</dt>
+									<dd><a href="#" title="">待发货订单<strong>（289）</strong></a></dd>
+									<dd><a href="#" title="">退款中的订单<strong>（289）</strong></a></dd> 
+									<dd><a href="#" title="">待评价订单<strong>（289）</strong></a></dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt>快捷商品管理：</dt>
+									<dd><a href="#" title="">待上架的商品<strong>（289）</strong></a> <a class="btn_orange" href="#"><span>发布新商品</span></a></dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="container">
+					<div class="title">
+						<h3>店铺推广</h3>
+					</div>
+					<div class="content">						
+						<ul class="inlinerow">
+							<li><a href="#" title="">热卖位</a></li>
+							<li><a href="#" title="">报名参加更多品聚商务活动</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="container">
+					<div class="title">
+						<h3>店铺活动</h3>
+					</div>
+					<div class="content promotion">						
+						<dl>
+							<dt>[限时打折] </dt>
+							<dd><a href="#" title="">夏日大促销（2011-08-01至2011-09-01）</a></dd>
+							<dt>[满就送] </dt>
+							<dd><a href="#" title="">夏日大促销（2011-08-01至2011-09-01）</a></dd>
+							<dt>[搭配套餐] </dt>
+							<dd><a href="#" title="">夏日大促销（2011-08-01至2011-09-01）</a></dd>
+							<dt>[限时打折] </dt>
+							<dd><a href="#" title="">夏日大促销（2011-08-01至2011-09-01）</a></dd>
+						</dl>
+						<p>创建更多促销活动：
+							<a href="#" title="">限时打折 | </a>
+							<a href="#" title="">店铺优惠券 | </a>
+							<a href="#" title="">满就送 | </a>
+							<a href="#" title="">搭配套餐</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="sidebar">
+				<iframe src="my-pj-news.html" width="240" height="195" class="newslister" frameborder="no">
+					<p>您的浏览器不支持此模块。</p>
+				</iframe>
+				
+				<div class="container">
+					<a href="#" title=""><img src="media/r_238x90.jpg" width="238" height="90" alt="" /></a>
+				</div>
+				<div class="container">
+					<a href="#" title=""><img src="media/r_238x55.jpg" width="238" height="55" alt="" /></a>
+				</div>
+				<div class="container">
+					<div class="title">
+						<h3>品聚商户</h3>
+					</div>
+					<div class="content">						
+						<ul class="col2">
+							<li><a href="#" title="">品聚商学院</a></li>
+							<li><a href="#" title="">帮助中心</a></li>
+						</ul>
+						<p>商户热线：021-64110119</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="footer_main">
+			<ul class="foot_nav">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">关于品聚</a></li>
+				<li><a href="#">加入我们</a></li>
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">用户协议</a></li>
+				<li><a href="#">新手帮助</a></li>
+			</ul>
+			<p class="copyright">上海御网信息技术有限公司  版权所有</p>
+			<p class="copyright"><span>媒体联系：PR@zba.com</span>丨  <span>商户加盟： business@zba.com</span>  丨<span>  聚伙伴加盟：jupartner@zba.com</span></p>
+		</div>
+	</div>
+<!--[if lt IE 9]><script src="http://static.pinju.com/js/html5.js"></script><![endif]-->
+<script type="text/javascript" src="http://static.pinju.com/js/jq.js"></script>
+<script type="text/javascript" src="http://static.pinju.com/js/jqui.js"></script>
+<script type="text/javascript">
+	/*
+	 * TODO: code here~
+	 */
+</script>    
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+      <package name="tenpay" namespace="/tenpay" extends="pinju-login" >
+		<!-- 跳转到绑定/签约页面 -->
+		<action name="tenPayAccountSetPageAction" class="com.yuwang.pinju.web.module.tenpay.TenPayAccountSetAction" method="tenPayAccountSetPage">
+			<result name="success" type="freemarker">/default/templates/screen/tenpay/tenPayAccountBinding.ftl</result>
+		</action>
+		<action name="accountNextAction" class="com.yuwang.pinju.web.module.tenpay.TenPayAccountSetAction" method="accountNext">
+			<!-- <result name="shopOpen" type="redirect">shopOpenBeginAction.htm</result> -->
+			
+			<result name="shopOpen" type="chain">
+                  <param name="namespace">/shop</param>
+                  <param name="actionName">shopOpenBeginAction</param>
+             </result> 
+			<result name="error" type="freemarker">/default/templates/screen/tenpay/tenPayAccountBinding.ftl</result>
+			<!-- 成功后回到原页面  2.0新 -->
+			<result name="success" type="freemarker">/default/templates/screen/tenpay/tenPayAccountBinding.ftl</result>
+		</action>
+      </package>
+  </struts>

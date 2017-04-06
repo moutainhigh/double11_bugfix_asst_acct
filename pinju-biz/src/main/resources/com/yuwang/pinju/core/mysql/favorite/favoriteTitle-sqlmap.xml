@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="favorite_title">
+
+	<typeAlias alias="FavoriteTitle" type="com.yuwang.pinju.domain.favorite.FavoriteTitleDO" />
+
+	<resultMap id="FavoriteTitleResult" class="FavoriteTitle">
+		<result property="id" column="ID" />
+		<result property="configuration" column="CONFIGURATION" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="titleId" column="TITLE_ID" />
+		<result property="titleName" column="TITLE_NAME" />
+		<result property="type" column="TYPE" />
+		<result property="modifiedDate" column="MODIFIED_DATE" />
+		<result property="createDate" column="CREATE_DATE" />
+	</resultMap>
+
+	<sql id="selectAllFavoriteTitle"><![CDATA[SELECT ID,CONFIGURATION,MEMBER_ID,TITLE_ID,TITLE_NAME,TYPE,MODIFIED_DATE,CREATE_DATE FROM FAVORITE_TITLE]]></sql>
+
+	<select id="selectAllFavoriteTitle" resultMap="FavoriteTitleResult">
+		<include refid="selectAllFavoriteTitle" />
+	</select>
+
+	<select id="selectFavoriteTitleByid" resultMap="FavoriteTitleResult"  parameterClass="Long">
+		<include refid="selectAllFavoriteTitle" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectFavoriteTitle"  resultMap="FavoriteTitleResult" parameterClass="FavoriteTitle">
+		<include refid="selectAllFavoriteTitle" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="titleId">
+				<![CDATA[TITLE_ID = #titleId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="titleName">
+				<![CDATA[TITLE_NAME = #titleName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="type">
+				<![CDATA[TYPE = #type#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="modifiedDate">
+				<![CDATA[MODIFIED_DATE = #modifiedDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createDate">
+				<![CDATA[CREATE_DATE = #createDate#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertFavoriteTitle" parameterClass="FavoriteTitle">
+		<![CDATA[INSERT INTO FAVORITE_TITLE (ID,CONFIGURATION,MEMBER_ID,TITLE_ID,TITLE_NAME,TYPE,MODIFIED_DATE,CREATE_DATE) VALUES (#id#,#configuration#,#memberId#,#titleId#,#titleName#,#type#,#modifiedDate#,#createDate#)]]>
+	</insert>
+
+	<sql id="deleteAllFavoriteTitle"><![CDATA[DELETE FROM FAVORITE_TITLE]]></sql>
+
+	<delete id="deleteAllFavoriteTitle">
+		<include refid="deleteAllFavoriteTitle" />
+	</delete>
+
+	<delete id="deleteFavoriteTitleByid" parameterClass="Long">
+		<include refid="deleteAllFavoriteTitle" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteFavoriteTitle"  parameterClass="FavoriteTitle">
+		<include refid="deleteAllFavoriteTitle" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="titleId">
+				<![CDATA[TITLE_ID = #titleId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="titleName">
+				<![CDATA[TITLE_NAME = #titleName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="type">
+				<![CDATA[TYPE = #type#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="modifiedDate">
+				<![CDATA[MODIFIED_DATE = #modifiedDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createDate">
+				<![CDATA[CREATE_DATE = #createDate#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateFavoriteTitle" parameterClass="FavoriteTitle">
+		<![CDATA[UPDATE FAVORITE_TITLE]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="titleId">
+				<![CDATA[TITLE_ID = #titleId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="titleName">
+				<![CDATA[TITLE_NAME = #titleName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="type">
+				<![CDATA[TYPE = #type#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="modifiedDate">
+				<![CDATA[MODIFIED_DATE = #modifiedDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="createDate">
+				<![CDATA[CREATE_DATE = #createDate#]]>
+			</isNotEmpty>
+		</dynamic>
+
+	</update>
+</sqlMap>
+

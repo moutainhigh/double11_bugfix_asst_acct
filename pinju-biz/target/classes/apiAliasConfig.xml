@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<apimethods>
+	<!-- 获取商品类目 -->
+	<method name="yuwang.itemcats.get">
+		<class name="com.yuwang.pinju.domain.item.CategoryDO" alias="Category">
+			<aliasFields />
+			<omitFields>gmtModified,gmtCreate,features,spell,itemNum,childCateList
+			</omitFields>
+		</class>
+	</method>
+	<!-- 获取商品类目属性 -->
+	<method name="yuwang.itemcatprops.get">
+		<class name="com.yuwang.pinju.domain.item.CategoryPropertyDO"
+			alias="CategoryProperty">
+			<aliasFields />
+			<omitFields>gmtCreate,gmtModified,features,inputType,lenLimit,isActivities,maxValue,minValue
+			</omitFields>
+		</class>
+	</method>
+	<!-- 获取类目属性值 -->
+	<method name="yuwang.itemcatpropsVal.get">
+		<class name="com.yuwang.pinju.domain.item.CategoryPropertyValueDO"
+			alias="CategoryPropertyValue">
+			<aliasFields />
+			<omitFields>gmtCreate,features,gmtModified,valueAlias
+			</omitFields>
+		</class>
+	</method>
+	<!-- 获取物流公司列表 -->
+	<method name="yuwang.logistics.corps.get">
+		<class name="com.yuwang.pinju.domain.logistics.LogisticsCorpDO"
+			alias="logisticsCorp">
+			<aliasFields>
+				<field name="corpCode" alias="code" />
+				<field name="logisticsType" alias="type" />
+			</aliasFields>
+			<omitFields>memo,createPeople,gmtCreate,modifiedPeople,gmtModified,logisticsStatus
+			</omitFields>
+		</class>
+	</method>
+	<!-- 上传图片返回结果 -->
+	<method name="yuwang.item.img.upload">
+		<class name="com.yuwang.api.domain.UploadImageDO" alias="image">
+			<aliasFields />
+			<omitFields />
+		</class>
+	</method>
+	<!-- 按条件查询卖家订单 -->
+	<method name="yuwang.trades.get" image="true">
+		<class name="com.yuwang.pinju.domain.order.OrderDO" alias="Order">
+			<aliasFields>
+				<field name="orderLogisticsDO" alias="Logistics" />
+				<field name="gmtCreate" alias="created" />
+				<field name="stateModifyTime"  alias="modified"></field>
+			</aliasFields>
+			<omitFields>sellerId,buyerId,buyIp,shopId,gmtModified,priceAmount</omitFields>
+		</class>
+		<class name="com.yuwang.pinju.domain.order.OrderItemDO" alias="Item">
+			<aliasFields />
+			<omitFields>snapId,gmtModified,gmtCreate,sellerId,buyerId,stateModifyTime,buyerNick,sellerNick,orderItemPrice,originalPrice,postPrice,dealRates,dealAmount,dealShopRates,refundPrice,sellerMarginPrice,totalAmount</omitFields>
+		</class>
+		<class name="com.yuwang.pinju.domain.order.OrderLogisticsDO" alias="Logistics">
+			<aliasFields />
+			<omitFields>orderId,gmtModified,gmtCreate</omitFields>
+		</class>
+	</method>
+	<!-- 按订单号查询单个订单详情 -->
+	<method name="yuwang.trade.fullinfo.get" image="true">
+		<class name="com.yuwang.pinju.domain.order.OrderDO" alias="Order">
+			<aliasFields>
+				<field name="orderLogisticsDO" alias="Logistics" />
+				<field name="gmtCreate" alias="created" />
+				<field name="stateModifyTime"  alias="modified"></field>
+			</aliasFields>
+			<omitFields>sellerId,buyerId,buyIp,shopId,gmtModified,priceAmount</omitFields>
+		</class>
+		<class name="com.yuwang.pinju.domain.order.OrderItemDO" alias="Item">
+			<aliasFields />
+			<omitFields>snapId,gmtModified,gmtCreate,sellerId,buyerId,stateModifyTime,buyerNick,sellerNick,orderItemPrice,originalPrice,postPrice,dealRates,dealAmount,dealShopRates,refundPrice,sellerMarginPrice,totalAmount</omitFields>
+		</class>
+		<class name="com.yuwang.pinju.domain.order.OrderLogisticsDO" alias="Logistics">
+			<aliasFields />
+			<omitFields>orderId,gmtModified,gmtCreate</omitFields>
+		</class>
+	</method>
+	<!-- 商品查询 -->
+	<method name="yuwang.items.list.get" image="true">
+		<class name="com.yuwang.pinju.domain.item.ItemDO" alias="Item">
+			<aliasFields>
+				<field name="propertyValuePair" alias="propertyValue" />
+				<field name="gmtCreate" alias="created" />
+				<field name="itemPicList" alias="picList" />
+			</aliasFields>
+			<omitFields>picColor,price,gmtModified,version,freightType,expiryType,releasedType</omitFields>
+		</class>
+	</method>
+	<!-- 获取缓存的单个商品 -->
+	<method name="yuwang.item.get" image="true">
+		<class name="com.yuwang.pinju.domain.item.ItemDO" alias="Item">
+			<aliasFields>
+				<field name="propertyValuePair" alias="propertyValue" />
+				<field name="gmtCreate" alias="created" />
+				<field name="itemPicList" alias="picList" />
+			</aliasFields>
+			<omitFields>picColor,price,gmtModified,version,freightType,expiryType,releasedType,isExist</omitFields>
+		</class>
+		<class name="com.yuwang.pinju.domain.item.SkuDO" alias="Sku">
+			<aliasFields/>
+			<omitFields>gmtCreate,gmtModified,status</omitFields>
+		</class>
+		<class name="com.yuwang.pinju.domain.item.ItemPicDO" alias="Pic">
+			<aliasFields/>
+			<omitFields>id,picLength,picWidth,picSize,sort,gmtModified,gmtCreate,itemId</omitFields>
+		</class>
+	</method>
+		<!-- 用户商品上架-->
+	<method name="yuwang.item.update.listing">
+		<class name="com.yuwang.api.domain.OperationItemDO" alias="item">
+			<aliasFields />
+			<omitFields />
+		</class>
+	</method>
+	<!-- 用户商品上架-->
+	<method name="yuwang.item.update.delisting">
+		<class name="com.yuwang.api.domain.OperationItemDO" alias="item">
+			<aliasFields />
+			<omitFields />
+		</class>
+	</method>
+	<!-- 用户商品上架-->
+	<method name="yuwang.item.delete">
+		<class name="com.yuwang.api.domain.OperationItemDO" alias="item">
+			<aliasFields />
+			<omitFields />
+		</class>
+	</method>
+	<!-- 店铺自定义分类查询 -->
+	<method name="yuwang.categorys.get">
+		<class name="com.yuwang.api.domain.OpenShopCategoryDO" alias="shopCategory">
+			<aliasFields>
+				<field name="id" alias="cateId" />
+			</aliasFields>
+			<omitFields />
+			<!-- <collectionFields>childCates</collectionFields> -->
+		</class>
+	</method>
+</apimethods>

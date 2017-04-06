@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+.cart_content{width:1000px; margin:10px auto 0;}
+.cart_tit{ width:1000px; background:url(http://static.pinju.com/images/cart_t_bg_05.gif) repeat-x;height:37px; margin-bottom:11px;}
+.l_tit{float:left; background:url(http://static.pinju.com/images/cart_t_bg_03.gif) no-repeat; width:5px; height:37px;}
+.r_tit{float:right; background:url(http://static.pinju.com/images/cart_t_bg_07.gif) no-repeat; width:5px;height:37px;}
+.item_status{ width:980px; padding:13px 0 27px 18px; margin-bottom:20px; color:#000; border:solid 1px #fadfb2; background:#ffffea;}
+.item_status_t{ font-weight:bold; margin-bottom:10px;}
+.item_status_list{ width:960px;}
+.item_status_list li{ float:left; margin-bottom:4px; line-height:25px;}
+.item_name{ float:left; width:390px; font-weight:normal;}
+.status{ float:left; width:350px;margin-left:50px; _display:inline;}
+.del_but{ background:url(http://static.pinju.com/images/search_but.gif) no-repeat; float:left; width:69px; height:23px; line-height:23px; margin-left:70px; _display:inline; color:#000; text-align:center;}
+.del_but:hover{ text-decoration:none;}
+.checkout{ width:1000px; margin-bottom:11px;}
+.cart_checkbox{ float:left;color:#000; }
+.cart_checkbox input{ position:relative; top:1px;_top:3px;}
+.cart_checkbox b{display:block; font-weight:bold; margin-bottom:16px;}
+.checkout_price{ float:right;}
+.checkout_but{ background:url(http://static.pinju.com/images/jies_but_52.gif) no-repeat; width:54px; height:23px; float:right; color:#FFF; text-align:center;line-height:23px;margin-right:35px; _display:inline; }
+.checkout_but:hover{ text-decoration:none;}
+.checkout .value{ float:right; margin-right:35px; line-height:23px;_display:inline;}
+.value span,.cart_tab_jg,.jies_jg{ font-size:16px; font-weight:bold; color:#eb6100; margin:0 5px;}
+.cart_box{ width:1000px;}
+.cart_table{ width:100%; background:#f6f6f6; border:solid #dadada; border-width:1px 0 0 1px; text-align:center;*border-right:solid #dadada 1px; margin-bottom:28px;}
+.cart_table tr{border:solid #dadada; border-width:0 1px 1px 0; *border:none;}
+.cart_table td{ *border-bottom:solid #dadada 1px;}
+.cart_table th{ *border-bottom:solid #dadada 1px;}
+.cart_table_row1{width:35%; text-align:left; height:28px;}
+.cart_table_row2{width:15%;}
+.cart_table_row3{width:5%;}
+.cart_table_row4{width:5%;}
+.cart_table_row5{width:15%;}
+.cart_table_row6{width:10%;}
+.cart_table_row7{width:15%; }
+.cart_table .del_but{margin:0 auto; display:block; float:none; }
+.sp_box{padding:12px 0;}
+.prompt_box{ float:left; margin:48px 18px 0 10px; width:19px; height:19px;}
+.pic_box{ float:left; width:80px; height:80px; border:1px solid #dadada; margin-right:15px; overflow:hidden;}
+.pic_box a{background:#FFF;width:80px; height:80px; display:table-cell; text-align:center; *display:block; veritcal-align:middle; *font-family:Arial;*font-size:74px;}
+.pic_box a img{veritcal-align:middle;}
+.sp_name{float:right; margin:5px 0 10px; _display:inline; text-align:left; line-height:20px;  overflow:hidden; width:200px; word-wrap : break-word ;}
+.item_sku{clear:right; float:right; width:200px; text-align: left;}
+.item_sku span{  margin:2px 10px 0 0; color:#808080; float:left;}
+
+.item_status_sku{ width:390px;clear:both; text-align: left;}
+.item_status_sku span{  margin:2px 10px 0 0; color:#808080; float:left;line-height:20px;}
+.quantity{ width:30px;}
+.cut{ margin-right:3px;}
+.add{ margin-left:3px;}
+.ts_sty{ display:block; line-height:21px; margin-top:8px; background:#fffee0; border:1px solid #fadfb2;}
+.checkout2{ width:1000px; margin-bottom:78px;}
+.checkout2 .del_but{ margin:0px;}
+.jies_box{ float:right; text-align:right;}
+.jies_box p{margin-bottom:20px;}
+.jies_b_but{ background:url(http://static.pinju.com/images/but_4_131.gif) no-repeat; width:105px; padding-top:7px; height:24px; float:right; clear:both; color:#FFF; font-weight:bold; font-size:16px; text-align:center;}
+.jies_b_but:hover{ text-decoration:none;}
+.sell_box{ width:998px; border:1px solid #dadada;}
+.sell_box .tit{ background:#f6f6f6;border-bottom:1px solid #dadada; height:30px; line-height:30px; font-weight:bold; padding-left:10px;}
+.tit span{  color:#666666;}
+.sp_sell{ padding:18px 0 11px; }
+.sp_sell_list{}
+.sp_sell_list li{ float:left; margin:0 31px 0 36px; width:129px; _display:inline;}
+
+.sp_sell_pic{ width:129px; height:129px; border:1px solid #dadada; margin-bottom:10px;}
+.sp_sell_link{ display:block;margin-bottom:10px;}
+.sp_sell_val{ display:block; font-weight:bold;}
+.red{ color:#d72521;}
+

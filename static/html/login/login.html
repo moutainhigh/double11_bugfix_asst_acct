@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="http://static.pinju.com/css/pj_base.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://static.pinju.com/css/member/user_login.css" type="text/css" media="screen" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script>
+$(function(){  
+	var img=$("#login-left-ad img").not($("#l-logo"));
+	var logo=$("#w-logo");
+	var s=null;
+	img.css('opacity','.4');
+	img.hover(function(){
+		clearTimeout(s)
+		img.css('opacity','.4');
+		logo.addClass("w-logo-g")
+		$(this).css('opacity','1');
+	},function(){
+		img.css('opacity','.4');
+		s=setTimeout(function(){logo.removeClass("w-logo-g");},100)
+	})
+		$(".login-left-ad a").attr("hidefocus","hidefocus")
+
+});
+
+</script>
+</head>
+
+<body>
+	<div class="tips-browser">
+		<p><strong>友情提醒：</strong>亲，如您在品聚网购买时遇到问题，可能是由于浏览器兼容性问题造成的，建议您尝试更换ie或傲游浏览器。</p>
+	</div>
+	<div class="login-main">
+		<div class="login-left-module">
+			<div id="login-left-ad" class="login-left-ad" >
+				<div class="b1" style="top:102px; left:102px;"><a  href="#"><img src="http://static.pinju.com/images/login_adpic/w_logo1_11_13.gif" /></a></div>
+				<div class="b1" style="top:201px; left:2px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/w_logo1_11_13.gif" /></a></div>
+				<div class="b1" style="top:201px; left:102px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/w_logo1_11_13.gif" /></a></div>
+				<div class="b1" style="top:102px; left:2px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/w_logo1_11_13.gif" /></a></div>
+				<div class="b1" style="top:2px; left:402px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/w_logo1_11_13.gif" /></a></div>
+				<div class="b1" style="top:102px; left:402px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/w_logo1_11_13.gif" /></a></div>
+				<div class="b1" style="top:202px; left:402px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/w_logo1_11_13.gif" /></a></div>
+				<div class="b4" style="top:2px; left:2px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/img-t1_03.gif" /></a></div>
+				<div class="b4" style="top:2px; left:202px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/img-t1_03.gif" /></a></div>
+				<div class="b2" style="top:301px; left:2px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/w_logo_11.gif" /></a></div>
+				<div class="b2 w-logo" id="w-logo" style="top:101px; left:202px;"></div>
+				<div class="b3" style="top:302px; left:202px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/l_qj_33.gif" /></a></div>
+				<div class="b3" style="top:302px; left:402px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/l-pt_33.gif" /></a></div>
+				<div class="b3" style="top:302px; left:302px;"><a href="#"><img src="http://static.pinju.com/images/login_adpic/l-pb_33.gif" /></a></div>
+			</div>
+			<div class="login-left-point" style=" display:none;">
+				<h2>登录遇到问题了</h2>
+				<ul class="point-list">
+					<li>
+						<h3><span>·</span>您是否输错会员名或密码？</h3>
+						请您先检查会员名是否正确，您的输入密码位数是否超过
+  或少于您设置的密码长度，然后再重新输入密码再试试。
+					</li>
+					<li>
+						<h3><span>·</span>您是否锁定了键盘的大写功能？</h3>
+						请检查您键盘上的"Caps Lock"或"A"灯是否亮着，如果
+  是，请先按一下"Caps Lock"键然后重新输入。
+					</li>
+					<li>
+						<h3><span>·</span>您是否忘记了密码？</h3>
+						您可以通过您注册时填写的邮箱找回您的密码。
+					</li>
+					<li>
+						<h3><span>·</span>依然无法登录？</h3>
+						您可以联系我们客服，只要提供会员名证明资料，我们品
+  聚网客服将会帮您解决。
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="login-right-module" >
+			<h3 class="user-d">会员登录</h3>
+			<div class="login-module">
+				<div class="point-box error">登录账号为 4～20 个字母、数字、“-” 和下划线或者 2～10 个汉字或者验证后的 Email 地址</div>
+				<form>
+				
+				
+				
+					<ul class="login-list">
+						<li><span>会员名：</span><input id="loginName" class="placeholder" type="text" title="注册用户名或者是邮箱地址" placeholder="用户名/邮箱" tabindex="1" value="" maxlength="100" name="loginName"></li>
+						<li><span>密　码：</span><input type="password" /></li>
+						<li class="code"><span>验证码：</span><input type="text" /><span class="c-img"><img src="../../img/code.gif" /></span> <a href="#">换一张</a></li>
+						<li class="lBtn loadding"><button disabled="disabled">登　录</button> <a href="#">忘记密码</a> </li>
+					</ul>
+				
+				</form>
+			</div>
+			<div class="register-box">还不是品聚会员？ 点击这里 <a class="register-btn" href="#">免费注册</a></div>
+			<div class="hz-login">你还可以用合作伙伴账号登陆品聚 <a href="#">新浪微博</a></div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+<script type="text/javascript" src="http://static.pinju.com/jquery/jquery.placeholder-enhanced.min.js"></script>
+<script type="text/javascript">
+$('input[placeholder]').placeholderEnhanced();
+</script>

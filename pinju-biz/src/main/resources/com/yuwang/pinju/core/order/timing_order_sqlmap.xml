@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TIMINGTASKS_ORDER">
+
+	<typeAlias alias="OrderDO" type="com.yuwang.pinju.domain.order.OrderDO" />
+	
+	<resultMap id="OrderDOResult" class="OrderDO">
+		<result property="orderId" column="ID" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="orderState" column="ORDER_STATE" />
+		<result property="stateModifyTime" column="STATE_MODIFY_TIME" />
+		<result property="failReason" column="FAIL_REASON" />
+		<result property="isBuyerRate" column="IS_BUYER_RATE" />
+		<result property="isSellerRate" column="IS_SELLER_RATE" />
+		<result property="buyIp" column="BUY_IP" />
+		<result property="buyerMeMo" column="BUYER_MEMO" />
+		<result property="sellerMeMo" column="SELLER_MEMO" />
+		<result property="orderAttributes" column="ORDER_ATTRIBUTES" />
+		<result property="priceAmount" column="PRICE_AMOUNT" />
+		<result property="shopId" column="SHOP_ID" />
+		<result property="shopName" column="SHOP_NAME" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="isRefund" column="IS_REFUND" />
+	</resultMap>
+
+	<sql id="selectOrderAll">
+	<![CDATA[SELECT ID,GMT_MODIFIED,GMT_CREATE,
+	SELLER_ID,BUYER_ID,BUYER_NICK,SELLER_NICK,ORDER_STATE,STATE_MODIFY_TIME,
+	FAIL_REASON,IS_BUYER_RATE,IS_SELLER_RATE,BUY_IP,BUYER_MEMO,SELLER_MEMO,SHOP_ID,SHOP_NAME,
+	ORDER_ATTRIBUTES,PRICE_AMOUNT FROM TRADE_ORDER]]>
+	</sql>
+
+	<select id="selectAllOrderDO" resultMap="OrderDOResult">
+		<include refid="selectOrderAll" />
+	</select>
+
+	<select id="selectStateOrder" resultClass="long" parameterClass="java.util.HashMap">
+		<![CDATA[select ID from(select rownum r, a.* from (select ID from TRADE_ORDER]]>
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="dateNum">
+		     	  <![CDATA[STATE_MODIFY_TIME < (SYSDATE - #dateNum#)]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="orderState">
+				<![CDATA[ORDER_STATE = #orderState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="refundState">
+				<![CDATA[IS_REFUND = #refundState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="startId">
+				<![CDATA[ID > #startId# ]]>
+			</isNotEmpty>
+		</dynamic>
+   		 <![CDATA[order by ID asc) a where rownum <= #endNum# ) where r >=  #startNum#]]>
+	</select>
+
+
+
+	<select id="selectStateOrderNum" resultClass="int"
+		parameterClass="java.util.HashMap">
+		<![CDATA[select COUNT(ID) from TRADE_ORDER]]>
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="dateNum">
+		     	  <![CDATA[STATE_MODIFY_TIME < (SYSDATE - #dateNum#)]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="orderState">
+				<![CDATA[ORDER_STATE = #orderState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="refundState">
+				<![CDATA[IS_REFUND = #refundState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="startId">
+				<![CDATA[ID > #startId# ]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[order by ID asc]]>
+	</select>
+
+	<select id="selectOrderConfirmNum" resultClass="int"
+		parameterClass="java.util.HashMap">
+		<![CDATA[select COUNT(ID) from TRADE_ORDER WHERE ORDER_STATE = 3 AND IS_REFUND = 10001 AND RESIDUE_TIME_HOUR < (SYSDATE - CONFIRM_START_TIME)*24 order by ID asc]]>
+	</select>
+	
+	<select id="selectOrderConfirm" resultClass="long" parameterClass="java.util.HashMap">
+		<![CDATA[select ID from TRADE_ORDER WHERE ORDER_STATE = 3 AND IS_REFUND = 10001 AND RESIDUE_TIME_HOUR < (SYSDATE - CONFIRM_START_TIME)*24 order by ID asc]]>
+	</select>
+	
+	
+	
+	<update id="updateOrderConfirmTime" parameterClass="OrderDO">
+		UPDATE TRADE_ORDER 
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="confirmStartTime">
+				<![CDATA[CONFIRM_START_TIME = #confirmStartTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="residueTimeHour">
+				<![CDATA[RESIDUE_TIME_HOUR = #residueTimeHour#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isRefund">
+				<![CDATA[IS_REFUND = #isRefund#]]>
+			</isNotEmpty>
+		</dynamic>
+			<![CDATA[,GMT_MODIFIED = sysdate WHERE ID = #orderId#]]>
+	</update> 
+	
+	<!-- 定时器更改订单评价状态  -->
+    <update id="updateBuyerRate" parameterClass="long">
+    	<![CDATA[UPDATE TRADE_ORDER SET 
+		    		IS_BUYER_RATE = 2
+		    		,GMT_MODIFIED = sysdate
+		    	WHERE
+		    		ORDER_STATE = 5 
+		    		AND IS_BUYER_RATE = 0 
+		    		AND STATE_MODIFY_TIME < (sysdate - 15)]]>
+    </update>
+	
+</sqlMap>
+

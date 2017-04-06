@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 品聚网 Cookie -->
+<cookie-config>
+
+  <!-- 会话组 -->
+  <cookie-group name="session">
+    <cookie name="TOKEN" domain=".pinju.com" path="/" desc="会话编号" httpOnly="true">
+      <convert>com.yuwang.pinju.web.cookie.convert.TokenConvert</convert>
+    </cookie>
+  </cookie-group>
+
+  <!-- 登录信息组 -->
+  <cookie-group name="login">
+    <hash class="com.yuwang.pinju.web.cookie.hash.PinjuLoginHash">
+      <cookie name="H" domain=".pinju.com" path="/" desc="消息摘要" httpOnly="true" />
+    </hash>
+    <cookie name="N" domain=".pinju.com" path="/" desc="会员昵称" />
+    <cookie name="PJ0" domain=".pinju.com" path="/" desc="登录信息" httpOnly="true">
+      <sub-cookie name="A" desc="会员信息版本号">
+        <convert>com.yuwang.cookie.convert.basic.LongCookieConverter</convert>
+      </sub-cookie>
+      <sub-cookie name="B" desc="会员登录时间">
+        <convert>com.yuwang.pinju.web.cookie.convert.LoginTimeConvert</convert>      
+      </sub-cookie>
+      <sub-cookie name="C" desc="会员编号">
+        <convert>com.yuwang.pinju.web.cookie.convert.MemeberIdConvert</convert>
+      </sub-cookie>
+      <sub-cookie name="D" desc="会员来源_用户协议确认状态_账户类型（MEMBER_MEMBER.ACCOUNT_TYPE）">
+        <convert>com.yuwang.pinju.web.cookie.convert.OriginAgreementConvert</convert>
+      </sub-cookie>
+      <sub-cookie name="E" desc="User-Agent">
+        <convert>com.yuwang.pinju.web.cookie.convert.UserAgentConvert</convert>
+      </sub-cookie>
+      <sub-cookie name="F" desc="会话ID(TOKEN)摘要" />
+      <sub-cookie name="G" desc="登录IP">
+        <convert>com.yuwang.pinju.web.cookie.convert.LoginIpConvert</convert>
+      </sub-cookie>
+    </cookie>
+  </cookie-group>
+
+  <!-- 购物车 -->
+  <cookie-group name="shopping-car">
+    <cookie name="SC" domain=".pinju.com" path="/" desc="用户购物车" maxAge="7776000">
+      <convert>com.yuwang.pinju.web.cookie.convert.ShoppingCarConvert</convert>
+    </cookie>
+    <cookie name="SD" domain=".pinju.com" path="/" desc="用户商品数量" maxAge="7776000">
+      <convert>com.yuwang.cookie.convert.basic.IntegerCookieConverter</convert>
+    </cookie>
+  </cookie-group>
+
+  <!-- 防重复提交 TOKEN -->
+  <cookie-group name="refresh-token">
+    <cookie name="_T_" domain=".pinju.com" path="/" desc="账户管理防重复提交" maxAge="1800" />
+  </cookie-group>
+
+  <!-- 品聚广告推广信息 -->
+  <cookie-group name="advertise">
+    <cookie name="P" domain=".pinju.com" path="/" desc="推广商信息" maxAge="31536000">
+      <convert>com.yuwang.pinju.web.cookie.convert.AdvertiseInfoConvert</convert>
+    </cookie>
+  </cookie-group>
+
+  <!-- shop -->
+  <cookie-group name="shop-1">
+    <cookie name="PJ1" domain=".www.pinju.com" path="/shop" desc="shop-1" />
+  </cookie-group>
+  
+  <cookie-group name="shop-2">
+    <cookie name="PJ2" domain=".www.pinju.com" path="/shop" desc="shop-2" />
+  </cookie-group>
+  
+  <cookie-group name="shop-3">
+    <cookie name="PJ3" domain=".www.pinju.com" path="/shop" desc="shop-3" />
+  </cookie-group>
+  
+  <cookie-group name="shop-4">
+    <cookie name="PJ4" domain=".www.pinju.com" path="/shop" desc="shop-4" />
+  </cookie-group>
+  
+  <cookie-group name="shop-C">
+    <cookie name="PJC" domain=".www.pinju.com" path="/shop" desc="shop-C" />
+  </cookie-group>
+</cookie-config>

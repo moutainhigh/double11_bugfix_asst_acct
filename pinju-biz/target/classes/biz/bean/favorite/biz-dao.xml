@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+ 	<bean id="favoriteShopDAO" class="com.yuwang.pinju.core.favorite.dao.impl.FavoriteShopDAOImpl">
+ 	  <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+ 	</bean>
+	<bean id="favoriteItemDAO" class="com.yuwang.pinju.core.favorite.dao.impl.FavoriteItemDAOImpl">
+	  <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+	</bean>
+	
+</beans>

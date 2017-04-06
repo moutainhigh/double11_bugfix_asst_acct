@@ -1,0 +1,54 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MemberSnsInfo">
+
+  <typeAlias alias="MemberSnsInfo" type="com.yuwang.pinju.domain.member.MemberSnsInfoDO" />
+
+  <resultMap id="MemberSnsInfoResult" class="MemberSnsInfo">
+    <result property="id" column="ID" />
+    <result property="memberId" column="MEMBER_ID" />
+    <result property="avatarsLarge" column="AVATARS_LARGE" />
+    <result property="avatarsMiddle" column="AVATARS_MIDDLE" />
+    <result property="avatarsSmall" column="AVATARS_SMALL" />
+    <result property="biography" column="BIOGRAPHY" />
+    <result property="gmtCreate" column="GMT_CREATE" javaType="java.util.Date" />
+    <result property="gmtModified" column="GMT_MODIFIED" javaType="java.util.Date" />
+  </resultMap>
+
+  <sql id="selectAllMemberSnsInfo"><![CDATA[SELECT ID,MEMBER_ID,AVATARS_LARGE,AVATARS_MIDDLE,AVATARS_SMALL,BIOGRAPHY,GMT_CREATE,GMT_MODIFIED FROM MEMBER_SNS_INFO]]></sql>
+
+  <select id="getMemberSnsInfoByMemberId" resultMap="MemberSnsInfoResult"
+    parameterClass="long">
+    <include refid="selectAllMemberSnsInfo" />
+    <![CDATA[WHERE MEMBER_ID = #memberId#]]>
+  </select>
+
+  <insert id="insertMemberSnsInfo" parameterClass="MemberSnsInfo">
+    <![CDATA[INSERT INTO MEMBER_SNS_INFO (ID,MEMBER_ID,AVATARS_LARGE,AVATARS_MIDDLE,AVATARS_SMALL,BIOGRAPHY,GMT_CREATE,GMT_MODIFIED) VALUES (#id#,#memberId#,#avatarsLarge#,#avatarsMiddle#,#avatarsSmall#,#biography#,#gmtCreate#,#gmtModified#)]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+  </insert>
+
+  <update id="updateMemberSnsInfo" parameterClass="MemberSnsInfo">
+    <![CDATA[UPDATE MEMBER_SNS_INFO]]>
+    <dynamic prepend="SET">
+      <isNotEmpty prepend="," property="avatarsLarge">
+        <![CDATA[AVATARS_LARGE = #avatarsLarge#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="avatarsMiddle">
+        <![CDATA[AVATARS_MIDDLE = #avatarsMiddle#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="avatarsSmall">
+        <![CDATA[AVATARS_SMALL = #avatarsSmall#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="biography">
+        <![CDATA[BIOGRAPHY = #biography#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="gmtModified">
+        <![CDATA[GMT_MODIFIED = #gmtModified#]]>
+      </isNotEmpty>
+    </dynamic>
+    <![CDATA[WHERE ID = #id# AND MEMBER_ID = #memberId#]]>
+  </update>
+</sqlMap>

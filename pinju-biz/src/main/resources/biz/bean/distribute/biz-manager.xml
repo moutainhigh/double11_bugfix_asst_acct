@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="distributorManager"
+		class="com.yuwang.pinju.core.distribute.manager.impl.DistributorManagerImpl"></bean>
+
+	<bean id="distributeSupplierManager"
+		class="com.yuwang.pinju.core.distribute.manager.impl.DistributeSupplierManagerImpl"></bean>
+
+	<bean id="distributeSupplierItemManager"
+		class="com.yuwang.pinju.core.distribute.manager.impl.DistributeSupplierItemManagerImpl"></bean>
+
+	<bean id="distributeChannelManager"
+		class="com.yuwang.pinju.core.distribute.manager.impl.DistributeChannelManagerImpl"></bean>
+		
+	<bean id="distributeChannelItemManager"
+		class="com.yuwang.pinju.core.distribute.manager.impl.DistributeChannelItemManagerImpl"></bean>
+</beans>

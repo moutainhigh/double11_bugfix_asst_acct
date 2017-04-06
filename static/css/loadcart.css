@@ -1,0 +1,19 @@
+/*
+.minicart { width:320px; display:inline; }
+ .minicart strong{ line-height:20px; margin-left:10px;}
+
+ .main{ width:300px; height:40px; margin-left:10px; margin-right:10px; margin-top:10px;}
+
+ .pic001 { float:left;width:40px; height:40px;border:1px solid #EFEFEF;display:inline; }
+ 
+ .information {float:left;width:158px; height:40px; margin-left:10px; display:inline; }
+ 	.information01{float:left;width:158px; height:18px; margin-top:2px;display:inline; }
+ 
+ 
+ .price {float:left;width:75px; height:40px; margin-left:10px; background:display:inline; }
+ 	.price01{float:left;width:75px; height:18px; margin-top:2px;display:inline; }
+ 
+ .cartline{width:300px; height:1px;margin-top:10px; margin-left:10px; margin-right:10px; background:#CCC;}
+ 
+ .bottun { float:right;width:119px; height:24px; margin-right:5px;}
+*/

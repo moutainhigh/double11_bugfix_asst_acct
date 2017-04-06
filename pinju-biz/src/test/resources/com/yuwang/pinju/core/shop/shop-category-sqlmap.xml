@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="shopCategory">
+
+    <typeAlias alias="CategoryDO" type="com.yuwang.pinju.domain.shop.ShopCategoryDO"/>
+
+    <resultMap id="categoryDO" class="CategoryDO">
+        <result column="id" property="id"/>
+        <result column="shop_id" property="shopId" />
+        <result column="user_id" property="userId" />
+	    <result column="first_category" property="firstCategory"  />
+	    <result column="second_category" property="secondCategory"  />
+	    <result column="first_image" property="firstImage" />
+	    <result column="second_image" property="secondImage" />
+	    <result column="first_goods" property="firstGoods"/>
+	    <result column="second_goods" property="secondGoods"/>
+	    <result column="other_goods" property="otherGoods" />
+	    <result column="configuration" property="configuration" />
+	    <result column="gmt_create" property="gmtCreate"/>
+	    <result column="gmt_modified" property="gmtModified"/>
+    </resultMap>
+	
+    <!--shop category selector-->
+    <sql id="categoryDO.selector">
+		SELECT id, shop_id,user_id,first_category, second_category, first_image, second_image, first_goods,
+      	second_goods, other_goods, configuration, gmt_create, gmt_modified
+    	FROM shop_category
+	</sql>
+		
+	<!-- query shop category by shop id -->
+    <select id="queryShopCategory" resultMap="categoryDO">
+        <include refid="categoryDO.selector"/>
+         <dynamic prepend="where" >
+		      <isNotNull prepend="and" property="shopId" >
+		        shop_id = #shopId#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="userId" >
+		        user_id = #userId#
+		      </isNotNull>
+   		 </dynamic>
+
+    </select>
+    
+    <!-- insert shop category -->
+    <insert id="insertShopCategory" parameterClass="com.yuwang.pinju.domain.shop.ShopCategoryDO">
+     <selectKey resultClass="int" keyProperty="id">
+            SELECT seq_shop_category_id.nextval AS id FROM dual
+     </selectKey>
+      <![CDATA[   
+		    INSERT INTO shop_category (id,shop_id,user_id, first_category, second_category, first_image, second_image,
+		      first_goods, second_goods, other_goods, configuration, gmt_create, gmt_modified)
+		    VALUES (#id#,#shopId#, #userId#,#firstCategory#, #secondCategory#, #firstImage#,
+		      #secondImage#, #firstGoods#, #secondGoods#, #otherGoods#,
+		      #configuration#, #gmtCreate#, #gmtModified#)
+      ]]>
+  </insert>
+  
+  <!--update shop category-->
+   <update id="updateShopCategory" >
+    <![CDATA[UPDATE shop_category ]]>
+    <dynamic prepend="SET">
+		<isNotEmpty prepend="," property="firstCategory">
+			<![CDATA[first_category = #firstCategory#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="secondCategory">
+			<![CDATA[second_category = #secondCategory#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="firstImage">
+			<![CDATA[first_image = #firstImage#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="secondImage">
+			<![CDATA[second_image = #secondImage#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="firstGoods">
+			<![CDATA[first_goods = #firstGoods#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="secondGoods">
+			<![CDATA[second_goods = #secondGoods#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="otherGoods">
+			<![CDATA[other_goods = #otherGoods#]]>
+		</isNotEmpty>
+	</dynamic>
+    <![CDATA[	
+    ,gmt_modified = sysdate 
+    where id=#id#
+    ]]>
+  </update>
+</sqlMap>
+

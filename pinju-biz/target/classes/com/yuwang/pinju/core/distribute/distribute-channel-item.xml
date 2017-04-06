@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="distribute_channel_item">
+
+	<typeAlias alias="DistributeChannelItem" type="com.yuwang.pinju.domain.distribute.DistributeChannelItemDO" />
+	<typeAlias alias="DistributeChannelItemParam" type="com.yuwang.pinju.domain.distribute.DistributeChannelItemParamDO" />
+
+	<resultMap id="DistributeChannelItemResult" class="DistributeChannelItem">
+		<result property="id" column="ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="channelId" column="CHANNEL_ID" />
+		<result property="imageUrl" column="IMAGE_URL" />
+		<result property="recommendReason" column="RECOMMEND_REASON" />
+		<result property="status" column="STATUS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModify" column="GMT_MODIFY" />
+		<result property="agreeCount" column="AGREE_COUNT" />
+		<result property="opposeCount" column="OPPOSE_COUNT" />
+		<result property="configuration" column="CONFIGURATION" />
+	</resultMap>
+
+	<!-- 在合作状态并且没有超过期限的分销商,表的别名为[DC],两边没有加括号如果后面还有查询条件的话一定要加上括号！ -->
+	<sql id="regularDistributeChannelConditionAlias">
+		<![CDATA[((DATE_ADD(DC.AGREE_DATE, INTERVAL DC.COOPERATE_MONTH MONTH) > SYSDATE() AND DC.COOPERATE_MONTH > 0) OR DC.COOPERATE_MONTH = 0) AND DC.STATUS = 1]]>
+	</sql>
+	
+	<sql id="selectAllDistributeChannelItem"><![CDATA[SELECT ID,ITEM_ID,CHANNEL_ID,IMAGE_URL,RECOMMEND_REASON,STATUS,GMT_CREATE,GMT_MODIFY,AGREE_COUNT,OPPOSE_COUNT,CONFIGURATION FROM DISTRIBUTE_CHANNEL_ITEM]]></sql>
+
+	<select id="selectAllDistributeChannelItem" resultMap="DistributeChannelItemResult">
+		<include refid="selectAllDistributeChannelItem" />
+	</select>
+
+	<select id="selectDistributeChannelItemByid" resultMap="DistributeChannelItemResult"  parameterClass="long">
+		<include refid="selectAllDistributeChannelItem" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectDistributeChannelItem"  resultMap="DistributeChannelItemResult" parameterClass="DistributeChannelItemParam">
+		<include refid="selectAllDistributeChannelItem" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="channelId">
+				<![CDATA[CHANNEL_ID = #channelId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="imageUrl">
+				<![CDATA[IMAGE_URL = #imageUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="recommendReason">
+				<![CDATA[RECOMMEND_REASON = #recommendReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="agreeCount">
+				<![CDATA[AGREE_COUNT = #agreeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="opposeCount">
+				<![CDATA[OPPOSE_COUNT = #opposeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="selectDistributeChannelItemId"  resultClass="java.lang.Long" parameterClass="DistributeChannelItemParam">
+		SELECT ITEM_ID FROM DISTRIBUTE_CHANNEL_ITEM
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="channelId">
+				<![CDATA[CHANNEL_ID = #channelId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="imageUrl">
+				<![CDATA[IMAGE_URL = #imageUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="recommendReason">
+				<![CDATA[RECOMMEND_REASON = #recommendReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="agreeCount">
+				<![CDATA[AGREE_COUNT = #agreeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="opposeCount">
+				<![CDATA[OPPOSE_COUNT = #opposeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="selectDistributeChannelItemCount" resultClass="java.lang.Integer" parameterClass="DistributeChannelItemParam">
+		select count(*) FROM DISTRIBUTE_CHANNEL_ITEM
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="channelId">
+				<![CDATA[CHANNEL_ID = #channelId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="imageUrl">
+				<![CDATA[IMAGE_URL = #imageUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="recommendReason">
+				<![CDATA[RECOMMEND_REASON = #recommendReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="agreeCount">
+				<![CDATA[AGREE_COUNT = #agreeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="opposeCount">
+				<![CDATA[OPPOSE_COUNT = #opposeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="findShowCaseItemByCondition" resultMap="DistributeChannelItemResult" parameterClass="com.yuwang.pinju.domain.distribute.ShowCaseQueryDO">
+		SELECT 
+		  DCI.ID,DCI.ITEM_ID,DCI.CHANNEL_ID,DCI.IMAGE_URL,DCI.RECOMMEND_REASON,DCI.STATUS,DCI.GMT_CREATE,DCI.GMT_MODIFY,DCI.AGREE_COUNT,DCI.OPPOSE_COUNT,DCI.CONFIGURATION 
+		FROM
+		  (SELECT 
+		    * 
+		  FROM
+		    DISTRIBUTE_CHANNEL_ITEM
+		  WHERE 
+		  		CHANNEL_ID = #channelId#
+				AND STATUS = 0 ) AS DCI 
+		  JOIN 
+		    (SELECT 
+		      ITEM_ID,
+		      SUPPLIER_ID 
+		    FROM
+		      DISTRIBUTE_SUPPLIER_GOODS AS DSG 
+		      JOIN 
+		        (SELECT 
+		          SUPPLIER_ID AS SUPPERID 
+		        FROM
+		          DISTRIBUTE_CHANNEL AS DC
+		        WHERE
+					DC.CHANNEL_ID = #channelId#
+					AND (<include refid="regularDistributeChannelConditionAlias" />)) AS SDC 
+		        ON DSG.SUPPLIER_ID = SDC.SUPPERID) AS SG 
+		    ON DCI.ITEM_ID = SG.ITEM_ID 
+			LIMIT #start#,#itemsPerPage#
+	</select>
+	
+	<select id="findShowCaseItemCountByCondition" resultClass="java.lang.Integer" parameterClass="com.yuwang.pinju.domain.distribute.ShowCaseQueryDO">
+		SELECT
+		 count(*)
+		FROM
+		  (SELECT 
+		    * 
+		  FROM
+		    DISTRIBUTE_CHANNEL_ITEM
+		  WHERE 
+		  		CHANNEL_ID = #channelId#
+				AND STATUS = 0 ) AS DCI 
+		  JOIN 
+		    (SELECT 
+		      ITEM_ID,
+		      SUPPLIER_ID 
+		    FROM
+		      DISTRIBUTE_SUPPLIER_GOODS AS DSG 
+		      JOIN 
+		        (SELECT 
+		          SUPPLIER_ID AS SUPPERID 
+		        FROM
+		          DISTRIBUTE_CHANNEL AS DC
+		        WHERE
+					DC.CHANNEL_ID = #channelId#
+					AND (<include refid="regularDistributeChannelConditionAlias" />)) AS SDC 
+		        ON DSG.SUPPLIER_ID = SDC.SUPPERID) AS SG 
+		    ON DCI.ITEM_ID = SG.ITEM_ID 
+	</select>
+	
+	<insert id="insertDistributeChannelItem" parameterClass="DistributeChannelItem">
+		<![CDATA[INSERT INTO DISTRIBUTE_CHANNEL_ITEM (ITEM_ID,CHANNEL_ID,IMAGE_URL,RECOMMEND_REASON,STATUS,GMT_CREATE,CONFIGURATION) VALUES (#itemId#,#channelId#,#imageUrl#,#recommendReason#,#status#,SYSDATE(),#configuration#)]]>
+	</insert>
+
+	<sql id="deleteAllDistributeChannelItem"><![CDATA[DELETE FROM DISTRIBUTE_CHANNEL_ITEM]]></sql>
+
+	<delete id="deleteAllDistributeChannelItem">
+		<include refid="deleteAllDistributeChannelItem" />
+	</delete>
+
+	<delete id="deleteDistributeChannelItemByid" parameterClass="long">
+		<include refid="deleteAllDistributeChannelItem" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteDistributeChannelItem"  parameterClass="DistributeChannelItem">
+		<include refid="deleteAllDistributeChannelItem" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="channelId">
+				<![CDATA[CHANNEL_ID = #channelId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="imageUrl">
+				<![CDATA[IMAGE_URL = #imageUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="recommendReason">
+				<![CDATA[RECOMMEND_REASON = #recommendReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="agreeCount">
+				<![CDATA[AGREE_COUNT = #agreeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="opposeCount">
+				<![CDATA[OPPOSE_COUNT = #opposeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateDistributeChannelItem" parameterClass="DistributeChannelItem">
+		<![CDATA[UPDATE DISTRIBUTE_CHANNEL_ITEM]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="imageUrl">
+				<![CDATA[IMAGE_URL = #imageUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="recommendReason">
+				<![CDATA[RECOMMEND_REASON = #recommendReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="agreeCount">
+				<![CDATA[AGREE_COUNT = AGREE_COUNT + #agreeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="opposeCount">
+				<![CDATA[OPPOSE_COUNT = OPPOSE_COUNT + #opposeCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="itemId">
+				<![CDATA[GMT_MODIFY = SYSDATE()]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="id">
+				<![CDATA[GMT_MODIFY = SYSDATE()]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="channelId">
+				<![CDATA[CHANNEL_ID = #channelId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="originalStatus">
+				<![CDATA[STATUS = #originalStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+</sqlMap>
+

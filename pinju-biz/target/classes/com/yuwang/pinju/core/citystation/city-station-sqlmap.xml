@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CityStation_ORACLE">
+
+	<typeAlias alias="CityOrder" type="com.yuwang.pinju.domain.citystation.CityOrderDO" />
+	<typeAlias alias="CityOrderQuery" type="com.yuwang.pinju.domain.citystation.CityOrderQuery" />
+	
+	<resultMap id="CityOrderResult" class="CityOrder">
+		<result property="orderDate" column="ORDER_DATE" />
+		<result property="adCode" column="AD_CODE" />
+		<result property="orderBuyCount" column="ORDER_BUY_COUNT" />
+		<result property="orderBuyPrice" column="ORDER_BUY_PRICE" />
+		<result property="orderPayCount" column="ORDER_PAY_COUNT" />
+		<result property="orderPayPrice" column="ORDER_PAY_PRICE" />
+		<result property="orderSucCount" column="ORDER_SUC_COUNT" />
+		<result property="orderSucPrice" column="ORDER_SUC_PRICE" />
+	</resultMap>
+
+	<select id="selectAllCityOrder" resultMap="CityOrderResult" parameterClass="CityOrderQuery">
+		SELECT temp.ORDER_DATE, temp.AD_CODE,
+			NVL(MAX(CASE WHEN temp.ORDER_STATE = 1 THEN temp.ORDER_COUNT END),0) AS ORDER_BUY_COUNT,
+			NVL(MAX(CASE WHEN temp.ORDER_STATE = 1 THEN temp.ORDER_PRICE END),0) AS ORDER_BUY_PRICE,
+			NVL(MAX(CASE WHEN temp.ORDER_STATE = 2 THEN temp.ORDER_COUNT END),0) AS ORDER_PAY_COUNT,
+			NVL(MAX(CASE WHEN temp.ORDER_STATE = 2 THEN temp.ORDER_PRICE END),0) AS ORDER_PAY_PRICE,
+			NVL(MAX(CASE WHEN temp.ORDER_STATE = 5 THEN temp.ORDER_COUNT END),0) AS ORDER_SUC_COUNT,
+			NVL(MAX(CASE WHEN temp.ORDER_STATE = 5 THEN temp.ORDER_PRICE END),0) AS ORDER_SUC_PRICE 
+		FROM MV_CITY_ORDER_DAY_DETAIL temp
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="startDate">
+				<![CDATA[temp.ORDER_DATE >= #startDate#]]>
+			</isNotNull>
+			<isNotNull prepend="AND" property="endDate">
+				<![CDATA[temp.ORDER_DATE <= #endDate#]]>
+			</isNotNull>
+			<isNotEmpty prepend="AND" property="adCode">
+				<![CDATA[temp.AD_CODE = #adCode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="adCode">
+				<![CDATA[temp.AD_STATUS = 1]]>
+			</isNotEmpty>
+		</dynamic>
+		GROUP BY temp.AD_CODE,temp.ORDER_DATE
+		ORDER BY temp.ORDER_DATE DESC
+	</select>
+</sqlMap>
+

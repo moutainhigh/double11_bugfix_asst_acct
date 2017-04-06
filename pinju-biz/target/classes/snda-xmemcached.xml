@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- 店铺资质及 DSR 缓存 -->
+  <bean id="qualitityMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.qualitity}"
+            p:fallbackAddresses="${memcached.fall.pinju.qualitity}">
+        <property name="indexFetcher">
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.qualitity}" />
+                <constructor-arg value="${memcached.port.pinju.qualitity}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- 验证码值缓存 -->
+  <bean id="captchaMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.captcha}"
+            p:fallbackAddresses="${memcached.fall.pinju.captcha}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.captcha}" />
+                <constructor-arg value="${memcached.port.pinju.captcha}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- 登录错误次数记录 -->
+  <bean id="loginMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.login}"
+            p:fallbackAddresses="${memcached.fall.pinju.login}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.login}" />
+                <constructor-arg value="${memcached.port.pinju.login}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+  <!-- 商品详情相关缓存 -->
+  <bean id="itemMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcache.item.cache.indexkey}"
+            p:fallbackAddresses="${memcache.fall.ip}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcache.ip}" />
+                <constructor-arg value="${memcache.port}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- 商品购买数量相关缓存 -->
+  <bean id="itemBuyNumMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.itembuynum}"
+            p:fallbackAddresses="${memcached.fall.pinju.itembuynum}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.itembuynum}" />
+                <constructor-arg value="${memcached.port.pinju.itembuynum}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- ip库相关缓存 -->
+  <bean id="ipMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.ip}"
+            p:fallbackAddresses="${memcached.fall.pinju.ip}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.ip}" />
+                <constructor-arg value="${memcached.port.pinju.ip}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+  
+  <!-- 物流运费模板相关缓存 -->
+  <bean id="logisticsMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.logistics}"
+            p:fallbackAddresses="${memcached.fall.pinju.logistics}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.logistics}" />
+                <constructor-arg value="${memcached.port.pinju.logistics}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+  
+  <!-- 短信发送频率缓存 -->
+  <bean id="mobileFrequencyMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.mobile.frequency}"
+            p:fallbackAddresses="${memcached.fall.pinju.mobile.frequency}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.mobile.frequency}" />
+                <constructor-arg value="${memcached.port.pinju.mobile.frequency}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+  
+  <!-- 短信日发送限制缓存 -->
+  <bean id="mobileDailyMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.mobile.daily}"
+            p:fallbackAddresses="${memcached.fall.pinju.mobile.daily}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.mobile.daily}" />
+                <constructor-arg value="${memcached.port.pinju.mobile.daily}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- 用于数据传输密钥缓存 -->
+  <bean id="transKeyMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.trans.key}"
+            p:fallbackAddresses="${memcached.fall.pinju.trans.key}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.trans.key}" />
+                <constructor-arg value="${memcached.port.pinju.trans.key}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- 登录页面图片数据 -->
+  <bean id="loginPageMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.login.page}"
+            p:fallbackAddresses="${memcached.fall.pinju.login.page}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.login.page}" />
+                <constructor-arg value="${memcached.port.pinju.login.page}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+  
+  <!-- 子账号权限数据 -->
+  <bean id="asstPermMemcachedClientBuilder" class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+    <property name="zmemcachedClientFactory">
+      <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+      <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory" p:indexKey="${memcached.indexkey.pinju.asst.perm}"
+            p:fallbackAddresses="${memcached.fall.pinju.asst.perm}">
+        <property name="indexFetcher">
+          <!-- xmemcached作为index fetcher -->
+          <bean class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+            <property name="indexServer">
+              <bean class="java.net.InetSocketAddress">
+                <constructor-arg value="${memcached.ip.pinju.asst.perm}" />
+                <constructor-arg value="${memcached.port.pinju.asst.perm}" type="int" />
+              </bean>
+            </property>
+          </bean>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <bean id="qualitityMemcachedClient" factory-bean="qualitityMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="captchaMemcachedClient" factory-bean="captchaMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="loginMemcachedClient" factory-bean="loginMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="itemMemcachedClient" factory-bean="itemMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="ipMemcachedClient" factory-bean="ipMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="logisticsMemcachedClient" factory-bean="logisticsMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="itemBuyNumMemcachedClient" factory-bean="itemBuyNumMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <!--
+  <bean id="dsrCommentsMemcachedClient" factory-bean="dsrCommentsMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  -->
+  <bean id="mobileFrequencyMemcachedClient" factory-bean="mobileFrequencyMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="mobileDailyMemcachedClient" factory-bean="mobileDailyMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="transKeyMemcachedClient" factory-bean="transKeyMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="loginPageNumMemcachedClient" factory-bean="loginPageMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+  <bean id="asstPermNumMemcachedClient" factory-bean="asstPermMemcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+</beans>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_asst_role_his">
+
+	<typeAlias alias="MemberAsstRoleHis" type="com.yuwang.pinju.domain.member.asst.MemberAsstRoleHisDO" />
+
+	<resultMap id="MemberAsstRoleHisResult" class="MemberAsstRoleHis">
+		<result property="id" column="ID" />
+		<result property="masterMemberId" column="MASTER_MEMBER_ID" />
+		<result property="masterLoginName" column="MASTER_LOGIN_NAME" />
+		<result property="roleName" column="ROLE_NAME" />
+		<result property="roleDesc" column="ROLE_DESC" />
+		<result property="permissions" column="PERMISSIONS" />
+		<result property="operMemberId" column="OPER_MEMBER_ID" />
+		<result property="operIp" column="OPER_IP" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllMemberAsstRoleHis"><![CDATA[SELECT ID,MASTER_MEMBER_ID,MASTER_LOGIN_NAME,ROLE_NAME,ROLE_DESC,PERMISSIONS,OPER_MEMBER_ID,OPER_IP,GMT_CREATE,GMT_MODIFIED FROM MEMBER_ASST_ROLE_HIS]]></sql>
+
+	<select id="selectAllMemberAsstRoleHis" resultMap="MemberAsstRoleHisResult">
+		<include refid="selectAllMemberAsstRoleHis" />
+	</select>
+
+	<select id="selectMemberAsstRoleHis"  resultMap="MemberAsstRoleHisResult" parameterClass="MemberAsstRoleHis">
+		<include refid="selectAllMemberAsstRoleHis" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="masterMemberId">
+				<![CDATA[MASTER_MEMBER_ID = #masterMemberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="masterLoginName">
+				<![CDATA[MASTER_LOGIN_NAME = #masterLoginName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="roleName">
+				<![CDATA[ROLE_NAME = #roleName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="roleDesc">
+				<![CDATA[ROLE_DESC = #roleDesc#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="permissions">
+				<![CDATA[PERMISSIONS = #permissions#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="operMemberId">
+				<![CDATA[OPER_MEMBER_ID = #operMemberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="operIp">
+				<![CDATA[OPER_IP = #operIp#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertMemberAsstRoleHis" parameterClass="MemberAsstRoleHis">
+		<![CDATA[INSERT INTO MEMBER_ASST_ROLE_HIS (ID,MASTER_MEMBER_ID,MASTER_LOGIN_NAME,ROLE_NAME,ROLE_DESC,PERMISSIONS,OPER_MEMBER_ID,OPER_IP,GMT_CREATE,GMT_MODIFIED) VALUES (#id#,#masterMemberId#,#masterLoginName#,#roleName#,#roleDesc#,#permissions#,#operMemberId#,#operIp#,#gmtCreate#,#gmtModified#)]]>
+	    <selectKey resultClass="long" type="post" keyProperty="id">
+	       <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+	    </selectKey>
+	</insert>
+</sqlMap>
+

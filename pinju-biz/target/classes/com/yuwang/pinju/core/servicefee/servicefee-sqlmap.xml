@@ -1,0 +1,45 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="service_fee">
+
+	<typeAlias alias="ServiceFee" type="com.yuwang.pinju.domain.servicefee.ServiceFeeDO"/>
+	
+	<resultMap class="ServiceFee" id="servFeeResult">
+		<result property="categoryLevel" column="CATEGORY_LEVEL"/>
+		<result property="platFeeRate" column="FEE_RATE"/>
+		<result property="categoryId" column="ID"/>
+	</resultMap>
+
+	<select id="selectRateAsLevel" resultMap="servFeeResult" parameterClass="long">
+		<![CDATA[SELECT CATE.CATEGORY_LEVEL, PSF.FEE_RATE, CATE.ID FROM PLAT_SERVICE_FEE PSF]]>
+		<![CDATA[INNER JOIN 
+			(SELECT CATEGORY_LEVEL, ID FROM ITEM_CATEGORY WHERE CATEGORY_LEVEL <= 2 START WITH ID = (SELECT CATETORY_ID FROM ITEM_ITEM WHERE ID = #itemId#) CONNECT BY PRIOR PARENT_ID = ID) CATE  
+			ON CATE.ID = PSF.CATEGORY_ID]]>
+		<![CDATA[WHERE ITEM. PSF.STATE = 1]]>
+	</select>
+	
+	<select id="selectServFeeByItemDO" resultMap="servFeeResult" parameterClass="com.yuwang.pinju.domain.item.ItemDO">
+		<![CDATA[SELECT CATE.CATEGORY_LEVEL, PSF.FEE_RATE, CATE.ID FROM PLAT_SERVICE_FEE PSF]]>
+		<![CDATA[INNER JOIN (SELECT CATEGORY_LEVEL, ID FROM ITEM_CATEGORY WHERE CATEGORY_LEVEL <= 2 START WITH]]>
+		<isNotEmpty prepend="" property="catetoryId">
+			<![CDATA[ID = #catetoryId#]]>
+		</isNotEmpty>
+		<isNull prepend="" property="catetoryId">
+			<isNotNull prepend="" property="id">
+				<![CDATA[ID = (SELECT CATETORY_ID FROM ITEM_ITEM WHERE ID = #id#)]]>
+			</isNotNull>
+		</isNull>
+		<![CDATA[CONNECT BY PRIOR PARENT_ID = ID) CATE ON CATE.ID = PSF.CATEGORY_ID]]>
+		<![CDATA[WHERE PSF.STATE = 1]]>
+	</select>
+	<!-- 根据店铺Id查询店铺服务费倍率 -->
+	<select id="selectShopServFeeRateById" resultClass="double" parameterClass="long">
+		<![CDATA[
+				SELECT REVISE_RATE FROM SHOP_SERVICE_FEE WHERE ID IN(
+				SELECT MAX(ID) FROM SHOP_SERVICE_FEE 
+				WHERE SHOP_ID=#shopId#  AND STATE = 1 AND START_TIME <= SYSDATE AND END_TIME >= SYSDATE)]]>
+	</select>
+	
+</sqlMap>
+
+

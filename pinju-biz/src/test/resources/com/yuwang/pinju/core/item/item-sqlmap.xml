@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_item">
+
+	<typeAlias alias="ItemItem" type="com.yuwang.pinju.domain.item.ItemDO" />
+
+	<resultMap id="ItemItemResult" class="ItemItem">
+		<result property="id" column="ID" />
+		<result property="catetoryId" column="CATETORY_ID" />
+		<result property="spuId" column="SPU_ID" />
+		<result property="title" column="TITLE" />
+		<result property="storeCategories" column="STORE_CATEGORIES" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="propertyValuePair" column="PROPERTY_VALUE_PAIR" />
+		<result property="itemType" column="ITEM_TYPE" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="picUrl" column="PIC_URL" />
+		<result property="picColor" column="PIC_COLOR" />
+		<result property="price" column="PRICE" />
+		<result property="provinces" column="PROVINCES" />
+		<result property="city" column="CITY" />
+		<result property="deliveryCosts" column="DELIVERY_COSTS" />
+		<result property="mailCosts" column="MAIL_COSTS" />
+		<result property="emsCosts" column="EMS_COSTS" />
+		<result property="freeTemplateId" column="FREE_TEMPLATE_ID" />
+		<result property="startTime" column="START_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="curStock" column="CUR_STOCK" />
+		<result property="oriStock" column="ORI_STOCK" />
+		<result property="status" column="STATUS" />
+		<result property="itemDegree" column="ITEM_DEGREE" />
+		<result property="recommendedStatus" column="RECOMMENDED_STATUS" />
+		<result property="collectionNumber" column="COLLECTION_NUMBER" />
+		<result property="features" column="FEATURES" />
+		<result property="expiredDate" column="EXPIRED_DATE" />
+		<result property="lastModified" column="LAST_MODIFIED" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="code" column="CODE" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="version" column="VERSION" />
+	</resultMap>
+
+	<sql id="selectAllItem"><![CDATA[SELECT ID,CATETORY_ID,SPU_ID,TITLE,STORE_CATEGORIES,DESCRIPTION,PROPERTY_VALUE_PAIR,ITEM_TYPE,SELLER_ID,PIC_URL,PIC_COLOR,PRICE,PROVINCES,CITY,DELIVERY_COSTS,MAIL_COSTS,EMS_COSTS,FREE_TEMPLATE_ID,START_TIME,END_TIME,CUR_STOCK,ORI_STOCK,STATUS,ITEM_DEGREE,RECOMMENDED_STATUS,COLLECTION_NUMBER,FEATURES,EXPIRED_DATE,LAST_MODIFIED,GMT_MODIFIED,GMT_CREATE,CODE,SELLER_NICK,VERSION FROM ITEM_ITEM]]></sql>
+
+	<select id="selectAllItemItem" resultMap="ItemItemResult">
+		<include refid="selectAllItem" />
+	</select>
+
+	<select id="selectItemById" resultMap="ItemItemResult"
+		parameterClass="long">
+		<include refid="selectAllItem" />
+		<![CDATA[WHERE id = #id#]]>
+	</select>
+
+	<select id="selectItemListBySellerId" resultMap="ItemItemResult"
+		parameterClass="long">
+		<include refid="selectAllItem" />
+		<![CDATA[WHERE SELLER_ID = #sellerId#]]>
+	</select>
+	
+	<select id="getItemCountByfreeTemplateId" resultClass="int"
+		parameterClass="long">
+		SELECT COUNT(*) FROM ITEM_ITEM
+		<![CDATA[WHERE FREE_TEMPLATE_ID = #freeTemplateId# and STATUS in (0,1,-1,-3,-5,-6,-7)]]>
+	</select>
+
+	<select id="getItemListCount" resultClass="int"
+		parameterClass="com.yuwang.pinju.domain.item.ItemQuery">
+		SELECT COUNT(*) FROM ITEM_ITEM
+		<dynamic prepend="WHERE">
+		
+			<isNotEmpty prepend="AND" property="sellerId">
+					<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty property="status">
+				<iterate prepend="AND" open="(" close=")" property="status"
+					conjunction="OR">
+							<![CDATA[
+								STATUS = #status[]#
+							]]>
+				</iterate>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="code">
+				<![CDATA[CODE = #code#]]>
+			</isNotEmpty>
+			<isGreaterThan prepend="AND" property="minPrice" compareValue="0">
+				<![CDATA[PRICE >= #minPrice#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="maxPrice" compareValue="0">
+				<![CDATA[PRICE <= #maxPrice#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="minSales" compareValue="0">
+				<![CDATA[ORI_STOCK - CUR_STOCK >= #minSales#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="maxSales" compareValue="0">
+				<![CDATA[ORI_STOCK - CUR_STOCK <= #maxSales#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="category" compareValue="0">
+				<![CDATA[CATETORY_ID = #category#]]>
+			</isGreaterThan>
+			<isNotNull prepend="AND" property="recommendedStatus">
+				<![CDATA[RECOMMENDED_STATUS = #recommendedStatus#]]>
+			</isNotNull>
+			<isEqual prepend="AND" property="filterType" compareValue="1">
+				<![CDATA[CUR_STOCK = 0]]>
+			</isEqual>
+			
+		</dynamic>
+
+	</select>
+
+	<select id="getItemList" resultMap="ItemItemResult"
+		parameterClass="com.yuwang.pinju.domain.item.ItemQuery">
+
+		SELECT
+		a.ID,a.CATETORY_ID,a.SPU_ID,a.TITLE,a.STORE_CATEGORIES,a.DESCRIPTION,a.PROPERTY_VALUE_PAIR,a.ITEM_TYPE,a.
+		SELLER_ID,a.PIC_URL,a.PIC_COLOR,a.PRICE,a.PROVINCES,a.CITY,a.DELIVERY_COSTS,a.MAIL_COSTS,a.EMS_COSTS,a.FREE_TEMPLATE_ID,a.
+		START_TIME,a.END_TIME,a.CUR_STOCK,a.ORI_STOCK,a.STATUS,a.ITEM_DEGREE,a.RECOMMENDED_STATUS,a.COLLECTION_NUMBER,a.FEATURES,a.
+		EXPIRED_DATE,a.LAST_MODIFIED,a.GMT_MODIFIED,a.GMT_CREATE,a.CODE,a.SELLER_NICK,a.VERSION
+		FROM (
+		SELECT rid from
+		(SELECT one.rid,ROWNUM RN from
+		(SELECT
+		rowid rid FROM
+		ITEM_ITEM
+
+		<dynamic prepend="WHERE">
+		
+			<isNotEmpty prepend="AND" property="sellerId">
+					<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty property="status">
+				<iterate prepend="AND" open="(" close=")" property="status"
+					conjunction="OR">
+							<![CDATA[
+								STATUS = #status[]#
+							]]>
+				</iterate>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="code">
+				<![CDATA[CODE = #code#]]>
+			</isNotEmpty>
+			<isGreaterThan prepend="AND" property="minPrice" compareValue="0">
+				<![CDATA[PRICE >= #minPrice#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="maxPrice" compareValue="0">
+				<![CDATA[PRICE <= #maxPrice#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="minSales" compareValue="0">
+				<![CDATA[ORI_STOCK - CUR_STOCK >= #minSales#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="maxSales" compareValue="0">
+				<![CDATA[ORI_STOCK - CUR_STOCK <= #maxSales#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="category" compareValue="0">
+				<![CDATA[CATETORY_ID = #category#]]>
+			</isGreaterThan>
+			<isNotNull prepend="AND" property="recommendedStatus">
+				<![CDATA[RECOMMENDED_STATUS = #recommendedStatus#]]>
+			</isNotNull>
+			<isEqual prepend="AND" property="filterType" compareValue="1">
+				<![CDATA[CUR_STOCK = 0]]>
+			</isEqual>
+			
+		</dynamic>
+
+		ORDER BY GMT_CREATE DESC) one
+		WHERE rownum <![CDATA[<=]]>
+		#endRow#)
+		WHERE RN <![CDATA[>=]]>
+		#startRow#) T,ITEM_ITEM a WHERE a.rowid = t.rid
+
+
+	</select>
+
+	<select id="getNewItemId" resultClass="long">
+		<![CDATA[
+			SELECT seq_item_item_id.NEXTVAL AS id FROM DUAL
+		]]>
+	</select>
+
+	<insert id="insertItemItem" parameterClass="ItemItem">
+		<![CDATA[
+			INSERT INTO ITEM_ITEM
+			 (ID,CATETORY_ID,SPU_ID,TITLE,STORE_CATEGORIES,DESCRIPTION,PROPERTY_VALUE_PAIR,ITEM_TYPE,SELLER_ID,
+			 	PIC_URL,PIC_COLOR,PRICE,PROVINCES,CITY,DELIVERY_COSTS,MAIL_COSTS,EMS_COSTS,FREE_TEMPLATE_ID,START_TIME,
+			 		END_TIME,CUR_STOCK,ORI_STOCK,STATUS,ITEM_DEGREE,RECOMMENDED_STATUS,COLLECTION_NUMBER,FEATURES,EXPIRED_DATE,
+			 		LAST_MODIFIED,GMT_MODIFIED,GMT_CREATE,CODE,SELLER_NICK,VERSION)
+			VALUES
+			 (#id#,#catetoryId#,#spuId#,#title#,#storeCategories#,#description#,#propertyValuePair#,#itemType#,#sellerId#,
+			 	#picUrl#,#picColor#,#price#,#provinces#,#city#,#deliveryCosts#,#mailCosts#,#emsCosts#,#freeTemplateId#,#startTime#,
+			 		#endTime#,#curStock#,#oriStock#,#status#,#itemDegree#,#recommendedStatus#,#collectionNumber#,#features#,#expiredDate#,
+			 			#lastModified#,#gmtModified#,#gmtCreate#,#code#,#sellerNick#,0)
+		]]>
+	</insert>
+	
+
+	<update id="updateItem" parameterClass="ItemItem">
+		<![CDATA[UPDATE ITEM_ITEM]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="catetoryId">
+				<![CDATA[CATETORY_ID = #catetoryId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="spuId">
+				<![CDATA[SPU_ID = #spuId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="storeCategories">
+				<![CDATA[STORE_CATEGORIES = #storeCategories#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="description">
+				<![CDATA[DESCRIPTION = #description#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="propertyValuePair">
+				<![CDATA[PROPERTY_VALUE_PAIR = #propertyValuePair#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="itemType">
+				<![CDATA[ITEM_TYPE = #itemType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="picUrl">
+				<![CDATA[PIC_URL = #picUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="picColor">
+				<![CDATA[PIC_COLOR = #picColor#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="price">
+				<![CDATA[PRICE = #price#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="provinces">
+				<![CDATA[PROVINCES = #provinces#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="city">
+				<![CDATA[CITY = #city#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="deliveryCosts">
+				<![CDATA[DELIVERY_COSTS = #deliveryCosts#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="mailCosts">
+				<![CDATA[MAIL_COSTS = #mailCosts#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="emsCosts">
+				<![CDATA[EMS_COSTS = #emsCosts#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="freeTemplateId">
+				<![CDATA[FREE_TEMPLATE_ID = #freeTemplateId#]]>
+			</isNotEmpty>
+			<isNull prepend="," property="freeTemplateId">
+				<![CDATA[FREE_TEMPLATE_ID = #freeTemplateId#]]>
+			</isNull>
+			<isNotEmpty prepend="," property="startTime">
+				<![CDATA[START_TIME = #startTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="endTime">
+				<![CDATA[END_TIME = #endTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="curStock">
+				<![CDATA[CUR_STOCK = #curStock#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="oriStock">
+				<![CDATA[ORI_STOCK = #oriStock#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="itemDegree">
+				<![CDATA[ITEM_DEGREE = #itemDegree#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="recommendedStatus">
+				<![CDATA[RECOMMENDED_STATUS = #recommendedStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="collectionNumber">
+				<![CDATA[COLLECTION_NUMBER = #collectionNumber#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="expiredDate">
+				<![CDATA[EXPIRED_DATE = #expiredDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="lastModified">
+				<![CDATA[LAST_MODIFIED = #lastModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="code">
+				<![CDATA[CODE = #code#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE id = #id#]]>
+	</update>
+	<update id="shelvesItemByFreight" parameterClass="long">
+		<![CDATA[UPDATE ITEM_ITEM]]>
+			SET STATUS=1
+		<![CDATA[WHERE FREE_TEMPLATE_ID = #freeTemplateId#]]>
+	</update>
+
+	<select id="queryItemListEx" resultMap="ItemItemResult"
+		parameterClass="com.yuwang.pinju.domain.item.ItemQueryEx">
+
+		SELECT * FROM (SELECT ROWNUM AS R, T1.*
+          FROM (SELECT   *
+                    FROM (SELECT *
+                            FROM ITEM_ITEM
+                           WHERE STATUS = 0 OR STATUS = 1) A
+		<dynamic prepend="WHERE">		
+			<isNotEmpty prepend="AND" property="sellerId">
+					<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty property="itemIdList">
+				<iterate prepend="AND" open="(" close=")" property="itemIdList"
+					conjunction="OR">
+							<![CDATA[
+								ID = #itemIdList[]#
+							]]>
+				</iterate>
+			</isNotEmpty>
+			<isGreaterThan prepend="AND" property="minPrice" compareValue="0">
+				<![CDATA[PRICE >= #minPrice#]]>
+			</isGreaterThan>
+			<isGreaterThan prepend="AND" property="maxPrice" compareValue="0">
+				<![CDATA[PRICE <= #maxPrice#]]>
+			</isGreaterThan>
+			<isEqual prepend="AND" property="filterType" compareValue="1">
+				<![CDATA[CUR_STOCK = 0]]>
+			</isEqual>			
+		</dynamic>		
+		<dynamic prepend="ORDER BY">
+			<isPropertyAvailable property="orderBy">
+				<isNotEmpty property="orderBy">
+				#orderBy#
+				</isNotEmpty>
+			</isPropertyAvailable>
+		</dynamic>
+		) T1
+		WHERE ROWNUM <![CDATA[<=]]>
+		#endRow#) T2
+		WHERE T2.R <![CDATA[>=]]>
+		#startRow#
+	</select>
+	<update id="updateFeatures" parameterClass="map">
+		update ITEM_ITEM set FEATURES = #features#,VERSION=#version#,GMT_MODIFIED=#gmtModified# where ID=#id# and VERSION=#versionNow#
+	</update>
+	<update id="updateCurrentStock" parameterClass="map">
+		update ITEM_ITEM set CUR_STOCK = #currentStock#,VERSION=#version#,GMT_MODIFIED=#gmtModified# where ID=#id# and VERSION=#versionNow#
+	</update>
+</sqlMap>
+

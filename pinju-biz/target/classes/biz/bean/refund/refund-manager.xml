@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="tradeRefundManager" class="com.yuwang.pinju.core.refund.manager.impl.TradeRefundManagerImpl"/>
+	
+	<bean id="refundManager" class="com.yuwang.pinju.core.refund.manager.impl.RefundManagerImpl"/>
+	
+	<bean id="refundLogisticsManager" class="com.yuwang.pinju.core.refund.manager.impl.RefundLogisticsManagerImpl"/>
+	
+	<bean id="tradeRefundManualManager" class="com.yuwang.pinju.core.refund.manager.impl.TradeRefundManualManagerImpl"/>
+	
+	<bean id="refundQueryManager" class="com.yuwang.pinju.core.refund.manager.impl.RefundQueryManagerImpl" />
+	
+	<bean id="refundCheckManager" class="com.yuwang.pinju.core.refund.manager.impl.RefundCheckManagerImpl" />
+	
+</beans>

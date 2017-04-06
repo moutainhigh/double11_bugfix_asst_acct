@@ -1,0 +1,338 @@
+﻿/************************************************************************************************************/
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+/*--------------全局--------------*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px; vertical-align:middle;}
+body{font-size:12px; font-family:Arial, Helvetica, sans-serif;  margin:0 auto;word-wrap:break-word;word-break:break- all; }
+table{border-collapse:collapse;border-spacing:0;}
+/*a{ text-decoration:none; color:#39F}
+a:hover { text-decoration:underline; color: #39F;}*/
+
+.main_1000px a{ text-decoration:none; color:#39F}
+.main_1000px a:hover { text-decoration:underline; color: #39F;}
+
+/*-------------公用---------------*/
+/****************/
+/*--字      体--*/
+/***************/
+
+/*--字体大小--*/
+.font14px { font:14px;}
+.font10px { font:10px;}
+
+/*--字体粗细--*/
+.fontbold { font-weight: 900;}
+
+/*--字体颜色--*/
+.fontwhite { color:#FFF;}
+.fontred { color:#F00;}
+.fontpink_01 { color: #F9F}
+
+.fontblue_01 { color:#00F;}/*-较深-*/
+.fontblue_02 { color:#39F;}/*-较浅-*/
+.fontblue_03 { color:#0066cc;}
+
+.fontgray_01 { color:#999;}
+.fontgray_02 { color:#CCC;}
+.fontgray_03 { color: #666;}
+.fontgray_04 { color: #4e4e4e;}
+
+.fontorange_01 { color:#F93}
+
+/*--字的行高--*/
+.rowheight20px { line-height:20px;}
+
+/*--字的对齐--*/
+.vertical-align_top { vertical-align:top}
+.text-align_right{ text-align:right}
+.text-align_center{ text-align:center}
+/*****************/
+/*--左和右的小容器--*/
+/***************/
+.floatleft { float:left;}
+.floatright { float:right}
+
+/***************/
+/*--背景填充--*/
+/***************/
+/*标签栏底部灰线平铺的单独样式*/						
+.lable_bg_style {background:url(http://static.pinju.com/base-images/bg_hui.gif) repeat-x bottom;}
+
+/*td背景填充*/	
+.table_tr_style01 {background:url(http://static.pinju.com/base-images/lable_box_bg_01.gif) bottom repeat-x; font-weight:bold;}
+
+/*白色色背景*/
+.bg_white { background:#FFF;}
+
+/*灰色背景*/
+.bg_gray01 { background:#f6f6f6}
+.bg_gray02 { background:#CCC}
+/*黄色背景*/
+.bg_yellow01 { background:#ffffe0}
+
+/*title背景*/
+.title_bg_01 { background: url(http://static.pinju.com/base-images/1px_bg_style01.jpg) repeat-x bottom;}
+
+/*****************/
+/*--对齐--*/
+/***************/
+.padding_5px{ padding:5px;}
+.padding_10px {padding:10px;}
+
+.padding_lr_10px {padding-left:10px; padding-right:10px;}
+.padding_lr_20px {padding-left:20px; padding-right:20px;}
+.padding_tb_10px {padding-top:10px; padding-bottom:10px;}
+.padding_tb_5px {padding-top:5px; padding-bottom:5px;}
+
+.margin_top10 { margin-top:10px}
+.margin_top2 { margin-top:2px}
+.margin_top40 { margin-top:40px}
+
+.margin_lb2px { margin-left:2px; margin-bottom:2px;}
+.margin_bottom2 {margin-bottom:2px;}
+.margin_bottom {margin-bottom:10px;}
+.margin_bottom5px {margin-bottom:5px;}
+.margin_bottom15px {margin-bottom:15px;}
+
+.margin_left10 { margin-left:10px}
+.margin_left20 { margin-left:20px}
+.margin_left40 { margin-left:40px}
+.margin_lr5 { margin-left:5px; margin-right:5px;}
+.margin_tb5 { margin-top:5px; margin-bottom:5px;}
+
+.text_align_center { text-align: center;}
+
+
+/*****************/
+/*--主要容器大小--*/
+/***************/
+.main_1000px {width:1000px;}
+.left_150px {width:150px;}
+.right_850px { width:850px;}
+.right_850px .left_610px { float:left; width:610px;}
+.right_850px .right_240px { float:right;width:240px;}
+/*-通栏-*/.main_fullbanner {height:35px;;}
+/*-头部-*/.main_head {float:left;width:1000px;height:76px;}
+
+
+/*****************/
+/*--控制容器大小的--*/
+/***************/
+.box_width_50px { width:50px;}
+.box_width_80px { width:80px;}
+.box_width_90px { width:90px;}
+.box_width_100px { width:100px;}
+.box_width_150px { width:150px;}
+.box_width_200px { width:200px;}
+.box_width_400px { width:400px;}
+.box_width_700px { width:700px;}
+
+/***************/
+/*----右侧标签栏----*/
+/***************/
+.right_850px  .lable_850px { float:left; width:850px; background:url(http://static.pinju.com/base-images//bg_hui.gif) repeat-x bottom;}
+.right_850px  .lable_830px { float:left; width:830px; background:url(http://static.pinju.com/base-images/bg_hui.gif) repeat-x bottom;}
+
+/*当前状态标签*/
+.lable_present { float:left; margin-left:10px; height:23px; background:#FFF; padding:5px 15px 1px;
+						 	border-top: 2px solid #F00;
+							border-left: 1px solid #d4d4d4;	
+							border-right: 1px solid #d4d4d4;
+							border-bottom: 1px solid #FFF;
+							overflow:hidden;
+						}
+
+/*非当前状态标签*/
+.lable_after { float:left; margin-left:10px; height:24px;padding:5px 15px 1px;background:#f7f7f7;
+						 	border-top: 1px solid #d4d4d4;
+							border-left: 1px solid #d4d4d4;	
+							border-right: 1px solid #d4d4d4;
+							overflow:hidden;
+						}
+
+
+
+
+
+
+/***************/
+/*--看排版用--*/
+/***************/
+/*-1-居中*/ .center_dajin { margin:0 auto;}
+			.page_center { margin:0 auto;}
+/*-2-居左*/ .floatleft_dajin { float:left;}
+/*-3-overflow*/ .overflow_dajin { overflow:hidden;} 
+
+
+/***************/
+/*--边框线--*/
+/***************/
+/*-右1px灰*/ .right_1px_gray { border-right:1px solid #dadada}
+/*-下1px灰*/ .bottom_1px_gray { border-bottom:1px solid #dadada}
+/*-左1px灰*/ .left_1px_gray { border-left:1px solid #dadada}
+/*-上1px灰*/ .top_1px_gray { border-top:1px solid #dadada}
+/*-全1px灰*/ .border_1px_gray{ border:1px solid #dadada}
+/*-左上右1px灰*/ .ltr_1px_gray{ border-left:1px solid #dadada;border-top:1px solid #dadada;border-right:1px solid #dadada;}
+
+/*-左下右1px灰*/ .lbr_1px_gray{ border-left:1px solid #dadada;border-bottom:1px solid #dadada;border-right:1px solid #dadada;}
+
+
+/*-下虚线1px灰*/ .bottom_1px_gray_dashed {border-bottom:1px dashed #dadada} 
+
+
+/*-全1px橙*/ .border_1px_orange{ border:1px solid #f9dfb2}
+/*-全1px橙02*/ .border_1px_orange02{ border:1px solid #ffc25d}
+
+.display_inlinblock { display:inline-block;}
+
+
+/***************/
+/*--导航条--*/
+/***************/
+.main_navigationbar { float:left;width:1000px; height:37px;background: url(http://static.pinju.com/base-images/navigationbar.gif) no-repeat;}
+.main_navigationbar .main_navigationbar_dadi { position:relative;width:1000px;height:37px;}
+.main_navigationbar .main_navigationbar_dadi .main_navigationbar_son { position:absolute; width:1000px; height:11px; background: url(http://static.pinju.com//base-images/sns_home_banner_shadow1px.gif) repeat-x; filter: progid:DXImageTransform.Microsoft.Alpha(startX=100, startY=100, finishX=100, finishY=0,style=1,opacity=0,finishOpacity=100); left:0; bottom:-11px;}
+
+
+.main_navigationbar ul { padding:0px;}
+.main_navigationbar li { float:left;width:71px; height:24px; display:block;  padding:5px;margin:2px 0 0 40px;text-align:center; vertical-align: middle; line-height:24px}
+.main_navigationbar li a {width:71px; height:24px;display:inline-block; color:#FFF; font-weight:bold; font-size:12px;text-decoration:none;}
+.main_navigationbar li a:hover {background: url(http://static.pinju.com/base-images/bar_hover.gif) no-repeat;display:inline-block; color:#be0408; font-weight:bold; font-size:12px; text-decoration:none; }
+
+/***************/
+/*--input按钮样式--*/
+/***************/
+.blankstyle_button { height:20px; background:transparent; border:0; cursor:pointer;}
+
+.orange_button_001 {width:69px; height:23px; background: url(http://static.pinju.com/button-images/orange_button_003.gif) no-repeat; color:#FFF; font-size:14px; font-weight:bold; border:0; cursor:pointer;display:inline;}
+.orange_button_002 { width:54px; height:23px; background: url(http://static.pinju.com//button-images/orange_button_002.gif) no-repeat;color:#FFF;border:0; cursor:pointer;display:inline;}
+.orange_button_003 { width:148px; height:30px; background: url(http://static.pinju.com/button-images/orange_button_001.gif) no-repeat; color:#FFF; font-size:14px; font-weight:bold;  border:0; cursor:pointer;display:inline;}
+.orange_button_004 { width:69px; height:23px; background: url(http://static.pinju.com/button-images/orange_button_004.gif) no-repeat;color:#FFF;border:0; cursor:pointer;display:inline;}
+.orange_button_005 { width:100px; height:23px; background: url(http://static.pinju.com/button-images/orange_button_005.gif) no-repeat; color:#FFF; border:0; cursor:pointer;display:inline;}
+.orange_button_06 {width:103px; height:32px; background: url(http://static.pinju.com/button-images//orangebutton_103x32.gif) no-repeat; color:#FFF; border:0; cursor:pointer;display:inline; font-weight:bold; font-size:14px;}
+
+.gray_button_001 { width:148px; height:30px; background: url(http://static.pinju.com/button-images/gray_button_003.gif) no-repeat; color:#FFF; font-size:14px; font-weight:bold; border:0; cursor:pointer;display:inline;}
+.gray_button_002 { width:54px; height:23px; background: url(http://static.pinju.com/button-images/gray_button_002.gif) no-repeat;border:0; cursor:pointer;display:inline;}
+
+.gray_button_004 { width:69px; height:23px; background: url(http://static.pinju.com/button-images/gray_button_004.gif) no-repeat;border:0; cursor:pointer;display:inline;}
+.gray_button_005 { width:100px; height:23px; background: url(http://static.pinju.com/button-images/gray_button_005.gif) no-repeat; color: #000; border:0; cursor:pointer;display:inline;}
+
+
+.red_button_01 {width:77px; height:21px; background: url(http://static.pinju.com/button-images//redbutton_77x21.gif) no-repeat; color:#FFF; border:0; cursor:pointer;display:inline;}
+
+.red_button_06 {width:103px; height:32px; background: url(http://static.pinju.com/button-images/redbutton_103x32.gif) no-repeat; color:#FFF; border:0; cursor:pointer;display:inline; font-weight:bold; font-size:14px;}
+/***************/
+/*--头像样式--*/
+/***************/
+
+
+/***************/
+/*--边框样式--*/
+/***************/
+.border_bottom_1px_01 { border-bottom:1px solid #dadada; }
+
+/*-复选框*/ .checkbox_01 { width:13px; height:13px; background:url(http://static.pinju.com/icon-images/check_box_001.png) no-repeat; border:0;}
+
+/***************/
+/*--分页样式--*/
+/***************/
+.paging_lable_box{ float:right;}
+.paging_lable_box ul{ padding:0px;}
+.paging_lable_box li{ float:left; padding:4px 5px;}
+.paging_lable_box .paging_lable_present{background:#F00;padding:3px ;margin:0 5px 0 0;}
+			.paging_lable_present a {color:#ffffff; text-decoration:none}
+			.paging_lable_present a:hover {color:#ffffff;text-decoration:none; font-weight:bold;}
+.paging_lable_box .paging_lable_after{background:transprent;padding:2px; border:1px solid #CCC; margin:0 5px;}
+			.paging_lable_after a {color:#666; text-decoration:none}
+			.paging_lable_after a:hover {color:#666;text-decoration:none; font-weight:bold;}	
+.paging_lable_box .paging_lable_blank{background:transprent;padding:3px;color: #666;}
+			.paging_lable_blank a {color: #666; text-decoration:none}
+			.paging_lable_blank a:hover {color:#666;text-decoration:none; font-weight:bold;}
+.lable_width_length { width:20px;}
+
+
+/*--------------社区左侧--------------*/
+/****ie6-bug*****/
+.ie6box556px {float:left; width:566px;}
+
+/****左栏*****/
+.left_150px .left_banner { float:left;width:150px;}
+.left_150px .left_banner .left_banner_content{ float:left;width:149px; text-align:center;padding:20px 0 0px; border-left:1px solid #dadada}
+	.left_banner_content .left_banner_content_topmenu {float:left;width:149px;}
+	
+	.left_banner_content .left_banner_content_topmenu ul { padding:10px 0;}
+	.left_banner_content .left_banner_content_topmenu li{ width:154px; height:24px; position:relative; font-size:14px; display:block; line-height:24px; margin-bottom:10px; }
+	.left_banner_content .left_banner_content_topmenu li a {width:154px; height:25px; display:block; text-align:center; vertical-align:middle; color:#000; text-decoration:none;}
+	.left_banner_content .left_banner_content_topmenu a:hover {position: absolute;width:154px; height:25px; background:url(http://static.pinju.com/button-images/sns_index_left_button.gif) no-repeat; font-weight:bold; color:#FFF; font-size:14px; text-align:center; left:0px; top:0px;}
+	.left_banner_content .left_banner_content_topmenu span {position: absolute;width:154px; height:25px; background:url(http://static.pinju.com/button-images/sns_index_left_button.gif) no-repeat; font-weight:bold; color:#FFF; font-size:14px; text-align:center; left:0px; top:0px;}
+				
+		.left_banner_content .left_lable_box { float:left;width:149px; background:url(http://static.pinju.com/base-images/bg_hui.gif) repeat-x bottom; margin-top:10px;}
+			.left_banner_content .left_lable01 {float:left;height:20px; text-align:center;  background:#FFF;padding:5px 13px 1px;border-top: 1px solid #dadada;border-left: 1px solid #dadada;}
+			.left_banner_content .left_lable02{float:left;height:20px; text-align:center;padding:5px 13px 1px;background:#f5f5f5; }
+			.left_banner_content .left_lable03{float:left;height:20px; text-align:center;  background:#FFF;padding:5px 13px 1px;border-top: 1px solid #dadada;border-right: 1px solid #dadada;}
+			
+				.left_lable_content {float:left;width:149px;}
+				
+.menu_ahover_style01 {width:150px; text-align:left; font-size:12px; text-indent:10px;}
+.menu_ahover_style01 ul li {padding:0px;}
+.menu_ahover_style01 li a{color: #000;display: block;text-decoration: none;padding:4px 0; text-indent:30px;}
+.menu_ahover_style01 li a:hover{background: url(http://static.pinju.com/button-images/menu_bar_red.jpg) no-repeat; color:#FFF; text-decoration:none; font-weight:bold;}
+<!--					.left_lable_content a { text-decoration:none; color:#000;}-->
+<!--					.left_lable_content a:hover { text-decoration:underline;color:#000;}-->
+					
+/*******************头像******************/
+
+		.head_image { float:left;width:60px; height:60px; padding:4px; background: url(http://static.pinju.com/base-images/head_pic_box.gif) no-repeat;}
+		.head_image .head_image_container {width:60px; height:60px; position:relative;}
+		
+		
+		
+		
+/*头像弹出css*/	.head_image .head_image_container .head_image_flip01 { position:absolute; width:250px; padding:5px; border:2px solid #dadada;left:-4px; top:-4px; background:#FFF; }
+						.head_image_flip01 ul{ padding:0px;}
+						.head_image_flip01 li {padding:5px 0px;}
+						.head_image_flip01 .head_image_flip01_right{ float:right; width:160px;}
+							.head_image_flip01_right .flip01_right_container{ position:relative;width:160px;}
+							.flip01_right_container .flip01_right_container_buttoner01{ position:absolute; right:0px; top:3px;}
+							.flip01_right_container .flip01_right_container_buttoner02{ position:absolute; right:0px; top:30px;}
+							.flip01_right_container .flip01_right_container_buttoner03{ position:absolute; left:0; top:50px;}
+						.head_image_flip01 .head_image_flip01_bottom{ float:left; width:240px; background:#f8f8f8; margin:10px 0 0 0; padding:5px;}
+						.head_image_flip01_bottom .filp01_goods_box { float:left; padding:2px; border:1px solid #dadada; width:60px; }
+
+/****************log in**************************/
+/****************log in**************************/
+/****************log in**************************/
+.login_logobox { width:1000px; padding-top:80px;}
+	.login_logo { width:378px; height:104px; background: url(../base-images/logoin_logo.jpg) no-repeat;}
+.login_main { width:1000px;}
+	.login_main .login_title { height:41px; background:url(../base-images/login_title.jpg) no-repeat;}	
+	.login_main .login_body { height:335px; background:url(../base-images/login_body.jpg); position:relative;}
+		
+		.login_textarea01 { width:348px; padding:10px; position:absolute; left:100px; top:60px;}
+		.login_textarea02 { width:348px; padding:10px; position:absolute; left:100px; top:110px;}
+		.login_textbox { float:left;width:100px; text-align:right; line-height:23px; color:#4c4c4c}
+		.login_textarea_box { float:left;width:248px; text-align:left;}		
+		.login_textarea_style {width:228px; height:23px; background:url(../base-images/login_textarea_style.jpg) no-repeat; border:0; padding:0 10px; line-height:23px;}
+		.login_bottun_red { width:157px; height:45px; position:absolute; left:240px; top:160px; overflow:hidden;}
+		.login_bottun_gray { width:155px; height:43px; position:absolute; left:720px; top:180px; overflow:hidden;}
+		
+		.login_gray_line { width:3px; height:305px; position:absolute; background:url(../base-images/login_line.jpg) no-repeat; right:380px; top:8px;}
+		
+		.left_title { width:200px; position:absolute;line-height:35px; color:#000; font-weight:bold;left:680px; top:62px;}
+		
+		.left_buy { width:250px; height:20px; line-height:20px; color:#636363; text-indent:25px;position:absolute; background:url(../base-images/buy.jpg) no-repeat;left:680px; top:107px;}
+		.left_sell { width:250px; height:20px; line-height:20px; color:#636363;text-indent:25px;position:absolute; background:url(../base-images/sell.jpg) no-repeat;left:680px; top:141px;}
+		
+		
+/**********************footer**************************************************************************************/
+
+/* footer */
+#foot { width:100%; background:#fff; padding:10px; position:absolute; bottom:0; text-align:center;}
+#logo_sdo {background:url(base-images/bg_logo_sdo.png) no-repeat left; width:550px; height:18px; margin:10px auto; text-indent:30px;color:#909090;}
+#logo_sdo a{color:#909090; text-decoration:none}
+#logo_sdo a:hover{color: #999; text-decoration: underline}
+.bottom { width:600px;font-size:12px; color:#666; margin:10px auto;}
+/************************************************************************************************************/

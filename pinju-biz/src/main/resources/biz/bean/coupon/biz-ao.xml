@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="tradeCouponBatchAO" class="com.yuwang.pinju.core.coupon.ao.impl.TradeCouponBatchAOImpl"/>
+	<bean id="buyerCouponAO" class="com.yuwang.pinju.core.coupon.ao.impl.BuyerCouponAOImpl"/>
+	<bean id="tradeCouponTallyAO" class="com.yuwang.pinju.core.coupon.ao.impl.TradeCouponTallyAOImpl"/>
+	<bean id="couponTimingAO" class="com.yuwang.pinju.core.coupon.ao.impl.CouponTimingAOImpl"/>
+	<bean id="orderCouponAO" class="com.yuwang.pinju.core.coupon.ao.impl.OrderCouponAOImpl"/>
+	
+</beans>

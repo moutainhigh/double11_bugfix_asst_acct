@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="shopShowInfoAo" class="com.yuwang.pinju.core.shop.ao.impl.ShopShowInfoAOImpl">
+	</bean>	
+	<bean id="shopOpenAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopOpenAoImpl"/> 
+	
+	
+	<bean id="shopCustomerOpenStepDO" class="com.yuwang.pinju.domain.shop.ShopCustomerOpenStepDO"/>
+	<bean id="shopBusinessOpenStepDO" class="com.yuwang.pinju.domain.shop.ShopBusinessOpenStepDO"/>
+	<bean id="shopInfoDO" class="com.yuwang.pinju.domain.shop.ShopInfoDO"/>
+
+	<bean id="shopOpenFlowDO" class="com.yuwang.pinju.domain.shop.ShopOpenFlowDO"/>
+	
+	
+	<!--shop category  -->
+	<bean id="shopCategoryAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopCategoryAOImpl"/>
+	
+	<bean id="shopPageLayoutAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopPageLayoutAOImpl"/>
+	
+	<!-- ShopPagePrototype -->
+	<bean id="shopPagePrototypeAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopPagePrototypeAOImpl"/>
+	
+	<!-- ShopModulePrototype -->
+	<bean id="shopModulePrototypeAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopModulePrototypeAOImpl"/>
+	
+	<bean id="shopModulePictureRotationDO" class="com.yuwang.pinju.domain.shop.ShopModulePictureRotationDO"/>
+
+	<!-- ShopCustomPage -->
+	
+	<bean id="shopUserPageDO" class="com.yuwang.pinju.domain.shop.ShopUserPageDO"/>
+	
+	<bean id="shopUserModuleParamDO" class="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO"/>
+	
+	<bean id="shopUserModuleAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopUserModuleAOImpl"/>
+	
+	<bean id="shopUserPageAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopUserPageAOImpl"/>
+</beans>

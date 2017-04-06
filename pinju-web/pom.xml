@@ -1,0 +1,35 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.yuwang.pinju</groupId>
+    <artifactId>pinju</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>pinju-web</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>pinju电子商务网站</name>
+  <description>
+		c2c的网站，大家可以在上面开店铺，买商品也提供团购服务
+  </description>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.yuwang.pinju</groupId>
+      <artifactId>pinju-biz</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.yuwang.pinju</groupId>
+      <artifactId>pinju-model</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>yuwang-api</groupId>
+      <artifactId>yuwang-cookie</artifactId>
+      <version>0.5.1</version>
+    </dependency>
+  </dependencies>
+</project>

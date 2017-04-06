@@ -1,0 +1,68 @@
+﻿/* 诚信 */
+.credit-wrap { padding:10px 0 0; }
+.sell-left { _margin-right: 5px; }
+.credit-wrap .sell_right { float:right; width:800px;  }
+.credit-wrap .sell_right .row { border:1px solid #dadada; margin:0 0 10px; }
+.credit-wrap .sell_right .row .title,
+.credit-wrap .fullrow .title {
+	background:url(http://static.pinju.com/img/bg-rowtitle.png) repeat-x scroll 0 0;	
+	border-bottom:1px solid #dadada;
+	height:28px;
+	line-height:28px;
+}
+.credit-wrap .sell_right .row .title h2,
+.credit-wrap .fullrow .title h2 { float:left; padding:0 10px; color:#000; font-weight:bold; }
+.credit-wrap .sell_right .row .title .eye { float:right; padding:0 10px; }
+.credit-wrap .sell_right .row .text { color:#666; padding:10px; }
+.credit-wrap .sell_right .row .text h3 { background-color:#f6f6f6; border-bottom:1px solid #dadada; padding:5px 10px; }
+.credit-wrap .half-list { width:500px; line-height:2.4em; padding:20px 20px 10px; }
+.credit-wrap .half-list li { float:left; width:250px; }
+.credit-wrap .half-list li strong { font-weight:bold; }
+.credit-wrap .half-list li span { color:#eb6100; font-weight:bold; }
+
+.credit-wrap .sell_right .row .text .item { float:left; width:370px; margin:0 20px 0 0; }
+.credit-wrap .sell_right .row .text .last { margin:0; }
+.credit-wrap .sell_right .row .text .item .pdrate { border-top:0 none; margin:0; padding:0; }
+.credit-wrap .sell_right .row .text .item .title {
+	background-image:none;
+	background-color:#f6f6f6;
+	border-bottom:1px solid #dadada;
+	padding:0 10px;
+}
+.credit-wrap .sell_right .row .text .item dl { line-height:2.4em; padding:10px 0; }
+.credit-wrap .sell_right .row .text .item dl dt { padding:0 20px; }
+.credit-wrap .sell_right .row .text .item dl dd { padding:0 20px; }
+.credit-wrap .sell_right .row .text .item dl dd li strong { font-size:14px; }
+.credit-wrap .sell_right .row .text .item dl dd li .pers { color:#eb6100; }
+
+.credit-wrap .fullrow { clear:both; }
+.credit-wrap .fullrow .title { border:1px solid #dadada; border-bottom:0 none;}
+.comments { border:1px solid #dadada; width:998px; }
+.comments table { width:998px; }
+.comments thead th { background-color:#f6f6f6; border-bottom:1px solid #dadada; padding:5px; }
+.comments tbody td { border-bottom:1px dashed #dadada; padding:5px; line-height:1.8em; text-align:left; vertical-align:top; }
+.comments td.img { width:75px; }
+.comments .avatar {
+	border:1px solid #dadada;
+	padding:4px;
+	width:50px;
+	height:50px;
+	display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+	line-height:50px;
+    *display: block;
+    *font-size: 43px;
+}
+.comments .img img { vertical-align:middle;}
+.comments td.user .textwrap { width:100px; }
+.comments td.ptitle .textwrap { width:550px; }
+.comments td.pdesc .textwrap { width:230px; }
+.comments td .textwrap { display:block; word-break:break-all; word-wrap:break-word;}
+.comments td span.desc,
+.comments td span.price { color:#999; }
+.comments td span.price strong { color:#be0000; font-size:16px; font-weight:bold; }
+
+/* 表格间隔色 */
+tr.odd { background-color:#f6f6f6; }
+tr.even { }

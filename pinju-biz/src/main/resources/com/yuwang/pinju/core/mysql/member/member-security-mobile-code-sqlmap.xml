@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_security_mobile_code">
+
+  <typeAlias alias="MemberSecurityMobileCode" type="com.yuwang.pinju.domain.member.security.MemberSecurityMobileCodeDO" />
+
+  <resultMap id="MemberSecurityMobileCodeResult" class="MemberSecurityMobileCode">
+    <result property="id" column="ID" />
+    <result property="memberId" column="MEMBER_ID" />
+    <result property="loginName" column="LOGIN_NAME" />
+    <result property="mobile" column="MOBILE" />
+    <result property="code" column="CODE" />
+    <result property="codeType" column="CODE_TYPE" />
+    <result property="sendTime" column="SEND_TIME" />
+    <result property="expireTime" column="EXPIRE_TIME" />
+    <result property="messageId" column="MESSAGE_ID" />
+    <result property="codeIp" column="CODE_IP" />
+    <result property="codeTime" column="CODE_TIME" />
+    <result property="codeStatus" column="CODE_STATUS" />
+    <result property="validateIp" column="VALIDATE_IP" />
+    <result property="version" column="VERSION" />
+    <result property="token" column="TOKEN" />
+    <result property="tokenStatus" column="TOKEN_STATUS" />
+    <result property="gmtCreate" column="GMT_CREATE" />
+    <result property="gmtModified" column="GMT_MODIFIED" />
+  </resultMap>
+
+  <sql id="selectAllMemberSecurityMobileCode"><![CDATA[SELECT ID,MEMBER_ID,LOGIN_NAME,MOBILE,CODE,CODE_TYPE,SEND_TIME,EXPIRE_TIME,MESSAGE_ID,CODE_IP,CODE_TIME,CODE_STATUS,VALIDATE_IP,VERSION,TOKEN,TOKEN_STATUS,GMT_CREATE,GMT_MODIFIED FROM MEMBER_SECURITY_MOBILE_CODE]]></sql>
+
+  <select id="getUnconfirmMobileCode" resultMap="MemberSecurityMobileCodeResult" parameterClass="MemberSecurityMobileCode">
+    <include refid="selectAllMemberSecurityMobileCode" />
+    <![CDATA[WHERE MOBILE = #mobile# AND EXPIRE_TIME > #expireTime# AND MESSAGE_ID = #messageId# AND CODE_TYPE = #codeType# AND CODE_STATUS = 0 ORDER BY ID DESC LIMIT 1]]>
+  </select>
+
+  <insert id="addMobileCode" parameterClass="MemberSecurityMobileCode">
+    <![CDATA[INSERT INTO MEMBER_SECURITY_MOBILE_CODE (MEMBER_ID,LOGIN_NAME,MOBILE,CODE,CODE_TYPE,SEND_TIME,EXPIRE_TIME,MESSAGE_ID,CODE_IP,CODE_STATUS,VALIDATE_IP,VERSION,GMT_CREATE,GMT_MODIFIED) VALUES (#memberId#,#loginName#,#mobile#,#code#,#codeType#,#sendTime#,#expireTime#,#messageId#,#codeIp#,#codeStatus#,#validateIp#,#version#,#gmtCreate#,#gmtModified#)]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+      <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+  </insert>
+
+  <select id="getSecurityMobileByToken" resultMap="MemberSecurityMobileCodeResult" parameterClass="MemberSecurityMobileCode">
+    <include refid="selectAllMemberSecurityMobileCode" />
+    <![CDATA[WHERE MESSAGE_ID = #messageId# AND TOKEN = #token# AND TOKEN_STATUS = 1]]>
+  </select>
+
+  <update id="confirmMobileCode" parameterClass="MemberSecurityMobileCode" >
+    <![CDATA[
+    UPDATE MEMBER_SECURITY_MOBILE_CODE
+       SET CODE_STATUS = 1, CODE_TIME = #codeTime#, VALIDATE_IP = #validateIp#, GMT_MODIFIED = #gmtModified#, TOKEN = #token#, TOKEN_STATUS = 1, VERSION = VERSION + 1
+     WHERE MEMBER_ID = #memberId# AND MESSAGE_ID = #messageId# AND CODE_STATUS = 0 AND ID = #id# AND VERSION = #version#
+    ]]>
+  </update>
+
+  <update id="confirmToken" parameterClass="MemberSecurityMobileCode" >
+    <![CDATA[
+    UPDATE MEMBER_SECURITY_MOBILE_CODE
+       SET TOKEN_STATUS = 2, GMT_MODIFIED = #gmtModified#, VERSION = VERSION + 1
+     WHERE MEMBER_ID = #memberId# AND TOKEN = #token# AND TOKEN_STATUS = 1 AND VERSION = #version#
+    ]]>
+  </update>
+</sqlMap>
+

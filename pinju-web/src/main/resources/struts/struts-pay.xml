@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+
+     <package name="sdoDirectPay" namespace="/orderPay" extends="pinju-login">
+     	<action name="pay" class="com.yuwang.pinju.web.module.order.action.PayAction" method="pay">
+     		 <result name="success" type="chain">
+                  <param name="namespace">/orderPay</param>
+                  <param name="actionName">tenDirectSendOrder</param>
+             </result>
+             <result name="vouchsuccess" type="chain">
+                  <param name="namespace">/orderPay</param>
+                  <param name="actionName">tenpayMergepaySendOrder</param>
+             </result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		<action name="affirmPay" class="com.yuwang.pinju.web.module.order.action.PayAction" method="affirmPay">
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+	  		 <!-- 
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/receiveItemSuccess.ftl</result>
+	  		  -->
+	  		 <result name="success" type="chain">
+ 				<param name="namespace">/orderPay</param>
+                <param name="actionName">tensubsccount</param>
+             </result>
+		</action>
+		
+		<action name="receiveItem" class="com.yuwang.pinju.web.module.order.action.PayAction" method="receiveItem">
+			<result name="success" type="freemarker">/default/templates/screen/order/receiveItem.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+	
+		<action name="sdoDirectSendOrder" class="com.yuwang.pinju.web.module.pay.action.SdoDirectPayAction" method="sdoSendOrder">
+			<result name="success" type="freemarker">/default/templates/screen/pay/sdoSendOrder.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="ajaxCheckPassWord" class="com.yuwang.pinju.web.module.order.action.PayAction" method="ajaxCheckPassWord"></action>
+		
+     </package>
+     
+     <package name="sdoDirectPayBack" namespace="/orderPay" extends="struts-default">
+        <action name="sdoDirectNotify" class="com.yuwang.pinju.web.module.pay.action.SdoDirectPayNotifyAction" method="sdoNotify">
+            <result name="success" type="freemarker">/default/templates/screen/pay/sdoPostBack.ftl</result>
+            <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+        </action>
+        
+        <action name="sdoDirectPostBack" class="com.yuwang.pinju.web.module.pay.action.SdoDirectPayNotifyAction" >
+            <result name="success" type="freemarker">/default/templates/screen/pay/sdoPostBack.ftl</result>
+        </action>
+     </package>
+
+	<!-- 财付通单笔支付 -->
+	<package name="tenpaySinglePay" namespace="/orderPay" extends="pinju-login">
+		<action name="inputSingleOrder" class="com.yuwang.pinju.web.module.pay.action.SinglePayAction" method="inputSingleOrder">
+			<result name="success" type="freemarker">/default/templates/screen/pay/inputSingleOrder.ftl</result>
+		</action>
+		
+		<action name="tenpaySinglepaySendOrder" class="com.yuwang.pinju.web.module.pay.action.SinglePayAction" method="tenpaySinglepaySendOrder">
+			<result name="success" type="freemarker">/default/templates/screen/pay/tenpaySinglepaySendOrder.ftl</result>
+		</action>
+		
+ 	</package>
+ 	
+ 	<package name="tenpayMergePay" namespace="/orderPay" extends="pinju-login">
+
+		<action name="tenpayMergepaySendOrder" class="com.yuwang.pinju.web.module.pay.action.MergePayAction" method="tenpayMergepaySendOrder">
+			<result name="success" type="freemarker">/default/templates/screen/pay/tenpayMergepaySendOrder.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/pay/tenpayMergepaySendOrderError.ftl</result>
+		</action>
+		
+ 	</package>
+ 	
+ 	<!-- 财付通平台退款   Add By MaYuanChao@2011.09.29-->
+	<package name="tenpayplatformrefund" namespace="/orderPay" extends="pinju-login">
+		<!-- 平台退款  全额退款 调用 Action  跳到卖家订单页面-->  
+		<action name="tenpayplatformRefundRequest" class="com.yuwang.pinju.web.module.pay.action.PlatformRefundAction" method="platformRefundRequest">
+			 <result name="success" type="redirect">/orderPay/refundredirect.htm?OId=${orderId}</result>
+			 <result name="input" type="freemarker">/default/templates/screen/pay/PlatformRefundManulNotify.ftl</result>
+			 <result name="error" type="freemarker">/default/templates/screen/pay/PlatformRefundError.ftl</result>
+		</action>
+		
+		<action name="refundredirect" class="com.yuwang.pinju.web.module.pay.action.PlatformRefundAction" method="refundredirectAction">
+			<result name="success" type="freemarker">/default/templates/screen/pay/PlatformRefundNotify.ftl</result>
+		</action>
+		
+		<!-- 平台退款 部分退款  确认收货  跳到买家订单页面Action -->
+		<action name="PlatformRefundNotify" class="com.yuwang.pinju.web.module.pay.action.PlatformRefundAction" method="platformRefundRequest">
+			 <result name="success" type="redirect">/orderPay/queryOrderdo.htm?oId=${orderId}</result>
+			 <result name="input"   type="redirect">/orderPay/queryOrderdo.htm?oId=${orderId}</result>
+			 <result name="error"  type="redirect">/orderPay/queryOrderdo.htm?oId=${orderId}</result>
+		</action>
+		
+		<action name="excuteTiming" class="com.yuwang.pinju.web.module.pay.action.PlatformRefundAction" method="excuteTiming">
+			 <result name="success" type="freemarker">/default/templates/screen/pay/PlatformRefundError.ftl</result>
+			 <result name="input" type="freemarker">/default/templates/screen/pay/PlatformRefundError.ftl</result>
+			  <result name="error" type="freemarker">/default/templates/screen/pay/PlatformRefundError.ftl</result>
+		</action>
+ 	</package>
+ 	
+ 	
+ 	<!-- 财付通分账 -->
+ 	<package name="tenpaysubsccount" namespace="/orderPay" extends="pinju-login">
+ 		<!-- 发起分账请求 -->
+ 		<action name="tensubsccount" class="com.yuwang.pinju.web.module.pay.action.TenSubAccountAtion" method="tenSubAccount">
+ 			<result name="success" type="redirect">/orderPay/queryOrderdo.htm?oId=${orderDO.orderId}</result>
+ 			<result name="refund" type="chain">
+ 				<param name="namespace">/orderPay</param>
+                <param name="actionName">splitRollBack</param>
+            </result>
+            <result name="error">/default/templates/screen/order/errorSettling.ftl</result>
+ 		</action>
+ 		
+ 		<action name="queryOrderdo" class="com.yuwang.pinju.web.module.pay.action.TenSubAccountAtion" method="queryOrderDO">
+			<result name="success" type="freemarker">/default/templates/screen/order/receiveItemSuccess.ftl</result>
+			<result name="error">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+ 		
+ 	</package>
+ 	
+ 	<package name="tenpaySinglePostBack" namespace="/orderPay" extends="struts-default">
+        <action name="tenpaySinglePostBack" class="com.yuwang.pinju.web.module.pay.action.TenpaySingleNotifyAction" method="singleNotify">
+			<result name="success" type="freemarker">/default/templates/screen/pay/tenpaySinglepaySendOrder.ftl</result>
+		</action>
+     </package>
+     
+     <package name="mergePayPostBack" namespace="/mergePayPostBack" extends="pinju-default">
+     
+        <action name="tenpayMergePostBack" class="com.yuwang.pinju.web.module.pay.action.MergePayNotifyAction" method="mergePayNotify">
+			<result name="success" type="freemarker">/default/templates/screen/pay/tenpayMergepayNotify.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/pay/tenpayMergepayError.ftl</result>
+		</action>
+		
+		<action name="tenpayMergeAfterPostBack" class="com.yuwang.pinju.web.module.pay.action.MergePayNotifyAction" method="mergeBackgroundPayNotify">
+			<result name="error" type="freemarker">/default/templates/screen/pay/tenpayMergepayError.ftl</result>
+		</action>
+		
+		<action name="mergePayAfterNotifySucces" class="com.yuwang.pinju.web.module.pay.action.MergePayNotifyAction" method="mergePayAfterNotifySucces">
+			<result name="success" type="freemarker">/default/templates/screen/pay/tenpayMergepayOk.ftl</result>
+		</action>
+		<action name="mergePayNotifySuccess" class="com.yuwang.pinju.web.module.pay.action.MergePayNotifyAction" method="mergePayNotifySucces">
+			<result name="success" type="freemarker">/default/templates/screen/pay/tenpayMergepayNotify.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/pay/tenpayMergepayError.ftl</result>
+		</action>
+		<action name="mergePayNotifyError" class="com.yuwang.pinju.web.module.pay.action.MergePayNotifyAction" method="mergePayNotifyError">
+			<result name="success" type="freemarker">/default/templates/screen/pay/tenpayMergepayError.ftl</result>
+		</action>
+     </package>
+     
+
+	 <package name="tenDirectPay" namespace="/orderPay" extends="pinju-login">
+		<action name="tenDirectSendOrder" class="com.yuwang.pinju.web.module.pay.action.TenDirectPayAction" method="tenSendOrder">
+			<result name="success" type="freemarker">/default/templates/screen/pay/tenSendOrder.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+ 	 </package>
+ 	 
+     <package name="tenDirectPayBack" namespace="/orderPay" extends="struts-default">
+        <action name="tenDirectNotify" class="com.yuwang.pinju.web.module.pay.action.TenDirectPayNotifyAction" method="tenNotify">
+            <result name="success" type="freemarker">/default/templates/screen/pay/sdoPostBack.ftl</result>
+            <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+        </action>
+        <action name="tenDirectPostBack" class="com.yuwang.pinju.web.module.pay.action.TenDirectPayNotifyAction" method="tenPostBack">
+            <result name="margin_back_go_action" type="chain">
+                <param name="namespace">/margin</param>
+                <param name="actionName">marginBackGoAction</param>
+            </result>
+            <result name="success" type="freemarker">/default/templates/screen/order/paySuccess.ftl</result>
+            <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+        </action>
+     </package>
+
+     <!-- 查询订单 -->
+     <package name="orderSearch" namespace="/orderPay" extends="pinju-login">
+     	<action name="orderSearch" class="com.yuwang.pinju.web.module.pay.action.TenSearchOrderAction" method="tenSearchOrder">
+     		<result name="success" type="freemarker">/default/templates/screen/pay/searchOrder.ftl</result>
+     		<result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+     	</action>
+     </package>
+     <package name="orderSearchBack" namespace="/orderPay" extends="struts-default">
+     	<action name="orderSearchBack" class="com.yuwang.pinju.web.module.pay.action.TenSearchOrderBackAction" method="tenSearchOrderBack">
+     		<result name="success" type="freemarker">/default/templates/screen/pay/orderPayDetail.ftl</result>
+     		<result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+     	</action>
+     </package>
+
+	<package name="splitRollBack" namespace="/orderPay" extends="struts-default">
+     	<action name="splitRollBack" class="com.yuwang.pinju.web.module.pay.action.TenSplitRollBackAction" method="tenSplitRollBack">
+     		<result name="success" type="freemarker"></result>
+     		<result name="platformRefund" type="chain">
+                <param name="namespace">/orderPay</param>
+                <param name="actionName">PlatformRefundNotify</param>
+            </result>
+     		<result name="error">/default/templates/screen/pay/splitRollbackError.ftl</result>
+     	</action>
+     </package>
+  </struts>

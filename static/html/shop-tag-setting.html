@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>品聚 - 店铺标签设置</title>
+<link media="screen" type="text/css" href="http://static.pinju.com/css/pj_base.css" rel="stylesheet">
+<link media="screen" type="text/css" href="http://static.pinju.com/css/open.css" rel="stylesheet">
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/js/shop/tagshop.js"></script>
+</head>
+
+<body>
+<div class="top_bar">
+	<div class="top_bar_box cf">
+		topbar
+	</div>
+</div>
+<div class="header">
+	<div class="masthead cf">
+		header
+	</div>
+</div>
+<div class="wrapfull navfull">
+	nav
+</div>
+
+<!-- content -->
+<div class="wrap cf">
+<div class="wrap-border cf">
+	
+	<div class="bar-left">
+		<ul class="bar-list">
+			<!--商品管理-->
+			<h3>商品管理</h3>
+			<li name="category_List"><a href="/itemReleased/categoryList.htm">发布商品</a></li>
+			<li name="sell_item"><a href="/item/itemList.htm?itemQuery.type=0">出售中的商品</a></li>
+			<li name="storage_item"><a href="/item/itemList.htm?itemQuery.type=2">仓库中的商品</a></li>
+			<!--交易管理-->
+			<h3>交易管理</h3>
+			<li name="logistics-tool"><a href="/logistics/listTemplate.htm">物流工具</a></li>
+			<li name="Orderbuy-tool"><a href="/orderSeller/ordermanagesell.htm">已卖出的商品</a></li>
+			<!--店铺管理-->
+			<h3>店铺管理</h3>
+
+			<li name="red_shopOpen"><a href="/shop/showShopOpenAction.htm">我要开店</a></li>
+			<li name="red_shop"><a target="_blank" href="/shopDecoration/viewShop.htm">查看我的店铺</a></li>
+			<li name="red_shopImages"><a target="_blank" href="/images/queryStorageAction.htm">图片空间</a></li>
+			<li name="red_shopDecoration"><a target="_blank" href="/shopDecoration/shopDecorationAction.htm">店铺装修</a></li>
+			<li name="red_shopCategory"><a href="/shop/shopCategory.htm">店铺分类管理</a></li>
+			<li name="red_shopInfo"><a href="/shop/showShopInfo.htm" id="shopBaseInfoId">店铺基本设置</a></li>
+			<li name="red_shopDomain"><a href="/shopDomain/showDomainSettingPageAction.htm">域名设置</a></li>
+			<li name="red_shopLabel" class="new"><a href="/shopLabel/toShopLabel.htm">店铺标签设置 <img src="http://static.pinju.com/img/icon-new.gif" /></a></li>
+			<li name="red_shopLabel" class="count"><a href="/shopLabel/toShopLabel.htm">店铺标签设置 <img src="http://static.pinju.com/img/icon-new.gif" /></a></li>
+			<!--分销管理-->
+			<h3>云营销</h3>
+			<li id="welcome"><a href="/supplier/applySupplier.htm">申请成为供应商</a></li>
+			<li id="itemManagerSupplier"><a href="/supplier/getAllItem.htm">分销商品管理</a></li>
+			<li id="distributorManager"><a href="/supplier/getApplier.htm">我的分销商</a></li>
+			<li id="releaseSupplier"><a href="/supplier/getRelease.htm">发布招募</a></li>
+			<li id="orderManager"><a href="/supplier/getOrders.htm?type=1">分销订单</a></li>
+			<!--积分管理-->
+			<h3>积分管理</h3>
+			<li name="red_sellpoints"><a href="/points/showAccountInfo.htm">我的积分</a></li>      <!--退款维权-->
+			<h3>退款维权</h3>
+			<li name="seller-refund-management"><a href="/refund/sellerRefundList.htm">退款管理</a></li>
+			<li name="sellerRightsList"><a href="/rights/sellerRightsList.htm">维权管理</a></li>
+			<!--<li><a href="/rights/rightsList.htm">维权管理</a></li>-->
+			<!-- 保证金管理 -->
+			<h3>保证金管理</h3>
+			<li name="mymargin">
+			<a href="/margin/mymargin.htm">我的保证金</a>
+			</li>
+			<!--营销中心-->
+			<h3>营销中心</h3>
+			<li name="list-active"><a href="/active/listActive.htm">活动管理</a></li>
+			<li name="promotion-manager"><a href="/active/promotionManager.htm">促销管理</a></li>
+			<li name="simpleReport-manager"><a href="/sellReport/simpleReport.htm">销售报表</a></li>
+		</ul>
+	</div>
+	<div class="contents">
+		<ul class="breadcrumb">
+			<li><a href="#">我是卖家</a> &gt; </li>
+			<li>店铺管理 &gt; </li>
+			<li>店铺标签设置</li>
+		</ul>
+		<div class="titletop">
+			<h1>店铺标签设置</h1>
+			<span class="eye"><a target="_blank" href="http://service.pinju.com/cms/html/2011/matool_1213/116.html">使用帮助</a></span>
+		</div>
+		<p class="exinfo">设置店铺标签可以增加店铺被搜索到的几率哦！</p>
+		
+		<div class="blockwrap">
+			<div class="formwrap">
+				<div class="row">
+					<label>添加店铺标签：</label> <input value="多个标签词之间请用空格分开" id="addTagInput" class="taginput" type="text" /> <a id="addTag" class="btn-addtag" href="#">添加</a>
+				</div>
+				<p class="nolabelrow" id="J_nolabelrow">一次最多可以提交5个标签，每个标签的字符必须在1-14个字符范围内</p>
+			</div>
+			
+			<div class="shoptaglist">
+				<dl class="cf">
+					<dt>我的店铺标签:</dt>
+					<dd>
+						<ul id="taglistshow">
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<input type="hidden" id="J_wordData" name="wordData" value="品聚" />
+		
+		<div class="btn-imgtext btn-center">
+			<button class="savethisact" type="submit"><span>保存本次操作</span></button>
+		</div>
+		
+		<div class="cswrap tagtipwrap">
+			<h2>什么是店铺标签？为什么要设置店铺标签？</h2>
+			<p>1.您可以用简洁的语言描述自己店铺的风格、类型、与主营商品。<br />
+			2.您可以一次添加多个标签，标签与标签之间用空格分开。<br />
+			3.设置成功后，您的店铺标签会显示在您店铺左侧的标签栏中，同时会被设置为网页的关键字，方便被搜索引擎收录，从而提高您店铺和商品被搜索到的概率。<br />
+			<strong>设置成功后，您的网页代码中会自动增加您的店铺关键字，效果如图：</strong><br/>
+			<br />
+			<img src="http://static.pinju.com/img/shop-meta.png" alt="店铺关键字效果图" />
+		</div>
+		
+	</div>
+
+	</div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		footer
+	</div>
+</div>
+</body>
+</html>

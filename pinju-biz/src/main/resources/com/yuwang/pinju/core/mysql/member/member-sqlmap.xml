@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Member" >
+
+  <typeAlias alias="member" type="com.yuwang.pinju.domain.member.MemberDO"/>
+
+  <resultMap id="member" class="member">
+    <result column="ID" property="id" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="ACCOUNT_NAME" property="accountName" />
+    <result column="MEMBER_ORIGIN" property="memberOrigin" />
+    <result column="SDO_LOGIN_NAME" property="sdoLoginName" />
+
+    <result column="SNDA_PT_ACCOUNT" property="sndaPtAccount" />
+    <result column="SNDA_MOBILE_ACCOUNT" property="sndaMobileAccount" />
+    <result column="SNDA_EMAIL_ACCOUNT" property="sndaEmailAccount" />
+    <result column="SNDA_SNDAMAIL_ACCOUNT" property="sndaSndamailAccount" />
+
+    <result column="NICKNAME" property="nickname" />
+    <result column="SEX" property="sex" />
+    <result column="STATUS" property="status" />
+    <result column="REGISTER_STATUS" property="registerStatus" />
+    <result column="INFO_VERSION" property="infoVersion" />
+    <result column="AGREE_AGREEMENT" property="agreeAgreement" />
+    <result column="AGREE_AGREEMENT_TIME" property="agreeAgreementTime"  javaType="java.util.Date" />
+
+    <result column="CREATE_TIME" property="createTime" javaType="java.util.Date" />
+    <result column="ACCOUNT_TYPE" property="accountType" />
+  </resultMap>
+
+  <sql id="findAllMember">
+    <![CDATA[
+    SELECT ID, MEMBER_ID, ACCOUNT_NAME, MEMBER_ORIGIN, SDO_LOGIN_NAME,
+           SNDA_PT_ACCOUNT, SNDA_MOBILE_ACCOUNT, SNDA_EMAIL_ACCOUNT, SNDA_SNDAMAIL_ACCOUNT,
+           NICKNAME, SEX, STATUS, REGISTER_STATUS, INFO_VERSION, AGREE_AGREEMENT, AGREE_AGREEMENT_TIME, CREATE_TIME, ACCOUNT_TYPE
+      FROM MEMBER_MEMBER
+    ]]>
+  </sql>
+
+  <select id="findMemberByMid" resultMap="member"  parameterClass="long">
+    <include refid="findAllMember" />
+    <![CDATA[
+    WHERE MEMBER_ID = #memberId#
+    ]]>
+  </select>
+  
+  <select id="findMemberMyPageTypeByMemberId" resultClass="int" parameterClass="long">
+      <![CDATA[
+      SELECT MY_PAGE_TYPE FROM MEMBER_MEMBER WHERE MEMBER_ID = #memberId#
+      ]]>
+  </select>
+  
+  <update id="updateMemberMyPageTypeByMemberId" parameterClass="member">
+     <![CDATA[
+      UPDATE MEMBER_MEMBER SET MY_PAGE_TYPE=#myPageType# WHERE MEMBER_ID = #memberId#
+      ]]>
+  </update>
+
+  <update id="updateMemberAccountType" parameterClass="member">
+     <![CDATA[UPDATE MEMBER_MEMBER SET ACCOUNT_TYPE = #accountType# WHERE MEMBER_ID = #memberId#]]>
+  </update>
+
+  <select id="findMemberByNickname" resultMap="member"  parameterClass="string">
+    <include refid="findAllMember" />
+    <![CDATA[WHERE NICKNAME = #nickName# LIMIT 1]]>
+  </select>
+
+  <select id="findMemberByAccount" resultMap="member" parameterClass="member">
+    <include refid="findAllMember" />
+    <![CDATA[
+    WHERE MEMBER_ORIGIN = #memberOrigin#
+      AND ACCOUNT_NAME = #accountName#
+    ]]>
+  </select>
+
+  <insert id="persistMember" parameterClass="member">
+    <![CDATA[
+    INSERT INTO MEMBER_MEMBER (
+      MEMBER_ID, ACCOUNT_NAME, NICKNAME, SNDA_PT_ACCOUNT, SNDA_MOBILE_ACCOUNT, SNDA_EMAIL_ACCOUNT, SNDA_SNDAMAIL_ACCOUNT, MEMBER_ORIGIN, REGISTER_STATUS, INFO_VERSION, AGREE_AGREEMENT, AGREE_AGREEMENT_TIME, CREATE_TIME, ACCOUNT_TYPE, GMT_CREATE, GMT_MODIFIED
+    ) VALUES (
+      #memberId#, #accountName#, #nickname#, #sndaPtAccount#, #sndaMobileAccount#, #sndaEmailAccount#, #sndaSndamailAccount#, #memberOrigin#, #registerStatus#, #infoVersion#, #agreeAgreement#, #agreeAgreementTime#, #createTime#, #accountType#, now(), now()
+    )
+    ]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+  </insert>
+  
+  <update id="updateMemberStatus">
+     <![CDATA[UPDATE MEMBER_MEMBER SET GMT_MODIFIED = now(), STATUS = #status#  WHERE MEMBER_ID = #memberId# ]]>    
+  </update>
+
+  <update id="updateMember" parameterClass="member" >
+    <![CDATA[UPDATE MEMBER_MEMBER SET]]>    
+    <![CDATA[GMT_MODIFIED = now()]]>
+    <isNotEmpty prepend="," property="sndaPtAccount">
+      <![CDATA[SNDA_PT_ACCOUNT = #sndaPtAccount#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="sndaMobileAccount">
+      <![CDATA[SNDA_MOBILE_ACCOUNT = #sndaMobileAccount#]]>
+    </isNotEmpty>    
+    <isNotEmpty prepend="," property="sndaEmailAccount">
+      <![CDATA[SNDA_EMAIL_ACCOUNT = #sndaEmailAccount#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="sndaSndamailAccount">
+      <![CDATA[SNDA_SNDAMAIL_ACCOUNT = #sndaSndamailAccount#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="sex">
+      <![CDATA[SEX = #sex#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="nickname">
+      <![CDATA[NICKNAME = #nickname#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="status">
+      <![CDATA[STATUS = #status#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="infoVersion">
+      <![CDATA[INFO_VERSION = #infoVersion#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="agreeAgreement">
+      <![CDATA[AGREE_AGREEMENT = #agreeAgreement#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="agreeAgreementTime">
+      <![CDATA[AGREE_AGREEMENT_TIME = #agreeAgreementTime#]]>
+    </isNotEmpty>
+    <![CDATA[WHERE ID = #id# AND MEMBER_ID = #memberId#]]>
+  </update>
+</sqlMap>

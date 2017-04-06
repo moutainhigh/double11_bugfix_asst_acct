@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_spu">
+
+	<typeAlias alias="ItemSpu" type="com.yuwang.pinju.domain.item.SpuDO" />
+
+	<resultMap id="ItemSpuResult" class="ItemSpu">
+		<result property="id" column="ID" />
+		<result property="categoryId" column="CATEGORY_ID" />
+		<result property="keyPropertyId" column="KEY_PROPERTY_ID" />
+		<result property="name" column="NAME" />
+		<result property="memo" column="MEMO" />
+		<result property="propertyValuePair" column="PROPERTY_VALUE_PAIR" />
+		<result property="picUrl" column="PIC_URL" />
+		<result property="keyPropertyValue" column="KEY_PROPERTY_VALUE" />
+		<result property="marketPrice" column="MARKET_PRICE" />
+	</resultMap>
+
+	<sql id="selectAllItemSpu">
+		<![CDATA[
+			SELECT ID,CATEGORY_ID,KEY_PROPERTY_ID,NAME,MEMO,PROPERTY_VALUE_PAIR,PIC_URL,KEY_PROPERTY_VALUE,MARKET_PRICE FROM ITEM_SPU
+		]]></sql>
+
+	<select id="getItemSpuByKey" resultMap="ItemSpuResult" parameterClass="java.util.Map">
+		<include refid="selectAllItemSpu" />
+		<![CDATA[
+			WHERE
+			KEY_PROPERTY_ID =  #keyPropertyId# 
+			AND KEY_PROPERTY_VALUE = #keyPropertyValue#
+			AND STATUS = 1
+		]]>
+	</select>
+	
+	<select id="getItemSpuById" resultMap="ItemSpuResult" parameterClass="long">
+		<include refid="selectAllItemSpu" />
+		<![CDATA[
+			WHERE
+			ID = #spuId#
+			AND STATUS = 1
+		]]>
+	</select>
+	
+
+</sqlMap>
+

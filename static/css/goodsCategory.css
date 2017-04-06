@@ -1,0 +1,149 @@
+/************************************************************************************************************/
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+/*--------------全局--------------*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px; vertical-align:middle;}
+body{font-size:12px; font-family:Arial, Helvetica, sans-serif;  margin:0 auto;}
+table{border-collapse:collapse;border-spacing:0;}
+/*-------------公用---------------*/
+/****************/
+/*--字      体--*/
+/***************/
+
+/*--字体大小--*/
+.font14px { font:14px;}
+
+/*--字体粗细--*/
+.fontbold { font-weight: 900;}
+
+/*--字体颜色--*/
+.fontwhite { color:#FFF;}
+.fontred { color:#F00;}
+.fontblue_01 { color:#00F;}/*-较深-*/
+.fontblue_02 { color:#39F;}/*-较浅-*/
+.fontgray_01 { color:#999;}
+.fontgray_02 { color:#CCC;}
+
+/*****************/
+/*--左和右的小容器--*/
+/***************/
+.floatleft { float:left;}
+.floatright { float:right}
+
+/*****************/
+/*--主要容器大小--*/
+/***************/
+.right_850px { width:850px;}
+
+/*****************/
+/*--控制容器大小的--*/
+/***************/
+.box_width_100px { width:100px;}
+.box_width_150px { width:150px;}
+.box_width_200px { width:200px;}
+/***************/
+/*----右侧标签栏----*/
+/***************/
+.right_850px  .lable_850px { float:left; width:850px; background:url(http://static.pinju.com/images/bg_hui.gif) repeat-x bottom;}
+
+/*当前状态标签*/
+.lable_present { float:left; margin-left:10px; height:23px; background:#FFF; padding:5px 15px 1px;
+						 	border-top: 2px solid #F00;
+							border-left: 1px solid #d4d4d4;	
+							border-right: 1px solid #d4d4d4;
+							border-bottom: 1px solid #FFF;
+							overflow:hidden;
+						}
+
+/*非当前状态标签*/
+.lable_after { float:left; margin-left:10px; height:24px;padding:5px 15px 1px;background:#f7f7f7;
+						 	border-top: 1px solid #d4d4d4;
+							border-left: 1px solid #d4d4d4;	
+							border-right: 1px solid #d4d4d4;
+							overflow:hidden;
+						}
+						
+
+/***************/
+/*--看排版用--*/
+/***************/
+/*-1-居中*/ .center_dajin { margin:0 auto;}
+/*-2-居左*/ .floatleft_dajin { float:left;}
+/*-3-overflow*/ .overflow_dajin { overflow:hidden;} 
+
+
+/***************/
+/*--圆角按钮--*/
+/***************/
+/***.g_a{display:-moz-inline-stack; display:inline-block; border-bottom:1px solid #cccccc; border-top:1px solid #e1e1e1; background:#f9f9f9; text-decoration:none;}   
+.g_b{float:left; border-left:1px solid #dadada; border-right:1px solid #cecece; padding:1px 0; margin:0 -1px; position:relative;}   
+.g_c{float:left; border-left:1px solid #dadada; border-right:1px solid #cecece; margin:0 -2px; background:#f4f4f4; position:relative;}   
+.g_d{display:block; line-height:4px; background:#f7f7f7; border-bottom:4px solid #f6f6f6; border-top:8px solid #f8f8f8;}   
+.g_e{display:block; line-height:16px; border-bottom:4px solid #f2f2f2; border-top:4px solid #fafafa; margin-top:-16px; padding:0px 12px; font-size:12px; color:#666666; cursor:pointer;}   
+.g_a:hover{text-decoration:none; background-color:#f7f7f7; color:#333333;}   
+.g_a:hover .g_c{background-color:#f2f2f2;}   
+.g_a:hover .g_d{border-bottom-color:#f4f4f4; background-color:#f5f5f5; border-top-color:#f7f7f7;}   
+.g_a:hover .g_e{border-bottom-color:#f0f0f0; border-top-color:#f8f8f8;} 
+
+<a href="javascript:void(0);" class="g_a vm">  
+    <span class="g_b">  
+        <span class="g_c">  
+            <span class="g_d"> </span>  
+            <span class="g_e">按钮文字</span>  
+        </span>  
+    </span>  
+</a>  
+*****/
+
+
+/************************************************************************************************************/
+/************************************************************************************************************/
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+/*--------------商品分类n店铺基本设置prd 2011-07-06--------------*/
+.select_0706 { width:100px; background:url(http://static.pinju.com/images/button_huisedi.gif) no-repeat; border:0px; overflow:hidden;}
+.right_850px .right_content01 { float:left; width:850px;}
+.right_850px .right_content01 ul{padding:10px 20px 0px;}
+.right_850px .right_content01 li{padding:0px 10px;}
+.right_850px .right_content01 table td{padding:10px 0px 5px 5px ; text-align:center;border-bottom: 1px solid #d4d4d4;table-layout:fixed;word-wrap:break-word;word-break:break- all; vertical-align:middle;}
+.right_850px .right_content01 table td a { color:#00F; text-decoration:none;}
+.right_850px .right_content01 table td a:hover { color: #FC0; text-decoration: underline;}
+.right_850px .right_content01 table td li { float:left; padding-left:10px;}
+
+/*--x按钮的样式--*/ .cross_0706 { margin-left:5px;width:14px; height:14px; background: url(http://static.pinju.com/images/cross_001.gif) no-repeat; overflow: hidden; border:0;cursor: pointer;}
+/*--边框为1px 灰色--*/ .table_border_1px_gray { border:1px solid #d4d4d4; }
+/*--xx到分类的按钮样式--*/ .right_850px .right_content01 .selectstyle {width:100px; height:20px; color:#666;background:url(http://static.pinju.com/images/button_huisedi.gif) no-repeat;border:0;cursor: pointer;}
+/*--左侧头像样式--*/ .right_850px .right_content01 .headportrait_box { float:left;width:120px; padding:5px;}
+						  .right_850px .right_content01 .headportrait_box .headportrait_image { border:2px solid #999}
+						  .right_850px .right_content01 .headportrait_box .headportrait_button {width:100px; height:20px; margin:5px 0 5px 10px;background:url(http://static.pinju.com/images/button_huisedi.gif) no-repeat;border:0;cursor: pointer;}
+
+/*--右侧信息样式--*/ .right_850px .right_content01 .information_box { float:right; width:640px; }
+						  .right_850px .right_content01 .information_box ul { padding:5px 0px;}
+						  .right_850px .right_content01 .information_box li { float:left;padding:5px 10px;height:12.4px;}
+						  
+/*--下面编辑模式样式--*/.right_850px .right_content01 .editbox0706 { float:left;width:810px; margin-left:20px; padding:5px 0px;}
+							 .right_850px .right_content01 .editbox0706 .editbox0706_button{width:103px; height:29px; background:url(http://static.pinju.com/images/xiaobao_button_01.jpg) no-repeat;border:0;cursor: pointer; margin-left:350px;}
+
+/*-------------物流logistics---------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/

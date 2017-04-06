@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <display-name>pinju web</display-name>
+  
+  <listener>
+    <listener-class>com.yuwang.cookie.CookieListener</listener-class>
+  </listener>
+  
+  <servlet>
+    <servlet-name>captcha</servlet-name>
+    <servlet-class>com.yuwang.pinju.web.servlet.CaptchaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>captcha</servlet-name>
+    <url-pattern>/e/captcha.htm</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>handshake</servlet-name>
+    <servlet-class>com.yuwang.pinju.web.servlet.HandshakeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>handshake</servlet-name>
+    <url-pattern>/e/handshake.htm</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+
+    <servlet-name>openApi</servlet-name>
+    <servlet-class>com.yuwang.api.OpenApiServlet</servlet-class>
+    <init-param>
+    	<param-name>apiAliasConfig</param-name>
+    	<param-value>apiAliasConfig.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>openApi</servlet-name>
+    <url-pattern>/openApi/open.htm</url-pattern>
+  </servlet-mapping>
+
+  <!-- hessian -->
+  <servlet>
+		<servlet-name>remote</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:/biz/bean/hessian/remote-accessor.xml
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>namespace</param-name>
+			<param-value>remote-servlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+ 	</servlet>
+  	<servlet-mapping>
+		<servlet-name>remote</servlet-name>
+	  	<url-pattern>*.remote</url-pattern>
+	</servlet-mapping>
+  <!--  
+  <listener>
+    <listener-class>com.yuwang.pinju.web.system.LogConfigListener</listener-class>
+  </listener>-->
+  
+  <!-- spring -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath*:applicationContext.xml</param-value>
+  </context-param>
+
+  <!-- ====================================================== -->
+  <!-- Filters -->
+  <!-- ====================================================== -->
+  <filter>
+    <filter-name>struts-prepare</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareFilter</filter-class>
+  </filter>
+
+  <filter>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>struts-execute</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsExecuteFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>clear-sitemesh-applied-once</filter-name>
+    <filter-class>com.yuwang.pinju.web.servlet.filter.ClearSitemeshAppliedOnceFilter</filter-class>
+  </filter>
+
+  <filter>
+    <filter-name>hessian-remote</filter-name>
+    <filter-class>com.yuwang.pinju.web.filter.HessianRemoteFilter</filter-class>
+  </filter>
+
+  <!-- ====================================================== -->
+  <!-- Filter Mappings -->
+  <!-- ====================================================== -->  
+  <filter-mapping>
+    <filter-name>clear-sitemesh-applied-once</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>struts-prepare</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>    
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>struts-execute</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>hessian-remote</filter-name>
+    <url-pattern>/tenPlatformRefundAO.remote</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+
+  <!-- ====================================================== -->
+  <!-- servlets: sitemesh freemarker controller -->
+  <!-- ====================================================== -->
+  <servlet>
+    <servlet-name>sitemesh-freemarker</servlet-name>
+    <servlet-class>com.yuwang.pinju.web.freemarker.ExtendedFreemarkerDecoratorServlet</servlet-class>
+    <init-param>
+      <param-name>TemplatePath</param-name>
+      <param-value>/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>DefaultEncoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>auto_import</param-name>
+      <param-value>"/WEB-INF/macro/load.ftl" as load</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <!-- ====================================================== -->
+  <!-- Servlet Mappings -->
+  <!-- ====================================================== -->
+  <servlet-mapping>
+    <servlet-name>sitemesh-freemarker</servlet-name>
+    <url-pattern>*.ftl</url-pattern>
+  </servlet-mapping>
+
+  <!-- ====================================================== -->
+  <!-- welcome files -->
+  <!-- ====================================================== -->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <!-- ====================================================== -->
+  <!-- error pages -->
+  <!-- ====================================================== -->
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error.html</location>
+  </error-page>
+  <error-page> <error-code>400</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>401</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>403</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>404</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>405</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>407</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>408</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>414</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>415</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>500</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>501</error-code> <location>/error.html</location> 
+    </error-page> <error-page> <error-code>503</error-code> <location>/error.html</location> 
+    </error-page> 
+</web-app>

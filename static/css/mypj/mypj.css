@@ -1,0 +1,92 @@
+
+/* my pinju */
+.bar-left .mypj { font-size:14px; padding:15px 0 10px; }
+.bar-left .mypj li { text-align:center; line-height:2em; }
+.bar-left .mypj a { color:#000; }
+.bar-left .mypj a:hover { color:#ce191b; }
+
+.bar-left .tab {  float:left; padding:0 0 10px 0;}
+.bar-left .tab li { float:left; width:74px; }
+.bar-left .tab a { float:left; background-color:#f5f5f5; color:#000; padding:5px; border-bottom:1px solid #dadada; text-align:center;}
+.bar-left .tab .buyer a { border-right:1px solid #dadada; width:63px;}
+.bar-left .tab .seller { width:75px;}
+.bar-left .tab .seller a { width:65px;}
+.bar-left .tab .current a { background-color:#fff; border-top:1px solid #dadada; border-bottom:1px solid #fff; font-weight:bold; }
+.bar-list { clear:both; }
+
+.contents .main { float:left; width:586px;}
+.contents .container {border:1px solid #d4d4d4; margin-bottom:10px;}
+.contents .container .title { background-color:#f6f6f6; height:18px; padding:5px 10px; border-bottom:1px solid #d4d4d4; }
+.contents .container .title h3 { float:left; }
+.contents .container .title .exinfo { float:right; }
+.contents .container .content { padding:10px; line-height:2em; }
+.toptip { margin-bottom:10px; }
+.toptip iframe { float:left; height:28px; width:585px; }
+.tmain { float:left; background:#ffffe0 url(http://static.pinju.com/img/icons.gif) no-repeat scroll 10px -295px; border:1px solid #f9dfb2; padding:5px 10px 5px 35px; width:538px; }
+.tsub { float:right; }
+.contents .container img {vertical-align:top;}
+
+.storelogo { float:left; padding:0 10px 0 0;}
+.storedetails { float:left; width:420px; }
+.storedetails h2 { height:39px; line-height: 39px;}
+.storelevel_0 { background:transparent url(http://static.pinju.com/img/businessInfo.png) no-repeat scroll 0 -66px; float:left; height:39px; overflow:hidden; margin:0 10px 0 0; width:29px;}
+.storelevel_1 { background:transparent url(http://static.pinju.com/img/businessInfo.png) no-repeat scroll -29px -66px; float:left; height:39px; overflow:hidden; margin:0 10px 0 0; width:29px;}
+.storelevel_2 { background:transparent url(http://static.pinju.com/img/businessInfo.png) no-repeat scroll -58px -66px; float:left; height:39px; overflow:hidden; margin:0 10px 0 0; width:29px;}
+.storelevel_3 { background:transparent url(http://static.pinju.com/img/businessInfo.png) no-repeat scroll -87px -66px;  float:left; height:39px; overflow:hidden; margin:0 10px 0 0; width:29px;}
+.storelevel_4 { background:transparent url(http://static.pinju.com/img/businessInfo.png) no-repeat scroll -116px -66px;  float:left; height:39px; overflow:hidden; margin:0 10px 0 0; width:29px;}
+
+.col2 li {float:left; width:50%;}
+.inlinerow li { display: inline; margin:0 20px 0 0;}
+.promotion p { border-top:1px solid #d4d4d4; clear:both; }
+.promotion dl { float:left; padding:0 0 10px 0;}
+.promotion dl dt { float:left; width:81px; }
+.promotion dl dd { float:left; width:483px; }
+
+.orderform dl { float:left; }
+.orderform dl dt { float:left; width:90px; }
+.orderform dl dd { float:left; margin:0 20px 0 0;}
+.orderform dl dd a strong { color:#fd6700; font-weight:bold; }
+
+.btn_orange {display:inline-block; background:transparent url(http://static.pinju.com/img/btn_h12.png) no-repeat scroll left top; color:#fff; padding-left:4px; *display:inline; *zoom:1;}
+.btn_orange span {display:inline-block; background:transparent url(http://static.pinju.com/img/btn_h12.png) no-repeat scroll right -24px;  height:19px; padding:4px 5px 0 2px;*display:inline; *zoom:1;}
+
+.btn_gray { display:inline-block; background:transparent url(http://static.pinju.com/img/btn_h12.png) no-repeat scroll left -50px; color:#000; padding-left:4px;*display:inline; *zoom:1;}
+.btn_gray span {display:inline-block; background:transparent url(http://static.pinju.com/img/btn_h12.png) no-repeat scroll right -74px;  height:19px; padding:4px 5px 0 2px;*display:inline; *zoom:1;}
+
+.contents .container .content .btn_gray,
+.contents .container .content .btn_orange { line-height:14px; }
+.hasbtn p { float:left;}
+
+.contents .sidebar { float:right; width:230px;}
+.contents .sidebar iframe.newslister { height:195px; margin-bottom:10px; width:230px;}
+.contents .sidebar iframe.cupon { margin-bottom:10px; width:230px;}
+.mypj-news { border:1px solid #d4d4d4; }
+.mypj-news .title { background-color:#f6f6f6; height:18px; padding:5px 10px; border-bottom:1px solid #d4d4d4; }
+.mypj-news .title h3 { float:left; }
+.mypj-news .content { padding:10px; line-height:2em; }
+.mypj-news .content a { color:#666; }
+.mypj-news .content p.more { text-align:right; }
+.mypj-news .content p.more a { color:#06c; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

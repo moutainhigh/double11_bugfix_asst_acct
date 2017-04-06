@@ -1,0 +1,426 @@
+/* search style for shop & products */
+.sp-search .bar-left { border-top:2px solid #d72426; width:190px; }
+.sp-search .bar-left .box { border:1px solid #DADADA; }
+.sp-search .bar-left .box h2 { background-color:#f6f6f6; border-bottom:1px solid #e9e9e9; text-indent:10px; }
+.sp-search .bar-left .box form fieldset { padding:0 0 10px; }
+.sp-search .bar-left .box form fieldset.center { text-align:center; }
+.sp-search .bar-left .box form fieldset input.btn { background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll right -50px; height:23px; width:69px;}
+.sp-search .bar-left .box form legend {display: block; font-size: 14px; font-weight:bold; padding-left: 170px; text-indent: -170px; padding-bottom:10px;}
+.sp-search .bar-left .box .ct { padding: 10px; }
+.sp-search .bar-left .box .ct ul li { float:left; padding:0 0 10px; width:70px; }
+.sp-search .bar-left .box ul li input { vertical-align: middle; padding:0; }
+.sp-search .bar-left .box ul li label { color:#666; cursor: pointer; margin-left: 5px; *margin-left:0; }
+.sp-search .bar-left .box .ct .fullwidth li { float:left; width:100%; }
+.sp-search .bar-left .box .ct .fullwidth label { margin:0;}
+.sp-search .bar-left .box .ct .fullwidth input { width:120px; }
+.sp-search .bar-left .box .ct .fullwidth select { width:124px; }
+
+.sp-search .contents { padding:0; width:800px; min-height: 600px; _height:600px;}
+.sp-search .contents .tips-text { padding:20px; }
+.sp-search .contents .tips-text p { font-size:14px; font-weight:bold; }
+.sp-search .contents .tips-text strong { color:#be0000; }
+.sp-search .plwrap .bar-left { border-bottom:1px solid #dcdcdc; border-left:1px solid #dcdcdc; border-right:1px solid #dcdcdc; }
+.plwrap .bar-topic { background-color:#f6f6f6; border-bottom:1px solid #e9e9e9; color:#000; font-size:12px; text-indent: 10px;}
+.menu-pcat li { background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll left -400px; line-height:22px; }
+.menu-pcat li a {color:#666; display:block; padding:0 5px 0 20px; text-decoration:none; }
+.menu-pcat ul a:hover { color:#be0000; }
+.menu-pcat ul { padding:5px 0 5px 36px; }
+.menu-pcat ul ul { padding:0 0 0 24px; }
+.menu-pcat ul li { background:transparent none no-repeat scroll 0 0; _height:22px;}
+.menu-pcat ul li a { background:transparent none no-repeat scroll 0 0; padding:0 0 0 14px; }
+.menu-pcat .haschildren .title { background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll right -350px; }
+.menu-pcat .active .title { background-position:right -400px; }
+.menu-pcat .haschildren .haschildren .title { background-position:-578px -350px; }
+.menu-pcat .haschildren .active .title { background-position:-578px -400px; }
+.menu-pcat .haschildren ul { display:none; }
+.menu-pcat .active ul { display:block; }
+.menu-pcat .active ul .haschildren ul { display:none; }
+.menu-pcat .active ul .active ul { display:block; }
+.menu-pcat .active a { font-weight:bold; }
+.menu-pcat .active ul a { font-weight:normal; }
+.menu-pcat .active ul .active a { font-weight:bold; color:#be0000; }
+.menu-pcat .active ul .active ul a { font-weight:normal; color:#666; }
+.menu-pcat .active ul .active ul a.current { background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll -100px -50px; color:#be0000; font-weight:bold; }
+
+/* shop */
+.shoplist-title {
+	background:transparent url(http://static.pinju.com/img/search.png) repeat-x scroll left -200px;
+	border:1px solid #ebebeb;
+	border-top:0 none;
+	float:left;
+	line-height:33px;
+	width:800px;
+}
+.shoplist-title li { color:#666; }
+.shoplist-title .mode {float:left; width:495px; text-align:center; }
+.shoplist-title .amount {float:left; width:100px; text-align:center;}
+.shoplist-title .shopowner {float:left; width:100px; text-align:center;}
+.shoplist-title .location {float:left; width:100px; text-align:center;}
+.shoplist-title .order {float:left; width:135px; position:relative;}
+.shoplist-title .order span {float:left; padding:3px 5px 0 0;}
+.shoplist-title .order #ordercd { background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll right -101px; height:17px; padding:3px 0 0 6px; width:80px;}
+#ordercdlist { position: absolute; top: 19px; background-color:#fff; padding:5px; border:1px solid #ccc;}
+
+.shoplist-view .item { border-bottom:1px dashed #c8c5c4; color:#666; float:left; padding:10px 0 10px 15px; width:785px;}
+.shoplist-view .item .mode {float:left; width:480px;}
+.shoplist-view .item .mode .img {float:left; height:70px; width:70px; overflow:hidden; margin:0 10px 0 0;}
+.shoplist-view .item .mode .img img {float:left;}
+.shoplist-view .item .mode dl {float:left; width:385px; padding-right:10px;}
+.shoplist-view .item .mode dl dt { font-weight:bold; }
+.shoplist-view .item .mode dl dt strong { color:#d72426 !important; }
+.mode .exinfo { padding: 10px 0; }
+.mode .exinfo li { display:inline;}
+.exinfo span { margin:0 5px 0 0; }
+.shoplist-view .item .amount {float:left; width:100px; text-align:center;}
+.shoplist-view .item .shopowner {float:left; width:100px; text-align:center;}
+.shoplist-view .item .location {float:left; width:100px; text-align:center;}
+
+/* products */
+.breadcrumbs-s {
+	background:transparent url(http://static.pinju.com/img/search.png) repeat-x scroll left -200px;
+	border:1px solid #e1e7f5;
+	height:23px;
+	overflow:hidden;
+	margin-bottom:10px;
+	padding:0 10px;
+}
+.breadcrumbs-s li { color:#666; float: left; line-height:23px;}
+.breadcrumbs-s li.first a { color:#333; text-decoration:none; }
+.breadcrumbs-s li a { background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll right -171px; float: left; line-height:23px; padding:0 20px 0 0;}
+.breadcrumbs-s li a:hover { color:#d72426; }
+.breadcrumbs-s .total { background:transparent none no-repeat 0 0; float:right;}
+.breadcrumbs-s .total strong { color:#d72426; font-weight:bold; }
+
+.sfilter { float:left; width:800px; }
+.sfilter .mtitle { float:left; width:800px; border-bottom:2px solid #d72426;}
+.sfilter .mtitle dt,.sfilter .mtitle .tabbar { float:left; height:29px; line-height:29px; }
+.sfilter .mtitle dt { padding:0 10px; font-size:14px; }
+.sfilter .mtitle .tabbar ul li { 
+	background:transparent url(http://static.pinju.com/img/search.png) repeat-x scroll -380px -430px;
+	cursor:pointer;
+	float:left;
+	height:29px;
+	margin:0 2px 0 0;
+	padding:0 0 0 4px;
+}
+.sfilter .mtitle .tabbar ul li a { cursor:pointer; text-decoration:none;}
+.sfilter .mtitle .tabbar ul li a:hover { cursor:pointer; text-decoration:none;}
+.sfilter .mtitle .tabbar ul li span {
+	background:transparent url(http://static.pinju.com/img/search.png) repeat-x scroll right -430px;
+	float:left;
+	padding:0 10px 0 6px;
+	font-size:14px;
+	font-weight:bold;
+	color:#666;
+}
+.sfilter .mtitle .tabbar ul li.current { background-position:-380px -459px; }
+.sfilter .mtitle .tabbar ul li.current span { background-position:right -459px; color:#fff; }
+.sfilter .mtitle .tabbar ul li.current span strong { font-weight:normal;}
+.sfilter .mtitle .tabbar ul li.current span em {
+	background:transparent url(http://static.pinju.com/img/search.png) repeat-x scroll 0 0;
+	float:left; height:29px; width:20px; padding:0;
+}
+.sfilter .mtitle .tabbar ul li.current span .lowfirst { background-position:-360px -432px; }
+.sfilter .mtitle .tabbar ul li.current span .highfirst { background-position:-360px -460px; }
+.sfilter .mtitle .pageitem { float:right; }
+.sfilter .subcon {
+	background:transparent url(http://static.pinju.com/img/bg-rowtitle.png) repeat-x scroll left -30px;
+	float:left;
+	width:800px;
+}
+.sfilter .subfilter dt,.sfilter .subfilter dd { float:left; height:29px; line-height:29px; }
+.sfilter .subcon dt { padding:0 10px; }
+.sfilter .subfilter dd.orderd { height:23px; line-height:23px; margin:6px 10px 0 0; }
+.sfilter .subfilter dd.orderd a {
+	background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll -200px -250px;
+	color:#666;
+	float:left;
+	height:23px;
+	text-align:center;
+	width:75px;
+}
+.sfilter .subfilter dd.orderd a:hover, .sfilter .subfilter dd.orderd a.active {
+	background-position: -200px -300px;
+	color:#333;
+	text-decoration:none;
+}
+.sfilter .subfilter dd.ordersale { height:23px; line-height:23px; margin:6px 0 0 0;}
+.sfilter .subfilter dd.ordersale a {
+	background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll -300px -250px;
+	color:#666;
+	float:left;
+	padding:0 0 0 10px;
+	width:50px;
+}
+.sfilter .subfilter dd.ordersale a:hover, .sfilter .subfilter dd.ordersale a.l2h {
+	background-position:-300px -280px;
+	color:#333;
+	text-decoration:none;
+}
+.sfilter .subfilter dd.ordersale a.h2l { background-position:-300px -310px; color:#333;}
+
+
+.sfilter .subfilter dd.orderprice { height:23px; line-height:23px; margin:6px 0 0 0; position:relative; }
+.sfilter .subfilter dd.orderprice a {
+	background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll -359px -250px;
+	color:#666;
+	float:left;
+	margin:0 50px 0 0;
+	padding:0 0 0 5px;
+	width:55px;
+}
+.sfilter .subfilter dd.orderprice a:hover,
+.sfilter .subfilter dd.hover a,
+.sfilter .subfilter dd.orderprice a.active {
+	background-position:-359px -280px;
+	color:#333;
+	text-decoration:none;
+}
+.sfilter .subfilter dd.orderprice a.al2h { background-position:-359px -310px; }
+
+.orderprice .sortlist {
+	background-color:#fff;
+	border:1px solid #f19149;
+	border-bottom:0 none;
+	left:0;
+	position:absolute;
+	top:22px;
+	width:100px;
+	display:none;
+}
+.hover .sortlist { display:block; }
+.sfilter .subfilter dd.orderprice .sortlist a {
+	background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll right -290px;
+	border-bottom:1px solid #f19149;
+	margin:0;
+	padding:0 5px;
+	width:90px;
+} 
+.sfilter .subfilter dd.orderprice .sortlist a.l2h {	background-position:right -290px; } 
+.sfilter .subfilter dd.orderprice .sortlist a.h2l {	background-position:right -320px; } 
+
+.stitle dd.pinfo, .stitle dd.price, .stitle dd.order { color:#666; padding:5px 0 0; height:23px; line-height:23px; }
+.stitle dd.pinfo { float:left; width:190px;}
+.stitle dd.price { float:left; width:140px; }
+.stitle dd.localwrap { float:left; width:100px; }
+.stitle dd.order { float:left; width:90px; padding-left:10px; }
+
+.sfilter .subfilter dd .slocal {
+	background:transparent url(http://static.pinju.com/img/search.png) repeat-x scroll -300px -100px;
+	color:#666;
+	cursor:pointer;
+	float:left;
+	height:23px;
+	line-height:23px;
+	margin:5px 0 0;
+	padding:0 0 0 8px;
+	position:absolute;
+	text-decoration:none;
+	width:75px;
+	top:0;
+	left:0;
+	z-index:6;
+}
+.sfilter .subfilter dd .slocal:hover,
+.sfilter .subfilter dd .hover { background-position:-300px -123px; }
+.localwrap { position:relative; }
+.localwrap ul {
+	background-color:#fff;
+	border:1px solid #f19149;
+	float:left;
+	padding:10px;
+	width:180px;
+	position:absolute;
+	top:27px;
+	left:0;
+	z-index:5;
+}
+.localwrap ul li { border-bottom:1px dashed #dadada; line-height:30px; }
+
+.result-pcat { padding:10px 0 20px;}
+.result-pcat li { line-height:22px; }
+.result-pcat a {color:#666; display:block; padding:0 5px 0 24px; text-decoration:none; }
+.result-pcat a.current { background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll left -350px; color:#fff;}
+.result-pcat a.showall, .result-pcat a.showpart {
+	background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll right -525px;
+	font-weight:bold;
+}
+.result-pcat a.showall { background-position:right -495px;}
+
+.plist-title {
+	background:transparent url(http://static.pinju.com/img/search.png) repeat-x scroll left -200px;
+	border:1px solid #ebebeb;
+	border-top:0 none;
+	float:left;
+	line-height:33px;
+	width:798px;
+}
+.plist-title li { color:#666; }
+.plist-title .pinfo {float:left; width:450px; text-align:center; }
+.plist-title .price {float:left; padding:0 0 0 20px; width:110px; text-align:left;}
+.plist-title .location { float:left; width:90px; }
+.plist-title a.slocal {
+	background:transparent url(http://static.pinju.com/img/search.png) repeat-x scroll -290px -505px;
+	cursor:pointer;
+	float:left;
+	height:33px;
+	margin:0 0 0 20px;
+	padding:0 16px 0 0;
+	width:36px;
+}
+.plist-title a:hover { text-decoration:none; }
+
+.plist-title ul { display:none; }
+.plist-title .order {float:left; width:120px; text-align:center; }
+
+.plist-view { width:800px; margin:0 auto;}
+.plist-view .item {border-bottom:1px solid #dadada; color:#666; float:left; padding:10px 0 15px; width:800px;}
+.plist-view .img { border:1px solid #e1e7f5; float:left; height:80px; width:80px; margin:0 10px 0 0; padding:1px; }
+.plist-view .hover { border-color:#F19149; }
+.plist-view .img a { float:left; }
+.plist-view .img img { float:left; }
+.popup-position {position:absolute; left:-9999px;}
+.popup-position .img-large {
+	background-color:#fff;
+	border:5px solid #dadada;
+	padding:5px;
+	overflow:hidden;
+}
+.popup-position .img-large a{
+	width:310px;
+    height:310px;
+    line-height: 310px;
+	display: table-cell;
+    vertical-align:middle;
+	text-align:center;
+	*display: block;
+    *font-size: 270px;
+}
+.popup-position .img-large img { float:none; vertical-align:middle; }
+
+.plist-view .titletext {float:left; width:320px; padding:0 35px 0 0;}
+.plist-view .titletext dt { font-weight:bold; line-height:2em; padding:0 0 20px 0; word-break:break-all; word-wrap:break-word;}
+.plist-view .titletext dt strong { color:#d72426 !important; }
+.plist-view .titletext dd a { color:#666; text-decoration:underline; }
+.plist-view .titletext dd a:hover { color:#d72426; }
+.plist-view .price {float:left; width:130px;}
+.plist-view .price dt {line-height:2em; padding:0 0 5px 0;}
+.plist-view .price dt strong {color:#d72426; font-size:16px; font-weight:bold;  }
+.plist-view .location { float:left; width:90px; line-height:2em; text-align:center;}
+.plist-view .saleamount { float:left; width:120px; line-height:2em; text-align:center;}
+
+/* alltag */
+.alltag .sfilter { float:none; width:1000px; }
+.alltag .sfilter .mtitle { width:1000px; }
+.tag2row { width:1000px; margin:20px 0 0; clear:both; }
+.tag2row .title h2 { border-top:1px solid #dadada; background-color:#f5f5f5; color:#000; font-size:14px; line-height:36px; padding:0 20px; }
+
+.tag2row .row { padding:10px; }
+.tag2row .row .item { border:2px solid #fff; float:left; padding:10px; width:456px; overflow:hidden; }
+.tag2row .row .hover { background-color:#fffcf5; border-color:#ffddb2; }
+.tag2row .row .last { float:right; }
+.tag2row .row dt { line-height:2em; }
+.tag2row .row dt a { color:#c80000; font-weight:bold; }
+.tag2row .row dd a { color:#666; }
+.tag2row .row .hover dd a { color:#333; }
+.tag2row .row .hover dd a:hover { color:#ff7800; }
+.tag2row .row .item dd ul { float:left; line-height:2em; width:456px; }
+.tag2row .row .item dd li { float:left; margin:0 20px 0 0; word-break:keep-all; word-wrap:normal; white-space:nowrap; }
+
+/* tag page */
+.pdcat { clear:both; margin:10px 0 0; }
+.pdcat h3 {background-color:#ffffe0; border-bottom:1px solid #f9dfb2; padding:6px; }
+.productdetail { border:1px solid #d4d4d4; padding:8px; }
+.productdetail li { line-height:30px; border-bottom:1px dashed #dadada; clear:both; }
+.productdetail li li { border-bottom:0 none; display:inline; padding:0 20px 0 0;}
+.productdetail li.last { border-bottom:0 none; }
+.productdetail li dt { color:#333; padding:0 10px 0 5px; width:75px;}
+.productdetail li dt,.productdetail li dd { float: left; }
+.productdetail li dd { width:690px; }
+.productdetail li dd ul { float:left; width:600px; }
+.productdetail li dd ul.show2row { height:60px; overflow:hidden; }
+.productdetail li dd .moretag { float:right; width:90px; padding:8px 0; }
+.productdetail li dd .moretag a {
+	background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll -360px -496px;
+	float:right;
+	line-height:16px;
+	padding:0 5px 0 16px;
+}
+.productdetail li dd .showall a { background-position:-360px -520px; }
+
+.relatedcat { border-top:1px solid #f9dfb2; clear:both; padding:12px 8px; height:16px; }
+.relatedcat li { float:left; padding-right:50px;}
+
+.relatedprod { background-color:#f9f9f9; border:1px solid #ebebeb; margin:8px 0; padding:0 10px; line-height:28px; }
+.relatedprod dt,.relatedprod dd { display:inline; }
+.relatedprod dd { padding:0 10px; border-right:1px solid #666; }
+.relatedprod dd.last { border-right:0 none; }
+
+.stitle { background-color:#ebebeb; border-top:1px solid #d2d2d2; float:none; padding:0 0 5px 5px; width:795px;}
+.stitle h2 { color:#666; padding:5px 10px 0; }
+.pv-large { padding:10px 0; }
+.pv-large .item { border:0 none; padding:10px; width:180px; }
+.pv-large .itemwrap { float:left; border:1px solid #fff; height:366px; overflow:hidden; padding:9px; width:160px; }
+.lslist .itemwrap { height:342px; }
+.pv-large .hover .itemwrap { background-color:#f5f5f5; border-color:#d2d2d2; }
+.pv-large .item ul { float:left; padding:10px 0 0; line-height:2em; }
+.pv-large .img { border:0 none; height:160px; margin:0; padding:0; width:160px; overflow:hidden; }
+.pv-large .titletext, .pv-large .price, .pv-large .saleamount { padding:0; text-align:left; width:160px; }
+.pv-large .titletext { height:52px; overflow:hidden; word-break:break-all; word-wrap:break-word; white-space: normal;}
+.pv-large .titletext a { color:#666; }
+.pv-large .price { color:#be0000; }
+.pv-large .price strong { font-size:16px; }
+.pv-large .price del { color:#999; }
+.pv-large .saleamount { color:#aaa; }
+.pv-large .saleamount strong { color:#fbce79; }
+.pv-large .saleamount em { color:#06c; }
+.pv-large .shipinfo { float:left; width:160px; line-height:1.5em; }
+.pv-large .shipinfo .local { float:right; }
+.pv-large .shoptitle { float:left; width:160px; height:52px; overflow:hidden; }
+
+.pviewmode li { float:left; }
+.pviewmode li a {
+	background:#ebebeb url(http://static.pinju.com/img/search.png) repeat-x scroll left -250px;
+	color:#666;
+	float:left;
+	height:25px;
+	line-height:25px;
+	padding-left:34px;
+	padding-right:14px;
+	text-decoration:none;
+}
+.pviewmode li a.current { background-color:#d2d2d2; }
+.pviewmode .pvmlarge a { background-position:5px -250px; }
+.pviewmode .pvmlist a { background-position:-95px -250px; }
+.pviewmode .pvmlarge a.current { background-position:5px -300px; }
+.pviewmode .pvmlist a.current { background-position:-95px -300px; }
+
+/* hot search */
+.plist-hotag {
+	background: #f6f6f6 none no-repeat scroll left top;
+	border: 1px solid #d4d4d4;
+	padding:5px 10px; 
+}
+
+.plist-hotag li { float:left; }
+.plist-hotag li a {
+	border-left: 1px solid #fff;
+	border-right: 1px solid #c8c8c8;
+	border-top: 1px solid #f6f6f6;
+	border-bottom: 1px solid #f6f6f6;
+	color:#666;
+	float:left;
+	padding:2px 14px;
+	text-decoration:none;
+}
+.plist-hotag li.active a,
+.plist-hotag li a:hover { background-color:#e3e3e3; border: 1px solid #c8c8c8; color:#333; text-decoration:none; }
+
+.plist-hot { padding:0; }
+.plist-hot .itemwrap { height:336px; }
+
+
+
+
+
+

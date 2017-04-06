@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="shopBaseInfo">
+	<sql id="selectAllShopBaseInfo"><![CDATA[SELECT ID,USER_ID,SHOP_ID,NAME,TITLE,DESCRIPTION,SHOP_LOGO,FOOT_LOGO,SELLER_TYPE,GOODS_SOURCE,SHOP_NATURE,SHOP_CATEGORY,CITY,PROVINCE,EXCHANGE_MARGIN,IS_SUPPLIER,OPEN_DATE,APPROVE_STATUS,DOMAIN,SITE_ID,PRODUCT_COUNT,ADDRESS,OUTER_SHOP_ADDRESS_URL,OUTER_SHOP_LEVEL,OUTER_SHOP_SALE_SCOPE,IS_ENTER_B2C,CONFIGURATION,GMT_CREATE,GMT_MODIFIED,NICKNAME,DOMAIN_CREATE,SHOP_LABEL FROM SHOP_BASE_INFO]]></sql>
+	<resultMap id="ShopBaseInfoResult" class="com.yuwang.pinju.domain.shop.ShopInfoDO">
+		<result property="id" column="ID" />
+		<result property="userId" column="USER_ID" />
+		<result property="shopId" column="SHOP_ID" />
+		<result property="name" column="NAME" />
+		<result property="title" column="TITLE" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="shopLogo" column="SHOP_LOGO" />
+		<result property="footLogo" column="FOOT_LOGO" />
+		<result property="sellerType" column="SELLER_TYPE" />
+		<result property="goodsSource" column="GOODS_SOURCE" />
+		<result property="shopNature" column="SHOP_NATURE" />
+		<result property="shopCategory" column="SHOP_CATEGORY" />
+		<result property="city" column="CITY" />
+		<result property="province" column="PROVINCE" />
+		<result property="exchangeMargin" column="EXCHANGE_MARGIN" />
+		<result property="isSupplier" column="IS_SUPPLIER" />
+		<result property="openDate" column="OPEN_DATE" />
+		<result property="approveStatus" column="APPROVE_STATUS" />
+		<result property="domain" column="DOMAIN" />
+		<result property="siteId" column="SITE_ID" />
+		<result property="productCount" column="PRODUCT_COUNT" />
+		<result property="address" column="ADDRESS" />
+		<result property="outerShopAddressUrl" column="OUTER_SHOP_ADDRESS_URL" />
+		<result property="outerShopLevel" column="OUTER_SHOP_LEVEL" />
+		<result property="outerShopSaleScope" column="OUTER_SHOP_SALE_SCOPE" />
+		<result property="isEnterB2c" column="IS_ENTER_B2C" />
+		<result property="configuration" column="CONFIGURATION" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="domainCreate" column="DOMAIN_CREATE" />
+		<result property="shopLabel" column="SHOP_LABEL" />
+	</resultMap>
+	
+	
+	<insert id="insertShopBaseInfo" parameterClass="com.yuwang.pinju.domain.shop.ShopInfoDO">
+		<selectKey resultClass="java.lang.Integer" keyProperty="id" >
+			<![CDATA[SELECT SEQ_SHOP_BASE_INFO_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO SHOP_BASE_INFO (ID,USER_ID,SHOP_ID,NAME,TITLE,DESCRIPTION,SHOP_LOGO,FOOT_LOGO,SELLER_TYPE,GOODS_SOURCE,SHOP_NATURE,SHOP_CATEGORY,CITY,PROVINCE,EXCHANGE_MARGIN,IS_SUPPLIER,OPEN_DATE,APPROVE_STATUS,DOMAIN,SITE_ID,PRODUCT_COUNT,ADDRESS,OUTER_SHOP_ADDRESS_URL,OUTER_SHOP_LEVEL,OUTER_SHOP_SALE_SCOPE,IS_ENTER_B2C,CONFIGURATION,GMT_CREATE,GMT_MODIFIED,NICKNAME) VALUES (#id#,#userId#,#shopId#,#name#,#title#,#description#,#shopLogo#,#footLogo#,#sellerType#,#goodsSource#,#shopNature#,#shopCategory#,#city#,#province#,#exchangeMargin#,#isSupplier#,#openDate#,#approveStatus#,#domain#,#siteId#,#productCount#,#address#,#outerShopAddressUrl#,#outerShopLevel#,#outerShopSaleScope#,#isEnterB2c#,#configuration#,#gmtCreate#,#gmtModified#,#nickname#)]]>
+	</insert>
+
+	<update id="updateShopBaseInfo" parameterClass="com.yuwang.pinju.domain.shop.ShopInfoDO">
+		<![CDATA[UPDATE SHOP_BASE_INFO]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="name">
+				<![CDATA[NAME = #name#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="description">
+				<![CDATA[DESCRIPTION = #description#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopLogo">
+				<![CDATA[SHOP_LOGO = #shopLogo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="footLogo">
+				<![CDATA[FOOT_LOGO = #footLogo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerType">
+				<![CDATA[SELLER_TYPE = #sellerType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="goodsSource">
+				<![CDATA[GOODS_SOURCE = #goodsSource#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopNature">
+				<![CDATA[SHOP_NATURE = #shopNature#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopCategory">
+				<![CDATA[SHOP_CATEGORY = #shopCategory#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="city">
+				<![CDATA[CITY = #city#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="province">
+				<![CDATA[PROVINCE = #province#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="exchangeMargin">
+				<![CDATA[EXCHANGE_MARGIN = #exchangeMargin#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isSupplier">
+				<![CDATA[IS_SUPPLIER = #isSupplier#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="openDate">
+				<![CDATA[OPEN_DATE = #openDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="approveStatus">
+				<![CDATA[APPROVE_STATUS = #approveStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="domain">
+				<![CDATA[DOMAIN = #domain#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="siteId">
+				<![CDATA[SITE_ID = #siteId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="productCount">
+				<![CDATA[PRODUCT_COUNT = #productCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="address">
+				<![CDATA[ADDRESS = #address#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="nickname">
+				<![CDATA[NICKNAME = #nickname#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="domainCreate">
+				<![CDATA[DOMAIN_CREATE = #domainCreate#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[, OUTER_SHOP_ADDRESS_URL = #outerShopAddressUrl#,OUTER_SHOP_LEVEL = #outerShopLevel#,OUTER_SHOP_SALE_SCOPE = #outerShopSaleScope#, IS_ENTER_B2C = #isEnterB2c#  WHERE user_id = #userId#]]>
+
+	</update>
+
+	<select id="selectShopBaseInfo"  resultMap="ShopBaseInfoResult" parameterClass="com.yuwang.pinju.domain.shop.ShopInfoDO">
+		<include refid="selectAllShopBaseInfo" />
+		<![CDATA[WHERE APPROVE_STATUS = 1]]>
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="name">
+				<![CDATA[NAME = #name#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="description">
+				<![CDATA[DESCRIPTION = #description#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopLogo">
+				<![CDATA[SHOP_LOGO = #shopLogo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="footLogo">
+				<![CDATA[FOOT_LOGO = #footLogo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="goodsSource">
+				<![CDATA[GOODS_SOURCE = #goodsSource#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopNature">
+				<![CDATA[SHOP_NATURE = #shopNature#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopCategory">
+				<![CDATA[SHOP_CATEGORY = #shopCategory#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="city">
+				<![CDATA[CITY = #city#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="province">
+				<![CDATA[PROVINCE = #province#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="exchangeMargin">
+				<![CDATA[EXCHANGE_MARGIN = #exchangeMargin#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isSupplier">
+				<![CDATA[IS_SUPPLIER = #isSupplier#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="openDate">
+				<![CDATA[OPEN_DATE = #openDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="domain">
+				<![CDATA[DOMAIN = #domain#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="siteId">
+				<![CDATA[SITE_ID = #siteId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="productCount">
+				<![CDATA[PRODUCT_COUNT = #productCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="address">
+				<![CDATA[ADDRESS = #address#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="outerShopAddressUrl">
+				<![CDATA[OUTER_SHOP_ADDRESS_URL = #outerShopAddressUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="outerShopLevel">
+				<![CDATA[OUTER_SHOP_LEVEL = #outerShopLevel#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="outerShopSaleScope">
+				<![CDATA[OUTER_SHOP_SALE_SCOPE = #outerShopSaleScope#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isEnterB2c">
+				<![CDATA[IS_ENTER_B2C = #isEnterB2c#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="nickname">
+				<![CDATA[NICKNAME = #nickname#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="domainCreate">
+				<![CDATA[DOMAIN_CREATE = #domainCreate#]]>
+			</isNotEmpty>
+	</select>
+	
+	<select id="queryShopInfoByUserIdList"  resultMap="ShopBaseInfoResult" parameterClass="java.util.List">
+		<include refid="selectAllShopBaseInfo"/> 
+		<dynamic prepend="WHERE">	
+		<isNotEmpty prepend="AND">
+				<![CDATA[USER_ID IN]]>
+				<iterate conjunction="," open="(" close=")" >
+			       #userIdList[]#
+				</iterate>
+			</isNotEmpty>	
+		</dynamic>	
+	</select>
+	
+    <select id="queryShopsByName"  resultMap="ShopBaseInfoResult" parameterClass="java.util.Map">
+		<include refid="selectAllShopBaseInfo"/> <![CDATA[where name = #name# and user_id!=#userId#]]>
+	</select>
+	<select id="queryShopInfoStatusAll"  resultMap="ShopBaseInfoResult">
+		<include refid="selectAllShopBaseInfo"/> <![CDATA[where user_id = #userId#]]>
+	</select>
+	
+	<select id="queryShopInfoByShopId"  resultMap="ShopBaseInfoResult" parameterClass="java.util.Map">
+		<include refid="selectAllShopBaseInfo"/>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[shop_id = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="approveStatus">
+					<![CDATA[approve_status = #approveStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="queryShopBaseInfoByUser"  resultMap="ShopBaseInfoResult" parameterClass="java.util.Map">
+		<include refid="selectAllShopBaseInfo"/> 
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="userId">
+				<![CDATA[user_id = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="approveStatus">
+					<![CDATA[approve_status = #approveStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+		
+	</select>
+	
+	<update id="updateShopBaseInfoByShopId" parameterClass="java.util.Map">
+		<![CDATA[UPDATE SHOP_BASE_INFO]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="approveStatus">
+				<![CDATA[APPROVE_STATUS = #approveStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE shop_id = #shopId#]]>
+	</update>
+	<select id="getShopBaseInfoObject" parameterClass="java.util.Map"  resultMap="ShopBaseInfoResult">
+		<include refid="selectAllShopBaseInfo"/> 
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="domain">
+				<![CDATA[DOMAIN = #domain#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	
+	<resultMap id="checkShopMap" class="com.yuwang.pinju.domain.shop.ShopInfoDO">
+		<result property="id" column="ID" />
+	</resultMap>
+	<select id="checkHasBusinessInfo"  resultMap="checkShopMap" parameterClass="java.lang.Long">
+		<![CDATA[select id from shop_business_info where user_id = #userId#]]>
+	</select>
+	
+	<select id="checkHasCustomerInfo"  resultMap="checkShopMap" parameterClass="java.lang.Long">
+		<![CDATA[select id from shop_customer_info where user_id = #userId#]]>
+	</select>
+	
+	<select id="checkHasIShopInfo"  resultMap="checkShopMap" parameterClass="java.lang.Long">
+		<![CDATA[select id from SHOP_ISHOP_INFO where user_id = #userId#]]>
+	</select>
+	
+
+</sqlMap>

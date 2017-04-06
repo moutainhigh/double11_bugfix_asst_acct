@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="coupon" namespace="/coupon" extends="pinju-auth">
+
+		<!-- ajax异步取得买家优惠券信息 -->
+		<action name="buyerAjaxGetCoupon" class="com.yuwang.pinju.web.module.coupon.action.BuyerAjaxGetCouponAction" method="ajaxGetShopCoupon" >
+			<result name="success" type="json"></result>
+		</action>
+		
+		<action name="shopCoupon" class="com.yuwang.pinju.web.module.coupon.action.BuyerAjaxGetCouponAction" method="shopCoupon" >
+			<result name="success" type="json"></result>
+		</action>
+
+		<action name="couponBatchAll" class="com.yuwang.pinju.web.module.coupon.action.TradeCouponBatchAction" method="queryCouponBatchListAll">
+			<result name="success" type="freemarker">/default/templates/screen/coupon/coupon-batch-main.ftl</result>
+		</action>
+		
+		<action name="queryCouponBatchById" class="com.yuwang.pinju.web.module.coupon.action.TradeCouponBatchAction" method="queryCouponBatchById">
+			<result name="success" type="freemarker">/default/templates/screen/coupon/edit-coupon-batch.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/coupon/coupon-batch-error.ftl</result>
+		</action>
+		
+		<action name="addCouponBatch" class="com.yuwang.pinju.web.module.coupon.action.TradeCouponBatchAction" method="addCouponBatch">
+			<result name="success" type="freemarker">/default/templates/screen/coupon/add-coupon-batch.ftl</result>
+		</action>
+		
+		<action name="saveCouponBatch" class="com.yuwang.pinju.web.module.coupon.action.TradeCouponBatchAction" method="saveCouponBatch">
+			<result name="success" type="redirect">/coupon/couponBatchAll.htm</result>
+		</action>
+		
+		<action name="updateCouponBatch" class="com.yuwang.pinju.web.module.coupon.action.TradeCouponBatchAction" method="updateCouponBatchById">
+			<result name="success" type="redirect">/coupon/couponBatchAll.htm</result>
+			<result name="error" type="freemarker">/default/templates/screen/coupon/coupon-batch-error.ftl</result>
+		</action>
+		
+		<action name="closeCouponBatchById" class="com.yuwang.pinju.web.module.coupon.action.TradeCouponBatchAction" method="closeCouponBatchById">
+			<result name="success" type="redirect">/coupon/couponBatchAll.htm</result>
+			<result name="error" type="freemarker">/default/templates/screen/coupon/coupon-batch-error.ftl</result>
+		</action>
+		
+		<action name="invalidCouponBatchById" class="com.yuwang.pinju.web.module.coupon.action.TradeCouponBatchAction" method="invalidCouponBatchById">
+			<result name="success" type="redirect">/coupon/couponBatchAll.htm</result>
+			<result name="error" type="freemarker">/default/templates/screen/coupon/coupon-batch-error.ftl</result>
+		</action>
+		
+		<action name="closeCouponBatch" class="com.yuwang.pinju.web.module.coupon.action.TradeCouponBatchAction" method="updateCouponBatchInvalid">
+			<result name="success" type="redirect">/coupon/couponBatchAll.htm</result>
+		</action>
+		
+		<!-- 
+		<action name="timeout" class="com.yuwang.pinju.web.module.coupon.action.CouponTimeoutAction" method="execute" />
+ 		-->
+	</package>
+	
+	<package name="sellerCoupon" namespace="/sellerCoupon" extends="pinju-login">		
+		<action name="sellerCoupon" class="com.yuwang.pinju.web.module.coupon.action.SellerCouponAction" method="sellerCoupon">
+			<result name="success" type="freemarker">/default/templates/screen/coupon/sellerCoupon.ftl</result>
+		</action>
+	</package>
+	
+	<package name="buyerCoupon" namespace="/buyerCoupon" extends="pinju-login">
+		<action name="buyerCoupon" class="com.yuwang.pinju.web.module.coupon.action.BuyerCouponAction" method="buyerCoupon">
+			<result name="success" type="freemarker">/default/templates/screen/coupon/buyerCoupon.ftl</result>
+		</action>
+		
+		<action name="buyerCloseCoupon" class="com.yuwang.pinju.web.module.coupon.action.BuyerCouponAction" method="closeCoupon" />
+	</package>
+	
+</struts>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TRADE_AD">
+
+	<typeAlias alias="TradeAd" type="com.yuwang.pinju.domain.order.OrderTradeAdDO" />
+
+	<resultMap id="TradeAdResult" class="TradeAd">
+		<result property="id" column="ID" />
+		<result property="adId" column="AD_ID" />
+		<result property="orderItemId" column="ORDER_ITEM_ID" />
+		<result property="adCode" column="AD_CODE" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllTradeAd"><![CDATA[SELECT ID,AD_ID,ORDER_ITEM_ID,AD_CODE,ITEM_ID,GMT_CREATE,GMT_MODIFIED FROM TRADE_AD]]></sql>
+
+	<select id="selectAllTradeAdAll" resultMap="TradeAdResult">
+		<include refid="selectAllTradeAd" />
+	</select>
+
+	<select id="selectTradeAdById" resultMap="TradeAdResult"  parameterClass="long">
+		<include refid="selectAllTradeAd" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectTradeAdByCondition"  resultMap="TradeAdResult" parameterClass="TradeAd">
+		<include refid="selectAllTradeAd" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="adId">
+				<![CDATA[AD_ID = #adId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderItemId">
+				<![CDATA[ORDER_ITEM_ID = #orderItemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="adCode">
+				<![CDATA[AD_CODE = #adCode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertTradeAd" parameterClass="TradeAd">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_TRADE_AD_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO TRADE_AD (ID,AD_ID,ORDER_ITEM_ID,AD_CODE,ITEM_ID,GMT_CREATE,GMT_MODIFIED) VALUES (#id#,#id#,#orderItemId#,#adCode#,#itemId#,sysdate,sysdate)]]>
+	</insert>
+
+	<sql id="deleteAllTradeAd"><![CDATA[DELETE FROM TRADE_AD]]></sql>
+
+	<delete id="deleteAllTradeAdAll">
+		<include refid="deleteAllTradeAd" />
+	</delete>
+
+	<delete id="deleteTradeAdById" parameterClass="long">
+		<include refid="deleteAllTradeAd" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteTradeAdByCondition"  parameterClass="TradeAd">
+		<include refid="deleteAllTradeAd" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="adId">
+				<![CDATA[AD_ID = #adId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderItemId">
+				<![CDATA[ORDER_ITEM_ID = #orderItemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="adCode">
+				<![CDATA[AD_CODE = #adCode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateTradeAd" parameterClass="TradeAd">
+		<![CDATA[UPDATE TRADE_AD]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="adId">
+				<![CDATA[AD_ID = #adId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderItemId">
+				<![CDATA[ORDER_ITEM_ID = #orderItemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="adCode">
+				<![CDATA[AD_CODE = #adCode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+
+	</update>
+</sqlMap>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+  <bean id="memberAO" class="com.yuwang.pinju.core.member.ao.impl.MemberAOImpl" />
+  <bean id="pinjuMemberAO" class="com.yuwang.pinju.core.member.ao.impl.PinjuMemberAOImpl" />
+  <bean id="memberSecurityAO" class="com.yuwang.pinju.core.member.ao.impl.MemberSecurityAOImpl" />
+  <bean id="sinaMemberAO" class="com.yuwang.pinju.core.member.ao.impl.SinaMemberAOImpl" />
+  <bean id="memberAsstAO" class="com.yuwang.pinju.core.member.ao.impl.MemberAsstAOImpl" />
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_base_property">
+
+	<typeAlias alias="ItemBaseProperty" type="com.yuwang.pinju.domain.item.BasePropertyDO" />
+
+	<resultMap id="ItemBasePropertyResult" class="ItemBaseProperty">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="isShielding" column="is_shielding" />
+		<result property="affiliatedGroup" column="affiliated_group" />
+		<result property="features" column="features" />
+	</resultMap>
+
+</sqlMap>
+

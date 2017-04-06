@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeDirectPayPayOrder">
+
+	<typeAlias alias="DirectPayDO" type="com.yuwang.pinju.domain.trade.DirectPayDO" />
+
+	<resultMap id="directPayMap" class="DirectPayDO" >
+		<result property="id" column="ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="payOrderId" column="PAY_ORDER_ID" />
+		<result property="outPayId" column="OUT_PAY_ID" />
+		<result property="totalFee" column="TOTAL_FEE" />
+		<result property="realPayAmount" column="REAL_PAY_AMOUNT" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="acceptAccount" column="ACCEPT_ACCOUNT" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="payAccount" column="PAY_ACCOUNT" />
+		<result property="commisionFee" column="COMMISION_FEE" />
+		<result property="discountFee" column="DISCOUNT_FEE" />
+		<result property="bizType" column="BIZ_TYPE" />
+		<result property="payState" column="PAY_STATE" />
+		<result property="payTime" column="PAY_TIME" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="closer" column="CLOSER" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+	<sql id="directPaySql">
+    	V.ID,
+		V.ORDER_ID,
+		V.PAY_ORDER_ID,
+		V.OUT_PAY_ID,
+		V.TOTAL_FEE,
+		V.REAL_PAY_AMOUNT,
+		V.SELLER_ID,
+		V.ACCEPT_ACCOUNT,
+		V.BUYER_ID,
+		V.PAY_ACCOUNT,
+		V.COMMISION_FEE,
+		V.DISCOUNT_FEE,
+		V.BIZ_TYPE,
+		V.PAY_STATE,
+		V.PAY_TIME,
+		V.CREATE_TIME,
+		V.END_TIME,
+		V.CLOSER,
+        V.GMT_CREATE,
+        V.GMT_MODIFIED
+    </sql>
+	
+    <select id="getPayOrderId" resultClass="java.lang.Long">
+        SELECT SEQ_TRADE_DP_PAY_ORDER_ID.NEXTVAL FROM DUAL
+    </select>
+    
+    <select id="getPayOrderDO" resultMap="directPayMap" parameterClass="java.lang.Long">
+         SELECT <include refid="directPaySql"/> FROM TRADE_DIRECT_PAY_PAY_ORDER V WHERE V.PAY_ORDER_ID=#value# 
+    </select>
+    
+    <select id="getPayOrderDO_1" resultMap="directPayMap" parameterClass="DirectPayDO">
+    	SELECT * FROM TRADE_DIRECT_PAY_PAY_ORDER
+    	<dynamic prepend="where" >
+    		<isNotEmpty prepend="and" property="orderId" >
+		        ORDER_ID = #orderId#
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="payState" >
+		        PAY_STATE = #payState#
+		      </isNotEmpty>
+    	</dynamic>
+    </select>
+    
+    
+    
+	<insert id="insertDirectPayRecord" parameterClass="DirectPayDO">
+	    INSERT INTO TRADE_DIRECT_PAY_PAY_ORDER
+	    (
+	    	ID,
+			ORDER_ID,
+			PAY_ORDER_ID,
+			OUT_PAY_ID,
+			TOTAL_FEE,
+			REAL_PAY_AMOUNT,
+			SELLER_ID,
+			ACCEPT_ACCOUNT,
+			BUYER_ID,
+			PAY_ACCOUNT,
+			COMMISION_FEE,
+			DISCOUNT_FEE,
+			BIZ_TYPE,
+			PAY_STATE,
+			PAY_TIME,
+			CREATE_TIME,
+			END_TIME,
+			CLOSER,
+	        GMT_CREATE,
+	        GMT_MODIFIED  
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#orderId#,
+			#payOrderId#,
+			#outPayId#,
+			#totalFee#,
+			#realPayAmount#,
+			#sellerId#,
+			#acceptAccount#,
+			#buyerId#,
+			#payAccount#,
+			#commisionFee#,
+			#discountFee#,
+			#bizType#,
+			#payState#,
+			#payTime#,
+			#createTime#,
+			#endTime#,
+			#closer#,
+			sysdate,
+			sysdate
+	    )
+	</insert>
+	
+	<update id="updateDirectPayDOStatus"  parameterClass="DirectPayDO" >
+        <![CDATA[UPDATE TRADE_DIRECT_PAY_PAY_ORDER]]> SET
+			GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotEmpty prepend="," property="outPayId">
+				<![CDATA[OUT_PAY_ID = #outPayId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="payState">
+				<![CDATA[PAY_STATE = #payState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="realPayAmount">
+				<![CDATA[REAL_PAY_AMOUNT = #realPayAmount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="discountFee">
+				<![CDATA[DISCOUNT_FEE = #discountFee#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="payTime">
+				<![CDATA[PAY_TIME = #payTime#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE PAY_ORDER_ID = #payOrderId#]]>
+	</update> 
+	
+</sqlMap>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+  		<package name="ajax" namespace="/shopDecoration" extends="json-default">
+  			<!-- 异步获取掌柜推荐商品列表 -->
+			<action name="queryPromoteItemAction" class="com.yuwang.pinju.web.module.shop.screen.ShopQueryPromoteItemAction" method="queryPromoteItem">
+		  		 <result type="json">
+		  		 	<param name="root">result</param>
+		  		 </result>
+		  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+			</action>
+  		</package>
+  
+  		<package name="viewShop" namespace="/shopDecoration" extends="pinju-default">	
+			<!-- 查看店铺 -->
+			<action name="viewShop" class="com.yuwang.pinju.web.module.shop.screen.ShopDecorationAction">
+				<param name="preview">true</param>
+				<param name="isRelease">true</param>
+				<result name="success" type="freemarker">/default/templates/screen/shop/shopDecoration.ftl</result>
+				<result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+				<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shop</result>
+				<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shop</result>
+				<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shop</result>
+			</action>
+  		</package>
+  
+      <package name="shopDecoration" namespace="/shopDecoration" extends="pinju-auth" >
+      	<!-- 显示布局管理首页 -->
+        <action name="showIndexLayoutManagementAction" class="com.yuwang.pinju.web.module.shop.screen.ShopShowLayoutManagementAction" method="showIndexLayoutManagement">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shopDecoration/layoutManagement.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		
+		<action name="queryIndexLayoutAction" class="com.yuwang.pinju.web.module.shop.screen.ShopShowLayoutManagementAction" method="queryIndexLayout">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shopDecoration/layoutManagement.ftl</result>
+		</action>
+		
+		<!-- 获取待编辑的页面的指定部分可添加的模块 -->
+		<!-- 
+		<action name="queryModulePrototypeAction" class="com.yuwang.pinju.web.module.shop.screen.ShopShowLayoutManagementAction" method="queryModulePrototype">
+	  		 <result name="success" type="json">
+	  		 	<param name="root">result</param>
+	  		 </result>
+		</action>
+		 -->
+		 <!-- 获取待编辑的页面的指定部分可添加的模块 -->
+		 <action name="queryModulePrototypeAction" class="com.yuwang.pinju.web.module.shop.screen.ShopShowLayoutManagementAction" method="queryModulePrototype">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shopDecoration/layer.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		 
+		<!-- 保存布局 -->
+		<action name="savePageAction" class="com.yuwang.pinju.web.module.shop.screen.ShopShowLayoutManagementAction" method="savePage">
+	  		 <result name="success" type="redirect">shopDecorationAction.htm</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+
+		<!-- 模块编辑，返回显示编辑层 -->
+		<action name="getEditModuleAction" class="com.yuwang.pinju.web.module.shop.screen.ShopDesignModuleAction" method="execute">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/displayModulePage.ftl</result>
+			 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+				<!-- 查看模块显示页面 -->
+		<action name="displayModulePageAction" class="com.yuwang.pinju.web.module.shop.screen.ShopDesignModuleAction" method="displayModulePage">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/displayModulePage.ftl</result>
+			 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 保存装修模块 -->
+		<action name="saveDesignModuleAction" class="com.yuwang.pinju.web.module.shop.action.ShopDesignModuleAction" method="execute">
+	  		 <result name="success" type="freemarker">
+	  		 	/default/templates/screen/shop/saveModule.ftl
+	  		 </result>
+			 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 获取页面管理模块参数 -->
+		<action name="getEditCustomerPageAction" class="com.yuwang.pinju.web.module.shop.screen.ShopDesignPageManagerAction" method="execute">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/editPageManager.ftl</result>
+			 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 保存装修模块 -->
+		<action name="saveCustomerPageAction" class="com.yuwang.pinju.web.module.shop.action.ShopDesignPageManagerAction" method="execute">
+	  		 <result name="success" type="redirect">shopDecorationAction.htm</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 装修首页 -->
+		<action name="shopDecorationAction" class="com.yuwang.pinju.web.module.shop.screen.ShopDecorationAction">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/shopDecoration.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+	  		 <result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopDecoration</result>
+	  		 <result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shopDecoration</result>
+	  		 <result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopDecoration</result>
+		</action>
+		
+		<!-- 发布装修页面 -->
+		<action name="releaseDesignAction" class="com.yuwang.pinju.web.module.shop.action.ShopDesignReleaseAction" method="execute">
+	  		 <result name="success" type="redirect">viewShop.htm</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 还原用户装修页面 -->
+		<action name="restoreDesignAction" class="com.yuwang.pinju.web.module.shop.action.ShopDesignReleaseAction" method="restore">
+	  		 <!-- 
+	  		 <result name="success" type="json">
+	  		 	<param name="root">result</param>
+	  		 </result>
+	  		 -->
+	  		 <result name="success" type="redirect">shopDecorationAction.htm</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 皮肤管理页面 -->
+		<action name="shopTemplateManagerAction" class="com.yuwang.pinju.web.module.shop.screen.ShopTemplateManagerAction" method="execute">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/shopTemplateManager.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 保存皮肤页面 -->
+		<action name="saveShopTemplateAction" class="com.yuwang.pinju.web.module.shop.action.ShopTemplateManagerAction" method="execute">
+	  		 <result name="success" type="redirect">shopDecorationAction.htm</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+      </package>
+  </struts>

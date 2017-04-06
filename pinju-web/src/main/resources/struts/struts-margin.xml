@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+      <package name="margin" namespace="/margin" extends="pinju-login" >
+      	<!-- 我的消保金  -->
+        <action name="mymargin" class="com.yuwang.pinju.web.module.margin.action.MarginAction" method="goMyMargin">
+	  		 <result name="success" type="freemarker">/default/templates/screen/margin/mymargin.ftl</result>
+		</action>
+        
+      	<!-- 店铺缴消保金action  -->
+        <action name="paymargin" class="com.yuwang.pinju.web.module.margin.action.MarginAction" method="payMargin">
+	  		 <result name="error" type="freemarker">/default/templates/screen/margin/mymargin.ftl</result>
+	  		 <result name="success" type="chain">
+                  <param name="namespace">/orderPay</param>
+                  <param name="actionName">tenDirectSendOrder</param>
+             </result>
+		</action>
+		
+      	<!-- 后台缴消保金action  -->
+        <action name="backPayMargin" class="com.yuwang.pinju.web.module.margin.action.MarginAction" method="backPayMargin">
+	  		 <result name="error" type="freemarker">/default/templates/screen/margin/mymargin.ftl</result>
+	  		 <result name="success" type="chain">
+                  <param name="namespace">/orderPay</param>
+                  <param name="actionName">tenDirectSendOrder</param>
+             </result>
+		</action>
+		
+		<!-- 缴保证金回调后跳转到相应成功页面的Action -->
+		<action name="marginBackGoAction" class="com.yuwang.pinju.web.module.margin.action.MarginAction" method="marginBackGoAction">
+			  <result name="fromSellerBack" type="redirectAction">
+			      <param name="namespace">/margin</param>
+                  <param name="actionName">mymargin</param>
+			 </result>
+			 
+			 <result name="fromOpenShop" type="redirectAction">
+			 	 <param name="namespace">/shop</param>
+                 <param name="actionName">showShopOpenEndAction</param>
+			 </result>
+			 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+        
+        <!-- 我的消保金交易明细 -->
+        <action name="margintradelist" class="com.yuwang.pinju.web.module.margin.action.MarginAction" method="getMarginTradeList">
+	  		 <result name="success" type="freemarker">/default/templates/screen/margin/margintradelist.ftl</result>
+		</action>
+        
+      </package>
+  </struts>

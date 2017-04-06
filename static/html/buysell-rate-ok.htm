@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>品聚网</title>
+<link rel="stylesheet" href="http://static.pinju.com/css/pj_base.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<!-- header -->
+
+<!-- content -->
+<div class="wrap cf">
+
+<link href="http://static.pinju.com/css/shopcart/sns-base.css" rel="stylesheet" />
+<LINK href="http://static.pinju.com/css/shopcart/buycart.css" rel="stylesheet" />
+<link href="http://static.pinju.com/css/rao/buy.css" rel="stylesheet" type="text/css" media="screen" />
+
+<script type="text/javascript" src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://static.pinju.com/raty/js/jquery.raty.js"></script>
+
+	<!--内容页面开始-->
+	<div class="main_1000px page_center">
+		<div class="buy-nav" style="text-indent: 12px;">您的位置：<a href="http://www.pinju.com">首页</a> &gt; <a href="http://www.pinju.com/my/info.htm">我的品聚</a> &gt; 确认订单信息</div>
+
+		<div class="cart_step_nav cf">
+		
+			<ul class="buy-title">
+				<li class="step1">1.确认订单信息</li>
+				<li class="step2">2.付款到担保账户</li>
+				<li class="step2">3.确认收货</li>
+				<li class="step3 step3c">4.评价商品</li>
+
+			</ul>
+			
+		</div>
+		
+			
+		<div class="cart_container">
+			<div class="title">
+				<h2>相互评价</h2>
+				<div class="horizen_gray"><span class="horizen_red"></span></div>
+			</div>
+			
+			<div class="ratewrap">
+				<div class="tipswrap">
+					<div class="infocat right"></div>
+					<div class="content">
+						<h3 class="key">您的商品评价已提交成功！</h3>
+						<p>您的评论需要等待30分钟才能看到已论过的商品。<br />
+						您现在可以：<br />
+						<a href="http://www.pinju.com">返回品聚首页</a><br />
+						<a href="#">进入品聚社区个人主页</a><br />
+						返回<a href="#">“已买到的商品”，继续给卖家评价</a></p>
+					</div>
+				</div>
+
+				<div class="tipswrap">
+					<div class="infocat error"></div>
+					<div class="content">
+						<h3 class="key"><strong>提示提示</strong></h3>
+						<p>您的评论需要等待30分钟才能看到已论过的商品。<br />
+						您现在可以：<br />
+						<a href="http://www.pinju.com">返回品聚首页</a><br />
+						<a href="#">进入品聚社区个人主页</a><br />
+						返回<a href="#">“已买到的商品”，继续给卖家评价</a></p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- // content -->
+
+<!-- footer -->
+<div class="footer">
+    <div class="footer_main">
+		footer
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		$(".raty").raty();
+		$("#sRaty").raty();
+		$("#lgsRaty").raty();
+		$(".tippop .btn-swhite").click(function(e){
+			e.preventDefault();
+			$(this).parents(".tippop").hide();
+		});
+	});
+</script>
+</body>
+</html>

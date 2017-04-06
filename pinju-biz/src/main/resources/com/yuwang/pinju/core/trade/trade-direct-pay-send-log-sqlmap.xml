@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeDirectPaySendLog">
+
+    <typeAlias alias="DirectPaySendLogDO" type="com.yuwang.pinju.domain.trade.DirectPaySendLogDO" />
+
+	<resultMap id="directPaySendLogMap" class="DirectPaySendLogDO" >
+		<result property="id" column="ID" />
+		<result property="payOrderId" column="PAY_ORDER_ID" />
+		<result property="fromMemberId" column="FROM_MEMBER_ID" />
+		<result property="fromMemberPayment" column="FROM_MEMBER_PAYMENT" />
+		<result property="toMemberId" column="TO_MEMBER_ID" />
+		<result property="toMemberPayment" column="TO_MEMBER_PAYMENT" />
+		<result property="detail" column="DETAIL" />
+		<result property="bizType" column="BIZ_TYPE" />
+		<result property="sendTime" column="SEND_TIME" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+    <sql id="directPaySendLogPrefix">
+         V.ID,
+         V.PAY_ORDER_ID,
+         V.FROM_MEMBER_ID,
+         V.FROM_MEMBER_PAYMENT,
+         V.TO_MEMBER_ID,
+         V.TO_MEMBER_PAYMENT,
+         V.DETAIL,
+         V.BIZ_TYPE,
+         V.SEND_TIME,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED,
+         V.PAY_ORDER_ID
+    </sql>
+   
+	<select id="getDirectPaySendLogDOById"  parameterClass="java.lang.Long" resultMap="directPaySendLogMap">
+        SELECT <include refid="directPaySendLogPrefix"/> FROM TRADE_DIRECT_PAY_SEND_LOG V WHERE V.ID=#value# 
+	</select>
+	
+	<insert id="insertDirectPaySendLogRecord" parameterClass="DirectPaySendLogDO">
+	    <selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_DP_SEND_LOG_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_DIRECT_PAY_SEND_LOG 
+	    (
+        	ID,
+            PAY_ORDER_ID,
+         	FROM_MEMBER_ID,
+         	FROM_MEMBER_PAYMENT,
+         	TO_MEMBER_ID,
+         	TO_MEMBER_PAYMENT,
+         	DETAIL,
+            BIZ_TYPE,
+         	SEND_TIME,
+	     	GMT_CREATE,
+	     	GMT_MODIFIED
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+            #payOrderId#,
+			#fromMemberId#,
+			#fromMemberPayment#,
+			#toMemberId#,
+			#toMemberPayment#,
+			#detail#,
+            #bizType#,
+			#sendTime#,
+			sysdate,
+			sysdate
+	    )
+	</insert>
+	
+</sqlMap>

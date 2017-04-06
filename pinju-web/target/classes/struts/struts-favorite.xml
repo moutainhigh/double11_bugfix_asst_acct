@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="favoriteJson" namespace="/favorite" extends="json-default">
+		<!-- 异步收藏商品 -->
+  			<action name="saveFavoriteItemAction"
+			class="com.yuwang.pinju.web.module.favorite.action.FavoriteItemAction"
+			method="addFavoriteItem">
+			 <result type="json">
+		  		 	<param name="root">result</param>
+		  	 </result>
+		    <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		<!-- 异步收藏店铺 -->
+  			<action name="saveFavoriteShopAction"
+			class="com.yuwang.pinju.web.module.favorite.action.FavoriteShopAction"
+			method="addFavoriteShop">
+			 <result name="success" type="json">
+		        <param name="noCache">true</param>
+		        <param name="root">result</param>
+		        <param name="excludeNullProperties">true</param>
+		        <param name="callbackParameter">callback</param>
+      		</result>
+		    <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+	</package>
+
+	<package name="favorite" namespace="/favorite" extends="pinju-login">
+	   <action name="queryFavoriteShopListAction" class="com.yuwang.pinju.web.module.favorite.action.FavoriteShopAction"
+	   method="queryFavoriteShopList">
+	     <result name="favoriteList" type="freemarker">/default/templates/screen/favorite/my_shop_favorite.ftl</result>
+	     <result name="noResult" type="freemarker">/default/templates/screen/favorite/my_shop_favorite.ftl</result>
+	     <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+	   </action>
+	   
+	   <action name="queryFavoriteItemListAction" class="com.yuwang.pinju.web.module.favorite.action.FavoriteItemAction"
+	   method="queryFavoriteItemList">
+	     <result name="favoriteList" type="freemarker">/default/templates/screen/favorite/my_item_favorite.ftl</result>
+	     <result name="noResult" type="freemarker">/default/templates/screen/favorite/my_item_favorite.ftl</result>
+	     <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+	   </action>
+	   
+	   <action name="deleteFavoriteItemAction" class="com.yuwang.pinju.web.module.favorite.action.FavoriteItemAction" method="deleteFavoriteItem">
+	       <result name="success" type="redirect">queryFavoriteItemListAction.htm</result>
+	      <result name="error" type="freemarker">/default/templates/screen/favorite/my_item_favorite.ftl</result>
+	   </action>
+	   
+	   <action name="deleteFavoriteShopAction" class="com.yuwang.pinju.web.module.favorite.action.FavoriteShopAction" method="deleteFavoriteShop">
+	       <result name="success" type="redirect">queryFavoriteShopListAction.htm</result>
+	      <result name="error" type="freemarker">/default/templates/screen/favorite/my_shop_favorite.ftl</result>
+	   </action>
+	    <action name="queryFavoryShopByCategoyAction" class="com.yuwang.pinju.web.module.favorite.action.FavoriteShopAction" method="queryFavoryShopByCategoy">
+	      <result name="favoriteList" type="freemarker">/default/templates/screen/favorite/my_shop_favorite.ftl</result>
+	     <result name="noResult" type="freemarker">/default/templates/screen/favorite/my_shop_favorite.ftl</result>
+	     <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+	   </action>
+	    <action name="queryFavoryItemByCategoyAction" class="com.yuwang.pinju.web.module.favorite.action.FavoriteItemAction" method="queryFavoryItemByCategoy">
+	       <result name="favoriteList" type="freemarker">/default/templates/screen/favorite/my_item_favorite.ftl</result>
+	     <result name="noResult" type="freemarker">/default/templates/screen/favorite/my_item_favorite.ftl</result>
+	     <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+	   </action>
+	</package>
+</struts>

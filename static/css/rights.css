@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+.rights_map{ background:#ffffe0; border:1px solid #f9dfb2; padding-left:12px; clear:both; margin-bottom:10px;line-height:2;}
+.rights_map p{ margin-left:50px;}
+.rights_course{ overflow:hidden; _zoom:1; margin-bottom:10px;}
+.rights_course span{ float:left; width:131px; height:37px; margin-right:13px; background-image:url(http://static.pinju.com/img/goods/rights_title.png); background-repeat:no-repeat;}
+.rights_course span.course1_a{ background-position:-1px 0;}
+.rights_course span.course1_b{ background-position:-151px 0;}
+.rights_course span.course2_a{ background-position:-1px -49px;}
+.rights_course span.course2_b{ background-position:-151px -49px;}
+.rights_course span.course3_a{ background-position:-1px -97px;}
+.rights_course span.course3_b{ background-position:-151px -97px;}
+
+.rights_box,.rights_code_box{ background:#f7f7f7; border:1px solid #dadada;  margin-bottom:10px;}
+.rights_box{padding-bottom:30px;}
+.rights_code_box .tit,.rights_box .tit{ line-height:30px; height:30px;color:#000;}
+.rights_code_box .tit{border-bottom:1px solid #dadada;}
+.rights_box .tit{ border-bottom:2px solid #dadada;}
+.tit .rights_code{ float:left; text-indent:30px;}
+.tit .rights_code span{ color:#0066CC;}
+
+.rights_box .msg_box{ padding:15px 23px 10px;	}
+.msg_box .msg_list{ }
+.msg_list li{ border:1px solid #dadada; margin-bottom:10px; background:#FFF; padding:0 5px; overflow:hidden; _zoom:1; }
+.msg_list li .user_name{ border-bottom:1px dotted #CCC; font-size:14px; line-height:2; font-weight:bold; color:#000;}
+.msg_list li .user_name span{ color:#0066cc;}
+.msg_list li .txt{ padding:5px;clear:both; line-height:1.5; }
+.msg_list li .date{float:right;padding:0 5px 5px; }
+
+.rights_box .refund_status{ padding:20px 25px 0; font-size:14px; font-weight:bold; }
+.rights_box .refund_status span{ color: #0066CC;}
+
+.rights_status{padding:10px 22px 25px; line-height:2;}
+.location_btn{text-decoration: none;  float:left; _display:inline border:none; cursor:pointer; background:url(http://static.pinju.com/img/location_btn.gif) no-repeat; width:147px; height:29px; margin:20px 0 0 25px; color:#FFF; font-weight:bold; font-size:14px; text-align:center; }
+.location_btn_four{text-decoration: none;  float:left; _display:inline border:none; cursor:pointer; background:url(http://static.pinju.com/img/rigths_btn-four.gif) no-repeat; width:103px; height:29px; margin:20px 0 0 25px; color:#FFF; font-weight:bold; font-size:14px; text-align:center; }
+.rigths_btn{border:none; cursor:pointer; background:url(http://static.pinju.com/img/location_btn.gif) no-repeat; width:147px; height:29px; margin:20px 0 0 25px; color:#FFF; font-weight:bold; font-size:14px; text-align:center; }
+.rigths_btn-four{border:none; cursor:pointer; background:url(http://static.pinju.com/img/rigths_btn-four.gif) no-repeat; width:103px; height:29px; margin:20px 0 0 25px; color:#FFF; font-weight:bold; font-size:14px; text-align:center; }
+.tit .txt{  font-size:14px; font-weight:bold;padding-left:13px; float:left;  border-bottom:2px solid #BE0000; _position:relative; _bottom:-2px;}
+.rights_goods{}
+.rights_goods_tab{width:100%; color:#000; line-height:2;}
+.rights_goods_tab th{ font-weight:normal;}
+.rights_goods_tab .bla1{ width:40%; }
+.rights_goods_tab .bla2{width:15%;}
+.rights_goods_tab .bla3{width:15%;}
+.rights_goods_tab .bla4{width:15%;}
+.rights_goods_tab .bla5{width:15%;}
+.rights_box .rights_app li{ font-size:14px; line-height:1.2;}
+.rights_app .picbox a{ border:1px solid #dadada; margin-right:30px; float:left;}
+.rights_app .picbox a img{ vertical-align:middle;}
+.rights_goods_tab td,.rights_goods_tab th{ border-bottom:1px solid #dadada; text-align:center; background:#FFF;}
+.rights_goods_tab .pic_box{ margin:10px; border:1px solid #dadada; float:left; display:inline;}
+.rights_goods_tab .pic_box img{ vertical-align:middle;}
+.rights_goods_tab .links{ margin:10px 0 0 110px ; width:150px;  display:block;}
+.rights_goods_tab .size{width:150px;display:block; margin-left:110px;}
+.rights_goods_tab .goods{text-align:left; overflow:hidden; _zoom:1;}
+.rights_list{padding-top:10px;overflow:hidden;_zoom:1;}
+.rights_list li{ float:left; width:100%; line-height:2; margin-bottom:10px;	}
+.rights_list li span{ float:left; width:150px; text-align:right;}
+.rights_list li div{ float:left;  width:540px; padding-left:10px; text-align: left;}
+.rights_list li .txt_m50{ margin:0 50px 0 5px;font-weight: bold; line-height:3;}
+
+
+
+.add_upload_box p{ margin-bottom:5px; }
+.rights_mse{ width:540px; height:164px;}
+.rights_list input{  margin-right:10px; }
+
+.mr10{margin-right:10px;}
+.ml20{ margin-left:20px;}
+.ml10{ margin-left:10px;}
+.blue{color:#0066cc;}
+.gray{color:#999;}
+.red{color:#be0000;}
+.bd{ font-weight: bold;}

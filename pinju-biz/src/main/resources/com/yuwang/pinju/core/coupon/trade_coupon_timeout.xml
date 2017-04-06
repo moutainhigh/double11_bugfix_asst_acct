@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trade_coupon_timeout">
+
+	<typeAlias alias="TradeCoupon" type="com.yuwang.pinju.domain.coupon.TradeCouponDO" />
+	
+	<update id="invalidateTimeoutCouponBatch" >
+		<![CDATA[
+				UPDATE 
+					trade_coupon_batch 
+				SET
+					batch_status = 30,
+					coupon_modify_date = sysdate,
+					gmt_modify = sysdate
+				WHERE
+					coupon_invalid_date < sysdate AND 
+					batch_status = 10
+					]]>
+	</update>
+	
+	<update id="invalidateTimeoutCoupon" >
+		<![CDATA[
+				UPDATE 
+					trade_coupon
+				SET
+					coupon_status = 20,
+					coupon_modify_date = sysdate,
+					gmt_modify = sysdate
+				WHERE
+					invalid_date < sysdate AND
+					coupon_status = 10 AND
+					USE_STATUS = 10
+					]]>
+	</update>
+	
+</sqlMap>
+

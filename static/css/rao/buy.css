@@ -1,0 +1,86 @@
+﻿/* buy nav */
+.buy-nav { margin-top: 10px; text-indent: 12px; }
+.buy-nav a { color:#39F; }
+.buy-nav a.help { background:url(http://static.pinju.com/images/help_icon_03.gif) no-repeat; width:70px; height:19px; float:right; cursor:help;}
+/* order step */
+.buy-title{ width:1000px; float:left; margin:10px 0;}
+.buy-title li{ background:transparent url(http://static.pinju.com/images/title.gif) 0 0 no-repeat; color:#666; float:left; line-height:29px; font-size: 14px; font-weight: bold; height:35px; text-align:center; width:250px;}
+.buy-title .step1 { background-position:0 0; }
+.buy-title .step2 { background-position:0 -50px; }
+.buy-title .step3 { background-position:0 -100px; }
+.buy-title .step1c { background-position:0 -150px; }
+.buy-title .step2c { background-position:0 -200px; }
+.buy-title .step3c { background-position:0 -250px; }
+.buy-title .step1c, .buy-title .step2c, .buy-title .step3c { color:#fff; }
+
+/* order */
+.buy{width:1000px; margin:0 auto;}
+.buy-left{ width:218px; float:left; border-width:2px 1px 1px; border-style:solid;border-color:#D72426 #d4d4d4 #d4d4d4;}
+.buy-left h3{ background:#f5f5f5; border-bottom:1px solid #d4d4d4; line-height:29px; padding-left:10px;}
+.buy-left .goods{ text-align:center; margin:10px 0; float:left;}
+.buy-left .goods li{ line-height:19px; margin:8px 0; clear:both; width:200px;}
+.buy-left .goods li .left{ width:80px; text-align:right; float:left; }
+
+.right{ width:120px; text-align:left; float:left;}
+.buy-right{ width:770px; margin-left:10px;float:left;color:#666;line-height:31px; display: inline; overflow:hidden; }
+.buy-right .hong{ margin:0 5px;}
+.buy-right h3{ color:#333; float:left; width:98%;}
+.buy-right .address{ margin:5px 0 10px 0; float:left; width:100%;}
+.buy-right .address li{ float:left; width:90%;line-height:29px;padding-left:15px; }
+.buy-right .address li.nopadding{ padding:0;}
+.buy-right .address li .point{
+  background: url("http://static.pinju.com/img/icon-tipsdefault.png") no-repeat scroll 5px 5px #FFFFE0;
+    border: 1px solid #F9DFB2;
+    clear: both;
+    color: #666666;
+    height: 18px;
+    line-height: 18px;
+    margin: 0 0 10px;
+    overflow: hidden;
+    padding: 3px 8px 3px 25px;
+	}
+.buy-right .address li .left{ width:80px; text-align:right; float:left; }
+.buy-right .address .ad-left{ width:80px; text-align:left; float:left; }
+.buy-right .address li input{ vertical-align:middle;}
+.buy-right .address li.here{ background:#FFFFE0;border: 1px solid #F9DFB2; float:left;line-height:29px;width:90%;}
+
+.news{ margin:5px 0 10px 10px; float:left;}
+.news li{ float:left; width:100%; margin:1px 0;}
+.news li .left{ width:80px; text-align:right; float:left; }
+.news ul{ float:left; width:80%;}
+.submit{ margin:5px 0 10px 15px; float:left; width:100%;}
+.submit li{ float:left; width:100%;_margin:2px 0;}
+.submit li .point{   
+	background: url("http://static.pinju.com/img/icon-tipsdefault.png") no-repeat scroll 5px 5px #FFFFE0;
+    border: 1px solid #F9DFB2;
+    clear: both;
+    color: #666666;
+	display:inline-block;
+    height: 18px;
+    line-height: 18px;
+    margin: 10px 0;
+    overflow: hidden;
+    padding: 3px 8px 3px 25px;}
+.submit .cheng{ font-size:18px; margin:0 5px;}
+.float-left{ float:left; padding-left:15px;}
+.float-left select{ margin:0 5px;}
+.assure{height: 20px;margin: 5px 400px 10px 350px;position: relative;z-index: 100;line-height: 24px; text-align:left;}
+.assure .pic{background: url(http://static.pinju.com/img/goods/pdicon.png) no-repeat scroll right -303px;height: 20px;left: -9px;position: absolute;top: 0;width: 20px;z-index: 100;}
+.assure .txt{ background-color: #FFFFE1;
+    border: 1px solid #FADFB2;
+    color: #A86500;
+    font-size: 12px;
+    font-weight: normal;
+    height: auto;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 0 0 16px;
+    width: auto;}
+
+/*地址块*/
+.buy-right .address .fill{ background:#f8f8f8; border:1px solid #d4d4d4; margin-left:10px; float:left; padding:5px 0;}
+.buy-right .address .fill select{ margin:0 5px;}
+.buy-right .address .fill input{ margin:0 5px;}
+.buy-right .address .fill textarea{ width:360px; height:100px; overflow-x:hidden;overflow-y:auto;}
+.buy-right .address .fill .hui{ font-size:11px;}
+.buy-right .address .fill .mini{width:50px;}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_security_mobile_his">
+
+	<typeAlias alias="MemberSecurityMobileHis" type="com.yuwang.pinju.domain.member.security.MemberSecurityMobileHisDO" />
+
+	<resultMap id="MemberSecurityMobileHisResult" class="MemberSecurityMobileHis">
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="loginName" column="LOGIN_NAME" />
+		<result property="mobile" column="MOBILE" />
+		<result property="messageId" column="MESSAGE_ID" />
+		<result property="validationIp" column="VALIDATION_IP" />
+		<result property="status" column="STATUS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<insert id="addSecurityMobileHis" parameterClass="MemberSecurityMobileHis">
+		<![CDATA[INSERT INTO MEMBER_SECURITY_MOBILE_HIS (MEMBER_ID,LOGIN_NAME,MOBILE,MESSAGE_ID,VALIDATION_IP,STATUS,GMT_CREATE,GMT_MODIFIED) VALUES (#memberId#,#loginName#,#mobile#,#messageId#,#validationIp#,#status#,#gmtCreate#,#gmtModified#)]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+      <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+	</insert>
+</sqlMap>
+

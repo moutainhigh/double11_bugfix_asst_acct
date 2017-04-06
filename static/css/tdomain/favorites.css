@@ -1,0 +1,119 @@
+﻿.domain-map {
+    background: #FFFFE0;
+    border: 1px solid #F9DFB2;
+    clear: both;
+    line-height: 25px;
+    margin-bottom: 8px;
+    padding-left: 12px;
+}
+.domain-map span, .domain-map a {
+    color: #333;
+}
+.domain-map .current {
+    color: #c00000;
+	font-weight: 700;
+}
+.favorites-tabs {border-bottom: 1px solid #d4d4d4; margin-bottom: 10px;}
+.favorites-tabs li {width: 102px; height: 23px; line-height: 23px; padding-top: 2px; text-align: center; color: #666; position: relative; margin-bottom: -1px; border: 1px solid #d4d4d4; background: #f6f6f6; float: left; margin-right: 6px; cursor: pointer;}
+.favorites-tabs li.current {padding-top: 1px; color: black; font-weight: 700; border-top: 2px solid #d72426; border-bottom: 1px solid white; background: white;}
+.favorites-tabs li a {color: #666;}
+.favorites-tabs li.current a {color: black;}
+
+.favorites-category {border: 1px solid #d4d4d4; margin-bottom: 10px;}
+.favorites-category .title {height: 28px; line-height: 28px; padding: 2px 17px 0; font-weight: 700; background: #f6f6f6; border-bottom: 1px solid #d4d4d4;}
+.favorites-category .list-box {padding: 7px 17px 5px;}
+.favorites-category .nameSpan {width: 100px; float: left; color: #666;  display: none; padding: 5px 0;}
+.favorites-category .nameLink {width: 100px; float: left; display: none; padding: 5px 0;}
+.favorites-category .list-box .show {display: block;}
+.favorites-category .list {float: left; color: #666; width: 680px;}
+.favorites-category .list li {float: left; width: 170px; padding: 5px 0;}
+
+.favorites-checkall {float: left; width: 828px; padding-top: 7px;}
+.favorites-checkall label {float: left; margin-left: 5px;}
+.favorites-checkall input {width: 13px; height: 13px; vertical-align: -2px; *vertical-align: 0; margin-right: 6px;}
+.favorites-checkall .left {float: left; margin-top: 5px;}
+.favorites-checkall .right {float: right;}
+.favorites-checkall .skipto {margin: 0 0 0 10px;}
+.favorites-checkall .pagination {margin: 0;}
+.favoritesGoodsDel, .favoritesShopDel {float: left; margin-left: 20px;}
+*+html .favoritesGoodsDel, *+html .favoritesShopDel {margin-top: 2px;}
+
+.favorites-titles {float: left; width: 828px; height: 29px; line-height: 29px; border-top: 1px solid #d4d4d4; margin-top: 8px; background: #f6f6f6;}
+.favorites-titles li {float: left; width: 120px; text-align: center; color: black;}
+.favorites-titles li.long {width: 342px;}
+
+.favorites-list {float: left; width: 828px;}
+.favorites-list li {float: left; width: 828px; padding: 20px 0; border-bottom: 1px solid #d4d4d4;}
+.favorites-list .code {float: left; width: 828px; height: 17px; padding-top: 3px; border-top: 1px solid #d4d4d4; background: #e4f7e0;}
+.favorites-list .code input {float: left; height: 13px; margin: 0 8px -4px 15px; *margin: 0 6px -2px 11px;}
+.favorites-list .code span {float: left;}
+.favorites-list .chk {float: left; width: 13px; height: 13px; margin: 37px 10px 0 5px;}
+.favorites-list .list {float: left; padding: 0;}
+.favorites-list .list dt {float: left; width: 300px; margin-right: 15px;}
+.favorites-list .list dt .img {float: left; width: 86px; height: 86px; border: 1px solid #d4d4d4; margin-right: 10px;}
+.favorites-list .list dt .img a {width: 86px; height: 86px; display: table-cell; vertical-align: middle; text-align: center; *display: block; *font-size: 72px;}
+.favorites-list .list dt .img img {vertical-align: middle;}
+.favorites-list .list dt .text {width: 180px; float: left;}
+.favorites-list .list dt .shop {display: block; margin-top: 5px; color: #666;}
+.favorites-list .list dt .num {display: block; margin-top: 5px; color: #666;}
+.favorites-list .list dt .num em {color: #be0000;}
+.favorites-list .list dt .shopName {color: #666; line-height: 19px;}
+.favorites-list .list dt .shopType {color: #666; display: block; margin-top: 12px;}
+.favorites-list .list dt .shopType img {vertical-align: -1px;}
+.favorites-list .list dd {float: left; width: 120px; text-align: center;}
+.favorites-list .list dd .time {color: #666;}
+.favorites-list .list dd .price {color: #be0000; font-weight: 700;}
+.favorites-list .list dd .renqi {font-weight: 700; color: #333;}
+.favorites-list .list dd .add {width: 79px; height: 23px; float: right; margin-right: 20px; background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat 0 0;}
+.favorites-list .list dd .goodsDel {margin: 10px 20px 0 10px; float: right; color: #666;}
+.favorites-list .list dd .shopDel {margin: 0 50px 0 0; float: right; color: #666;}
+.favorites-list .list dd .buy {float: right; margin-top: 10px;}
+/* pagination */
+.skipto { float:right; margin:10px 0 10px 10px; }
+.skipto .pagenum { width:36px; border:1px solid #999; padding:2px; }
+.skipto button {background: url(http://static.pinju.com/img/mbuttons.png) no-repeat left top; border: 0 none; margin: 0 10px 0 0;}
+.skipto .btn-sgray {background-position:0 0;height:23px;width: 69px;}
+.skipto .btn-sorange {background-position:0 -23px;color:#fff;height:23px;width: 69px;}
+.skipto .btn-lred {background-position:-69px 0;color:#fff;font-size:14px;font-weight:bold;height:29px;width: 103px;}
+.skipto .btn-lorange {background-position:-69px -29px;color:#fff;font-size:14px;font-weight:bold;height:29px;width: 103px;}
+.pagination {
+    float: right;
+	margin:10px 0;
+}
+.pagination a {
+    text-decoration: none;
+	border: solid 1px #999;
+	color: #666;
+}
+.pagination a, .pagination span {
+    display: block;
+    float: left;
+    padding: 3px 5px;
+    margin-right: 5px;
+	margin-bottom: 5px;
+}
+.pagination .current {
+    background-color: #d72426;
+    color: #fff;
+	border: solid 1px #dadada;
+}
+.pagination .prev {
+	background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat left -345px;
+	padding-left:12px;
+}
+
+.pagination .next {
+	background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat right -395px;
+	padding-right:12px;
+}
+.pagination .current.prev, .pagination .current.next {
+	background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat left top;
+	color:#999;
+	border-color:#d4d4d4;
+}
+.pagination .current.prev {
+	background-position:left -375px;
+}
+.pagination .current.next {
+	background-position:right -425px;
+}

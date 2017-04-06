@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+/*注册页公共*/
+.login_main { width:1000px; margin:0 auto 15px; }
+.pj_logo { display:block; width:321px; height:57px; margin:0 0 27px 35px; margin-left:35px; }
+.login_box { margin-left:25px; width:945px; padding:1px; border:1px solid #c4c4c4; position:relative; }
+.user_tit { background:url(http://static.pinju.com/images/user_bg_13.gif) repeat-x; height:38px; padding:0 0 1px 29px; }
+.user_txt { font-weight:bold; font-size:14px; color:#222; line-height:38px; }
+.login_b { background:url(http://static.pinju.com/images/reg_bg_03.gif) repeat-x; height:472px; }
+/*content*/
+.cg_box{ padding:88px 0 0 217px;}
+.cg_pic{ background:url(http://static.pinju.com/images/cg_pic_12.gif) no-repeat; width:520px; padding:13px 0 0 68px; }
+.p1{ font-size:14px; font-weight:bold; color:#000000; margin-bottom:17px;}
+.p2{margin-bottom:43px;}
+.p1,.cg_but{font-size:14px; font-weight:bold;}
+.cg_but{ float:left; background:url(http://static.pinju.com/images/cg_but_26.gif) no-repeat; margin-right:10px; width:147px; height:23px; text-align:center; color:#FFF; padding-top:9px }
+.cg_but:hover{ text-decoration:none;}
+/*阴影*/
+.shadow1, .shadow2 { background:#e5e5e5; }
+.shadow1, .shadow2, .shadow3 { position:absolute; }
+.shadow1 { width:3px; height:515px; top:3px; right:-4px; _right:-5px; }
+.shadow2 { width:946px; height:4px; bottom:-5px; right:-1px; _overflow:hidden; _right:-2px; }
+.shadow3 { width:988px; height:5px; bottom:-11px; left:-20px; }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+   	<bean id="logisticsTemplateManager" class="com.yuwang.pinju.core.logistics.manager.impl.LogisticsTemplateManagerImpl" />
+   	<bean id="logisticsCarriageManager" class="com.yuwang.pinju.core.logistics.manager.impl.LogisticsCarriageManagerImpl" />
+	<bean id="logisticsAreaCarriageManager" class="com.yuwang.pinju.core.logistics.manager.impl.LogisticsAreaCarriageManagerImpl" />
+	<bean id="logisticsCityIpManager" class="com.yuwang.pinju.core.logistics.manager.impl.LogisticsCityIpImpl"></bean>
+	
+	
+	<bean id="logisticsSellerDeliveryManager" class="com.yuwang.pinju.core.logistics.manager.impl.LogisticsSellerDeliveryManagerImpl"></bean>
+	
+	<bean id="logisticsCorpManager" class="com.yuwang.pinju.core.logistics.manager.impl.LogisticsCorpManagerImpl"></bean>
+	
+</beans>

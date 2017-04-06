@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="expires" content="0" />
+		<meta name="robots" content="all" />
+		<meta name="googlebot" content="all" />
+		<meta name="baiduspider" content="all" />
+		<meta name="keywords" content="页面关键字" />
+		<meta name="description" content="页面描述" />
+		<title>模板页面</title>
+		<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+		<link href="http://static.pinju.com/css/common.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="http://static.pinju.com/css/goods.css" rel="stylesheet" type="text/css" media="screen" />
+		<style type="text/css">
+			html {
+				background: #FFF;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- START <MODULE-NAME> -->
+		<div class="top-bar">
+			<div>
+				您好，<a href="index-back.html">Blabala123</a>品聚欢迎您！
+			</div>
+		</div>
+		<div class="wrap" id="HeaderSub">
+			<ul class="logo">
+				<a href="#"><img src="img/logo.png"></a>
+			</ul>
+			<ul class="option">
+				<li>
+					<a href="#"><img src="img/snda.jpg"></a>
+				</li>
+				<li>
+					敬请关注品聚网官方微博：<a href="#"><img src="img/wwb01.png"></a><a href="#"><img src="img/wwb02.png"></a><a href="#"><img src="img/wwb03.png"></a>
+				</li>
+			</ul>
+		</div><!-- END --><!-- START <选择商品类目> -->
+		<div class="wrap" id="sale-header"></div>
+		<!-- END --><!-- START <选择商品类目> -->
+		<div class="wrap-border" id="wrap-gray">
+			<div class="select-button">
+				<input name="" type="button" class="left"></div>
+			<div class="select-frame" id="CategorySelecter">
+				<div class="select-box" id="CategoryWrapper"></div>
+			</div>
+			<div class="select-button">
+				<input name="" type="button" class="right" />
+			</div>
+		</div>
+		<!-- END --><!-- START <选择商品类目> -->
+		<div class="wrap">
+			<ul class="class-count">
+				<li>
+					<strong>您当前的选择是：</strong>
+				</li>
+				<li id="CategoryResult"></li>
+			</ul>
+		</div>
+		<!-- END --><!-- START <发布主按钮> -->
+		<div class="wrap">
+			<ul class="button-main">
+				<form id="startItemReleasedFrom" action="#" method="get" onclick="return doSubmit();">
+					<input type="hidden" id="categoryPath" name="categoryPath" value=""/>
+					<input type="hidden" id="categoryId" name="categoryId" value=""/>
+					<input type="hidden" id="categoryTitle" name="categoryTitle" value=""/>
+					<input type="hidden" id="Submitable" name="Submitable" value="no" />
+					<input name="" type="button" value="好了，发布商品" class="button" />
+				</form>
+			</ul>
+		</div>
+		<!-- END -->
+		<textarea class="dom-tpl" rows="0" cols="0" id="CategoriesTpl">
+			<ul class="categories" level="">
+				<li class="top-search">
+					<input name="" type="text" class="t"></li>
+				<li class="top-search-bg"></li>
+			</ul>
+		</textarea>
+		<textarea class="dom-tpl" rows="0" cols="0" id="CategoryTpl">
+			<li>
+				<a id="" href="##" spell="" isleaf="">商品类目</a>
+			</li>
+		</textarea>
+		<textarea class="dom-tpl" rows="0" cols="0" id="CategoryResultTpl">
+			<span>&gt;</span>
+			<a href="#">类目类目</a>
+		</textarea>
+	</body>
+	<!--[if lt IE 9]><script src="http://static.pinju.com/js/html5.js"></script><![endif]-->
+	<script type="text/javascript" src="http://static.pinju.com/js/jq.js"></script>
+	<script type="text/javascript" src="http://static.pinju.com/js/jqui.js"></script>
+	<script type="text/javascript" src="http://static.pinju.com/js/sell.js"></script>
+	<script type="text/javascript">
+		function doSubmit() {
+			if ($('#Submitable').val() == 'yes') return true;
+			alert('请选择子类目');
+			return false;
+		}
+		
+		var cs = new CategorySelecter();
+		cs.genChildCategory(0);
+	</script>
+</html>

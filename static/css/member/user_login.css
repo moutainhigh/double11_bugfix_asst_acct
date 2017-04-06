@@ -1,0 +1,167 @@
+@charset "utf-8";
+/* CSS Document */
+.tips-browser { background-color:#fffad2; margin:0 auto 2px; padding:5px 8px; width:984px; }
+.tips-browser p { color:#ae6902; }
+.login-main { margin:0 auto 25px; border:1px solid #f1f1f1; width:998px; height:498px; background:url(http://static.pinju.com/img/login_bg.gif); }
+.login-left-module { float:left; width:510px; height:498px; }
+.login-left-module .login-left-point { width:417px; height:391px; background:url(http://static.pinju.com/img/login_ui.png) no-repeat; float:left; margin:50px 0 0 50px; _display:inline; overflow:hidden; }
+.login-left-module .login-left-point h2 { margin:55px 0 17px 65px; font-size:14px; color:#bd0100; font-weight:bold; }
+.login-left-module .login-left-point .point-list { margin:0 0 0 28px; width:365px; color:#666666; overflow:hidden; _zoom:1; font-size:14px; }
+.login-left-module .login-left-point .point-list li { padding-left:15px; margin-bottom:10px; line-height:1.4; }
+.login-left-module .login-left-point .point-list li h3 { font-weight:bold; }
+.login-left-module .login-left-point .point-list li h3 span { float:left; margin-left:-12px; }
+.login-right-module { margin:50px 50px 0 0; _display:inline; width:417px; height:391px; background:url(http://static.pinju.com/img/login_ui.png) -417px top no-repeat; float:right; position:relative; }
+.login-right-module .user-d { margin:60px 0 20px 60px; color:#2c2c2c; font-size:14px; font-weight:bold; }
+.login-right-module .point-box { min-height:12px; _height:12px; margin-bottom:10px; }
+.login-right-module .error { background: url("http://static.pinju.com/images/pot_03.gif") no-repeat scroll 5px 5px #FFE5E6; border: 1px solid #FF999A; color: #BE0000; line-height: 18px; padding: 3px 0 3px 25px; }
+.login-right-module .point-box { }
+.login-right-module .login-module { width:320px; height:220px; margin:0 0 0px 50px; }
+.login-right-module .login-list { width:250px; font-size:14px; margin-left:35px; }
+.login-right-module .login-list li { position:relative; margin-bottom:16px; }
+.login-right-module .login-list li .user_point { position:absolute; color:#d4d4d4; top:1px; left:63px; display:block; width:188px; }
+.login-right-module .login-list li span { line-height:22px; }
+.login-right-module .login-list li input { border:1px solid #d4d4d4; width:178px; padding:0 5px; height:22px; font-size:12px; line-height:22px; overflow:hidden; vertical-align:middle; }
+.login-right-module .login-list li.code { min-height:12px; _height:12px; margin-top:-15px; }
+.login-right-module .login-list li.code a { font-size:12px; }
+.login-right-module .login-list li.code input { width:50px; }
+.login-right-module .login-list li.code a.c-img { /*border:1px solid #d4d4d4;*/ display:inline-block; margin:0 5px; position:relative; top:10px; outline:none; }
+.login-right-module .login-list li.code a.c-img img { display:block; }
+.login-right-module .login-list li.loadding { background:url(http://static.pinju.com/img/ajax-loader.gif) no-repeat 30px 5px; }
+.login-right-module .login-list li.loadding button { background:url(http://static.pinju.com/img/login_ui.png?t=20111124) -143px -390px no-repeat; cursor:not-allowed; }
+.login-right-module .login-list .lBtn { font-size:12px; padding-left:55px; }
+.login-right-module .login-list .lBtn button { line-height:24px; overflow:hidden; width:74px; height:24px; margin:0 13px 0 0; background:url(http://static.pinju.com/img/login_ui.png) 0 -390px no-repeat; border:none; color:#FFF; }
+.login-right-module .register-box { padding:0 0 0 85px; color:#bcbcbc; margin-bottom:10px; line-height:1.4; }
+.login-right-module .register-box .register-btn { background:url(http://static.pinju.com/img/login_ui.png) -74px -391px no-repeat; width:69px; padding-top:4px; height:19px; text-decoration:none; display:inline-block; text-align:center; }
+.login-left-module .login-left-ad { position:relative; }
+.login-left-module .login-left-ad a { outline:none; }
+.login-left-module .login-left-ad div { position:absolute; background:#f1f1f1; }
+.login-left-module .login-left-ad div img { filter: alpha(opacity=30); opacity:0.3; }
+.login-left-module .login-left-ad div.b1 { width:95px; height:95px; }
+.login-left-module .login-left-ad div.b2 { width:196px; height:196px; }
+.login-left-module .login-left-ad div.b3 { width:97px; height:196px; }
+.login-left-module .login-left-ad div.b4 { width:195px; height:95px; }
+.login-left-module .login-left-ad .w-logo { background:url(http://static.pinju.com/images/login_adpic/w_logo_11.gif) no-repeat; }
+.login-left-module .login-left-ad div.w-logo-g { background:url(http://static.pinju.com/images/login_adpic/w-logo-g.gif) no-repeat; }
+.placeholder { color:#aaa; }
+.hz-login { color:#BCBCBC; padding-left:50px; }
+.hz-login a { background:url(http://static.pinju.com/images/sina_icon_03.gif) no-repeat; display:inline-block; padding-left:20px; height:20px; line-height:1.6; color:#0259a0; text-decoration:none; }
+/* ¼ҳ end*/
+
+.crea-name { padding:12px 12px 50px; }
+.crea-name .tit { background:#f6f6f6; border-bottom:2px solid #d4d4d4; font-size:14px; font-weight:bold; margin-bottom:12px; }
+.crea-name .tit span { border-bottom:2px solid #d72427; position:relative; z-index:5; top:2px; display:inline-block; line-height:2; padding:0 20px; }
+.crea-name .txt { padding-left:40px; font-size:14px; }
+.n-box { padding:30px 0 0 0; margin-bottom:40px; }
+.n-box .uesr-name { font-size:14px; margin-bottom:6px;padding:0 0 0 200px; height:33px; overflow:hidden; }
+.n-box .uesr-name span { display:inline-block; width:100px;text-align:right;  }
+.n-box .uesr-name em.error { display:inline-block;   background: url("http://static.pinju.com/img/icon-tipserror.png") no-repeat scroll 5px 4px #FFE5E6;border: 1px solid #FF999A;color: #666666;line-height: 17px;  padding: 2px 8px 2px 25px; vertical-align:top; font-weight:500; font-size:12px;_position:relative; _top:2px; }
+.n-box .uesr-name .point { display:inline-block; color: #666666;line-height: 17px;    vertical-align:top; font-weight:500; font-size:12px;_position:relative; _top:2px;
+background-color: #FFFFE0;border: 1px solid #F9DFB2;color: #666666;margin: 0 0 10px;padding: 2px 8px;}
+.n-box .uesr-name input { border:1px solid #d4d4d4; margin:0 10px; height:22px; vertical-align:middle; width:200px; line-height:1.5; padding:0 4px; }
+.n-box .txtp { padding-left:255px;  color:#a5a5a5; width:205px; margin:15px 0 15px 55px ;}
+.crea-name .btn { width:104px; height:30px; display:block; margin:0 auto; border:none; }
+.crea-name .submit { background:url(http://static.pinju.com/images/quer_btn_17.gif) no-repeat; }
+.crea-name .return-login { background:url(http://static.pinju.com/images/return-login_03.gif) no-repeat; }
+.n-box .tipswrap { padding-left:150px; }
+.n-box .tipswrap .content { height:auto; }
+/* ûҳ end*/
+
+.mail-h, .phone-h { border-bottom: 2px solid #DADADA; color: #000000; margin: 0 0 10px; background:#f6f6f6; font-size:14px; }
+.mail-h h1, .phone-h h1 { border-bottom: 2px solid #D72426; bottom: -2px; float: left; font-weight: bold; padding: 5px 20px; position: relative; }
+.row .y-point { border: 1px solid #F9DFB2; clear: both; color: #666666; line-height: 1.6; margin: 0 0 10px; padding: 5px 10px; background: url("http://static.pinju.com/img/icon-tipsdefault.png") no-repeat scroll 5px 8px #FFFFE0; padding-left:25px; margin-bottom:20px; }
+.row .tips-text { background: url("http://static.pinju.com/img/icon-tipsdefault.png") no-repeat scroll 5px 8px #FFFFE0; padding-left:25px; margin-bottom:20px; }
+.email-m { background:#f3f3f3; border:1px solid #dddddd; color:#333333; padding:4px 0 4px 15px; line-height:2; }
+.email-m .btn { background:url(http://static.pinju.com/images/o_95_btn_03.gif) no-repeat; width:95px; height:23px; text-align:center; color:#FFF; border:none; }
+.email-m .txt { color:#666666; }
+.email-m .e-row { margin:15px 0 20px 80px; font-size:14px; }
+.email-m input { height:24px; border:1px solid #dadada; padding:0 4px; margin-right:10px; width:190px; }
+.email-m .txt { font-size:12px; color:#666666; }
+.email-m .btn:hover { text-decoration:none; }
+.email-m .email { margin-right:15px; }
+.email-m .send-em { margin:0 0 15px 200px; }
+
+.ebind, .pBind { padding:25px 0 0 190px; }
+.ebind .icon, .pBind .icon { background-image: url("http://static.pinju.com/img/icons.gif"); background-repeat:no-repeat; float: left; height: 66px; width: 70px; }
+.list .point { background: url("http://static.pinju.com/img/icon-tipserror.png") no-repeat scroll 5px 5px #FFE5E6; border: 1px solid #FF999A; clear: both; color: #666666; height: 18px; line-height: 18px; margin: 0 0 10px; padding: 3px 8px 3px 25px; display:inline-block; font-weight:normal; }
+.ebind .suc, .pBind .suc { background-position:0 -200px; }
+.ebind .fail, .pBind .fail { background-position:0 0; }
+.ebind .reMes, .pBind .reMes { float:left; padding-top:5px; color:#333333; font-size:14px; line-height:2; }
+.ebind .reMes div, .pBind .reMes div { font-weight:bold; margin-bottom:15px; }
+.phone-m .list { background:#f3f3f3; border:1px solid #dddddd; color:#333333; padding:12px; line-height:2; }
+.phone-m .list li { overflow:hidden; _zoom:1; line-height:2.5; font-size:12px; font-family: "", Arial }
+.phone-m .list li input { border:1px solid #dadada; width:190px; padding:0 4px; height:22px; margin-right:5px; vertical-align:middle;line-height:1.8;  }
+.phone-m .list li em { color:#666666;  }
+.phone-m .list li span { font-size:14px; float:left; width:90px; text-align:right; }
+.phone-m .list li button.gbtn { background:url("http://static.pinju.com/images/g-196-btn_03.gif") no-repeat; cursor:not-allowed;}
+.phone-m .list li .btn { font-family:""; width:196px; height:26px; display:inline-block; border:none; background:url("http://static.pinju.com/images/p_196_btn.gif") no-repeat; vertical-align:middle; color:#FFF; text-align:center; }
+.phone-m .list li .btn:hover { text-decoration:none; }
+.n-btn { background:url("http://static.pinju.com/img/r-w103-btn_10.png") no-repeat; width:103px; height:29px; border:none; display:block; margin:30px auto 0; color:#FFF; text-align:center; font-size:14px; font-weight:bold; line-height:2; }
+.n-btn:hover { text-decoration:none; }
+/* mail&phone bind end*/
+.getp-h { height:48px; border-bottom:2px solid #d4d4d4; }
+.getp-h .pic { width:175px; height:46px; float:left; background:url(http://static.pinju.com/images/get_password_03.gif) no-repeat 11px 17px; border-bottom:2px solid #d82427; position:relative; bottom:-2px; }
+.getp-body { border:1px solid #ededed; border-top:none; zoom:1; padding:15px 0 30px 0; }
+.g-point{background: url("http://static.pinju.com/img/icon-tipsdefault.png") no-repeat scroll 5px 8px #FFFFE0;border: 1px solid #F9DFB2;clear: both;color: #666666;line-height: 1.6;margin: 0 0 20px;padding: 5px 10px 5px 25px;}
+.getp-body dl { color:#7e7e7e; overflow:hidden; }
+.getp-body dt { color:#7e7e7e; margin:20px 0; padding-left:45px; }
+.getp-body dd { color:#000; font-size:14px; padding:15px 0 15px 35px;}
+.getp-body dd div{padding:10px 0; }
+.getp-body dd .name { width:65px; text-align:right; float:left; vertical-align:middle; line-height:2; margin-right:10px; }
+.getp-body dd .txt-bar { height:26px; border:1px solid #d4d4d4; padding:0 4px; float:left; }
+.getp-body dd .w185 { width:177px; vertical-align:middle; line-height:1.8; }
+.getp-body dd .w85 { width:77px; vertical-align:middle; line-height:1.8;}
+.getp-body dd .err { background: url("http://static.pinju.com/img/icon-tipserror.png") no-repeat scroll 5px 5px #FFE5E6; border: 1px solid #FF999A; color: #666666; display:inline-block; height: 18px; line-height: 18px; padding: 3px 8px 3px 25px; font-size:12px; margin:0 0 0 10px; }
+.getp-body dd .point { background: url("http://static.pinju.com/img/icon-tipsdefault.png") no-repeat scroll 5px 5px #FFFFE0; border: 1px solid #F9DFB2; color: #666666; display:inline-block; height: 18px; line-height: 18px; padding: 3px 8px 3px 25px; font-size:12px; margin:0 0 0 10px; }
+.getp-body dd .name input { margin-right:5px; }
+.getp-body dd .change { margin:0 0 0 10px; }
+.getp-body dd .code { float:left; width:80px; height:30px; border:1px solid #D4D4D4; margin:0 0 0 10px; position:relative; top:-2px; }
+.getp-body .btn { background-position: -69px -29px; color: #FFFFFF; font-size: 14px; font-weight: bold; height: 29px; line-height: 29px; width: 103px; background: url("http://static.pinju.com/img/mbuttons.png") no-repeat -69px -29px; border: 0 none; margin: 15px auto 0; display:block; }
+.phone-get .list { color:#333333; padding:45px; line-height:2; }
+.phone-get .list li { overflow:hidden; _zoom:1; line-height:2.5; font-size:12px; font-family: "", Arial; height:35px;}
+.phone-get .list li input { border:1px solid #dadada; width:190px; padding:0 4px; height:22px; margin-right:5px; vertical-align:middle; line-height:1.8; }
+.phone-get .list li em { color:#666666;  }
+.phone-get .list li span { font-size:14px; float:left; width:90px; text-align:right; }
+.phone-get .list li button.gbtn { background:url("http://static.pinju.com/images/g-196-btn_03.gif") no-repeat; cursor:not-allowed;}
+.phone-get .list li .bton { font-family:""; width:196px; height:26px; display:inline-block; background:url("http://static.pinju.com/images/p_196_btn.gif") no-repeat; vertical-align:middle; color:#FFF; text-align:center;border:none; }
+.phone-get .list li .bton:hover { text-decoration:none; }
+.phone-get .list li .point { background: url("http://static.pinju.com/img/icon-tipsdefault.png") no-repeat scroll 5px 5px #FFFFE0; border: 1px solid #F9DFB2; color: #666666; display: inline-block; font-size: 12px; height: 18px; line-height: 18px; margin: 0 0 0 10px; padding: 3px 8px 3px 25px; font-weight:normal; }
+.phone-get .list li .err { background: url("http://static.pinju.com/img/icon-tipserror.png") no-repeat scroll 5px 5px #FFE5E6; border: 1px solid #FF999A; color: #666666; display: inline-block; font-size: 12px; height: 18px; line-height: 18px; margin: 0 0 0 10px; padding: 3px 8px 3px 25px; font-weight:normal; }
+.getp-body button.btnsty2 { background: url("http://static.pinju.com/img/mbuttons.png") no-repeat -69px 0px; }
+.mailturn-t{padding:85px 0 0 320px; background:url(http://static.pinju.com/images/ok.gif) no-repeat 255px 75px; font-size:14px; font-weight:bold;color:#333333;}
+.mailturn-t .txt1,.mailturn-f .txt1{font-size:14px; font-weight:normal;}
+.mailturn-t .txt2,.mailturn-f .txt2{font-size:12px; color:#a7a7a7;font-weight:normal;}
+.mailturn-t p,.mailturn-f p{ margin:0 0 20px 0;}
+.mailturn-t p span{color:#bd0100;}
+.mailturn-t .charge{ background:url(http://static.pinju.com/images/o-123-btn_11.gif) no-repeat; width:123px; height:32px; border:none; font-weight:bold; color:#FFF; margin:10px 0 0 0;}
+.mailturn-f{padding:45px 0 0 330px; background:url(http://static.pinju.com/images/err_5_03.gif) no-repeat 255px 30px; font-size:14px; font-weight:bold;color:#333333;}
+/* getPassword*/
+.mc-head{padding:0 0 15px 25px; font-family:"", Arial; }
+.mc-head .user-pic{  width:50px; height:50px; float:left; background:#e7e7e7; padding:5px;}
+.mc-head .user-pic span{ background:#fff;width:48px; height:48px;display:table-cell;vertical-align:middle;*display:block; *font-size:48px; text-align:center; border:1px solid #d4d4d4;}
+.mc-head .user-pic img{ vertical-align:middle;}
+.mc-head p{ margin:0 0 0 90px; font-size:14px; line-height:2;}
+.mc-head b{ color:#be0000; font-weight:bold; margin:0 8px;}
+.mc-cont{ background:#f4f4f4;}
+.mc-cont .t{ height:2px; background:#d4d4d4; overflow:hidden; margin:0 0 9px 0;}
+.mc-cont .tred{height:2px; width:105px; background:#d72426; overflow:hidden;}
+.safe-lv{ width:750px; margin:0 0 30px 15px; background:#fdfdfd; padding:48px 0 0 32px; font-size:14px; height:60px;}
+.safe-lv i{ font-style:normal; font-weight:bold; margin:0 20px 0 0;}
+.safe-lv i.lv1{ color:#be0000 }
+.safe-lv i.lv2{ color:#ffae28;}
+.safe-lv i.lv3{ color:#3fbe00;}
+.safe-lv .safe-img{ width:120px; height:15px; background:url(http://static.pinju.com/images/safe-lv.gif) no-repeat; display:inline-block; margin:0 10px 0 0; overflow:hidden;}
+.safe-lv .safe-pic{ background:url(http://static.pinju.com/images/safe-pic_06.gif) no-repeat; width:52px; height:66px; float:right; margin:-25px 34px 0 0;  _display:inline; }
+.safe-lv .safe-img span{width:120px; height:15px; background:url(http://static.pinju.com/images/safe-lv.gif) no-repeat 0 -15px; display:inline-block;}
+.safe-lv .safe-img span.lv0{width:0;}
+.safe-lv .safe-img span.lv1{width:40px;}
+.safe-lv .safe-img span.lv2{width:80px;}
+.safe-lv .safe-img span.lv3{width:120px;}
+.safe-lv em{ color:#c4c4c4; font-size:12px;}
+.safe-lv em.red { color:#be0000; }
+.bind-list{ margin:0 15px; padding:0 0 40px 30px; zoom:1; border-bottom:1px solid #dddddd; font-size:14px; line-height:1.5;}
+.bind-list .name{display:inline-block; width:100px; text-align:right;}
+.bind-list b{ font-weight:normal; margin:0 25px 0 0;}
+.bind-list li{ margin:0 0 10px 0;}
+.txt-box{ margin:0 15px; padding:30px 100px 25px 30px;zoom:1;border-top:1px solid #fff; color:#9a9a9a	;}
+/* memberCenter*/
+.red { color:#be0000; }

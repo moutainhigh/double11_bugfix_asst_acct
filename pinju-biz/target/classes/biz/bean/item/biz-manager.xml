@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+   	<bean id="itemManager" class="com.yuwang.pinju.core.item.manager.impl.ItemManagerImpl" />
+   	<bean id="categoryManager" class="com.yuwang.pinju.core.item.manager.impl.CategoryManagerImpl" />
+   	<bean id="categoryProManager" class="com.yuwang.pinju.core.item.manager.impl.CategoryProManagerImpl" />
+	<bean id="skuManager" class="com.yuwang.pinju.core.item.manager.impl.SkuManagerImpl" />
+	<bean id="itemPicManager" class="com.yuwang.pinju.core.item.manager.impl.ItemPicManagerImpl" />
+	<bean id="categoryCacheManager" class="com.yuwang.pinju.core.item.manager.impl.CategoryCacheManagerImpl" init-method="init" destroy-method="destroy">
+   		<!--<property name="cacheIndexKey" value="${memcache.item.cache.indexkey}"/>
+   		<property name="cateProListIndexKey" value="${memcache.category.property.list.cache.indexkey}"/>
+   		<property name="cateProIndexKey" value="${memcache.category.property.cache.indexkey}"/>
+   		<property name="baseValueIndexKey" value="${memcache.category.basevalue.cache.indexkey}"/>
+   		<property name="spuIndexKey" value="${memcache.category.spu.cache.indexkey}"/>
+   		<property name="memcacheip" value="${memcache.ip}"/>
+   		<property name="memcacheport" value="${memcache.port}"/>-->
+   	</bean>
+	<bean id="brandManager" class="com.yuwang.pinju.core.item.manager.impl.BrandManagerImpl"/>
+    <bean id="categoryMarginManager" class="com.yuwang.pinju.core.item.manager.impl.CategoryMarginManagerImpl"/>
+    <bean id="itemSalesStatManager" class="com.yuwang.pinju.core.item.manager.impl.ItemSalesStatManagerImpl"/>
+    <bean id="itemSnapshotManager" class="com.yuwang.pinju.core.item.manager.impl.ItemSnapshotManagerImpl"/>
+    <bean id="customProValueManager" class="com.yuwang.pinju.core.item.manager.impl.CustomProValueManagerImpl"/>
+</beans>

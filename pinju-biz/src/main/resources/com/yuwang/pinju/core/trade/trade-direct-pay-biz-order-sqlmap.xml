@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeDirectPayBizOrder">
+
+	<typeAlias alias="DirectOrderDO" type="com.yuwang.pinju.domain.trade.DirectOrderDO" />
+
+	<resultMap id="directOrderMap" class="DirectOrderDO" >
+		<result property="id" column="ID" />
+		<result property="payOrderId" column="PAY_ORDER_ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="orderState" column="ORDER_STATE" />
+		<result property="outPayId" column="OUT_PAY_ID" />
+		<result property="orderAmount" column="ORDER_AMOUNT" />
+		<result property="bizType" column="BIZ_TYPE" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="itemTitle" column="ITEM_TITLE" />
+		<result property="itemPrice" column="ITEM_PRICE" />
+		<result property="buyAmount" column="BUY_AMOUNT" />
+		<result property="buyIp" column="BUY_IP" />
+		<result property="endTime" column="END_TIME" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+	<sql id="directOrderSql">
+    	V.ID,
+		V.PAY_ORDER_ID,
+		V.BUYER_ID,
+		V.BUYER_NICK,
+		V.SELLER_ID,
+		V.SELLER_NICK,
+		V.ORDER_STATE,
+		V.OUT_PAY_ID,
+		V.ORDER_AMOUNT,
+		V.BIZ_TYPE,
+		V.ITEM_ID,
+		V.ITEM_TITLE,
+		V.ITEM_PRICE,
+		V.BUY_AMOUNT,
+		V.BUY_IP,
+		V.END_TIME,
+        V.GMT_CREATE,
+        V.GMT_MODIFIED
+    </sql>    
+    
+	<select id="getDirectOrderDOById"  parameterClass="java.lang.Long" resultMap="directOrderMap">
+        SELECT <include refid="directOrderSql"/> FROM TRADE_DIRECT_PAY_BIZ_ORDER V WHERE V.PAY_ORDER_ID=#value# 
+	</select>   
+	
+    <select id="getOrderId" resultClass="java.lang.Long">
+        SELECT SEQ_TRADE_DP_BIZ_ORDER_ID.NEXTVAL FROM DUAL
+    </select>
+    
+	<insert id="insertDirectOrderRecord" parameterClass="DirectOrderDO">
+	    INSERT INTO TRADE_DIRECT_PAY_BIZ_ORDER 
+	    (
+    		ID,
+			PAY_ORDER_ID,
+			BUYER_ID,
+			BUYER_NICK,
+			SELLER_ID,
+			SELLER_NICK,
+			ORDER_STATE,
+			OUT_PAY_ID,
+			ORDER_AMOUNT,
+			BIZ_TYPE,
+			ITEM_ID,
+			ITEM_TITLE,
+			ITEM_PRICE,
+			BUY_AMOUNT,
+			BUY_IP,
+			END_TIME,
+        	GMT_CREATE,
+        	GMT_MODIFIED     
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#payOrderId#,
+			#buyerId#,
+			#buyerNick#,
+			#sellerId#,
+			#sellerNick#,
+			#orderState#,
+			#outPayId#,
+			#orderAmount#,
+			#bizType#,
+			#itemId#,
+			#itemTitle#,
+			#itemPrice#,
+			#buyAmount#,
+			#buyIp#,
+			#endTime#,
+			sysdate,
+			sysdate
+	    )
+	</insert>
+	
+	<update id="updateDirectOrderDOStatus"  parameterClass="DirectOrderDO" >
+        <![CDATA[UPDATE TRADE_DIRECT_PAY_BIZ_ORDER]]> SET
+			GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotEmpty prepend="," property="outPayId">
+				<![CDATA[OUT_PAY_ID = #outPayId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="endTime">
+				<![CDATA[END_TIME = #endTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderState">
+				<![CDATA[ORDER_STATE = #orderState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderAmount">
+				<![CDATA[ORDER_AMOUNT = #orderAmount#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE PAY_ORDER_ID = #payOrderId# AND ORDER_STATE=101]]>
+	</update> 
+	
+</sqlMap>

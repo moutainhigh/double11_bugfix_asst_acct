@@ -1,0 +1,48 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_cp_value_relation">
+
+	<typeAlias alias="ItemCpValueRelation"
+		type="com.yuwang.pinju.domain.item.CpValueRelationDO" />
+
+	<resultMap id="ItemCpValueRelationResult" class="ItemCpValueRelation">
+		<result property="id" column="ID" />
+		<result property="cpId" column="CP_ID" />
+		<result property="childCpId" column="CHILD_CP_ID" />
+		<result property="cpValueId" column="CP_VALUE_ID" />
+		<result property="childCpValueIds" column="CHILD_CP_VALUE_IDS" />
+	</resultMap>
+
+	<sql id="selectAllItemCpValueRelation"><![CDATA[SELECT ID,CP_ID,CHILD_CP_ID,CP_VALUE_ID,CHILD_CP_VALUE_IDS FROM ITEM_CP_VALUE_RELATION]]></sql>
+
+	<select id="selectAllItemCpValueRelation" resultMap="ItemCpValueRelationResult">
+		<include refid="selectAllItemCpValueRelation" />
+	</select>
+
+	<select id="getItemCpValueRelation" resultMap="ItemCpValueRelationResult"
+		parameterClass="java.util.Map">
+		<include refid="selectAllItemCpValueRelation" />
+		<![CDATA[
+			WHERE CP_ID = #cpId#
+			AND CHILD_CP_ID = #childCpId#
+		]]>
+	</select>
+
+	<select id="getItemCpValueRelationByCpId" resultMap="ItemCpValueRelationResult"
+		parameterClass="long">
+		<include refid="selectAllItemCpValueRelation" />
+		<![CDATA[
+			WHERE CP_ID = #cpId#
+		]]>
+	</select>
+
+	<select id="getItemCpValueRelationByCpIdAndCpvId" resultMap="ItemCpValueRelationResult"
+		parameterClass="java.util.Map">
+		<include refid="selectAllItemCpValueRelation" />
+		<![CDATA[
+			WHERE CP_ID = #cpId#
+			AND CP_VALUE_ID = #cpvId#
+		]]>
+	</select>
+
+</sqlMap>

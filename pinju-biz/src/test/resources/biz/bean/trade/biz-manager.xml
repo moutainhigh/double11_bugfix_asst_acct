@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="directManager" class="com.yuwang.pinju.core.trade.manager.impl.DirectManagerImpl"/>	
+   	<bean id="vouchCreateManager" class="com.yuwang.pinju.core.trade.manager.impl.VouchCreateManagerImpl"/>
+   	<bean id="vouchQueryManager" class="com.yuwang.pinju.core.trade.manager.impl.VouchQueryManagerImpl"/>
+   	<bean id="refundLogManager" class="com.yuwang.pinju.core.trade.manager.impl.RefundLogManagerImpl" />	
+   	<bean id="platformRefundManager" class="com.yuwang.pinju.core.trade.manager.impl.PlatformRefundManagerImpl"/>
+   	<bean id="paySequenceGenerator" class="com.yuwang.pinju.core.trade.manager.impl.PaySequenceGenerator"/>
+   	<bean id="tenSplitRollBackManager" class="com.yuwang.pinju.core.trade.manager.impl.TenSplitRollBackManagerImpl"/>
+   	
+</beans>

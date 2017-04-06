@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<context:annotation-config />
+	<context:component-scan base-package="/" />
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				 <value>classpath:pinju.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 数据库配置 -->
+	<!--<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+	</bean>
+	<bean id="oraDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:OracleDS</value>
+		</property>
+		<property name="jndiTemplate">
+			<ref local="jndiTemplate" />
+		</property>
+	</bean>
+	 
+	<bean id="oraDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.oracle.driver}" />
+		<property name="url" value="${pinju.oracle.jdbc.url}" />
+		<property name="username" value="${pinju.oracle.jdbc.username}" />
+		<property name="password" value="${pinju.oracle.jdbc.password}" />
+	</bean> -->
+  
+  	<bean id="oraDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+	  	<property name="driverClass" value="${bonecp.oracle.driverClass}" />
+	  	<property name="jdbcUrl" value="${bonecp.oracle.write.jdbcUrl}" />
+	  	<property name="username" value="${bonecp.oracle.user}"/>
+	  	<property name="password" value="${bonecp.oracle.password}"/>
+	  	<property name="idleMaxAge" value="${bonecp.idleMaxAge}"/>
+	  	<property name="partitionCount" value="${bonecp.partitionCount}"/>
+	  	<property name="acquireIncrement" value="${bonecp.acquireIncrement}"/>
+	  	<property name="statementCacheSize" value="${bonecp.statementCacheSize}"/>
+	  	<property name="releaseHelperThreads" value="${bonecp.releaseHelperThreads}"/>
+	  	<property name="idleConnectionTestPeriod" value="${bonecp.idleConnectionTestPeriod}"/>
+	  	<property name="maxConnectionsPerPartition" value="${bonecp.maxConnectionsPerPartition}"/>
+	  	<property name="minConnectionsPerPartition" value="${bonecp.minConnectionsPerPartition}"/>
+  	</bean>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource">
+			<ref local="oraDataSource" />
+		</property>
+		<property name="configLocation">
+			<value>classpath:/biz/persistence/sqlmap-config.xml</value>
+		</property>
+	</bean>
+	
+	<!-- 读写分离之oracle读数据源
+	<bean id="oraReadDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.oracle.driver}" />
+		<property name="url" value="${pinju.oracle.jdbc.url}" />
+		<property name="username" value="${pinju.oracle.jdbc.username}" />
+		<property name="password" value="${pinju.oracle.jdbc.password}" />
+	</bean> -->
+  
+  	<bean id="oraReadDataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+	  	<property name="driverClass" value="${bonecp.oracle.driverClass}" />
+	  	<property name="jdbcUrl" value="${bonecp.oracle.read.jdbcUrl}" />
+	  	<property name="username" value="${bonecp.oracle.user}"/>
+	  	<property name="password" value="${bonecp.oracle.password}"/>
+	  	<property name="idleMaxAge" value="${bonecp.idleMaxAge}"/>
+	  	<property name="partitionCount" value="${bonecp.partitionCount}"/>
+	  	<property name="acquireIncrement" value="${bonecp.acquireIncrement}"/>
+	  	<property name="statementCacheSize" value="${bonecp.statementCacheSize}"/>
+	  	<property name="releaseHelperThreads" value="${bonecp.releaseHelperThreads}"/>
+	  	<property name="idleConnectionTestPeriod" value="${bonecp.idleConnectionTestPeriod}"/>
+	  	<property name="maxConnectionsPerPartition" value="${bonecp.maxConnectionsPerPartition}"/>
+	  	<property name="minConnectionsPerPartition" value="${bonecp.minConnectionsPerPartition}"/>
+  	</bean>
+	
+	<bean id="oraReadSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource">
+			<ref local="oraReadDataSource" />
+		</property>
+		<property name="configLocation">
+			<value>classpath:/biz/persistence/sqlmap-config.xml</value>
+		</property>
+	</bean>
+	<!-- oracle读数据源End! -->
+	
+    <bean id="readBaseDAOForOracle" class="com.yuwang.pinju.core.common.ReadBaseDAO">
+		<property name="readSqlMapClient"><ref local="oraReadSqlMapClient" /></property>
+    </bean>
+
+	<!-- 事务管理-->
+	<bean id="zizuTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref local="oraDataSource" />
+		</property>
+	</bean>
+
+	<bean id="zizuTransactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager">
+			<ref local="zizuTransactionManager" />
+		</property>
+	</bean>
+
+	<!-- 事务模板 -->
+	<!--
+		<bean id="baseTransactionProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true"> <property name="transactionManager"
+		ref="zizuTransactionManager" /> <property
+		name="transactionAttributes"> <props> <prop
+		key="insert*">PROPAGATION_REQUIRED</prop> <prop
+		key="update*">PROPAGATION_REQUIRED</prop> <prop
+		key="delete*">PROPAGATION_REQUIRED</prop> <prop
+		key="save*">PROPAGATION_REQUIRED</prop> <prop
+		key="find*">PROPAGATION_REQUIRED,readOnly</prop> <prop
+		key="select*">PROPAGATION_REQUIRED,readOnly</prop> <prop
+		key="query*">PROPAGATION_REQUIRED,readOnly</prop> </props> </property>
+		</bean>
+	-->
+
+	<!-- 用于在代码中获取 Spring 的 Bean 实例 -->
+	<bean id="springBeanFactory" class="com.yuwang.pinju.core.common.SpringBeanFactory" />
+
+	<import resource="classpath:/applicationContext-mysql.xml" />
+	<import resource="classpath:/applicationContext-activemq.xml" />
+	<!-- spring加载多有业务的配置文件 Add By ShiXing@2011.09.14 -->
+	<import resource="classpath:/pinju-biz-bean.xml" />
+</beans>

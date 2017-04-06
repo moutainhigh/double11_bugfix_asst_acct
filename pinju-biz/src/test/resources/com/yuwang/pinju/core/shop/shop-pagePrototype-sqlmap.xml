@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="shopPagePrototype">
+
+    <typeAlias alias="PagePrototypeDO" type="com.yuwang.pinju.domain.shop.ShopPagePrototypeDO"/>
+
+    <resultMap id="pagePrototypeResult" class="PagePrototypeDO">
+        <result property="id" column="ID"/>
+        <result property="image" column="IMAGE" />
+        <result property="name" column="NAME" />
+		<result property="pageId" column="PAGE_ID"  />
+		<result property="pageStructure" column="PAGE_STRUCTURE"  />
+		<result property="description" column="DESCRIPTION" />
+		<result property="configuration" column="CONFIGURATION" />
+    </resultMap>
+
+	<sql id="selectPagePrototypeAll"><![CDATA[SELECT ID, NAME, DESCRIPTION, PAGE_ID, IMAGE, PAGE_STRUCTURE, CONFIGURATION FROM SHOP_PAGE_PROTOTYPE]]></sql>
+
+	<select id="getAllDesignerPage" resultMap="pagePrototypeResult">
+		<include refid="selectPagePrototypeAll" />
+	</select>
+
+	<select id="queryPageProtoByPageid" resultMap="pagePrototypeResult" parameterClass="java.lang.Integer">
+		<include refid="selectPagePrototypeAll" />
+		WHERE PAGE_ID = #pageId#
+	</select>
+</sqlMap>
+

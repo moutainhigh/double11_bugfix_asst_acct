@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <!-- 配置文件保存的临时目录-->
+  <constant name="struts.multipart.saveDir" value="D:\temp"></constant>
+  <!-- 配置上传总大小100M-->
+  <constant name="struts.multipart.maxSize" value="104857600"></constant>
+  
+  <constant name="struts.action.excludePattern" value="/e/.*,/openApi/open.htm" />  
+
+  <constant name="struts.action.extension" value="htm" />
+  <constant name="struts.i18n.encoding" value="UTF-8" />
+  <constant name="struts.freemarker.manager.classname" value="com.yuwang.pinju.web.freemarker.ExtendedFreemarkerManager" />
+
+  <include file="struts/struts-*.xml" />  
+
+  <package name="pinju-default" extends="json-default">
+    <interceptors>
+
+      <!-- 会话追踪 Token ID 拦截器（用于所有的页面访问会话 Token ID 的生成）-->
+      <interceptor name="pinjuToken" class="com.yuwang.pinju.web.interceptor.AccessTokenInterceptor" />
+
+      <!-- 防刷新重复提交拦截器 -->
+      <interceptor name="pinjuRefreshToken" class="com.yuwang.pinju.web.interceptor.CookieRefreshTokenInterceptor" />
+      
+      <!-- 取HostName -->
+      <interceptor name="pinjuInformation" class="com.yuwang.pinju.web.interceptor.AppInformationInterceptor"></interceptor>
+      
+      <!-- 用户协议 -->
+      <interceptor name="pinjuAgreement" class="com.yuwang.pinju.web.interceptor.AgreeAgreementInterceptor">
+        <param name="excludes">/agreement:index,/agreement:accept,/member:login,/member:auth,/member:logout,/my:nickname,/cart:load</param>
+      </interceptor>
+      
+      <!-- 关键字过滤拦截器 -->
+      <interceptor name="pinjuSecurityCheck" class="com.yuwang.pinju.web.interceptor.SecurityCheckInterceptor">
+        <param name="expression"></param>
+      </interceptor>
+      
+      <!-- 子账号权限拦截器 -->
+      <interceptor name="memberAuthInterceptor" class="com.yuwang.pinju.web.interceptor.MemberAuthInterceptor" />
+
+      <interceptor-stack name="pinju-default-interceptor">
+        <interceptor-ref name="pinjuToken" />
+        <!-- <interceptor-ref name="pinjuAgreement" />  -->
+        <interceptor-ref name="pinjuInformation"/>
+        <interceptor-ref name="defaultStack" />
+      </interceptor-stack>
+    </interceptors>
+    
+    <!-- 默认使用的拦截器栈 -->
+    <default-interceptor-ref name="pinju-default-interceptor" />
+    
+    <default-action-ref name="default" />
+
+    <global-results>    
+      <result name="returnUrl" type="redirect">${returnUrl}</result>
+      <result name="page404" type="chain">
+        <param name="namespace">/error</param>
+        <param name="actionName">error</param>
+      </result>
+      <result name="page500" type="chain">
+        <param name="namespace">/error</param>
+        <param name="actionName">error</param>
+      </result>
+      <result name="pinju-login" type="redirectAction">
+        <param name="namespace">/member</param>
+        <param name="actionName">login</param>
+        <param name="returnUrl">${returnUrl}</param>
+      </result>
+      <result name="agreement" type="redirectAction">
+        <param name="namespace">/agreement</param>
+        <param name="actionName">index</param>
+        <param name="returnUrl">${returnUrl}</param>
+      </result>
+      <result name="login" type="redirectAction">
+        <param name="namespace">/member</param>
+        <param name="actionName">login</param>
+        <param name="returnUrl">${returnUrl}</param>
+      </result>
+      <result name="forbidden_param_submit" type="chain">
+        <param name="namespace">/error</param>
+        <param name="actionName">error</param>
+      </result>
+      <result name="access-denied" type="redirectAction">
+        <param name="namespace">/error</param>
+        <param name="actionName">access-denied</param>
+        <param name="returnUrl">${returnUrl}</param>
+        <param name="history">${history}</param>
+        <param name="t">${targetAction}</param>
+      </result>
+      <result name="main-page" type="redirect">http://www.pinju.com</result>
+    </global-results>
+
+    <action name="default" class="com.yuwang.pinju.web.module.error.screen.ErrorPage">
+      <result name="success" type="redirectAction">
+        <param name="namespace">/error</param>
+        <param name="actionName">error</param>
+      </result>
+    </action>
+  </package>
+
+  <package name="pinju-login" extends="pinju-default">
+    <interceptors>
+      <!-- 登录拦截器（如果需要登录才能进入的页面，需要加上该拦截器） -->
+      <interceptor name="pinjuLogin" class="com.yuwang.pinju.web.interceptor.LoginInterceptor" />
+      <interceptor name="hashLink" class="com.yuwang.pinju.web.interceptor.HashLinkInterceptor"/>
+
+      <interceptor-stack name="pinju-login-interceptor">
+        <interceptor-ref name="pinju-default-interceptor" />
+        <interceptor-ref name="pinjuLogin" />
+      </interceptor-stack>
+    </interceptors>
+
+    <!-- 默认使用的拦截器栈 -->
+    <default-interceptor-ref name="pinju-login-interceptor" />
+  </package>
+  
+  <package name="pinju-security" extends="pinju-login">
+  	<interceptors>
+  		<interceptor-stack name="pinju-security-interceptor">
+  			<interceptor-ref name="pinju-login-interceptor" />
+  			<interceptor-ref name="pinjuSecurityCheck" />
+  		</interceptor-stack>
+  	</interceptors>
+ 		
+ 	<!-- 默认使用的拦截器栈 -->
+   	<default-interceptor-ref name="pinju-security-interceptor" /> 
+  </package>
+
+  <package name="pinju-auth" extends="pinju-login">
+    <interceptors>
+      <interceptor-stack name="pinju-auth-interceptor">
+        <interceptor-ref name="pinju-login-interceptor" />
+        <interceptor-ref name="memberAuthInterceptor" />
+      </interceptor-stack>
+    </interceptors>
+
+    <!-- 默认使用的拦截器栈 -->
+    <default-interceptor-ref name="pinju-auth-interceptor" />
+  </package>
+</struts>

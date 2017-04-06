@@ -1,0 +1,88 @@
+﻿.businessInfo {width: 188px; border: 1px solid #e1e1e1; padding-bottom: 10px; background: white; margin-bottom: 10px;}
+.businessInfo .businessInfo-title {float: left; width: 172px; height: 29px; line-height: 29px; padding: 2px 8px 0 8px; font-size: 14px; font-weight: 700; border-bottom: 1px solid #e1e1e1; background: #f5f5f5;}
+.businessInfo-quality {float: left; width: 188px; margin-top: 10px;}
+.businessInfo-quality .quality-img {float: left; width: 172px; height: 40px; margin: 0 8px; display: inline; background: url(http://static.pinju.com/img/businessInfo.png) no-repeat 0 0;}
+.businessInfo-quality ul {float: left; width: 188px; background: url(http://static.pinju.com/img/businessInfo.png) no-repeat 0 -205px;}
+.businessInfo-quality li {float: left; width: 78px; padding: 10px 0 10px 11px;}
+.businessInfo-quality li span {float: left; width: 24px; height: 24px; margin-right: 4px; background: url(http://static.pinju.com/img/businessInfo.png) no-repeat;}
+.businessInfo-quality li span.zheng {background-position: 0 -41px;}
+.businessInfo-quality li span.xiu {background-position: -24px -41px;}
+.businessInfo-quality li span.tui {background-position: -48px -41px;}
+.businessInfo-quality li span.fa {background-position: -72px -41px;}
+.businessInfo-quality li a {float: left; width: 50px; color: #666; line-height: 14px; margin-top: 5px;}
+.businessInfo-quality li a.fa-link {margin-top: 0;}
+.businessInfo-flagship {float: left; width: 188px; padding: 10px 0; border-top: 1px dashed #e1e1e1; border-bottom: 1px dashed #e1e1e1;}
+.businessInfo-flagship dl {float: left;}
+.businessInfo-flagship dt {float: left; width: 29px; height: 39px; margin: 0 10px 0 18px; display: inline; background: url(http://static.pinju.com/img/businessInfo.png) no-repeat;}
+.businessInfo-flagship dt.pin0 {background-position: 0 -66px;}
+.businessInfo-flagship dt.pin1 {background-position: -29px -66px;}
+.businessInfo-flagship dt.pin2 {background-position: -58px -66px;}
+.businessInfo-flagship dt.pin3 {background-position: -87px -66px;}
+.businessInfo-flagship dt.pin4 {background-position: -116px -66px;}
+.businessInfo-flagship dd {float: left; width: 120px;}
+.businessInfo-flagship dd.titlea {color: #c90001; font-size: 14px; line-height: 17px; margin-bottom: 4px;}
+.businessInfo-flagship dd.name a {color: #666; word-wrap: break-word; word-break: break-all;}
+.businessInfo-flagship .bzj {float: left; width: 188px; height: 20px; line-height: 20px; color: #e96100; background: #fff5d7; text-align: center; margin-top: 8px;}
+.businessInfo-corporation {float: left; width: 172px; padding: 10px 8px 0;}
+.businessInfo-corporation li {float: left; width: 172px;}
+.businessInfo-corporation li span {float: left; line-height: 17px;}
+.businessInfo-corporation li span.name {width: 122px; word-wrap: break-word; word-break: break-all;}
+.businessInfo-marks {float: left; width: 172px; padding: 10px 8px 0;}
+.businessInfo-marks li {float: left; height: 22px; padding-top: 33px; color: #666; text-align: center; background: url(http://static.pinju.com/img/businessInfo.png) no-repeat;}
+.businessInfo-marks li.business {width: 59px; background-position: 0 -105px;}
+.businessInfo-marks li.brand {width: 56px; background-position: -59px -105px;}
+.businessInfo-marks li.name {width: 57px; background-position: -115px -105px;}
+.businessInfo-pdrate {float: left; width: 172px; padding: 7px 8px; border-bottom: 1px dashed #e1e1e1;}
+.businessInfo-pdrate li {float: left; width: 172px; padding: 3px 0;}
+.businessInfo-pdrate li.titlea {font-weight: 700;}
+.businessInfo-pdrate li span, .businessInfo-pdrate li a {float: left;}
+.businessInfo-pdrate li a:hover .num {text-decoration: underline;}
+.businessInfo-pdrate li span.rate {width:66px; height: 12px; overflow: hidden; *margin-top: 1px; background:url(http://static.pinju.com/img/goods/pdicon.png) no-repeat 0 -242px; cursor: pointer;}
+.businessInfo-pdrate li span.rate b {float: left; width:66px; height: 12px; background:url(http://static.pinju.com/img/goods/pdicon.png) no-repeat 0 -230px;}
+.businessInfo-pdrate li span.num {color: #ff7700; cursor: pointer;}
+.businessInfo-go {float: left; width: 105px; height: 27px; margin: 10px 0 0 42px; background: url(http://static.pinju.com/img/businessInfo.png) no-repeat 0 -160px;}
+
+/* 店铺标签 */
+#J_labelArea ul {text-align:center;}
+#J_labelArea li {display:inline-block;*display:inline;margin:5px;overflow:hidden;zoom:1;}
+#J_labelArea span {color:#fff;line-height:1;}
+#J_labelArea span.shop-label-word-0 {background-color:#00b3ee;font-size:24px;}
+#J_labelArea span.shop-label-word-1 {background-color:#ffa81a;font-size:20px;}
+#J_labelArea span.shop-label-word-2 {background-color:#ec008c;font-size:18px;}
+
+.businessInfoFavShop {float: left; width: 172px; color: #0066CC; cursor: pointer; text-align: center; margin: 8px 8px 0;}
+
+/* favoritesSide pop */
+.favoritesSide {float: left; position: relative; z-index: 205;}
+.favoritesSide .pop {width: 430px; padding: 9px; position: absolute; left: -115px; top: -70px; z-index: 206; display: none;}
+.favoritesSide .pop .info {padding: 15px 20px 20px;}
+.favoritesSide .pop .info .icon {width: 43px; height: 46px; float: left; display: inline; margin: 0 20px 0 70px;}
+.favoritesSide .pop .info .text {float: left; padding-top: 5px;}
+.favoritesSide .pop .info .text h3 {color: black; line-height: 17px; font-size: 14px; font-weight: 700; padding: 10px 0;}
+.favoritesSide .pop .info .text p {margin: 5px 0;}
+.favoritesSide .pop .info .text p .red {color: #be0002; font-weight: 700;}
+.favoritesSide .pop .info .text p .look {margin-left: 10px; font-family: '宋体';}
+.favoritesSide .pop .other {padding: 10px 20px; border-top: 1px dashed #a7a9a6; text-align: right;}
+.favoritesSide .pop .close {width: 12px; height: 11px; display: block; position: absolute; right: 5px; top: 5px; cursor: pointer;}
+.favorites-goodsOk, .favorites-shopOk {border: 1px solid #7eb830; background: #dbfab6;}
+.favorites-goodsOld, .favorites-shopOld {border: 1px solid #fadfb0; background: #ffffe1;}
+.favorites-goodsError, .favorites-shopError {border: 1px solid #ff999a; background: #ffe5e6;}
+.favorites-goodsOk .info .icon, .favorites-shopOk .info .icon {background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat 0 -39px;}
+.favorites-goodsOld .info .icon, .favorites-shopOld .info .icon {background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat -43px -39px;}
+.favorites-goodsError .info .icon, .favorites-shopError .info .icon {background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat -43px -85px;}
+.favorites-goodsOk .close, .favorites-shopOk .close {background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat -86px -74px;}
+.favorites-goodsOld .close, .favorites-shopOld .close {background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat -98px -74px;}
+.favorites-goodsError .close, .favorites-shopError .close {background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat -110px -74px;}
+.favoritesSide .favorites-goodsOld .info .text p a.look, .favoritesSide .favorites-shopOld .info .text p a.look {margin: 0;}
+.favorites-goods100,
+.favorites-shop100,
+.favorites-goods1000,
+.favorites-shop1000 {border: 1px solid #ff999a; background: #ffe5e6;}
+.favorites-goods100 .info .icon,
+.favorites-shop100 .info .icon,
+.favorites-goods1000 .info .icon,
+.favorites-shop1000 .info .icon {background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat -43px -85px;}
+.favorites-goods100 .close,
+.favorites-shop100 .close,
+.favorites-goods1000 .close,
+.favorites-shop1000 .close {background: url(http://static.pinju.com/img/goods/favorites.png) no-repeat -110px -74px;}

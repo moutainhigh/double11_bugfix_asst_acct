@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MemberDelivery" >
+
+  <typeAlias alias="memberDelivery" type="com.yuwang.pinju.domain.member.MemberDeliveryDO"/>
+
+  <resultMap id="memberDelivery" class="memberDelivery">
+    <result column="ID" property="id" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="RECEIVER_NAME" property="receiverName" />
+    <result column="PROVINCE" property="province" />
+    <result column="CITY" property="city" />
+    <result column="DISTRICT" property="district" />
+    <result column="PCD_CODE" property="pcdCode" />
+    <result column="ADDRESS" property="address" />
+    <result column="ZIP_CODE" property="zipCode" />
+    <result column="PHONE" property="phone" />
+    <result column="MOBILE" property="mobile" />
+    <result column="STATUS" property="status" />
+    <result column="UPDATE_TIME" property="updateTime" javaType="java.util.Date" />
+  </resultMap>
+
+  <sql id="getAllMemberDelivery">
+    SELECT ID, MEMBER_ID, RECEIVER_NAME, PROVINCE, CITY, DISTRICT, PCD_CODE, ADDRESS, ZIP_CODE, PHONE, MOBILE, STATUS, UPDATE_TIME
+      FROM MEMBER_MEMBER_DELIVERY
+  </sql>
+
+  
+  <select id="countMemberDeliveryByMid" resultClass="int" parameterClass="long">
+    <![CDATA[SELECT count(*) FROM MEMBER_MEMBER_DELIVERY WHERE MEMBER_ID = #memberId#]]>
+  </select>
+
+  <select id="findMemberDeliveryByMid" resultMap="memberDelivery"  parameterClass="long">
+    <include refid="getAllMemberDelivery" />
+    <![CDATA[WHERE MEMBER_ID = #memberId# ORDER BY STATUS DESC, GMT_MODIFIED DESC]]>
+  </select>
+
+  <select id="getMemberDeliveryById" resultMap="memberDelivery"  parameterClass="long">
+    <include refid="getAllMemberDelivery" />
+    <![CDATA[WHERE ID = #id#]]>
+  </select>
+
+  <insert id="persistMemberDelivery" parameterClass="memberDelivery">
+    <![CDATA[
+    INSERT INTO MEMBER_MEMBER_DELIVERY (
+      MEMBER_ID, RECEIVER_NAME, PROVINCE, CITY, DISTRICT, PCD_CODE,
+      ADDRESS, ZIP_CODE, PHONE, MOBILE, STATUS,
+      UPDATE_TIME, GMT_CREATE, GMT_MODIFIED
+    ) VALUES (
+      #memberId#, #receiverName#, #province#, #city#, #district#, #pcdCode#,
+      #address#, #zipCode#, #phone#, #mobile#, #status#,
+      #updateTime#, now(), now()
+    )
+    ]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+  </insert>
+
+  <update id="updateMemberDelivery" parameterClass="memberDelivery" >
+    <![CDATA[
+    UPDATE MEMBER_MEMBER_DELIVERY
+       SET RECEIVER_NAME = #receiverName#,
+           PROVINCE = #province#,
+           CITY = #city#,
+           DISTRICT = #district#,
+           PCD_CODE = #pcdCode#,
+           ADDRESS = #address#,
+           ZIP_CODE = #zipCode#,
+           PHONE = #phone#,
+           MOBILE = #mobile#,
+           STATUS = #status#,
+           UPDATE_TIME = #updateTime#,
+           GMT_MODIFIED = now()
+     WHERE ID = #id#
+       AND MEMBER_ID = #memberId#
+    ]]>
+  </update>
+
+  <update id="setDefaultDelivery" parameterClass="memberDelivery">
+    <![CDATA[
+    UPDATE MEMBER_MEMBER_DELIVERY
+       SET STATUS = 1,
+           UPDATE_TIME = #updateTime#,
+           GMT_MODIFIED = now()
+     WHERE ID = #id#
+       AND MEMBER_ID = #memberId#
+    ]]>
+  </update>
+
+  <update id="clearDeliveryStatus" parameterClass="memberDelivery">
+    <![CDATA[
+    UPDATE MEMBER_MEMBER_DELIVERY
+       SET STATUS = 0,
+           UPDATE_TIME = #updateTime#,
+           GMT_MODIFIED = now()
+     WHERE STATUS = 1
+       AND MEMBER_ID = #memberId#
+    ]]>
+  </update>
+  
+  <delete id="removeMemberDelivery" parameterClass="memberDelivery">
+    <![CDATA[DELETE FROM MEMBER_MEMBER_DELIVERY WHERE ID = #id# AND MEMBER_ID = #memberId#]]>  
+  </delete>
+</sqlMap>

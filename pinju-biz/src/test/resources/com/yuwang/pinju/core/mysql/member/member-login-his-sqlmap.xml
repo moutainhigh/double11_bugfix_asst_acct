@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MemberLoginHis" >
+
+  <typeAlias alias="memberLoginHis" type="com.yuwang.pinju.domain.member.MemberLoginHisDO"/>
+
+  <resultMap id="memberLoginHis" class="memberLoginHis">
+    <result column="ID" property="id" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="SESSION_ID" property="sessionId" />
+    <result column="LOGIN_IP" property="loginIp" />
+    <result column="MEMBER_ORIGIN" property="memberOrigin" />
+    <result column="SESSION_TIME" property="sessionTime" javaType="java.util.Date" />
+    <result column="LOGIN_TIME" property="loginTime" javaType="java.util.Date" />
+    <result column="LOGOUT_TIME" property="logoutTime" javaType="java.util.Date" />
+    <result column="STATUS" property="status" />
+    <result column="LOGIN_URL_INFO" property="loginUrlInfo" />
+  </resultMap>
+  
+  <sql id="getAllMemberLoginHis">
+    <![CDATA[SELECT ID, MEMBER_ID, SESSION_ID, LOGIN_IP, MEMBER_ORIGIN, SESSION_TIME, LOGIN_TIME, LOGOUT_TIME FROM MEMBER_MEMBER_INFO]]>
+  </sql>
+
+  <insert id="persistMemberLoginHis" parameterClass="memberLoginHis">
+    <![CDATA[
+    INSERT INTO MEMBER_MEMBER_LOGIN_HIS ( MEMBER_ID, SESSION_ID, LOGIN_IP, MEMBER_ORIGIN, SESSION_TIME, LOGIN_TIME, LOGIN_URL_INFO, GMT_CREATE, GMT_MODIFIED )
+    VALUES (#memberId#,#sessionId#,#loginIp#,#memberOrigin#,#sessionTime#,#loginTime#,#loginUrlInfo#,now(),now())
+    ]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+  </insert>
+
+  <update id="updateMemberLoginHis" parameterClass="java.util.Map" >
+    <![CDATA[UPDATE MEMBER_MEMBER_LOGIN_HIS]]>    
+    <![CDATA[SET GMT_MODIFIED = now(), STATUS = 1, LOGOUT_TIME = #logoutTime#]]>
+    <![CDATA[WHERE MEMBER_ID = #memberId# AND SESSION_ID = #sessionId# AND STATUS = 0]]>
+  </update>
+</sqlMap>

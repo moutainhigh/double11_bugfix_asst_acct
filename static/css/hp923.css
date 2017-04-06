@@ -1,0 +1,164 @@
+/*  homepage 0923 style   */
+.gdbody {
+	background:transparent url("http://static.pinju.com/img/bg-body923.png") repeat-x scroll center bottom;
+	padding:0 0 20px 0;
+}
+.last-wrap { margin-bottom:0; }
+
+/* Slide */
+.slide-container { height:290px; overflow:hidden; width:1000px; }
+.slide-trigger {
+	position:relative;
+	top:-25px;
+	width:990px;
+	text-align:right;
+	padding-right:10px;
+}
+.slide-trigger a {
+	display:inline-block;
+	margin-right:3px;
+	width:16px;
+	height:16px;
+	line-height:16px;
+	text-align:center;
+	color:#000;
+	background-color:#d1d1d1;
+	border:1px solid #d1d1d1;
+	outline:none;
+	overflow:hidden;
+}
+.slide-trigger a:hover,
+.slide-trigger a.current {
+	color:#fff;
+	background-color:#ba2451;
+	border:1px solid #fff;
+	text-decoration: none;
+}
+	
+.slide-panel {
+	position:relative;
+	width:1000px;
+	height:290px;
+	overflow:hidden;
+}
+.slide-panel div { position:absolute; top:0; left:0; }
+.slide-panel a { display:block; }
+
+/* sidebar */
+.sidebar { float:left; width:232px; margin:0 8px 0 0; _margin:0 4px 0 0;}
+.sidebar .box { background-color:#fff; margin:0 0 9px; }
+.sidebar .border-box { border:1px solid #e0e0e0; }
+.sidebar .box .text {
+    border: 0 none;
+    height: auto;
+    padding: 0;
+    width: auto;
+}
+.nmlink {
+	background:transparent url("http://static.pinju.com/img/bg-923hp.png") no-repeat scroll left top;
+	height:50px;
+	overflow:hidden;
+	width:230px;
+}
+.nmlink ul { float:left; width:230px; }
+.nmlink ul li { float:left; color:#e27135; font-size:14px; font-weight:bold; }
+.nmlink ul li a {
+	float:left;
+	color:#e27135;
+	height:33px;
+	padding:17px 10px 0;
+	text-align:center;
+	text-decoration:none;
+}
+.nmlink ul li a:hover { background:transparent url("http://static.pinju.com/img/bg-923hp.png") no-repeat scroll left top; }
+.nmlink ul li.join a { width:68px; }
+.nmlink ul li.join a:hover { background-position:left -270px; }
+.nmlink ul li.log a { width:32px;}
+.nmlink ul li.log a:hover { background-position:-338px -270px; }
+.nmlink ul li.reg a { width:70px; }
+.nmlink ul li.reg a:hover { background-position:-640px -270px; }
+.nmlink ul li a:hover { color:#bc0408; text-decoration:none; }
+.mlink {
+	background:transparent url("http://static.pinju.com/img/bg-923hp.png") no-repeat scroll -250px top;
+	height:50px;
+	overflow:hidden;
+	width:230px;
+}
+.mlink ul { float:left; padding:3px 0 0 30px; }
+.mlink ul li { float:left; padding:3px 20px; color:#e27135; font-size:12px; }
+.mlink ul li a { color:#e27135; text-decoration:none; }
+.mlink ul li a:hover { color:#bc0408; text-decoration:none; }
+.loading { 
+	background:transparent url("http://static.pinju.com/images/loading.gif") no-repeat scroll left top;
+	height:16px;
+	width:16px;
+	margin:15px 0 0 110px;
+}
+.sidebar .box .title h2 { color:#727272; font-weight:bold; padding:5px 5px 0; }
+.sidebar .box .text p { color:#727272; padding:6px 6px; line-height:1.8em; }
+.prom-img { border:1px solid #e0e0e0; }
+.prom-img img { float:left;}
+
+.main { float:right; width:760px; }
+.tabs {
+	background:transparent url("http://static.pinju.com/img/bg-923hp.png") no-repeat scroll left -60px;
+	float:left; 
+	height:44px;
+	padding:0 0 0 2px;
+	font-size:14px;
+	font-weight:bold;
+	width:758px;
+}
+.tabs li { float:left; height:44px; width:150px; }
+.tabs li a {
+	background:transparent url("http://static.pinju.com/img/bg-923hp.png") no-repeat scroll -150px -104px;
+	color:#727272; float:left; height:34px; width:150px; padding:10px 0 0; text-align:center; }
+.tabs li a:hover { text-decoration:none; }
+.tabs li a:hover,
+.tabs .current { 
+	background:transparent url("http://static.pinju.com/img/bg-923hp.png") no-repeat scroll left -104px;
+	color:#34485d;
+}
+.container {
+	background-color:#fff;
+	border:1px solid #dedede;
+	border-top:0 none;
+	color:#727272;
+	min-height:205px;
+	*min-height:162px;
+	_height:162px;
+	padding:10px 20px;
+	width:718px;
+	_overflow:hidden;
+}
+.hotnews { float:left; width:470px; padding:0 20px 0 0; }
+.container h2 { font-weight:bold; padding:0 0 10px; }
+.hotnews p { line-height: 1.6em; padding:0 0 10px; text-indent:2em; }
+.more { line-height:2em; padding:0 10px; text-align:right; }
+.more a { color:#06c !important; }
+.more a:hover { color:#d72426 !important; }
+.more a.slink { margin:0 10px 0 0; }
+.hotnews .more { text-align:right; padding:0; margin:-28px 0 0;}
+.parterner { float:left; width:225px;}
+.parterner h2 { padding-left:20px; }
+.parterner ul { float:left; width:204px; border-left:1px dashed #ccc;  padding:0 0 0 20px; }
+.parterner ul li { float:left; width:98px; margin:0 4px 0 0;}
+.parterner ul li img { border:1px solid #e0e0e0; }
+
+.newslist { float:left; width:280px; padding:0 10px 0 0; }
+.newslist a { color:#727272; }
+.newslist ul { border-right:1px dashed #ccc; padding:0 10px 0 0; }
+.newslist ul li { line-height:2em; }
+.news-one { float:left; width:120px; padding:0 0 0 10px; }
+.news-one p { line-height:2em; }
+
+.benefit { float:left; width:220px; padding:0 15px 0 0; }
+.benefit p { line-height:1.8em;  border-right:1px dashed #ccc; }
+.jionstep { float:left; width:470px; }
+.jionstep ol { 
+	background:transparent url("http://static.pinju.com/img/bg-923hp.png") no-repeat scroll 0 -150px;
+	height:120px;
+	overflow:hidden;
+	width:470px;
+}
+.jionstep ol li { overflow:hidden; width:470px; text-indent:-999px; }

@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+/*注册页公共*/
+.login_main { width:1000px; margin:0 auto 15px; }
+.pj_logo { width:321px; height:57px; margin:0 0 27px 35px; }
+.login_box { margin-left:25px; width:945px; padding:1px; }
+.user_tit { background:url(http://static.pinju.com/images/user_bg_13.gif) repeat-x; height:38px; padding:0 0 1px 29px; }
+.user_txt { line-height:38px; }
+.login_b { background:url(http://static.pinju.com/images/reg_bg_03.gif) repeat-x; height:472px; }
+/*content*/
+.zc_box { width:850px; padding:22px 0 0 82px; }
+.zc_list { *width:100%;}
+.zc_list li { margin-bottom:12px; height:46px; width:100%;}
+.zc_list li.last { margin-bottom:0px; }
+.zc_list li.nolabel { padding-left:120px; width:600px; }
+.zc_list li.tips p { border-top:1px dashed #ccc; padding:10px 0 0; }
+li.err_li { height:auto; }
+.err_box { margin:10px 0 0 120px; }
+.li_t { width:110px; text-align:right; padding-top:8px; }
+.li_t, .user_txt { font-size:14px; }
+.li_i { width:228px; }
+.li_i input { width:216px; height:29px;border:1px solid #c4c4c4 ;  line-height:29px; padding:0 5px; }
+.li_i input.code{width:58px;}
+.zc_list li .code_s{width:72px;}
+.li_si input.error { border: 1px solid #E19090; }
+.li_e span.blank { border:none; background:none; }
+.li_e, .err_box { width:420px; }
+.li_e span, .err_box span {  padding:3px 8px 3px 25px; line-height:18px; background-repeat:no-repeat; background-position:5px 5px }
+.li_e .error, .err_box .error { background-image:url(http://static.pinju.com/images/err_06.gif); background-color:#e3f6ff;border:1px solid #a7dbf2;}
+.li_e .point, .err_box .point { background-image:url(http://static.pinju.com/images/pot_03.gif); background-color:#ffe5e6;border:1px solid #ff999a; color:#be0000;}
+.li_e .bonanza{ background-image:url(http://static.pinju.com/images/bonanza_09.gif); width:15px;height:18px;}
+.li_e img { vertical-align:middle; _position:relative; _top:-2px; }
+.li_e, .li_i, .li_c { margin-left:11px; }
+.li_a, .li_pic { margin-left:7px; }
+.li_a, .li_pic, .li_e, .li_i, .li_c { _dispaly:inline; }
+.li_a { width:60px; }
+.li_pic, .login_box { border:1px solid #c4c4c4; }
+.li_pic img { float:left; }
+.li_c a, .li_c input, .login_box { position:relative; }
+.li_c a { top:-1px; *top:0px;_top:0px; }
+.li_c input { -moz-top:2px; top:3px; _top:0px; }
+.zc_list, .li_t, .li_i, .li_e, .li_a, .li_pic, .li_c, .zc_list li, .li_e span, .err_box span { float:left; }
+.font1, .font3, .user_txt { font-weight:bold; }
+.font1, .font2 { font-style:normal; }
+.font1, .user_txt { color:#222222; }
+.font2 { font-size:12px; color:#757575; }
+.zc_but { background:url(http://static.pinju.com/images/zc_but_03.png) no-repeat; margin-left:206px; width:230px; height:45px; border:none; }
+.pj_logo, .zc_but { display:block; }
+/*阴影*/
+.shadow1, .shadow2 { background:#e5e5e5; }
+.shadow1, .shadow2, .shadow3 { position:absolute; }
+.shadow1 { width:3px; height:515px; top:3px; right:-4px; _right:-5px; }
+.shadow2 { width:946px; height:4px; bottom:-5px; right:-1px; _overflow:hidden; _right:-2px; }
+.shadow3 { width:988px; height:5px; bottom:-11px; left:-20px; }
+
+.hidden { display:none; }
+.li_i input { border:1px solid #c4c4c4 !important; }
+.li_i input.error { border: 1px solid #E19090 !important; }
+.li_e span.blank { border:none; }
+#strength { width:216px;height:29px;border:1px solid black;background-color:#EBF5FC;}
+a.li_pic {outline: medium none;}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+    default-lazy-init="true" default-autowire="byName">
+
+	<bean name="/hessianOrderAO.remote" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<ref bean="hessianOrderAO"/>
+		</property>
+		<property name="serviceInterface">
+			<value>com.yuwang.pinju.core.order.ao.HessianOrderAO</value>
+		</property>
+	</bean>
+
+	<bean name="/refundTimingAO.remote" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<ref bean="refundTimingAO"/>
+		</property>
+		<property name="serviceInterface">
+			<value>com.yuwang.pinju.core.refund.ao.RefundTimingAO</value>
+		</property>
+	</bean>
+	
+	<bean name="/couponTimingAO.remote" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<ref bean="couponTimingAO"/>
+		</property>
+		<property name="serviceInterface">
+			<value>com.yuwang.pinju.core.coupon.ao.CouponTimingAO</value>
+		</property>
+	</bean>
+	
+	<bean name="/tenPlatRefundTimingAO.remote" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<ref bean="tenPlatRefundTimingAO"/>
+		</property>
+		<property name="serviceInterface">
+			<value>com.yuwang.pinju.core.trade.ao.TenPlatRefundTimingAO</value>
+		</property>
+	</bean>
+	
+	<bean name="/tenPlatformRefundAO.remote" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<ref bean="tenPlatRefundCrmAO"/>
+		</property>
+		<property name="serviceInterface">
+			<value>com.yuwang.pinju.core.trade.ao.TenPlatRefundCrmAO</value>
+		</property>
+	</bean>
+	
+	<bean name="/tenSplitRollBackTimingAO.remote" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service">
+			<ref bean="tenSplitRollBackTimingAO"/>
+		</property>
+		<property name="serviceInterface">
+			<value>com.yuwang.pinju.core.trade.ao.TenSplitRollBackTimingAO</value>
+		</property>
+	</bean>
+</beans>

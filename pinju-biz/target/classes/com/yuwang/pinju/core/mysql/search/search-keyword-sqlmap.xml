@@ -1,0 +1,29 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SearchKeyword">
+
+	<typeAlias alias="Keyword" type="com.yuwang.pinju.domain.search.KeywordDO" />
+	<resultMap class="Keyword" id="KeywordResult">
+		<result property="id" column="ID" />
+		<result property="keyword" column="KEYWORD" />
+		<result property="count" column="COUNT" />
+	</resultMap>
+	<select id="selectKeyword" parameterClass="com.yuwang.pinju.domain.search.KeywordDO"
+		resultClass="long">
+	<![CDATA[
+		select count(ID) from SEARCH_KEYWORD where KEYWORD=#keyword#
+	]]>
+	</select>
+	<insert id="insertKeyword" parameterClass="com.yuwang.pinju.domain.search.KeywordDO">
+	<![CDATA[
+			insert into SEARCH_KEYWORD(KEYWORD,COUNT,GMT_CREATE,GMT_MODIFIED,TYPE,STATE) values(#keyword#,1,now(),now(),1,1)
+	]]>
+	</insert>
+	<update id="updateKeyword" parameterClass="com.yuwang.pinju.domain.search.KeywordDO">
+		<![CDATA[
+			update SEARCH_KEYWORD set COUNT=COUNT+1 where KEYWORD=#keyword#
+		]]>
+	</update>
+</sqlMap>
+
+

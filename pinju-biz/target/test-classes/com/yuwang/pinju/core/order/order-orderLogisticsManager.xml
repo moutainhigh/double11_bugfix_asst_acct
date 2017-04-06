@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TRADE_ORDER_LOGISTICS">
+
+	<typeAlias alias="OrderLogisticsDO" type="com.yuwang.pinju.domain.order.OrderLogisticsDO" />
+
+
+	<resultMap id="OrderLogisticsDOResult" class="OrderLogisticsDO">
+		<result property="orderLogisticsId" column="ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="pcdCode" column="PCD_CODE" />
+		<result property="postPrice" column="POST_PRICE" />
+		<result property="address" column="ADDRESS" />
+		<result property="fullName" column="FULL_NAME" />
+		<result property="sendAddress" column="SEND_ADDRESS" />
+		<result property="sendName" column="SEND_NAME" />
+		<result property="post" column="POST" />
+		<result property="phone" column="PHONE" />
+		<result property="mobilePhone" column="MOBILE_PHONE" />
+		<result property="prov" column="PROV" />
+		<result property="city" column="CITY" />
+		<result property="area" column="AREA" />
+		<result property="logisticsState" column="LOGISTICS_STATE" />
+		<result property="outLogisticsId" column="OUT_LOGISTICS_ID" />
+		<result property="memo" column="MEMO" />
+		<result property="consingTime" column="CONSING_TIME" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="consignmentMode" column="CONSIGNMENT_MODE" />
+		<result property="logisticsType" column="LOGISTICS_TYPE" />
+		<result property="sendPhone" column="SEND_PHONE" />
+		<result property="sendPost" column="SEND_POST" />
+		<result property="sendMobilePhone" column="SEND_MOBILE_PHONE" />
+	</resultMap>
+
+
+	<sql id="selectOrderLogisticsAll"><![CDATA[SELECT ID,ORDER_ID,POST_PRICE,ADDRESS,FULL_NAME,SEND_ADDRESS,SEND_NAME,POST,PHONE,MOBILE_PHONE,PROV,CITY,AREA,LOGISTICS_STATE,OUT_LOGISTICS_ID,MEMO,CONSING_TIME,GMT_CREATE,GMT_MODIFIED,CONSIGNMENT_MODE,LOGISTICS_TYPE,PCD_CODE,SEND_PHONE,SEND_POST,SEND_MOBILE_PHONE FROM TRADE_ORDER_LOGISTICS]]></sql>
+
+	<sql id="deleteOrderLogisticsAll"><![CDATA[DELETE FROM TRADE_ORDER_LOGISTICS]]></sql>
+
+	<select id="selectOrderLogisticsAllOrderLogisticsDO" resultMap="OrderLogisticsDOResult">
+		<include refid="selectOrderLogisticsAll" />
+	</select>
+
+	<select id="selectOrderLogisticsDOById" resultMap="OrderLogisticsDOResult"  parameterClass="long">
+		<include refid="selectOrderLogisticsAll" />
+		<![CDATA[WHERE ID = #orderLogisticsId#]]>
+	</select>
+	
+	<select id="selectOrderLogisticsDOByOrderId" resultMap="OrderLogisticsDOResult"  parameterClass="long">
+		<include refid="selectOrderLogisticsAll" />
+		<![CDATA[WHERE ORDER_ID = #orderId#]]>
+	</select>
+	
+	<insert id="insertOrderLogistics" parameterClass="OrderLogisticsDO">
+		<selectKey resultClass="long" keyProperty="orderLogisticsId">
+            SELECT SEQ_ORDER_LOGISTICS_ID.nextval AS orderLogisticsId FROM dual
+     	</selectKey>
+		<![CDATA[INSERT INTO TRADE_ORDER_LOGISTICS (ID,ORDER_ID,PCD_CODE,POST_PRICE,ADDRESS,
+		FULL_NAME,POST,PHONE,MOBILE_PHONE,PROV,CITY,AREA,OUT_LOGISTICS_ID,MEMO,
+		CONSING_TIME,GMT_CREATE,GMT_MODIFIED,CONSIGNMENT_MODE,LOGISTICS_TYPE,SEND_ADDRESS,SEND_NAME,LOGISTICS_STATE) 
+		VALUES (#orderLogisticsId#,#orderId#,#pcdCode#,#postPrice#,#address#,#fullName#,#post#,
+		#phone#,#mobilePhone#,#prov#,#city#,#area#,#outLogisticsId#,
+		#memo#,#consingTime#,#gmtCreate#,#gmtModified#,#consignmentMode#,#logisticsType#,#sendAddress#,#sendName#,#logisticsState#)]]>
+	</insert>
+
+	<update id="updateOrderLogistics" parameterClass="OrderLogisticsDO">
+		<![CDATA[UPDATE TRADE_ORDER_LOGISTICS]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="outLogisticsId">
+				<![CDATA[OUT_LOGISTICS_ID = #outLogisticsId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="logisticsType">
+				<![CDATA[LOGISTICS_TYPE = #logisticsType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sendAddress">
+				<![CDATA[SEND_ADDRESS = #sendAddress#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sendName">
+				<![CDATA[SEND_NAME = #sendName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="logisticsState">
+				<![CDATA[LOGISTICS_STATE = #logisticsState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="consignmentMode">
+				<![CDATA[CONSIGNMENT_MODE = #consignmentMode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="postPrice">
+				<![CDATA[POST_PRICE = #postPrice#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sendPhone">
+				<![CDATA[SEND_PHONE = #sendPhone#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sendPost">
+				<![CDATA[SEND_POST = #sendPost#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sendMobilePhone">
+				<![CDATA[SEND_MOBILE_PHONE = #sendMobilePhone#]]>
+			</isNotEmpty>
+		</dynamic>
+			<![CDATA[,GMT_MODIFIED=#gmtModified#,CONSING_TIME=#consingTime#  WHERE ORDER_ID = #orderId#]]>
+	</update>
+
+</sqlMap>
+

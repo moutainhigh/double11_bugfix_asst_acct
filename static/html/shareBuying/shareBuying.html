@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>品聚官方网站pinju.com-全球最大的品质交易平台 | 快乐网购平台 | 天下无假  爱上网购</title>
+<link media="screen" type="text/css" rel="stylesheet" href="http://static.pinju.com/css/pj_base.css">
+<link rel="stylesheet" type="text/css" media="screen" href="http://static.pinju.com/css/shareBuying/shareBuying.css" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/image-preview/jquery.image-preview.js"></script>
+<script src="http://static.pinju.com/js/shareBuying/jquery.dialog.js"></script>
+</head>
+
+<body>
+<div class="top_bar">
+	<div class="top_bar_box cf">
+		<div class="login_status">
+			<span><a href="#">请登录</a></span> 
+			<span><a href="#">免费注册</a></span>
+		</div>
+		<div class="liaison">
+			<a href="#" target="_blank">我的品聚</a>
+			<a href="#" target="_blank">我是买家</a>
+			<a href="#" target="_blank">我是卖家</a>
+			<a href="http://job.pinju.com/" target="_blank">加入品聚</a>
+			<a href="http://www.pinju.com/cms/html/about/contact/" target="_blank">联系我们</a>
+			<a href="#" target="_blank">帮助中心</a>
+		</div>
+	</div>
+</div>
+<div class="header">
+	<div class="masthead cf">
+		<div class="logo">
+			<a href="http://www.pinju.com/">
+				<img class="logo_pic" width="326" height="54" src="http://static.pinju.com/images/pj_logo_17.gif" />
+			</a>
+		</div>
+		<div class="eye">
+			<div class="share2sns">
+				<span class="title"> 分享到&nbsp;&nbsp;
+				<input type="hidden" id="newsTitle" value="告别淘假货的时代,10月上&quot;品聚网&quot;买真货！">
+				<input type="hidden" id="_pic" value="http://static.pinju.com/images/pj_logo_17.gif">
+				<a id="share_tsina" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s01.png" /></a> <a id="share_tqq" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s02.png" /></a> <a id="share_qzone" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s03.png" /></a> <a id="share_renren" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s04.png" /></a> <a id="share_kaixin001" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s05.png" /></a> <a id="share_t163" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s06.png" /></a> <a id="share_tsohu" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s07.png" /></a> <a id="share_txpengyou" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s08.png" /></a> <a id="share_douban" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s09.png" /></a> </span> 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="wrapfull navfull">
+	<div class="pj_nav">
+		<ul class="nav_list">
+			<li class="current"><a href="#">首　页</a></li>
+			<li><a href="#">体验购</a></li>
+			<li><a href="#">品聚新闻</a></li>
+			<li><a href="#">聚 伙 伴</a></li>
+			<li><a href="#">盛大招商</a></li>
+			<li><a href="#">帮助中心</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- content -->
+<div class="wrap cf">
+	<div class="wrap-border cf">
+		<div class="bar-left">
+			<!-- left -->
+			<ul class="bar-list">
+				<!--商品管理-->
+				<h3>商品管理</h3>
+				<li><a href="/itemReleased/categoryList.htm">发布商品</a></li>
+
+				<li name = "sell_item"><a href="/item/itemList.htm?itemQuery.type=0">出售中的商品</a></li>
+				<li name = "storage_item"><a href="/item/itemList.htm?itemQuery.type=2">仓库中的商品</a></li>
+				<!--交易管理-->
+				<h3>交易管理</h3>
+				<li name="logistics-tool"><a href="/logistics/listTemplateTool.htm">物流工具</a></li>
+				<!--店铺管理-->
+				<h3>店铺管理</h3>
+				<li name="red_shopOpen"><a href="/shop/showShopOpenAction.htm">我要开店</a></li>
+				<li><a href="/shopDecoration/viewShop.htm" target="_blank">查看我的店铺</a></li>
+				<li><a href="/shopDecoration/shopDecorationAction.htm" target="_blank">店铺装修</a></li>
+				<li name="red_shopCategory"><a href="/shop/shopCategory.htm">店铺分类管理</a></li>
+				<li name="red_shopInfo"><a id="shopBaseInfoId" href="/shop/showShopInfo.htm">店铺基本设置</a></li>
+				<!--分销管理-->
+				<!--退款维权-->
+				<!-- 保证金管理 -->
+
+				<!--
+				<h3>保证金管理</h3>
+				<li name="mymargin">
+				<a href="/margin/mymargin.htm">我的保证金</a>
+				</li>
+				-->
+				<!--营销中心-->
+			</ul>
+		</div>  
+		<div class="contents">
+			<div class="shareBuying cf">
+				<div class="shareBuying-setting">
+					<h3 class="title">设置页面头部</h3>
+					<span class="hard">设置遇到困难？</span>
+					<a class="tutorials-link" id="tutorials-link" href="#">点击查看教程</a>
+				</div>
+				<div class="shareBuying-logo">
+					<h3 class="title">店标LOGO</h3>
+					<div class="img-box">
+						<img id="shareBuyingImgLogo" src="http://static.pinju.com/img/shareBuying/set-bg1.gif" />
+					</div>
+					<div class="button">
+						<input id="shareBuyingBtnLogo" type="file" />
+						<button type="button"></button>
+					</div>
+					<p class="info">店标LOGO图片宽度为161px高度为77px，图片大小控制在10k以内</p>
+				</div>
+				<div class="shareBuying-banner">
+					<h3 class="title">横幅</h3>
+					<div class="img-box">
+						<img id="shareBuyingImgBanner" src="http://static.pinju.com/img/shareBuying/set-bg2.gif" />
+					</div>
+					<div class="button">
+						<input id="shareBuyingBtnBanner" type="file" />
+						<button type="button"></button>
+					</div>
+					<p class="info">横幅图片宽度为489px高度为77px，图片大小控制在10k以内</p>
+				</div>
+				<div class="shareBuying-bigger">
+					<div class="left">
+						<h3 class="title">宣传大图</h3>
+						<div class="img-box">
+							<img id="shareBuyingImgBigger" src="http://static.pinju.com/img/shareBuying/set-bg3.gif" />
+						</div>
+					</div>
+					<div class="right">
+						<div class="button">
+							<input id="shareBuyingBtnBigger" type="file" />
+							<button type="button"></button>
+						</div>
+						<p class="info">宣传大图宽度为489px高度为367px，图片大小控制在30k以内</p>
+					</div>
+				</div>
+				<div class="shareBuying-copy">
+					<h3 class="title">个性文案</h3>
+					<p class="info">文字</p>
+					<div class="textarea">
+						<textarea id="shareBuyingTextarea">您最多可以输入20个汉字</textarea>
+					</div>
+					<button class="submit" type="submit"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- content -->
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		<ul class="foot_nav">
+			<li><a href="/cms/html/about/" title="关于品聚" target="_blank">关于品聚</a></li>
+			<li><a href="http://service.pinju.com/cms/html/quality/" title="品聚品质保障服务" target="_blank">品聚品质保障服务</a></li>
+			<li><a href="http://service.pinju.com/" title="新手帮助" target="_blank">新手帮助</a></li>
+			<li><a href="/cms/html/about/contact/" title="联系我们" target="_blank">联系我们</a></li>
+			<li><a href="http://job.pinju.com/" title="品聚招聘" target="_blank">品聚招聘</a></li>
+			<li class="last">客服邮箱：<a href="mailto:kf@pinju.com" title="客服邮箱" target="_blank">kf@pinju.com</a></li>
+		</ul>
+		<p class="copyright">上海御网信息技术有限公司  版权所有&nbsp;&nbsp; 
+			&nbsp;&nbsp;沪ICP备11032558号</p>
+		<p class="copyright">
+			<span>媒体联系：media@pinju.com</span>丨 <span>商户加盟： business@pinju.com</span>丨 <span>聚伙伴加盟：jhb@pinju.com</span> | <span>城市分站加盟：yinlijun@pinju.com</a></span></p>
+		<p><span class="test">test.pinju.com</span></p>
+	</div>
+</div>
+
+<div class="dialog">
+	<div class="images">
+		<img src="http://static.pinju.com/img/shareBuying/img1.jpg" alt="" />
+		<img src="http://static.pinju.com/img/shareBuying/img2.jpg" alt="" />
+		<img src="http://static.pinju.com/img/shareBuying/img3.jpg" alt="" />
+		<img src="http://static.pinju.com/img/shareBuying/img4.jpg" alt="" />
+		<img src="http://static.pinju.com/img/shareBuying/img5.jpg" alt="" />
+	</div>
+	<div class="prev"></div>
+	<div class="next"></div>
+	<div class="close"></div>
+</div>
+<script>
+$(function() {
+	//弹出框
+	$('#tutorials-link').click(function() {
+		$.dialog();
+		return false;
+	});
+	
+	//textarea文本处理
+	var shTextarea = $('#shareBuyingTextarea');
+	if(shTextarea.val() == '您最多可以输入20个汉字') {
+		shTextarea.removeClass('change');
+	} else {
+		shTextarea.addClass('change');
+	}
+	shTextarea.focus(function() {
+		if($(this).val() == '您最多可以输入20个汉字') {
+			$(this).val('');
+		} else {
+			$(this).addClass('change');
+		}
+	});
+	shTextarea.keyup(function() {
+		$(this).addClass('change');
+	});
+	shTextarea.blur(function() {
+		if($(this).val() == '') {
+			$(this).val('您最多可以输入20个汉字').removeClass('change');
+		} else {
+			$(this).addClass('change');
+		}
+	});
+	
+	//图片预览
+	$.imagePreview({
+		file : $('#shareBuyingBtnLogo'),
+		img : $('#shareBuyingImgLogo'),
+		maxWidth : 101,
+		maxHeight : 47
+	});
+	$.imagePreview({
+		file : $('#shareBuyingBtnBanner'),
+		img : $('#shareBuyingImgBanner'),
+		maxWidth : 311,
+		maxHeight : 47
+	});
+	$.imagePreview({
+		file : $('#shareBuyingBtnBigger'),
+		img : $('#shareBuyingImgBigger'),
+		maxWidth : 311,
+		maxHeight : 233
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_category_property_value">
+
+	<typeAlias alias="ItemCategoryPropertyValue" type="com.yuwang.pinju.domain.item.CategoryPropertyValueDO" />
+	
+	<resultMap id="ItemCategoryPropertyValueResult" class="ItemCategoryPropertyValue">
+		<result property="id" column="ID" />
+		<result property="valueId" column="VALUE_ID" />
+		<result property="categoryPropertyId" column="CATEGORY_PROPERTY_ID" />
+		<result property="sortOrder" column="SORT_ORDER" />
+		<result property="sortType" column="SORT_TYPE" />
+		<result property="valueAlias" column="VALUE_ALIAS" />
+		<result property="features" column="FEATURES" />
+		<result property="value" column="VALUE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="valueType" column="VALUE_TYPE" />
+	</resultMap>
+
+	<sql id="selectAllItemCategoryPropertyValue"><![CDATA[SELECT ID,VALUE_ID,CATEGORY_PROPERTY_ID,SORT_ORDER,SORT_TYPE,VALUE_ALIAS,FEATURES,VALUE,GMT_CREATE,GMT_MODIFIED,VALUE_TYPE FROM ITEM_CATEGORY_PROPERTY_VALUE]]></sql>
+
+	<select id="getCategoryPropertyValue" resultMap="ItemCategoryPropertyValueResult" parameterClass="long">
+		<include refid="selectAllItemCategoryPropertyValue" />
+		<![CDATA[
+			WHERE CATEGORY_PROPERTY_ID = #categoryPropertyId# ORDER BY SORT_ORDER
+		]]>
+	</select>
+
+</sqlMap>
+

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TRADE_ORDER_CHANNEL">
+
+	<typeAlias alias="queryDistributeOrder" type="com.yuwang.pinju.domain.order.query.QueryDistributeOrder" />
+	
+	<typeAlias alias="OrderChannelDO" type="com.yuwang.pinju.domain.order.OrderChannelDO" />
+
+	<resultMap id="OrderChannelDOResult" class="OrderChannelDO">
+		<result property="reward" column="REWARD" />
+		<result property="reAmount" column="REAMOUNT" />
+		<result property="channelNickName" column="CHANNEL_NICKNAME" />
+		<result property="channelIds" column="CHANNEL_ID" />
+		<result property="orderItemId" column="ORDER_ITEM_ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="snapId" column="SNAP_ID" />
+		<result property="itemTitle" column="ITEM_TITLE" />
+		<result property="orderItemPrice" column="ORDER_ITEM_PRICE" />
+		<result property="buyNum" column="BUY_NUM" />
+		<result property="itemPicUrl" column="ITEM_PIC_URL" />
+		<result property="refundState" column="REFUND_STATE" />
+		<result property="refundPrice" column="REFUND_PRICE" />
+		<result property="stateModifyTime" column="STATE_MODIFY_TIME" />
+		<result property="orderItemState" column="ORDER_ITEM_STATE" />
+		<result property="itemSkuId" column="ITEM_SKU_ID" />
+		<result property="itemSkuAttributes" column="ITEM_SKU_ATTRIBUTES" />
+		<result property="bussinessType" column="BUSSINESS_TYPE" />
+		<result property="orderItemAttributes" column="ORDER_ITEM_ATTRIBUTES" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="originalPrice" column="Original_PRICE" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="failReason" column="FAIL_REASON" />
+		<result property="confirmTime" column="AUTO_CONFIRM_TIME" />
+		<result property="id" column="ID" />
+	</resultMap>
+	
+	<resultMap id="OrderChannelResult" class="OrderChannelDO">
+		<result property="reward" column="REWARD" />
+		<result property="supplierId" column="SUPPLIER_ID" />
+		<result property="reAmount" column="REAMOUNT" />
+		<result property="channelNickName" column="CHANNEL_NICKNAME" />
+		<result property="channelIds" column="CHANNEL_ID" />
+		<result property="orderItemId" column="ORDER_ITEM_ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="snapId" column="SNAP_ID" />
+		<result property="itemTitle" column="ITEM_TITLE" />
+		<result property="orderItemPrice" column="ORDER_ITEM_PRICE" />
+		<result property="buyNum" column="BUY_NUM" />
+		<result property="itemPicUrl" column="ITEM_PIC_URL" />
+		<result property="refundState" column="REFUND_STATE" />
+		<result property="refundPrice" column="REFUND_PRICE" />
+		<result property="stateModifyTime" column="STATE_MODIFY_TIME" />
+		<result property="orderItemState" column="ORDER_ITEM_STATE" />
+		<result property="itemSkuId" column="ITEM_SKU_ID" />
+		<result property="itemSkuAttributes" column="ITEM_SKU_ATTRIBUTES" />
+		<result property="bussinessType" column="BUSSINESS_TYPE" />
+		<result property="orderItemAttributes" column="ORDER_ITEM_ATTRIBUTES" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="originalPrice" column="Original_PRICE" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="failReason" column="FAIL_REASON" />
+		<result property="confirmTime" column="AUTO_CONFIRM_TIME" />
+		<result property="id" column="ID" />
+		<result property="sellerMarginPrice" column="SELLER_MARGIN_PRICE" />
+	</resultMap>
+
+	<resultMap id="OrderChannelDOResultNoExtend" class="OrderChannelDO">
+		<result property="channelIds" column="CHANNEL_ID" />
+		<result property="reward" column="REWARD" />
+		<result property="channelNickName" column="CHANNEL_NICKNAME" />
+		<result property="reAmount" column="REAMOUNT"/>
+		<result property="orderItemId" column="ORDER_ITEM_ID"/>
+	</resultMap>
+	
+	<select id="queryOrderChannelByOrderItemId" resultMap="OrderChannelDOResultNoExtend" parameterClass="Long">
+	     <![CDATA[SELECT CHANNEL_ID,REWARD,CHANNEL_NICKNAME ,REAMOUNT,ORDER_ITEM_ID FROM TRADE_ORDER_CHANNEL ]]>
+         <dynamic prepend="where" >
+			 <isNotEmpty>
+				 <![CDATA[ORDER_ITEM_ID = #orderItemId#]]>
+			 </isNotEmpty>
+   		 </dynamic>
+    </select>
+
+	<select id="queryOrderChannel" resultMap="OrderChannelResult" parameterClass="queryDistributeOrder">
+	     <![CDATA[select * from(  
+		select rownum r, a.* from (  
+		SELECT O.ID,O.ORDER_ID,O.SELLER_ID,O.BUYER_ID,O.BUYER_NICK,O.SELLER_NICK,O.AUTO_CONFIRM_TIME,O.FAIL_REASON,
+	O.ITEM_ID,O.SNAP_ID,O.ITEM_TITLE,O.ORDER_ITEM_PRICE,O.BUY_NUM,O.ITEM_PIC_URL,
+	O.Original_PRICE,O.STATE_MODIFY_TIME,O.REFUND_STATE,O.REFUND_PRICE,
+	O.ORDER_ITEM_ATTRIBUTES,O.ORDER_ITEM_STATE,O.ITEM_SKU_ID,
+	O.ITEM_SKU_ATTRIBUTES,O.BUSSINESS_TYPE,O.GMT_MODIFIED,O.GMT_CREATE,C.CHANNEL_ID,C.REWARD,C.SUPPLIER_ID,C.CHANNEL_NICKNAME,C.REAMOUNT,C.ORDER_ITEM_ID,O.SELLER_MARGIN_PRICE
+	FROM TRADE_ORDER_ITEM O,TRADE_ORDER_CHANNEL C]]>
+         <dynamic prepend="where" >
+		      <isNotEmpty prepend="and" property="channelIds" >
+		        <![CDATA[C.CHANNEL_ID = #channelIds#]]>
+		      </isNotEmpty>         
+		     <isNotEmpty prepend="and" property="orderState">
+				<![CDATA[O.ORDER_ITEM_STATE = #orderState#]]>
+			 </isNotEmpty>
+			 <isNotEmpty prepend="AND" property="supplierId">
+				 <![CDATA[C.SUPPLIER_ID = #supplierId#]]>
+			 </isNotEmpty>
+   		 </dynamic>
+   		 <![CDATA[
+		 	and O.Id = C.Order_Item_Id order by GMT_CREATE desc) a where rownum
+		 	<= #endRow#) where r >= #startRow#
+		]]>
+   		 
+    </select>
+    
+	 <select id="queryOrderChannelNum"  resultClass="long" parameterClass="queryDistributeOrder">
+       	  <![CDATA[SELECT COUNT(O.ID) FROM TRADE_ORDER_ITEM O,TRADE_ORDER_CHANNEL C]]>
+	        <dynamic prepend="where" >
+			      <isNotEmpty prepend="and" property="channelIds" >
+			        <![CDATA[C.CHANNEL_ID = #channelIds#]]>
+			      </isNotEmpty>
+			     <isNotEmpty prepend="and" property="orderState">
+					<![CDATA[O.ORDER_ITEM_STATE = #orderState#]]>
+				 </isNotEmpty>
+				<isNotEmpty prepend="AND" property="supplierId">
+					 <![CDATA[C.SUPPLIER_ID = #supplierId#]]>
+				 </isNotEmpty>
+	   		 </dynamic>
+   		  <![CDATA[
+		 	 and O.Id = C.Order_Item_Id
+		]]>
+    </select>
+    
+    <select id="queryOrderChannelNumDuringMonth"  resultClass="long" parameterClass="queryDistributeOrder">
+		<![CDATA[SELECT COUNT(*) FROM TRADE_ORDER_CHANNEL C WHERE (SYSDATE < ADD_MONTHS(C.GMT_CREATE, #month#)) ]]>
+		<isNotEmpty property="type">
+			<!-- 供应商页面订单信息 -->
+			<isEqual property="type" compareValue="1">
+				<isNotEmpty prepend="AND" property="supplierId" open="(" close=")">
+					<![CDATA[C.SUPPLIER_ID = #supplierId#]]>
+				</isNotEmpty>
+			</isEqual>
+			<!-- 分销商页面订单信息 -->
+			<isEqual property="type" compareValue="0">
+				<isNotEmpty prepend="AND" property="channelIds" open="(" close=")">
+					<![CDATA[C.CHANNEL_ID = #channelIds#]]>
+				</isNotEmpty>
+			</isEqual>
+		</isNotEmpty>
+    </select>
+    
+   <insert id="insertOrderChannelDO" parameterClass="OrderChannelDO">
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT SEQ_ORDER_CHANNEL_ID.nextval AS id FROM dual
+     	</selectKey>
+     	<![CDATA[INSERT INTO TRADE_ORDER_CHANNEL (ID,ORDER_ID,SUPPLIER_ID,CHANNEL_ID,
+     	REWARD,GMT_CREATE,GMT_MODIFIED,CHANNEL_NICKNAME,REAMOUNT,ORDER_ITEM_ID) 
+     	VALUES (#id#,#orderId#,#sellerId#,#channelIds#,#reward#,sysdate,sysdate,#channelNickName#,#reAmount#,#orderItemId#)]]>
+	</insert>
+    
+    <update id="updateChannelAmount" parameterClass="OrderChannelDO">
+		UPDATE TRADE_ORDER_CHANNEL 
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="reAmount">
+				<![CDATA[REAMOUNT = #reAmount#]]>
+			</isNotEmpty>
+		</dynamic>
+			<![CDATA[,GMT_MODIFIED = sysdate WHERE CHANNEL_ID = #channelIds# AND ORDER_ITEM_ID = #orderItemId#]]>
+	</update> 
+	
+</sqlMap>
+

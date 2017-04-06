@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+.cart_pop{width:282px; border:1px solid #dadada;padding:10px;color:#3e3e3e; font-family:Arial; display:none;}
+.cart_pop_tit{ font-weight:bold; margin-bottom:12px;}
+.cart_pop_items_list{line-height:20px;}
+.cart_pop_items_list li{ float:left; margin-bottom:10px;width:282px; }
+.cart_pop_items_pic{ width:40px; float:left; margin-right:8px; border:solid 1px #000;}
+.cart_pop_items_pic a{background:#FFF;width:40px; height:40px;display:table-cell;text-align:center; vertical-align:middle; *display:block;*font-size:35px;*font-family:Arial;}
+.cart_pop_items_pic a img{ vertical-align:middle;}
+.cart_pop_items_tit{ width:170px; overflow:hidden; float:left;}
+.cart_pop_items_tit a{	overflow:hidden;color:#3e3e3e;}
+.cart_pop_items_tit a:hover{color:#ff5500;}
+.cart_pop_items_tit p,.cart_pop_items_price{ color:#999999}
+.cart_pop_items_price{ display:block;}
+.cart_pop_items_r{ float:right; text-align:right;}
+.cart_pop_items_price b{ color:#ff6600;margin-left:5px; font-weight:bold; }
+.cart_pop_items_f{padding-top:10px; text-align:right; border-top:solid 1px #dadada;}
+.cart_pop_items_f p{ font-weight:bold;}
+.cart_pop_items_but{ margin-top:15px; float:right; background:url(http://static.pinju.com/images/cart_but1_24.gif) no-repeat; width:113px; height:20px; display:block; color:#FFF; text-align:center; line-height:20px;}
+.cart_pop_items_but:hover{ text-decoration:none;}

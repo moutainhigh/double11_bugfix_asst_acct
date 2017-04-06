@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Demo</title>
+		<style>
+			#header, #content, #footer {
+					margin-left: auto;
+					margin-right: auto;
+			}
+			.col-main {
+					float: left;
+					width: 100%;
+					/* bug fix: 主栏没有内容时，在 Firefox 和 Chrome 等浏览器下，布局不对 */
+					min-height: 1px;
+			}
+			.col-sub, .col-extra {
+					float: left;
+					/*position: relative;  按需设置，仅在需要时添加 */
+			}
+			.layout:after, .main-wrap:after, .col-sub:after, .col-extra:after {
+					content: '\20';
+					display: block;
+					height: 0;
+					clear: both;
+			}
+			.layout, .main-wrap, .col-sub, .col-extra {
+					*zoom: 1;
+			}
+			.grid-s5m0 .main-wrap { margin-left: 200px; }
+			.grid-s5m0 .col-sub { width: 190px; margin-left: -100%; }
+
+			.layout {
+				background: #333;
+			}
+			.main-wrap {
+				background: #fff;
+			}
+			.col-sub {
+				color: #fff;
+			}
+			.main-wrap {
+				height: 2000px;
+			}
+			#header {
+				height: 100px;
+			}
+			#footer {
+				height: 1000px;
+			}
+		</style>
+		<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+		<script src="http://static.pinju.com/fixed-sidebar/jquery.fixed-sidebar.js"></script>
+		<script>
+			$(function() {
+				$('div.col-sub ul').fixedSidebar({
+					parent : $('div.layout')
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="header">
+			header
+		</div>
+		<div id="content">
+			<div class="layout grid-s5m0">
+				<div class="col-main">
+					<div class="main-wrap">
+						main
+					</div>
+				</div>
+				<div class="col-sub">
+					<h3>分类导航</h3>
+					<ul>
+						<li>全部</li>
+						<li>品牌女装</li>
+						<li>时尚男装</li>
+						<li>鞋意生活</li>
+						<li>运动户外</li>
+						<li>数码家电</li>
+						<li>美容美饰</li>
+						<li>家装家饰</li>
+						<li>家纺日用</li>
+						<li>箱包配件</li>
+						<li>美食母婴</li>
+						<li>图书音像</li>
+						<li>其它</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			footer
+		</div>
+	</body>
+</html>

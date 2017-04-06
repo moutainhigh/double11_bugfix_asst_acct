@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+  <bean id="pinjuMemcachedManager" class="com.yuwang.pinju.core.cache.impl.PinjuMemcachedManagerImpl" />
+
+  <!-- 店铺资质缓存管理 -->
+  <bean id="qualitityMemcachedManager" class="com.yuwang.pinju.core.cache.impl.MemcachedManagerImpl">
+    <constructor-arg index="0" ref="qualitityMemcachedClient" />
+    <constructor-arg index="1" value="${memcached.indexkey.pinju.qualitity}" />
+    <constructor-arg index="2" value="${memcached.expires.pinju.qualitity}" />
+  </bean>
+
+  <!-- 短信发送频率缓存管理 -->
+  <bean id="mobileFrequencyMemcachedManager" class="com.yuwang.pinju.core.cache.impl.MemcachedManagerImpl">
+    <constructor-arg index="0" ref="mobileFrequencyMemcachedClient" />
+    <constructor-arg index="1" value="mobile.frequency" />
+    <constructor-arg index="2" value="${memcached.expires.pinju.mobile.frequency}" />
+  </bean>
+
+  <!-- 短信日发送次数缓存管理 -->
+  <bean id="mobileDailyMemcachedManager" class="com.yuwang.pinju.core.cache.impl.MemcachedManagerImpl">
+    <constructor-arg index="0" ref="mobileDailyMemcachedClient" />
+    <constructor-arg index="1" value="mobile.daily" />
+    <constructor-arg index="2" value="${memcached.expires.pinju.mobile.daily}" />
+  </bean>
+
+  <!-- 用于数据传输密钥缓存 -->
+  <bean id="transKeyMemcachedManager" class="com.yuwang.pinju.core.cache.impl.MemcachedManagerImpl">
+    <constructor-arg index="0" ref="transKeyMemcachedClient" />
+    <constructor-arg index="1" value="trans.key" />
+    <constructor-arg index="2" value="${memcached.expires.pinju.trans.key}" />
+  </bean>
+
+  <!-- 用于登录页面图片 -->
+  <bean id="loginPageMemcachedManager" class="com.yuwang.pinju.core.cache.impl.MemcachedManagerImpl">
+    <constructor-arg index="0" ref="loginPageNumMemcachedClient" />
+    <constructor-arg index="1" value="login.page" />
+    <constructor-arg index="2" value="${memcached.expires.pinju.login.page}" />
+  </bean>
+
+  <!-- 子账号数据抓取器 -->
+  <bean id="asstPermFetch" class="com.yuwang.pinju.core.cache.fetch.AsstPermFetch" />
+
+  <!-- 登录子账号权限 -->
+  <bean id="asstPermMemcachedManager" class="com.yuwang.pinju.core.cache.impl.MemcachedManagerImpl">
+    <constructor-arg index="0" ref="asstPermNumMemcachedClient" />
+    <constructor-arg index="1" value="asst.perm" />
+    <constructor-arg index="2" value="${memcached.expires.pinju.asst.perm}" />
+    <constructor-arg index="3" ref="asstPermFetch" />
+  </bean>
+</beans>

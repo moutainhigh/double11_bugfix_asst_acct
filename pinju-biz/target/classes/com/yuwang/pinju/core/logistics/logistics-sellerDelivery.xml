@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trade_logistics_seller_default">
+
+	<typeAlias alias="LogisticsSeller" type="com.yuwang.pinju.domain.logistics.LogisticsSellerDefaultDO" />
+
+	<resultMap id="tradeLogisticsSellerDefault" class="LogisticsSeller">
+		<result property="id" column="ID" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="companyId" column="COMPANY_ID" />
+		<result property="companyName" column="COMPANY_NAME" />
+		<result property="state" column="STATE" />
+		<result property="orderNum" column="ORDER_NUM" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="logisticsType" column="LOGISTICS_TYPE" />
+	</resultMap>
+
+	<sql id="queryTradeLogisticsSellerDefault">
+		SELECT id,seller_id,company_id,company_name,state,order_num,gmt_create,gmt_modified,logistics_type FROM trade_logistics_seller_default
+	</sql>
+	
+
+	<select id="queryByMemberId" resultMap="tradeLogisticsSellerDefault">
+		<include refid="queryTradeLogisticsSellerDefault" />
+		WHERE seller_id=#sellerId# AND state='1'
+	</select>
+
+	<insert id="insertDefault" parameterClass="LogisticsSeller">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_TRADE_LOGISTICS_SELLER.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		INSERT INTO trade_logistics_seller_default (id,seller_id,company_id,company_name,state,order_num,gmt_create,gmt_modified,LOGISTICS_TYPE) 
+		VALUES (#id#,#sellerId#,#companyId#,#companyName#,#state#,#orderNum#,#gmtCreate#,#gmtModified#,#logisticsType#)
+	</insert>
+  
+	<delete id="deleteDefaultById" parameterClass="long">
+		DELETE FROM trade_logistics_seller_default WHERE id=#id#
+	</delete>
+
+</sqlMap>
+

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Demo</title>
+		<style>
+		</style>
+		<script src="../jquery/jquery-1.6.2.min.js"></script>
+		<script src="jquery.textrange.js"></script>
+		<script>
+			$(function() {
+				var textrange = $.textrange('#J_content');
+				$('#J_setSelectionRange').click(function() {
+					textrange.setSelectionRange($('#J_start').val(), $('#J_end').val());
+				});
+				$('#J_insertText').click(function() {
+					textrange.insertText($('#J_text').val());
+				});
+				$('#J_insertText2').click(function() {
+					textrange.insertText($('#J_text').val(), true);
+				});
+				$('#J_startEnd').click(function() {
+					var pos = textrange.getStartEnd();
+					alert(pos.start + ', ' + pos.end);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		123456
+		<textarea id="J_content" style="width:700px;height:400px;">1234567890
+abcdef
+</textarea>
+		abcdef
+		<p>
+			开始位置：<input type="text" id="J_start" value="1" />
+			结束位置：<input type="text" id="J_end" value="3" />
+			插入内容：<input type="text" id="J_text" value="测试内容" />
+		</p>
+		<p>
+			<button type="button" id="J_setSelectionRange">选中</button>
+			<button type="button" id="J_insertText">插入</button>
+			<button type="button" id="J_insertText2">插入后选中</button>
+			<button type="button" id="J_startEnd">获取start和end</button>
+		</p>
+	</body>
+</html>

@@ -1,0 +1,806 @@
+﻿/*open shop 2011-11-24 */
+.openshop .ptitle { border-bottom: 1px solid #DADADA; }
+.openshop .ptitle h1 { border-bottom:1px solid #DADADA; bottom:-1px; color:#333; font-size:14px; padding-left:10px; }
+.openshop .ptitle h1 em { color:#666; font-size:12px; font-weight:normal; padding:0 0 0 10px; }
+.openshop .exinfo { color:#666; padding:0 10px; }
+
+.stepwrap { clear:both; margin:0 auto; padding:20px 0 10px; width:730px; }
+.openshop .tabs { padding:10px 0 30px 170px; }
+.openshop .tabs li { font-size:14px; float:left; margin:0 20px 0 0; }
+.openshop .tabs li a {
+	background:transparent url(http://static.pinju.com/img/openshopstep.png) no-repeat -110px top;
+	color:#666;
+	float:left;
+	height:30px;
+	padding:10px 0 0;
+	width:110px;
+	text-align:center;
+	text-decoration:none;
+}
+.openshop .tabs li a:hover,
+.openshop .tabs li.current a { background-position:left top; color:#333; font-weight:bold; }
+
+.openshop .title {
+	background-color:#f5f5f5;
+	border-top:1px solid #e6e6e6;
+	border-bottom:1px solid #fff;
+	height:37px;
+	line-height:37px;
+	padding:0 20px 0 30px;
+}
+.accordion .title { cursor:pointer; }
+.openshop .topen { background-color:#ffefd6; background-position:right -60px; border-top-color:#f5c99d; }
+.openshop .title h2 { float:left; font-size:14px; }
+.openshop .title .showhide {
+	background:transparent url(http://static.pinju.com/img/openshopstep.png) no-repeat right -96px;
+	float:right;
+	height:28px;
+	width:19px;
+}
+.openshop .container { display:none; }
+.openshop .topen .showhide { background-position:right -60px; }
+
+.stepwrap fieldset { margin:0 auto; width:690px; }
+.stepwrap fieldset legend { border-bottom:1px solid #e1e1e1; color:#666; font-weight:bold; padding:20px 20px 6px; width:650px; }
+.stepwrap .btnrow { padding:20px 0 0 160px; }
+
+.btn-imgtext .btn-openshopsave { background-position:left -143px; height:39px; width:240px; }
+.btn-imgtext .btn-ossactive { background-position:left -182px; height:39px; width:240px; }
+.btn-imgtext .btn-upload { background-position:left -221px; height:35px; width:129px; }
+.btn-imgtext .btn-csave { background-position:left -256px; float:left; height:35px; width:129px; }
+.btn-imgtext .btn-saveinfo { background-position:left -322px; height:35px; width:129px; }
+.btn-imgtext button.disabled { opacity: 1; }
+
+.comcered { padding:30px 0 30px 150px; }
+.comcered li { float:left; width:160px; }
+.comcered li a {
+	border:1px solid #ccc;
+	display: table-cell;
+    height:80px;
+    line-height: 80px;
+    vertical-align:middle;
+    text-align:center;
+    width:120px;
+    *display:block;
+    *font-size:69px;
+    *overflow:hidden;
+}
+.comcered li a img { vertical-align:middle; max-width:120px; }
+.comcered li p { float:left; padding:5px 0 0; width:120px; text-align:center; }
+
+.exbtnrow { border-top:1px dashed #ccc; padding:10px 0; height:35px; }
+.exbtnrow span { line-height:35px; }
+a.btn-addbrand{
+	background:transparent url(http://static.pinju.com/img/buttons-text.png) no-repeat left -291px;
+	float:left;
+	overflow:hidden;
+	cursor:pointer;
+	height:31px;
+	margin:0 10px 0 0;
+	width:109px;
+}
+a.btn-delbrand{
+	background:transparent url(http://static.pinju.com/img/buttons-text.png) no-repeat left -419px;
+	float:left;
+	overflow:hidden;
+	cursor:pointer;
+	height:35px;
+	margin:0 10px 0 0;
+	width:129px;
+}
+a.btn-tonext {
+	background:transparent url(http://static.pinju.com/img/buttons-text.png) no-repeat left -108px;
+	float:left;
+	overflow:hidden;
+	cursor:pointer;
+	height:35px;
+	margin:0 10px 0 0;
+	width:129px;
+}
+.stepshow { float:left; padding:20px 0 10px 20px; width:808px; }
+.stepshow .item {
+	background-color:#fffcf7;
+	border:2px solid #f5c99d;
+	float:left;
+	height:210px;
+	margin:0 20px 0 0;
+	_margin:0 16px 0 0;
+	padding:8px;
+	width:160px;
+}
+.stepshow .item .title { background-color:#fff; border-top:0 none; border-bottom:1px solid #f5c99d; padding:6px 0 10px; text-align:center; }
+.stepshow .item .title h2 { float:none; line-height:16px; }
+.stepshow .item .text { border-top:2px solid #ffefd6; height:84px; padding:15px 8px 5px 8px; }
+.stepshow .item .text p { line-height:18px; color:#666; }
+.subitem li {
+	background:transparent url(http://static.pinju.com/img/icons.gif) no-repeat left -660px;
+	padding:0 0 10px 18px;
+}
+.subitem li.fns { background-position:left -690px; }
+.stepshow .item .text p strong { color:#fa7800; font-weight:bold; }
+
+.stepshow .disabled, .stepshow .finished { background-color:#fcfcfc; border-color:#e1e1e1; }
+.stepshow .disabled .title, .stepshow .finished .title { border-bottom-color:#e1e1e1; }
+.stepshow .disabled .text, .stepshow .finished .text { border-top-color:#f0f0f0; }
+.stepshow .disabled .title h2, .stepshow .disabled .text ul, .stepshow .disabled .text p { color:#999; }
+
+.stepshow .finished { position:relative; }
+.stepshow .finished .icon-fns {
+	background:transparent url(http://static.pinju.com/img/icons.gif) no-repeat left -630px;
+	position:absolute;
+	bottom:-1px;
+	right:-1px;
+	width:24px;
+	height:24px;
+}
+.stepshow .finished .title h2 { color:#666; }
+
+.stepshow .item .btnrow { padding:0 0 0 25px; }
+.stepshow .btnrow a {
+	background:transparent url(http://static.pinju.com/img/buttons-text.png) no-repeat right top;
+	float:left;
+	height:31px;
+	overflow:hidden;
+	width:109px;
+}
+.stepshow .btnrow a span,
+a.btn-resubmit span,
+a.btn-bindaccount span,
+a.btn-signtenpay span,
+.btn-paybzj span,
+a.btn-2seller,
+a.btn-addbrand span,
+a.btn-delbrand span,
+a.btn-tonext span { display: block; text-indent: -999px; }
+.stepshow .btnrow .btn-opstart { background-position:right -221px; }
+.stepshow .disabled .btnrow .btn-opstart { background-position:right -252px; }
+.stepshow .btnrow .btn-opcontinue { background-position:right -283px; }
+.stepshow .btnrow .btn-opstatus { background-position:right -314px; }
+.stepshow .btnrow .btn-cshoptype { background-position:right -345px; }
+
+.infowrap { float:left; padding:20px 49px 10px; width:730px; }
+.infowrap ul, .infowrap .tipsarea { background-color:#fffcf7; border:2px solid #f5c99d; float:left; padding:30px; width:666px; }
+.infowrap ul li { border-right:1px dashed #f5c99d; float:left; padding:0 30px; font-size:14px; font-weight:bold; }
+.infowrap ul li.last { border-right:0 none; padding-right:0; }
+.infowrap ul li span {
+	background:transparent url(http://static.pinju.com/img/openshopsubmit.png) no-repeat left top;
+	float:left;
+	height:32px;
+	width:32px;
+}
+.infowrap ul li span.icon-shop { background-position:left top; }
+.infowrap ul li span.icon-qycer { background-position:-32px top; }
+.infowrap ul li span.icon-idorwork { background-position:-64px top; }
+.infowrap ul li span.icon-brand { background-position:-96px top; }
+
+.infowrap ul li a { color:#fa7800; float:left; line-height:32px; padding:0 0 0 10px; }
+.infowrap .finished a { position:relative; }
+.infowrap .finished em { color:#666; position:absolute; right:0; bottom:-20px; font-size:12px; font-weight:normal; }
+.infowrap .btnrow div { padding:10px; clear:both; }
+.infowrap .btnrow label { color:#666; }
+.infowrap .btn-imgtext button { background: url("http://static.pinju.com/img/openshopsubmit.png") no-repeat scroll 0 0 transparent;}
+.infowrap .btn-imgtext button.submitreview { background-position:left -67px; height:35px; width:123px; }
+.infowrap .btn-imgtext button.submitreviewdis { background-position:left -32px; height:35px; width:123px; }
+
+.tipstitle {float:left; padding:20px 20px 5px; width:788px; }
+.tipstitle .icon-ossfail {
+	background:transparent url(http://static.pinju.com/img/openshopsubmit.png) no-repeat -128px top;
+	float:left;
+	height:41px;
+	width:48px;
+}
+.tipstitle h1 { color:#fa7800; float:left; font-size:18px;	font-weight:bold; padding:10px 0 0 20px; }
+.tipstext { background-color:#ffffe0; border:1px solid #f9e0b4; clear:both; margin:0 80px; padding:20px; }
+.tipstext dl { line-height:2em; }
+.tipstext dt { font-size:14px; font-weight:bold; }
+.tipstext dl ul { list-style:disc outside none; font-size:14px; padding:5px 0 10px 20px; }
+.tipstext dl ul li strong { color:#f00; font-size:12px; font-weight:normal; }
+.tipstext dl ul li em { color:#666; font-size:12px; }
+.tipstext dl dl dt { background-color:#f9e0b4; font-size:12px; padding:0 0 0 5px; }
+.tipstext dl dl dd { background-color:#fff; }
+.tipstext dl dl dd ol { list-style:decimal outside none; padding:10px 0 10px 40px; }
+.tipstext dl dl dd .btnrow { border-top:1px dashed #ccc; height:60px; margin:0 20px; padding:20px 0 0 250px; }
+
+.tipsarea .row { padding:0 0 10px; clear:both; height:31px;}
+.tipsarea .row em { color:#666; float:left; line-height:31px; padding:0 10px; }
+.tipsarea .row .icon-ok {
+	background:transparent url(http://static.pinju.com/img/icons.gif) no-repeat left -630px;
+	color:#333;
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+	height:24px;
+	line-height:24px;
+	padding:0 10px 0 35px;
+}
+.tipsarea .row .icon-ok em { float:none; font-size:12px; font-weight:normal;}
+
+a.btn-resubmit,
+a.btn-bindaccount ,
+a.btn-signtenpay,
+.btn-paybzj,
+a.btn-2seller {
+	background:transparent url(http://static.pinju.com/img/openshopsubmit.png) no-repeat left top;
+	float:left;
+	overflow:hidden;
+	cursor:pointer;
+}
+a.btn-resubmit { background-position:left -102px; height:31px; width:99px; }
+a.btn-bindaccount { background-position:left -195px; height:31px; width:159px; }
+a.btn-signtenpay { background-position:left -164px; height:31px; width:159px; }
+.btn-paybzj { border:0 none; background-position:-99px -102px; float:none; height:31px; width:109px; }
+a.btn-2seller { background-position:left -133px; height:31px; width:129px; margin:0 0 0 300px;}
+
+.paylevelinfo { font-size:14px; border-bottom:1px solid #f5c99d; }
+.paylevelinfo li { padding:10px 0; }
+.paylevelinfo li strong { color:#fa7800; }
+.paylevelinfo li em { color:#638c0b; font-weight:bold; }
+.cservice { border-top:2px solid #ffefd6; padding:10px 0; }
+.cservice p { padding:15px 0 0; line-height:1.4em; }
+.cservice p strong { color:#638c0b; }
+.icon-cservice {
+	float:left;
+	background:transparent url(http://static.pinju.com/img/openshopsubmit.png) no-repeat  -176px top;
+	border-top:2px solid #ffefd6;
+	height:45px;
+	width:38px;
+	margin:0 10px 0 0;
+}
+
+.osstatus li { clear:both; text-align:center; }
+.osstatus li.text { color:#666; padding:10px 0 0; line-height:1.6em; }
+.osstatus li.text em { color:#be0000; }
+.icon-lighter { padding:20px 0 0 200px; color:#666; height:40px; }
+.icon-lighter span {
+	background:transparent url(http://static.pinju.com/img/openshopsubmit.png) no-repeat -214px top;
+	float:left;
+	width:22px;
+	height:22px;
+	margin:0 10px 0 0;
+}
+.icon-lighter p { float:left; line-height:22px; }
+.btn-imgtext button.confirmbind { background-position:left -388px; width:129px; height:31px; }
+
+/*.topic{ background:#ffffe0; border-bottom:1px solid #efce9a; padding:10px 10px;}
+.topic{ font-weight:normal; color:#999;}
+.topic strong{ font-size:16px; line-height:19px; font-weight: bold; color:#F60; font-family:Tahoma,simsun;}*/
+
+.topic{border-bottom:2px solid #dadada; color:#000; }
+.topic strong{border-bottom:2px solid #d72426; display:block; width:111px; position:relative; bottom:-2px; font-weight:bold; text-indent:8px;height:18px;}
+
+
+.red{ color:#F00;}
+
+/*多内容提示*/
+.tips{ background:#fcf2f2; border:1px solid #eaaeae; padding:10px 10px; margin-bottom:10px;}
+.tips strong{ font-weight:bold; color:#333;}
+
+.tips2{ background:#ffffe0; color:#999; border:1px solid #efce9a; padding:10px; margin-bottom:10px;}
+.tips2 li{ display:inline; margin-left:10px;}
+.tips2 li span{ color:#C00;}
+
+/*多元素搜索*/
+.search-table{ padding:10px;}
+.search-table table{ float:left; width:680px;}
+.search-table th{ text-align:right; width:65px;}
+.search-table th, .search-table td{ padding:5px 0;}
+.search-table td input{ width:140px;}
+.search-table td select{ width:146px;}
+.search-table cite{ float:right; padding-top:5px;}
+.search-table cite input{ width:80px; height:50px; border:1px solid #CCC; cursor:pointer;}
+.search-table cite input{ background:url(http://static.pinju.com/img/button.png) repeat-x 0 -250px;}
+.search-table cite input:hover{ background:#FFF;}
+.search-table .short .text{ width:53px;}
+.search-table .short span{ padding:0 8px;}
+
+/*流程列表*/
+.steper{ height:60px; background:#FFF; padding-top: 20px;}
+.steper h2{ display: block; width:828px; height:50px;}
+.steper01{ background:url( http://static.pinju.com/img/open-steper.png) no-repeat 30px 0;}
+.steper02{ background:url( http://static.pinju.com/img/open-steper.png) no-repeat 30px -50px;}
+.steper03{ background:url( http://static.pinju.com/img/open-steper.png) no-repeat 30px -100px;}
+.steper04{ background:url( http://static.pinju.com/img/open-steper.png) no-repeat 30px -150px;}
+.steper05{ background:url( http://static.pinju.com/img/open-steper.png) no-repeat 30px -200px;}
+
+/*主选项卡*/
+.tab-main{ height:36px; display:block; background:url( http://static.pinju.com/img/line.png) repeat-x 0 35px;}
+.tab-main li{ display:block; float:left; margin-right:5px;}
+.tab-main li span{ display:block; background:#F4F4F4; padding:10px 15px 8px; border-bottom:1px solid #DADADA; border-left:1px solid #DADADA; border-right:1px solid #DADADA; border-top:2px solid #d72426; color:#333;}
+.tab-main li a{ display:block; background:#F4F4F4; padding:10px 15px 8px; border-bottom:1px solid #DADADA; border-left:1px solid #DADADA; border-right:1px solid #DADADA; border-top:2px solid #d72426; color:#333;}
+.tab-main .count a{ border-bottom:1px solid #FFF; background:#FFF; font-weight:bold;}
+.tab-main .count span{ border-bottom:1px solid #FFF; background:#FFF; font-weight:bold;}
+
+/*主按钮*/
+.button-main{ padding:20px 0 0 240px; height:60px; border:none;}
+.button-main li{ display:block; float:left;}
+.button-main .button { float:left; width:120px; height:30px; border:none; color:#FFF; margin-right:10px; font-weight:bold; cursor: pointer; text-align:center; line-height:30px;}
+.button-main .button{ background:url( http://static.pinju.com/img/button.png) no-repeat;}
+.button-main .button:hover{ text-decoration:none; background:url( http://static.pinju.com/img/button.png) no-repeat 0 -50px;}
+.button-main .checkbox{ padding-top:13px;}
+.button-main .checkbox input{ display:inline;}
+.button-main .only{ padding-left:100px;}
+
+/*首页开店状态*/
+.index-open{ padding-left:120px;}
+.index-open li{ display:block; float:left; margin-right:30px;}
+.index-checking{ background:#FFF;}
+.index-checking li{ width:100%; height:200px; text-align: center;}
+.index-checking li img{ margin:0 auto;}
+
+/*首页开店状态*/
+#index-reopen{ background:#ffffe0;}
+#index-reopen h3{ padding:20px 0 25px; text-align:center; font-size:22px; line-height:25px; font-weight:bold; color:#333; font-family:Tahoma,simsun;}
+#index-reopen p{ padding:0 40px; line-height:23px; color:#666;}
+#index-reopen .button{ padding:30px 0 10px; display:block; text-align:center;}
+#index-reopen .button input{ width:195px; height:43px; border:none;}
+#index-reopen .button input{ color:#FFF; font-size:14px; font-family:Tahoma,simsun; font-weight:bold; cursor:pointer;}
+#index-reopen .button input{ background: url(http://static.pinju.com/img/button.png) no-repeat 0 -350px;}
+#index-reopen .button input:hover{ background: url(http://static.pinju.com/img/button.png) no-repeat 0 -400px;}
+
+/*首页开店状态 - new */
+#doshop { min-height:450px; _height:450px; }
+#doshop .tips {
+	background: #ffffe1 url(http://static.pinju.com/img/hot_grid_ui/hot_grid_ui.png) no-repeat -180px 5px;
+	border:1px solid #fadfb2;
+	padding:5px 5px 10px 25px;
+}
+.shoplist li {
+	background:#ffffe1 url(http://static.pinju.com/img/shop.jpg) no-repeat left top;
+	float:left;
+	height:304px;
+	width:190px;
+	margin:0 48px 0 0;
+	padding:0 27px 0 27px;
+}
+.shoplist li a {
+	float:left;
+	height:200px;
+	overflow:hidden;
+	width:190px;
+}
+.shoplist li a span { float:left; text-indent:-999px; }
+.shoplist li.last { margin:0; }
+.shoplist .flagship { background-position:left top;}
+.shoplist .brand { background-position:-250px top; }
+.shoplist .noraml { background-position:-500px top; }
+.shoplist li .desc { text-indent:30px; color:#999; line-height:1.6em;}
+
+/*绑定*/
+.truss{ background:#FFF; padding:40px 10px 10px; }
+.truss h3{ background:#ffffe0; border:1px solid #f9dfb2; color:#333;}
+.truss h3{ width:400px; margin:0 auto 10px; text-align:center; padding:30px 0 30px; font-size:14px;}
+
+.truss h4{ background:#ddffdd; border:1px solid #3e994d; color:#333;}
+.truss h4{ width:400px; margin:0 auto 10px; text-align:center; padding:30px 0 30px; font-size:14px;}
+.truss h4 strong{ font-weight:bold; color:#000; font-size:16px; line-height:21px;}
+.truss ul{ width:300px; margin:0 auto; padding-top:10px;}
+.truss li{ display:block; font-size:14px; line-height:17px; padding:8px 0;}
+.truss li a{ font-size:14px;}
+.truss .right-sider{ text-align:right;}
+
+/*实名验证*/
+.verify{ background:#FFF; padding:40px 10px 10px;}
+.verify ul{ background:#ffffe0; border:1px solid #f9dfb2; height:100px; color:#333; padding:30px;}
+.verify h3{ font-size:16px; font-weight:bold;}
+.verify li{ display:block; font-size:14px; line-height:17px; padding:8px 0 0;}
+.verify .right-sider input{ float:right; border:1px solid #7CD170; background:#BBDCA9; padding:6px 10px; cursor:pointer;}
+
+/*协议*/
+.agreement{ background:#FFF; padding:10px;}
+.agreement h3{ font-size:18px; font-family:Tahoma,simsun; line-height:21px; font-weight:bold; margin-bottom:20px;}
+
+.agreement .agreement-box{ height:481px; overflow: hidden;}
+.agreement .agreement-text{ padding:10px; height:460px; overflow-y:scroll; overflow-x:hidden; }
+.agreement .agreement-are{ width:100%; height:auto;}
+.agreement .agreement-text{ border-bottom:1px solid #DADADA; border-left:1px solid #DADADA; border-right:1px solid #DADADA;}
+.agreement .agreement-text h4{ text-align:center; font-size:23px; font-weight:bold; line-height:26px; padding:10px 0 8px;}
+.agreement .agreement-text p{ font-size:14px; line-height:19px; padding-left:30px; padding-top:5px;}
+.agreement .agreement-text .title{ font-size:14px; font-weight:bold; line-height:19px; text-indent:28px; padding-top:20px; text-indent:-18px;}
+.agreement .agreement-text strong{ font-weight:bold;}
+.agreement .agreement-text table{ border:1px solid #DADADA;}
+.agreement .agreement-text table th{ background:#EEE; padding:5px 0; font-weight:bold;}
+.agreement .agreement-text table td{ padding:5px 8px; border:1px solid #DADADA;}
+
+/*资料提交*/
+.info { background:#FFF; padding:10px;}
+.info h4{ padding:20px 0 0 10px; height:20px; border-bottom:2px solid #CCC; color:#999;}
+.info h4 strong{ color:#000; padding-right:10px; font-weight:bold; font-size:14px; line-height:17px;}
+.info table{ width:99%; margin:5px 0 10px;}
+.info table th, .info table td{ vertical-align: top;}
+.info table td{ padding:10px 0 5px 10px;}
+.info table td input{ display:inline;}
+.info table td input:focus, .info table td textarea:focus { border-color:#f5ab3d; }
+.info table th{ padding:10px 0 5px 0;}
+.info table th{ text-align: right; font-weight:normal; width:30%;}
+.info table select{ width:245px; margin-right:10px;}
+.info table td p{ color:#999; padding:5px 0 0;}
+.info table textarea{ width:400px; height:120px; border:1px solid #999;}
+.info .picture-up .text{ height:20px; width:185px; padding:3px 2px 0 2px; border:1px solid #999; margin-right:5px;}
+.info .picture-up .button{ height:25px; width:50px; padding:3px 2px 0 2px; border:1px solid #999; background:#F4F4F4; cursor:pointer;}
+.info td label{ padding-right:15px;}
+.info td span{ color:#F00;}
+.info .address{ padding:10px 0 0 20px;}
+.info .address p{ padding:10px 0 20px;}
+.info .address strong{ font-size:18px; line-height:23px; font-weight:bold;}
+.info .paper{ height:600px; overflow-x:hidden; overflow-y:scroll; padding:10px 10px 10px 40px; border:1px solid #CCC; background:#f4f4f4;}
+.info .paper .title{ text-indent:-24px; font-weight:normal; padding-bottom:20px;}
+.info .paper ul{ padding:10px 0; border-bottom:1px dashed #CCC;}
+.info .paper p{ padding:3px 0; line-height:23px; font-size:14px; color:#000;}
+.info .paper p strong{ font-weight:bold; color:#F00;}
+.info .paper li{ text-indent:-16px; color:#333; font-size:14px; padding:5px 0 5px 16px; line-height:23px;}
+.info .paper li span, .info .paper p b{ font-weight:bold; color:#333; padding-right:5px;}
+.info .paper li span{ color:#da5d5d;}
+
+.info-brand{ border-bottom: 1px solid #DADADA; background:#f4f4f4}
+.info-brand td cite{ float:right; padding-right:20px;}
+.add-brand{ height:100px; text-align:right;}
+.add-brand input{ width:100px; height:30px; border:1px solid #093; background:#D1DFB3; cursor:pointer;}
+
+/*缴纳保证金*/
+.cash{ background:#FFF; padding:10px;}
+.cash h3{ background:#ffffe0; border:1px solid #f9dfb2; padding:10px 0 10px 10px; font-size:14px; line-height:17px;}
+.cash h4{ background:#ffffe0; border:1px solid #f9dfb2; padding:8px; line-height:17px;}
+.cash h4 a{ font-weight:bold;}
+.cash .consumer{ background:#FFF; width:100%;}
+.cash .consumer li{ padding:20px 0 0 0; font-size:14px; line-height:17px; height:220px; color:#F60;}
+.cash .consumer li input{ display:inline; margin-right:3px;}
+.cash .consumer li{ display:block; float:left; width:400px; background:url( http://static.pinju.com/img/open-textback.png) no-repeat 0 40px;}
+.cash .consumer li p{ display:block; width:350px; margin:40px 0 0 20px; font-size:12px; line-height:17px; color:#000;}
+.cash .consumer li p cite{ float:right; clear:both; margin-top:20px; font-style:normal;}
+.cash .shop-kind{ padding:20px 0 0 0;}
+.cash .shop-kind li{ font-size:18px; font-family:Tahoma,simsun; font-weight:bold; line-height:23px; padding:10px 0 10px 10px;}
+.cash .shop-kind li span{ color:#F60;}
+
+/*店铺基础设置*//*商品管理*/
+.shop-set{ background:#FFF; padding:10px; position:relative; }
+.shop-set h3{ background:#ffffe0; border-top:1px solid #efce9a; padding:8px 10px; margin-bottom:10px;}
+.shop-set h3{ color:#666; font-weight:normal;}
+.shop-set h3 strong{ font-weight:bold; font-size:14px; line-height:17px; padding-right:10px; color:#333;}
+.shop-set .tips-pop { background-color:#0c3; color:#fff; position:absolute; top:56px; left:300px; padding:5px 20px; }
+
+.shop-set .shop-logo{ display:block; height:130px; width:95px;  float:left; padding:10px;}
+.file_img_box{width:80px; height:80px; border:1px solid #CCC;display: table-cell; vertical-align:middle; text-align:center; *display: block;}
+
+.shop-set .shop-logo li a{
+	display:block;
+	clear:both;
+	position: relative;
+	overflow: hidden;
+	text-align:center; 
+	width:80px; 
+	height:20px; 
+	line-height:20px; 
+	background:#FFFFCC;
+
+}
+.shop-set .shop-logo li a{ border-top:1px solid #EEE; border-left:1px solid #CCC; border-right:1px solid #CCC; border-bottom:1px solid #CCC;}
+
+.shop-set .shop-logo li input{
+	display: block;
+	height:20px;
+	clear: both;
+	position: absolute;
+	right:1px;
+	bottom:1px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	cursor: pointer;
+
+}
+.shop-set .shop-table{ display:block; float:left; padding:0;}
+.shop-set .shop-table table{ width:600px;}
+.shop-set .shop-table th, .shop-set .shop-table td{ padding:0 5px 8px;}
+.shop-set .shop-table th{ text-align: right; font-weight:normal; width:60px;}
+.shop-set .shop-table td label{ display:block; float:left; padding:8px 15px 5px 0;}
+.shop-set .shop-table td .text{ height:20px; width:185px; padding:3px 2px 0 2px; border:1px solid #999; margin-right:5px;}
+.shop-set .shop-table td select{ width:191px; }
+.shop-set .shop-table td label{ display:block; float:left; width:100px;}
+.shop-set .shop-text { display:block; clear:both; padding:0 10px;}
+.shop-set .shop-text textarea{ width:560px; height:100px; display:block; margin-top:5px;}
+
+.shop-set .sale-info{ display:block; float:left; padding:10px;}
+
+/*店铺分类管理*/
+.class-table{ background:#FFF; padding-top:10px;}
+.class-table h4{ padding:8px 10px 15px; font-weight:bold; }
+.class-table h4 select{ width:200px; }
+.class-table table{ width:100%; background:#FFF; }
+.class-table th{ background:#F4F4F4; border-top:1px solid #CCC; color:#333; font-weight:bold;}
+.class-table td, .class-table th{ padding:5px 0; text-align:left; text-indent:10px; vertical-align:top;}
+.class-table td a{ display:block; float:left;}
+.class-table td .img-project{ width:80px; height:80px; border:1px solid #CCC;}
+.commodity_links{ width:200px; text-indent:0; padding-left:10px;word-wrap: break-word;}
+.img-project img{ float:left; }
+.class-table td .img-project:hover{ border:1px solid #333;}
+.class-table .class-path span{ display:block; float:left; height:20px; padding:3px 0; text-indent:0;}
+.class-table .class-path p{ display:block; clear:both;}
+.class-table .class-path .aro{ width:20px; background:url( http://static.pinju.com/img/icon-option.png) no-repeat right -442px;}
+
+	.up-m, .up-c, .down-m, .down-c, .del-m, .del-c{ display:block; width:30px; height:20px;}
+	.up-m:hover, .down-m:hover, .del-m:hover{ width:28px; height:18px; border:1px solid #999;}
+	
+	.class-table td .up-m{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat center 5px;}
+	.class-table td .up-c{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat center -45px;}
+	
+	.class-table td .down-m{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat center -95px;}
+	.class-table td .down-c{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat center -145px;}
+	
+	.class-table td .del-m{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat center -195px;}
+	.class-table td .del-c{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat center -245px;}
+
+.class-table .group-option{ background:url( http://static.pinju.com/img/button.png) repeat-x center -250px; padding:5px 5px 5px 0; }
+.class-table .group-option .button{ border: none; background:#666; }
+.class-table .group-option .button{ height:22px; width:60px; border:1px solid; margin-left:10px; cursor:pointer; float:right;}
+.class-table .group-option .button{ color:#F4F4F4; font-weight:bold; }
+
+.class-table .c-name{ width:320px;}
+.class-table .c-add{ width:150px;}
+.class-table .c-move{ width:50px;}
+.class-table .c-checkbox{ width:30px;}
+
+.class-table .level-line{ border-top:1px solid #EEE;}
+
+.class-table .class-main{ border-top:1px solid #EEE; }
+.class-table .class-main td{ padding:20px 0 8px;}
+.class-table .class-main .text{ width:200px; border:1px solid #666; }
+
+.class-table .button-add{ background:#F4F4F4; border-top: 1px solid #CCC; padding:10px;}
+.class-table .button-add input{ font-weight:bold; color:#333;}
+.class-table .button-add input{ text-indent:15px; line-height:17px; width:100px; height:26px; cursor:pointer;}
+.class-table .button-add input{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat 0 -395px #e4f7e0;  border:1px solid #92c673;}
+
+.class-table .editer{ background:#f7dfdf; display:block; padding:10px 10px; clear:both; position:relative; bottom:-10px;}
+.class-table .editer select{ width:120px; margin-left:15px;}
+.main-class{ background:#999; line-height:33px; color:#FFF;}
+
+.class-table .button-addsub{ text-indent:15px; line-height:17px; width:100px; height:26px; cursor:pointer;}
+.class-table .button-addsub{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat 0 -345px #e4f7e0;  border:1px solid #92c673;}
+
+.class-table .class-sub{ }
+.class-table .class-sub .name{ background:url( http://static.pinju.com/img/icon-option.png) no-repeat 10px -290px; padding-left:30px; }
+.class-table .class-sub .text{ width:170px; border:1px solid #CCC; }
+
+.class-table .title{ background:#e4f7e0; text-align:left; padding:6px 0 6px 0; color:#333;}
+.class-table .title{ border-top:1px solid #92c673;}
+
+/*-- 商品管理列表 --*/
+.sale{ background:#FFF; padding-top:10px; clear:both;}
+
+.sale td, .sale th{ padding:8px 5px 7px;}
+.sale-title, .sale-option, .sale-lister{ width:99%; }
+
+.sale-title{ width:99%; border:1px solid #DADADA; }
+.sale-title th{ font-weight:bold; background:url( http://static.pinju.com/img/button.png) repeat-x 0 -260px;}
+
+.sale-option{ background:#F4F4F4; padding-top:10px; border-bottom:1px solid #DADADA; }
+.sale-option{ border-right:1px solid #DADADA; border-left:1px solid #DADADA;}
+.sale-option cite{ display:block; float:right;}
+
+
+.c01 a, .c02 a, .c03 a{ padding:10px 0 10px; word-wrap:break-word;}
+.c01 a:hover, .c02 a:hover, .c03 a:hover{ text-decoration:none; background:#f9dfb2;}
+
+.c02 a{ display:block; width:120px; overflow: hidden;}
+.c01 a{ display:block; width:150px; overflow: hidden;}
+
+
+
+.t01, .c01{ width:250px;}
+.t02, .c02{ width:115px;}
+.t03{ text-indent:-10px;}
+.c03{ text-align:center;}
+.t03, .c03{ width:95px;}
+.t04, .c04{ width:50px;}
+.t04{ text-align:left;}
+.t05, .c05{ width:65px;}
+.t06, .c06{ width:65px;}
+
+.c01 img{ width:80px; height:80px; border:1px solid #CCC; margin:0 10px 0 20px;}
+.c01 img.autosize { width:auto !important; height:auto !important; border:0 none; margin:5px; }
+.c01 img, .c01 a{float:left;}
+.c01 textarea{ width:100px; height:40px; float:left; border:1px solid #CCC;}
+
+.c01-new .pic-wrap {float:left;margin:0 10px 0 20px;}
+.c01-new .pic-wrap a {width:80px;height:80px;border:1px solid #CCC;padding:0;margin:0;display:table-cell;vertical-align:middle;text-align:center;*display: block; *font-size: 67px;}
+.c01-new .pic-wrap a:hover {border:1px solid #BE0000;background:#fff;}
+.c01-new .pic-wrap a img {border:0;margin:0;vertical-align:middle;}
+.c01-new img.autosize { width:auto !important; height:auto !important; border:0 none; margin:5px; }
+.c01-new textarea{ width:100px; height:40px; float:left; border:1px solid #CCC;}
+
+.c02{ font-size:14px; line-height:19px; font-family:Verdana, Arial, Helvetica, sans-serif; color:#666;}
+.c02 strong{ font-size:14px; font-weight:bold; line-height:23px; color:#C00; word-wrap:break-word; }
+
+
+.sale-lister .button, .sale-lister .text{ width:70px;}
+.sale-lister .button{ width:75px; margin-top:6px;}
+
+.sale-lister td span{ display:block; text-align:center;}
+.sale-lister{ border-right:1px solid #DADADA; border-bottom:1px solid #DADADA; border-left:1px solid #DADADA;}
+.sale-lister caption{ background:#e4f7e0; padding:7px 5px; text-align:left;}
+.sale-lister caption{ border-right:1px solid #DADADA; border-left:1px solid #DADADA;}
+.sale-lister .c01{}
+
+.sale #count{ background:#ffffe0;}
+.sale #count caption{ background:#f9dfb2;}
+.page-coder{ padding:10px; text-align:right;}
+.page-coder input{ width:30px; margin:0 10px;}
+.open-pocess{padding:10px; width:808px; }
+.open-pocess .title { font-size:14px; font-weight:bold; margin-bottom:15px; }
+.open-pocess .title h2 { padding:0 0 10px; }
+.horizen_gray { display:block; padding:0; height:2px; background:#d4d4d4; margin-bottom:10px;overflow:hidden;}
+.horizen_gray span{ display:block;}
+.horizen_gray span.horizen_red {width:200px; display:block; padding:0;height:2px; background:#d72426;overflow:hidden;}
+.bindwrap { background-color:#f7f7f7; padding:20px; width:768px; }
+.open-pocess .acc_set { color:#000; padding:0 20px 10px; }
+.open-pocess .set1 { border-bottom:1px dashed #666; }
+.open-pocess .set2 { padding:10px 20px 0;  }
+.open-pocess .acc_set span { margin-right:20px;font-size:14px; }
+.open-pocess .acc_set .btn{
+	display:inline-block;
+	text-decoration:none;
+	background:url(http://static.pinju.com/images/btn-192x32-orange.png) no-repeat;
+	width:192px; height:24px;
+	color:#FFF;
+	font-size:14px;
+	font-weight:bold;
+	padding-top:8px;
+	text-align:center;
+}
+.open-pocess .acc_set .complete{background:url(http://static.pinju.com/img/icon-succeed.png) no-repeat 5px 5px; font-size:12px; line-height:1.5;color:#3f7c08; padding:4px 0 0 25px;}
+.open-pocess .next-btn-box{ padding:30px 0 0 130px;}
+.open-pocess .next-btn{ background:url(http://static.pinju.com/img/next_btn.gif) no-repeat; float:left; width:103px; height:23px;padding-top:6px; display:block; color:#FFF; text-decoration:none; font-size:14px; font-weight:bold; text-align:center; }
+.open-pocess .tips-normal,.open-pocess .tips-error { padding:5px 10px 5px 30px; background-position:5px 8px; margin:0 0 0 10px; }
+.open-pocess .next-btn-box .tips-error { float:left; margin:0 0 0 15px; font-size:14px; color:#666; }
+.open-pocess .next-btn-box span { clear:both; float:left; line-height:2; color:#888;}
+.open-pocess .error{ background:url(http://static.pinju.com/img/pot_03.gif) no-repeat 5px 8px #ffe5e6; padding:0 10px 0 25px;border:1px solid #ff999a; width:560px; line-height:2.5; margin-bottom:10px;}
+.open-pocess .error .close{ background:url(http://static.pinju.com/img/close_03.gif) no-repeat; margin-top:5px; width:15px; height:15px; float:right;}
+/*盛付通账号管理*/
+.sft{ padding:10px; background:#FFF;}
+.sft .notic-linker{ padding:15px 0 15px 50px; border-bottom:1px dashed #DADADA; min-height:30px; margin-bottom:15px;}
+.sft .notic-linker h3{ font-weight:bold;}
+.sft .notic-linker p{ padding:10px 0 15px;}
+.sft .notic-linker li{ display:block; float:left; padding-right:20px;}
+.sft .notic-linker strong { font-size:14px; font-weight:bold;}
+.sft div.notic-linker p { text-align:right; padding-right:30px; }
+.sft div.notic-linker strong { color:#06c; font-size:12px; font-weight:normal; }
+
+.sft h2{ font-size:16px; line-height:19px; padding:10px 0 10px 30px;}
+.sft table{ }
+.sft table caption{ padding:30px 10px 10px; font-size:22px; font-weight:bold; line-height:25px; font-family:Tahoma,simsun;}
+.sft table th{ text-align:right; width:200px;}
+.sft table td, .sft table th{ padding:5px 2px; font-size:14px; font-weight:normal;}
+.sft table td strong{ font-weight:bold;}
+.sft table td span{ color:#060;}
+.sft table td a{ padding-right:10px;}
+.sft table td.pointer{ width:270px}
+.sft table td.pointer .point{border:1px solid #fadfb2;padding:0 10px 0 27px; background:url(http://static.pinju.com/images/point_01_03.gif) no-repeat 6px 7px #feffe0; line-height:2.5; font-size:12px;}
+.sft table td.pointer .point span{ color:#be0000; font-weight:bold;}
+.sft .button-main{ padding:20px 0 0 220px;}
+.sft .agreement{ padding-left:100px;}
+.sft td .tips{ padding:5px; color:#F00; border:1px solid #F00;}
+.sft td .right{ padding:0 0 5px 10px;}
+.sft .agreement strong{ display:block; font-weight:bold; padding:10px 0 5px;}
+.sft .agreement p{ width:750px; height:400px; overflow-y:scroll; overflow-x:hidden; background:#F8F8F8; border:1px solid #CCC;}
+.bd{font-weight:bold;}
+.shop_pointer_style{border:1px solid #fadfb2; padding:0 10px 0 27px; background:url(http://static.pinju.com/images/point_01_03.gif) no-repeat 6px 7px #feffe0; margin:20px 0;}
+
+.store_but,.store_but1{width:109px; height:29px; margin:0 20px; border:none;cursor:pointer;}
+.store_but{ background:url(http://static.pinju.com/images/store_but_10.gif) no-repeat; }
+.store_but1{ background:url(http://static.pinju.com/images/store_but2_12.gif) no-repeat;}
+.outages_box{ background:url(http://static.pinju.com/images/outages_error_03.gif) no-repeat 34px 60px; height: 150px;padding: 60px 0 0 200px;}
+.outages_box p{ line-height:32px; font-size:14px;}
+
+.shop_pointer930{ border:1px solid #f9e0b4; padding:10px 15px 27px; }
+.shop_pointer930 p{font-weight:bold; padding-left:30px;}
+.shop_pointer930 .p1{ font-size:18px; line-height:2;color:#333333;}
+.shop_pointer930 .p2{
+	background:url(http://static.pinju.com/img/icons.gif) no-repeat 5px -450px;
+	font-size:12px;
+	line-height:3;
+	color:#f33e00;
+}
+.shop_pointer930 ul{border-top:1px dotted #999999; padding:15px 0 0 30px;  line-height:3.5; color:#000;}
+.shop_pointer930 ul li{ height:42px;}
+.shop_pointer930 ul li span{ color:#339900;}
+.shop_pointer930 ul li span.right{ background:url(http://static.pinju.com/img/icon-succeed.png) no-repeat; width:14px; height:13px; display:inline-block;}
+.shop_pointer930 ul li a.btn{color:#FFF; display:inline-block; background:url(http://static.pinju.com/img/btn_09.gif) no-repeat; width:109px; height:18px;padding-top:5px; line-height:normal; text-align:center; text-decoration:none;}
+
+.black{color:#000;}
+.red{color:#d72426;}
+.bd{ font-weight:bold;}
+.fl{ float:left;}
+.fr{ float:right;}
+.shop_pointer_style p{ line-height:26px;}
+.shop_pointer_style a{ line-height:26px;}
+.fl{float:left;}
+.fr{float:right;}
+
+.shopinfo { position:relative; }
+.shopinfo table th { color:#666; width:15%; }
+.updatelogo { position:absolute; left:600px; top:20px; }
+.logoph {
+    border: 1px solid #ccc;
+	display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+	padding:10px;
+    width:80px;
+    height:80px;
+    line-height: 80px;
+    *display: block;
+    *font-size: 69px;
+}
+.logoph img {vertical-align:middle;}
+
+.updatelogo a{
+	display: block;
+	text-align:center; 
+	width:100px; 
+	overflow:hidden;
+	height:30px; 
+	line-height:30px; 
+}
+
+.updatelogo a input{
+	display: block;
+	height:20px;
+	clear: both;
+	position: absolute;
+	right:1px;
+	bottom:1px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	cursor: pointer;
+}
+.mcheckbox div { clear:both; }
+.mcheckbox label { float:left; padding-bottom:5px; width:110px; }
+.info table .smulti select, .info table .smulti input { float:left; width:80px; }
+.smulti img { float:left;}
+.ui-datepicker-trigger { margin:0 5px; }
+
+/* 店铺标签设置 */
+.shoptaglist { background-color:#fff; border-top:1px solid #e7e7e7; padding:10px 20px; }
+.shoptaglist dt { font-size:14px; margin:0 0 10px; }
+.shoptaglist dd li { float:left; background-color:#e6e6e6; margin:0 10px 10px 0; padding:5px 10px; word-break:keep-all; word-wrap:normal; white-space: nowrap; position:relative;}
+.shoptaglist dd li a { color:#666; cursor:default; float:left; margin:0 7px 0 0; text-decoration:none; }
+.shoptaglist dd li a:hover { text-decoration:none; }
+.shoptaglist dd li a.icon-del {
+	background:transparent url(http://static.pinju.com/img/icon-del.png) no-repeat scroll 0 0;
+	cursor:pointer;
+	height:11px;
+	width:11px;
+	margin: 0 0 0 5px;
+    position: absolute;
+    right: 5px;
+    top: 7px;
+}
+.shoptaglist dd li.first { background-color:#fab44b; }
+.shoptaglist dd li.first a { color:#fff; }
+.shoptaglist dd li.first a.icon-del,
+.shoptaglist dd li a.icon-del:hover { background-position:left -11px; background-color:#FAB44B; }
+
+.blockwrap .formwrap { width:630px;}
+.blockwrap .formwrap .row { width:630px; }
+.blockwrap .formwrap .row label { line-height:26px; width:180px; }
+.blockwrap .formwrap .nolabelrow { padding-left:190px;_display:inline; }
+.blockwrap .formwrap .row input { width:290px; padding:5px; border: 1px solid #CCC; }
+.taginput { color:#ccc; }
+a.btn-addtag { 
+	background:transparent url("http://static.pinju.com/img/buttons-text.png") no-repeat scroll right top;
+	color:#333;
+	height:21px;
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+	padding:7px 0 0 20px;
+	overflow:hidden;
+	text-decoration:none;
+	width:62px;
+}
+a.btn-addtag:hover { text-decoration:none; }
+button.savethisact {background-position:left -454px; height:31px; width:129px; }
+
+.cswrap { margin: 0 auto; padding: 20px 0; width: 730px; }
+.cswrap h2 { border-bottom:1px solid #ececec; padding:0 0 10px; margin:0 0 10px;}
+.tagtipwrap { background:transparent url("http://static.pinju.com/img/bg-shoptag.jpg") no-repeat scroll right 20px;}
+.tagtipwrap p { color:#666; line-height:1.8em; }

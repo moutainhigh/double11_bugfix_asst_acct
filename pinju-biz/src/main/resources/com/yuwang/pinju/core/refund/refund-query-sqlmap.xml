@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trade_refund_query">
+
+	<typeAlias alias="TradeRefundQuery" type="com.yuwang.pinju.domain.refund.RefundDO" />
+
+	<resultMap id="TradeRefundQueryResult" class="TradeRefundQuery">
+		<result property="id" column="ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="orderItemId" column="ORDER_ITEM_ID" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="applyDate" column="APPLY_DATE" />
+		<result property="replyDate" column="REPLY_DATE" />
+		<result property="tradeSum" column="TRADE_SUM" />
+		<result property="applySum" column="APPLY_SUM" />
+		<result property="replySum" column="REPLY_SUM" />
+		<result property="sellerAgree" column="SELLER_AGREE" />
+		<result property="applyReason" column="APPLY_REASON" />
+		<result property="applyMemo" column="APPLY_MEMO" />
+		<result property="refundLogisticsId" column="REFUND_LOGISTICS_ID" />
+		<result property="refundState" column="REFUND_STATE" />
+		<result property="needSalesReturn" column="NEED_SALES_RETURN" />
+		<result property="pic1" column="PIC1" />
+		<result property="pic2" column="PIC2" />
+		<result property="pic3" column="PIC3" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="stateModified" column="STATE_MODIFIED" />
+	</resultMap>
+
+	<sql id="queryAllTradeRefund"><![CDATA[SELECT ID,ORDER_ID,ORDER_ITEM_ID,SELLER_ID,SELLER_NICK,BUYER_ID,BUYER_NICK,APPLY_DATE,REPLY_DATE,TRADE_SUM,APPLY_SUM,REPLY_SUM,SELLER_AGREE,APPLY_REASON,APPLY_MEMO,REFUND_LOGISTICS_ID,REFUND_STATE,NEED_SALES_RETURN,PIC1,PIC2,PIC3,GMT_CREATE,GMT_MODIFIED,STATE_MODIFIED FROM TRADE_REFUND]]></sql>
+
+	<!-- 获取卖家拒绝退款 买家超时没有处理的退款单 -->
+	<select id="queryTradeRefundByBuyerNoReply"  resultMap="TradeRefundQueryResult" parameterClass="java.util.HashMap">
+		<include refid="queryAllTradeRefund" />
+		<![CDATA[ WHERE STATE_MODIFIED <= #timeOutDate# AND REFUND_STATE = #refundState#]]>
+	</select>
+
+	<!-- 获取所有买家申请，卖家没有响应，5天超时的退款 -->
+	<select id="querySellerNoReplyRefund"  resultMap="TradeRefundQueryResult" parameterClass="java.util.HashMap">
+		<include refid="queryAllTradeRefund" />
+		<![CDATA[WHERE REFUND_STATE = 1 and apply_date < sysdate - 5]]>
+	</select>
+	
+	<!-- 获取卖家不确认收货   平邮，30天超时的退款 -->
+	<select id="sellerNotConfirmPost"  resultMap="TradeRefundQueryResult" parameterClass="java.util.HashMap">
+		
+		<![CDATA[SELECT 
+					a.ID,a.ORDER_ID,a.ORDER_ITEM_ID,a.SELLER_ID,a.SELLER_NICK,a.BUYER_ID,a.BUYER_NICK,a.APPLY_DATE,a.REPLY_DATE,a.TRADE_SUM,a.APPLY_SUM,a.REPLY_SUM,a.SELLER_AGREE,a.APPLY_REASON,a.APPLY_MEMO,a.REFUND_LOGISTICS_ID,a.REFUND_STATE,a.NEED_SALES_RETURN,a.PIC1,a.PIC2,a.PIC3,a.GMT_CREATE,a.GMT_MODIFIED,a.STATE_MODIFIED 
+				FROM TRADE_REFUND a,
+					 trade_refund_logistics b 
+				WHERE 
+					a.refund_state = 3   AND 
+					a.id = b.refund_id AND 
+					a.state_modified < SYSDATE -30 AND
+					b.logistics_type = 1
+		]]>
+	</select>
+	
+	<!-- 获取卖家不确认收货   快递，10天超时的退款 -->
+	<select id="sellerNotConfirmExpress"  resultMap="TradeRefundQueryResult" parameterClass="java.util.HashMap">
+		
+		<![CDATA[SELECT 
+					a.ID,a.ORDER_ID,a.ORDER_ITEM_ID,a.SELLER_ID,a.SELLER_NICK,a.BUYER_ID,a.BUYER_NICK,a.APPLY_DATE,a.REPLY_DATE,a.TRADE_SUM,a.APPLY_SUM,a.REPLY_SUM,a.SELLER_AGREE,a.APPLY_REASON,a.APPLY_MEMO,a.REFUND_LOGISTICS_ID,a.REFUND_STATE,a.NEED_SALES_RETURN,a.PIC1,a.PIC2,a.PIC3,a.GMT_CREATE,a.GMT_MODIFIED,a.STATE_MODIFIED 
+				FROM TRADE_REFUND a,
+					 trade_refund_logistics b 
+				WHERE 
+					a.refund_state = 3   AND 
+					a.id = b.refund_id AND 
+					a.state_modified < SYSDATE -10 AND
+					(b.logistics_type = 2 or b.logistics_type = 3) 
+		]]>
+	</select>
+</sqlMap>
+

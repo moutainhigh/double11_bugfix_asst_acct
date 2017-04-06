@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="activityDiscountMap">
+
+  <typeAlias alias="ActivityDiscountMap" type="com.yuwang.pinju.domain.active.ActivityDiscountMapDO"/>
+
+  <resultMap class="ActivityDiscountMap" id="ActivityDiscountMapResult">
+    <result column="ACT_ID" property="actId"/>
+    <result column="ACT_NAME" property="actName"/>
+	<result column="START_TIME" property="startTime"/>
+	<result column="END_TIME" property="endTime"/>
+	<result column="ITEM_ID" property="itemId"/>
+	<result column="DISCOUNT" property="discount"/>
+	<result column="DISCOUNT_DEFAULT" property="discountDefault"/>
+	<result column="LIMIT_LIST" property="limitList"/>
+	<result column="MEMBER_NICK" property="memberNick"/>
+	<result column="MEMBER_ID" property="memberId"/>
+	<result column="GMT_CREATE" property="gmtCreate"/>
+  </resultMap>
+  
+  <sql id="ActivityDiscountMapFiled">
+  	ACT_ID,ACT_NAME,START_TIME,END_TIME,ITEM_ID,DISCOUNT,DISCOUNT_DEFAULT,LIMIT_LIST,MEMBER_NICK,MEMBER_ID,GMT_CREATE
+  </sql>
+  
+  <insert id="insertActivityDiscountMap" parameterClass="ActivityDiscountMap">
+	INSERT INTO ACTIVITY_DISCOUNT_MAP (
+		<include refid="ActivityDiscountMapFiled"/>
+	) VALUES (
+		#actId#,#actName#,#startTime#,#endTime#,#itemId#,#discount#,#discountDefault#,#limitList#,#memberNick#,#memberId#,#gmtCreate#
+	)
+  </insert>
+  
+  <select id="selectActivityDiscountMapByActId" parameterClass="long" resultMap="ActivityDiscountMapResult">
+  	SELECT <include refid="ActivityDiscountMapFiled"/> FROM ACTIVITY_DISCOUNT_MAP WHERE ACT_ID = #actId#
+  </select>
+  
+  <select id="selectActivityDiscountMapByActIdAndItemId" parameterClass="map" resultMap="ActivityDiscountMapResult">
+  	SELECT <include refid="ActivityDiscountMapFiled"/> FROM ACTIVITY_DISCOUNT_MAP WHERE ACT_ID = #actId# AND ITEM_ID = #itemId#
+  </select>
+  
+  <delete id="deleteActivityDiscountMapByActId" parameterClass="long">
+	<![CDATA[DELETE FROM ACTIVITY_DISCOUNT_MAP WHERE ACT_ID = #actId#]]>
+  </delete>
+</sqlMap>

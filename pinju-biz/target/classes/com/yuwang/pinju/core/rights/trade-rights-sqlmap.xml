@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeRights">
+
+    <typeAlias alias="RightsDO" type="com.yuwang.pinju.domain.rights.RightsDO" />
+    <typeAlias alias="RightsQuery" type="com.yuwang.pinju.domain.rights.RightsQuery" />
+
+	<resultMap id="rightsMap" class="RightsDO" >
+		<result property="id" column="ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="subOrderId" column="ORDER_ITEM_ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="applyDate" column="APPLY_DATE" />
+		<result property="sellerProcDate" column="SELLER_PROC_DATE" />
+		<result property="price" column="PRICE" />
+		<result property="buyerApplyPrice" column="BUYER_APPLY_PRICE" />
+		<result property="sellerReturnPrice" column="SELLER_RETURN_PRICE" />
+		<result property="isReturnGoods" column="IS_RETURN_GOODS" />
+		<result property="voucherType" column="VOUCHER_TYPE" />
+		<result property="buyerRequire" column="BUYER_REQUIRE" />
+		<result property="buyerReason" column="BUYER_REASON" />
+		<result property="logisticsId" column="LOGISTICS_ID" />
+		<result property="buyerBankAccountName" column="BUYER_BANK_ACCOUNT_NAME" />
+		<result property="buyerBankAccountNo" column="BUYER_BANK_ACCOUNT_NO" />
+		<result property="buyerOpenBankName" column="BUYER_OPEN_BANK_NAME" />
+		<result property="bizFrom" column="BIZ_FROM" />
+		<result property="state" column="STATE" />
+		<result property="voucherPic1" column="VOUCHER_PIC1" />
+		<result property="voucherPic2" column="VOUCHER_PIC2" />
+		<result property="voucherPic3" column="VOUCHER_PIC3" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="sellerRefuseReason" column="SELLER_REFUSE_REASON" />
+		<result property="stateUpdateTime" column="STATE_UPDATE_TIME" />
+	</resultMap>
+	
+    <sql id="voucherprefix">
+         V.ID,
+         V.ORDER_ID,
+         V.ORDER_ITEM_ID,
+         V.BUYER_ID,
+         V.BUYER_NICK,
+         V.SELLER_ID,
+         V.SELLER_NICK,
+         V.APPLY_DATE,
+         V.SELLER_PROC_DATE,
+         V.PRICE,
+         V.BUYER_APPLY_PRICE,
+         V.SELLER_RETURN_PRICE,
+         V.IS_RETURN_GOODS,
+         V.VOUCHER_TYPE,
+         V.BUYER_REQUIRE,
+         V.BUYER_REASON,
+         V.LOGISTICS_ID,
+		 V.BUYER_BANK_ACCOUNT_NAME,
+		 V.BUYER_BANK_ACCOUNT_NO,
+		 V.BUYER_OPEN_BANK_NAME,
+		 V.BIZ_FROM,         
+         V.STATE,
+         V.VOUCHER_PIC1,
+         V.VOUCHER_PIC2,
+         V.VOUCHER_PIC3,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED,
+	     V.SELLER_REFUSE_REASON,
+	     V.STATE_UPDATE_TIME
+    </sql>
+   
+	<select id="TradeRights.getApplyRightsDO"  parameterClass="rightsDO" resultMap="rightsMap">
+        SELECT <include refid="voucherprefix"/> FROM TRADE_RIGHTS V
+        <dynamic prepend="WHERE">
+      	    <isNotEmpty property="id" prepend="AND"> V.ID=#id# </isNotEmpty>
+      	    <isNotEmpty property="subOrderId" prepend="AND"> V.ORDER_ITEM_ID=#subOrderId# </isNotEmpty>
+      	</dynamic>
+	</select>
+	
+	<select id="TradeRights.getRightsDOById"  parameterClass="java.lang.Long" resultMap="rightsMap">
+        SELECT <include refid="voucherprefix"/> FROM TRADE_RIGHTS V WHERE V.ID=#value# 
+	</select>
+	
+	<select id="TradeRights.getRightsDOsCount"  parameterClass="RightsQuery" resultClass="java.lang.Integer">
+		 SELECT COUNT(*) FROM TRADE_RIGHTS 
+         <dynamic prepend="WHERE">
+      	    <isNotEmpty property="buyerId" prepend="AND"> BUYER_ID=#buyerId# </isNotEmpty>
+      	    <isNotEmpty property="sellerId" prepend="AND"> SELLER_ID=#sellerId# </isNotEmpty>
+      	    <isNotEmpty property="orderId" prepend="AND"> ORDER_ID=#orderId# </isNotEmpty>
+      	    <isNotEmpty property="rightsId" prepend="AND"> ID=#rightsId# </isNotEmpty>
+      	    <isNotEmpty property="status" prepend="AND"> STATE=#status# </isNotEmpty>
+      	    <isNotEmpty property="beginDate" prepend="AND">
+				<![CDATA[APPLY_DATE >#beginDate#]]>
+			</isNotEmpty>
+			<isNotEmpty property="endDate" prepend="AND" >
+				 <![CDATA[APPLY_DATE <#endDate#]]>
+			</isNotEmpty>
+         </dynamic>
+	</select>
+	
+	<select id="TradeRights.getApplyRightsDOs"  parameterClass="RightsQuery" resultMap="rightsMap">
+		SELECT <include refid="voucherprefix"/>
+		FROM (SELECT RID
+	 		FROM (SELECT A.RID, ROWNUM RN
+	      		FROM (SELECT ROWID RID FROM TRADE_RIGHTS
+            		<dynamic prepend="WHERE">
+						<isNotEmpty property="buyerId" prepend="AND"> BUYER_ID=#buyerId# </isNotEmpty>
+						<isNotEmpty property="sellerId" prepend="AND"> SELLER_ID=#sellerId# </isNotEmpty>
+						<isNotEmpty property="orderId" prepend="AND"> ORDER_ID=#orderId# </isNotEmpty>
+						<isNotEmpty property="rightsId" prepend="AND"> ID=#rightsId# </isNotEmpty>
+						<isNotEmpty property="status" prepend="AND"> STATE=#status# </isNotEmpty>
+						<isNotEmpty property="beginDate" prepend="AND">
+							<![CDATA[APPLY_DATE > #beginDate#]]>
+						</isNotEmpty>
+						<isNotEmpty property="endDate" prepend="AND" >
+							 <![CDATA[APPLY_DATE < #endDate#]]>
+						</isNotEmpty>
+					</dynamic>
+              		ORDER BY GMT_CREATE DESC) A
+	          	WHERE rownum &lt;= #endRow#)
+	    	WHERE RN &gt;= #startRow#) T,
+		TRADE_RIGHTS V
+		WHERE V.ROWID = T.RID
+	</select>
+	
+	<insert id="TradeRights.insertRightsRecord" parameterClass="rightsDO">
+	    <selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_RIGHTS_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_RIGHTS 
+	    (
+	       ID,
+	       ORDER_ID,
+	       ORDER_ITEM_ID,
+	       BUYER_ID,
+	       BUYER_NICK,
+	       SELLER_ID,
+	       SELLER_NICK,
+	       APPLY_DATE,
+	       SELLER_PROC_DATE,
+	       PRICE,
+	       BUYER_APPLY_PRICE,
+	       SELLER_RETURN_PRICE,
+	       IS_RETURN_GOODS,
+	       VOUCHER_TYPE,
+	       BUYER_REQUIRE,
+	       BUYER_REASON,
+	       LOGISTICS_ID,
+		   BUYER_BANK_ACCOUNT_NAME,
+		   BUYER_BANK_ACCOUNT_NO,
+		   BUYER_OPEN_BANK_NAME,
+		   BIZ_FROM,	       
+	       STATE,
+	       VOUCHER_PIC1,
+	       VOUCHER_PIC2,
+	       VOUCHER_PIC3,
+	       GMT_CREATE,
+	       GMT_MODIFIED,
+	       SELLER_REFUSE_REASON,
+	       STATE_UPDATE_TIME
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#orderId#,
+			#subOrderId#,
+			#buyerId#,
+			#buyerNick#,
+			#sellerId#,
+			#sellerNick#,
+			sysdate,
+			#sellerProcDate#,
+			#price#,
+			#buyerApplyPrice#,
+			#sellerReturnPrice#,
+			#isReturnGoods#,
+			#voucherType#,
+			#buyerRequire#,
+			#buyerReason#,
+			#logisticsId#,
+		    #buyerBankAccountName#,
+		    #buyerBankAccountNo#,
+		    #buyerOpenBankName#,
+		    #bizFrom#,			
+			#state#,
+			#voucherPic1#,
+			#voucherPic2#,
+			#voucherPic3#,
+			sysdate,
+			sysdate,
+			#sellerRefuseReason#,
+			#stateUpdateTime#
+	    )
+	</insert>
+
+	<update id="TradeRights.updateRightsRecord" parameterClass="rightsDO" >
+		<![CDATA[UPDATE TRADE_RIGHTS]]> SET
+			GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotEmpty prepend="," property="voucherType">
+				<![CDATA[VOUCHER_TYPE = #voucherType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerRequire">
+				<![CDATA[BUYER_REQUIRE = #buyerRequire#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerApplyPrice">
+				<![CDATA[BUYER_APPLY_PRICE = #buyerApplyPrice#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerReason">
+				<![CDATA[BUYER_REASON = #buyerReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="voucherPic1">
+				<![CDATA[VOUCHER_PIC1 = #voucherPic1#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="voucherPic2">
+				<![CDATA[VOUCHER_PIC2 = #voucherPic2#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="voucherPic3">
+				<![CDATA[VOUCHER_PIC3 = #voucherPic3#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerProcDate">
+				<![CDATA[SELLER_PROC_DATE = #sellerProcDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="state">
+				<![CDATA[STATE = #state#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerRefuseReason">
+				<![CDATA[SELLER_REFUSE_REASON = #sellerRefuseReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="stateUpdateTime">
+				<![CDATA[STATE_UPDATE_TIME = #stateUpdateTime#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id#]]>
+	</update>	
+	
+</sqlMap>

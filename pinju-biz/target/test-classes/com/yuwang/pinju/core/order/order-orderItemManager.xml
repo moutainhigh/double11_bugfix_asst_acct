@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TRADE_ORDER_ITEM">
+
+	<typeAlias alias="OrderItemDO" type="com.yuwang.pinju.domain.order.OrderItemDO" />
+
+	<typeAlias alias="QueryOrderItem" type="com.yuwang.pinju.domain.order.query.QueryOrderItem" />
+
+	<resultMap id="OrderItemDOResult" class="OrderItemDO">
+		<result property="orderItemId" column="ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="snapId" column="SNAP_ID" />
+		<result property="itemTitle" column="ITEM_TITLE" />
+		<result property="orderItemPrice" column="ORDER_ITEM_PRICE" />
+		<result property="buyNum" column="BUY_NUM" />
+		<result property="itemPicUrl" column="ITEM_PIC_URL" />
+		<result property="refundState" column="REFUND_STATE" />
+		<result property="refundPrice" column="REFUND_PRICE" />
+		<result property="stateModifyTime" column="STATE_MODIFY_TIME" />
+		<result property="orderItemState" column="ORDER_ITEM_STATE" />
+		<result property="itemSkuId" column="ITEM_SKU_ID" />
+		<result property="itemSkuAttributes" column="ITEM_SKU_ATTRIBUTES" />
+		<result property="bussinessType" column="BUSSINESS_TYPE" />
+		<result property="orderItemAttributes" column="ORDER_ITEM_ATTRIBUTES" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="originalPrice" column="Original_PRICE" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="failReason" column="FAIL_REASON" />
+		<result property="confirmTime" column="AUTO_CONFIRM_TIME" />
+		<result property="sellerMarginPrice" column="SELLER_MARGIN_PRICE" />
+		<result property="anonymousBuy" column="ANONYMOUS_BUY" />
+		<result property="dealAmount" column="DEAL_AMOUNT" />
+		<result property="dealRates" column="DEAL_RATES" />
+		<result property="dealShopRates" column="DEAL_SHOP_RATES" />
+		
+	</resultMap>
+
+
+	<sql id="selectOrderItemAll"><![CDATA[SELECT ID,ORDER_ID,SELLER_ID,BUYER_ID,BUYER_NICK,SELLER_NICK,AUTO_CONFIRM_TIME,FAIL_REASON,
+	ITEM_ID,SNAP_ID,ITEM_TITLE,ORDER_ITEM_PRICE,BUY_NUM,ITEM_PIC_URL,Original_PRICE,STATE_MODIFY_TIME,REFUND_STATE,REFUND_PRICE,ORDER_ITEM_ATTRIBUTES,ORDER_ITEM_STATE,ITEM_SKU_ID,ITEM_SKU_ATTRIBUTES,BUSSINESS_TYPE,SELLER_MARGIN_PRICE,GMT_MODIFIED,GMT_CREATE,ANONYMOUS_BUY,DEAL_RATES,DEAL_AMOUNT,DEAL_SHOP_RATES FROM TRADE_ORDER_ITEM]]></sql>
+	
+	<select id="queryOrderItem" resultMap="OrderItemDOResult" parameterClass="long">
+		<include refid="selectOrderItemAll" />
+		<![CDATA[WHERE ID = #orderItemId#]]>
+	</select>
+	
+	<select id="queryOrderItemNumByItemTitle" resultClass="long" parameterClass="java.util.HashMap">
+		<![CDATA[SELECT COUNT(ID) FROM TRADE_ORDER_ITEM]]>
+		<dynamic prepend="where" >
+			<isNotEmpty prepend="and" property="buyerId" >
+		        <![CDATA[BUYER_ID = #buyerId#]]>
+		      </isNotEmpty>
+		    <isNotEmpty prepend="and" property="itemTitle" >
+		        <![CDATA[ITEM_TITLE = #itemTitle#]]>
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="orderItemState" >
+		        <![CDATA[ORDER_ITEM_STATE = #orderItemState#]]>
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="gmtCreateEnd">
+				<![CDATA[GMT_CREATE <= TO_DATE(#gmtCreateEnd#,'YYYY-MM-DD hh24:mi:ss')]]>
+			</isNotEmpty>
+				<isNotEmpty prepend="and" property="gmtCreateStart">
+				<![CDATA[GMT_CREATE >= TO_DATE(#gmtCreateStart#,'YYYY-MM-DD hh24:mi:ss')]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="queryOrderItemByItemTitle" resultMap="OrderItemDOResult" parameterClass="java.util.HashMap">
+		<![CDATA[select * from(select rownum r, a.* from (  ]]>
+		SELECT ORDER_ID,ID,ITEM_ID,SNAP_ID,ITEM_TITLE,ORDER_ITEM_PRICE,SELLER_MARGIN_PRICE,
+		BUY_NUM,STATE_MODIFY_TIME,REFUND_STATE,REFUND_PRICE,
+		ORDER_ITEM_ATTRIBUTES,ITEM_PIC_URL,ORDER_ITEM_STATE,ITEM_SKU_ID,ANONYMOUS_BUY,
+		ITEM_SKU_ATTRIBUTES,GMT_CREATE,GMT_MODIFIED,BUSSINESS_TYPE,ORIGINAL_PRICE,
+		SELLER_ID,BUYER_NICK,SELLER_NICK,BUYER_ID,AUTO_CONFIRM_TIME,FAIL_REASON,DEAL_RATES,DEAL_AMOUNT,DEAL_SHOP_RATES from TRADE_ORDER_ITEM
+		<dynamic prepend="where" >
+			<isNotEmpty prepend="and" property="buyerId" >
+		        <![CDATA[BUYER_ID = #buyerId#]]>
+		      </isNotEmpty>
+		    <isNotEmpty prepend="and" property="itemTitle" >
+		        <![CDATA[ITEM_TITLE = #itemTitle#]]>
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="orderItemState" >
+		        <![CDATA[ORDER_ITEM_STATE = #orderItemState#]]>
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="gmtCreateEnd">
+				<![CDATA[GMT_CREATE <= TO_DATE(#gmtCreateEnd#,'YYYY-MM-DD hh24:mi:ss')]]>
+			</isNotEmpty>
+				<isNotEmpty prepend="and" property="gmtCreateStart">
+				<![CDATA[GMT_CREATE >= TO_DATE(#gmtCreateStart#,'YYYY-MM-DD hh24:mi:ss')]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+		 	order by GMT_CREATE desc) a where rownum
+		 	<= #endRow#) where r >= #startRow#
+		]]>
+	</select>   
+	
+	<select id="queryOrderItemByItemTitleNum" resultClass="long" parameterClass="java.util.HashMap">
+		SELECT COUNT(ID) from TRADE_ORDER_ITEM
+		<dynamic prepend="where" >
+			<isNotEmpty prepend="and" property="buyerId" >
+		        <![CDATA[BUYER_ID = #buyerId#]]>
+		      </isNotEmpty>
+		    <isNotEmpty prepend="and" property="itemTitle" >
+		        <![CDATA[ITEM_TITLE = #itemTitle#]]>
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="orderItemState" >
+		        <![CDATA[ORDER_ITEM_STATE = #orderItemState#]]>
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="gmtCreateEnd">
+				<![CDATA[GMT_CREATE <= TO_DATE(#gmtCreateEnd#,'YYYY-MM-DD hh24:mi:ss')]]>
+			</isNotEmpty>
+				<isNotEmpty prepend="and" property="gmtCreateStart">
+				<![CDATA[GMT_CREATE >= TO_DATE(#gmtCreateStart#,'YYYY-MM-DD hh24:mi:ss')]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- <select id="queryOrderItemByItemTitle" resultMap="OrderItemDOResult" parameterClass="java.util.HashMap">
+		<![CDATA[
+			select * from(select rownum r,a.* from ( 
+			SELECT O.ORDER_STATE,O.IS_BUYER_RATE,O.IS_SELLER_RATE,O.BUY_IP
+			,O.BUYER_MEMO,O.SELLER_MEMO,O.ORDER_ATTRIBUTES,O.PRICE_AMOUNT
+			,I.ID,I.ORDER_ID,I.ITEM_ID,I.SNAP_ID,I.ITEM_TITLE,I.ORDER_ITEM_PRICE
+			,I.BUY_NUM,I.ORDER_ITEM_BAT,I.STATE_MODIFY_TIME,I.REFUND_STATE,I.REFUND_PRICE
+			,I.ORDER_ITEM_ATTRIBUTES,I.ITEM_PIC_URL,I.ORDER_ITEM_STATE,I.ITEM_SKU_ID
+			,I.ITEM_SKU_ATTRIBUTES,I.GMT_CREATE,I.GMT_MODIFIED,I.BUSSINESS_TYPE,I.ORIGINAL_PRICE
+			,I.SELLER_ID,I.BUYER_NICK,I.BUYER_ID,I.AUTO_CONFIRM_TIME,I.FAIL_REASON 
+			FROM TRADE_ORDER_ITEM I , TRADE_ORDER O
+		]]>	
+		<dynamic prepend="where" >
+			<isNotEmpty prepend="and" property="buyerId" >
+		        <![CDATA[I.BUYER_ID = #buyerId#]]>
+		      </isNotEmpty>
+		    <isNotEmpty prepend="and" property="itemTitle" >
+		        <![CDATA[I.ITEM_TITLE = #itemTitle#]]>
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="orderItemState" >
+		        <![CDATA[I.ORDER_ITEM_STATE = #orderItemState#]]>
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="gmtCreateEnd">
+				<![CDATA[I.GMT_CREATE <= TO_DATE(#gmtCreateEnd#,'YYYY-MM-DD hh24:mi:ss')]]>
+			</isNotEmpty>
+				<isNotEmpty prepend="and" property="gmtCreateStart">
+				<![CDATA[I.GMT_CREATE >= TO_DATE(#gmtCreateStart#,'YYYY-MM-DD hh24:mi:ss')]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[	
+			  order by I.GMT_CREATE desc ) a where rownum <= #endRow#) where r >= #startRow#
+		]]>
+	</select>  -->
+
+
+
+
+	<select id="queryOrderItem_2" resultMap="OrderItemDOResult" parameterClass="java.util.List">
+		<include refid="selectOrderItemAll" />
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" open="(" close=")" conjunction="OR">
+					<![CDATA[
+						ID = #orderItemIdList[]#
+					]]>
+			</iterate>
+		</dynamic>
+	</select>
+	
+
+	<select id="queryOrderItem_1" resultMap="OrderItemDOResult" parameterClass="long">
+		<include refid="selectOrderItemAll" />
+		<![CDATA[WHERE ORDER_ID = #orderId#]]>
+	</select>
+
+	<select id="queryOrderItemAll" resultMap="OrderItemDOResult" parameterClass="QueryOrderItem">
+		<![CDATA[select * from(select rownum r, a.* from (  
+		select ID,ORDER_ID,ITEM_ID,SNAP_ID,ITEM_TITLE,ORDER_ITEM_PRICE,BUY_NUM,ITEM_PIC_URL,SELLER_ID,BUYER_ID,BUYER_NICK,SELLER_NICK,
+		Original_PRICE,STATE_MODIFY_TIME,REFUND_STATE,REFUND_PRICE,ORDER_ITEM_ATTRIBUTES,AUTO_CONFIRM_TIME,ANONYMOUS_BUY,
+		ORDER_ITEM_STATE,ITEM_SKU_ID,ITEM_SKU_ATTRIBUTES,BUSSINESS_TYPE,FAIL_REASON,SELLER_MARGIN_PRICE,
+		GMT_MODIFIED,GMT_CREATE,DEAL_RATES,DEAL_AMOUNT,DEAL_SHOP_RATES FROM TRADE_ORDER_ITEM
+    	]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="day">
+				<![CDATA[GMT_CREATE >(SYSDATE - #day#)]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>   
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>         
+			<isNotEmpty prepend="AND" property="gmtModifiedEnd">
+				<![CDATA[GMT_MODIFIED <= #gmtModifiedEnd#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModifiedStart">
+				<![CDATA[GMT_MODIFIED >= #gmtModifiedStart#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreateEnd">
+				<![CDATA[GMT_CREATE <= #gmtCreateEnd#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemTitle">
+				<![CDATA[ITEM_TITLE = #itemTitle#]]>
+			</isNotEmpty>  
+			<isNotEmpty prepend="AND" property="gmtCreateStart">
+				<![CDATA[GMT_CREATE >= #gmtCreateStart#]]>
+			</isNotEmpty>
+			<isNotEmpty property="orderItemState">
+				<iterate prepend="AND" open="(" close=")" property="orderItemState"
+					conjunction="OR">
+							<![CDATA[
+								ORDER_ITEM_STATE = #orderItemState[]#
+							]]>
+				</iterate>
+			</isNotEmpty>
+			<isNotEmpty property="bussinessType">
+				<iterate prepend="AND" open="(" close=")" property="bussinessType"
+					conjunction="OR">
+							<![CDATA[
+								BUSSINESS_TYPE = #bussinessType[]#
+							]]>
+				</iterate>
+			</isNotEmpty>   
+		</dynamic>		
+		<![CDATA[
+		 	order by GMT_CREATE desc) a where rownum
+		 	<= #endRow#) where r >= #startRow#
+		]]>
+	</select>
+
+ 	<select id="queryOrderItemNum"  resultClass="long" parameterClass="QueryOrderItem">
+       	  <![CDATA[SELECT COUNT(ID) FROM TRADE_ORDER_ITEM]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="day">
+				<![CDATA[GMT_CREATE >(SYSDATE - #day#)]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemTitle">
+				<![CDATA[ITEM_TITLE = #itemTitle#]]>
+			</isNotEmpty>        
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModifiedEnd">
+				<![CDATA[GMT_MODIFIED <= #gmtModifiedEnd#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModifiedStart">
+				<![CDATA[GMT_MODIFIED >= #gmtModifiedStart#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreateEnd">
+				<![CDATA[GMT_CREATE <= #gmtCreateEnd#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreateStart">
+				<![CDATA[GMT_CREATE >= #gmtCreateStart#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID >= #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty property="orderItemState">
+				<iterate prepend="AND" open="(" close=")" property="orderItemState"
+					conjunction="OR">
+							<![CDATA[
+								ORDER_ITEM_STATE = #orderItemState[]#
+							]]>
+				</iterate>
+			</isNotEmpty>
+			<isNotEmpty property="bussinessType">
+				<iterate prepend="AND" open="(" close=")" property="bussinessType"
+					conjunction="OR">
+							<![CDATA[
+								BUSSINESS_TYPE = #bussinessType[]#
+							]]>
+				</iterate>
+			</isNotEmpty>      
+   		 </dynamic>
+    </select>
+
+	<insert id="insertOrderItemDO" parameterClass="OrderItemDO">
+		<selectKey resultClass="long" keyProperty="orderItemId">
+			<![CDATA[SELECT SEQ_ORDER_ITEM_ID.nextval AS orderItemId FROM dual]]>
+     	</selectKey>
+     	<![CDATA[INSERT INTO TRADE_ORDER_ITEM (ID,ORDER_ID,ITEM_ID,SNAP_ID,ITEM_TITLE,ORDER_ITEM_PRICE,BUY_NUM,ITEM_PIC_URL,REFUND_STATE,REFUND_PRICE,
+     	ORDER_ITEM_ATTRIBUTES,ORDER_ITEM_STATE,ITEM_SKU_ID,ITEM_SKU_ATTRIBUTES,BUSSINESS_TYPE,STATE_MODIFY_TIME,GMT_CREATE,GMT_MODIFIED,Original_PRICE,SELLER_ID,BUYER_ID,BUYER_NICK,SELLER_NICK,SELLER_MARGIN_PRICE,FAIL_REASON,AUTO_CONFIRM_TIME,ANONYMOUS_BUY,DEAL_RATES,DEAL_AMOUNT,DEAL_SHOP_RATES) 
+     	VALUES (#orderItemId#,#orderId#,#itemId#,#snapId#,#itemTitle#,
+     	#orderItemPrice#,#buyNum#,#itemPicUrl#,#refundState#,
+     	#refundPrice#,#orderItemAttributes#,#orderItemState#,#itemSkuId#,#itemSkuAttributes#,#bussinessType#,sysdate,sysdate,sysdate,#originalPrice#,#sellerId#,
+		#buyerId#,#buyerNick#,#sellerNick#,#sellerMarginPrice#,#failReason#,#confirmTime#,#anonymousBuy#,#dealRates#,#dealAmount#,#dealShopRates#)]]>
+	</insert>
+
+	<update id="updateOrderItem" parameterClass="OrderItemDO">
+		UPDATE TRADE_ORDER_ITEM
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderItemState">
+				<![CDATA[ORDER_ITEM_STATE = #orderItemState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="stateModifyTime">
+				<![CDATA[STATE_MODIFY_TIME = #stateModifyTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="failReason">
+				<![CDATA[FAIL_REASON = #failReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="confirmTime">
+				<![CDATA[AUTO_CONFIRM_TIME = #confirmTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderItemPrice">
+				<![CDATA[ORDER_ITEM_PRICE = #orderItemPrice#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerMarginPrice">
+				<![CDATA[SELLER_MARGIN_PRICE = #sellerMarginPrice#]]>
+			</isNotEmpty>
+		</dynamic>
+			<![CDATA[,GMT_MODIFIED = sysdate WHERE ID = #orderItemId# or ORDER_ID = #orderId#]]>
+	</update>
+
+</sqlMap>
+

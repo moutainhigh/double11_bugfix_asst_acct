@@ -1,0 +1,23 @@
+.group{ width:100%; height:700px; background:#f7f7f7;}
+
+.group .bj{ background: url(../../images/group.gif) no-repeat; font-size:15px; font-weight:bold; color:#666; width:823px; height:512px; margin:0 auto; padding:20px;}
+
+.group .bj .title17{ margin:10px 0 0 20px; width:700px; float:left; line-height:29px; clear:both; height:114px;}
+
+.group .bj  .group-left{ float:left; width:250px;margin:0 6px 0 21px;_margin-right:2px;text-align:center; display:inline; overflow:hidden;}
+
+.group .bj  .group-left li{ line-height:29px; margin:0 0 7px 0;}
+
+.group .bj  .buy{ background:url(../../images/group-buy.gif) no-repeat; width:106px; height:42px; border:none; }
+
+.group .bj  .title21{ line-height:31px; float:left; margin:5px 0 0 0;}
+
+.group .bj  .group-left .price{ color:#fff; width:250px; float:left; text-align:center; height:55px; margin:10px 0;}
+
+.group .bj  .group-left .price li{ float:left; width:70px; line-height:27px;}
+
+.border-white{border:solid #fff; border-width:0 1px; height:48px;}
+
+.group .bj  .group-left em{ font-size:21px; margin:0 3px;}
+
+.group .bj .grout-footer{ clear:both; padding:10px 70px 0 0;text-align:right;}

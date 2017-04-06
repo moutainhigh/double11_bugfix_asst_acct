@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TRADE_ORDER_PAY">
+
+	<typeAlias alias="TradeOrderPay" type="com.yuwang.pinju.domain.trade.VouchPayDO" />
+
+	<resultMap id="TradeOrderPayResult" class="TradeOrderPay">
+		<result property="id" column="ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="payAccount" column="PAY_ACCOUNT" />
+		<result property="acceptAccount" column="ACCEPT_ACCOUNT" />
+		<result property="outPayId" column="OUT_PAY_ID" />
+		<result property="payState" column="PAY_STATE" />
+		<result property="creationTime" column="CREATION_TIME" />
+		<result property="orderAmount" column="ORDER_AMOUNT" />
+		<result property="realPayMentamount" column="REAL_PAY_MENTAMOUNT" />
+		<result property="dealAmount" column="DEAL_AMOUNT" />
+		<result property="closeState" column="CLOSE_STATE" />
+		<result property="endModifyTime" column="END_MODIFY_TIME" />
+		<result property="signMsg" column="SIGN_MSG" />
+		<result property="dealTime" column="DEAL_TIME" />
+		<result property="payAttributes" column="PAY_ATTRIBUTES" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="orderPayId" column="ORDER_PAY_ID" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllTradeOrderPay"><![CDATA[SELECT ID,ORDER_PAY_ID,BUYER_ID,SELLER_ID,PAY_ACCOUNT,ACCEPT_ACCOUNT,OUT_PAY_ID,PAY_STATE,CREATION_TIME,ORDER_AMOUNT,REAL_PAY_MENTAMOUNT,DEAL_AMOUNT,CLOSE_STATE,END_MODIFY_TIME,SIGN_MSG,DEAL_TIME,PAY_ATTRIBUTES,ORDER_ID,GMT_CREATE,GMT_MODIFIED FROM TRADE_ORDER_PAY]]></sql>
+
+	<select id="selectTradeOrderPayByid" resultMap="TradeOrderPayResult"  parameterClass="long">
+		<include refid="selectAllTradeOrderPay" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+	
+	<select id="selectTradeOrderPayByOrderId" resultMap="TradeOrderPayResult"  parameterClass="long">
+		<include refid="selectAllTradeOrderPay" />
+		<![CDATA[WHERE ORDER_ID = #orderId#]]>
+	</select>
+	
+	
+	<!-- @2011-10-08 ByLixin -->
+	<select id="selectTradeOrderPayByDO"  resultMap="TradeOrderPayResult" parameterClass="java.util.HashMap">
+		<include refid="selectAllTradeOrderPay" />
+		<dynamic prepend="WHERE">			
+			<isNotEmpty property="payState">
+				<iterate prepend="AND" open="(" close=")" property="payState"
+					conjunction="OR">
+							<![CDATA[
+								PAY_STATE = #payState[]#
+							]]>
+				</iterate>
+			  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+
+	<select id="selectTradeOrderPay"  resultMap="TradeOrderPayResult" parameterClass="TradeOrderPay">
+		<include refid="selectAllTradeOrderPay" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderPayId">
+				<![CDATA[ORDER_PAY_ID = #orderPayId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="payAccount">
+				<![CDATA[PAY_ACCOUNT = #payAccount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="acceptAccount">
+				<![CDATA[ACCEPT_ACCOUNT = #acceptAccount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="outPayId">
+				<![CDATA[OUT_PAY_ID = #outPayId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="payState">
+				<![CDATA[PAY_STATE = #payState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="creationTime">
+				<![CDATA[CREATION_TIME = #creationTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderAmount">
+				<![CDATA[ORDER_AMOUNT = #orderAmount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="realPayMentamount">
+				<![CDATA[REAL_PAY_MENTAMOUNT = #realPayMentamount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="dealAmount">
+				<![CDATA[DEAL_AMOUNT = #dealAmount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="closeState">
+				<![CDATA[CLOSE_STATE = #closeState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endModifyTime">
+				<![CDATA[END_MODIFY_TIME = #endModifyTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="signMsg">
+				<![CDATA[SIGN_MSG = #signMsg#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="dealTime">
+				<![CDATA[DEAL_TIME = #dealTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="payAttributes">
+				<![CDATA[PAY_ATTRIBUTES = #payAttributes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertTradeOrderPay" parameterClass="TradeOrderPay">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_ORDER_PAY_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[
+			INSERT INTO TRADE_ORDER_PAY 
+			(
+				ID,
+				ORDER_PAY_ID,
+				BUYER_ID,
+				SELLER_ID,
+				PAY_ACCOUNT,
+				ACCEPT_ACCOUNT,
+				OUT_PAY_ID,
+				PAY_STATE,
+				CREATION_TIME,
+				ORDER_AMOUNT,
+				REAL_PAY_MENTAMOUNT,
+				DEAL_AMOUNT,
+				CLOSE_STATE,
+				END_MODIFY_TIME,
+				SIGN_MSG,
+				DEAL_TIME,
+				PAY_ATTRIBUTES,
+				ORDER_ID,
+				GMT_CREATE,
+				GMT_MODIFIED
+			) 
+			VALUES 
+			(
+				#id#,
+				#orderPayId#,
+				#buyerId#,
+				#sellerId#,
+				#payAccount#,
+				#acceptAccount#,
+				#outPayId#,
+				#payState#,
+				#creationTime#,
+				#orderAmount#,
+				#realPayMentamount#,
+				#dealAmount#,
+				#closeState#,
+				#endModifyTime#,
+				#signMsg#,
+				#dealTime#,
+				#payAttributes#,
+				#orderId#,
+				sysdate,
+				sysdate
+			)
+		]]>
+	</insert>
+
+	<update id="updateTradeOrderPayByOrderPayId" parameterClass="TradeOrderPay">
+		<![CDATA[UPDATE TRADE_ORDER_PAY]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="payAccount">
+				<![CDATA[PAY_ACCOUNT = #payAccount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="acceptAccount">
+				<![CDATA[ACCEPT_ACCOUNT = #acceptAccount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="outPayId">
+				<![CDATA[OUT_PAY_ID = #outPayId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="payState">
+				<![CDATA[PAY_STATE = #payState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderAmount">
+				<![CDATA[ORDER_AMOUNT = #orderAmount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="realPayMentamount">
+				<![CDATA[REAL_PAY_MENTAMOUNT = #realPayMentamount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="dealAmount">
+				<![CDATA[DEAL_AMOUNT = #dealAmount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="closeState">
+				<![CDATA[CLOSE_STATE = #closeState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="endModifyTime">
+				<![CDATA[END_MODIFY_TIME = #endModifyTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="signMsg">
+				<![CDATA[SIGN_MSG = #signMsg#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="dealTime">
+				<![CDATA[DEAL_TIME = #dealTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="payAttributes">
+				<![CDATA[PAY_ATTRIBUTES = #payAttributes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="and" property="orderPayId">
+				<![CDATA[ORDER_PAY_ID = #orderPayId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+</sqlMap>

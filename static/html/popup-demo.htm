@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>品聚官方网站pinju.com-全球最大的品质交易平台 | 快乐网购平台 | 天下无假  爱上网购</title>
+<link media="screen" type="text/css" href="http://static.pinju.com/css/pj_base.css" rel="stylesheet">
+<link href="http://static.pinju.com/css/shopDecoration/base.css" rel="stylesheet" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://static.pinju.com/js/modules.js"></script>
+</head>
+<body>
+<h1>模式弹出demo</h1>	
+<ul>
+	<li>放在文件夹下测试: pinju-web\src\main\webapp\</li>
+	<li>弹出的样式在这里：http://static.pinju.com/css/shopDecoration/base.css, 不引用的话弹出显示不正确的</li>
+	<li>如果弹出的不是iframe，就把id为DialogContent的iframe删除，替换成html内容就行。</li>
+</ul>
+<p>*本地测试ie下有js报错:对象不支持此属性或方法，可能为ie安全设置的问题。</p>
+<hr />
+demo: <a href="javascript:dialog.open('http://www.baidu.com',600,600);">点我弹出 iframe</a>
+
+<div id="DialogMask" style="display:none">
+	<iframe src=""></iframe>
+</div>
+<div id="Dialog">
+	<div id="DialogShadow"></div>
+	<div id="DialogLayout">
+		<div id="DialogCaption">
+			<span></span>
+			<a href="#close"></a>
+		</div>
+		<iframe src="about:blank" id="DialogContent"></iframe>
+	</div>
+</div>
+	
+<script type="text/javascript">
+	var dialog;
+	$(function() {
+		dialog = new Dialog();
+	});
+</script>
+
+</body>
+</html>

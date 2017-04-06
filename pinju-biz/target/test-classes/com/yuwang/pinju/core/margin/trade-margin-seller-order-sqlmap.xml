@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeMarginSellerOrder">
+
+    <typeAlias alias="MarginSellerOrderDO" type="com.yuwang.pinju.domain.margin.MarginSellerOrderDO" />
+    <typeAlias alias="marginSellerOrderQuery" type="com.yuwang.pinju.domain.margin.query.MarginSellerOrderQuery" />
+
+	<resultMap id="marginSellerOrderMap" class="MarginSellerOrderDO" >
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="memberNick" column="MEMBER_NICK" />
+		<result property="invMemberId" column="INVOLVED_MEMBER_ID" />
+		<result property="invMemberNick" column="INVOLVED_MEMBER_NICK" />
+		<result property="invMemberPayment" column="INVOLVED_MEMBER_PAYMENT" />
+		<result property="amount" column="AMOUNT" />
+		<result property="operateType" column="OPERATE_TYPE" />
+		<result property="payOrderId" column="PAY_ORDER_ID" />
+		<result property="rightsId" column="RIGHTS_ID" />
+		<result property="refundId" column="REFUND_ID" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+    <sql id="marginSellerOrderSql">
+         V.ID,
+         V.MEMBER_ID,
+         V.MEMBER_NICK,
+         V.INVOLVED_MEMBER_ID,
+         V.INVOLVED_MEMBER_NICK,
+         V.INVOLVED_MEMBER_PAYMENT,
+         V.AMOUNT,
+         V.OPERATE_TYPE,
+         V.PAY_ORDER_ID,
+         V.RIGHTS_ID,
+         V.REFUND_ID,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED
+    </sql>
+   
+	
+	<select id="TradeMarginSellerOrder.getMarginSellerOrderDOBySellerId"  parameterClass="java.lang.Long" resultMap="marginSellerOrderMap">
+        SELECT <include refid="marginSellerOrderSql"/> FROM TRADE_MARGIN_SELLER_ORDER V WHERE V.SellerId=#value# 
+	</select>
+	
+	<select id="TradeMarginSellerOrder.getMarginSellerOrderDOs"  parameterClass="marginSellerOrderQuery" resultMap="marginSellerOrderMap">
+		SELECT <include refid="marginSellerOrderSql"/>
+		FROM (SELECT RID
+	 		FROM (SELECT A.RID, ROWNUM RN
+	      		FROM (SELECT ROWID RID FROM TRADE_MARGIN_SELLER_ORDER
+            		<dynamic prepend="WHERE">
+			      	   	<isNotEmpty property="memberId" prepend="AND"> MEMBER_ID=#memberId# </isNotEmpty>
+					</dynamic>
+              		ORDER BY GMT_CREATE DESC) A
+	          	WHERE rownum &lt;= #endRow#)
+	    	WHERE RN &gt;= #startRow#) T,
+		TRADE_MARGIN_SELLER_ORDER V
+		WHERE V.ROWID = T.RID
+	</select>
+	
+	<select id="TradeMarginSellerOrder.getMarginSellerOrderDOsCount"  parameterClass="marginSellerOrderQuery" resultClass="java.lang.Integer">
+		 SELECT COUNT(*) FROM TRADE_MARGIN_SELLER_ORDER
+         <dynamic prepend="WHERE">
+      	    <isNotEmpty property="memberId" prepend="AND"> MEMBER_ID=#memberId# </isNotEmpty>
+         </dynamic>
+	</select>
+	
+	<insert id="TradeMarginSellerOrder.insertMarginSellerOrderRecord" parameterClass="MarginSellerOrderDO">
+		<selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_MARGIN_SE_ORDER_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_MARGIN_SELLER_ORDER 
+	    (
+			ID,                      
+			MEMBER_ID,               
+			MEMBER_NICK,             
+			INVOLVED_MEMBER_ID,      
+			INVOLVED_MEMBER_NICK,    
+			INVOLVED_MEMBER_PAYMENT, 
+			AMOUNT,                  
+			OPERATE_TYPE,            
+			PAY_ORDER_ID,                
+			RIGHTS_ID,               
+			REFUND_ID,               
+			GMT_CREATE,              
+			GMT_MODIFIED             
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#memberId#,
+			#memberNick#,
+			#invMemberId#,
+			#invMemberNick#,
+			#invMemberPayment#,
+			#amount#,
+			#operateType#,
+			#payOrderId#,
+			#rightsId#,
+			#refundId#,
+			sysdate,
+			sysdate
+	    )
+	</insert>
+
+	<update id="TradeMarginSellerOrder.updateMarginSellerOrderRecord" parameterClass="MarginSellerOrderDO" >
+		<![CDATA[UPDATE TRADE_MARGIN_SELLER_ORDER]]> SET
+			GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotEmpty prepend="," property="amount">
+				<![CDATA[AMOUNT = #amount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="operateType">
+				<![CDATA[OPERATE_TYPE = #operateType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="memberNick">
+				<![CDATA[MEMBER_NICK = #memberNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="invMemberNick">
+				<![CDATA[INVOLVED_MEMBER_NICK = #invMemberNick#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id#]]>
+	</update>
+</sqlMap>

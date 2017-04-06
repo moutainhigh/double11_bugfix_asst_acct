@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="searchService"
+		class="com.yuwang.pinju.core.search.service.impl.SearchServiceImpl" >
+		<!-- 
+		<property name="url" value="${search.httpclient.url}" />
+		<property name="connectTimeout" value="${search.httpclient.connectTimeout}" />
+		<property name="soTimeout" value="${search.httpclient.soTimeout}" />
+		 -->
+	</bean>
+</beans>

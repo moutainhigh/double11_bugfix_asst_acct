@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="my" namespace="/my" extends="pinju-login">
+
+    <!--
+    ==========================
+    [个人资料管理]
+    ==========================
+    -->
+    <action name="info" class="com.yuwang.pinju.web.module.my.screen.MyInfoAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/my/my-info.ftl</result>
+    </action>
+    
+    <action name="sell" class="com.yuwang.pinju.web.module.my.screen.MyMainAction" method="sell">
+      <result name="unApply" type="redirect">/shop/iWillOpenShopAction.htm</result>
+	  <result name="unChecked" type="redirect">/shop/iWillOpenShopAction.htm</result>
+	  <result name="success" type="freemarker">/default/templates/screen/my/my-index.ftl</result>
+	  <result name="unPassed" type="redirect">/shop/iWillOpenShopAction.htm</result>
+	  <result name="passed" type="redirect">/shop/iWillOpenShopAction.htm</result>
+    </action>
+    
+	<!-- 设置用户首页 -->
+	<action name="updateMyPageType"
+		class="com.yuwang.pinju.web.module.my.screen.MyMainAction"
+		method="updateMemberMyPageTypeByMemberId" >
+	</action>
+
+ 	<action name="iframePJNews" class="com.yuwang.pinju.web.module.my.screen.MyMainAction" method="iframePJNews">
+      <result name="success" type="freemarker">/default/templates/screen/my/my-pj-news.ftl</result>
+    </action>
+    
+    <action name="iframePJTip" class="com.yuwang.pinju.web.module.my.screen.MyMainAction" method="iframePJTip">
+      <result name="success" type="freemarker">/default/templates/screen/my/my-pj-tip.ftl</result>
+    </action>
+    
+    <!-- 个人资料更新 -->
+    <action name="info-*-*-*" class="com.yuwang.pinju.web.module.my.screen.MyInfoAction" method="update">
+      <param name="hash">{1}</param>
+      <param name="member.id">{2}</param>
+      <param name="memberInfo.id">{3}</param>
+      <result name="success" type="freemarker">/default/templates/screen/my/my-info.ftl</result>
+      <result name="error" type="redirectAction">
+        <param name="actionName">info</param>
+        <param name="namespace">/my</param>
+      </result>
+    </action>
+
+    <!--
+    ==========================
+    [社区信息管理]
+    ==========================
+    -->
+    <action name="sns" class="com.yuwang.pinju.web.module.my.screen.MySnsInfoAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/my/my-sns-info.ftl</result>
+    </action>
+
+    <!-- 社区信息新增/更新 -->
+    <action name="sns-upload" class="com.yuwang.pinju.web.module.my.screen.MySnsInfoAction" method="update">
+      <result name="success" type="freemarker">/default/templates/screen/my/my-sns-info.ftl</result>
+      <result name="input" type="chain">
+         <param name="actionName">sns</param>
+         <param name="namespace">/my</param>
+      </result>
+    </action>
+
+    <!--
+    ==========================
+    [收货地址管理]
+    ==========================
+    -->
+    <!-- 收货地址列表 -->
+    <action name="address" class="com.yuwang.pinju.web.module.my.screen.MyDeliveryAction" method="execute">
+      <interceptor-ref name="pinju-login-interceptor" />
+      <interceptor-ref name="pinjuRefreshToken">
+        <param name="generate">true</param>
+      </interceptor-ref>
+      <result name="success" type="freemarker">/default/templates/screen/my/my-address.ftl</result>
+      <result name="error" type="freemarker">/default/templates/screen/my/my-address.ftl</result>
+    </action>
+
+    <!-- 修改新增 -->
+    <action name="address-update-*-*-*-*" class="com.yuwang.pinju.web.module.my.screen.MyDeliveryAction" method="saveOrUpdate">
+      <interceptor-ref name="pinju-login-interceptor" />
+      <interceptor-ref name="pinjuRefreshToken">
+        <param name="validate">true</param>
+        <param name="generate">true</param>
+      </interceptor-ref>
+      <param name="encodeMemberId">{1}</param>
+      <param name="delivery.hash">{2}</param>
+      <param name="delivery.id">{3}</param>
+      <param name="_token_">{4}</param>
+      <result name="success" type="freemarker">/default/templates/screen/my/my-address.ftl</result>
+      <result name="error" type="freemarker">/default/templates/screen/my/my-address.ftl</result>
+      <result name="repeat-submit" type="redirectAction">
+        <param name="namespace">/my</param>
+        <param name="actionName">address</param>
+      </result>
+    </action>
+
+    <!-- 删除 -->
+    <action name="address-remove-*-*-*-*" class="com.yuwang.pinju.web.module.my.screen.MyDeliveryAction" method="remove">
+      <interceptor-ref name="pinju-login-interceptor" />
+      <interceptor-ref name="pinjuRefreshToken">
+        <param name="validate">true</param>
+        <param name="generate">true</param>
+      </interceptor-ref>
+      <param name="encodeMemberId">{1}</param>
+      <param name="delivery.hash">{2}</param>
+      <param name="delivery.id">{3}</param>
+      <param name="_token_">{4}</param>
+      <result name="success" type="freemarker">/default/templates/screen/my/my-address.ftl</result>
+      <result name="error" type="freemarker">/default/templates/screen/my/my-address.ftl</result>
+      <result name="repeat-submit" type="redirectAction">
+        <param name="namespace">/my</param>
+        <param name="actionName">address</param>
+      </result>
+    </action>
+
+    <!-- 设为默认地址 -->
+    <action name="address-default-*-*-*-*" class="com.yuwang.pinju.web.module.my.screen.MyDeliveryAction" method="defaultDelivery">
+      <interceptor-ref name="pinju-login-interceptor" />
+      <interceptor-ref name="pinjuRefreshToken">
+        <param name="validate">true</param>
+        <param name="generate">true</param>
+      </interceptor-ref>
+      <param name="encodeMemberId">{1}</param>
+      <param name="delivery.hash">{2}</param>
+      <param name="delivery.id">{3}</param>
+      <param name="_token_">{4}</param>
+      <result name="success" type="freemarker">/default/templates/screen/my/my-address.ftl</result>
+      <result name="error" type="freemarker">/default/templates/screen/my/my-address.ftl</result>
+      <result name="repeat-submit" type="redirectAction">
+        <param name="namespace">/my</param>
+        <param name="actionName">address</param>
+      </result>
+    </action>
+
+    <!--
+    ==========================
+    [修改密码]
+    ==========================
+    -->
+    <!-- 修改密码页面 -->
+    <action name="change-password" class="com.yuwang.pinju.web.module.my.screen.MyPassswordAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/my/my-change-password.ftl</result>
+    </action>
+
+    <!-- 修改密码操作 -->
+    <action name="change-password-do" class="com.yuwang.pinju.web.module.my.screen.MyPassswordAction" method="update">
+      <result name="input" type="freemarker">/default/templates/screen/my/my-change-password.ftl</result>
+      <result name="success" type="freemarker">/default/templates/screen/my/my-change-password.ftl</result>
+      <result name="not-allowed-method" type="redirectAction">
+        <param name="namespace">/my</param>
+        <param name="actionName">change-password</param>
+      </result>
+    </action>
+
+    
+    <!-- 财付通账号管理首页 -->
+    <action name="tenpay-account" class="com.yuwang.pinju.web.module.my.screen.TenpayAction" method="execute">
+      <result name="unbound" type="freemarker">/default/templates/screen/my/my-tenpay-bound.ftl</result>
+      <result name="bound" type="freemarker">/default/templates/screen/my/my-tenpay-unbound.ftl</result>
+    </action>
+    
+    <!-- 财付通账号绑定处理 -->
+    <action name="tenpay-bound-account" class="com.yuwang.pinju.web.module.my.screen.TenpayAction" method="boundPayAccount">
+      <result name="success" type="freemarker">/default/templates/screen/my/my-tenpay-unbound.ftl</result>
+      <result name="input" type="freemarker">/default/templates/screen/my/my-tenpay-bound.ftl</result>
+    </action>
+
+    <!--
+    ==========================
+    [盛付通账号管理]
+    ==========================
+    -->
+
+    <!-- 盛付通账号管理首页 -->
+    <action name="pay-account" class="com.yuwang.pinju.web.module.my.screen.MyPaymentAction" method="execute">
+      <interceptor-ref name="pinju-login-interceptor" />
+      <interceptor-ref name="pinjuRefreshToken">
+        <param name="generate">true</param>
+      </interceptor-ref>
+      <result name="unbound" type="freemarker">/default/templates/screen/my/my-payment-bound.ftl</result>
+      <result name="bound" type="freemarker">/default/templates/screen/my/my-payment-unbound.ftl</result>
+    </action>
+    
+    <!-- 盛付通账号绑定处理 -->
+    <action name="bound-pay-account" class="com.yuwang.pinju.web.module.my.action.BoundPayAccountAction">
+      <interceptor-ref name="pinju-login-interceptor" />
+      <interceptor-ref name="pinjuRefreshToken">
+        <param name="generate">true</param>
+        <param name="validate">true</param>
+        <param name="repeatSubmit">not-allowed-method</param>
+        <param name="messageKey">pay.account.bound.repeat.submit</param>
+      </interceptor-ref>
+      <result name="success" type="freemarker">/default/templates/screen/my/my-payment-unbound.ftl</result>
+      <result name="repeat-submit" type="freemarker">/default/templates/screen/my/my-payment-bound.ftl</result>
+      <result name="input" type="freemarker">/default/templates/screen/my/my-payment-bound.ftl</result>
+      <result name="not-allowed-method" type="chain">
+        <param name="namespace">/my</param>
+        <param name="actionName">pay-account</param>
+      </result>
+    </action>
+
+    <!-- 盛付通账号解除绑定处理 -->
+    <action name="unbound-pay-account" class="com.yuwang.pinju.web.module.my.action.UnboundPayAccountAction">
+      <interceptor-ref name="pinju-login-interceptor" />
+      <interceptor-ref name="pinjuRefreshToken">
+        <param name="generate">true</param>
+        <param name="validate">true</param>
+        <param name="repeatSubmit">not-allowed-method</param>
+        <param name="messageKey">pay.account.unbound.repeat.submit</param>
+      </interceptor-ref>
+      <result name="input" type="freemarker">/default/templates/screen/my/my-payment-unbound.ftl</result>
+      <result name="success" type="freemarker">/default/templates/screen/my/my-payment-bound.ftl</result>
+      <result name="not-allowed-method" type="chain">
+        <param name="namespace">/my</param>
+        <param name="actionName">pay-account</param>
+      </result>
+    </action>
+    
+    <action name="verify-email" class="com.yuwang.pinju.web.module.my.screen.SecurityEmailAction" method="execute">
+       <result name="success">/default/templates/screen/my/my-send-email.ftl</result>
+       <result name="error">/default/templates/screen/my/my-error.ftl</result>
+       <result name="sendEmailPage">/default/templates/screen/my/my-email-checked.ftl</result>
+    </action>
+    
+    <action name="go-unbound-eamil" class="com.yuwang.pinju.web.module.my.screen.SecurityEmailAction" method="goUnboundEmail">
+       <result name="success" type="freemarker">/default/templates/screen/my/my-unbound-email.ftl</result>
+       <result name="error" type="freemarker">/default/templates/screen/my/my-email-error.ftl</result>
+    </action>
+    
+     <action name="sendEmail" class="com.yuwang.pinju.web.module.my.screen.SecurityEmailAction" method="sendEmail">
+       <result name="success" type="freemarker">/default/templates/screen/my/send-email-success.ftl</result>
+       <result name="input" type="freemarker">/default/templates/screen/my/my-send-email.ftl</result>
+    </action>
+    
+     <action name="sendUnboundEmail" class="com.yuwang.pinju.web.module.my.screen.SecurityEmailAction" method="sendUnboundEmail">
+       <result name="success" type="freemarker">/default/templates/screen/my/send-unbound-email-success.ftl</result>
+       <result name="input" type="chain">
+         <param name="namespace">/my</param>
+         <param name="actionName">go-unbound-eamil</param>
+       </result>
+       <result name="error" type="freemarker">/default/templates/screen/my/my-email-error.ftl</result>
+    </action>
+    
+    <action name="city-station" class="com.yuwang.pinju.web.module.my.screen.MyCityStationAction" method="execute">
+       <result name="success">/default/templates/screen/my/my-citystation.ftl</result>
+       <result name="input">/default/templates/screen/my/my-citystation-error.ftl</result>
+    </action>
+    
+    <!-- 
+    ==========================
+    [手机绑定、解绑]
+    ==========================
+     -->
+    <!-- 手机号码验证 -->
+    <action name="verify-mobile" class="com.yuwang.pinju.web.module.my.screen.SecurityMobileAction" method="execute">
+       <result name="input">/default/templates/screen/my/my-mobile-bind.ftl</result>
+       <result name="blanded">/default/templates/screen/my/my-mobile-binded.ftl</result>
+    </action>
+    
+     <!-- 添加手机号码验证 -->
+    <action name="bland-mobile" class="com.yuwang.pinju.web.module.my.screen.SecurityMobileAction" method="addMobileCode">
+      <result name="success">/default/templates/screen/my/my-mobile-bind-suc.ftl</result>
+      <result name="input" type="freemarker">/default/templates/screen/my/my-mobile-bind.ftl</result>
+      <result name="to_bland" type="redirectAction">
+        <param name="namespace">/my</param>
+        <param name="actionName">verify-mobile</param>
+      </result> 
+    </action>
+    
+     <!-- 解绑手机跳转 -->
+    <action name="verify-unmobile" class="com.yuwang.pinju.web.module.my.screen.SecurityMobileAction" method="unMobileCode">
+       <result name="input" type="freemarker">/default/templates/screen/my/my-mobile-unbind.ftl</result>
+       <result name="brandno" type="freemarker">/default/templates/screen/my/my-mobile-unbind-no.ftl</result>
+    </action>
+    
+     <!-- 解绑手机号码 -->
+    <action name="unbland-unmobile" class="com.yuwang.pinju.web.module.my.screen.SecurityMobileAction" method="deltetMobileCode">
+       <result name="success" type="redirect">/my/unbland-suc.htm</result>
+       <result name="input" type="freemarker">/default/templates/screen/my/my-mobile-unbind.ftl</result>
+    </action>
+    
+    <!--解绑手机号码成功跳转  -->
+    <action name="unbland-suc" class="com.yuwang.pinju.web.module.my.screen.SecurityMobileAction" method="unblandSuc">
+       <result name="success" type="freemarker">/default/templates/screen/my/my-mobile-unbind_suc.ftl</result>
+    </action>
+    
+    <action name="security-center" class="com.yuwang.pinju.web.module.my.screen.SecurityCenterAction">
+       <result name="success" type="freemarker">/default/templates/screen/my/my-security-center.ftl</result>
+    </action>
+  </package>
+</struts>

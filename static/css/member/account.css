@@ -1,0 +1,42 @@
+/*--  页面整体样式 --*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px; vertical-align:middle;}
+body{font-size:12px; font-family:Arial, Helvetica, sans-serif;  margin:0 auto;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ef9b11; text-decoration:underline;}
+table{border-collapse:collapse;border-spacing:0;}
+/*--  页面颜色样式 --*/
+.cheng{color:#fc4c0f;}
+.hong{color:#be0000;}
+.lan{color: #00F}
+a.lan{color:#2953A6;}
+a:hover.lan{color:#cc6600;}
+.huang{color:#e0b700;}
+.hui{color:#999;}
+.lvse{ color:#390}
+.title15{ font-size:15px;font-weight:bold;color:#333; margin:10px 0 0 15px;}
+/*-- 按纽样式 --*/
+.pl-btn-hui{ background:url(../../images/btn-gray.gif) no-repeat; font-weight:bold;color:#666;width:72px;height:25px; border:none;}
+.pl-btn-juse{ background:url(../../images/juse.gif) no-repeat; font-weight:bold;color:#fff;width:72px;height:25px; border:none; }
+.btn-juselong{ background:url(../../images/juselong.gif) no-repeat; font-weight:bold;color:#fff;width:126px;height:25px; border:none; display:block; text-align:center;}
+.btn-graylong{ background:url(../../images/graylong.gif) no-repeat; font-weight:bold;color:#666;width:126px;height:25px; border:none;}
+/*页分页标题*/
+.fleft{ float:left;}
+.account-main{ margin:20px 0 10px 10px;}
+.account-main .text{  width:100%;line-height:29px; float:left;}
+.account-main ul{ width:330px; border:1px solid #ddd;line-height:29px; float:left; margin:10px 50px; padding:20px 5px;}
+.account-main ul li{ float:left;width:100%;}
+.account-main ul .pl-btn-juse{ line-height:29px; margin-left:100px;}
+.account-main ul li .left{width:100px; float:left;text-align:right;}
+
+.account-main .acc-bangd{ margin:20px 0 0 0;}
+.account-main .acc-bangd ul{ border:none;}
+.account-main .acc-bangd ul li a{ margin:0 5px; float:left;}
+
+.acc-details{ margin:50px auto; overflow:hidden; width:600px; }
+.acc-close{ float:right;}
+.acc-details li { line-height:39px; margin:0 0 10px 20px; text-align:center;}
+.acc-details li .btn-juselong{ margin-left:200px;}
+
+.wl-h1{ background:#f9fafc;border-bottom:1px solid #c4d5e0; font-weight:bold;line-height:23px; padding:4px 0 0 10px;margin:10px 0;width:80%;}

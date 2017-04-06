@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TRADE_ORDER_LOG">
+	<typeAlias alias="OrderLogDO" type="com.yuwang.pinju.domain.order.OrderLogDO" />
+
+	<resultMap id="OrderLogDOResult" class="OrderLogDO">
+		<result property="orderLogId" column="ID"/>
+		<result property="orderId" column="ORDER_ID"/>
+		<result property="orderItemId" column="ORDER_ITEM_ID"/>
+		<result property="operateIp" column="OPERATE_IP"/>
+		<result property="buyerId" column="BUYER_ID"/>
+		<result property="sellerId" column="SELLER_ID"/>
+		<result property="stateModifyTime" column="STATE_MODIFY_TIME"/>
+		<result property="sellerMarginPrice" column="SELLER_MARGIN_PRICE"/>
+		<result property="orderItemState" column="ORDER_ITEM_STATE"/>
+		<result property="operateDesc" column="OPERATE_DESC"/>
+		<result property="opeartorId" column="OPERATOR_ID"/>
+		<result property="operateType" column="OPERATE_TYPE"/>
+		<result property="operateState" column="OPERATE_STATE"/>
+		<result property="gmtCreate" column="GMT_CREATE"/>
+	</resultMap>
+
+	<insert id="insertOrderLogDO" parameterClass="OrderLogDO">
+		<selectKey resultClass="Long" keyProperty="orderLogId" >
+			<![CDATA[SELECT SEQ_ORDER_LOG_ID.NEXTVAL AS orderLogId FROM DUAL]]>
+		</selectKey>
+		<![CDATA[
+			INSERT INTO TRADE_ORDER_LOG (ID,ORDER_ID,ORDER_ITEM_ID,OPERATE_IP,BUYER_ID,SELLER_ID,STATE_MODIFY_TIME,SELLER_MARGIN_PRICE,
+			ORDER_ITEM_STATE,OPERATE_DESC,OPERATOR_ID,OPERATE_TYPE,OPERATE_STATE,GMT_CREATE)
+			VALUES (#orderLogId#,#orderId#,#orderItemId#,#operateIp#,#buyerId#,#sellerId#,sysdate,#sellerMarginPrice#,#orderItemState#,
+			#operateDesc#,#opeartorId#,#operateType#,#operateState#,sysdate)
+		]]>
+	</insert>
+	
+	
+	
+
+</sqlMap>
+

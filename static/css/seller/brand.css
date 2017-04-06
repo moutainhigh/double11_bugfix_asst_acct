@@ -1,0 +1,21 @@
+.header { *margin: 0 auto 10px; _margin: 0 auto; }
+.header .nav { border-bottom:1px solid #dadada; float:left; width: 1000px; margin: -20px 0 10px; }
+.header .nav ul { float:right; border:1px solid #dadada; border-bottom:0 none; }
+.header .nav li { float:left; }
+.header .nav li a {
+	background:#f6f6f6 none no-repeat 0 0;
+	border-right:1px solid #fff;
+	color:#999;
+	float:left;
+	padding:8px 20px;
+	text-decoration:none;
+}
+.header .nav li a:hover {
+	background:#fff none no-repeat 0 0;
+	color:#3D71AB;
+}
+.header .nav li.current a {
+	background:#fff none no-repeat 0 0;
+	color:#3D71AB;
+	font-weight:bold;
+}

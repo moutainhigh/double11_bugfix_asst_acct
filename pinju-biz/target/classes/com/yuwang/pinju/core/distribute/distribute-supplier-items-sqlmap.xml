@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="distribute_supplier_goods">
+
+	<typeAlias alias="DistributeSupplierGoodsDo" type="com.yuwang.pinju.domain.distribute.DistrbuteSupplierItemDO" />
+	<typeAlias alias="DistributeSupplierGoods" type="com.yuwang.pinju.domain.distribute.DistrbuteSupplierItemParamDO" />
+	<typeAlias alias="DistributorItemQuery" type="com.yuwang.pinju.domain.distribute.DistributorItemQuery" />
+
+	<resultMap id="DistributeSupplierGoodsResult" class="DistributeSupplierGoodsDo">
+		<result property="id" column="ID" />
+		<result property="supplierId" column="SUPPLIER_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="reward" column="REWARD" />
+		<result property="status" column="STATUS" />
+		<result property="distributeNum" column="DISTRIBUTE_NUM" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllDistributeSupplierGoods"><![CDATA[SELECT ID,SUPPLIER_ID,ITEM_ID,REWARD,STATUS,DISTRIBUTE_NUM,GMT_CREATE,GMT_MODIFIED,CONFIGURATION FROM DISTRIBUTE_SUPPLIER_GOODS]]></sql>
+
+	<!-- 在合作状态并且没有超过期限的分销商,没有加表别名,两边没有加括号如果后面还有查询条件的话一定要加上括号！ -->
+	<sql id="regularDistributeChannelCondition"><![CDATA[((DATE_ADD(AGREE_DATE, INTERVAL COOPERATE_MONTH MONTH) > SYSDATE() AND COOPERATE_MONTH > 0) OR COOPERATE_MONTH = 0) AND STATUS = 1]]></sql>
+		<!-- 在合作状态并且没有超过期限的分销商,表的别名为[DC],两边没有加括号如果后面还有查询条件的话一定要加上括号！ -->
+	<sql id="regularDistributeChannelConditionAlias"><![CDATA[((DATE_ADD(DC.AGREE_DATE, INTERVAL DC.COOPERATE_MONTH MONTH) > SYSDATE() AND DC.COOPERATE_MONTH > 0) OR DC.COOPERATE_MONTH = 0) AND DC.STATUS = 1]]></sql>
+	
+	<select id="selectAllDistributeSupplierGoods" resultMap="DistributeSupplierGoodsResult">
+		<include refid="selectAllDistributeSupplierGoods" />
+	</select>
+
+	<select id="selectDistributeSupplierGoodsByid" resultMap="DistributeSupplierGoodsResult"  parameterClass="long">
+		<include refid="selectAllDistributeSupplierGoods" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectDistributeSupplierGoods"  resultMap="DistributeSupplierGoodsResult" parameterClass="DistributeSupplierGoods">
+		<include refid="selectAllDistributeSupplierGoods" />
+			<!-- 分销商品为分销状态 -->
+			<![CDATA[ WHERE STATUS = 0 ]]>
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplierId">
+				<![CDATA[SUPPLIER_ID = #supplierId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="reward">
+				<![CDATA[REWARD = #reward#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="distributeNum">
+				<![CDATA[DISTRIBUTE_NUM = #distributeNum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		<![CDATA[ Limit #start#, #itemsPerPage#]]>
+	</select>
+
+	<select id="selectDistributeSupplierGoodIds"  resultClass="Long" parameterClass="DistributeSupplierGoods">
+		<![CDATA[SELECT ITEM_ID FROM DISTRIBUTE_SUPPLIER_GOODS ]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplierId">
+				<![CDATA[SUPPLIER_ID = #supplierId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="reward">
+				<![CDATA[REWARD = #reward#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="distributeNum">
+				<![CDATA[DISTRIBUTE_NUM = #distributeNum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[ Limit #start#, #itemsPerPage#]]>
+	</select>
+
+	<select id="count" resultClass="Integer" parameterClass="DistributeSupplierGoods">
+		SELECT COUNT(*) AS "value" FROM DISTRIBUTE_SUPPLIER_GOODS
+			<!-- 分销商品为分销状态 -->
+			<![CDATA[ WHERE STATUS = 0 ]]>
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplierId">
+				<![CDATA[SUPPLIER_ID = #supplierId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="reward">
+				<![CDATA[REWARD = #reward#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="distributeNum">
+				<![CDATA[DISTRIBUTE_NUM = #distributeNum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+	</select>
+	
+	<insert id="insertDistributeSupplierGoods" parameterClass="DistributeSupplierGoodsDo">
+		<![CDATA[INSERT INTO DISTRIBUTE_SUPPLIER_GOODS (SUPPLIER_ID,ITEM_ID,REWARD,STATUS,DISTRIBUTE_NUM) VALUES (#supplierId#,#itemId#,#reward#,#status#,#distributeNum#)]]>
+	</insert>
+
+	<update id="updateDistributeSupplierGoods" parameterClass="DistributeSupplierGoodsDo">
+		<![CDATA[UPDATE DISTRIBUTE_SUPPLIER_GOODS SET GMT_MODIFIED = now()]]>
+		<isNotEmpty prepend="," property="supplierId">
+			<![CDATA[SUPPLIER_ID = #supplierId#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="itemId">
+			<![CDATA[ITEM_ID = #itemId#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="reward">
+			<![CDATA[REWARD = #reward#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="status">
+			<![CDATA[STATUS = #status#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="distributeNum">
+			<![CDATA[DISTRIBUTE_NUM = #distributeNum#]]>
+		</isNotEmpty>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<update id="discardDistributeSupplierGood" parameterClass="DistributeSupplierGoodsDo">
+		<![CDATA[UPDATE DISTRIBUTE_SUPPLIER_GOODS SET GMT_MODIFIED = now(),STATUS = 1 WHERE SUPPLIER_ID = #supplierId# AND ITEM_ID = #itemId# AND STATUS = 0]]>
+	</update>
+
+	<select id="selectDistributorSoldItem" resultClass="DistributeSupplierGoodsDo" parameterClass="DistributorItemQuery">
+		SELECT 
+		DSG.ITEM_ID AS "itemId",
+		DSG.REWARD AS "reward",
+		DSG.SUPPLIER_ID AS "supplierId"
+		FROM 
+		DISTRIBUTE_SUPPLIER_GOODS DSG 
+		<!-- 分销商品为分销状态 -->
+		<![CDATA[ WHERE DSG.STATUS = 0 ]]>
+		<isNotEmpty property="itemIdList">
+			<iterate prepend="AND" open="(" close=")" property="itemIdList" conjunction="OR">
+				<![CDATA[DSG.ITEM_ID = #itemIdList[]#]]>
+			</iterate>
+		</isNotEmpty>
+		LIMIT #start#,#itemsPerPage#
+	</select>
+	
+	<select id="selectDistributorSoldItemByCondition" resultClass="DistributeSupplierGoodsDo" parameterClass="DistributorItemQuery">
+		SELECT
+			DCI.ITEM_ID AS "itemId",
+			DSG.REWARD AS "reward",
+			DSG.SUPPLIER_ID AS "supplierId",
+			DD.ID AS "channelId",
+			DD.NICKNAME AS "nickName"
+		FROM
+			DISTRIBUTE_SUPPLIER_GOODS AS DSG
+		LEFT JOIN (SELECT CHANNEL_ID,SUPPLIER_ID,ID FROM DISTRIBUTE_CHANNEL <!-- 订单生成之前调用接口需判断分销商是否在合作期限内 --> WHERE (<include refid="regularDistributeChannelCondition" />)) DC ON DSG.SUPPLIER_ID = DC.SUPPLIER_ID
+		LEFT JOIN DISTRIBUTE_DISTRIBUTOR DD ON DD.ID = DC.CHANNEL_ID
+		LEFT JOIN DISTRIBUTE_CHANNEL_ITEM DCI ON DCI.CHANNEL_ID = DC.CHANNEL_ID
+		WHERE
+			DD.MEMBER_ID = #distributorId#
+		AND DSG.ITEM_ID = #itemId#
+		AND DCI.ITEM_ID = #itemId#
+		<!-- 分销商品为分销状态 -->
+		<![CDATA[ AND DSG.STATUS = 0 ]]>
+	</select>
+	
+	<select id="selectDistributorSoldItemIdList" resultClass="long" parameterClass="DistributorItemQuery">
+		SELECT 
+			DSG.ITEM_ID AS "value"
+		FROM 
+		DISTRIBUTE_SUPPLIER_GOODS DSG 
+		<!-- 分销商品为分销状态 -->
+		<![CDATA[ WHERE DSG.STATUS = 0 ]]>
+			<isNotEmpty property="itemIdList">
+				<iterate prepend="AND" open="(" close=")" property="itemIdList" conjunction="OR">
+					<![CDATA[DSG.ITEM_ID = #itemIdList[]#]]>
+				</iterate>
+			</isNotEmpty>
+		LIMIT #start#,#itemsPerPage#
+	</select>
+	
+	<select id="selectDistributorSoldItemCount" resultClass="Integer"  parameterClass="DistributorItemQuery">
+		SELECT 
+		Count(DSG.ITEM_ID)
+		FROM 
+		DISTRIBUTE_SUPPLIER_GOODS DSG 
+		<!-- 分销商品为分销状态 -->
+		<![CDATA[ WHERE DSG.STATUS = 0 ]]>
+			<isNotEmpty property="itemIdList">
+				<iterate prepend="AND" open="(" close=")" property="itemIdList" conjunction="OR">
+					<![CDATA[DSG.ITEM_ID = #itemIdList[]#]]>
+				</iterate>
+			</isNotEmpty>
+	</select>
+	
+	<select id="selectDistributorUnsoldItem" resultClass="DistributeSupplierGoodsDo"  parameterClass="DistributorItemQuery">
+			SELECT
+				R.ITEM_ID AS "itemId",
+				R.REWARD AS "reward",
+				R.SUPPLIER_ID AS "supplierId"
+			FROM
+				(
+					SELECT
+						DD.ITEM_ID,
+						DD.REWARD,
+						DD.SUPPLIER_ID,
+						IFNULL(T.ITEM_ID ,- 1)AS "FLAG"
+					FROM
+						(
+							SELECT
+								DSG.ITEM_ID,
+								DSG.REWARD,
+								DC.SUPPLIER_ID
+							FROM
+								(
+									SELECT
+										SUPPLIER_ID,
+										ITEM_ID,
+										REWARD
+									FROM
+										DISTRIBUTE_SUPPLIER_GOODS
+									<!-- 分销商品为分销状态 -->
+									<![CDATA[ WHERE STATUS = 0 ]]>
+								)DSG
+							INNER JOIN(
+								SELECT
+									SUPPLIER_ID
+								FROM
+									DISTRIBUTE_CHANNEL
+								WHERE
+									CHANNEL_ID = #distributorId#
+								AND (<include refid="regularDistributeChannelCondition" />)
+							)DC ON DSG.SUPPLIER_ID = DC.SUPPLIER_ID
+						)DD
+						<dynamic prepend="LEFT JOIN" open="(" close=") T">
+							<isEmpty property="itemIdList">
+								<![CDATA[SELECT NULL AS ITEM_ID]]>
+							</isEmpty>
+							<isNotEmpty property="itemIdList">
+								<iterate property="itemIdList" conjunction="UNION ALL">
+									<![CDATA[SELECT #itemIdList[]# AS ITEM_ID]]>
+								</iterate>
+							</isNotEmpty>
+						</dynamic>
+					 ON DD.ITEM_ID = T.ITEM_ID )R
+			WHERE
+				R.FLAG = - 1
+			LIMIT #start#,#itemsPerPage#
+	</select>
+	
+	<select id="selectDistributorUnsoldItemCount" resultClass="Integer"  parameterClass="DistributorItemQuery">
+			SELECT
+				COUNT(R.ITEM_ID)
+			FROM
+				(
+					SELECT
+						DD.ITEM_ID,
+						DD.REWARD,
+						DD.SUPPLIER_ID,
+						IFNULL(T.ITEM_ID ,- 1)AS "FLAG"
+					FROM
+						(
+							SELECT
+								DSG.ITEM_ID,
+								DSG.REWARD,
+								DC.SUPPLIER_ID
+							FROM
+								(
+									SELECT
+										SUPPLIER_ID,
+										ITEM_ID,
+										REWARD
+									FROM
+										DISTRIBUTE_SUPPLIER_GOODS
+									<!-- 分销商品为分销状态 -->
+									<![CDATA[ WHERE STATUS = 0 ]]>
+								)DSG
+							INNER JOIN(
+								SELECT
+									SUPPLIER_ID
+								FROM
+									DISTRIBUTE_CHANNEL
+								WHERE
+									CHANNEL_ID = #distributorId#
+								AND (<include refid="regularDistributeChannelCondition" />)
+							)DC ON DSG.SUPPLIER_ID = DC.SUPPLIER_ID
+						) DD
+						<dynamic prepend="LEFT JOIN" open="(" close=") T">
+							<isEmpty property="itemIdList">
+								<![CDATA[SELECT NULL AS ITEM_ID]]>
+							</isEmpty>
+							<isNotEmpty property="itemIdList">
+								<iterate property="itemIdList" conjunction="UNION ALL">
+									<![CDATA[SELECT #itemIdList[]# AS ITEM_ID]]>
+								</iterate>
+							</isNotEmpty>
+						</dynamic>
+					 ON DD.ITEM_ID = T.ITEM_ID )R
+			WHERE
+				R.FLAG = - 1
+	</select>
+	
+</sqlMap>
+

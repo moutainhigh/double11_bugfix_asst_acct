@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+.bail_serving {padding-left:10px;  }
+.bail_serving_h { border-bottom:2px solid #dadada; color:#000; }
+.bail_serving_h span{ border-bottom:2px solid #d72426; display:block; width:111px; position:relative; bottom:-2px; font-weight:bold; text-indent:8px;height:18px;}
+.bail_serving_b_txt { border-bottom:1px dotted #dadada; margin-bottom:15px; line-height:20px;  padding:20px; }
+.user_name { color:#666; font-size:14px; font-weight:bold; line-height:22px; }
+.xb_but { border:none; background:url(http://static.pinju.com/images/xb_but_03.gif) no-repeat; width:120px; height:30px;  margin-left:35px; cursor:pointer;}
+.orange { color:#eb6100; }
+.bail_status { width:825px; background:#FFF; }
+.pointer_style{border:1px solid #fadfb2; padding-left:27px; padding:0 0 0 27px; background:url(http://static.pinju.com/images/point_01_03.gif) no-repeat 6px 7px #feffe0; margin:20px 0;}
+.pointer_style p{ color:#666666; line-height:26px;}
+.bail_status_tab { cursor:p border-bottom: 1px solid #DADADA; margin-bottom:27px; }
+.bail_status_tab li { background:#FFF;  float:left; float: left; height: 25px; line-height: 25px; margin-right: 6px; position: relative; text-align: center; top: 1px; border-top:solid #DADADA 1px; }
+.bail_status_tab li span{padding:0 8px; display:block; color:#000;border:solid #DADADA;border-width:0 1px; cursor:pointer;}
+.bail_status_tab li.focus { border-top: 2px solid #D52525; color: #000000; font-weight: bold; }
+.bail_status_table_box{}
+.bail_status_table{ width:100%; border:solid #dadada;border-width:1px 0 0 1px;}
+.bail_status_td01{ width:14%;}
+.bail_status_td02{width:6%;}
+.bail_status_td03{width:20%;}
+.bail_status_td04{width:20%;}
+.bail_status_td05{width:20%;}
+.bail_status_td06{width:20%;*border-right:1px solid #dadada;}
+.bail_status_td01,.bail_status_td02,.bail_status_td03,.bail_status_td04,.bail_status_td05,.bail_status_td06{ background:#f6f6f6; height:28px;text-align:center; *border-bottom:1px solid #dadada;}
+.bail_status_table thead{border:#dadada solid;border-width:0 1px 1px 0;}
+.bail_status_table tbody td{ border:#dadada solid;border-width:0 1px 1px 0;height:28px; text-align:center; }
+.bail_status_bar{ background:#f6f6f6; border-bottom:1px solid #dadada; height:26px; line-height:26px; margin-bottom:18px;}
+.bail_status_bar span{ text-indent:15px;}
+.bail_status_uesr_txt{ line-height:32px; margin-left:15px;}
+.add_bail_but{ background:url(http://static.pinju.com/images/add_bail_but_21.gif) no-repeat; width:84px; height:23px; display:inline-block; color:#FFF;  line-height:23px; text-align:center;}
+.view_bail_but{ background:url(http://static.pinju.com/images/cg_but_26.gif) no-repeat;width:147px; height:32px; float:left;_display:inline;color:#FFF; font-weight:bold; margin:10px 0 0 15px;line-height:32px; text-align:center;}
+.but_box{ margin-bottom:10px;}
+.err_text{padding-left:15px;}
+.store_but,.store_but1{width:109px; height:29px; margin:0 20px; border:none;}
+.store_but{ background:url(http://static.pinju.com/images/store_but_10.gif) no-repeat; }
+.store_but1{ background:url(http://static.pinju.com/images/store_but2_12.gif) no-repeat;}
+.outages_box{ background:url(http://static.pinju.com/images/outages_error_03.gif) no-repeat 34px 60px; padding:110px 0 0 200px;}
+.outages_box p{ line-height:32px; font-size:14px;}
+.black{color:#000;}
+.red{color:#d72426;}
+.bd{ font-weight:bold;}
+.fl{ float:left;}
+.fr{ float:right;}
+
+

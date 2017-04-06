@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_base_value">
+
+	<typeAlias alias="ItemBaseValue" type="com.yuwang.pinju.domain.item.BaseValueDO" />
+
+	<resultMap id="ItemBaseValueResult" class="ItemBaseValue">
+		<result property="id" column="ID" />
+		<result property="value" column="VALUE" />
+		<result property="hashcode" column="HASHCODE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+
+	<select id="selectItemBaseValueById" resultMap="ItemBaseValueResult"
+		parameterClass="long">
+		SELECT id,value,hashcode,GMT_CREATE,GMT_MODIFIED FROM
+		item_base_value where
+		id=#id#
+	</select>
+
+	<select id="getBaseValueByValue" resultMap="ItemBaseValueResult"
+		parameterClass="String">
+		SELECT ID,VALUE,HASHCODE,GMT_CREATE,GMT_MODIFIED FROM
+		item_base_value WHERE
+		VALUE = #value#
+	</select>
+	
+	<resultMap id="getBaseValueNameByIdsResult" class="ItemBaseValue">
+		<result property="id" column="ID" />
+		<result property="value" column="VALUE" />
+	</resultMap>
+
+	<select id="getBaseValueNameByIds" resultMap="getBaseValueNameByIdsResult"
+		parameterClass="java.util.List">
+		SELECT ID,VALUE FROM ITEM_BASE_VALUE
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" open="(" close=")" conjunction="OR">
+					<![CDATA[
+						ID = #propertyValueList[]#
+					]]>
+			</iterate>
+		</dynamic>
+	</select>
+
+	
+	<insert id="insertItemBaseValue" parameterClass="ItemBaseValue">
+		<selectKey resultClass="long" keyProperty="id">
+			<![CDATA[SELECT SEQ_ITEM_BASE_VALUE_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO ITEM_BASE_VALUE (ID,VALUE,HASHCODE,GMT_CREATE,GMT_MODIFIED) VALUES (#id#,#value#,#hashcode#,#gmtCreate#,#gmtModified#)]]>
+	</insert>
+
+</sqlMap>
+

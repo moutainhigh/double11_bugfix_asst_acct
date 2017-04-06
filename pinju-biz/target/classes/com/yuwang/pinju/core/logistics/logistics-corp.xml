@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TRADE_LOGISTICS_CORP">
+
+	<typeAlias alias="tradeLogisticsCorp" type="com.yuwang.pinju.domain.logistics.LogisticsCorpDO" />
+
+	<resultMap id="tradeLogisticsCorpDefault" class="tradeLogisticsCorp">
+		<result column="ID" property="id" />
+		<result column="CORP_CODE" property="corpCode" />
+		<result column="CORP_NAME" property="corpName" />
+		<result column="CONTACTS" property="contacts" />
+		<result column="PHONE" property="phone" />
+		<result column="CORP_URL" property="corpUrl" />
+		<result column="ADDRESS" property="address" />
+		<result column="LOGISTICS_TYPE" property="logisticsType" />
+		<result column="LOGISTICS_STATUS" property="logisticsStatus" />
+		<result column="MEMO" property="memo" />
+		<result column="CREATE_PEOPLE" property="createPeople" />
+		<result column="GMT_CREATE" property="gmtCreate" />
+		<result column="MODIFIED_PEOPLE" property="modifiedPeople" />
+		<result column="GMT_MODIFIED" property="gmtModified" />
+		<result column="CORP_H_CODE" property="corpHCode"/>
+	</resultMap>
+	
+	<sql id="selectAllLogisticsCorp"><![CDATA[SELECT * FROM trade_logistics_corp]]></sql>
+	
+	<select id="getLogisticsCorp"  resultMap="tradeLogisticsCorpDefault" parameterClass="tradeLogisticsCorp">
+		<include refid="selectAllLogisticsCorp" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="corpCode">
+				CORP_CODE=#corpCode#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="corpName">
+				CORP_NAME=#corpName#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="contacts">
+				CONTACTS=#contacts#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="phone">
+				PHONE=#phone#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="corpUrl">
+				CORP_URL=#corpUrl#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="address">
+				ADDRESS=#address#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="logisticsType">
+				LOGISTICS_TYPE=#logisticsType#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="logisticsStatus">
+				LOGISTICS_STATUS=#logisticsStatus#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo">
+				MEMO=#memo#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createPeople">
+				CREATE_PEOPLE=#createPeople#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				GMT_CREATE=#gmtCreate#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="modifiedPeople">
+				MODIFIED_PEOPLE=#modifiedPeople#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				GMT_MODIFIED=#gmtModified#
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[ ORDER BY memo]]>
+	</select>
+
+	<insert id="insert" parameterClass="tradeLogisticsCorp">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_TRADE_LOGISTICS_CORP.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		insert into BILL.TRADE_LOGISTICS_CORP
+		<dynamic prepend="(">
+			<isNotEmpty prepend="," property="corpCode">
+				CORP_CODE
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="corpName">
+				CORP_NAME
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="contacts">
+				CONTACTS
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="phone">
+				PHONE
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="corpUrl">
+				CORP_URL
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="address">
+				ADDRESS
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="corpHCode">
+				CORP_H_CODE
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="logisticsType">
+				LOGISTICS_TYPE
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="logisticsStatus">
+				LOGISTICS_STATUS
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="memo">
+				MEMO
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="createPeople">
+				CREATE_PEOPLE
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				GMT_CREATE
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="modifiedPeople">
+				MODIFIED_PEOPLE
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				GMT_MODIFIED
+			</isNotEmpty>
+			)
+		</dynamic>
+		values
+		<dynamic prepend="(">
+			<isNotEmpty prepend="," property="corpCode">
+				#corpCode#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="corpName">
+				#corpName#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="contacts">
+				#contacts#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="phone">
+				#phone#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="corpUrl">
+				#corpUrl#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="address">
+				#address#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="corpHCode">
+				#corpHCode#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="logisticsType">
+				#logisticsType#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="logisticsStatus">
+				#logisticsStatus#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="memo">
+				#memo#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="createPeople">
+				#createPeople#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				#gmtCreate#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="modifiedPeople">
+				#modifiedPeople#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				#gmtModified#
+			</isNotEmpty>
+			)
+		</dynamic>
+	</insert>
+</sqlMap>
+

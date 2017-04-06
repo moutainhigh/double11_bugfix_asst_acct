@@ -1,0 +1,38 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_brand">
+
+	<typeAlias alias="ItemBrand" type="com.yuwang.pinju.domain.item.BrandDO" />
+
+	<resultMap id="ItemBrandResult" class="ItemBrand">
+		<result property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="groupId" column="GROUP_ID" />
+		<result property="status" column="STATUS" />
+		<result property="logoUrl" column="LOGO_URL" />
+		<result property="remark" column="REMARK" />
+		<result property="sortOrder" column="SORT_ORDER" />
+		<result property="sortType" column="SORT_TYPE" />
+		<result property="brandCode" column="BRAND_CODE" />
+		<result property="businessCode" column="BUSINESS_CODE" />
+	</resultMap>
+
+	<sql id="selectAllItemBrand">
+		<![CDATA[
+			SELECT ID,NAME,GROUP_ID,STATUS,LOGO_URL,REMARK,SORT_ORDER,SORT_TYPE,BRAND_CODE,BUSINESS_CODE
+			FROM ITEM_BRAND
+		]]></sql>
+
+	<select id="selectAllItemBrand" resultMap="ItemBrandResult">
+		<include refid="selectAllItemBrand" />
+	</select>
+
+	<select id="getItemBrandById" resultMap="ItemBrandResult"
+		parameterClass="long">
+		<include refid="selectAllItemBrand" />
+		<![CDATA[
+			WHERE ID = #id#
+		]]>
+	</select>
+
+</sqlMap>

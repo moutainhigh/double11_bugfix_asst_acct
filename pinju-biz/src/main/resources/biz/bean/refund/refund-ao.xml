@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="tradeRefundAO" class="com.yuwang.pinju.core.refund.ao.impl.TradeRefundAOImpl"/>
+	<bean id="refundApplyAO" class="com.yuwang.pinju.core.refund.ao.impl.RefundApplyAOImpl"/>
+	<bean id="itemPropertyAO" class="com.yuwang.pinju.core.refund.ao.impl.ItemPropertyAOImpl"/>
+	<bean id="sellerRefundManageAO" class="com.yuwang.pinju.core.refund.ao.impl.SellerRefundManageAOImpl"/>
+	<bean id="refundBaseAO" class="com.yuwang.pinju.core.refund.ao.impl.RefundBaseAOImpl"/>
+	<bean id="refundCheckAO" class="com.yuwang.pinju.core.refund.ao.impl.RefundCheckAOImpl"/>
+	<bean id="refundManageAO" class="com.yuwang.pinju.core.refund.ao.impl.RefundManageAOImpl"/>
+	<bean id="refundTimingAO" class="com.yuwang.pinju.core.refund.ao.impl.RefundTimingAOImpl"/>
+	<bean id="sellerRefundTimeoutAO" class="com.yuwang.pinju.core.refund.ao.impl.SellerRefundTimeoutAOImpl"/>
+	<bean id="buyerRefundTimeoutAO" class="com.yuwang.pinju.core.refund.ao.impl.BuyerRefundTimeoutAOImpl"/>
+	<bean id="maxRefundMoneyAO" class="com.yuwang.pinju.core.refund.ao.impl.MaxRefundMoneyAOImpl"/>
+	<bean id="sellerRefundLogAO" class="com.yuwang.pinju.core.refund.ao.impl.SellerRefundLogAOImpl"/>
+	<bean id="buyerRefundLogAO" class="com.yuwang.pinju.core.refund.ao.impl.BuyerRefundLogAOImpl"/>
+	
+</beans>

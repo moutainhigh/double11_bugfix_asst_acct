@@ -1,0 +1,346 @@
+﻿/*------------------------------------【先看我】---------------------------------------*/
+/*--本css和tuikuan.css框架部分的样式为共用，因此，可以将我标出部分直接复制进tuikuan.css中即可，并建议将tuikuan.css名字改为tuikuanxiaobao.css 便于识别。若CSS文件名字有改，网页中的css文件名也需更改--*/
+/*--如果本CSS需做单独文件，则需把下面标出的tuikuan.css的内容也保留--*/
+
+
+/*----------------------------以下内容可复制进tuikuan.css--------------------*/
+
+/*--红色按钮--*/
+.dajin0628-redbutton01 { width:103px; height:29px; background:url(http://static.pinju.com/images/xiaobao_button_01.jpg) no-repeat;}
+.dajin0628-redbutton02 { width:147px; height:29px; background:url(http://static.pinju.com/images/xiaobao_button_02.jpg) no-repeat;}
+
+/*--上传重填确定等按钮--*/
+/*--上传--*/.dajin0628-shangchuanbutton01 { width:69px; height:23px; background: url(../images/pic_queding.gif) no-repeat;}
+/*--浏览--*/.dajin0628-liulanbutton01 { width:42px; height:20px; background: url(http://static.pinju.com/images/pic_liulan.gif) no-repeat;}
+
+/*--灰色按钮--*/.dajin0628-graybutton01 { width:100px; height:20px; background:url(../images/button_huisedi.gif) no-repeat;} 
+
+/*--消除按钮边框--*/
+.bordernone0628 { border:none;}
+
+/*--白色字--*/.dajin0628-zi-baise {color:#FFF;}
+
+/*--加粗--*/.dajin0628-zi-jiacu {font-weight:bold;}
+
+/*--文字右对齐--*/.dajin0628-zi-right { text-align:right;}
+
+.dajin0628-boxred120{width:120px; height:2px; background:#d72426; overflow:hidden;}/*----红色----*/
+
+.dajin0628-boxoverflow { overflow:hidden;}
+
+/*--维权说明中图片的大框架--*/.dajin0628-weiquanpicall { width:620px; padding:5px 5px; overflow:hidden;}
+
+/*--维权说明中图片的外框--*/.dajin0628-weiquanpic001 { width:52px; height:52px; padding:2px 2px 2px 2px; float:left; margin-left:5px; margin-right:5px; overflow:hidden;}
+
+/*--当前状态标签--*/.dajin0628-biaoqian001  { float:left;height:23px;  background:#FFF; padding: 8px 5px 0px 5px;
+						 	border-top-width: 2px;
+							border-top-style: solid;
+							border-top-color: #F00;
+							
+						 	border-left-width: 1px;
+							border-left-style: solid;
+							border-left-color: #d4d4d4;	
+							
+							border-right-width: 1px;
+							border-right-style: solid;
+							border-right-color: #d4d4d4;
+							
+							border-bottom-width: 1px;
+							border-bottom-style: solid;
+							border-bottom-color: #FFF;
+													
+							overflow:hidden;
+						}
+						
+/*--非当前状态标签--*/.dajin0628-biaoqian002  { float:left;height:24px; background:#FFF;padding: 8px 5px 0px 5px;background:#f7f7f7;
+						 	border-top-width: 1px;
+							border-top-style: solid;
+							border-top-color: #d4d4d4;
+							
+						 	border-left-width: 1px;
+							border-left-style: solid;
+							border-left-color: #d4d4d4;	
+							
+							border-right-width: 1px;
+							border-right-style: solid;
+							border-right-color: #d4d4d4;
+													
+							overflow:hidden;
+						}
+						
+/*--标签中间空的位置--*/.dajin0628-biaoqiankongbai { float:left;width:20px; height:20px;}
+
+/*--700宽，上下左右内据15px--*/.dajin0628-boxw700-01 { float:left;width:700px; padding:15px 15px 15px 15px; overflow:hidden;}
+/*--水平线--*/.dajin0628-boxw700-02 { float:left;width:700px; background: url(../../images/bg_hui.gif) repeat-x bottom;}	
+				.dajin0628-boxw700-02 .fudongceng02 { position:relative;}
+				.dajin0628-boxw700-02 .fudongceng02 .fudongceng03 { position:absolute;}
+				.dajin0628-boxfloatright { float:right;}
+				
+/*--上面没线--*/.dajin0628-boxw700-03 { float:left;width:700px;
+							
+					/*--	 	border-left-width: 1px;
+							border-left-style: solid;
+							border-left-color: #d4d4d4;	
+							
+							border-right-width: 1px;
+							border-right-style: solid;
+							border-right-color: #d4d4d4;
+							
+							border-bottom-width: 1px;
+							border-bottom-style: solid;
+							border-bottom-color: #FFF;
+													
+							overflow:hidden; --*/
+						}
+						
+/*--boxw700的表格样式-间距和样式--*/.dajin0628-boxw700-03 table td { padding:10px 0px 5px 5px ; text-align:center;
+																border-bottom-width: 1px;
+																border-bottom-style: solid;
+																border-bottom-color: #d4d4d4;}
+/*--boxw700的表格样式-超链文字颜色--*/.dajin0628-boxw700-03 table a { color:#36F;}
+/*--boxw700的表格样式-鼠标移到超链上--*/.dajin0628-boxw700-03 table a:hover{ color: #F60;}
+							
+/*--宽700灰底 内距左右15px，上下5px--*/.dajin0628-boxw700-04 { float:left;width:700px; padding:5px 15px 5px 15px ; background:#f7f7f7}
+
+/*--宽700--*/.dajin0628-boxw700-05 { float:left; width:700px;}
+
+/*--宽700 内据5px--*/.dajin0628-boxw720-01 { float:left;width:720px; padding:5px 5px 5px 5px ; }
+
+/*--宽400--*/.dajin0629-boxw400 {width:400px;}
+			     .dajin0629-boxw400 ul{padding:10px 40px;}
+				 .dajin0629-boxw400 li{padding:10px 20px;}	
+
+/*--居中--*/ .dajin0629-juzhong{ margin:0 auto;}
+
+.left15 { margin-left:15px;}
+.right15 { margin-right:15px;}
+.paddingtb15 { padding-bottom:15px; padding-top:15px;}
+
+.boxh0 .piaofuceng { position:relative;}
+.boxh0 .piaofuceng001{ position:absolute; right:150px; width:1px; top:70px;}
+
+.boxh0 .piaofuceng002{ position:absolute; right:100px;}
+
+/*--居中--*/ .dajin0701-buttonhand{ cursor: pointer;}
+
+/*------------------------------------复制结束----------------------------*/
+
+
+
+
+
+
+
+/*------------------------------------以下内容为tuikuan.css部分----------------------------*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px; vertical-align:middle;}
+body{font-size:12px; font-family:Arial, Helvetica, sans-serif;  margin:0 auto; }
+.cella{clear:both;}
+ul,ol,li{list-style:none;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ef9b11; text-decoration:underline;}
+
+table{border-collapse:collapse;border-spacing:0;}
+
+.cheng{color:#fc4c0f;}
+
+.hong02{color:#be0000;}
+
+.lan{color: #00F}
+.lan02{color: #06F}
+
+a.lan{color:#2953A6;}
+
+a:hover.lan{color:#cc6600;}
+
+.huang{color:#e0b700;}
+
+.hui{color:#999;}
+
+.lvse{ color:#390}
+.zi_11size{ font-size:11px}
+.zi_14size{ font-size:14px}
+.zi_shenhui{color:#666}
+/*------------------------------内容开始----------------------------------*/
+
+
+
+
+.li01 { float:left; margin-left:40px;}
+.main20110627 { width:960px;overflow:hidden;margin:0 auto; padding-left:5px; padding-right:5px;}
+.main062702 { width:736px;overflow:hidden; padding-left:5px; padding-right:5px;}
+/*.main .bd{margin:20px;}*/
+
+
+.positionbanner {margin-bottom:10px; padding:4px 10px; line-height:20px; height:20px;} 
+
+.positionbanner01 {line-height:20px; height:20px;} 
+
+.shuomingbox { margin-left:40px;}
+.left5{ margin-left:5px;}
+.left10{ margin-left:10px;}
+.left20{ margin-left:20px;}
+.right20 { margin-right:20px;}
+.left40{ margin-left:40px;}
+.left60{ margin-left:60px;}
+.left80{ margin-left:80px;}
+.left150{ margin-left:150px;}
+.left200{ margin-left:200px; margin-top:10px;}
+.left280{ margin-left:280px;}
+.bannerpicstyle { float:left; margin-left:5px; text-align:center;}
+.gao20{ height:20px;}
+.floatleft { float:left}
+.floatright { float:right}
+.paddingleft250 { padding-left:250px}
+.paddingleft20 { padding-left:20px}
+.paddingtb10 { padding-top:10px; padding-bottom:10px;}
+.paddingtb20 { padding-top:20px; padding-bottom:20px;}
+.paddingtop20 { padding-top:20px;}
+.paddingbottom20 { padding-bottom:20px;}
+.paddinglr5 { padding-left:5px; padding-right:5px;}
+
+
+.top10 { margin-top:10px;}
+.top20 { margin-top:20px;}
+.top30 { margin-top:20px;}
+.bottom10 { margin-bottom:20px;}
+.bottom20 { margin-bottom:20px;}
+
+/*----边框样式-----*/
+.t1 {border:1px solid #000;}/*----黑边-----*/
+.t2 {border:1px solid #d4d4d4;}/*----灰边-----*/
+.t3 {background:#f7f7f7;}/*----灰底-----*/
+.t4 {border:1px solid  #ffcc99; background: #ffffcc}/*----橘边黄底-----*/
+.t5 {background:#d4d4d4;}/*----深灰底-----*/
+.t6 {	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #d4d4d4;
+	overflow:hidden;}
+	
+.t7 {	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #d4d4d4;
+	overflow:hidden;}	
+
+/*----左侧-----*/
+.tuikuanleft { float:left;width:200px; height:580px; margin-bottom:20px;} 
+.tuikuanleft-2 { float:left;width:200px; height:578px; margin-bottom:20px; 	border-bottom-width:1px;
+border-bottom-style: solid;
+border-bottom-color: #d4d4d4;
+
+border-left-width:1px;
+border-left-style: solid;
+border-left-color: #d4d4d4;
+
+border-right-width:1px;
+border-right-style: solid;
+border-right-color: #d4d4d4;
+} 
+.tuikuanleft ul{padding:10px 0;}
+.tuikuanleft li{padding:10px 20px; text-align: left;}
+
+.tuikuanleft19 { float:left;width:200px; margin-bottom:10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #d4d4d4;} 
+.tuikuanleft19-1 { float:left;width:200px;}
+
+/*------------------------------上下左右边框----------------------------------*/
+.bordertb {border-top-width:1px;
+border-top-style: solid;
+border-top-color: #d4d4d4;
+border-bottom-width:1px;
+border-bottom-style: solid;
+border-bottom-color: #d4d4d4;}
+
+.borderleft {border-left-width:1px;
+border-left-style: solid;
+border-left-color: #d4d4d4;}
+
+.borderright{border-right-width:1px;
+border-right-style: solid;
+border-right-color: #d4d4d4;
+	}
+
+
+/*------------------------------右侧----------------------------------*/
+.boxh1 {width:730px; height:1px; overflow:hidden;}/*----高1----*/
+.boxh2 {width:730px; height:2px;overflow:hidden;}/*----高2----*/
+
+.boxpadding { width:720px; padding-top:8px; padding-bottom:4px; padding-left:10px}/* -----居中-----*/
+
+.boxh200x19 {width:200px; height:19px;}/*----宽200高29-----*/
+
+.boxh29 {width:730px; height:29px;}/*----高29-----*/
+.boxh37 {width:730px; height:37px;}/*----高37-----*/
+.boxh50 {width:730px; height:50px; }/*----高52-----*/
+.boxh80 {width:730px; height:80px;}/*----高80-----*/
+.boxh100 {width:730px; height:100px;}/*----高100-----*/
+.boxh120 {width:730px; height:120px;}/*----高120-----*/
+.boxh150 {width:730px; height:150px; }/*----高150-----*/
+.boxh200 {width:730px; height:200px;}/*----高200-----*/
+.boxh250 {width:730px; height:250px; }/*----高250-----*/
+.boxh300 {width:730px; height:300px; }/*----高300-----*/
+
+.boxh0 {width:730px;}/*----高0-----*/
+		.boxh0 ul{padding:4px 0;}
+		.boxh0 li{padding:4px 20px;}
+		
+
+.boxh400 {width:730px; height:400px;}/*----高400-----*/
+.boxh450 {width:730px; height:450px;}/*----高4050-----*/
+.boxh500 {width:730px; overflow:hidden; padding-bottom:10px;}
+.boxh550 {width:730px; height:550px;}/*----高550-----*/
+.boxh600 {width:730px; height:600px;}/*----高600-----*/
+.boxh651 {width:730px; height:651px;}/*----高653-----*/
+.boxh800 {width:730px; height:800px; margin-top:10px;}/*----高800-----*/
+
+.boxw610 {width:610px;}
+.boxw610 ul{padding:4px 0;}
+.boxw610 li{padding:4px 20px;}
+
+.boxred {width:100px; height:2px; background:#d72426; overflow:hidden;}/*----红色----*/
+.boxred202 {width:202px; height:2px; background:#d72426;overflow:hidden;}/*----红色----*/
+.boxgray200 {width:200px; height:1px; background:#d4d4d4;overflow:hidden;}/*----红色----*/
+/*------------------------------申请退款----------------------------------*/
+
+
+
+
+.tuikuanright { float:right;width:710px; height:585px; margin-right:20px; margin-bottom:20px; }
+
+
+
+/*商品和名称*/
+.boxgoods { width:265px;}
+.goodsimages { width:50px; height:50px; }
+.goodsinfor { width:200px;}
+
+/* 饶MM新加颜色等样式-2011-06-25*/
+.pj-red{color:#D72426;}
+.pj-btn-call{ background:url(../image/12_05.gif) no-repeat; border:none;width:103px;height:29px; float:right; margin-top:-40px; padding-left:5px;}
+.pj-btn-sure{ background:url(../image/12_03.gif) no-repeat; border:none;width:103px;height:29px; float:left; margin-top:10px;}
+.pj-gray{background:#f9fafc; line-height:29px; border-bottom:1px solid #c4d5e0;}
+.width500{width:500px; line-height:25px; }
+.zi_shenhui span textarea{ overflow-x:hidden; overflow-y:auto;width:480px;}
+.sel-state li{ float:left;width:80px; background:#f9fafc;border-top:1px solid #c4d5e0;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; margin-right:8px; text-align:center; padding:5px 10px; margin-top:5px;}
+.sel-state li.tui-selected{background:#ffffff;border-top:3px solid #D72426;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; padding:3px 10px 5px;}
+/*.pj-state li:hover{background:#ffffff;border-top:3px solid #D72426;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; padding:3px 10px 5px;}*/
+.col-name{height:29px; line-height:29px;}
+.col-name th{ float:left;}
+.sel-tb1{ float:left; }
+.sel-tb1 th{ font-weight:100;text-align:center;}
+.center{ text-align:center;}
+.a0628rao{border-collapse:collapse; border:1px solid #c4d5e0;word-wrap:normal;word-break:keep-all;}
+.a0628rao tr td{border:1px solid #c4d5e0;}
+
+.sel-img{width:50px; margin:5px ; border:1px solid #c4d5e0; padding:5px; float:left;}
+.sel-goods{ margin:5px;}
+.b{border-collapse:collapse; border:1px solid #c4d5e0; border-top:0px solid #339999}
+.b tr td{border:1px solid #c4d5e0;border-top:0px solid #339999}
+.sel-ye{ float:right;}
+.sel-ye ul{ float:left; margin:5px 10px 0 0;}
+.sel-ye li{ float:left; padding:4px 5px;background:#fff;margin:0 3px;}
+.sel-ye li.sel-ye-selected{ background:#d72426; color:#ffffff;padding:4px 5px;}
+.sel-inp{width:20px; margin:0 5px;}

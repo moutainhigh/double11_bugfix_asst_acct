@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	<!-- defaultdir指定装饰器文件所在的路径 -->
+<decorators defaultdir="/default/templates/layout">
+
+	<!--excludes结点则指定了哪些路径的请求不使用任何模板 -->
+	<excludes>
+		<pattern>/index.html</pattern>
+		<pattern>/sdo.html</pattern>
+		<pattern>/css/*</pattern>
+		<pattern>/images/*</pattern>
+		<pattern>/default/js/*</pattern>
+		<pattern>/member/login*</pattern>
+		<pattern>/member/token*</pattern>
+		<pattern>/member/register*</pattern>
+		<pattern>/member/sina-*</pattern>
+		<pattern>/item/*.html</pattern>
+		<pattern>/editor/*</pattern>
+		<pattern>/e/*</pattern>
+		<pattern>/openApi/*</pattern>
+		<pattern>/supplier/popup*</pattern>
+		<pattern>/cate/*</pattern>
+		<pattern>/my/iframePJTip.htm</pattern>
+		<pattern>/my/iframePJNews.htm</pattern>
+		<pattern>/accountpoints/*</pattern>
+		<pattern>/error.html</pattern>
+		<pattern>/shopDecoration/viewShop.htm*</pattern>
+		<pattern>/shopDecoration/shopDecorationAction.htm*</pattern>
+		<pattern>/favorite/saveFavoriteShopAction.htm</pattern>
+	</excludes>
+
+	<decorator name="security" page="security/security-layout.ftl">
+		<pattern>/security/*</pattern>
+	</decorator>
+
+	<decorator name="buy" page="my/buy-layout.ftl">
+		<pattern>/management/buy.htm</pattern>
+	</decorator>
+	<decorator name="sell" page="my/sell-layout.ftl">
+		<pattern>/management/sell.htm</pattern>
+		<!-- 卖家后台首页 -->
+		<pattern>/my/sell.htm</pattern>
+		<pattern>/asst/*</pattern>
+	</decorator>
+	<decorator name="account" page="my/account-layout.ftl">
+		<pattern>/management/account.htm</pattern>
+	</decorator>
+
+  <decorator name="sellerBackGround" page="my/sell-layout.ftl">
+    <pattern>/shop/*</pattern>
+    <pattern>/supplier/*</pattern>
+    <pattern>/tenpay/*</pattern>
+    <pattern>/shopDomain/*</pattern>
+    <pattern>/shopLabel/*</pattern>
+  </decorator>
+  
+  <decorator name="shopDecoration" page="shop/shopDecoration.ftl">
+    <pattern>/shopDecoration/*</pattern>
+  </decorator>
+  
+  <!--decorator结点指定了模板的位置和文件名，通过pattern来指定哪些路径引用哪个模板 -->
+  <decorator name="main" page="main.ftl">
+    <pattern>/*</pattern>
+  </decorator>
+  
+   <decorator name="my" page="my/account-layout.ftl">
+    <pattern>/my/*</pattern>
+  </decorator>
+  
+  
+  <decorator name="item" page="my/sell-layout.ftl">
+    <pattern>/item/*</pattern>
+    <pattern>/itemList/*</pattern>
+  </decorator>
+  
+  <decorator name="itemReleased" page="item/itemReleased-layout.ftl">
+ 	 <pattern>/itemReleased/*</pattern>
+  </decorator>
+  
+  <decorator name="orderbuyer" page="my/buy-layout.ftl">
+    <pattern>/orderBuyer/orderManager.htm</pattern>
+    <pattern>/orderBuyer/orderCancel.htm</pattern>
+    <pattern>/orderBuyer/myBuyer.htm</pattern>
+    <pattern>/distributor/*</pattern>
+  </decorator>
+  
+  <!-- 我的优惠券 -->
+  <decorator name="buyerCoupon" page="my/buy-layout.ftl">
+    <pattern>/buyerCoupon/*</pattern>
+  </decorator>
+  
+  <decorator name="sellerCoupon" page="my/sell-layout.ftl">
+    <pattern>/sellerCoupon/*</pattern>
+  </decorator>
+  
+  <decorator name="tenpayMergePay" page="my/buy-layout.ftl">
+    <pattern>/pay/tenpayMergepaySendOrderError.ftl</pattern>
+  </decorator>
+
+	<decorator name="points" page="my/sell-layout.ftl">
+		<pattern>/points/*</pattern>
+	</decorator>
+
+	<decorator name="images" page="images/images.ftl">
+		<pattern>/images/*</pattern>
+	</decorator>
+
+	<decorator name="sellerBackGround" page="my/sell-layout.ftl">
+		<pattern>/shop/*</pattern>
+		<pattern>/supplier/*</pattern>
+		<pattern>/tenpay/*</pattern>
+		<pattern>/shopDomain/*</pattern>
+	</decorator>
+
+	<decorator name="shopDecoration" page="shop/shopDecoration.ftl">
+		<pattern>/shopDecoration/*</pattern>
+	</decorator>
+
+	<!--decorator结点指定了模板的位置和文件名，通过pattern来指定哪些路径引用哪个模板 -->
+	<decorator name="main" page="main.ftl">
+		<pattern>/*</pattern>
+	</decorator>
+
+	<decorator name="my" page="my/account-layout.ftl">
+		<pattern>/my/*</pattern>
+	</decorator>
+
+
+	<decorator name="item" page="my/sell-layout.ftl">
+		<pattern>/item/*</pattern>
+		<pattern>/itemList/*</pattern>
+	</decorator>
+
+	<decorator name="itemReleased" page="item/itemReleased-layout.ftl">
+		<pattern>/itemReleased/*</pattern>
+	</decorator>
+
+	<decorator name="orderbuyer" page="my/buy-layout.ftl">
+		<pattern>/orderBuyer/orderManager.htm</pattern>
+		<pattern>/orderBuyer/orderCancel.htm</pattern>
+		<pattern>/orderBuyer/myBuyer.htm</pattern>
+		<pattern>/distributor/*</pattern>
+	</decorator>
+
+	<decorator name="tenpayMergePay" page="my/buy-layout.ftl">
+		<pattern>/pay/tenpayMergepaySendOrderError.ftl</pattern>
+	</decorator>
+
+	<decorator name="mergePayPostBack" page="my/buy-layout.ftl">
+		<pattern>/pay/tenpayMergepayError.ftl</pattern>
+	</decorator>
+
+	<decorator name="tenDirectPay" page="my/buy-layout.ftl">
+		<pattern>/orderPay/tenDirectSendOrder.htm</pattern>
+	</decorator>
+
+	<decorator name="orderseller" page="my/sell-layout.ftl">
+		<pattern>/orderSeller/ordermanagesell.htm</pattern>
+		<pattern>/orderSeller/ordermanagesell_cls.htm</pattern>
+		<pattern>/orderSeller/ordermanagesell_out.htm</pattern>
+		<pattern>/orderSeller/ordermanagesell_pro.htm</pattern>
+		<pattern>/orderSeller/orderinfo.htm</pattern>
+		<pattern>/orderSeller/logisticsInfo.htm</pattern>
+	</decorator>
+	<decorator name="activity" page="my/sell-layout.ftl">
+		<pattern>/active/*</pattern>
+	</decorator>
+	<decorator name="orderlook" page="main.ftl">
+		<pattern>/orderSeller/orderinfo.htm</pattern>
+	</decorator>
+	<decorator name="logisticslook" page="main.ftl">
+		<pattern>/orderSeller/logisticsInfo.htm</pattern>
+	</decorator>
+
+	<decorator name="buyerRefundList" page="my/buy-layout.ftl">
+		<pattern>/refund/buyerRefundList.htm</pattern>
+	</decorator>
+	<decorator name="sellerRefundList" page="my/sell-layout.ftl">
+		<pattern>/refund/sellerRefundList.htm</pattern>
+	</decorator>
+
+	<!-- 物流 -->
+	<decorator name="logistics" page="my/sell-layout.ftl">
+		<pattern>/logistics/*</pattern>
+	</decorator>
+	<!-- 物流 -->
+
+
+	<!-- 消保维权管理Add By ShiXing@2011.07.01 -->
+	<decorator name="buyerRightsLayout" page="my/buy-layout.ftl">
+		<pattern>/rights/rightsList.htm</pattern>
+	</decorator>
+	<decorator name="sellerRightsListLayout" page="my/sell-layout.ftl">
+		<pattern>/rights/sellerRightsList.htm</pattern>
+	</decorator>
+	<decorator name="sellerRightsDetailLayout" page="rights/rights-layout.ftl">
+		<pattern>/rights/sellerRightsDetail.htm</pattern>
+		<pattern>/rights/error.htm</pattern>
+	</decorator>
+	<decorator name="sellerRightsLayout" page="my/sell-layout.ftl">
+		<pattern>/rights/*</pattern>
+	</decorator>
+	<decorator name="applyRights" page="rights/showApplyRights.ftl">
+		<pattern>/rights/showApplyRights.htm</pattern>
+	</decorator>
+	<!-- <decorator name="rightsDetail" page="rights/tradeRightsDetail.ftl"> -->
+	<decorator name="rightsDetail" page="rights/rights-layout.ftl">
+		<pattern>/rights/showApplyRights.htm</pattern>
+		<pattern>/rights/applyRights.htm</pattern>
+		<pattern>/rights/rightsDetail.htm</pattern>
+		<pattern>/rights/sendMessage.htm</pattern>
+		<pattern>/rights/showModifyRightsPage.htm</pattern>
+		<pattern>/rights/modifyRights.htm</pattern>
+		<pattern>/rights/buyerApply.htm</pattern>
+	</decorator>
+
+	<!-- 保证金管理 -->
+	<decorator name="marginLayout" page="my/sell-layout.ftl">
+		<pattern>/margin/*</pattern>
+	</decorator>
+	<!-- 保证金管理 -->
+	<decorator name="marginLayout" page="my/sell-layout.ftl">
+		<pattern>/margin/*</pattern>
+	</decorator>
+	<!-- 促销管理 -->
+	<decorator name="promotional" page="my/sell-layout.ftl">
+		<pattern>/promotional/*</pattern>
+	</decorator>
+
+	<decorator name="itemDetail" page="item/detail-layout.ftl">
+		<pattern>/detail/*</pattern>
+	</decorator>
+
+	<decorator name="itemXianGou" page="sales/sales-layout.ftl">
+		<pattern>/sales/itemXianGou.htm</pattern>
+	</decorator>
+
+
+	<!-- 销售报表-->
+	<decorator name="report" page="my/sell-layout.ftl">
+		<pattern>/sellReport/*</pattern>
+	</decorator>
+
+	<!-- 商品搜索 -->
+	<decorator name="itemSearch" page="search/search-layout.ftl">
+		<pattern>/search/*</pattern>
+	</decorator>
+
+	<!-- 热点搜索 -->
+	<decorator name="hotSearch" page="search/search-hot-layout.ftl">
+		<pattern>/hot/*</pattern>
+	</decorator>
+
+	<!-- 商品快照 -->
+	<decorator name="itemSnapShot" page="item/snapshot-detail-layout.ftl">
+		<pattern>/snapshot/*</pattern>
+	</decorator>
+
+  <!-- 销售报表-->
+  <decorator name="report" page="my/sell-layout.ftl">
+    <pattern>/sellReport/*</pattern>
+  </decorator>
+  
+  <!-- 店铺优惠券-->
+  <decorator name="coupon" page="my/sell-layout.ftl">
+    <pattern>/coupon/*</pattern>
+  </decorator>
+  
+  
+   <!-- 商品搜索 -->
+  <decorator name="itemSearch" page="search/search-layout.ftl">
+    <pattern>/search/*</pattern>
+  </decorator>
+  
+  <!-- 商品快照 -->
+   <decorator name="itemSnapShot" page="item/snapshot-detail-layout.ftl">
+    <pattern>/snapshot/*</pattern>
+   </decorator>
+   
+    <!-- 我的收藏 -->
+  <decorator name="myFavorite" page="my/buy-layout.ftl">
+    <pattern>/favorite/*</pattern>
+  </decorator>
+
+</decorators>

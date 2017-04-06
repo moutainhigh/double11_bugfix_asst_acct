@@ -1,0 +1,52 @@
+iframe {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    overflow: hidden;
+}
+#DialogMask {
+    background-color: #000000;
+    display: none;
+    left: 0;
+    opacity: 0.05;
+    position: absolute;
+    top: 0;
+    z-index: 65000;
+}
+#Dialog {
+    display: none;
+    position: absolute;
+    z-index: 65001;
+}
+#Dialog #DialogShadow {
+    background-color: #000000;
+    opacity: 0.15;
+}
+#Dialog #DialogLayout {
+    background-color: #FFFFFF;
+    border: 1px solid #9D0000;
+    left: 4px;
+    position: absolute;
+    top: 4px;
+}
+#Dialog #DialogCaption {
+    background-color: #9D0000;
+    border-bottom: 1px solid #670E0E;
+    height: 29px;
+    overflow: hidden;
+}
+#Dialog #DialogCaption span {
+    color: #FFFFFF;
+    float: left;
+    font-weight: bold;
+    padding: 7px 10px;
+}
+#Dialog #DialogCaption a {
+    background: url("http://static.pinju.com/images/shop/sc-close-dialog.png") no-repeat scroll center center #9D0000;
+    float: right;
+    height: 19px;
+    margin: 5px;
+    width: 19px;
+}
+#Dialog #DialogCaption a:hover {
+    background: url("http://static.pinju.com/images/shop/sc-close-dialog-hovered.png") no-repeat scroll center center #9D0000;
+}

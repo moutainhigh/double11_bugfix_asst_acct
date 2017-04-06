@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片空间 - 图片管理</title>
+<link media="screen" type="text/css" href="http://static.pinju.com/css/pj_base.css" rel="stylesheet">
+<link rel="stylesheet" href="http://static.pinju.com/css/page/pagination.css" type="text/css" media="screen" />
+<link href="http://static.pinju.com/css/imghost/style.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=pinjulogin"></script>
+<script type="text/javascript" src="http://static.pinju.com/js/imghost/imghost.js"></script>
+</head>
+
+<body>
+<div class="top_bar">
+	<div class="top_bar_box cf">
+		<div class="login_status">
+			<span class="welcome">您好！欢迎来到品聚</span>
+			<span>[ <a href="#">注册</a> ]</span>
+			<span>[ <a href="#">登陆</a> ]</span>
+		</div>
+		<div class="liaison">
+			<a href="#">加入我们</a> 
+			<a href="#">联系我们</a>
+		</div>
+	</div>
+</div>
+<div class="header">
+	<div class="masthead cf">
+		<div class="logo">
+			<a href="http://www.pinju.com/">
+				<img class="logo_pic" width="314" height="57" src="http://static.pinju.com/img/imghost/logo-imghost.png" />
+			</a>
+		</div>
+	</div>
+</div>
+
+<!-- nav imghost -->
+<div class="wrap nav-imghost">
+	<ul class="eye">
+		<li><a href="#" title="使用帮助">使用帮助</a></li>
+	</ul>
+	<ul class="nav-wrap">
+		<li><a href="#" title="图片管理">图片管理</a></li>
+		<li><a href="#" title="图片上传">图片上传</a></li>
+		<li class="current"><a href="#" title="分类管理">分类管理</a></li>
+	</ul>	
+</div>
+
+<!-- content -->
+<div class="wrap cf">
+	<div class="sidebar">
+		<div class="box">
+			<div class="title"><h2>图片空间统计</h2></div>
+			<div class="content">
+				<p>已用空间：<strong>1000.34</strong> M<br />
+				共 <strong>1200</strong> 张</p>
+			</div>
+		</div>
+		<div class="box">
+			<div class="title"><h2>图片分类</h2></div>
+			<div class="content cf">
+				<ul class="imgcat">
+					<li><a href="#" title="">默认分类</a></li>
+					<li><a href="#" title="">32354446555555555555555555555555</a></li>
+					<li class="active">
+						<span class="accordion"></span>
+						<a href="#" title="">自定义分类1</a>
+						<ul>
+							<li class="current"><a href="#" title="">子分类1店铺装修店铺装修店铺装修店铺装修</a></li>
+							<li><a href="#" title="">子分类2</a>
+						</ul>
+					</li>
+					<li>
+						<span class="accordion"></span>
+						<a href="#" title="">自定义分类2</a>
+						<ul>
+							<li><a href="#" title="">子分类1</a></li>
+							<li><a href="#" title="">子分类2</a>
+						</ul>
+					</li>
+					<li><a href="#" title="">自定义分类3</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+  
+	<div class="contents">
+		<div class="image-demand">
+			上传日期： <input type="text" /> 至 <input type="text" /> 分类：<select>
+				<option>所有图片</option>
+			</select> <button>搜索</button>
+		</div>
+		<div class="actionbar cf">
+			<div class="image-modify">
+				<span class="title">批量操作</span>
+				<ul> 
+					<li><a href="#">全选</a>|</li>
+					<li><a href="#">反选</a>|</li>
+					<li><a href="#" class="recat" id="recat">移动</a>|</li>
+					<li><a href="#">删除</a></li>
+				</ul>
+			</div>
+			<div class="eye">
+				排序：
+				<select>
+					<option>按上传时间从远到近</option>
+				</select>
+			</div>
+		</div>
+		<div class="imgwrap cf">
+			<ul>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit">
+						<input class="editId" type="hidden" value="555" />
+						<input class="editName" type="text" size="13" value="" />
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit"><input type="text" size="13 value="" /">
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit"><input type="text" size="13 value="" /">
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit"><input type="text" size="13 value="" /">
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit"><input type="text" size="13 value="" /">
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit"><input type="text" size="13 value="" /">
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit"><input type="text" size="13 value="" /">
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit"><input type="text" size="13 value="" /">
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+				<li class="img-item">
+					<div class="img">
+						<a href="#">
+							<img src="http://static.pinju.com/media/imghost-demo-01-160x160.jpg">
+						</a>
+						<input class="img-select" type="checkbox" />
+					</div>
+					<p class="name">
+						<span class="title">图片名称图片名称图片名称</span>
+						<span class="title-edit"></span>
+					</p>
+					<p class="edit"><input type="text" size="13 value="" /">
+						<button>确定</button>
+					</p>
+					<p>253.4 k</p>
+					<p class="act">
+						<a href="#">详情</a> 
+						| <a href="#">删除</a>
+						<br />
+						<a class="copylink" id="copylink-0001" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制链接">复制链接</a>
+						| <a class="copycode" id="copycode-0001c" data-url="http://static.pinju.com/media/imghost-demo-01-160x160.jpg" href="#" title="请复制代码">复制代码</a>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="actionbar cf">
+			<div class="image-modify">
+				<span class="title">批量操作</span>
+				<ul> 
+					<li><a href="#">全选</a>|</li>
+					<li><a href="#">反选</a>|</li>
+					<li><a href="#">移动</a>|</li>
+					<li><a href="#">删除</a></li>
+				</ul>
+			</div>
+			<div id="Pagination" class="pagination">
+				<span class="prev current">上一页</span>
+				<span class="current">1</span>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a class="next" href="#">下一页</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- // content -->
+
+<!-- footer -->
+<div class="footer">
+
+	<div class="footer_main">
+		
+	</div>
+</div>
+<!-- END -->
+
+</body>
+</html>

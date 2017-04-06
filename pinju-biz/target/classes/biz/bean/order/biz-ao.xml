@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="orderBusinessAO" class="com.yuwang.pinju.core.order.ao.impl.OrderBusinessAOImpl"/>
+	
+	<bean id="orderCreationAO" class="com.yuwang.pinju.core.order.ao.impl.OrderCreationAOImpl"/>
+	
+	<bean id="payAO" class="com.yuwang.pinju.core.order.ao.pay.impl.PayAOImpl"/>
+
+	<bean id="shoppingCartDetailAO" class="com.yuwang.pinju.core.order.ao.impl.ShoppingCartDetailAOImpl"/>
+	
+	<bean id="logisticsServiceAO" class="com.yuwang.pinju.core.order.ao.impl.LogisticsServiceAOImpl"/>
+	
+	<bean id="hessianOrderAO" class="com.yuwang.pinju.core.order.ao.impl.HessianOrderAOImpl"/>
+	
+	<bean id="orderQueryAO" class="com.yuwang.pinju.core.order.ao.impl.OrderQueryAOImpl"/>
+	
+	<bean id="orderUpAO" class="com.yuwang.pinju.core.order.ao.impl.OrderUpAOImpl"/>
+	
+	<bean id="openQueryOrderService" class="com.yuwang.pinju.core.order.service.impl.OpenQueryOrderServiceImpl"/>
+</beans>

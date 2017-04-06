@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+  
+     <package name="orderQuery" namespace="/orderQuery" extends="pinju-default">
+      	<action name="ajaxLastTimeBuy" class="com.yuwang.pinju.web.module.order.action.QueryOrderItemListAction" method="queryAjaxLastTimeBuyList">
+	  		 <result name="success" type="json"></result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+			
+		<action name="queryajaxitembuynum" class="com.yuwang.pinju.web.module.order.action.QueryAjaxOrderAction" method="queryAjaxItemBuyNum">
+	  		 <result name="success" type="json"></result>
+		</action>
+		
+      </package>
+     
+     <package name="orderbuyer" namespace="/orderBuyer" extends="pinju-login">
+     
+     	<action name="settlement" class="com.yuwang.pinju.web.module.order.action.SettlementAction" method="settlement">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/settling.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+	  		 <result name="paramet-error" type="redirect">/cart/shoppingCartDetail.htm</result>
+		</action>
+		
+		<action name="lastTimeBuySell" class="com.yuwang.pinju.web.module.order.action.SettlementAction" method="lastTimeBuySell">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/buy.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="orderManager" class="com.yuwang.pinju.web.module.order.action.OrderManagerBuyAction" method="get">
+	  		  <result name="success" type="freemarker">/default/templates/screen/order/buy-orders.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="myBuyer" class="com.yuwang.pinju.web.module.order.action.OrderManagerBuyAction" method="myBuyer">
+	  		 <result name="success" type="freemarker">/default/templates/screen/my/my-buyer-index.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="creationOrder" class="com.yuwang.pinju.web.module.order.action.CreationOrderAction" method="creationOrder">
+	  		 <!-- //930版本  即时到账
+	  		 <result name="success" type="chain">
+                  <param name="namespace">/orderPay</param>
+                  <param name="actionName">tenDirectSendOrder</param>
+             </result>
+              -->
+             
+             <!-- 双11版本  担保交易 -->
+              <result name="success" type="chain">
+                  <param name="namespace">/orderPay</param>
+                  <param name="actionName">pay</param>
+             </result>
+             
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+			
+		<action name="orderCancel" class="com.yuwang.pinju.web.module.order.action.OrderManagerBuyAction" method="cancelOrder">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/buy-orders.ftl</result>
+	  		<!--    <result name="success" type="redirect">http://www.pinju.com/orderBuyer/orderManager.htm?orderState=1</result> -->
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="orderCancelCheck" class="com.yuwang.pinju.web.module.order.action.OrderManagerBuyAction" method="orderCancelCheck" />
+
+		
+		<action name="orderDelivery" class="com.yuwang.pinju.web.module.order.action.OrderDeliveryAction" method="addDelivery">
+	  		 <result name="success" type="json"></result>
+	  		 <result name="error" type="json"></result>
+		</action>
+		
+		<action name="setDefDelivery" class="com.yuwang.pinju.web.module.order.action.OrderDeliveryAction" method="setDefDelivery">
+	  		 <result name="success" type="freemarker"></result>
+		</action>
+		
+		<action name="loadAddressAjax" class="com.yuwang.pinju.web.module.my.screen.MyDeliveryAction" method="execute">
+	  		 <result name="success" type="json"></result>
+		</action>
+		
+		<action name="ajaxcheckcode" class="com.yuwang.pinju.web.module.order.action.CreationOrderAction" method="ajaxCheckCode"></action>
+		
+		<action name="ajaxupdateorder" class="com.yuwang.pinju.web.module.order.action.CreationOrderAction" method="ajaxupdateOrder"></action>
+		
+     </package>
+     
+
+     
+     
+     
+     
+     
+     <package name="orderseller" namespace="/orderSeller" extends="pinju-auth">
+     	<action name="ordersale" class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction" method="showCategoryList">
+      		<result name="success" type="redirectAction">
+        		<param name="namespace">/orderSeller</param>
+        		<param name="actionName">ordermanagesell</param>
+      		</result>
+      		
+      		<result name="validateError" type="freemarker">/default/templates/screen/shop/shopNotOpen.ftl</result>
+		</action>
+		
+	    <action name="ordermanagesellimport" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="importCSV">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/OrderManageSell.ftl</result>
+		</action>
+		
+		<action name="ordermanagesell" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="execute">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/OrderManageSell.ftl</result>
+		</action>
+		
+		<action name="ordermanagesell_cls" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="closeOrder">
+	  		 <result name="success" type="json"></result>
+		</action>
+		
+		<action name="ordermanagesell_check" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="closeOrderCheck" />
+		
+		<action name="ordermanagesell_out" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="outOrder">
+	  		 <result name="success" type="json"></result>
+		</action>
+		<action name="ordermanagesell_pro" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="prolongOutOrder">
+	  		 <result name="success" type="json"></result>
+		</action>
+		<action name="ordermanagesell_procheck" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="prolongOrderCheck" />
+		
+		<action name="orderinfoSell" class="com.yuwang.pinju.web.module.order.action.OrderInfoAction" method="executeSeller">
+	  		 <result name="success-seller" type="freemarker">/default/templates/screen/order/OrderInfoSeller.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="orderinfoBuy" class="com.yuwang.pinju.web.module.order.action.OrderInfoAction" method="executeBuyer">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/OrderInfo.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="logisticsInfoBuyer" class="com.yuwang.pinju.web.module.order.action.LogisticsInfoAction" method="executeBuyer">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/LogisticsInfo.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="logisticsInfoSeller" class="com.yuwang.pinju.web.module.order.action.LogisticsInfoAction" method="executeSeller">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/LogisticsInfo.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="logisticsInfoAjax" class="com.yuwang.pinju.web.module.order.action.LogisticsInfoAction" method="getLogisticsInfo">
+	  		  <result name="success" type="json">
+	  		  	<param name="root">message</param>
+	  		 </result>
+	  		 <result name="error" type="json">
+	  		  	<param name="root">message</param>
+	  		 </result>
+		</action>
+		
+		<action name="sellerDelivery" class="com.yuwang.pinju.web.module.order.screen.SellerDeliveryAction" method="inSellerDelivery">
+	  		 <result name="success" type="freemarker">/default/templates/screen/order/confirmDelivery.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="confirmdelivery" class="com.yuwang.pinju.web.module.order.screen.SellerDeliveryAction" method="confirmdelivery">
+	  		 <result name="success" type="json">
+	  		  	<param name="root">message</param>
+	  		 </result>
+	  		 <result name="error" type="json">
+	  		  	<param name="root">message</param>
+	  		 </result>
+		</action>
+		
+		<action name="isOrderRefund" class="com.yuwang.pinju.web.module.order.screen.SellerDeliveryAction" method="isOrderRefund">
+	  		 <result name="success" type="json">
+	  		  	<param name="root">flag</param>
+	  		 </result>
+		</action>
+		
+		<action name="addLogisticsSellerDelivery" class="com.yuwang.pinju.web.module.order.screen.SellerDeliveryAction" method="addLogisticsSellerDelivery">
+	  		 <result name="success" type="json">
+		  		 	<param name="root">status</param>
+	  		 </result>
+		</action>
+		
+		<action name="delLogisticsSellerDeliveryById" class="com.yuwang.pinju.web.module.order.screen.SellerDeliveryAction" method="delLogisticsSellerDeliveryById">
+	  		 <result name="success" type="json">
+	  		 	<param name="root">status</param>
+	  		 </result>
+		</action>
+		
+		<action name="queryByMemberId" class="com.yuwang.pinju.web.module.order.screen.SellerDeliveryAction" method="queryByMemberId">
+	  		 <result name="success" type="json">
+	  		 	<param name="root">sellerDeliveryList</param>
+	  		 </result>
+		</action>
+		
+		<action name="isLogisticsSellerDevliery" class="com.yuwang.pinju.web.module.order.screen.SellerDeliveryAction" method="isLogisticsSellerDevliery">
+	  		 <result name="success" type="json">
+	  		 	<param name="root">status</param>
+	  		 </result>
+		</action>
+		
+		<action name="getLogisticsCorp" class="com.yuwang.pinju.web.module.order.screen.SellerDeliveryAction" method="getLogisticsCorp">
+	  		 <result name="success" type="json">
+	  		 	<param name="root">corpList</param>
+	  		 </result>
+		</action>
+		
+		<action name="toModifyPrice" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="toModifyPrice">
+			<result name="success" type="freemarker">/default/templates/screen/order/modifyPrice.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/order/errorSettling.ftl</result>
+		</action>
+		
+		<action name="aoutConfDelivery" class="com.yuwang.pinju.web.module.order.screen.AoutConfDeliveryAction" method="aoutConfDelivery">
+			<result name="success" type="freemarker">/default/templates/screen/order/autoConfDelivery.ftl</result>
+		</action>
+		
+		<action name="modifyPrice" class="com.yuwang.pinju.web.module.order.action.OrderManageSellAction" method="modifyPrice">
+			<result name="success" type="json">
+	  		 	<param name="root">sellerDeliveryList</param>
+	  		 </result>
+		</action>
+     </package>
+  
+  </struts>

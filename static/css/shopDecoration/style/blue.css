@@ -1,0 +1,24 @@
+/*====================================================蓝色风格更换元素开始==================================*/
+.box{ 
+	border: 1px solid #aacbee;/*【风格：边框颜色】*/}
+.title{ 
+	background:url(http://static.pinju.com/images/shop/style/blue.gif) repeat-x 0 -150px #f7fcf6; /*【风格：标题底纹】*/
+	color:#333;/*【风格：标题文字颜色】*/}
+#topic{ 
+	background: #D4D4D4;/*【风格：招牌背景】*/}
+#topic ul{ 
+	background:url(http://static.pinju.com/images/shop/style/blue.gif) repeat-x 0 0;/*【风格：导航条背景】*/}
+#topic ul a{
+	color:#333;/*【风格：导航条文字颜色】*/}
+#topic .count{
+	background:url(http://static.pinju.com/images/shop/style/blue.gif) repeat-x 0 -50px;/*【风格：导航条文字颜色】*/}
+#topic .count a{
+	color:#FFF;/*【风格：导航条文字颜色】*/}
+.button { 
+	background:url(http://static.pinju.com/images/shop/style/blue.gif) no-repeat 0 -100px;/*【风格：主按钮】*/
+	color:#FFC;}
+.button{ width:70px; height:25px; border:none; font-weight:bold; line-height:16px; cursor:pointer;}
+.topproducts_tab .count a{ 
+	border-top:1px solid #00a0e9;/*【风格：选项卡选中样式】*/}
+.box-color{ background:#f3f8fd;}
+/*=====================================蓝色风格更换元素结束==================================*/

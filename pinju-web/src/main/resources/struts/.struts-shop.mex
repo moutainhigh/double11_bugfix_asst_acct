@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="shop" location="0,0" size="0,0">
+    <action name="showShopInfo" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="NOT_OPEN" />
+    </action>
+    <action name="saveShopInfo" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="shopCategory" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="insertShopCategory" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="index" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="showShopOpenBeginAction" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="showShopOpenAction" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="SHOP_OPEN_BEGIN" />
+      <result name="EXCHANGE_MARGIN" />
+    </action>
+    <action name="shopOpenBeginAction" location="0,0" size="0,0">
+      <result name="ACCOUNT_BINDING" />
+      <result name="REAL_NAME_AUTHENTICATION" />
+      <result name="AGREEMENT" />
+      <result name="FILL_SHOP_INFO_C" />
+      <result name="FILL_SHOP_INFO_B_SETP1" />
+      <result name="FILL_SHOP_INFO_B_SETP2" />
+      <result name="FILL_SHOP_INFO_B_SETP3" />
+      <result name="FILL_SHOP_INFO_B_SETP4" />
+      <result name="EXCHANGE_MARGIN" />
+      <result name="SHOP_OPEN_BEGIN" />
+    </action>
+    <action name="shopOpenAgreementAction" location="0,0" size="0,0">
+      <result name="successC" />
+      <result name="FILL_SHOP_INFO_B_SETP1" />
+      <result name="FILL_SHOP_INFO_B_SETP2" />
+      <result name="FILL_SHOP_INFO_B_SETP3" />
+      <result name="FILL_SHOP_INFO_B_SETP4" />
+    </action>
+    <action name="saveCustomerShopInfoAction" location="0,0" size="0,0">
+      <result name="SHOP_OPEN_BEGIN" />
+      <result name="success" />
+      <result name="error" />
+    </action>
+    <action name="saveBusinessShopInfoAction" location="0,0" size="0,0">
+      <result name="SHOP_OPEN_BEGIN" />
+      <result name="FILL_SHOP_INFO_B_SETP1" />
+      <result name="FILL_SHOP_INFO_B_SETP2" />
+      <result name="FILL_SHOP_INFO_B_SETP3" />
+      <result name="FILL_SHOP_INFO_B_SETP4" />
+      <result name="success" />
+      <result name="error" />
+    </action>
+    <action name="exchangeMarginAction" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="setShopIsOpenAction" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+  </package>
+</Struts2Diagram>
+

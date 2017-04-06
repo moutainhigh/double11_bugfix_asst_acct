@@ -1,0 +1,60 @@
+/* nav dropdown */
+.nav_list li a.nav_right {
+	background:none;
+	border-top:2px solid #f22c2c;
+	height:27px;
+	font-weight:bold;
+	overflow:hidden;
+	padding:5px 15px 0 15px;
+	text-decoration:none;
+}
+.pj_nav{ position:relative; z-index:1000;}
+.pj_nav .nav_list{ width:780px;}
+.pj_nav .nav_list li a{padding:5px 10px 0; font-size:14px;}
+
+.goods-sort{ 
+	background: url("http://static.pinju.com/cms/images/common/bg-923hp.png") no-repeat right 0 #940206;
+	border-top:2px solid #f22c2c;
+	float:left;
+	height:32px;
+	position:relative;
+	width:220px;
+}
+.goods-sort .gs-a{
+	background: url("http://static.pinju.com/img/icons.gif") no-repeat right -550px;
+	color:#FFF;
+	display:block;
+	font-size:14px;
+	font-weight:bold;
+	line-height:32px;
+	padding-left:15px;
+	text-align:left;
+	text-decoration:none;
+}.goods-sort .gs-a:hover { text-decoration:none; }
+#goods-sort .gs-a-h{ background-position: right -590px;}
+.goods-sort-box{
+	color:#FFF;
+	display:none;
+	left:0;
+	position:absolute;
+	top:34px;
+	z-index:9999;
+}
+.goods-sort-box .goods-sort-list{
+	border:solid #998c8b;
+	border-width:1px 1px 0 0;
+	float:left;
+	background:#8d7f7e;
+	width:730px;
+}
+.goods-sort-box .goods-sort-list li{
+	border:solid #998c8b;
+	border-width:0 0 1px 1px;
+	clear:both;
+	float:left;
+	line-height:2.5;
+	width:100%;
+}
+.goods-sort-box .goods-sort-list li h3 { float:left; padding-left:20px; width:80px; text-align:left; background:#543f3f;}
+.goods-sort-box .goods-sort-list li p { float:left; padding-left:15px; }
+.goods-sort-box .goods-sort-list li p a{ float:left; margin-right:12px; color:#FFF;}

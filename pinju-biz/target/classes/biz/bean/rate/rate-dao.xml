@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+  <bean id="dsrResultDAO" class="com.yuwang.pinju.core.rate.dao.impl.DsrResultDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="dsrDimensionDAO" class="com.yuwang.pinju.core.rate.dao.impl.DsrDimensionDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="dsrCommentDAO" class="com.yuwang.pinju.core.rate.dao.impl.DsrCommentDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+</beans>

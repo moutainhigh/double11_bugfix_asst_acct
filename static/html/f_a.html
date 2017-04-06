@@ -1,0 +1,138 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="http://static.pinju.com/css/pj_base.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://static.pinju.com/css/fx/market-pop.css" type="text/css" media="screen" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=simple"></script>
+</head>
+
+<body>
+<span id="tc">弹出</span>
+<div id="market-pop-div" class="market-pop-div cf">
+	<div class="pop-head">
+		<span>编辑分销商品</span>
+	</div>
+	<div class="pop-body">
+		<div class="pop-item">
+			<p class="item-name">5号电池</p>
+			<ul class="pop-item-list cf">
+				<li>零售价：<span>￥300.00</span></li>
+				<li>返点比例：<span>20%</span></li>
+				<li>返利方式：<span>统一返点</span></li>
+				<li>商品数量：<span>1000</span></li>
+			</ul>
+		</div>
+		<div class="item-pic-box">
+			<ul class="item-pic-tab cf">
+				<li class="focus"><span>店铺商品图片</span></li>
+				<li><span>上传自定义图片</span>
+					<div class="point"><b></b>(不如来点真人秀,细节图，更出彩哦!) </div>
+				</li>
+			</ul>
+			<span class="upload-error">你上传的图片尺寸超过规定尺寸</span>
+			<div class="pic-box" id="shop-pic-box">
+				<div class="shop-pic-box cf">
+					<div class="img-box"><img src="../img/it_03.gif" /></div>
+					<div class="textarea-box">
+						<p>请输入您的推荐理由：</p>
+						<textarea>您最多可以输入100个字</textarea>
+					</div>
+				</div>
+				<p class="btn-box cf"><a class="submit" href="javascript:;">确认</a><a class="cancel" href="javascript:;">取消</a> </p>
+			</div>
+			
+			<div class="pic-box" id="upload-box">
+				<div class="upload-box cf">
+					<input class="text fileval" disabled="disabled" type="text" />
+					<a class="btn" href="javascript:;">选择上传图片</a>
+					
+					<p><span class="point">自定义图片 宽度为194px 长度为122px至292，图片大小控制在50k以内</span></p>
+					<img id="img" src="" />
+				</div>
+				<div class="loading cf">
+					<p><img src="http://static.pinju.com/images/ajax/loadding.gif" /></p>
+					<p class="txt">正在上传中.....</p>
+				</div>
+				
+				<div class="complete cf">
+					<div class="img-box">
+						<span><img src="../images/it1_10.gif" /></span>
+					</div>
+					<div class="again-uplad">
+						<p>感觉不好？</p>
+						<a class="btn" href="javascript:;">重新上传一张</a>
+						
+					</div>
+				</div>
+				
+				<div class="upload-pic cf">
+					<div class="textarea-box">
+						<p>请输入您的推荐理由：</p>
+						<textarea>您最多可以输入100个字</textarea>
+					</div>
+				</div>
+				<p class="btn-box cf"><a class="submit" href="javascript:;">确认</a><a class="cancel" href="javascript:;">取消</a> </p>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="file" class="file" />
+<script>
+
+
+
+$(function() {
+	$(".file").change(function(){
+		$(".fileval").val($(".file").val());
+		var ss=$(".file").val();
+		if(ss){$("#img").attr('src',ss);}
+	});
+	
+	$(".btn").click(function(){
+		$(".file").click()
+	}) ;
+		   
+		   
+	$("#tc").click(function(){
+		var dialog = art.dialog({
+			resize: false,
+			lock:true,
+			padding:0,
+			content: document.getElementById('market-pop-div')
+			
+	 	});
+		$(".pic-box").hide()
+		$("#shop-pic-box").show()
+		$(".cancel").click(function(){
+			dialog.close();
+		});  
+	});		   
+	
+	var $tabs=$(".item-pic-tab>li");
+	$tabs.click(function(){
+		$tabs.removeClass("focus");
+		$(this).addClass("focus");
+		var tabIndex=$(this).index()
+		$(".pic-box").hide();
+		$(".pic-box").eq(tabIndex).show();
+	})
+	$(".textarea-box textarea").focus(function(){
+		if($(this).val()=="您最多可以输入100个字"){
+			$(this).val("").addClass("c");
+		}
+	});
+	$(".textarea-box textarea").blur(function(){
+		if($(this).val()==""){
+			$(this).val("您最多可以输入100个字").removeClass("c");
+		}
+	});	
+}); 
+
+</script>
+
+</body>
+</html>

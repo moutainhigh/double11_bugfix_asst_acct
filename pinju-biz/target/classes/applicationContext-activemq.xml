@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="pMailAmqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory"
+		p:brokerURL="${pmessage.order.comment.mq.url}" />
+
+	<!-- A cached connection to wrap the ActiveMQ connection -->
+	<bean id="pMailCachedConnectionFactory"
+		class="org.springframework.jms.connection.CachingConnectionFactory"
+		p:targetConnectionFactory-ref="pMailAmqConnectionFactory"
+		p:sessionCacheSize="10" />
+
+	<bean id="sendPMailDest" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="${pmessage.order.comment.mq.name}" />
+	</bean>
+	
+	<bean id="sendPMailTemplate" class="org.springframework.jms.core.JmsTemplate"
+		p:connectionFactory-ref="pMailCachedConnectionFactory"
+		p:defaultDestination-ref="sendPMailDest" />
+
+	<bean id="sendConcernDest" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="SNS.PINJU.SENDCONCERN" />
+	</bean>
+	
+	<bean id="sendConcernTemplate" class="org.springframework.jms.core.JmsTemplate"
+		p:connectionFactory-ref="pMailCachedConnectionFactory"
+		p:defaultDestination-ref="sendConcernDest" />
+    
+  <!-- ======== -->
+  <!-- 交易后评价 -->
+  <!-- ======== -->
+  <bean id="rateAmqConnectionFactory" p:brokerURL="${rate.order.comment.mq.url}" class="org.apache.activemq.ActiveMQConnectionFactory" />
+  <bean id="rateCachedConnectionFactory" p:sessionCacheSize="10" p:targetConnectionFactory-ref="rateAmqConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory" />
+  <bean id="rateDestination" class="org.apache.activemq.command.ActiveMQQueue">
+    <constructor-arg value="${rate.order.comment.mq.name}" />
+  </bean>
+  <bean id="dsrCommentTemplate" p:defaultDestination-ref="rateDestination" p:connectionFactory-ref="rateCachedConnectionFactory" class="org.springframework.jms.core.JmsTemplate" />
+</beans>

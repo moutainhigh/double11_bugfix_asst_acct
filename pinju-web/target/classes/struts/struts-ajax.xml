@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="async" namespace="/async" abstract="true" extends="pinju-default" />
+  <package name="async-protected" namespace="/async2" abstract="true" extends="pinju-login" />
+
+  <package name="async-member" namespace="/async/member" extends="async">  
+    <!-- 验证用户昵称是否可用 -->
+    <action name="nickname" class="com.yuwang.pinju.web.module.ajax.member.NicknameValidator" method="execute">
+      <result type="json" />
+    </action>
+    <!-- 验证 email 是否可用 -->
+    <action name="email" class="com.yuwang.pinju.web.module.ajax.member.EmailValidator" method="execute">
+      <result type="json" />
+    </action>
+    <!-- 判断会员在登录时是否需要输入验证码 -->
+    <action name="captcha" class="com.yuwang.pinju.web.module.ajax.member.ShowCaptchaValidator" method="execute">
+      <result type="json" />
+    </action>
+    <!-- 验证用户是否登录 -->
+    <action name="isLogin" class="com.yuwang.pinju.web.module.ajax.member.LoginValidator" method="execute">
+        <result name="success" type="stream">
+          <param name="contentType">text/plain</param>
+          <param name="inputName">inputStream</param>
+        </result>
+    </action>
+    <!-- 找回密码相关信息验证 -->
+    <action name="forgot-password" class="com.yuwang.pinju.web.module.ajax.member.ForgotPasswordValidator" method="execute">
+      <result type="json" />
+    </action>
+    <!-- 子账号角色名称 -->
+    <action name="rolename" class="com.yuwang.pinju.web.module.ajax.member.RoleNameValidator" method="execute">
+      <result type="json" />
+    </action>
+  </package>
+
+  <package name="async-rate" namespace="/async/rate" extends="async">  
+    <!-- 评论数据验证 -->
+    <action name="validator" class="com.yuwang.pinju.web.module.ajax.rate.OrderRateValidator" method="execute">
+      <result name="success" type="json" />
+      <result name="unlogin" type="httpheader">
+        <param name="status">404</param>
+      </result>
+    </action>
+  </package>
+
+  <package name="async-comments" namespace="/async/comments" extends="async">  
+    <!-- 分页读取对于商品的购买后评价 -->
+    <action name="item" class="com.yuwang.pinju.web.module.ajax.rate.RateItemCommentsReader">
+      <result name="success" type="stream">
+        <param name="contentType">application/json</param>
+        <param name="inputName">inputStream</param>
+      </result>
+      <result name="invalid-request" type="httpheader">
+        <param name="status">404</param>
+      </result>
+    </action>
+
+    <!-- 分页读取对于卖家的购买后评价 -->
+    <action name="seller" class="com.yuwang.pinju.web.module.ajax.rate.RateSellerCommentReader">
+      <result name="success" type="stream">
+        <param name="contentType">application/json</param>
+        <param name="inputName">inputStream</param>
+      </result>
+      <result name="invalid-request" type="httpheader">
+        <param name="status">404</param>
+      </result>
+    </action>
+
+    <!-- 按商品统计的评价数量 -->
+    <action name="item-count" class="com.yuwang.pinju.web.module.ajax.rate.RateItemCommentsCount">
+      <result name="success" type="json">
+        <param name="noCache">true</param>
+        <param name="root">count</param>
+        <param name="excludeNullProperties">true</param>
+        <param name="callbackParameter">callback</param>
+      </result>
+      <result name="invalid-request" type="httpheader">
+        <param name="status">404</param>
+      </result>
+    </action>
+
+    <!-- 按卖家统计的评价数量 -->
+    <action name="seller-count" class="com.yuwang.pinju.web.module.ajax.rate.RateSellerComentsCount">
+      <result name="success" type="json">
+        <param name="noCache">true</param>
+        <param name="root">count</param>
+        <param name="excludeNullProperties">true</param>
+        <param name="callbackParameter">callback</param>
+      </result>
+      <result name="invalid-request" type="httpheader">
+        <param name="status">404</param>
+      </result>
+    </action>
+  </package>
+
+  <package name="async-coupon" namespace="/async/coupon" extends="async">  
+    <!-- 异步获取优惠券 返回jsonp-->
+	<action name="buyerGet" class="com.yuwang.pinju.web.module.coupon.action.BuyerGetCouponAction" method="buyerGet">
+    	<result name="success" type="stream">
+    		<param name="contentType">text/plain</param>
+        	<param name="inputName">inputStream</param>
+      	</result>
+	</action>
+	
+	<!-- 获取优惠券   返回结果页面-->
+	<action name="buyerObtainCoupon" class="com.yuwang.pinju.web.module.coupon.action.BuyerGetCouponAction" method="buyerObtainCoupon">
+    	<result name="success" type="freemarker">/default/templates/screen/coupon/buyerObtainCoupon.ftl</result>
+	</action>
+  </package>
+  
+  
+  <package name="async-logistics" namespace="/async/logistics" extends="async">  
+    <!-- 异步获取物流 -->
+    <action name="getLocalLogistics" class="com.yuwang.pinju.web.module.item.action.GetLogisticJson" method="execute">
+    	<result type="json"></result>
+    </action>
+  </package>
+
+  <package name="async-detail" namespace="/async/detail" extends="async">  
+     <!-- 异步获取详情页相关信息 -->
+    <action name="getBuyOrderList" class="com.yuwang.pinju.web.module.item.action.GetBuyListJson" method="execute">
+    	<result type="json"></result>
+    </action>
+    <action name="getShopkeeperRecommend" class="com.yuwang.pinju.web.module.item.action.GetShopkeeperRecommend" method="getShopKeeperRecommend">
+    	<result type="json"></result>
+    </action>
+    
+  </package>
+  
+  <package name="async-security-email" namespace="/async/security" extends="async">
+     <!-- 邮箱验证是否已经存在 -->
+     <action name="emailValidator" class="com.yuwang.pinju.web.module.ajax.member.SecurityEmailValidator" method="execute">
+    	<result type="json"></result>
+    </action>
+  </package>
+  
+  <package name="async-city-station" namespace="/async/substation" extends="async">
+     <!-- 查询所有城市分站 -->
+     <action name="getAllCityStations" class="com.yuwang.pinju.web.module.ajax.member.CityStationValidator" method="getAllCityStations">
+     	<result name="success" type="stream">
+        	<param name="contentType">text/plain</param>
+        	<param name="inputName">inputStream</param>
+      	</result>
+    </action>
+    <!-- 验证会员所属城市分站 -->
+    <action name="getCityStationInfo" class="com.yuwang.pinju.web.module.ajax.member.CityStationValidator" method="getCityStationInfo">
+    	<result name="success" type="stream">
+        	<param name="contentType">text/plain</param>
+        	<param name="inputName">inputStream</param>
+      	</result>
+    </action>
+  </package>
+
+  <package name="async-main" namespace="/async/main" extends="async">  
+     <!-- 异步获取详情页相关信息 -->
+    <action name="getCounts" class="com.yuwang.pinju.web.module.ajax.main.RefreshAction" method="execute">
+    	<result name="success" type="stream">
+        <param name="contentType">text/plain</param>
+        <param name="inputName">inputStream</param>
+      </result>
+    </action>
+    <action name="getItemCounts" class="com.yuwang.pinju.web.module.ajax.main.RefreshAction" method="getItemCounts">
+    	<result name="success" type="stream">
+        <param name="contentType">text/plain</param>
+        <param name="inputName">inputStream</param>
+      </result>
+    </action>
+  </package>
+
+  <package name="async-mobile" namespace="/async/mobile" extends="async">  
+    <!-- 给手机号码发送验证码 -->
+    <action name="code" class="com.yuwang.pinju.web.module.ajax.member.mobile.SmsCodeSenderAjax" method="execute">
+      <result name="success" type="json">
+        <param name="noCache">true</param>
+        <param name="root">result</param>
+        <param name="excludeNullProperties">true</param>
+      </result>
+    </action>
+  </package>
+  
+  <package name="async-asst" namespace="/async/asst" extends="async">
+    <action name="del-asst-role" class="com.yuwang.pinju.web.module.ajax.member.DeleteAsstRoleName" method="execute">
+      <result type="json"></result>
+    </action>
+    
+    <action name="relation" class="com.yuwang.pinju.web.module.ajax.member.MemberAsstRelation" method="execute">
+      <result type="json"></result>
+    </action>
+  </package>
+</struts>

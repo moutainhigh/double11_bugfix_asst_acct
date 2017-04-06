@@ -1,0 +1,64 @@
+/*--  页面整体样式 --*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px; vertical-align:middle;}
+body{font-size:12px; font-family:Arial, Helvetica, sans-serif;  margin:0 auto;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;vertical-align:middle;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ef9b11; text-decoration:underline;}
+table{border-collapse:collapse;border-spacing:0;}
+/*--  页面颜色样式 --*/
+.cheng{color:#fc4c0f;}
+.hong{color:#be0000;}
+.lan{color: #00F}
+a.lan{color:#2953A6;}
+a:hover.lan{color:#cc6600;}
+.huang{color:#e0b700;}
+.hui{color:#999;}
+.lvse{ color:#390}
+.title15{ font-size:15px;font-weight:bold;color:#333; margin:10px 0 0 15px;}
+/*-- 按纽样式 --*/
+.pl-btn{ background:url(http://static.pinju.com/images/pl-button.gif);}
+.pl-btn-hui{ background:url(http://static.pinju.com/images/btn-gray.gif) no-repeat; font-weight:bold;color:#666;width:72px;height:25px; border:none;}
+.pl-btn-juse{ background:url(http://static.pinju.com/images/juse.gif) no-repeat; font-weight:bold;color:#fff;width:72px;height:25px; border:none; }
+.btn-juselong{ background:url(http://static.pinju.com/images/juselong.gif) no-repeat;color:#fff;width:126px;height:25px; border:none;text-align:center;}
+.btn-graylong{ background:url(http://static.pinju.com/images/graylong.gif) no-repeat; font-weight:bold;color:#666;width:126px;height:25px; border:none;}
+/*-- 支付3页面样式 --*/
+.pay-body{margin:0 auto;}
+.pay-nav{ line-height:29px;}
+.pay-title{ clear:right; width:990px;height:35px;display:block;}
+.pay-title li{ float:left; font-weight:bold; width:240px; text-align:center;font-size:14px; line-height:30px;}
+.pay-ti1{ background:url(http://static.pinju.com/images/title.gif) 0 0 no-repeat; width:240px; height:35px;color:#666; }
+.pay-ti2{ background:url(http://static.pinju.com/images/title.gif) 0 -50px no-repeat; width:240px; height:35px;color:#666; }
+.pay-ti3{ background:url(http://static.pinju.com/images/title.gif) 0 -100px no-repeat; width:240px; height:35px;color:#fff;}
+.pay-ti4{ background:url(http://static.pinju.com/images/title.gif) 0 -150px no-repeat; width:240px; height:35px;color:#666; }
+.pay-ti5{ background:url(http://static.pinju.com/images/title.gif) 0 -200px no-repeat; width:240px; height:3 5px;color:#fff;}
+ .title{ float:left;}
+.line{ background-color:#d4d4d4; width:998px; float:left; clear:both; height:2px; margin:5px 0;} 
+.line-hong{ width:150px;background-color:#D72426;float:left;  height:2px;}
+.pay-success{ width:80%; margin:0 0 20px 80px; display:block; overflow:hidden; float:left;}
+.pay-success img{ width:46px; display:block; float:left; margin:15px 20px 0 0;}
+.pay-news{color:#666; display:block; margin:20px 0 0 0; float:left;}
+.pay-news li{ line-height:20px;}
+h3{ color:#333; line-height:31px;}
+.pay-news .cheng{ margin:0 5px;}
+.pay-news .left{width:100px; float:left;text-align:right;}
+.pay-success table{ border:1px solid #d4d4d4; clear:both; float:left;color:#666; margin-top:10px;}
+.pay-success table th{ background:#f6f6f6; line-height:29px; font-weight:normal;}
+.pay-success table td{border:1px solid #d4d4d4; line-height:21px; padding:10px 0; text-align:center;}
+.pay-success  p{ float:right; margin:15px 10% 20px 0;}
+.pay-sure{ float:left; clear:both; margin:10px 0 10px 40px; font-size:14px; line-height:25px; color:#666;}
+.pay-sure a{ font-size:12px;}
+.pay-sure  .hui{ font-size:12px;}
+
+/* order step */
+.buy-title{ width:1000px; float:left; margin:10px 0;}
+.buy-title li{ background:transparent url(http://static.pinju.com/images/title.gif) 0 0 no-repeat; color:#666; float:left; line-height:29px; font-size: 14px; font-weight: bold; height:35px; text-align:center; width:250px;}
+.buy-title .step1 { background-position:0 0; }
+.buy-title .step2 { background-position:0 -50px; }
+.buy-title .step3 { background-position:0 -100px; }
+.buy-title .step1c { background-position:0 -150px; }
+.buy-title .step2c { background-position:0 -200px; }
+.buy-title .step3c { background-position:0 -250px; }
+.buy-title .step1c, .buy-title .step2c, .buy-title .step3c { color:#fff; }

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+      <package name="rights" namespace="/rights" extends="pinju-login" >
+      	<!-- 显示维权列表.买家  -->
+        <action name="rightsList" class="com.yuwang.pinju.web.module.rights.action.RightsAction" method="getRightsList">
+	  		 <result name="success" type="freemarker">/default/templates/screen/rights/rightsList.ftl</result>
+		</action>
+        
+		<!-- 消保维权详情.买家 -->
+        <action name="rightsDetail" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="getRightsDetail">
+			<result name="success" type="freemarker">/default/templates/screen/rights/rightsDetail.ftl</result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>			
+        </action>
+		
+		<!-- 投诉维权校验 -->
+        <action name="checkRightsRecode" class="com.yuwang.pinju.web.module.rights.action.RightsAction" method="checkRightsRecode"></action>
+		
+		<!-- 进入申请维权页面 -->
+        <action name="showApplyRights" class="com.yuwang.pinju.web.module.rights.action.RightsAction" method="showApplyRights">
+	  		 <result name="success" type="freemarker">/default/templates/screen/rights/applyRights.ftl</result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>		  		 
+		</action>
+		
+		<!-- 申请维权动作提交 -->
+        <action name="applyRights" class="com.yuwang.pinju.web.module.rights.action.RightsAction" method="applyRights">
+	  		 <result name="success" type="redirectAction">
+	  		    <param name="namespace">/rights</param>
+	  		    <param name="actionName">rightsDetail</param>
+	  		    <param name="rightsId">${rightsId}</param>
+	  		    <param name="errorMsg">${errorMsg}</param>
+	  		 </result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/rights/applyRights.ftl</result>
+		</action>
+		
+		<!-- 消保维权-撤销 .买家-->
+        <action name="buyerCancelRights" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="buyerCancelRights">
+	  		 <!-- <result name="success" type="freemarker">/default/templates/screen/rights/rightsDetail.ftl</result> -->
+	  		 <result name="success" type="redirectAction">
+	  		    <param name="namespace">/rights</param>
+	  		    <param name="actionName">rightsDetail</param>
+	  		    <param name="rightsId">${rightsId}</param>
+	  		    <param name="errorMsg">${errorMsg}</param>
+	  		 </result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>  		 
+		</action>	
+        
+		<!-- 转到消保维权留言 .买家-->		
+        <action name="showSendMessage" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="showSendMessage">
+	  		 <result name="success" type="freemarker">/default/templates/screen/rights/sendMessage.ftl</result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>
+		</action>
+		
+		<!-- 发送消保维权留言 .买家-->		
+        <action name="sendMessage" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="sendMessage">
+        	<!--
+        	<result name="success" type="freemarker">/default/templates/screen/rights/rightsDetail.ftl</result>
+        	-->
+	 		<result name="success" type="redirectAction">
+	 		    <param name="namespace">/rights</param>
+	 		    <param name="actionName">rightsDetail</param>
+	 		    <param name="rightsId">${rightsId}</param>
+	 		    <param name="sendMsg">${sendMsg}</param>
+	 		</result>        	
+	  		<result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		</result>	
+		</action>	
+		
+		<!-- 消保维权修改信息页 .买家-->		
+        <action name="showModifyRightsPage" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="showModifyRightsPage">
+	  		 <result name="success" type="freemarker">/default/templates/screen/rights/modifyRights.ftl</result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>
+		</action>	
+		
+		<!-- 消保维权修改信息处理 .买家-->		
+        <action name="modifyRights" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="modifyRights">
+	  		<!-- <result name="success" type="freemarker">/default/templates/screen/rights/modifyRights.ftl</result> -->
+	 		<result name="success" type="redirectAction">
+	 		    <param name="namespace">/rights</param>
+	 		    <param name="actionName">rightsDetail</param>
+	 		    <param name="rightsId">${rightsId}</param>
+	 		    <param name="errorMsg">${errorMsg}</param>
+	 		</result>  	  		 
+	  		<result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		</result> 		 
+		</action>	
+		
+		<!-- 消保维权(退款退货) 买家同意发货 -->
+        <action name="buyerAgreeRights" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="buyerAgreeRights">
+	  		 <!-- <result name="success" type="redirect">rightsDetail.htm?rightsId=${id}</result> -->	  		 
+	  		 <result name="success" type="redirectAction">
+	  		    <param name="namespace">/rights</param>
+	  		    <param name="actionName">rightsDetail</param>
+	  		    <param name="rightsId">${rightsId}</param>
+	  		    <param name="errorMsg">${errorMsg}</param>
+	  		 </result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>  		 
+		</action>		
+		
+		<!-- 买家申请客服介入处理-->
+        <action name="buyerApply" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="buyerApply">
+	  		 <!-- <result name="success" type="freemarker">/default/templates/screen/rights/rightsDetail.ftl</result> -->
+	  		 <result name="success" type="redirectAction">
+	  		    <param name="namespace">/rights</param>
+	  		    <param name="actionName">rightsDetail</param>
+	  		    <param name="rightsId">${rightsId}</param>
+	  		    <param name="errorMsg">${errorMsg}</param>
+	  		 </result>	  		 
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMsg}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>	  		 
+		</action>	
+		
+		<!-- 显示维权列表	卖家  -->
+        <action name="sellerRightsList" class="com.yuwang.pinju.web.module.rights.action.RightsAction" method="getSellerRightsList">
+	  		 <result name="success" type="freemarker">/default/templates/screen/rights/sellerRightsList.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/rights/sellerRightsList.ftl</result>
+		</action>
+		
+		<!-- 消保维权详情	卖家 -->
+        <action name="sellerRightsDetail" class="com.yuwang.pinju.web.module.rights.action.RightsSellerAction" method="getSellerRightsDetail">
+           <result name="success" type="freemarker">/default/templates/screen/rights/sellerRightsDetail.ftl</result>
+           <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>           
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMessage}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		</result>
+        </action>
+		
+		<!-- 消保维权	 卖家同意 -->
+        <action name="sellerAgreeRights" class="com.yuwang.pinju.web.module.rights.action.RightsSellerAction" method="sellerAgreeRights">
+	  		 <result name="success" type="redirect">sellerRightsDetail.htm?rightsId=${rightsId}</result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMessage}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>
+		</action>	
+		
+		<!-- 消保维权	 卖家拒绝 -->
+        <action name="sellerRefuseRights" class="com.yuwang.pinju.web.module.rights.action.RightsSellerAction" method="sellerRefuseRights">
+	  		<result name="success" type="redirect">sellerRightsDetail.htm?rightsId=${rightsId}</result>
+	  		<result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMessage}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>
+		</action>	
+		
+		<!-- 消保维权.卖家确认收货 -->
+        <action name="sellerConfirmReceipt" class="com.yuwang.pinju.web.module.rights.action.RightsSellerAction" method="sellerConfirmReceipt">
+	  		 <result name="success" type="redirect">sellerRightsDetail.htm?rightsId=${rightsId}</result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMessage}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>
+		</action>
+		
+		<!-- 转到消保维权留言.卖家 -->		
+        <action name="showSellerSendMessage" class="com.yuwang.pinju.web.module.rights.action.RightsDetailAction" method="showSellerSendMessage">
+	  		 <result name="success" type="freemarker">/default/templates/screen/rights/sellerSendMessage.ftl</result>
+	  		 <result name="error" type="redirect">sellerRightsDetail.htm?rightsId=${id}</result>
+		</action>
+		
+		<!-- 申请客服介入处理  卖家-->
+        <action name="sellerApply" class="com.yuwang.pinju.web.module.rights.action.RightsSellerAction" method="sellerApplyCustomer">
+	  		 <result name="success" type="redirect">sellerRightsDetail.htm?rightsId=${rightsId}</result>
+	  		 <result name="error" type="redirectAction">
+	  		 	<param name="namespace">/rights</param>
+	  		 	<param name="actionName">error</param>
+	  		 	<param name="errorMessage">${errorMessage}</param>
+	  		 	<param name="status">${status}</param>
+	  		 	<param name="isSeller">${isSeller}</param>
+	  		 	<param name="isGoods">${isGoods}</param>
+	  		 </result>
+		</action>	
+		
+		<!-- 发送消保维权留言.卖家 -->	
+        <action name="sellerSendMessage" class="com.yuwang.pinju.web.module.rights.action.RightsSellerAction" method="sellerSendMessage">
+	 		 <result name="success" type="redirectAction">
+	 		    <param name="namespace">/rights</param>
+	 		    <param name="actionName">sellerRightsDetail.htm</param>
+	 		    <param name="rightsId">${rightsId}</param>
+	 		    <param name="sendMsg">${sendMsg}</param>
+	 		 </result>	
+	 		<result name="error" type="redirectAction">
+	 		    <param name="namespace">/rights</param>
+	 		    <param name="actionName">sellerRightsDetail.htm</param>
+	 		    <param name="rightsId">${rightsId}</param>
+	 		    <param name="sendMsg">${sendMsg}</param>
+	 		 </result>	 		  		 
+		</action>	
+		
+		<!-- rightsError-->
+        <action name="error" class="com.yuwang.pinju.web.module.rights.action.RightsError" method="execute">
+	  		 <result name="success" type="freemarker">/default/templates/screen/rights/rightsError.ftl</result>
+		</action>
+		
+      </package>
+  </struts>

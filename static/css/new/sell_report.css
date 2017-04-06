@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* CSS Document */
+.sell_report{width:820px;padding-bottom:10px;}
+.report_links{margin-bottom:16px;}
+.report_links span{color:#da2720;}
+.report_links a{color:#434343;}
+.sell_statistics{ background:#f1faff;padding:10px; border:1px solid #b7cde5; margin-bottom:7px;}
+
+.sell_statistics p{ margin-bottom:5px;}
+.sell_statistics .txt{ color:#0a3dbc; margin-left:10px;}
+.statistics_but{ width:68px;}
+.statistics_text{ width:106px; margin:0 5px;}
+.view_box{background:#fffde8; border:1px solid #fddcaf;margin-bottom:15px;padding:5px 20px; color:#61625d}
+.view_box span{color:#dc2227;}
+.report_tab{ margin-bottom:10px; }
+.report_tab_list {border-bottom:1px solid #dadada;}
+.report_tab_list li{ background:#FFF;float:left; width:102px;position:relative; top:1px; border:solid #dadada; border-width:1px 1px 0 ;  margin-right:6px; cursor:pointer; text-align:center; height:25px; line-height:25px;}
+.report_tab_list li.focus{ border-top:2px solid #d52525; font-weight: bold; color:#000;  }
+.report_data{ padding:0 25px 12px;}
+.report_point{ background:url(http://static.pinju.com/images/point_01_03.gif) 5px 5px no-repeat #FFFDE8; float:right; margin-bottom:10px; padding:5px 25px; border: 1px solid #FDDCAF;}
+.report_data span{ color:#d52225; margin:0 5px;}
+.report_table_box{width:100%; margin-bottom:10px; clear:both;}
+.report_table{width:100%;}
+.report_table .td01{width:50%;}
+.report_table .td02{width:20%;}
+.report_table .td03{width:30%;}
+.report_table .td01,.report_table .td02,.report_table .td03{border-bottom:1px solid #dadada; background:#f6f6f6; font-weight:bold; color:#000; }
+.td02 img,.td03 img{ vertical-align:-3px;}
+.report_table td{ border-bottom:#dadada 1px dashed; padding:10px 0;text-align:center;}
+.get_table_but{ background:url(http://static.pinju.com/images/get_but_03.gif) no-repeat; width:105px; height:23px; float:left; color:#FFF; line-height:23px; text-align:center;}
+
+.items_name_box{padding-left:12px;}
+
+.items_pic{ width:56px; height:56px; border:1px solid #dadada; float:left; margin-right:10px; }
+.items_pic a{ }
+.items_pic img{}
+.items_name_box .items_name_value{ width:320px; float:left; text-align:left; line-height:20px;}
+.items_name{ display:block; margin-bottom:6px;}
+.items_value{}
+.err_style{ background:url(http://static.pinju.com/images/err_ico_03.gif) 40px 24px no-repeat #ffe5e6; width:527px; height:50px; border:1px solid #ff999a; padding:36px 0 0 107px; font-size:16px; font-weight:bold; color:#000; margin:35px auto 0;}
+
+.black{color:#000;}
+.bd{ font-weight:bold;}
+.blue{color:#0a3dbc;}
+
+.sell_tx_box {
+    background: none repeat scroll 0 0 #FFFDE8;
+    border: 1px solid #FDDCAF;
+    height: 28px;
+    line-height: 28px;
+    margin-bottom: 9px;
+    padding: 0;
+    text-indent: 12px;
+}
+
+
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+ <bean id="timeTaskManager" class="com.yuwang.pinju.core.timetask.manager.impl.TimeTaskManagerImpl"></bean>
+ 
+<bean id="loadCategoriesJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	<property name="targetObject"><ref bean="timeTaskManager"/></property>
+	<property name="targetMethod"><value>loadCategories</value></property>
+	 <property name="concurrent" value="false" />  
+</bean>
+	
+<bean id="loadCategoriesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" depends-on="loadCategoriesJobDetail">
+    <property name="jobDetail"><ref bean="loadCategoriesJobDetail"/></property>
+     <property name="cronExpression">
+         <value>0 0 1 * * ? *</value>
+     </property>
+ </bean>
+ 
+ <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+     <property name="triggers">
+         <list>
+             <ref local="loadCategoriesCronTrigger"/>
+         </list>
+     </property>
+     <property name="autoStartup"><value>true</value></property>
+     <property name="schedulerName"><value>singleRunScheduler</value></property>
+  </bean>
+      
+</beans>

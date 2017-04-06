@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="shop_Label">
+
+    <typeAlias alias="shopInfoDO" type="com.yuwang.pinju.domain.shop.ShopInfoDO"/>
+
+    <resultMap id="ShopBaseInfoResult" class="com.yuwang.pinju.domain.shop.ShopInfoDO">
+		<result property="id" column="ID" />
+		<result property="userId" column="USER_ID" />
+		<result property="shopId" column="SHOP_ID" />
+		<result property="name" column="NAME" />
+		<result property="title" column="TITLE" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="shopLogo" column="SHOP_LOGO" />
+		<result property="footLogo" column="FOOT_LOGO" />
+		<result property="sellerType" column="SELLER_TYPE" />
+		<result property="goodsSource" column="GOODS_SOURCE" />
+		<result property="shopNature" column="SHOP_NATURE" />
+		<result property="shopCategory" column="SHOP_CATEGORY" />
+		<result property="city" column="CITY" />
+		<result property="province" column="PROVINCE" />
+		<result property="exchangeMargin" column="EXCHANGE_MARGIN" />
+		<result property="isSupplier" column="IS_SUPPLIER" />
+		<result property="openDate" column="OPEN_DATE" />
+		<result property="approveStatus" column="APPROVE_STATUS" />
+		<result property="domain" column="DOMAIN" />
+		<result property="siteId" column="SITE_ID" />
+		<result property="productCount" column="PRODUCT_COUNT" />
+		<result property="address" column="ADDRESS" />
+		<result property="outerShopAddressUrl" column="OUTER_SHOP_ADDRESS_URL" />
+		<result property="outerShopLevel" column="OUTER_SHOP_LEVEL" />
+		<result property="outerShopSaleScope" column="OUTER_SHOP_SALE_SCOPE" />
+		<result property="isEnterB2c" column="IS_ENTER_B2C" />
+		<result property="configuration" column="CONFIGURATION" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="domainCreate" column="DOMAIN_CREATE" />
+		<result property="shopLabel" column="SHOP_LABEL"/>
+	</resultMap>
+	<update id="updateShopLabel" parameterClass="shopInfoDO">
+	<![CDATA[update shop_base_info set shop_label = #shopLabel# where user_id = #userId#]]>
+	</update>
+	
+	<select id="getShopLabelByShopId" parameterClass="shopInfoDO" resultMap="ShopBaseInfoResult" >
+		<![CDATA[select * from shop_base_info where user_id = #userId#]]>
+	</select>
+</sqlMap>
+

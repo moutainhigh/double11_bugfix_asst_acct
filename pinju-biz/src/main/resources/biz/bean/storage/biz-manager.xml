@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="fileStorageManager" class="com.yuwang.pinju.core.storage.manager.impl.FileStorageManagerImpl" >
+	  	<property name="fileRestUrl" value="${file.server}"></property>
+  		<property name="imageRestUrl" value="${image.server}"></property>
+  		<property name="fileTempPath" value="${file.temp.path}"></property>
+	</bean>
+	<bean id="fileInfoManager"
+		class="com.yuwang.pinju.core.storage.manager.impl.FileInfoManagerImpl" />
+</beans>

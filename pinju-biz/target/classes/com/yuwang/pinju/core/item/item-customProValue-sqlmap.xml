@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_custom_pro_value">
+
+	<typeAlias alias="ItemCustomProValue"
+		type="com.yuwang.pinju.domain.item.CustomProValueDO" />
+
+	<resultMap id="ItemCustomProValueResult" class="ItemCustomProValue">
+		<result property="id" column="ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="categoryPropertyId" column="CATEGORY_PROPERTY_ID" />
+		<result property="cateProValueId" column="CATE_PRO_VALUE_ID" />
+		<result property="value" column="VALUE" />
+		<result property="imgUrl" column="IMG_URL" />
+		<result property="valueType" column="VALUE_TYPE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="status" column="STATUS"/>
+	</resultMap>
+
+	<sql id="selectAllItemCustomProValue">
+		ID,ITEM_ID,MEMBER_ID,CATEGORY_PROPERTY_ID,CATE_PRO_VALUE_ID,VALUE,IMG_URL,VALUE_TYPE,GMT_CREATE,GMT_MODIFIED,STATUS
+	</sql>
+
+	<select id="selectCustomProValueByThreeId" resultMap="ItemCustomProValueResult"
+		parameterClass="map">
+		SELECT
+		<include refid="selectAllItemCustomProValue" />
+		from ITEM_CUSTOM_PRO_VALUE
+		where ITEM_ID=#itemId# and CATEGORY_PROPERTY_ID=#categoryPropertyId# and
+		CATE_PRO_VALUE_ID=#cateProValueId# and STATUS = 1
+	</select>
+
+	<select id="selectCustomProValueByItemId" resultMap="ItemCustomProValueResult"
+		parameterClass="long">
+		SELECT
+		<include refid="selectAllItemCustomProValue" />
+		from ITEM_CUSTOM_PRO_VALUE where ITEM_ID=#value# and STATUS = 1
+	</select>
+
+	<select id="selectCustomProValueCountByItemId" resultClass="int"
+		parameterClass="long">
+		SELECT COUNT(ID) FROM ITEM_CUSTOM_PRO_VALUE where ITEM_ID=#value# and STATUS = 1
+	</select>
+	
+	<insert id="insertCustomProValue">
+		<selectKey resultClass="long" keyProperty="id">
+			<![CDATA[SELECT SEQ_ITEM_CUSTOM_PRO_VALUE_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+
+		INSERT into ITEM_CUSTOM_PRO_VALUE(
+		<include refid="selectAllItemCustomProValue" />
+		) values(#id#,
+		#itemId#,
+		#memberId#,
+		#categoryPropertyId#,
+		#cateProValueId#,
+		#value#,
+		#imgUrl#,
+		#valueType#,
+		#gmtCreate#,
+		#gmtCreate#,
+		#status#
+		)
+	</insert>
+
+	<update id="updateCustomProValue" parameterClass="ItemCustomProValue">
+		UPDATE ITEM_CUSTOM_PRO_VALUE SET
+		<isNotEmpty prepend="," property="value">
+			VALUE = #value#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="imgUrl">
+			IMG_URL = #imgUrl#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="value">
+			VALUE_TYPE = #valueType#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="status">
+			STATUS = #status#
+		</isNotEmpty>
+		GMT_MODIFIED=SYSDATE
+		WHERE ITEM_ID=#itemId# AND
+		CATEGORY_PROPERTY_ID=#categoryPropertyId# AND CATE_PRO_VALUE_ID=#cateProValueId# and STATUS = 1
+	</update>
+
+	<delete id="deleteCustomProValueByItemId" parameterClass="long">
+		DELETE ITEM_CUSTOM_PRO_VALUE WHERE ITEM_ID=#itemId#
+	</delete>
+
+	<delete id="deleteCustomProValueByThreeId" parameterClass="map">
+		DELETE ITEM_CUSTOM_PRO_VALUE WHERE ITEM_ID=#itemId# AND
+		CATEGORY_PROPERTY_ID=#categoryPropertyId# AND CATE_PRO_VALUE_ID=#cateProValueId#
+	</delete>
+</sqlMap>
+

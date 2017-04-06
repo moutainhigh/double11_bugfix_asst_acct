@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RightsWorkOrder">
+
+    <typeAlias alias="RightsWorkOrderDO" type="com.yuwang.crm.model.rights.FinanceWorkOrderDO" />
+    <typeAlias alias="RightsWorkOrderQuery" type="com.yuwang.crm.model.rights.FinanceWorkOrderQuery" />
+
+	<resultMap id="rightsWorkOrderDOMap" class="RightsWorkOrderDO" >
+		<result property="id" column="ID" />
+		<result property="evidenceVoucherCode" column="EVIDENCE_VOUCHER_CODE" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="shopName" column="SHOP_NAME" />
+		<result property="shopId" column="SHOP_ID" />
+		<result property="deMargin" column="DE_MARGIN" />
+		<result property="features" column="FEATURES" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerBankAccount" column="BUYER_BANK_ACCOUNT" />
+		<result property="buyerBankOpen" column="BUYER_BANK_OPEN" />
+		<result property="buyerBankCode" column="BUYER_BANK_CODE" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="bizId" column="BIZ_ID" />
+		<result property="bizType" column="BIZ_TYPE" />
+		<result property="operType" column="OPER_TYPE" />
+		<result property="rightsReason" column="RIGHTS_REASON" />
+		<result property="operPerson" column="OPER_PERSON" />
+		<result property="operId" column="OPER_ID" />
+		<result property="status" column="STATUS" />
+		<result property="warnTime" column="WARN_TIME" />
+		<result property="remark" column="REMARK" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+    <sql id="rightsWorkOrderPrefix">
+         V.ID,
+         V.EVIDENCE_VOUCHER_CODE,
+         V.SELLER_NICK,
+         V.SELLER_ID,
+         V.SHOP_NAME,
+         V.SHOP_ID,
+         V.DE_MARGIN,
+         V.FEATURES,
+         V.BUYER_NICK,
+         V.BUYER_ID,
+         V.BUYER_BANK_ACCOUNT,
+         V.BUYER_BANK_OPEN,
+         V.BUYER_BANK_CODE,
+         V.ORDER_ID,
+         V.BIZ_ID,
+         V.BIZ_TYPE,
+         V.OPER_TYPE,
+         V.RIGHTS_REASON,
+         V.OPER_PERSON,
+         V.OPER_ID,
+         V.STATUS,
+         V.WARN_TIME,
+         V.REMARK,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED
+    </sql>
+   	<insert id="RightsWorkOrder.insertRightsWorkOrder" parameterClass="RightsWorkOrderDO">
+	    <selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_RIGHTS_WORK_ORDER_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_RIGHTS_WORK_ORDER
+	    (
+	       	ID,                
+			EVIDENCE_VOUCHER_CODE,          
+			SELLER_NICK,       
+			SELLER_ID,         
+			SHOP_NAME,         
+			SHOP_ID,           
+			DE_MARGIN,         
+			FEATURES,        
+			BUYER_NICK,        
+			BUYER_ID,          
+			BUYER_BANK_ACCOUNT,
+			BUYER_BANK_OPEN,   
+			BUYER_BANK_CODE,   
+			ORDER_ID,  
+			BIZ_ID,
+         	BIZ_TYPE,
+			OPER_TYPE,         
+			RIGHTS_REASON,     
+			OPER_PERSON,       
+			OPER_ID,           
+			STATUS,            
+			WARN_TIME,  
+			REMARK,       
+			GMT_CREATE,        
+			GMT_MODIFIED        
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#evidenceVoucherCode#,
+			#sellerNick#,
+			#sellerId#,
+			#shopName#,
+			#shopId#,
+			#deMargin#,
+			#features#,
+			#buyerNick#,
+			#buyerId#,
+			#buyerBankAccount#,
+			#buyerBankOpen#,
+			#buyerBankCode#,
+			#orderId#,
+			#bizId#,
+         	#bizType#,
+			#operType#,
+			#rightsReason#,
+			#operPerson#,
+			#operId#,
+			#status#,
+			#warnTime#,
+			#remark#,
+			SYSDATE,
+			SYSDATE
+	    )
+	</insert>
+   	
+   	<update id="RightsWorkOrder.updateRightsWorkOrderDO" parameterClass="RightsWorkOrderDO" >
+		<![CDATA[UPDATE TRADE_RIGHTS_WORK_ORDER]]> SET GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="warnTime">
+				<![CDATA[WARN_TIME = #warnTime#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id# ]]>
+	</update>
+	
+	<select id="RightsWorkOrder.getRightsWorkOrderDOByBizType"  parameterClass="RightsWorkOrderQuery" resultMap="rightsWorkOrderDOMap">
+		 SELECT <include refid="rightsWorkOrderPrefix"/> FROM TRADE_RIGHTS_WORK_ORDER V WHERE V.BIZ_ID=#bizId# AND V.BIZ_TYPE=#bizType# 
+	</select>
+	
+   	<select id="RightsWorkOrder.getRightsWorkOrderDOsCount"  parameterClass="RightsWorkOrderQuery" resultClass="java.lang.Integer">
+		 SELECT COUNT(*) FROM TRADE_RIGHTS_WORK_ORDER
+         <dynamic prepend="WHERE">
+      	    <isNotEmpty property="sellerNick" prepend="AND"> SELLER_NICK=#sellerNick# </isNotEmpty>
+      	    <isNotEmpty property="buyerNick" prepend="AND"> BUYER_NICK=#buyerNick# </isNotEmpty>
+      	    <isNotEmpty property="status" prepend="AND"> STATUS=#status# </isNotEmpty>
+         </dynamic>
+	</select>
+	
+   	<select id="RightsWorkOrder.getRightsWorkOrderDOs"  parameterClass="RightsWorkOrderQuery" resultMap="rightsWorkOrderDOMap">
+		SELECT <include refid="rightsWorkOrderPrefix"/>
+		FROM (SELECT RID
+	    	FROM (SELECT A.RID, ROWNUM RN
+	        	FROM (SELECT ROWID RID FROM TRADE_RIGHTS_WORK_ORDER
+                	<dynamic prepend="WHERE">
+			      	    <isNotEmpty property="sellerNick" prepend="AND"> SELLER_NICK=#sellerNick# </isNotEmpty>
+			      	    <isNotEmpty property="buyerNick" prepend="AND"> BUYER_NICK=#buyerNick# </isNotEmpty>
+			      	    <isNotEmpty property="status" prepend="AND"> STATUS=#status# </isNotEmpty>
+			         </dynamic>
+                    ORDER BY STATUS,GMT_CREATE) A
+	                WHERE rownum &lt;= #endRow#)
+	          	WHERE RN &gt;= #startRow#) T,
+	       TRADE_RIGHTS_WORK_ORDER V
+		WHERE V.ROWID = T.RID
+	</select>
+   	
+</sqlMap>

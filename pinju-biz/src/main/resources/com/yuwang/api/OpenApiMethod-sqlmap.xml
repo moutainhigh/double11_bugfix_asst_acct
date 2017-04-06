@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="open_api_method">
+
+	<typeAlias alias="OpenApiMethod"
+		type="com.yuwang.api.domain.OpenApiMethodDO" />
+
+	<resultMap id="OpenApiMethodResult" class="OpenApiMethod">
+		<result property="id" column="ID" />
+		<result property="methodName" column="METHOD_NAME" />
+		<result property="interfaceClass" column="INTERFACE_CLASS" />
+		<result property="interMethod" column="INTER_METHOD" />
+		<result property="domainClass" column="DOMAIN_CLASS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="needSession" column="NEED_SESSION" />
+		<result property="status" column="STATUS" />
+		<result property="configuration" column="CONFIGURATION" />
+	</resultMap>
+
+	<sql id="selectAllOpenApiMethod"><![CDATA[SELECT ID,METHOD_NAME,INTERFACE_CLASS,INTER_METHOD,DOMAIN_CLASS,GMT_CREATE,NEED_SESSION,STATUS,CONFIGURATION FROM OPEN_API_METHOD]]></sql>
+
+	<select id="selectAllOpenApiMethod" resultMap="OpenApiMethodResult">
+		<include refid="selectAllOpenApiMethod" />
+	</select>
+
+	<select id="selectOpenApiMethodByid" resultMap="OpenApiMethodResult"
+		parameterClass="long">
+		<include refid="selectAllOpenApiMethod" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectOpenApiMethod" resultMap="OpenApiMethodResult"
+		parameterClass="OpenApiMethod">
+		<include refid="selectAllOpenApiMethod" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="methodName">
+				<![CDATA[METHOD_NAME = #methodName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="interfaceClass">
+				<![CDATA[INTERFACE_CLASS = #interfaceClass#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="interMethod">
+				<![CDATA[INTER_METHOD = #interMethod#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="domainClass">
+				<![CDATA[DOMAIN_CLASS = #domainClass#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="needSession">
+				<![CDATA[NEED_SESSION = #needSession#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertOpenApiMethod" parameterClass="OpenApiMethod">
+		<![CDATA[INSERT INTO OPEN_API_METHOD (ID,METHOD_NAME,INTERFACE_CLASS,INTER_METHOD,DOMAIN_CLASS,GMT_CREATE,NEED_SESSION,STATUS,CONFIGURATION) VALUES (#id#,#methodName#,#interfaceClass#,#interMethod#,#domainClass#,#gmtCreate#,#needSession#,#status#,#configuration#)]]>
+	</insert>
+
+	<sql id="deleteAllOpenApiMethod"><![CDATA[DELETE FROM OPEN_API_METHOD]]></sql>
+
+	<delete id="deleteAllOpenApiMethod">
+		<include refid="deleteAllOpenApiMethod" />
+	</delete>
+
+	<delete id="deleteOpenApiMethodByid" parameterClass="long">
+		<include refid="deleteAllOpenApiMethod" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteOpenApiMethod" parameterClass="OpenApiMethod">
+		<include refid="deleteAllOpenApiMethod" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="methodName">
+				<![CDATA[METHOD_NAME = #methodName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="interfaceClass">
+				<![CDATA[INTERFACE_CLASS = #interfaceClass#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="interMethod">
+				<![CDATA[INTER_METHOD = #interMethod#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="domainClass">
+				<![CDATA[DOMAIN_CLASS = #domainClass#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="needSession">
+				<![CDATA[NEED_SESSION = #needSession#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateOpenApiMethod" parameterClass="OpenApiMethod">
+		<![CDATA[UPDATE OPEN_API_METHOD]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="methodName">
+				<![CDATA[METHOD_NAME = #methodName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="interfaceClass">
+				<![CDATA[INTERFACE_CLASS = #interfaceClass#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="interMethod">
+				<![CDATA[INTER_METHOD = #interMethod#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="domainClass">
+				<![CDATA[DOMAIN_CLASS = #domainClass#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="needSession">
+				<![CDATA[NEED_SESSION = #needSession#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+
+	</update>
+</sqlMap>
+

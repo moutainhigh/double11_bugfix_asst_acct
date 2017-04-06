@@ -1,0 +1,66 @@
+.pagination {
+    float: right;
+	margin:10px 0;
+}
+        
+.pagination a {
+    text-decoration: none;
+	border: solid 1px #999;
+	color: #666;
+}
+
+.pagination a, .pagination span {
+    display: block;
+    float: left;
+    padding: 3px 5px;
+    margin-right: 5px;
+	margin-bottom: 5px;
+}
+.pagination .current {
+    background-color: #d72426;
+    color: #fff;
+	border: solid 1px #dadada;
+}
+.pagination .prev {
+	background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat left -345px;
+	padding-left:12px;
+}
+
+.pagination .next {
+	background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat right -395px;
+	padding-right:12px;
+}
+.pagination .current.prev, .pagination .current.next {
+	background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat left top;
+	color:#999;
+	border-color:#d4d4d4;
+}
+.pagination .current.prev {
+	background-position:left -375px;
+}
+.pagination .current.next {
+	background-position:right -425px;
+}
+
+.cbottom .skipto { float:right; margin:10px 0 10px 10px; }
+.skipto .pagenum { width:36px; border:1px solid #999; padding:2px; }
+
+
+/* 搜索页 */
+.pageitem .pagination a.next,
+.pageitem .pagination a.prev {
+	border:0 none;
+	background:transparent url(http://static.pinju.com/img/button.png) no-repeat scroll 0 -700px;
+	height:16px;
+	padding:0;
+}
+.pageitem .pagination span.prev {background:transparent url(http://static.pinju.com/img/button.png) no-repeat scroll 0 -750px; height:16px; padding:0; margin:0 5px 0 0; width:16px;}
+.pageitem .pagination span.next {background:transparent url(http://static.pinju.com/img/button.png) no-repeat scroll -30px -750px; height:16px; padding:0; margin:0; width:52px;}
+.pageitem .pagination a.prev {background-position:0 -700px; margin:0 5px 0 0; width:16px;}
+.pageitem .pagination a.next {background-position: -30px -700px; width:52px; }
+
+.pageitem .pagination { margin:0; padding:5px 0 0;}
+.pageitem a { margin:0; padding:0;}
+.pageitem span { margin:0 5px 0 0; padding:0;}
+.sp-search #bottomPagination { height:50px; }
+#bottomPagination .pageskip { float:right; padding:10px 0 10px 10px; }

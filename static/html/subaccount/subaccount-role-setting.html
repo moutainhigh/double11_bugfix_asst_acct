@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>品聚 - 权限管理 - 员工账号管理</title>
+<link media="screen" type="text/css" href="http://static.pinju.com/css/pj_base.css" rel="stylesheet">
+<link media="screen" type="text/css" href="http://static.pinju.com/css/member/subaccount.css" rel="stylesheet">
+<link rel="stylesheet" href="http://static.pinju.com/css/page/pagination.css" type="text/css" media="screen" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=pj"></script>
+</head>
+
+<body>
+<div class="top_bar">
+	<div class="top_bar_box cf">
+		topbar
+	</div>
+</div>
+<div class="header">
+	<div class="masthead cf">
+		header
+	</div>
+</div>
+<div class="wrapfull navfull">
+	nav
+</div>
+
+<!-- content -->
+<div class="wrap cf">
+<div class="wrap-border cf">
+	
+	<div class="bar-left">
+		left
+	</div>
+	<div class="contents">
+		<div class="titletop">
+			<h1>权限管理</h1>
+		</div>
+		
+		<ul class="tab-secondary">
+			<li><a href="#">员工账号管理</a></li>
+			<li class="active"><a href="#">角色设置</a></li>
+		</ul>
+		
+		<div class="subaccount">
+			
+			<div class="formbox">
+			
+				<div class="title">
+					<h2>角色设置</h2>
+				</div>
+				
+				<div class="content cf">
+					<div style="padding:0 0 0 80px;">
+						<div class="tips-normal">
+							<p>提示性提示</p>
+						</div>
+					</div>
+					<div style="padding:0 0 0 80px;">
+						<div class="tips-error">
+							<p>错误提示</p>
+						</div>
+					</div>
+					<div class="row">
+						<label><em>*</em> 角色名称：</label> 
+						<input type="text" id="" name="" /> 
+					</div>
+					<div class="row">
+						<label><em>*</em> 角色名称：</label> 
+						<span class="existtext">店员小明</span> 
+					</div>
+					<div class="row">
+						<label><em>*</em> 角色描述：</label> 
+						<input class="roledesc" type="text" id="" name="" />
+					</div>
+					<div class="row">
+						<label><em>*</em> 角色权限：</label> 
+						<div class="checkboxrow">
+							<div class="row rolerule">
+								<label for="selectall"><input type="radio" id="selectall" name="rolerule" /> 全选</label>
+								<label for="selectnone"><input type="radio" id="selectnone" name="rolerule" /> 全不选</label>
+							</div>
+							<div class="row">
+								<button onclick="expandNode(true);" onfocus="this.blur();" class="btn-expand">展开全部</button>
+								<button onclick="expandNode(false);" onfocus="this.blur();" class="btn-collapse">折叠全部</button>
+							</div>
+							<div class="row col2">
+								<ul class="row">
+									<li>
+										<label for=""> <input type="checkbox" id="" name="" /> 商品管理权限</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 发布商品</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 出售中商品</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 仓库中商品</label></li>
+										</ul>
+									</li>
+									<li>
+										<label for=""><input type="checkbox" id="" name="" /> 积分管理权限</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 发布商品</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 出售中商品</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 仓库中商品</label></li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="row">
+									<li>
+										<label for=""><input type="checkbox" id="" name="" /> 店铺管理权限</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 查看我的店铺</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 图片空间</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 店铺装修</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 店铺分类管理</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 店铺基本设置</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 域名设置</label></li>
+										</ul>
+									</li>
+									<li>
+										<label for=""><input type="checkbox" id="" name="" /> 云营销权限</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 申请供应商</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 分销商品管理</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 我的分销商</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 发布招募</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 分销订单</label></li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="row">
+									<li>
+										<label for=""><input type="checkbox" id="" name="" /> 退款维权管理权限</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 退款管理</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 维权管理</label></li>
+										</ul>
+									</li>
+									<li>
+										<label for=""><input type="checkbox" id="" name="" /> 交易管理权限</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 物流工具</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 已卖出商品</label></li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="row">
+									<li>
+										<label for=""><input type="checkbox" id="" name="" /> 营销中心权限</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 活动管理</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 促销管理</label></li>
+											<li><label for=""><input type="checkbox" id="" name="" /> 我的报表</label></li>
+										</ul>
+									</li>
+									<li>
+										<label for=""><input type="checkbox" id="" name="" /> 保证金管理权限</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 我的保证金</label></li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="row">
+									<li>
+										<label for=""><input type="checkbox" id="" name="" /> 社区管理</label>
+										<ul>
+											<li><label for=""><input type="checkbox" id="" name="" /> 社区</label></li>
+										</ul>
+									</li>
+								</ul>
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="row btnrow btnbkd">
+						<button type="button" class="btn-l4">确认</button>
+					</div>
+
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		
+		
+	</div>
+
+	</div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		footer
+	</div>
+</div>
+
+<script>
+$(function() {
+ 		$('.oddrow tr:even').addClass("odd");
+ 	});
+</script>
+</body>
+</html>

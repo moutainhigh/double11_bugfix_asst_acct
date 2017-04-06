@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName"  
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+  <bean id="mysqlDatasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" />
+
+  <bean id="sqlMapClientMySQL" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+    <property name="dataSource" ref="mysqlDatasource" />
+    <property name="configLocation" value="classpath:/biz/persistence/sqlmap-mysql-config.xml" />
+  </bean>
+
+  <bean id="mysqlTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="mysqlDatasource" />
+  </bean>
+
+  <bean id="mysqlTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+    <property name="transactionManager">
+      <ref local="mysqlTransactionManager" />
+    </property>
+  </bean>
+
+  <bean id="mysqlTransactionService" class="com.yuwang.pinju.core.member.manager.TransactionService" />
+
+
+  <import resource="classpath:/biz/bean/member/member-*.xml" />  
+  <import resource="classpath:/biz/bean/rate/rate-*.xml" />
+</beans>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+  <bean id="memberManager" class="com.yuwang.pinju.core.member.manager.impl.MemberManagerImpl" />
+  <bean id="memberIdGenerator" class="com.yuwang.pinju.core.member.manager.sequence.impl.MemberIdGeneratorImpl" />
+  <bean id="sequenceGenerator" class="com.yuwang.pinju.core.member.manager.sequence.impl.TableSequenceGenerator" />
+  <bean id="sdoTicketValidator" class="com.yuwang.pinju.core.member.manager.ticket.impl.SdoTicketValidator" />
+  <bean id="sndaManager" class="com.yuwang.pinju.core.member.manager.impl.SndaManagerImpl" />
+  <bean id="pinjuMemberManager" class="com.yuwang.pinju.core.member.manager.impl.PinjuMemberManagerImpl" />
+</beans>

@@ -1,0 +1,71 @@
+/*--  页面整体样式 --*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+body{font-size:12px; font-family:Arial, Helvetica, sans-serif;  margin:0 auto;}
+ul,ol,li{list-style:none;}
+input,button{ margin:0;font-size:12px;vertical-align:middle; }
+select,input{ font-size:12px;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ef9b11; text-decoration:underline;}
+table{border-collapse:collapse;border-spacing:0;}
+/*--  页面标题样式 --*/
+h3{ font-size:14px;}
+/*页码样式 */
+.sel-ye{ float:right; margin-bottom:10px;}
+.sel-ye li{ float:left;line-height:19px; margin:0 3px; }
+.sel-ye .t2{background:#fff;border:1px solid #d4d4d4; padding:0 5px; }
+.sel-ye li input{ line-height:15px;}
+.sel-ye li.sel-ye-selected{ background:#d72426;border:1px solid #d72426; color:#ffffff; padding:0 5px;}
+/*--  页面颜色样式 --*/
+.cheng{color:#fc4c0f;}
+.hong{color:#be0000;}
+.lan{color: #00F}
+a.lan{color:#2953A6;}
+a:hover.lan{color:#cc6600;}
+.huang{color:#e0b700;}
+.hui{color:#999;}
+.lvse{ color:#390}
+.title15{ font-size:15px;font-weight:bold;color:#333; margin:10px 0 0 15px;}
+.title17{ font-size:17px;font-weight:bold;color:#333; margin:10px 0 0 15px;}
+.title21{ font-size:30px;font-weight:bold;color:#fff;}
+/*-- 按纽样式 --*/
+.btn-dahong,
+.btn-daju,
+.pl-btn,
+.pl-btn-hui,
+.pl-btn-juse,
+.btn-juselong,
+.btn-graylong,
+.btn-dahong,
+.btn-daju{ cursor:pointer; }
+.pl-btn{ background:url(http://static.pinju.com/images/pl-button.gif);}
+.pl-btn-hui{ background:url(http://static.pinju.com/images/btn-gray.gif) no-repeat; font-weight:bold;color:#666;width:72px;height:25px; border:none; line-height:25px;}
+.pl-btn-juse{ background:url(http://static.pinju.com/images/juse.gif) no-repeat; font-weight:bold;color:#fff;width:72px;height:25px; border:none; line-height:25px;}
+.btn-juselong{ background:url(http://static.pinju.com/images/juselong.gif) no-repeat;color:#fff;width:126px;height:25px; border:none;text-align:center;line-height:25px;}
+.btn-graylong{ background:url(http://static.pinju.com/images/graylong.gif) no-repeat;color:#666;width:126px;height:25px; border:none;text-align:center; line-height:25px;}
+
+
+.nav0{ background:url(http://static.pinju.com/images/navbj.gif) 0 -250px no-repeat; width:140px; height:35px;color:#fff; }
+.nav1{ background:url(http://static.pinju.com/images/navbj.gif) 0 0 no-repeat; width:170px; height:35px;color:#666; }
+.nav2{ background:url(http://static.pinju.com/images/navbj.gif) 0 -50px no-repeat; width:170px; height:35px;color:#666; }
+.nav3{ background:url(http://static.pinju.com/images/navbj.gif) 0 -100px no-repeat; width:170px; height:35px;color:#fff;}
+.nav4{ background:url(http://static.pinju.com/images/navbj.gif) 0 -150px no-repeat; width:170px; height:35px;color:#666; }
+.nav5{ background:url(http://static.pinju.com/images/navbj.gif) 0 -200px no-repeat; width:170px; height:3 5px;color:#fff; }
+
+.pay-ti0{ background:url(http://static.pinju.com/images/title.gif) 0 -250px no-repeat; width:240px; height:35px;color:#fff; }
+.pay-ti1{ background:url(http://static.pinju.com/images/title.gif) 0 0 no-repeat; width:240px; height:35px;color:#666; }
+.pay-ti2{ background:url(http://static.pinju.com/images/title.gif) 0 -50px no-repeat; width:240px; height:35px;color:#666; }
+.pay-ti3{ background:url(http://static.pinju.com/images/title.gif) 0 -100px no-repeat; width:240px; height:35px;color:#fff;}
+.pay-ti4{ background:url(http://static.pinju.com/images/title.gif) 0 -150px no-repeat; width:240px; height:35px;color:#666; }
+.pay-ti5{ background:url(http://static.pinju.com/images/title.gif) 0 -200px no-repeat; width:240px; height:3 5px;color:#fff;}
+
+/*--选项卡--*/
+.act{ border-bottom:1px solid #c4d5e0; display:block; height:30px;}
+.act li{ float:left;width:120px; background:#f9fafc;border-top:1px solid #c4d5e0;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; margin-right:8px;height:16px;text-align:center; padding:4px 10px; margin-top:5px;}
+.act .here{background:#ffffff;border-top:3px solid #D72426;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; padding:3px 10px 4px; font-weight:bold;}
+
+/*--线--*/
+.line{ background-color:#d4d4d4; width:100%; float:left; clear:both; height:2px; margin:0 0 5px;*overflow:hidden;}
+.line-hong{ width:150px;background:#D72426;float:left;height:2px;}
+.tip{ background:#FFFFE0; border: 1px solid #F9DFB2;color:#333; line-height:18px; height:18px; overflow:hidden; padding:2px 5px;}
+.tip-red{background-image:url(http://static.pinju.com/images/pot_03.gif); background-color:#ffe5e6;border:1px solid #ff999a; color:#be0000;padding:3px 8px 3px 25px; line-height:18px; height:18px; overflow:hidden; background-repeat:no-repeat; background-position:5px 5px}

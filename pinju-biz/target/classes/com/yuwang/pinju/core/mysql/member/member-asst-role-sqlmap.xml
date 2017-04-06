@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_asst_role">
+
+	<typeAlias alias="MemberAsstRole" type="com.yuwang.pinju.domain.member.asst.MemberAsstRoleDO" />
+
+	<resultMap id="MemberAsstRoleResult" class="MemberAsstRole">
+		<result property="id" column="ID" />
+		<result property="masterMemberId" column="MASTER_MEMBER_ID" />
+		<result property="masterLoginName" column="MASTER_LOGIN_NAME" />
+		<result property="roleName" column="ROLE_NAME" />
+		<result property="roleDesc" column="ROLE_DESC" />
+		<result property="permissions" column="PERMISSIONS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllMemberAsstRole"><![CDATA[SELECT ID,MASTER_MEMBER_ID,MASTER_LOGIN_NAME,ROLE_NAME,ROLE_DESC,PERMISSIONS,GMT_CREATE,GMT_MODIFIED FROM MEMBER_ASST_ROLE]]></sql>
+
+	<select id="selectAllMemberAsstRole" resultMap="MemberAsstRoleResult">
+		<include refid="selectAllMemberAsstRole" />
+	</select>
+
+	<select id="selectMemberAsstRole"  resultMap="MemberAsstRoleResult" parameterClass="com.yuwang.pinju.domain.member.asst.MemberAsstRoleQuery">
+		<include refid="selectAllMemberAsstRole" />
+		<![CDATA[ WHERE MASTER_MEMBER_ID = #masterMemberId# ORDER BY ID DESC LIMIT #start#, #itemsPerPage# ]]>
+	</select>
+	
+	<select id="selectMemberAsstRoleCount" resultClass="int" parameterClass="com.yuwang.pinju.domain.member.asst.MemberAsstRoleQuery">
+	   <![CDATA[SELECT COUNT(ID) FROM MEMBER_ASST_ROLE WHERE MASTER_MEMBER_ID = #masterMemberId#]]>
+	</select>
+	
+	<select id="getMemberAsstRole" resultMap="MemberAsstRoleResult" parameterClass="long">
+	   <include refid="selectAllMemberAsstRole" />
+	   <![CDATA[ WHERE MASTER_MEMBER_ID = #masterMemberId#]]>
+	</select>
+	
+	<select id="getMemberAsstRoleByMastIdName" resultMap="MemberAsstRoleResult" parameterClass="MemberAsstRole">
+	   <include refid="selectAllMemberAsstRole" />
+	   <![CDATA[ WHERE MASTER_MEMBER_ID = #masterMemberId# AND ROLE_NAME = #roleName#]]>
+	</select>
+	
+	<select id="selectMemberAsstRoleByMasterId" resultMap="MemberAsstRoleResult" parameterClass="MemberAsstRole">
+	   <include refid="selectAllMemberAsstRole" />
+	   <![CDATA[ WHERE ID = #id# AND MASTER_MEMBER_ID = #masterMemberId#]]>
+	</select>
+	
+	<select id="selectMemberAsstRoleById" resultMap="MemberAsstRoleResult" parameterClass="long">
+	   <include refid="selectAllMemberAsstRole" />
+	   <![CDATA[ WHERE ID = #id# ]]>
+	</select>
+
+	<insert id="insertMemberAsstRole" parameterClass="MemberAsstRole">
+		<![CDATA[INSERT INTO MEMBER_ASST_ROLE (ID,MASTER_MEMBER_ID,MASTER_LOGIN_NAME,ROLE_NAME,ROLE_DESC,PERMISSIONS,GMT_CREATE,GMT_MODIFIED) VALUES (#id#,#masterMemberId#,#masterLoginName#,#roleName#,#roleDesc#,#permissions#,#gmtCreate#,#gmtModified#)]]>
+	    <selectKey resultClass="long" type="post" keyProperty="id">
+	       <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+	    </selectKey>
+	</insert>
+	
+	<update id="updateMemberAsstRole" parameterClass="MemberAsstRole">
+	    <![CDATA[ UPDATE MEMBER_ASST_ROLE SET ROLE_DESC = #roleDesc#, PERMISSIONS = #permissions#, GMT_MODIFIED= #gmtModified# WHERE MASTER_MEMBER_ID = #masterMemberId# AND ID = #id#]]>
+	</update>
+
+	<delete id="deleteMemberAsstRoleByMasterMemberIdRole"  parameterClass="MemberAsstRole">
+		<![CDATA[DELETE FROM MEMBER_ASST_ROLE WHERE MASTER_MEMBER_ID = #masterMemberId# AND ID = #id#]]>
+	</delete>
+</sqlMap>
+

@@ -1,0 +1,111 @@
+.search-main{ width:850px; margin:0 auto;}
+
+.search{ width:850px; float:left;}
+
+.search ul{ width:100%; float:left;height:22px; line-height:22px;font-weight:bold;}
+
+.search ul li{ width:60px; height:22px;float:left; background:#fff; text-align:center;}
+
+.search ul li.here{ background:#d72427; color:#fff; } 
+
+.search .text{ border:2px solid #d72427; float:left;width:700px; margin-right:10px; height:20px;}
+
+.search-type{ float:left; width:100%;}
+
+ .top{ background:url(../../images/thbj.gif) repeat-x; height:29px; line-height:29px; border:1px solid #d4d4d4; padding-left:10px; margin:8px 0 5px 0;}
+
+.search-type .top li{ float:left;}
+
+.search-type .top .lan{ margin:0 5px;}
+
+.search-type .top .flright{float:right; margin-right:10px; padding-left:10px;}
+
+.type-bj{ border:1px solid #ffc44c; line-height:29px;}
+
+.type-bj li{border-bottom:1px solid #d4d4d4; margin:0 10px;}
+
+.type-bj li .lan{ margin:0 10px;}
+
+.type-bj h4{ background:#fff7e6; padding-left:10px; border-bottom:1px solid #ffc44c; height:27px; font-weight:normal;}
+
+.type-bj .left{ width:80px; padding-left:10px; text-align:right;}
+
+.type-bj .border-none{ border:none; }
+
+.type-bj .border-none .lan{ padding:0px; margin:0 5px 0 0;}
+
+.type-bj .border-none .hui{ margin-right:15px;}
+
+.search-main .result{ float:left; width:100%;}
+
+.search-main .all{ width:300px; float:left;}
+
+.search-main .all li{background:#ff7a00; width:100px; height:29px; color:#fff; text-align:center; font-weight:bold;line-height:29px;}
+
+.result .ye{ float:left; margin-left:390px;}
+
+.result .ye li{ float:left; line-height:21px; height:21px;margin:0 3px;}
+
+.result .ye .t1{ border:1px solid #d4d4d4; padding:0 5px;}
+
+.result .ye .chected a{ color:#0063dc; border:1px solid #d4d4d4;padding:0 5px; display:block;}
+
+.search-main .result-top{ float:left; width:850px;/*border:solid #d4d4d4; border-width:0 1px 1px;*/ border-top:2px solid #ff5500;}
+
+.result-top .result-bule{ background:#f7faff; float:left;border:solid #d4d4d4; border-width:0 1px ; width:838px; height:39px; line-height:39px; padding-left:10px;}
+
+.result-top .result-bule li{ float:left; margin:0 5px;}
+
+.result-top  .result-bule li input{ margin-right:3px;}
+
+ .result-hui{ background:url(http://static.pinju.com/images/thbj.gif) repeat-x; height:29px; line-height:29px; border:1px solid #d4d4d4; padding-left:10px;float:left; width:838px; margin-bottom:10px;}
+
+/*.result-hui .border{ border-right:1px solid #d3d3d3; padding:0 10px;text-align:center;}
+*/
+/*6个图标*/
+.icon span{ background:url(http://static.pinju.com/images/icon.gif) 
+no-repeat; float:left;}
+.one span{ background-position:0 -60px;width:20px; height:20px;float:right; margin:5px 0;}
+.two span{ background-position:0 -80px;width:20px; height:20px;float:right;margin:5px 0;}
+.three span{ background-position:0 -100px;width:20px; height:20px;float:right;margin:5px 0;}
+.four span{ background-position:0 -120px;width:20px; height:20px; margin-top:-2px;}
+.five span{ background-position:0 -139px;width:20px; height:20px;margin-top:-2px;}
+.six span{ background-position:0 -160px;width:20px; height:20px;margin-top:-2px;}
+.seven span{ background-position:0 -180px;width:20px; height:20px; float:left; margin:4px 3px 0 0;}
+/*6个图标结束*/
+.result-hui li{ float:left; border-right:1px solid #d3d3d3; padding:0 3px; text-align:center;}
+
+.result-hui li .short{ width:50px; margin:0 5px;}
+
+.result .table{ float:left; width:850px; margin-bottom:10px; *margin-left:-3px;}
+
+.result .table .bulebj{ background:#f7faff; width:100%; border:1px solid #e0e6f0; text-align:left; height:29px; font-weight:normal; padding-left:10px; line-height:29px;}
+
+.result .table td{ line-height:15px;padding:8px 3px; border-bottom:1px solid #d4d4d4; vertical-align:top;}
+
+.result .table td img{ border:1px solid #d4d4d4; padding:3px; margin-left:10px;}
+
+.result .table .words{max-width:350px; font-size:13px;}
+
+.result .table .words li{ line-height:20px; margin:0 0 8px;}
+
+.result .table .words .hui{ font-size:11px;}
+
+.carriage{ color:#666; }
+
+.carriage li{ display:block; margin-bottom:10px;}
+
+.result-bottom{ background:#fff7e5; height:80px; width:100%; float:left; margin-bottom:10px; text-align:center;}
+
+.result-bottom input{ margin:25px 0;}
+
+.result-bottom .text{ width:550px; height:23px;}
+
+.result-bottom .re-juse{ height:29px;width:110px; background:#f78f16; font-size:14px; font-weight:bold; color:#fff; border:none;}
+
+.result-gray{ background:url(http://static.pinju.com/images/thbj.gif) repeat-x; height:29px; line-height:29px; border:1px solid #d4d4d4; padding-left:10px;float:left; width:838px; margin-bottom:10px;}
+
+.result-gray li{ float:left;}
+
+ .result-gray li .hui{ margin:0 5px;}
+

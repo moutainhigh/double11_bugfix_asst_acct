@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="shop_shield">
+
+	<typeAlias alias="ShopShield" type="com.yuwang.pinju.domain.shop.ShopShieldDO" />
+
+	<resultMap id="ShopShieldResult" class="ShopShield">
+		<result property="id" column="ID" />
+		<result property="shopId" column="SHOP_ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="shopName" column="SHOP_NAME" />
+		<result property="shieldType" column="SHIELD_TYPE" />
+		<result property="shieldDays" column="SHIELD_DAYS" />
+		<result property="expireDate" column="EXPIRE_DATE" />
+		<result property="shieldReason" column="SHIELD_REASON" />
+		<result property="recoverReason" column="RECOVER_REASON" />
+		<result property="createUserId" column="CREATE_USER_ID" />
+		<result property="updateUserId" column="UPDATE_USER_ID" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="sysDate" column="SYS_DATE" />
+	</resultMap>
+
+	<sql id="selectAllShopShield"><![CDATA[SELECT ID,SHOP_ID,MEMBER_ID,SHOP_NAME,SHIELD_TYPE,SHIELD_DAYS,EXPIRE_DATE,SHIELD_REASON,RECOVER_REASON,CREATE_USER_ID,UPDATE_USER_ID,GMT_CREATE,GMT_MODIFIED,SYSDATE() AS "SYS_DATE" FROM SHOP_SHIELD]]></sql>
+
+	<select id="selectAllShopShield" resultMap="ShopShieldResult">
+		<include refid="selectAllShopShield" />
+	</select>
+
+	<select id="selectShopShieldByid" resultMap="ShopShieldResult"  parameterClass="long">
+		<include refid="selectAllShopShield" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+	
+	<select id="selectShopShielded" resultMap="ShopShieldResult" parameterClass="ShopShield">
+		<include refid="selectAllShopShield" />
+		<![CDATA[ WHERE (SHIELD_TYPE = 2 OR (SHIELD_TYPE = 1 AND EXPIRE_DATE > SYSDATE()))]]>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+	</select>
+	
+	<select id="selectShopShieldedCount" resultClass="java.lang.Long" parameterClass="ShopShield">
+		<![CDATA[SELECT COUNT(ID) FROM SHOP_SHIELD WHERE (SHIELD_TYPE = 2 OR (SHIELD_TYPE = 1 AND EXPIRE_DATE > SYSDATE()))]]>
+		<isNotEmpty prepend="AND" property="shieldType">
+			<![CDATA[SHIELD_TYPE = #shieldType#]]>
+		</isNotEmpty>
+	</select>
+	
+</sqlMap>
+

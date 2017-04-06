@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+   <bean id="shopShowInfoDao" class="com.yuwang.pinju.core.shop.dao.impl.ShopShowInfoDaoImpl"> 
+   </bean>
+
+    <bean id="shopOpenDAO" class="com.yuwang.pinju.core.shop.dao.impl.ShopOpenDaoImpl"/>
+
+	<bean id="shopCategoryDAO" class="com.yuwang.pinju.core.shop.dao.impl.ShopCategoryDAOImpl"/> 
+	
+	<bean id="shopPageLayoutDAO" class="com.yuwang.pinju.core.shop.dao.impl.ShopPageLayoutDAOImpl"/> 
+
+	<bean id="shopPagePrototypeDAO" class="com.yuwang.pinju.core.shop.dao.impl.ShopPagePrototypeDAOImpl"/> 
+
+	<bean id="shopModulePrototypeDAO" class="com.yuwang.pinju.core.shop.dao.impl.ShopModulePrototypeDAOImpl"/>
+	
+	<bean id="shopUserModuleParamDao" class="com.yuwang.pinju.core.shop.dao.impl.ShopUserModuleParamDaoImpl"/> 
+	
+	<bean id="shopCustomPageDAO" class="com.yuwang.pinju.core.shop.dao.impl.ShopCustomPageDAOImpl"/>
+	
+	<bean id="shopUserPageDAO" class="com.yuwang.pinju.core.shop.dao.impl.ShopUserPageDAOImpl"/>
+
+</beans>

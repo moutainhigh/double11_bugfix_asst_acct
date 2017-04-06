@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+  <bean id="memberDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberDaoImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSequenceDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberSequenceDaoImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberLogDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberLogDaoImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="sellerQualityDAO" class="com.yuwang.pinju.core.member.dao.impl.SellerQualityDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="dsrStatDAO" class="com.yuwang.pinju.core.member.dao.impl.DsrStatDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSnsInfoDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberSnsInfoDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberPinjuLoginDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberPinjuLoginDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSecurityEmailDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberSecurityEmailDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSecurityEmailLinkDAO" class=" com.yuwang.pinju.core.member.dao.impl.MemberSecurityEmailLinkDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberExtDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberExtDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberLoginPageImgDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberLoginPageImgDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSecurityDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberSecurityDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSecurityHisDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberSecurityHisDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSecurityMobileCodeDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberSecurityMobileCodeDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSecurityMobileDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberSecurityMobileDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberSinaAccountDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberSinaAccountDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="memberAsstDAO" class="com.yuwang.pinju.core.member.dao.impl.MemberAsstDAOImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+</beans>

@@ -1,0 +1,64 @@
+﻿
+/*-----------------------cart-------------------------*/
+/*-----------------------Ver08031110-------------------------*/
+/*-----------------------cart-------------------------*/
+.head_text { padding:10px;}
+.cart_step_nav {padding:0;}
+.cart_step_nav ul{ padding:0;}
+.cart_step_nav li{ float:left; width:258px; height:29px;line-height:29px; font-size:14px; text-align:center; color:#666; font-weight:bold;display:block;}
+
+.cart_step_nav li {background-image: url(http://static.pinju.com/icon-images/icon_01.png);}
+.cart_step_nav li span { color:#FFF;}
+.cart_step_nav li.step01 {background-position:-50px -50px;margin-left:2px;}
+.cart_step_nav li.step02 {background-position:-50px -200px; margin-left:-12px;}
+.cart_step_nav li.step03 {background-position:-50px -200px; margin-left:-12px;}
+.cart_step_nav li.step04 {background-position:-50px -250px;margin-left:-12px;}
+
+.cart_container { padding:10px;}
+.cart_container ul{ padding:10px;color:#666;}
+.cart_container li{ padding:10px; line-height:25px;display:block;}
+	.cart_container li.title { color:#000; font-size:14px; font-weight:bold; *margin-bottom:-20px;}
+	.cart_container li.title02 { color:#000;}
+	.cart_container li.filp_box01 { width:300px; border:1px solid #f9dfb2; background:#ffffe0; padding:20px; margin:-200px 0 107px 500px; text-align:center;}
+	.cart_container li.horizen_gray { display:block; padding:0;height:2px; background:#d4d4d4;margin-top:-8px; margin-bottom:15px;}
+	.cart_container li.horizen_gray span{ display:block;}
+	.cart_container li.horizen_gray span.horizen_red {width:200px; display:block; padding:0;height:2px; background:#d72426;overflow:hidden;}
+	.cart_container li.yellow { line-height:25px; border:1px solid #f9dfb2; background:#ffffe0; padding:5px 10px;}
+	.cart_container li.yellow span { margin-left:20px;}
+	
+	.cart_container li.yellow02{ line-height:20px; border:1px solid #f9dfb2; background:#ffffe0; padding:5px 10px;}
+	.cart_container li.yellow02 .line {float:left; display:block;width:100%; padding:5px 0; line-height:20px;}
+	.cart_container li.yellow02 .line span.title{ float:left; width:100%;color:#000; font-weight:bold;line-height:20px;  display:block;}
+	.cart_container li.yellow02 .line  span.textbox1{ float:left; width:45%; padding:2px 10px 0 25px;line-height:20px;  display:block;}
+	.cart_container li.yellow02 .line  span.textbox2{ float:left; width:35%; padding:2px 10px;line-height:20px;display:block;}
+	.cart_container li.yellow02 .line  span.textbox3{ float:left; width:10%; padding:2px;text-align:center; display:block;}
+	
+	.cart_container li p{ padding:2px 0 2px 30px; line-height:25px;}
+	.cart_container li.cart_button_box01 { padding:0 0 0 850px; width:100px;height:30px; margin-top:-45px; *margin-top:-47px; }
+	.cart_container li table tr{ border:1px solid #dadada;}
+	.cart_container li table tr td { padding:10px;  vertical-align:middle;}
+	.cart_container li table tr td p.count,span.count { padding:0px; display:block }
+	.cart_container li table tr td.red { color:#F00; font-size:14px; font-weight:bold; }
+	.cart_container li table tr td.black { color:#000; font-size:12px; font-weight:bold;}
+	.cart_container li span.red { color:#F00; font-size:14px; font-weight:bold;}
+	.cart_container li span.black { color:#000; font-size:12px; font-weight:bold;}
+	
+	.cart_container li.right_infor{ display:block; padding:2px; text-align:right; line-height:25px; color: #000;}
+	
+/*	.cart_container li.textcontrol_1{ line-height:25px;}*/
+	.list_remark {
+		min-height: 12px;
+		max-height: 100px;
+		_height: 12px;
+		padding: 0px;
+		outline: 0;
+		border: 1px solid #dadada;
+		font-size: 12px;
+		word-wrap: break-word;
+		overflow-x: hidden;
+		overflow-y: auto;
+		_overflow-y: visible;
+		display:inline-block;}
+	
+
+

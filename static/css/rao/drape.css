@@ -1,0 +1,193 @@
+/* drape */
+.drape-right { background:none repeat scroll 0 0 #FFFFFF; float:left; padding: 10px; width:808px; overflow:hidden; }
+.drape-table { float:left; width:98%; margin:10px 0 0 10px; border:1px solid #d4d4d4; text-align:center; }
+.drape-table td { border-bottom:1px dashed #d4d4d4; padding-left:5px; line-height:29px; }
+.drape-table th { background:#e8f8ff; border-bottom:1px solid #d4d4d4; line-height:29px; font-weight:normal; }
+.news { width:100%; float:left; }
+.news li { float:left; margin:5px 0; width:100%; }
+.news li input { margin:0 5px; line-height:29px; }
+.news li select { margin:0 5px; }
+/*页码样式 */
+.sel-ye { float:right; margin:10px 0; }
+.sel-ye li { float:left; line-height:19px; margin:0 3px; }
+.sel-ye .t2 { background:#fff; border:1px solid #d4d4d4; padding:0 5px; }
+.sel-ye li input { line-height:15px; }
+.sel-ye li.sel-ye-selected { background:#d72426; border:1px solid #d72426; color:#ffffff; padding:0 5px; }
+/*创建限时打折*/
+/*.drape-right form {width:808px;}*/
+.drape-right .steps { width:806px; float:left; border:solid #d4d4d4; border-width:1px 1px 0; margin:8px 0; overflow:hidden; }
+.drape-right .top { float:left; width:808px; margin-top:10px; }
+.drape-right .top li { margin:0 5px; float:left; line-height:29px; }
+.drape-right .steps .steps-top { padding:10px 0 10px 15px; width:793px; overflow:hidden; _zoom:1; }
+.drape-right .steps .steps-top li { float:left; line-height:2; }
+.drape-right .steps .steps-top select { margin-left:5px; vertical-align:middle; }
+.drape-right .steps h3 { background:#f5f5f5; border-bottom:1px solid #d4d4d4; height:29px; line-height:29px; overflow:hidden; }
+.drape-right .steps h3 .h3-left { width:500px; float:left; height:29px; padding-left:10px; }
+.drape-right .steps h3 .lan { font-size:12px; font-weight:normal; float:right; padding:0 10px 0 0; }
+.drape-right .left { width:100px; text-align:right; float:left; }
+.drape-right .steps .set-promote { margin:10px 0 0 5px; }
+.drape-right .steps .set-promote li { width:100%; float:left; line-height:15px; margin:3px 0; }
+.drape-right .steps .set-promote li .pl-btn-juse { margin:0 15px 0 110px; }
+.drape-right .steps .set-promote li input { margin:0 5px; }
+.drape-right .steps .set-promote li select { margin:0 5px; }
+.drape-right .steps .table { border:1px solid #d4d4d4; border-width:1px 0; width:100%; float:left; }
+.drape-right .steps .table th.t01 { width:5%; }
+.drape-right .steps .table th.t02 { width:45%; }
+.drape-right .steps .table th.t03 { width:25%; }
+.drape-right .steps .table th.t04 { width:25%; }
+.drape-right .steps .table th.l3_t01 { width:36%; }
+.drape-right .steps .table th.l3_t02 { width:8%; }
+.drape-right .steps .table th.l3_t03 { width:20%; }
+.drape-right .steps .table th.l3_t04 { width:12%; }
+.drape-right .steps .table th.l3_t05 { width:12%; }
+.drape-right .steps .table th.l3_t06 { width:12%; }
+.drape-right .steps .table td .absolute { margin-top:10px; min-height:1px; _height:1px; font-size:1px; }
+.drape-right .steps .table td .absolute span { font-size:12px; }
+.drape-right .steps .tbfoot { border-top:0 none; }
+.drape-right .steps .text { width:50px; margin:0 5px; }
+.drape-right .steps .table th { background:#e7f8ff; height:25px; border-bottom:1px solid #d4d4d4; line-height:25px; font-weight:normal; }
+.drape-right .steps .table td { line-height:15px; margin:5px 0; border-bottom:1px dashed #d4d4d4; padding:5px 0 5px 0px; vertical-align:middle; }
+.drape-right .steps .table td .title { float:left; width:210px; word-wrap:break-word; word-break:break-all; white-space:normal }
+.drape-right .steps .table td.w15 { width:15%; }
+.drape-right .steps .table td.w5 { width:5%; }
+.drape-right .steps .table td.center { text-align: center; }
+.drape-right .steps .table td img { float:left; width:60px; height:60px; border:1px solid #d4d4d4; text-align:center; margin:0 5px; }
+.drape-right .steps .table td .width { vertical-align:middle; width:350px; padding-top:20px; text-align:left; display:block; }
+.drape-right .steps .table .tr-blue { background:#e7f8ff; ; border-bottom:1px solid #d4d4d4; line-height:15px; margin:5px 0; padding:0 0 0 10px; }
+.drape-right .pl-btn-juse, .drape-right .pl-btn-hui { font-weight:normal; padding:0; }
+.drape-right .steps .table .btn-juselong, .pl-btn-juse, .pl-btn-hui { margin:0 5px; }
+.drape-right .steps .table .table-long { width:300px; }
+.drape-right .steps .steps-bottom { margin:10px 0 0 0; float:left; width:100%; }
+.drape-block { padding-bottom:10px; float:left; width:100%; border-bottom:1px solid #d4d4d4; }
+/*优惠券*/
+.y-module { border:1px solid #c4d5e0; border-top:none; padding:0 0 70px; overflow:hidden; }
+.y-tab { margin-top:	10px; padding-left:26px; float:left; }
+.y-tab li {  float:left; margin-left:10px; margin:0 0 5px 10px; width:86px; text-align:center; color:#333333; cursor:pointer; line-height:2; }
+.y-tab li a{ display:inline-block; width:100%; height:24px; background:#d3d7da;}
+.y-tab li.hover {  }
+.y-tab li.hover a{ background:#4696d0; color:#FFF; }
+.y-module .help { background:url(http://static.pinju.com/images/w-icon_03.gif) no-repeat; float:right; margin:12px 33px 0 0; _display:inline; padding-left:25px; line-height:1.4; cursor:help; }
+.y-bcon, y-mlist { margin:0 8px; clear:both; background:#f8f8f8; border:1px solid #e2e2e2; padding:20px 0 30px; *zoom:1;
+}
+.y-bcon .tit { margin:0 0 10px 38px; }
+.cou-li { margin-bottom:18px; overflow:hidden; }
+.cou-li li { padding:5px 0 5px 60px; overflow:hidden; _zoom:1; line-height:45px;*line-height:53px; _line-height:100px;}
+.cou-li li .t-spn { text-align:right; display:inline-block; width:115px; line-height:45px; height:45px; }
+.cou-li li.hov { background:#ede5e5; }
+.cou-li li .t-spn b { color:#F00; font-family:"宋体"; font-size:14px; margin-right:10px; font-weight:normal; }
+.cou-li li .w80 { height:24px; border:1px solid #dadada; width:72px; padding:0 4px; margin:0 10px; vertical-align:middle;line-height:2;  }
+.cou-li li select { margin:0 10px; vertical-align:middle; *vertical-align:-4px; position:relative;top:-2px;}
+.cou-li li input.w90 {  width:90px; }
+.cou-li li .gpot { margin-left:10px; color:#aaaaaa; }
+.cou-li li .point { background: url("http://static.pinju.com/img/icon-tipserror.png") no-repeat scroll 5px 5px #FFE5E6; border: 1px solid #FF999A; color: #666666; height: 18px; _height:auto; line-height: 18px; _display:inline-block;  overflow: hidden; padding: 3px 8px 3px 25px; _position:relative; _top:2px; }
+.y-btn-b { padding-left:207px; }
+.y-btn-b .btn { background: url("http://static.pinju.com/img/mbuttons.png") no-repeat scroll left top transparent; border: 0 none; margin: 0 10px 0 0; height: 23px; width: 69px; }
+.y-btn-b .submit { background-position: 0 -23px; color: #FFFFFF; }
+.y-btn-b .cancel { background-position: 0 0; color:#000; }
+.ylist-btn { background:url(http://static.pinju.com/images/o-115-btn_03.gif); width:115px; height:25px; text-align:center; line-height:1.7; *line-height:2;
+margin-bottom:10px; }
+.ylist-btn:hover { text-decoration:none; }
+.crbtn { float:left; background:url(http://static.pinju.com/images/o-115-btn_03.gif) no-repeat; margin-left:10px; _display:inline; color:#FFF; }
+.crbtn:hover { color:#FFF; }
+.delbtn:hover { color:#3f3f3d; }
+.delbtn { float:right; background:url(http://static.pinju.com/images/g-w115-btn_05.gif) no-repeat; margin-right:10px; _display:inline; color:#3f3f3d; }
+.list-t { margin:0 3px; border-top:1px solid #e8e8e8; padding:4px 0; clear:both; }
+.list-t li { float:left; border-right:1px solid #dce8ee; text-align:center; }
+.list-t li.l1 { width:235px; }
+.list-t li.l2 { width:135px; }
+.list-t li.l3 { width:135px; }
+.list-t li.l4 { width:100px; }
+.list-t li.l5 { width:165px; border:none; }
+.y-table { margin:0 3px; width:782px; text-align:center; }
+.y-table tr { border-top:1px solid #e8e8e8; }
+.y-table tr td { *border-top:1px solid #e8e8e8;
+}
+.y-table td.t1 { width:31%; padding:10px 0; }
+.y-table td.t2 { width:17% }
+.y-table td.t3 { width:17% }
+.y-table td.t4 { width:13% }
+.y-table td.t5 { width:22% }
+.y-table td.t2 p { text-align:left; line-height:2; margin-left:20px; }
+.y-table td.t2 p span { color:#b90307; }
+.y-table td.t5 p { line-height:2; }
+.y-table td.t5 p a { color:#365dab; }
+.y-table td.t3 span { color:#b90307; }
+.y-table .y-style1 { background:url(http://static.pinju.com/images/yh-bg1.gif) no-repeat; }
+.y-table .y-style2 { background:url(http://static.pinju.com/images/yh-bg2.gif) no-repeat; }
+.y-table .y-style3 { background:url(http://static.pinju.com/images/yh-bg3.gif) no-repeat; }
+.y-table .y-style4 { background:url(http://static.pinju.com/images/yh-bg4.gif) no-repeat; }
+.y-table .y-style5 { background:url(http://static.pinju.com/images/yh-bg5.gif) no-repeat; }
+.y-table .y-style6 { background:url(http://static.pinju.com/images/yh-bg6.gif) no-repeat; }
+.y-box { line-height:1; padding:26px 10px 0; width:170px; height:122px; background:url(http://static.pinju.com/images/yh-bg1.gif) no-repeat; text-align:left; margin:0 auto; }
+.y-box .val { color:#FFF; font-size:24px; margin-left:18px; margin-bottom:20px; line-height:1; }
+.y-box .y-lq { color:#0066cc; font-size:12px; font-weight:bold; line-height:2.5; }
+.y-box p { text-indent:24px; line-height:1.2 }
+.y-cou { padding-left:90px; }
+.y-cou b { font-family:"宋体", Arial; color:#F00; font-weight:normal; line-height:2.5; }
+.y-cou input { margin: 10px; }
+.y-cou .tjbtn { border:none; color:#FFF; background:url(http://static.pinju.com/images/o-w56-btn_03.gif) no-repeat; width:56px; height:21px; }
+.y-cou .w80 { width:72px; padding:0 4px; border:1px solid #d2d4d5; height:18px; }
+.mycou { border:1px solid #bdb5b5; color:#555555; overflow:hidden; _zoom:1; }
+.mycou .thead { border-bottom:1px solid #bdb5b5; color:#555555; padding:5px 0; width:100%; overflow:hidden; background:#eaeaea; position:relative; z-index:5; }
+.mycou .thead li { float:left; border-right:1px solid #d0cdcd; text-align:center; line-height:1.5; }
+.mycou .thead li.n1 { width:12%; }
+.mycou .thead li.n2 { width:13%; }
+.mycou .thead li.n3 { width:12%; }
+.mycou .thead li.n4 { width:13%; }
+.mycou .thead li.n5 { width:12%; }
+.mycou .thead li.n6 { width:13%; }
+.mycou .thead li.n7 { width:12%; }
+.mycou .thead li.n8 { width:11%; border:none; }
+.mycou-ct { width:100%; position:relative; top:-1px; z-index:1; }
+.mycou-ct tr { border-top :1px solid #d9dcdd; }
+.mycou-ct td { text-align:center; height:33px; line-height:2; *border-top :1px solid #d9dcdd;
+}
+.mycou-ct td a { color:#0075ea; }
+.mycou-ct td span { color:#bc0408; font-weight:bold; margin:0 4px; }
+.mycou-ct td.t1 { width:12.5%; }
+.mycou-ct td.t2 { width:12%; }
+.mycou-ct td.t3 { width:14%; }
+.mycou-ct td.t4 { width:12%; }
+.mycou-ct td.t5 { width:13%; }
+.mycou-ct td.t6 { width:13%; }
+.mycou-ct td.t7 { width:12%; }
+.mycou-ct td.t8 { width:11.5%; }
+.mycou-ct td a.btn { display:block; margin:0 auto; background:url(http://static.pinju.com/images/o-w65-btn_07.gif) no-repeat; width:65px; height:22px; color:#fff; text-align:center; line-height:1.6; }
+.mycou-ct td a.btn:hover { text-decoration:none; }
+.mycon-t { font-size:12px; margin-bottom:25px; }
+.cou-table { border:1px solid #bdb5b5; color:#555555; margin:0 28px; overflow:hidden; position:relative; width:730px; }
+.cou-table .thead { border-bottom:1px solid #bdb5b5; color:#555555; padding:5px 0; width:101%; background:#eaeaea; position:relative; z-index:5; }
+.cou-table .thead li { float:left; border-right:1px solid #d0cdcd; text-align:center; line-height:1.5; }
+.cou-table .thead li.n1 { width:14%; }
+.cou-table .thead li.n2 { width:14%; }
+.cou-table .thead li.n3 { width:16%; }
+.cou-table .thead li.n4 { width:14%; }
+.cou-table .thead li.n5 { width:14%; }
+.cou-table .thead li.n6 { width:14%; }
+.cou-table .thead li.n7 { width:13%; }
+.cou-conttab { width:100%; position:relative; top:-1px; z-index:1; }
+.cou-conttab tr { border-top :1px solid #d9dcdd; }
+.cou-conttab td { text-align:center; height:33px; *border-top :1px solid #d9dcdd;
+}
+.cou-conttab td.co1 { width:14%; }
+.cou-conttab td.co2 { width:14%; }
+.cou-conttab td.co3 { width:16%; }
+.cou-conttab td.co4 { width:14%; }
+.cou-conttab td.co5 { width:14%; }
+.cou-conttab td.co6 { width:14%; }
+.cou-conttab td.co7 { width:13%; }
+.cou-conttab td span { color:#b90307; }
+.y-tcx { background: url("http://static.pinju.com/img/icon-tipserror.png") no-repeat scroll 5px 5px #FFE5E6; border: 1px solid #FF999A; width:145px; color: #666666; height: 18px; line-height: 18px; margin: 0 0 10px; overflow: hidden; padding: 3px 8px 3px 25px; margin:30px auto 0; }
+.pagination { float: right; margin:10px 0; }
+.pagination a { text-decoration: none; border: solid 1px #999; color: #666; }
+.pagination a, .pagination span { display: block; float: left; padding: 3px 5px; margin-right: 5px; margin-bottom: 5px; }
+.pagination .current { background-color: #d72426; color: #fff; border: solid 1px #dadada; }
+.pagination .prev { background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat left -345px; padding-left:12px; }
+.pagination .next { background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat right -395px; padding-right:12px; }
+.pagination .current.prev, .pagination .current.next { background:#fff url(http://static.pinju.com/img/icons.gif) no-repeat left top; color:#999; border-color:#d4d4d4; }
+.pagination .current.prev { background-position:left -375px; }
+.pagination .current.next { background-position:right -425px; }
+.cbottom .skipto { float:right; margin:10px 0 10px 10px; }
+.skipto .pagenum { width:36px; border:1px solid #999; padding:2px; }
+.yl-list { position:absolute; left:220px; top:0; width:380px; }
+.yl-list li { padding:0; width:110px; height:55px; float:left; margin:0 10px 35px 0; }

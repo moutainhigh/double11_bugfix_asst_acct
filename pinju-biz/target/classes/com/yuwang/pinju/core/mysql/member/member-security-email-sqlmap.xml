@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_security_email">
+
+  <typeAlias alias="MemberSecurityEmail" type="com.yuwang.pinju.domain.member.security.MemberSecurityEmailDO" />
+
+  <resultMap id="MemberSecurityEmailResult" class="MemberSecurityEmail">
+    <result property="id" column="ID" />
+    <result property="memberId" column="MEMBER_ID" />
+    <result property="loginName" column="LOGIN_NAME" />
+    <result property="emailAddr" column="EMAIL_ADDR" />
+    <result property="messageId" column="MESSAGE_ID"/>
+    <result property="validationIp" column="VALIDATION_IP"/>
+    <result property="gmtCreate" column="GMT_CREATE" />
+    <result property="gmtModified" column="GMT_MODIFIED" />
+  </resultMap>
+
+  <sql id="selectAllMemberSecurityEmail"><![CDATA[SELECT ID,MEMBER_ID,LOGIN_NAME,EMAIL_ADDR,MESSAGE_ID,VALIDATION_IP,GMT_CREATE,GMT_MODIFIED FROM MEMBER_SECURITY_EMAIL]]></sql>
+
+  <select id="getMemberSecurityEmailByEmail"  resultMap="MemberSecurityEmailResult" parameterClass="string">
+    <include refid="selectAllMemberSecurityEmail" />
+    <![CDATA[WHERE EMAIL_ADDR = #emailAddr#]]>
+  </select>
+
+  <select id="findMemberSecurityEmailByMemberId" resultMap="MemberSecurityEmailResult" parameterClass="long">
+      <include refid="selectAllMemberSecurityEmail" />
+     <![CDATA[WHERE MEMBER_ID = #memberId#]]>
+  </select>
+  
+  <insert id="addMemberSecurityEmail" parameterClass="MemberSecurityEmail">
+    <![CDATA[INSERT INTO MEMBER_SECURITY_EMAIL (MEMBER_ID,LOGIN_NAME,EMAIL_ADDR,MESSAGE_ID,VALIDATION_IP,GMT_CREATE,GMT_MODIFIED) VALUES (#memberId#,#loginName#,#emailAddr#,#messageId#,#validationIp#,#gmtCreate#,#gmtModified#)]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+      <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+  </insert>
+  
+  <delete id="delMemberSecurityEmailByMemberId" parameterClass="long">
+     <![CDATA[ DELETE FROM MEMBER_SECURITY_EMAIL WHERE MEMBER_ID = #memberId# ]]>
+  </delete>
+</sqlMap>
+

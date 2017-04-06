@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="search" namespace="/search" extends="pinju-default">
+
+		<!-- 商品搜索相关 -->
+		<action name="search" class="com.yuwang.pinju.web.module.search.screen.ItemSearchAction" method="search">
+			<result name="success" type="freemarker">/default/templates/screen/search/itemSearch.ftl
+			</result>
+			<result name="null" type="freemarker">/default/templates/screen/search/itemNullSearch.ftl
+			</result>
+			<result name="nullq" type="redirect">http://www.pinju.com/cms/html/all-category/</result>
+		</action>
+
+		<!-- 店铺搜索相关 -->
+		<action name="shopSearch" class="com.yuwang.pinju.web.module.search.screen.ShopSearchAction" method="showShopSearchScreen">
+			<result name="success" type="freemarker">/default/templates/screen/search/shopSearch.ftl
+			</result>
+			<result name="nullq" type="redirect">http://mingdian.pinju.com/</result>
+		</action>
+
+		<!-- 商品search box -->
+		<action name="isbox" class="com.yuwang.pinju.web.module.search.screen.SearchBoxAction" method="itemSearchBox">
+		</action>
+
+		<!-- 店铺 search box -->
+		<action name="ssbox" class="com.yuwang.pinju.web.module.search.screen.SearchBoxAction" method="shopSearchBox">
+		</action>
+
+		<!-- 搜索关键字记录 -->
+		<action name="updateKeyword" class="com.yuwang.pinju.web.module.search.screen.KeywordAction" method="updateKeyword"></action>
+
+	</package>
+
+	<package name="hot" namespace="/hot" extends="pinju-default">
+		<action name="hot" class="com.yuwang.pinju.web.module.search.screen.HotAction" method="hot">
+			<result name="success" type="freemarker">/default/templates/screen/hot/hotSearch.ftl</result>
+			<result name="nullq" type="redirect">http://www.pinju.com/cms/html/all-category/</result>
+		</action>
+	</package>
+
+</struts>

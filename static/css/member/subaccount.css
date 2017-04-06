@@ -1,0 +1,47 @@
+/* 子账户 */
+.subaccount { clear:both; }
+.subaccount .subtitle { padding:10px 20px;}
+.actionarea { background-color:#ffffe0; border:1px solid #f9dfb2; margin:0 0 10px; padding:30px 40px; }
+.actionarea .tips-error { background:transparent none no-repeat 0 0; border:0 none; color:#be0000; }
+.accountlist { width:100%; }
+.accountlist th { background-color:#ebebeb; font-weight:bold; }
+.accountlist th, .accountlist td { padding:10px; text-align:center;}
+.accountlist td.action a { margin:0 10px 0 0;}
+
+.formbox {border:1px solid #ebebeb;}
+.formbox .title {background-color:#ebebeb; padding:8px 10px;}
+.formbox .content {padding:30px 20px;}
+.formbox .content .row { float:left; padding:0 0 20px; width:786px;}
+.formbox .content .row label, .formbox .content .row span.tips { float:left; line-height:28px;}
+.formbox .content .row input, .row .checkboxrow { float:left; line-height:24px;}
+.formbox .content .row label { padding:0 10px 0 0; text-align:right; width:150px;}
+.formbox .content .row .existtext { float:left; line-height:28px;}
+.formbox .content .row label em { color:#be0000; font-family: simsun;}
+.formbox .content .row input { border:1px solid #ccc; height:24px; padding:2px 5px; width:150px;}
+.formbox .content .row input.error { border-color:#be0000;}
+.formbox .content .row input.roleinfo { width:240px; }
+.formbox .content .row input.roledesc { width:540px; }
+.formbox .content .row span.tips { color:#999; padding:0 0 0 10px; }
+.formbox .content .row span.tips-error { color:#be0000; background:#fff none no-repeat 0 0; border:0 none; padding:0 0 0 10px; clear:none; float:left; margin:0; }
+.row .checkboxrow {width:626px;}
+.row .checkboxrow .col2 ul li {float:left; width:313px;}
+.row .checkboxrow .col2 ul ul { padding:0 0 0 20px;}
+.row .checkboxrow .col2 ul ul li { float:none; width:auto; clear:both;}
+.formbox .content .checkboxrow { padding:8px 0 0; }
+.formbox .content .checkboxrow input,
+.formbox .content .checkboxrow label {width:auto; line-height:14px;}
+.formbox .content .checkboxrow label {width:150px; text-align:left; padding:0 5px 10px 0;}
+.formbox .content .rolerule label {width:100px; }
+.formbox .content .checkboxrow input {height:auto; margin:0 5px 0 0; border:0 none; padding:0;}
+.formbox .content .checkboxrow .row { padding:0 0 10px; width:626px; }
+.formbox .content .checkboxrow .exinfo {margin:0; }
+.formbox .content .checkboxrow .exinfo p {line-height:18px; width:430px; }
+
+.btn-expand, .btn-collapse { border:0 none; height:26px; line-height:26px; padding:0 0 0 30px; font-weight:bold; }
+.btn-expand {
+	background:transparent url(http://static.pinju.com/img/icon-expand.png) no-repeat 0 0;
+	margin:0 10px 0 0;
+}
+.btn-collapse {
+	background:transparent url(http://static.pinju.com/img/icon-collapse.png) no-repeat 0 0;
+}

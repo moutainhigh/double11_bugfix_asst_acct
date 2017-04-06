@@ -1,0 +1,132 @@
+﻿/*--  页面整体样式 --*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px; vertical-align:middle;}
+body{font-size:12px; font-family:Arial, Helvetica, sans-serif;  margin:0 auto;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;vertical-align:middle;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ef9b11; text-decoration:underline;}
+table{border-collapse:collapse;border-spacing:0;}
+/*--  页面颜色样式 --*/
+.cheng{color:#fc4c0f;}
+.hong{color:#be0000;}
+.lan{color: #00F}
+a.lan{color:#2953A6;}
+a:hover.lan{color:#cc6600;}
+.huang{color:#e0b700;}
+.hui{color:#999;}
+.lvse{ color:#390}
+.title15{ font-size:15px;font-weight:bold;color:#333; margin:10px 0 0 15px;}
+/*-- 按纽样式 --*/
+.wl-btn-hui{ background:#fff; border:1px solid #999;}
+.pl-btn{ background:url(http://static.pinju.com/images/pl-button.gif);}
+.pl-btn-hui{ background:url(http://static.pinju.com/images/btn-gray.gif) no-repeat; font-weight:bold;color:#666;width:72px;height:25px; border:none;}
+.pl-btn-juse{ background:url(http://static.pinju.com/images/juse.gif) no-repeat; font-weight:bold;color:#fff;width:72px;height:25px; border:none; }
+/*-- 物流运费模板样式 --*/
+.wl-main{margin:0 auto;width:1000px;}
+.wl-left{ width:840px; margin-left:10px; float:left;color:#434343; display:inline;}
+.wl-nav{ line-height:29px;}
+.bor-yellow{ background:#FFFFE0;border: 1px solid #F9DFB2; line-height:15px;padding:4px 8px;}
+.wl-newmb{ margin:10px 0 0 0;}
+.wl-newmb input{ margin:0 15px 0 10px;}
+.wl-table { margin:10px 0;}
+.wl-table td{border-right:1px solid #d4d4d4;border-bottom:1px solid #d4d4d4; padding-left:5px;width:25%; line-height:29px;}
+
+.wl-table{border-collapse:collapse;width:100%;border:1px solid #d4d4d4;}
+.wl-table .wl-pop-btn{ margin:0 0 0 10px;	color:#0066cd;}
+.wl-table tbody td+td+td+td{border-right:1px solid #d4d4d4;}
+.wl-table tbody td+td+td{border-right:1px solid #d4d4d4;border-bottom:1px solid #d4d4d4;}
+.wl-table .tr1{ background:#f6f6f6; font-weight:bold;}
+.wl-table .tr2{ background:#e8f8ff;}
+/*页码样式 */
+.sel-ye{ float:right; margin-bottom:10px;}
+.sel-ye li{ float:left;line-height:19px; margin:0 3px; }
+.sel-ye .t2{background:#fff;border:1px solid #d4d4d4; padding:0 5px; }
+.sel-ye li input{ line-height:15px;}
+.sel-ye li.sel-ye-selected{ background:#d72426;border:1px solid #d72426; color:#ffffff; padding:0 5px;}
+/*-- 创建物流运费模板样式 --*/
+.wl-h1{ background:#f9fafc;border-bottom:1px solid #c4d5e0; font-weight:bold;line-height:23px; padding:4px 0 0 10px;margin:10px 0;}
+.wl-chuangj{ display:block; margin:10px 0 0 0; position:relative;}
+.wl-chuangj li{ line-height:29px;}
+.wl-chuangj .pl-btn-juse{ margin:0 10px;}
+.wl-chuangj textarea{ width:300px; height:80px;overflow-x:hidden; overflow-y:auto; font-size:12px;}
+.wl-right{ width:150px; float:left; background:#f5f5f5;overflow:hidden;}
+.wl-right .title15{ margin-bottom:10px;}
+.wl-right .wl-dingd .imgwrap{border: 1px solid #DADADA;height: 84px;padding:1px; background:#fff;text-align: center;width: 84px;}
+.wl-dingd{ margin:0 0 0 10px;width:130px;}
+.wl-dingd li{ line-height:15px;margin:5px 0;width:130px;float:left;overflow:hidden;}
+/*.wl-dingd li .lan{float:left;width:80px;}*/
+.wl-genzh{ margin-left:60px;}
+.wl-chuangj li table { width:100%; }
+
+.wl-layer1{width:60%; overflow:hidden;padding:0 5px; *margin-top:20px;}
+.wl-layer1 .wl-cost{float:left;background:#f0faff; border:1px solid #b8cce7;width:90%; padding:0 5%;}
+.wl-cost strong{color:#44c955; font-size:20px; vertical-align:top; margin-right:5px;}
+.wl-layer1 .wl-cost li{float:left;width:100%;} 
+.wl-layer1 .wl-layer2{ float:left;width:80%;margin:-3px 0 0 10%;_margin-left:5%;display:inline;overflow:hidden;padding-bottom:10px;background:#fff;border:2px solid #b8cce7;}
+ .wl-layer2 .pl-btn-juse{ margin:0 10px 0 20%; float:left;}
+ .wl-layer2 .pl-btn-hui{float:left;}
+ .wl-layer2 hr{clear:both;width:100%; border-top:1px dashed #999;height:1px;}
+ .wl-layer2 .area{ float:left; padding:0 2%;}
+ .wl-layer2 .city{ float:left;width:94%;padding:0 2%; overflow:hidden;}
+ .wl-layer2 .area li{ float:left;width:20%; line-height:23px;}
+ .wl-layer2 .city li{ float:left;width:20%;line-height:23px;}
+.wl-layer3{ float:left;width:400px;margin:-3px 0 0 80px;_margin-left:5%;display:inline;overflow:hidden;padding-bottom:10px;background:#fff;border:2px solid #b8cce7; position:absolute;}
+ .wl-layer3 .muban{ float:left;width:94%;padding:0 1%; overflow:hidden;}
+ .wl-layer3 .muban li{line-height:25px;}
+ .wl-layer3 .muban li a{ float:right; margin-right:10px;}
+ .wl-layer3 .center{ text-align:center;}
+ .wl-layer3 .center a{ margin:0 10px;}
+ .wl-layer3 hr{clear:both;width:100%; border-top:1px dashed #999;height:1px;}
+ .wl-layer3 .wl-close{ float:right;}
+ .wl-layer3 .city{ float:left;width:371px;padding:0 5px;}
+ .wl-layer3 .city li{ float:left;width:70px;line-height:23px;}
+ .wl-layer3 .city li a{ display:block; width:80px; height:23px; text-align:center;}
+ .wl-layer3 .city li a:hover{display:block; width:80px; height:23px; background:#fc4c0f;color:#fff;}
+/*-- 物流信息样式 --*/
+.wl-muban{ display:block; margin:10px 0 0 10px; position:relative;}
+.wl-muban li{ line-height:29px; display:block;}
+.wl-muban textarea{ display:block; width:300px; height:80px;overflow-x:hidden; overflow-y:auto; font-size:12px;}
+.wl-footer{ clear:both; margin-left:90px;}
+.wl-footer input{ margin:10px 15px 0 0;}
+.pl-act{ border-bottom:1px solid #c4d5e0; display:block; height:30px;}
+.pl-act li{ float:left;width:90px; background:#f9fafc;border-top:1px solid #c4d5e0;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; margin-right:8px;height:16px;text-align:center; padding:4px 10px; margin-top:5px;}
+.pl-act .pl-here{background:#ffffff;border-top:3px solid #D72426;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; padding:3px 10px 4px; font-weight:bold; float:left;}
+.tip-red{background-image:url(http://static.pinju.com/images/pot_03.gif); background-color:#ffe5e6;border:1px solid #ff999a; color:#be0000;padding:3px 8px 3px 25px; line-height:18px; background-repeat:no-repeat; background-position:5px 5px}
+.no-wl{ font-size:14px; color:#4e4e4e; font-weight:bold; margin:10px 0;}
+.no-wl button{ font-size:14px; color:#4e4e4e;font-weight:bold; margin:0 8px; background:url(http://static.pinju.com/images/pl-button.gif) no-repeat; width:72px; height:25px; color:#FFF; border:none;}
+.wl-pop{ width:578px; background:#FFF; border:1px solid #d4d4d4;}
+.wl-pop .head{ width:578px; background:#FFF; border-bottom:2px solid #d4d4d4;}
+.wl-pop .head .tit{ float:left; line-height:2; font-size:14px; color:#434343; text-indent:12px; border-bottom:2px solid #d72426; position:relative; bottom:-2px; font-weight:bold;}
+.wl-pop .head .close{ float:right; width:15px; height:14px; background:url(http://static.pinju.com/images/xz-ui.png) -320px 5px no-repeat; margin:3px 2px 0 0;}
+.wl-pop .select-wl{ background:#f9fafc; color:#cccccc; line-height:1.5;  word-wrap: break-word; font-weight:bold;padding:5px 0 5px 15px;}
+.wl-pop .select-wl span{ color:#434242;	padding:0 5px; margin:0 10px; cursor:pointer; }
+.wl-pop .select-wl span.h{ background:#d72426; color:#FFF;}
+.wl-pop .select-wlname{padding:10px 0 10px 10px; color:#0066cd;}
+.wl-pop .select-wlname li{ float:left; width:140px; line-height:2; }
+.wl-pop .select-wlname li span{cursor:pointer; list-style:1.5;}
+.wl-pop .select-wlname span.h{ color:#FFF; background:#d72426;}
+.wl-pop .wlname-page{ text-align:right;padding:0 20px 5px 0; border-bottom:1px solid #d4d4d4;}
+.wl-pop .wlname-page a,.wl-pop .wlname-page span{ display:inline-block;  }
+.wl-pop .wlname-page span{ vertical-align:1px;*vertical-align:-2px;color:#d4d4d4;}
+.wl-pop .wlname-page a{ width:12px; height:12px;background-image:url(http://static.pinju.com/images/wl-page-btn.png); background-repeat:no-repeat; overflow:hidden;}
+.wl-pop .wlname-page .l{ width:12px; height:12px; background-position:0 -12px;}
+.wl-pop .wlname-page .r{ width:12px; height:12px;background-position:-12px -12px;}
+.wl-pop .wlname-page a.gl{ width:12px; height:12px; background-position:0 0;}
+.wl-pop .wlname-page a.gr{ width:12px; height:12px;background-position:-12px 0;}
+.wl-pop .wl-more{ padding:5px 20px;}
+.wl-pop .wl-more span{ padding:5px 20px; vertical-align:middle; }
+.wl-pop .wl-more .btn{ float:right; text-align:center; line-height:25px; text-decoration:none; background: url("http://static.pinju.com/images/juse.gif") no-repeat scroll 0 0 transparent;border:none;color: #FFFFFF;font-weight: bold;height: 25px;width: 72px;}
+
+
+.wl-error{
+	 font-size:14px;
+	 font-weight:bold;
+    background: url("http://static.pinju.com/img/icon-tipsdefault.png") no-repeat scroll 5px 5px;
+    color: #d72426;
+    height: 18px;
+    line-height: 18px;
+    padding: 3px 8px 3px 25px;
+}
+#simplemodal-overlay{background:#000;}

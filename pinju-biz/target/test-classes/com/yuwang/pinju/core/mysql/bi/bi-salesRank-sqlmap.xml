@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BiSalesRank">
+
+  <typeAlias alias="biShopSalesRankDO" type="com.yuwang.pinju.domain.bi.ShopSalesRankDO" />
+  <resultMap id="shopSalesRankDOResult" class="biShopSalesRankDO">
+    <result column="SHOP_SALESRANK_ID" property="shopSalesRankId" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="SHOP_ID" property="shopId" />
+    <result column="CATEGORY_ID" property="categoryId" />
+    <result column="CATE_PARENT_ID" property="cateparentId" />
+    <result column="ITEM_ID" property="itemId" />
+    <result column="ITEM_NAME" property="itemName" />
+    <result column="ITEM_PRICE" property="itemPrice" />
+    <result column="ITEM_PIC_URL" property="itemPicUrl" />
+    <result column="ITEM_SALECOUNT" property="itemSaleCount" />
+    <result column="RANK_TYPE" property="rankType" />
+  </resultMap>
+
+  <sql id="getAllShopSalesRank">
+    <![CDATA[SELECT SHOP_SALESRANK_ID, MEMBER_ID, SHOP_ID, CATEGORY_ID, CATE_PARENT_ID, ITEM_ID, 
+    ITEM_NAME, ITEM_PRICE, ITEM_PIC_URL ,ITEM_SALECOUNT , RANK_TYPE FROM BI_SHOP_SALESRANK]]>
+  </sql>
+
+ 	<select id="findShopSalesRank" resultMap="shopSalesRankDOResult" parameterClass="java.util.HashMap">
+ 		<include refid="getAllShopSalesRank" />
+  		<dynamic prepend="WHERE">
+		    <isNotEmpty prepend="and" property="memberId" >
+		        MEMBER_ID = #memberId#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="and" property="shopId" >
+		        SHOP_ID = #shopId#
+		    </isNotEmpty>
+		       <isNotEmpty prepend="and" property="categoryId" >
+		        CATEGORY_ID = #categoryId#
+		    </isNotEmpty>
+		       <isNotEmpty prepend="and" property="cateparentId" >
+		        CATE_PARENT_ID = #cateparentId#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="and" property="rankType" >
+		        RANK_TYPE = #rankType#
+		    </isNotEmpty>
+   		 </dynamic>
+   		<![CDATA[ORDER BY ITEM_SALECOUNT DESC LIMIT #rowNum# ]]>
+    </select>
+    
+    
+
+</sqlMap>
+    
+    
+    

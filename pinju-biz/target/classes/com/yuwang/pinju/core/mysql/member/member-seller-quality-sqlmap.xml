@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SellerQuality" >
+
+  <typeAlias alias="sellerQuality" type="com.yuwang.pinju.domain.member.SellerQualityDO"/>
+
+  <resultMap id="sellerQuality" class="sellerQuality">
+    <result column="ID" property="id" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="NICKNAME" property="nickname" />
+    <result column="SHOP_ID" property="shopId" />
+    <result column="SHOP_NAME" property="shopName" />
+    <result column="SELLER_TYPE" property="sellerType" />
+    <result column="APPROVE_STATUS" property="approveStatus" />
+    <result column="COMPANY_NAME" property="companyName" />
+    <result column="LOCAL_ID" property="localId" />
+    <result column="LOCAL_NAME" property="localName" />
+    <result column="LEVEL" property="level" />
+    <result column="CP_TYPE" property="cpType" />
+    <result column="MARGIN" property="margin" />
+    <result column="CATEGORY_ID" property="categoryId" />
+    <result column="CATEGORY_NAME" property="categoryName" />
+
+    <result column="REFUND_RATE" property="refundRate" />
+    <result column="REFUND_SUCCESS_RATE" property="refundSuccessRate" />
+    <result column="RIGHTS_RATE" property="rightsRate" />
+    <result column="RIGHTS_SUCCESS_RATE" property="rightsSuccessRate" />
+    <result column="DISPUTE_RATE" property="disputeRate" />
+
+    <result column="GMT_CREATE" property="gmtCreate" javaType="java.util.Date" />
+    <result column="GMT_MODIFIED" property="gmtModified" javaType="java.util.Date" />
+  </resultMap>
+
+  <sql id="getAllSellerQuality">
+    <![CDATA[
+    SELECT ID, MEMBER_ID, NICKNAME, SHOP_ID, SHOP_NAME, SELLER_TYPE, APPROVE_STATUS, COMPANY_NAME, LOCAL_ID, LOCAL_NAME, LEVEL, CP_TYPE, MARGIN, CATEGORY_ID, CATEGORY_NAME, REFUND_RATE, REFUND_SUCCESS_RATE, RIGHTS_RATE, RIGHTS_SUCCESS_RATE, DISPUTE_RATE, GMT_CREATE, GMT_MODIFIED
+      FROM MEMBER_SELLER_QUALITY
+    ]]>
+  </sql>
+
+  <select id="getSellerQualityByMemberId" resultMap="sellerQuality" parameterClass="long">
+    <include refid="getAllSellerQuality" />
+    <![CDATA[WHERE MEMBER_ID = #shopId#]]>
+  </select>
+
+  <insert id="insertSellerQuality" parameterClass="sellerQuality">
+    <![CDATA[
+    INSERT INTO MEMBER_SELLER_QUALITY (
+      MEMBER_ID, NICKNAME, SHOP_ID, SHOP_NAME, SELLER_TYPE, APPROVE_STATUS, COMPANY_NAME, LOCAL_ID,
+      LOCAL_NAME, LEVEL, CP_TYPE, MARGIN, CATEGORY_ID,
+      CATEGORY_NAME, REFUND_RATE, REFUND_SUCCESS_RATE, RIGHTS_RATE, RIGHTS_SUCCESS_RATE, DISPUTE_RATE,
+      GMT_CREATE, GMT_MODIFIED
+    ) VALUES (
+      #memberId#, #nickname#, #shopId#, #shopName#, #sellerType#, #approveStatus#, #companyName#, #localId#,
+      #localName#, #level#, #cpType#, #margin#, #categoryId#,
+      #categoryName#, #refundRate#, #refundSuccessRate#, #rightsRate#, #rightsSuccessRate#, #disputeRate#,
+      #gmtCreate#, #gmtModified#
+    )
+    ]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+  </insert>
+
+  <update id="updateSellerQuality" parameterClass="sellerQuality">
+    <![CDATA[UPDATE MEMBER_SELLER_QUALITY]]>
+    <dynamic prepend="SET">
+      <isNotEmpty prepend="," property="shopName">
+        <![CDATA[SHOP_NAME = #shopName#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="sellerType">
+        <![CDATA[SELLER_TYPE = #sellerType#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="approveStatus">
+        <![CDATA[APPROVE_STATUS = #approveStatus#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="companyName">
+        <![CDATA[COMPANY_NAME = #companyName#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="localId">
+        <![CDATA[LOCAL_ID = #localId#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="localName">
+        <![CDATA[LOCAL_NAME = #localName#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="level">
+        <![CDATA[LEVEL = #level#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="cpType">
+        <![CDATA[CP_TYPE = #cpType#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="margin">
+        <![CDATA[MARGIN = #margin#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="categoryId">
+        <![CDATA[CATEGORY_ID = #categoryId#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="categoryName">
+        <![CDATA[CATEGORY_NAME = #categoryName#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="refundRate">
+        <![CDATA[REFUND_RATE = #refundRate#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="refundSuccessRate">
+        <![CDATA[REFUND_SUCCESS_RATE = #refundSuccessRate#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="rightsRate">
+        <![CDATA[RIGHTS_RATE = #rightsRate#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="rightsSuccessRate">
+        <![CDATA[RIGHTS_SUCCESS_RATE = #rightsSuccessRate#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="disputeRate">
+        <![CDATA[DISPUTE_RATE = #disputeRate#]]>
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="gmtModified">
+        <![CDATA[GMT_MODIFIED = #gmtModified#]]>
+      </isNotEmpty>
+    </dynamic>
+    <![CDATA[WHERE MEMBER_ID = #memberId#]]>
+  </update>
+</sqlMap>

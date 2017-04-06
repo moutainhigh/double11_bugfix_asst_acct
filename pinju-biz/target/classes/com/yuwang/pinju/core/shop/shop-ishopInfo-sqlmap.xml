@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="shopiShopInfo">
+	<resultMap id="ShopiShopInfoResult" class="com.yuwang.pinju.domain.shop.ShopIshopInfoDO">
+	 <result property="shopManagerName" column="SHOP_MANAGER_NAME" />
+	 <result property="shopManagerTelephone" column="SHOP_MANAGER_TELEPHONE" />	
+	 <result property="shopManagerMobile" column="SHOP_MANAGER_MOBILE" />
+	 <result property="shopManagerEmail" column="SHOP_MANAGER_EMAIL" />	
+	 <result property="shopManagerFax" column="SHOP_MANAGER_FAX" />	
+	 <result property="qq" column="QQ" />	
+	 <result property="msn" column="MSN" />	
+	 <result property="contactAddress" column="CONTACT_ADDRESS" />
+	</resultMap>
+	<select id="queryManagerInfoByUser"  resultMap="ShopiShopInfoResult" parameterClass="java.util.Map">
+      <![CDATA[SELECT SHOP_MANAGER_NAME,SHOP_MANAGER_TELEPHONE,SHOP_MANAGER_MOBILE,SHOP_MANAGER_EMAIL,SHOP_MANAGER_FAX,CONTACT_ADDRESS,QQ,MSN FROM shop_ishop_info where USER_ID=#userId#]]>
+    </select>
+	<update id="updateIshopInfo" parameterClass="com.yuwang.pinju.domain.shop.ShopIshopInfoDO">
+		<![CDATA[UPDATE shop_ishop_info]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="shopManagerName">
+				<![CDATA[SHOP_MANAGER_NAME = #shopManagerName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopManagerTelephone">
+				<![CDATA[SHOP_MANAGER_TELEPHONE = #shopManagerTelephone#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopManagerMobile">
+				<![CDATA[SHOP_MANAGER_MOBILE = #shopManagerMobile#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopManagerEmail">
+				<![CDATA[SHOP_MANAGER_EMAIL = #shopManagerEmail#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopManagerFax">
+				<![CDATA[SHOP_MANAGER_FAX = #shopManagerFax#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="qq">
+				<![CDATA[QQ = #qq#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="msn">
+				<![CDATA[MSN = #msn#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="contactAddress">
+				<![CDATA[CONTACT_ADDRESS = #contactAddress#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE user_id = #userId#]]>
+		</update>
+
+</sqlMap>

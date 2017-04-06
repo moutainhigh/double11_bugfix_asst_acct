@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_category">
+
+	<typeAlias alias="ItemCategory" type="com.yuwang.pinju.domain.item.CategoryDO" />
+
+	<resultMap id="ItemCategoryResult" class="ItemCategory">
+		<result property="id" column="ID" />
+		<result property="parentId" column="PARENT_ID" />
+		<result property="name" column="NAME" />
+		<result property="categoryLevel" column="CATEGORY_LEVEL" />
+		<result property="features" column="FEATURES" />
+		<result property="isLeaf" column="IS_LEAF" />
+		<result property="status" column="STATUS" />
+		<result property="sortOrder" column="SORT_ORDER" />
+	</resultMap>
+
+	<sql id="selectAllItemCategory">
+		<![CDATA[
+			SELECT ID,PARENT_ID,NAME,CATEGORY_LEVEL,FEATURES,IS_LEAF,STATUS,SORT_ORDER
+			FROM ITEM_CATEGORY
+		]]>
+	</sql>
+
+	<select id="selectItemCategoryByParentId" resultMap="ItemCategoryResult"
+		parameterClass="long">
+		<include refid="selectAllItemCategory" />
+		<![CDATA[
+			WHERE PARENT_ID = #parentId# AND STATUS = 1
+			ORDER BY SORT_ORDER
+		]]>
+	</select>
+
+	<select id="selectItemCategoryById" resultMap="ItemCategoryResult"
+		parameterClass="long">
+		<include refid="selectAllItemCategory" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectFullItemCategory" resultMap="ItemCategoryResult" parameterClass="long"> 
+		<include refid="selectAllItemCategory"/> where status=#status#
+	</select>
+	<select id="selectModifyItemCategory" resultMap="ItemCategoryResult" parameterClass="map"> 
+		<include refid="selectAllItemCategory"/> where  
+		GMT_MODIFIED  <![CDATA[ >= ]]> to_date(#startDate#  , 'yyyy-mm-dd hh24:mi:ss') and
+		GMT_MODIFIED  <![CDATA[ < ]]> to_date(#endDate#  , 'yyyy-mm-dd hh24:mi:ss') 
+	</select>
+</sqlMap>
+

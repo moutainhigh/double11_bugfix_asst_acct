@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<context:annotation-config />
+	<context:component-scan base-package="/" />
+	
+	  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:datasource.properties</value>
+                <value>classpath:cacheOpt.properties</value>
+                <value>classpath:config.properties</value>
+            </list>
+        </property>
+    </bean>
+
+	<!-- 数据库配置 -->
+	<bean id="oraDataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">      
+	    <property name="driverClassName" value="${jdbc.oracle.driver}" />      
+	    <property name="url" value="${pinju.oracle.jdbc.url}" />      
+	    <property name="username" value="${pinju.oracle.jdbc.username}" />      
+	    <property name="password" value="${pinju.oracle.jdbc.password}" />      
+	</bean>  
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource">
+			<ref local="oraDataSource" />
+		</property>
+		<property name="configLocation">
+			<value>classpath:/biz/persistence/sqlmap-config.xml</value>
+		</property>
+	</bean>  
+	
+	<!-- 事务管理-->
+
+	<!-- 即时到帐事物管理Add by LingJianTao@2011.08.13 -->
+	<bean id="zizuTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref local="oraDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="zizuTransactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager">
+			<ref local="zizuTransactionManager" />
+		</property>
+	</bean>
+	
+  <!-- 用于在代码中获取 Spring 的 Bean 实例 -->
+  <bean id="springBeanFactory" class="com.yuwang.pinju.core.common.SpringBeanFactory" />
+  
+  <import resource="classpath:/applicationContext-mysql.xml" />
+	
+	<!-- 文件上传
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="114572800" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	-->
+	
+	<!--    spring加载多有业务的配置文件         -->
+	<!-- 用户管理 
+	<import resource="classpath:/biz/bean/user/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/user/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/user/biz-manager.xml" />-->
+	
+	<!-- 店铺管理 -->
+	<import resource="classpath:/biz/bean/shop/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/shop/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/shop/biz-manager.xml" />
+
+ 	<!-- <import resource="classpath:/applicationContext-member.xml" />-->
+	<!-- 商品管理 -->
+	<import resource="classpath:/biz/bean/item/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/item/biz-manager.xml" />
+	<import resource="classpath:/biz/bean/item/biz-service.xml" />
+	
+	
+	
+	<!-- 订单管理 
+	<import resource="classpath:/biz/bean/order/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/order/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/order/biz-manager.xml" />-->
+
+	<!-- BI管理
+	<import resource="classpath:/biz/bean/bi/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/bi/biz-manager.xml" />-->
+	
+	<!-- 退款管理 
+	<import resource="classpath:/biz/bean/refund/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/refund/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/refund/biz-manager.xml" />-->
+	
+
+	<!-- 消保维权 Add By ShiXing@2011.06.29 -->
+	<import resource="classpath:/biz/bean/rights/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/rights/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/rights/biz-manager.xml" />
+	
+	<!-- sndo xmemcache 
+	<import resource="snda-xmemcache.xml" />-->
+	
+	<!--时间任务
+  	<import resource="classpath:/biz/bean/timetask/biz-timetask.xml" /> -->
+  	
+  	<!-- 活动管理 
+	<import resource="classpath:/biz/bean/active/active-ao.xml" />
+  	<import resource="classpath:/biz/bean/active/active-dao.xml" />
+  	<import resource="classpath:/biz/bean/active/active-manager.xml" />-->
+  	
+  	<!-- 搜索 Add By liming@2011-07-19 
+	<import resource="classpath:/biz/bean/search/biz-service.xml" />
+	<import resource="classpath:/biz/bean/search/biz-manager.xml" />-->
+	<import resource="classpath:/biz/bean/httpclient/biz-service.xml" />
+  	
+  
+  	<!-- 折扣活动相关
+  	<import resource="classpath:/biz/bean/active/active-dao.xml" />	
+  	<import resource="classpath:/biz/bean/active/active-manager.xml" /> -->
+  	
+  	<!-- 保证金 Add By LingJianTao@2011.08.02 -->
+  	<import resource="classpath:/biz/bean/margin/biz-ao.xml"/>
+  	<import resource="classpath:/biz/bean/margin/biz-dao.xml"/>
+  	<import resource="classpath:/biz/bean/margin/biz-manager.xml"/>
+  	<!-- 保证金 End -->
+  	
+  	<!-- 即时到账 Add By LingJianTao@2011.08.12-->
+  	<import resource="classpath:/biz/bean/trade/biz-dao.xml"/>
+  	<import resource="classpath:/biz/bean/trade/biz-manager.xml"/>
+  	<!-- 即时到账 End -->
+  	
+  	<!-- 限购特供 -->
+  	<import resource="classpath:/biz/bean/sales/biz-ao.xml"/>
+  	<import resource="classpath:/biz/bean/sales/biz-dao.xml"/>
+  	<import resource="classpath:/biz/bean/sales/biz-manager.xml"/>
+  	<!-- 即时到账 End -->
+  		<!-- 配置信息 -->
+  	<import resource="classpath:/biz/bean/config/biz-ao.xml"/>
+  	<import resource="classpath:/biz/bean/config/biz-dao.xml"/>
+  	<import resource="classpath:/biz/bean/config/biz-manager.xml"/>
+  	<!-- 配置信息常量 -->
+</beans>

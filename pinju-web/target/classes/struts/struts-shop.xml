@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+  		 <package name="ajaxshop" namespace="/shop" extends="json-default">
+  			<!-- 异步检查店铺名称是否存在 -->
+			<action name="queryAjaxShopAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="queryAjaxShopName">
+		  		 <result type="json">
+		  		 	<param name="root">result</param>
+		  		 </result>
+		  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+			</action>
+			
+  		</package>
+  		
+  		<package name="shopMessage" namespace="/shopMessage" extends="pinju-default">
+  			<!--显示店铺未开店提示  -->
+	        <action name="shopNotOpen" class="com.yuwang.pinju.web.module.shop.screen.ShopNotOpenAction">
+		  		 <result name="NOT_OPEN" type="freemarker">/default/templates/screen/shop/shopNotOpen.ftl</result>
+			</action>
+			
+			<!--显示店铺未开店提示  -->
+	        <action name="shopIsClose" class="com.yuwang.pinju.web.module.shop.screen.ShopIsCloseAction">
+		  		 <result name="IS_CLOSE" type="freemarker">/default/templates/screen/shop/shopIsClose.ftl</result>
+			</action>
+			
+			<!--显示不存在提示  -->
+	        <action name="shopNotExist" class="com.yuwang.pinju.web.module.shop.screen.ShopNotExistAction">
+		  		 <result name="NOT_EXIST" type="freemarker">/default/templates/screen/shop/shopNotExist.ftl</result>
+			</action>
+  		</package>
+  		
+      <package name="shop" namespace="/shop" extends="pinju-auth" >
+      	<!--显示店铺基本信息页  -->
+        <action name="showShopInfo" class="com.yuwang.pinju.web.module.shop.screen.ShopShowShopInfoAction" method="showShopInfo">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/shopOpenShopBaseInfo.ftl</result>
+	  		 <result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopInfo</result>
+	  		 <result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopInfo</result>
+		</action>
+		
+		<!--保存店铺基本信息  -->
+		<action name="saveShopInfo" class="com.yuwang.pinju.web.module.shop.action.ShopShowInfoAction">
+		
+			     <result name="success" type="chain">
+			        <param name="namespace">/shop</param>
+			        <param name="actionName">showShopInfo</param>
+			      </result>
+	  		<!--   <result name="success" type="redirect">showShopInfo.htm</result>-->
+	  		  <result name="VALIDATEERROR" type="freemarker">/default/templates/screen/shop/shopOpenShopBaseInfo.ftl</result>
+		</action>
+		
+		<!--店铺商品分类  -->
+		<action name="shopCategory" class="com.yuwang.pinju.web.module.shop.screen.ShopCategoryAction" method="execute">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/shopCategory.ftl</result>
+	  		 <result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopCategory</result>
+	  		 <result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopCategory</result>
+	  		 <result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shopCategory</result>
+		</action>
+		
+		<action name="insertShopCategory" class="com.yuwang.pinju.web.module.shop.action.ShopCategoryAction" method="insertShopCategory">
+	  		 <result name="success" type="redirect">shopCategory.htm?result=success</result>
+		</action>
+		
+		<action name="itemCategorize" class="com.yuwang.pinju.web.module.shop.screen.ShopGoodsCategorizeAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/shop/itemCategorize.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<action name="saveItemCategorize" class="com.yuwang.pinju.web.module.shop.screen.ShopGoodsCategorizeAction" method="saveItemCategorize">
+			<result name="success" type="freemarker">/default/templates/screen/shop/itemCategorize.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- test -->
+		<action name="index" class="com.yuwang.pinju.web.module.user.screen.HelloWorld" method="execute">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/hello.ftl</result>
+		</action>
+		
+		<!-- 显示开店首页 -->
+		<action name="showShopOpenBeginAction" class="com.yuwang.pinju.web.module.shop.screen.ShopOpenAction" method="showShopOpenBegin">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/shopOpenOpenBegin.ftl</result>
+		</action>
+		
+		<!-- 点我要开店时 -->
+		<action name="showShopOpenAction" class="com.yuwang.pinju.web.module.shop.screen.ShopOpenAction" method="showShopOpen">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/shopOpenOpen.ftl</result>
+	  		 <result name="redirectShopOpen" type="redirect">shopOpenBeginAction.htm</result>
+	  		 <result name="SHOP_OPEN_BEGIN" type="freemarker">/default/templates/screen/shop/shopOpenOpenBegin.ftl</result>
+	  		 <result name="EXCHANGE_MARGIN" type="freemarker">/default/templates/screen/shop/shopOpenCash.ftl</result>
+		</action>
+		
+		<!-- 开店流程 -->
+		<action name="shopOpenBeginAction" class="com.yuwang.pinju.web.module.shop.screen.ShopOpenAction" method="shopOpenBegin">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">false</param>
+		        <param name="generate">true</param>
+		      </interceptor-ref>
+		    <!-- <result name="CHECK_TENPAY" type="redirect">tenPayAccountSetPageAction.htm</result> -->
+		     
+		     <result name="CHECK_TENPAY" type="chain">
+                  <param name="namespace">/tenpay</param>
+                  <param name="actionName">tenPayAccountSetPageAction</param>
+             </result> 
+		     
+	  		  <!--<result name="CHECK_TENPAY" type="freemarker">/default/templates/screen/shop/shopOpenAccountBinding.ftl</result>--> 
+	  		 <result name="AGREEMENT" type="freemarker">/default/templates/screen/shop/shopOpenAgreement.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_C" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoC.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP1" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep1.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP2" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep2.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP3" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep3.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP4" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep4.ftl</result>
+	  		 <result name="EXCHANGE_MARGIN" type="freemarker">/default/templates/screen/shop/shopOpenCash.ftl</result>
+	  		 <result name="SHOP_OPEN_BEGIN" type="freemarker">/default/templates/screen/shop/shopOpenOpenBegin.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 确认服务条款 -->
+		<action name="shopOpenAgreementAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="shopOpenAgreement">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">false</param>
+		        <param name="generate">true</param>
+		      </interceptor-ref>
+	  		 <result name="successC" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoC.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP1" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep1.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP2" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep2.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP3" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep3.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP4" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep4.ftl</result>
+		</action>
+		
+		<!-- 上一步 -->
+		<action name="prevStepAction" class="com.yuwang.pinju.web.module.shop.screen.ShopOpenAction" method="prevStep">
+	  		 <interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">false</param>
+		        <param name="generate">true</param>
+		      </interceptor-ref>
+	  		 <result name="error" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoC.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP1" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep1.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP2" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep2.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP3" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep3.ftl</result>
+	  		 <result name="FILL_SHOP_INFO_B_SETP4" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep4.ftl</result>
+			 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+		
+		<!-- 保存C店信息 -->
+		<action name="saveCustomerShopInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="saveCustomerShopInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		        <param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+             <result name="successC" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoC.ftl</result>
+			<result name="SHOP_OPEN_BEGIN" type="freemarker">/default/templates/screen/shop/shopOpenOpenBegin.ftl</result>
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/shopOpenCash.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+	  		 <result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		
+		<!-- 保存B店信息 -->
+		<action name="saveBusinessShopInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="saveBusinessShopInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		      	<param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+			<result name="SHOP_OPEN_BEGIN" type="freemarker">/default/templates/screen/shop/shopOpenOpenBegin.ftl</result>
+			<result name="FILL_SHOP_INFO_B_SETP1" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep1.ftl</result>
+	  		<result name="FILL_SHOP_INFO_B_SETP2" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep2.ftl</result>
+	  		<result name="FILL_SHOP_INFO_B_SETP3" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep3.ftl</result>
+	  		<result name="FILL_SHOP_INFO_B_SETP4" type="freemarker">/default/templates/screen/shop/shopOpenFillShopInfoBStep4.ftl</result>
+	  		<result name="success" type="freemarker">/default/templates/screen/shop/shopOpenCash.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+			<result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		
+		<!-- 确认消保时调用 -->
+		<action name="exchangeMarginAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="saveBusinessShopInfo">
+	  		 <result name="success" type="freemarker">/default/templates/screen/shop/shopOpenCash.ftl</result>
+		</action>
+		
+		<!-- 开店成功时调用 -->
+		<action name="setShopIsOpenAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="setShopIsOpen">
+	  		<result name="success" type="freemarker">/default/templates/screen/shop/shopOpenOpenBegin.ftl</result>
+		</action>
+		
+		<action name="payMarginAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="payMargin">
+			<result name="error" type="freemarker">/default/templates/screen/shop/shopOpenCash.ftl</result>
+	  		<result name="success" type="chain">
+                  <param name="namespace">/orderPay</param>
+                  <param name="actionName">tenDirectSendOrder</param>
+             </result>
+		</action>
+		
+		<!-- 跳转到支付保证金页面 -->
+		<action name="goToPayExchangeAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="goToPayExchange">
+		</action>
+		
+		<!-- 图片验证 异步 -->
+		<action name="validateUploadImage"
+			class="com.yuwang.pinju.web.module.shop.action.ShopImageValidateAction"
+			method="validateUploadImage" >
+		</action>
+		
+		
+		<!-- 保存C店信息  2.0新    begin -->
+		<!-- 保存C店基本信息 -->
+		<action name="saveCustomerBaseInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="saveCustomerBaseInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		        <param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+		      <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+	  		 <result name="baseInfoError" type="freemarker">/default/templates/screen/shop/shopOpenFillCustomerBaseInfo.ftl</result>
+	  		 <result name="success" type="redirect">choiceFillIndexAction.htm</result>
+	  		 <result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		<!-- 保存C店上传信息 -->
+		<action name="saveCustomerUploadInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="saveCustomerUploadInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		        <param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+		      <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+	  		 <result name="uploadError" type="freemarker">/default/templates/screen/shop/shopOpenFillCustomerUploadInfo.ftl</result>
+	  		 <result name="success" type="redirect">choiceFillIndexAction.htm</result>
+	  		 <result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		<!-- 保存C店信息  2.0新     end -->
+		
+		
+		<!-- 保存B店信息  2.0新    begin -->
+		<!-- 保存B店基本信息 -->
+		<action name="saveBusinessBaseInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="saveBusinessBaseInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		      	<param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+		      <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+			<result name="baseInfoError" type="freemarker">/default/templates/screen/shop/shopOpenFillBusinessBaseInfo.ftl</result>
+	  		<result name="success" type="redirect">choiceFillIndexAction.htm</result>
+	  		<result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		<!-- 保存B店上传信息 -->
+		<action name="saveBusinessUploadInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="saveBusinessUploadInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		        <param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+		      <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+	  		 <result name="uploadError" type="freemarker">/default/templates/screen/shop/shopOpenFillBusinessUploadInfo.ftl</result>
+	  		 <result name="success" type="redirect">choiceFillIndexAction.htm</result>
+	  		 <result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		<!-- 保存B店品牌信息 -->
+		<action name="saveBusinessBrandInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="saveBusinessBrandInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		        <param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+		      <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+	  		 <result name="brandInfoError" type="freemarker">/default/templates/screen/shop/shopOpenFillBusinessBrandInfo.ftl</result>
+	  		 <result name="success" type="redirect">queryShopInfoAction.htm?brandSaveType=0</result>
+	  		 <result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+	  		 <result name="saveAndNew" type="freemarker">/default/templates/screen/shop/shopOpenFillBusinessBrandInfo.ftl</result>
+	  		 <result name="notSaveAndNew" type="freemarker">/default/templates/screen/shop/shopOpenFillBusinessBrandInfo.ftl</result>
+	  		 
+		</action>
+		<!-- 保存B店信息  2.0新     end -->
+		
+		
+		<!-- 保存iShop信息  2.0新    begin -->
+		<!-- 保存iShop店基本信息 -->
+		<action name="saveIShopBaseInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="saveIShopBaseInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		      	<param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+		      <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+			<result name="baseInfoError" type="freemarker">/default/templates/screen/shop/shopOpenFillIShopBaseInfo.ftl</result>
+	  		<result name="success" type="redirect">choiceFillIndexAction.htm</result>
+	  		<result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		<!-- 保存iShop上传信息 -->
+		<action name="saveIShopUploadInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="saveIShopUploadInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		        <param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+		      <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+	  		 <result name="uploadError" type="freemarker">/default/templates/screen/shop/shopOpenFillIShopUploadInfo.ftl</result>
+	  		 <result name="success" type="redirect">choiceFillIndexAction.htm</result>
+	  		 <result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		<!-- 保存iShop信息  2.0新     end -->
+		
+		<!-- 删除品牌信息 2.0新 -->
+		<action name="deleteBrandInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="deleteBrandInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">true</param>
+		        <param name="generate">true</param>
+		        <param name="repeatSubmit">not-allowed</param>
+		        <param name="messageKey">shop.info.repeat.submit</param>
+		      </interceptor-ref>
+		      <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+	  		 <result name="success" type="redirect">queryShopInfoAction.htm</result> 
+	  		 <result name="not-allowed" type="freemarker">/default/templates/screen/shop/notAllowError.ftl</result>
+		</action>
+		
+		<!-- 填写资料 2.0新 -->
+		<action name="queryShopInfoAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="queryShopInfo">
+			<interceptor-ref name="pinju-login-interceptor" />
+		      <interceptor-ref name="pinjuRefreshToken">
+		        <param name="validate">false</param>
+		        <param name="generate">true</param>
+		      </interceptor-ref>
+	  		 <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+	  		 <result name="fillCustomerBaseInfo" type="freemarker">/default/templates/screen/shop/shopOpenFillCustomerBaseInfo.ftl</result>
+	  		 <result name="fillCustomerUploadInfo" type="freemarker">/default/templates/screen/shop/shopOpenFillCustomerUploadInfo.ftl</result>
+	  		 
+	  		 <result name="fillBusinessBaseInfo" type="freemarker">/default/templates/screen/shop/shopOpenFillBusinessBaseInfo.ftl</result>
+	  		 <result name="fillBusinessUploadInfo" type="freemarker">/default/templates/screen/shop/shopOpenFillBusinessUploadInfo.ftl</result>
+	  		 <result name="fillBusinessBrandInfo" type="freemarker">/default/templates/screen/shop/shopOpenFillBusinessBrandInfo.ftl</result>
+	  		 
+	  		 <result name="fillIShopBaseInfo" type="freemarker">/default/templates/screen/shop/shopOpenFillIShopBaseInfo.ftl</result>
+	  		 <result name="fillIShopUploadInfo" type="freemarker">/default/templates/screen/shop/shopOpenFillIShopUploadInfo.ftl</result>
+		</action>
+		
+		<!-- 开店流程首页跳转【2.0新】 -->
+		<action name="iWillOpenShopAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="iWillOpenShop">
+		  <result name="openShopIndex" type="freemarker">/default/templates/screen/shop/shopOpentep1.ftl</result>
+		  <result name="openShopIndex1" type="freemarker">/default/templates/screen/shop/shopOpentep2.ftl</result>
+		  <result name="openShopIndex2" type="freemarker">/default/templates/screen/shop/shopOpentep3.ftl</result>
+		  <result name="openShopIndex3" type="freemarker">/default/templates/screen/shop/shopOpentep4.ftl</result>
+		  <result name="openShopIndex4" type="freemarker">/default/templates/screen/shop/shopOpentep5.ftl</result>
+		  <result name="shopOpenEnd" type="redirect">shopOpenEndAction.htm</result>
+		  <result name="shopOpenLast" type="redirect">shopOpenEndAction.htm</result>
+		  <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		  
+		  
+		</action>
+		
+		<!-- 开店流程  进入选择填写内容页面【2.0新】 -->
+		<action name="choiceFillIndexAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="choiceFillIndex">
+		  <result name="choiceFillIndex" type="freemarker">/default/templates/screen/shop/shopOpenChoiceFillIndex.ftl</result>
+		</action>
+		
+		<!-- 开店流程  进入查看审核状态页面【2.0新】 -->
+		<action name="showAuditStatusPageAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="showAuditStatusPage">
+		  <result name="auditStatusPage" type="freemarker">/default/templates/screen/shop/shopOpenAuditStatus.ftl</result>
+		</action>
+		
+		<!-- 开店流程  重新开店【2.0新】 -->
+		<action name="reopenShopAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="reopenShop">
+		  <result name="reopenShop" type="redirect">iWillOpenShopAction.htm</result>
+		  <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+		</action>
+		<!-- 调转到开店协议页面【2.0新】 -->
+		<action name="shopShowAgreementAction" class="com.yuwang.pinju.web.module.shop.screen.ShopOpenAction" method="shopShowAgreement">
+		  <result name="showAgreement" type="freemarker">/default/templates/screen/shop/shopOpenAgreement.ftl</result>
+		</action>
+		
+		<!-- 签订协议【2.0新】 -->
+		<action name="shopOpenSignAgreementAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="shopOpenSignAgreement">
+		   <result name="openShopIndex1" type="redirect">iWillOpenShopAction.htm</result>
+		    <result name="statusError" type="freemarker">/default/templates/screen/shop/shopOpentep1.ftl</result>
+		</action>
+		
+		<!-- 点击开始按钮选择店铺类型【2.0新】 -->
+		<action name="shopChoiceShopAction" class="com.yuwang.pinju.web.module.shop.screen.ShopOpenAction" method="shopChoiceShop">
+		   <result name="success" type="freemarker">/default/templates/screen/shop/shopOpenChoiceShop.ftl</result>
+		    <result name="showShopIndex" type="redirect">iWillOpenShopAction.htm</result>
+		</action>
+		
+		<!-- 提交资料到审核【2.0新】 -->
+		<action name="submitShopOpenAskAction" class="com.yuwang.pinju.web.module.shop.action.ShopSaveShopInfoAction" method="submitShopOpenAsk">
+		   <result name="success" type="redirect">iWillOpenShopAction.htm</result>
+		   <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+		</action>
+		<!-- 更改店铺类型【2.0新】 -->
+		<action name="changeSellTypeAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="changeSellType">
+		   <result name="changeSellType" type="redirect">iWillOpenShopAction.htm</result>
+		    <result name="statusError" type="chain">
+			        <param name="namespace">/shop</param>
+			        <param name="actionName">iWillOpenShopAction</param>
+	      </result>
+		  <!--   <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>  -->
+		</action>
+		
+		<!-- 最后一步,进入卖家首页【2.0新】 -->
+		<action name="shopOpenEndAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="shopOpenEnd">
+		   <result name="shopOpenEnd" type="redirect">/my/sell.htm</result>
+		   <result name="error" type="freemarker">/default/templates/screen/shop/shopOpenLast.ftl</result>
+		   <result name="shopOpenEndPageShow" type="freemarker">/default/templates/screen/shop/shopOpenLast.ftl</result>
+		
+		</action>
+		
+		<action name="showShopOpenEndAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="showShopOpenEnd">
+		   <result name="showShopOpenEnd" type="freemarker">/default/templates/screen/shop/shopOpenLast.ftl</result>
+		
+		</action>
+		
+		<!-- 进入缴纳保证金页面【2.0新】 -->
+		<action name="showPayMarginPageAction" class="com.yuwang.pinju.web.module.shop.action.ShopOpenFlowAction" method="showPayMarginPage">
+		   <result name="showPayMarginPage" type="freemarker">/default/templates/screen/shop/shopOpenCash.ftl</result>
+		   <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		   <result name="statusError" type="redirect">iWillOpenShopAction.htm</result>
+		</action>
+		
+      </package>
+  </struts>

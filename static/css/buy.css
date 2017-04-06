@@ -1,0 +1,36 @@
+.ymdbb-tip{/*color:#d72426;*/ padding:6px; line-height:24px;}
+
+.ymdbb-pl{background:#f7f7f7; border:1px solid #d4d4d4; padding:5px;}
+
+.ymdbb-pl .pl-hd{height:50px; line-height:20px; border-bottom:1px solid #94d4ff;}
+
+.ymdbb-pl .pl-hd h4{font-size:14px; color:#0066cc; float:left;line-height:50px;}
+
+.ymdbb-pl .pl-hd a{font-size:14px; color:#0066cc; display:inline; float:left; margin-left:10px; line-height:50px; }
+
+.pl-content ol{float:left; margin:15px 10px; display:inline;}
+
+.pl-content div { clear:both; }
+
+.pl-content ol P{border-bottom:none; line-height:20px; margin:2px 0 8px 0; padding:0;}
+
+.pl-content ol P b{color:#000; }
+.pl-content textarea { width:536px; height:100px; resize:none; font-size:12px; padding:4px; }
+
+.pl-content ol a{display:block; color:#0066cc; width:120px;}
+
+.pl-content ol img{border:1px solid #d9d9d9; display:block; margin-bottom:5px;}
+
+.dtpf{position:relative; width:480px;}
+
+.dtpf label{float:left; float:left; line-height:22px; margin-right:6px;}
+
+.dtpf li{height:30px;}
+
+.pl-tip{position:absolute; right:18px; width:252px; height:41px; background:url(../images/xiaotis.jpg) no-repeat; padding:5px 3px 5px 17px; top:8px;}
+
+.pl-content ol .dtpf img{border:none;}
+
+.ymdbb-pl .yudbb-tj{margin-bottom:20px; text-align:center;}
+
+.ymdbb-pl .yudbb-tj input{margin:0 6px;}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_asst_relation">
+
+	<typeAlias alias="MemberAsstRelation" type="com.yuwang.pinju.domain.member.asst.MemberAsstRelationDO" />
+
+	<resultMap id="MemberAsstRelationResult" class="MemberAsstRelation">
+		<result property="id" column="ID" />
+		<result property="masterMemberId" column="MASTER_MEMBER_ID" />
+		<result property="masterLoginName" column="MASTER_LOGIN_NAME" />
+		<result property="asstMemberId" column="ASST_MEMBER_ID" />
+		<result property="asstLoginName" column="ASST_LOGIN_NAME" />
+		<result property="asstAcctDesc" column="ASST_ACCT_DESC" />
+		<result property="lastLoginTime" column="LAST_LOGIN_TIME" />
+		<result property="lastLoginIp" column="LAST_LOGIN_IP" />
+		<result property="status" column="STATUS"/>
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllMemberAsstRelation"><![CDATA[SELECT ID,MASTER_MEMBER_ID,MASTER_LOGIN_NAME,ASST_MEMBER_ID,ASST_LOGIN_NAME,ASST_ACCT_DESC,LAST_LOGIN_TIME,LAST_LOGIN_IP,STATUS,GMT_CREATE,GMT_MODIFIED FROM MEMBER_ASST_RELATION]]></sql>
+
+	<select id="selectAllMemberAsstRelation" resultMap="MemberAsstRelationResult">
+		<include refid="selectAllMemberAsstRelation" />
+	</select>
+
+	<select id="selectMemberAsstRelation"  resultMap="MemberAsstRelationResult" parameterClass="com.yuwang.pinju.domain.member.asst.MemberAsstRelationQuery">
+		<include refid="selectAllMemberAsstRelation" />
+		<![CDATA[WHERE MASTER_MEMBER_ID = #masterMemberId# ORDER BY ID DESC LIMIT #start#, #itemsPerPage# ]]>
+	</select>
+	
+	<select id="selectMemberAsstRelationCount" resultClass="int" parameterClass="com.yuwang.pinju.domain.member.asst.MemberAsstRelationQuery">
+	   <![CDATA[SELECT COUNT(ID) FROM MEMBER_ASST_RELATION WHERE MASTER_MEMBER_ID = #masterMemberId# ]]>
+	</select>
+
+  <select id="getMemberAsstRalationByAsst" resultMap="MemberAsstRelationResult" parameterClass="long">
+     <include refid="selectAllMemberAsstRelation" />
+     <![CDATA[ WHERE ASST_MEMBER_ID = #asstMemberId# LIMIT 1]]>
+  </select>
+
+	<select id="getMemberRalation" resultMap="MemberAsstRelationResult" parameterClass="MemberAsstRelation">
+	   <include refid="selectAllMemberAsstRelation" />
+	   <![CDATA[ WHERE MASTER_MEMBER_ID = #masterMemberId# AND ASST_MEMBER_ID = #asstMemberId#]]>
+	</select>
+
+	<insert id="insertMemberAsstRelation" parameterClass="MemberAsstRelation">
+		<![CDATA[INSERT INTO MEMBER_ASST_RELATION (ID,MASTER_MEMBER_ID,MASTER_LOGIN_NAME,ASST_MEMBER_ID,ASST_LOGIN_NAME,ASST_ACCT_DESC,LAST_LOGIN_TIME,LAST_LOGIN_IP,GMT_CREATE,GMT_MODIFIED) VALUES (#id#,#masterMemberId#,#masterLoginName#,#asstMemberId#,#asstLoginName#,#asstAcctDesc#,#lastLoginTime#,#lastLoginIp#,#gmtCreate#,#gmtModified#)]]>
+	    <selectKey resultClass="long" type="post" keyProperty="id">
+	       <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+	    </selectKey>
+	</insert>
+	
+	<delete id="deleteMemberAsstRelation"  parameterClass="MemberAsstRelation">
+		<![CDATA[DELETE FROM MEMBER_ASST_RELATION WHERE MASTER_MEMBER_ID = #masterMemberId# AND ASST_MEMBER_ID = #asstMemberId#]]>
+	</delete>
+	
+	<update id="editMemberAsstRelation" parameterClass="MemberAsstRelation">
+	   <![CDATA[ UPDATE MEMBER_ASST_RELATION SET ASST_ACCT_DESC = #asstAcctDesc#, GMT_MODIFIED = #gmtModified# WHERE MASTER_MEMBER_ID = #masterMemberId# AND ASST_MEMBER_ID = #asstMemberId#]]>
+	</update>
+  
+  <update id="logMemberAsstLogin" parameterClass="MemberAsstRelation">
+     <![CDATA[ UPDATE MEMBER_ASST_RELATION SET LAST_LOGIN_TIME = #lastLoginTime#, LAST_LOGIN_IP = #lastLoginIp#, GMT_MODIFIED = #gmtModified# WHERE ASST_MEMBER_ID = #asstMemberId#]]>
+  </update>
+  
+  <update id="editMemberAsstRelationStatus" parameterClass="MemberAsstRelation">
+     <![CDATA[ UPDATE MEMBER_ASST_RELATION SET STATUS = #status#, GMT_MODIFIED = #gmtModified# WHERE MASTER_MEMBER_ID = #masterMemberId# AND ASST_MEMBER_ID = #asstMemberId# ]]>
+  </update>
+</sqlMap>
+

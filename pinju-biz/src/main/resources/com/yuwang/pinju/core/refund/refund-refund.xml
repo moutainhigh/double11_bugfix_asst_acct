@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trade_refund">
+
+	<typeAlias alias="TradeRefund" type="com.yuwang.pinju.domain.refund.RefundDO" />
+
+	<resultMap id="TradeRefundResult" class="TradeRefund">
+		<result property="id" column="ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="orderItemId" column="ORDER_ITEM_ID" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="applyDate" column="APPLY_DATE" />
+		<result property="replyDate" column="REPLY_DATE" />
+		<result property="tradeSum" column="TRADE_SUM" />
+		<result property="applySum" column="APPLY_SUM" />
+		<result property="replySum" column="REPLY_SUM" />
+		<result property="sellerAgree" column="SELLER_AGREE" />
+		<result property="applyReason" column="APPLY_REASON" />
+		<result property="applyMemo" column="APPLY_MEMO" />
+		<result property="refundLogisticsId" column="REFUND_LOGISTICS_ID" />
+		<result property="refundState" column="REFUND_STATE" />
+		<result property="needSalesReturn" column="NEED_SALES_RETURN" />
+		<result property="pic1" column="PIC1" />
+		<result property="pic2" column="PIC2" />
+		<result property="pic3" column="PIC3" />
+		<result property="isCustProcessed" column="IS_CUST_PROCESS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="stateModified" column="STATE_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllTradeRefund"><![CDATA[SELECT ID,ORDER_ID,ORDER_ITEM_ID,SELLER_ID,SELLER_NICK,BUYER_ID,BUYER_NICK,APPLY_DATE,REPLY_DATE,TRADE_SUM,APPLY_SUM,REPLY_SUM,SELLER_AGREE,APPLY_REASON,APPLY_MEMO,REFUND_LOGISTICS_ID,REFUND_STATE,NEED_SALES_RETURN,PIC1,PIC2,PIC3,IS_CUST_PROCESS,GMT_CREATE,GMT_MODIFIED,STATE_MODIFIED FROM TRADE_REFUND]]></sql>
+
+	<select id="selectAllTradeRefund" resultMap="TradeRefundResult">
+		<include refid="selectAllTradeRefund" />
+	</select>
+
+	<select id="selectTradeRefundByOrderId" resultMap="TradeRefundResult"  parameterClass="long">
+		<include refid="selectAllTradeRefund" />
+		<![CDATA[WHERE ORDER_ID = #orderId#]]>
+	</select>
+	
+	<select id="selectTradeRefundByid" resultMap="TradeRefundResult"  parameterClass="long">
+		<include refid="selectAllTradeRefund" />
+		<![CDATA[WHERE id = #id#]]>
+	</select>
+
+	<select id="selectTradeRefundByOrderItemId" resultMap="TradeRefundResult"  parameterClass="long">
+		<include refid="selectAllTradeRefund" />
+		<![CDATA[WHERE order_item_id = #orderItemId#]]>
+	</select>
+	
+	<select id="selectTradeRefund"  resultMap="TradeRefundResult" parameterClass="TradeRefund">
+		<include refid="selectAllTradeRefund" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderItemId">
+				<![CDATA[ORDER_ITEM_ID = #orderItemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyDate">
+				<![CDATA[APPLY_DATE = #applyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="replyDate">
+				<![CDATA[REPLY_DATE = #replyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeSum">
+				<![CDATA[TRADE_SUM = #tradeSum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applySum">
+				<![CDATA[APPLY_SUM = #applySum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="replySum">
+				<![CDATA[REPLY_SUM = #replySum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerAgree">
+				<![CDATA[SELLER_AGREE = #sellerAgree#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyReason">
+				<![CDATA[APPLY_REASON = #applyReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyMemo">
+				<![CDATA[APPLY_MEMO = #applyMemo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundLogisticsId">
+				<![CDATA[REFUND_LOGISTICS_ID = #refundLogisticsId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="needSalesReturn">
+				<![CDATA[NEED_SALES_RETURN = #needSalesReturn#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pic1">
+				<![CDATA[PIC1 = #pic1#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pic2">
+				<![CDATA[PIC2 = #pic2#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pic3">
+				<![CDATA[PIC3 = #pic3#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isCustProcessed">
+				<![CDATA[IS_CUST_PROCESS = #isCustProcessed#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="stateModified">
+				<![CDATA[STATE_MODIFIED = #stateModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<sql id="selectAllTradeRefundList"><![CDATA[SELECT * FROM(SELECT A.*, ROWNUM RN FROM (SELECT ID,ORDER_ID,ORDER_ITEM_ID,SELLER_ID,SELLER_NICK,BUYER_ID,BUYER_NICK,APPLY_DATE,REPLY_DATE,TRADE_SUM,APPLY_SUM,REPLY_SUM,SELLER_AGREE,APPLY_REASON,APPLY_MEMO,REFUND_LOGISTICS_ID,REFUND_STATE,NEED_SALES_RETURN,PIC1,PIC2,PIC3,IS_CUST_PROCESS,GMT_CREATE,GMT_MODIFIED,STATE_MODIFIED FROM TRADE_REFUND]]></sql>
+	<select id="selectRefundList" resultMap="TradeRefundResult"	parameterClass="java.util.HashMap">
+		<include refid="selectAllTradeRefundList" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#]]>
+			</isNotEmpty>
+			<isNotNull prepend="and" property="beginDate">
+				GMT_CREATE >= TO_DATE(#beginDate#,'yyyymmdd hh24:mi:ss')
+			</isNotNull>
+			<isNotNull prepend="and" property="endDate">
+		        <![CDATA[GMT_CREATE <= TO_DATE(#endDate#,'yyyymmdd hh24:mi:ss')]]>
+			</isNotNull>
+			<isNotEmpty prepend="" property="endNum">
+				<![CDATA[ ORDER BY ID DESC ) A WHERE ROWNUM <= #endNum# )]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="" property="startNum">
+				<![CDATA[WHERE RN >= #startNum#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="selectRefundListCount" resultClass="int" parameterClass="java.util.HashMap">
+		SELECT COUNT(*) AS COUNT FROM TRADE_REFUND
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#]]>
+			</isNotEmpty>
+			<isNotNull prepend="and" property="beginDate">
+				GMT_CREATE >= TO_DATE(#beginDate#,'yyyymmdd hh24:mi:ss')
+			</isNotNull>
+			<isNotNull prepend="and" property="endDate">
+		        <![CDATA[GMT_CREATE <= TO_DATE(#endDate#,'yyyymmdd hh24:mi:ss')]]>
+			</isNotNull>
+		</dynamic>
+	</select>
+    
+    
+	<insert id="insertTradeRefund" parameterClass="TradeRefund">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_TRADE_REFUND_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+
+		<![CDATA[INSERT INTO TRADE_REFUND (ID,ORDER_ID,ORDER_ITEM_ID,SELLER_ID,SELLER_NICK,BUYER_ID,BUYER_NICK,APPLY_DATE,
+			REPLY_DATE,TRADE_SUM,APPLY_SUM,REPLY_SUM,SELLER_AGREE,APPLY_REASON,APPLY_MEMO,REFUND_LOGISTICS_ID,
+			REFUND_STATE,NEED_SALES_RETURN,PIC1,PIC2,PIC3,IS_CUST_PROCESS,GMT_CREATE,GMT_MODIFIED,STATE_MODIFIED)
+		 	VALUES 
+			(#id#,#orderId#,#orderItemId#,#sellerId#,#sellerNick#,#buyerId#,#buyerNick#,#applyDate#,
+				#replyDate#,#tradeSum#,#applySum#,#replySum#,#sellerAgree#,#applyReason#,#applyMemo#,
+				#refundLogisticsId#,#refundState#,#needSalesReturn#,#pic1#,#pic2#,#pic3#,
+				#isCustProcessed#,#gmtCreate#,#gmtModified#,#stateModified#)
+		]]>
+
+	</insert>
+
+	<sql id="deleteAllTradeRefund"><![CDATA[DELETE FROM TRADE_REFUND]]></sql>
+
+	<delete id="deleteAllTradeRefund">
+		<include refid="deleteAllTradeRefund" />
+	</delete>
+
+	<delete id="deleteTradeRefundByid" parameterClass="long">
+		<include refid="deleteAllTradeRefund" />
+		<![CDATA[WHERE id = #id#]]>
+	</delete>
+
+	<delete id="deleteTradeRefund"  parameterClass="TradeRefund">
+		<include refid="deleteAllTradeRefund" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderItemId">
+				<![CDATA[ORDER_ITEM_ID = #orderItemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyDate">
+				<![CDATA[APPLY_DATE = #applyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="replyDate">
+				<![CDATA[REPLY_DATE = #replyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeSum">
+				<![CDATA[TRADE_SUM = #tradeSum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applySum">
+				<![CDATA[APPLY_SUM = #applySum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="replySum">
+				<![CDATA[REPLY_SUM = #replySum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerAgree">
+				<![CDATA[SELLER_AGREE = #sellerAgree#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyReason">
+				<![CDATA[APPLY_REASON = #applyReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyMemo">
+				<![CDATA[APPLY_MEMO = #applyMemo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundLogisticsId">
+				<![CDATA[REFUND_LOGISTICS_ID = #refundLogisticsId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="needSalesReturn">
+				<![CDATA[NEED_SALES_RETURN = #needSalesReturn#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pic1">
+				<![CDATA[PIC1 = #pic1#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pic2">
+				<![CDATA[PIC2 = #pic2#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pic3">
+				<![CDATA[PIC3 = #pic3#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="stateModified">
+				<![CDATA[STATE_MODIFIED = #stateModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateTradeRefund" parameterClass="TradeRefund">
+		<![CDATA[UPDATE TRADE_REFUND ]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderItemId">
+				<![CDATA[ORDER_ITEM_ID = #orderItemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="applyDate">
+				<![CDATA[APPLY_DATE = #applyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="replyDate">
+				<![CDATA[REPLY_DATE = #replyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="tradeSum">
+				<![CDATA[TRADE_SUM = #tradeSum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="applySum">
+				<![CDATA[APPLY_SUM = #applySum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="replySum">
+				<![CDATA[REPLY_SUM = #replySum#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerAgree">
+				<![CDATA[SELLER_AGREE = #sellerAgree#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="applyReason">
+				<![CDATA[APPLY_REASON = #applyReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="applyMemo">
+				<![CDATA[APPLY_MEMO = #applyMemo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="refundLogisticsId">
+				<![CDATA[REFUND_LOGISTICS_ID = #refundLogisticsId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#, STATE_MODIFIED = sysdate]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="needSalesReturn">
+				<![CDATA[NEED_SALES_RETURN = #needSalesReturn#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="pic1">
+				<![CDATA[PIC1 = #pic1#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="pic2">
+				<![CDATA[PIC2 = #pic2#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="pic3">
+				<![CDATA[PIC3 = #pic3#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isCustProcessed">
+				<![CDATA[IS_CUST_PROCESS = #isCustProcessed#]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = sysdate]]>
+			</isNotEmpty>
+			
+		</dynamic>
+		<![CDATA[ WHERE ID = #id#]]>
+
+	</update>
+</sqlMap>
+

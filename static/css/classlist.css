@@ -1,0 +1,136 @@
+/*-------------------商品总列表--------------------------------------*/
+.class-content{margin:20px auto 0; width:990px;}
+
+.class-content .left{float:left; display:inline; width:225px; position:relative;}
+
+.class-content .left .left-list{width:211px; margin-right:10px; border:1px solid #ddd; padding:1px;}
+
+.class-content .left .left-list ul{background:#f7f7f7; padding-bottom:20px;}
+
+.class-content .left .left-list ul li{width:204px; margin-left:3px; border-bottom:1px solid #f1f0f0;}
+
+.class-content .left .left-list ul li a{color:#333; padding-left:6px; line-height:31px;}
+
+.class-content .left .focusBar{background:url(../images/listbj.jpg) no-repeat; width:213px; height:31px; line-height:31px; font-weight:bold; color:#fff; padding-left:10px; position:absolute; left:2px; top:2px;}
+
+.class-content .right{float:left; display:inline; width:765px;}
+
+.class-content .right li{margin:0 0 20px 35px; float:left; display:inline; width:220px;}
+
+.class-content .right li h3{line-height:33px; border-bottom:1px solid #ddd; padding-left:4px;}
+
+.class-content .right li h3 a{color:#e0620d; font-size:12px;}
+
+.class-content .right li p{margin-top:5px;}
+
+.class-content .right li p a{margin-left:10px; line-height:26px; display:inline-block; color:#666;}
+
+/*-----------------商品分类----------------------------------*/
+
+.commodity-content{margin:10px auto 0; width:990px;}
+
+.commodity-content .left{float:left; display:inline; width:211px; margin-right:16px;}
+
+.commodity-content .left .left-list{background:#fffbe1; border:1px solid #febf90; margin-bottom:12px; padding-bottom:20px;}
+
+.commodity-content .left .left-list ul{text-indent:10px;}
+
+.commodity-content .left .left-list ul ul{text-indent:20px;}
+
+.commodity-content .left .left-list ul ul ul{text-indent:30px;}
+
+.commodity-content .left .left-list ul ul ul ul{text-indent:45px;}
+
+.commodity-content .left .left-list ul li{line-height:18px; padding:3px 0;}
+
+.commodity-content .left .left-list ul li a{vertical-align:middle; display:block; width:200px;}
+
+.commodity-content .left .left-list ul li a span,.commodity-content .right .jindu li a b,.commodity-content .right .ssacsee b i,.commodity-content .right .ssacsee p a i,.commodity-content .right .showshop .show-hd h3 span,.commodity-content .right .showshop .show-hd ul li i,.commodity-content .product-price .buy-price,.commodity-content .product-price .yun-price strong{background:url(../images/fenli.jpg) no-repeat;}
+
+.commodity-content .left .left-list ul li a span{display:inline-block; width:7px; height:9px; margin-right:4px;}
+
+.commodity-content .left .left-list ul li strong{background:#FFFFFF; border:1px solid #fdbf90; display:block; width:200px; margin:0 auto;}
+
+.commodity-content .left .left-list ul li b{font-size:10px; font-weight:normal; color:#999;}
+
+.commodity-content .left .left-pane{margin-bottom:12px; border:1px solid #e6e6e6; padding:1px; background:#f6f6f6; height:284px;}
+
+.commodity-content .left .left-pane h4{color:#fff; font-weight:bold; line-height:27px; padding-left:20px; background:#aaa; font-size:12px;}
+
+.commodity-content .left .left-pane a{width:149px; height:219px; display:block; margin:15px auto;}
+
+.commodity-content .right{float:left; width:763px;}
+
+.commodity-content .right .jindu{height:25px; border:1px solid #e5e5e5; background:#fbfbfb; line-height:25px;}
+
+.commodity-content .right .jindu li{margin-left:10px; color:#c75c27; float:left; display:inline;}
+
+.commodity-content .right .jindu li a{color:#0063dc;}
+
+.commodity-content .right .jindu li a b{display:inline-block; width:9px; height:25px; background-position:-9px 0; vertical-align:top; margin-left:5px; _vertical-align:middle;}
+
+.commodity-content .right .ssacsee{height:34px; line-height:34px;}
+
+.commodity-content .right .ssacsee b{font-weight:normal; padding-left:5px;}
+
+.commodity-content .right .ssacsee b i{background-position:-77px 0; width:9px; height:9px; display:inline-block; margin-right:3px; _vertical-align:middle;}
+
+.commodity-content .right .ssacsee b span{color:#ff5500; display:inline-block; margin:0 3px; font-weight:bold;}
+
+.commodity-content .right .ssacsee p{float:right; padding-right:5px; _margin-top:6px; _height:22px;}
+
+.commodity-content .right .ssacsee p a{margin-left:20px;}
+
+.commodity-content .right .ssacsee p a i{background-position:-88px 0; display:inline-block; margin-right:3px; width:16px; height:13px; _vertical-align:middle;}
+
+.commodity-content .right .ssacsee p a.paihang i{background-position:-104px 0; display:inline-block; margin-right:3px; width:16px; height:15px; _vertical-align:middle;}
+
+.commodity-content .right .xgss{margin-bottom:17px;}
+
+.commodity-content .right .ssandpx{margin-bottom:19px;}
+
+.commodity-content .right .showshop{margin-bottom:20px; border:1px solid #e6e6e6; overflow:hidden; position:relative;}
+
+.commodity-content .right .showshop .show-hd{padding-left:15px; background:#F2F2F2; border-bottom:1px solid #e5e5e5; height:28px; line-height:28px;}
+
+.commodity-content .right .showshop .show-hd h3{float:left; display:inline; font-size:12px; font-weight:normal;}
+
+.commodity-content .right .showshop .show-hd h3 span{background-position:-20px 0; margin-right:5px; width:56px; height:17px; vertical-align:middle; overflow:hidden; line-height:100px; display:inline-block; _float:left; _margin-top:4px;}
+
+.commodity-content .right .showshop .show-hd ul{float:right; padding-right:15px; display:inline;  _margin-top:5px;}
+
+.commodity-content .right .showshop .show-hd ul li{padding:0 10px; border-right:1px dotted #999; display:inline;}
+
+.commodity-content .right .showshop .show-hd ul li i{background-position:0 -26px; width:84px; height:12px; overflow:hidden; display:inline-block;}
+
+.commodity-content .right .showshop .go-left{position:absolute; top:29px; width:12px; z-index:99; left:0; border-right:1px solid #ccc; height:365px; overflow:hidden; height:302px;}
+
+.commodity-content .right .showshop .go-right{position:absolute; top:29px; width:12px; z-index:99; right:0; border-left:1px solid #ccc; height:365px; overflow:hidden; height:302px;}
+
+.commodity-content .right .showshop .show-bd{position:relative; height:270px; margin-left:14px; overflow:hidden;}
+
+.commodity-content .right .showshop .show-bd .product-list{position:absolute; float:left;}
+
+.commodity-content .right .showshop .show-bd .product-list li{float:left; width:170px; height:260px; overflow:hidden; display:inline; padding:10px 0 0 13px;}
+
+.ansp li{float:left; width:170px; height:260px; overflow:hidden; display:inline; padding:10px 0 0 13px;}
+
+.commodity-content .product-pic{width:160px; height:160px; display:block; background:#fff; text-align:center; vertical-align:middle;}
+
+.commodity-content .product-price{height:20px; overflow:hidden; position:relative;}
+
+.commodity-content .product-price .buy-price{background-position:-117px -38px; padding-left:14px; font-size:14px; margin-right:10px; color:#cc0000;}
+
+.commodity-content .product-price .yun-price{color:#999;}
+
+.commodity-content .product-price .yun-price strong{background-position:-118px -26px; padding-left:12px;}
+
+.commodity-content .product-title{padding-top:4px; height:36px; overflow:hidden; vertical-align:middle;}
+
+.commodity-content .product-title a{color:#666; font-size:12px; font-weight:400;}
+
+.commodity-content .product-title a:hover{color:#cc6600;}
+
+.commodity-content .product-sum{height:17px; overflow:hidden; margin:5px 0; color:#999;}
+
+.commodity-content .right .showshop .show-sum{text-align:right; margin:10px 30px 5px 0;}

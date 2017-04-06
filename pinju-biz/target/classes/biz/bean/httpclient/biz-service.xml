@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<!--
+	<bean id="httpService" class="com.yuwang.pinju.core.httpclient.HttpServiceImpl">
+		 
+		<property name="serverUrl" value="${search.httpclient.url}" />
+		<property name="connectionTimeout" value="${search.httpclient.connectTimeout}" />
+		<property name="soTimeout" value="${search.httpclient.soTimeout}" />
+		<property name="maxConnectionsPerHost" value="${search.httpclient.maxConnectionsPerHost}"/> 
+		<property name="maxTotalConnections" value="${search.httpclient.maxTotalConnections}"/>
+		
+	</bean>
+ 	 -->
+	<bean id="solrService" class="com.yuwang.pinju.core.httpclient.SolrService"></bean>
+	<bean id="updateSolrService" class="com.yuwang.pinju.core.httpclient.UpdateSolrService"></bean>
+		
+	
+</beans>

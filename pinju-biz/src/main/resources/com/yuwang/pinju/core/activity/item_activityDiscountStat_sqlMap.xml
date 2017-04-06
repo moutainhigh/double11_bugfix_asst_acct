@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="activityDiscountStat">
+
+  <typeAlias alias="ActivityDiscountStat" type="com.yuwang.pinju.domain.active.ActivityDiscountStatDO" />
+
+  <resultMap id="ActivityDiscountStatResult" class="ActivityDiscountStat">
+    <result property="id" column="ID" />
+    <result property="statDate" column="STAT_DATE" />
+    <result property="usedTime" column="USED_TIME" />
+    <result property="usedNum" column="USED_NUM" />
+    <result property="memberNick" column="MEMBER_NICK" />
+    <result property="memberId" column="MEMBER_ID" />
+    <result property="version" column="VERSION" />
+    <result property="gmtCreate" column="GMT_CREATE" />
+    <result property="gmtModified" column="GMT_MODIFIED" />
+  </resultMap>
+  <sql id="activityDiscountStatFiled">
+  	a.ID             ,
+	a.STAT_DATE      ,
+	a.USED_TIME      ,
+	a.USED_NUM       ,
+	a.MEMBER_NICK    ,
+	a.MEMBER_ID      ,
+	a.VERSION        ,
+	a.GMT_CREATE     ,
+	a.GMT_MODIFIED  
+  </sql>
+  
+  <insert id="insertActivityDiscountStat" parameterClass="ActivityDiscountStat">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_ACTIVITY_DISCOUNT_STAT_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO ACTIVITY_DISCOUNT_STAT (ID,STAT_DATE,USED_TIME,USED_NUM,MEMBER_NICK,MEMBER_ID,GMT_CREATE,GMT_MODIFIED,VERSION) VALUES (#id#,#statDate#,#usedTime#,#usedNum#,#memberNick#,#memberId#,#gmtCreate#,#gmtModified#,#version#)]]>
+  </insert>
+  
+  <select id="selectActivityDiscountStatById" parameterClass="long" resultMap="ActivityDiscountStatResult">
+  	select <include refid="activityDiscountStatFiled"/> from ACTIVITY_DISCOUNT_STAT a where a.id=#id#
+  </select>
+  
+  <select id="selectActivityDiscountStatByMemberIdAndStatdate" parameterClass="map" resultMap="ActivityDiscountStatResult">
+  	select <include refid="activityDiscountStatFiled"/> from ACTIVITY_DISCOUNT_STAT a where a.MEMBER_ID=#memberId# and a.STAT_DATE=#statDate#
+  </select>
+  
+  <update id="updateActivityDiscountStat" parameterClass="map">
+  	update ACTIVITY_DISCOUNT_STAT set USED_TIME=#usedTime#,USED_NUM=#usedNum#,GMT_MODIFIED=#gmtModified#,VERSION=#version# where MEMBER_ID=#memberId# and STAT_DATE=#statDate# and VERSION=#oldVersion#
+  </update>
+  </sqlMap>

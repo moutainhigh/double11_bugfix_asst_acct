@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="report" namespace="/sellReport" extends="pinju-login">
+
+		<action name="simpleReport" class="com.yuwang.pinju.web.module.report.action.SellReportAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/report/simpleSellReport.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/report/simpleSellReport.ftl</result>
+		</action>
+		
+		<action name="importCSV" class="com.yuwang.pinju.web.module.report.action.SellReportAction" method="importCSV">
+		</action>
+		
+		<!-- 热销商品统计  -->
+		<action name="hotSellItemsReportStatistics" class="com.yuwang.pinju.web.module.report.action.SellItemAndCategoryReportAction" method="hotSellItemsReportStatistics">
+		 	<result name="success" type="freemarker">/default/templates/screen/report/hotSellItemReport.ftl</result>
+		</action>
+		
+		<!-- 热销分类统计  -->
+		<action name="hotSellerCategoryStatistics" class="com.yuwang.pinju.web.module.report.action.SellItemAndCategoryReportAction" method="hotSellerCategoryStatistics">
+		 	<result name="success" type="freemarker">/default/templates/screen/report/hotSellCategoryReport.ftl</result>
+		</action>
+		
+		<action name="importCsvStatistics" class="com.yuwang.pinju.web.module.report.action.SellItemAndCategoryReportAction" method="importCsvStatistics">
+		</action>
+	</package>
+</struts>

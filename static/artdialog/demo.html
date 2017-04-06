@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Demo</title>
+		<style>
+		</style>
+		<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+		<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=pj"></script>
+		<script>
+			$(function() {
+				var dialog = art.dialog({
+					title: '欢迎',
+					content: '欢迎使用artDialog对话框组件！目前样式为品聚默认。',
+					icon: 'succeed',
+					//ok: function(){
+					//	this.title('警告').content('请注意artDialog两秒后将关闭！').lock().time(2);
+					//	return false;
+					//},
+					button: [
+						{
+							name: '同意',
+							callback: function () {
+								this.content('你同意了').time(2);
+								return false;
+							},
+							focus: true
+						},
+						{
+							name: '不同意',
+							callback: function () {
+								alert('你不同意')
+							}
+						},
+						{
+							name: '无效按钮',
+							disabled: true
+						},
+						{
+							name: '关闭我'
+						}
+					]
+
+				});
+			});
+			// 更详细的文档请参见：http://www.planeart.cn/demo/artDialog/
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

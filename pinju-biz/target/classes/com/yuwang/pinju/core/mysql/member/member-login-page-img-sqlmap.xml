@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_login_page_img">
+
+	<typeAlias alias="MemberLoginPageImg" type="com.yuwang.pinju.domain.member.login.MemberLoginPageImgDO" />
+
+	<resultMap id="MemberLoginPageImgResult" class="MemberLoginPageImg">
+      <result property="id" column="ID" />
+      <result property="position" column="POSITION" />
+      <result property="imgUrl" column="IMG_URL" />
+      <result property="imgLink" column="IMG_LINK" />
+      <result property="imgTitle" column="IMG_TITLE" />
+      <result property="status" column="STATUS" />
+      <result property="divClass" column="DIV_CLASS" />
+      <result property="divStyle" column="DIV_STYLE" />
+      <result property="width" column="WIDTH" />
+      <result property="height" column="HEIGHT" />
+	</resultMap>
+
+	<sql id="selectAllMemberLoginPageImg"><![CDATA[SELECT ID,POSITION,IMG_URL,IMG_LINK,IMG_TITLE,STATUS,DIV_CLASS,DIV_STYLE,WIDTH,HEIGHT FROM MEMBER_LOGIN_PAGE_IMG]]></sql>
+
+	<select id="getValidPageImgs" resultMap="MemberLoginPageImgResult">
+		<include refid="selectAllMemberLoginPageImg" />
+    <![CDATA[WHERE STATUS = 1 ORDER BY POSITION]]>
+	</select>
+</sqlMap>
+

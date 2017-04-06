@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MemberInfo" >
+
+  <typeAlias alias="memberInfo" type="com.yuwang.pinju.domain.member.MemberInfoDO"/>
+
+  <resultMap id="memberInfo" class="memberInfo">
+    <result column="ID" property="id" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="REAL_NAME" property="realName" />
+    <result column="ID_CARD" property="idCard" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="DATE" javaType="java.util.Date" />
+    <result column="CONSTELLATION" property="constellation" />
+    <result column="PROVINCE" property="province" />
+    <result column="CITY" property="city" />
+    <result column="DISTRICT" property="district" />
+    <result column="PCD_CODE" property="pcdCode" />
+    <result column="ADDRESS" property="address" />
+    <result column="ZIP_CODE" property="zipCode" />
+    <result column="PHONE" property="phone" />
+    <result column="MOBILE" property="mobile" />
+    <result column="PHONE_TRANS" property="phoneTrans" />
+    <result column="EMAIL" property="email" />
+  </resultMap>
+
+  <sql id="getAllMemberInfo">
+    <![CDATA[
+    SELECT ID, MEMBER_ID, REAL_NAME, ID_CARD, BIRTHDAY, CONSTELLATION, PROVINCE, CITY, DISTRICT, PCD_CODE, ADDRESS, ZIP_CODE, PHONE, MOBILE, PHONE_TRANS, EMAIL, GMT_CREATE, GMT_MODIFIED FROM MEMBER_MEMBER_INFO
+    ]]>
+  </sql>
+
+  <select id="findMemberInfoByMid" resultMap="memberInfo"  parameterClass="long">
+    <include refid="getAllMemberInfo" />
+    <![CDATA[
+    WHERE MEMBER_ID = #memberId#
+    ]]>
+  </select>
+
+  <select id="getMemberInfoByEmail" resultClass="memberInfo"  parameterClass="string">
+    <![CDATA[SELECT ID AS id, MEMBER_ID AS memberId FROM MEMBER_MEMBER_INFO WHERE EMAIL = #email# LIMIT 1]]>
+  </select>
+
+  <insert id="persistMemberInfo" parameterClass="memberInfo">
+    <![CDATA[
+    INSERT INTO MEMBER_MEMBER_INFO (
+      MEMBER_ID, REAL_NAME, ID_CARD, BIRTHDAY, CONSTELLATION, PROVINCE,
+      CITY, DISTRICT, PCD_CODE, ADDRESS, ZIP_CODE, PHONE,
+      MOBILE, PHONE_TRANS, EMAIL, GMT_CREATE, GMT_MODIFIED
+    ) VALUES (
+      #memberId#, #realName#, #idCard#, #birthday#, #constellation#, #province#,
+      #city#, #district#, #pcdCode#, #address#, #zipCode#, #phone#,
+      #mobile#, #phoneTrans#, #email#, now(), now()
+    )
+    ]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>    
+  </insert>
+
+  <update id="updateMemberInfo" parameterClass="memberInfo" >
+    <![CDATA[
+    UPDATE MEMBER_MEMBER_INFO
+       SET REAL_NAME = #realName#,
+           ID_CARD = #idCard#,
+           BIRTHDAY = #birthday#,
+           CONSTELLATION = #constellation#,
+           PROVINCE = #province#,
+           CITY = #city#,
+           DISTRICT = #district#,
+           PCD_CODE = #pcdCode#,
+           ADDRESS = #address#,
+           ZIP_CODE = #zipCode#,
+           PHONE = #phone#,
+           MOBILE = #mobile#,
+           PHONE_TRANS = #phoneTrans#,
+           EMAIL = #email#,
+           GMT_MODIFIED = now()
+     WHERE ID = #id#
+       AND MEMBER_ID = #memberId#
+    ]]>
+  </update>
+
+</sqlMap>

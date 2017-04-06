@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="distributorAO" class="com.yuwang.pinju.core.distribute.ao.impl.DistributorAOImpl"/>
+	
+	<bean id="distributeSupplierAO"
+		class="com.yuwang.pinju.core.distribute.ao.impl.DistributeSupplierAOImpl" />
+		
+	<bean id="distributeGoodsManagerAO"
+		class="com.yuwang.pinju.core.distribute.ao.impl.DistributeGoodsManagerAOImpl" />
+	
+	<bean id="distributeChannelAO"
+		class="com.yuwang.pinju.core.distribute.ao.impl.DistributeChannelAOImpl" />
+		
+	<bean id="distributeOrdersManagerAO"
+		class="com.yuwang.pinju.core.distribute.ao.impl.DistributeOrdersManagerAOImpl" />
+		
+	<bean id="distributeImageAO"
+		class="com.yuwang.pinju.core.distribute.ao.impl.DistributeImageAOImpl" />
+</beans>

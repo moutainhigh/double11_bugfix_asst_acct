@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trade_refund_log">
+
+	<typeAlias alias="TradeRefundLog" type="com.yuwang.pinju.domain.trade.refund.RefundLogDO" />
+
+	<resultMap id="TradeRefundLogResult" class="TradeRefundLog">
+		<result property="id" column="ID" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="totalFee" column="TOTAL_FEE" />
+		<result property="refundFee" column="REFUND_FEE" />
+		<result property="memo" column="MEMO" />
+		<result property="refundId" column="REFUND_ID" />
+		<result property="transactionId" column="TRANSACTION_ID" />
+		<result property="payorderId" column="PAYORDER_ID" />
+		<result property="refundState" column="REFUND_STATE" />
+		<result property="cmdno" column="CMDNO" />
+		<result property="paramDetail" column="PARAM_DETAIL" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="orderId" column="ORDER_ID"/>
+	</resultMap>
+
+	<sql id="selectAllTradeRefundLog"><![CDATA[SELECT ID,SELLER_ID,TOTAL_FEE,REFUND_FEE,MEMO,REFUND_ID,TRANSACTION_ID,PAYORDER_ID,REFUND_STATE,CMDNO,PARAM_DETAIL,GMT_CREATE,GMT_MODIFIED,ORDER_ID FROM TRADE_REFUND_LOG]]></sql>
+
+	<select id="selectAllTradeRefundLog" resultMap="TradeRefundLogResult">
+		<include refid="selectAllTradeRefundLog" />
+	</select>
+
+	<select id="selectTradeRefundLogByid" resultMap="TradeRefundLogResult"  parameterClass="long">
+		<include refid="selectAllTradeRefundLog" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectTradeRefundLog"  resultMap="TradeRefundLogResult" parameterClass="TradeRefundLog">
+		<include refid="selectAllTradeRefundLog" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="totalFee">
+				<![CDATA[TOTAL_FEE = #totalFee#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundFee">
+				<![CDATA[REFUND_FEE = #refundFee#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo">
+				<![CDATA[MEMO = #memo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundId">
+				<![CDATA[REFUND_ID = #refundId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="transactionId">
+				<![CDATA[TRANSACTION_ID = #transactionId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="payorderId">
+				<![CDATA[PAYORDER_ID = #payorderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmdno">
+				<![CDATA[CMDNO = #cmdno#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="paramDetail">
+				<![CDATA[PARAM_DETAIL = #paramDetail#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertTradeRefundLog" parameterClass="TradeRefundLog">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_TRADE_REFUND_LOG_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO TRADE_REFUND_LOG 
+		(ID,SELLER_ID,TOTAL_FEE,REFUND_FEE,MEMO,REFUND_ID,TRANSACTION_ID,
+		PAYORDER_ID,REFUND_STATE,CMDNO,PARAM_DETAIL,GMT_CREATE,GMT_MODIFIED,ORDER_ID) 
+		VALUES(#id#,#sellerId#,#totalFee#,#refundFee#,#memo#,#refundId#,#transactionId#,
+		#payorderId#,#refundState#,#cmdno#,#paramDetail#,sysdate,sysdate,#orderId#)]]>
+	</insert>
+
+	<update id="updateTradeRefundLog" parameterClass="TradeRefundLog">
+		<![CDATA[UPDATE TRADE_REFUND_LOG]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="totalFee">
+				<![CDATA[TOTAL_FEE = #totalFee#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="refundFee">
+				<![CDATA[REFUND_FEE = #refundFee#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="memo">
+				<![CDATA[MEMO = #memo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="refundId">
+				<![CDATA[REFUND_ID = #refundId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="transactionId">
+				<![CDATA[TRANSACTION_ID = #transactionId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="payorderId">
+				<![CDATA[PAYORDER_ID = #payorderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="cmdno">
+				<![CDATA[CMDNO = #cmdno#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="paramDetail">
+				<![CDATA[PARAM_DETAIL = #paramDetail#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = sysdate]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+		</dynamic>
+		 <![CDATA[WHERE ID = #id#]]>
+	</update>
+	
+	<update id="updateTradeRefundLogStatus" parameterClass="TradeRefundLog">
+		<![CDATA[UPDATE TRADE_REFUND_LOG]]>
+		<dynamic prepend="SET">
+		
+			<isNotEmpty prepend="," property="memo">
+				<![CDATA[MEMO = #memo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="refundState">
+				<![CDATA[REFUND_STATE = #refundState#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = sysdate]]>
+			</isNotEmpty>
+		</dynamic>
+		 <![CDATA[WHERE ID = #id#]]>
+	</update>
+	
+	<select id="querySequence" resultClass="Long" parameterClass="String">
+    	select $seqName$.nextval from dual
+	</select>
+</sqlMap>

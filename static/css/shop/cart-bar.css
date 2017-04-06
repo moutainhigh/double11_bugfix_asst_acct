@@ -1,0 +1,6 @@
+/*页头顶端条定义*/
+
+.top-bar1{ height:32px; overflow:hidden; background: url(http://static.pinju.com/img/header-sub.png) repeat-x 0 0 #F4F4F4;}
+.top-bar1_1  { width:1000px; margin:0 auto; padding-top:12px;font-weight:bold;}
+.top-bar1_2  a{ font-weight:bold; padding:0 10px; }
+.top-bar1_1 li a{font-weight:bold;}

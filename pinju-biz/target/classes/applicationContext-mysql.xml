@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName"  
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!--<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+	</bean>
+   	
+  	<bean id="mysqlDatasource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:MySqlDS</value>
+		</property>
+		<property name="jndiTemplate">
+			<ref local="jndiTemplate" />
+		</property>
+	</bean>
+	-->
+	
+  <bean id="mysqlDatasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"/>
+
+  <bean id="sqlMapClientMySQL" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+    <property name="dataSource" ref="mysqlDatasource" />
+    <property name="configLocation" value="classpath:/biz/persistence/sqlmap-mysql-config.xml" />
+  </bean>
+  
+  <!-- 读写分离之mysql读数据源 -->
+  <bean id="mysqlReadDatasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<property name="driverClass" value="${read.c3p0.driverClass}" />
+	<property name="jdbcUrl" value="${read.c3p0.jdbcUrl}" />
+	<property name="user" value="${read.c3p0.user}" />
+	<property name="password" value="${read.c3p0.password}" />
+	<property name="minPoolSize" value="${read.c3p0.minPoolSize}" />
+	<property name="maxPoolSize" value="${read.c3p0.maxPoolSize}"/>  
+	<property name="initialPoolSize" value="${read.c3p0.initialPoolSize}"/>
+	<property name="maxIdleTime" value="${read.c3p0.maxIdleTime}"/>
+	<property name="acquireRetryAttempts" value="${read.c3p0.acquireRetryAttempts}"/>
+	<property name="acquireRetryDelay" value="${read.c3p0.acquireRetryDelay}"/>
+	<property name="checkoutTimeout" value="${read.c3p0.checkoutTimeout}"/>
+	<property name="maxStatements" value="${read.c3p0.maxStatements}"/>
+	<property name="numHelperThreads" value="${read.c3p0.numHelperThreads}"/>
+	<property name="testConnectionOnCheckin" value="${read.c3p0.testConnectionOnCheckin}"/>
+	<property name="preferredTestQuery" value="${read.c3p0.preferredTestQuery}"/>
+  </bean>
+
+  <bean id="readSqlMapClientMySQL" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+    <property name="dataSource" ref="mysqlReadDatasource" />
+    <property name="configLocation" value="classpath:/biz/persistence/sqlmap-mysql-config.xml" />
+  </bean>
+  <!-- mysql读数据源配置End! -->
+
+  <bean id="readBaseDAOForMySql" class="com.yuwang.pinju.core.common.ReadBaseDAO">
+      <property name="readSqlMapClient" ref="readSqlMapClientMySQL" />
+  </bean>
+
+  <bean id="mysqlTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="mysqlDatasource" />
+  </bean>
+
+  <bean id="mysqlTransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+    <property name="transactionManager">
+      <ref local="mysqlTransactionManager" />
+    </property>
+  </bean>
+
+  <bean id="mysqlTransactionService" class="com.yuwang.pinju.core.member.manager.TransactionService" />
+
+  <import resource="classpath:/biz/bean/filter/filter-*.xml" />
+  <import resource="classpath:/biz/bean/member/member-*.xml" />
+  <import resource="classpath:/biz/bean/rate/rate-*.xml" />
+  <import resource="classpath:/biz/bean/jms/jms-*.xml" />
+  <import resource="classpath:/biz/bean/sensitiveword/word-*.xml" />
+  <import resource="classpath:/biz/bean/images/images-*.xml" />
+  <import resource="classpath:/biz/bean/search/keyword/keyword-*.xml" />
+  
+</beans>

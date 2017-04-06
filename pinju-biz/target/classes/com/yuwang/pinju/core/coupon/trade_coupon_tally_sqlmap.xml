@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trade_coupon_tally">
+
+	<typeAlias alias="TradeCouponTally" type="com.yuwang.pinju.domain.coupon.TradeCouponTallyDO" />
+
+	<resultMap id="TradeCouponTallyResult" class="TradeCouponTally">
+		<result property="id" column="ID" />
+		<result property="couponBatchId" column="COUPON_BATCH_ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="couponTally" column="COUPON_TALLY" />
+		<result property="tallyModifyDate" column="TALLY_MODIFY_DATE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModify" column="GMT_MODIFY" />
+	</resultMap>
+
+	<sql id="selectAllTradeCouponTally"><![CDATA[SELECT * FROM TRADE_COUPON_TALLY]]></sql>
+
+	<select id="selectAllTradeCouponTally" resultMap="TradeCouponTallyResult">
+		<include refid="selectAllTradeCouponTally" />
+	</select>
+
+	<select id="selectTradeCouponTallyByid" resultMap="TradeCouponTallyResult"  parameterClass="long">
+		<include refid="selectAllTradeCouponTally" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectTradeCouponTallyByBatchAndBuyer" resultMap="TradeCouponTallyResult"  parameterClass="TradeCouponTally">
+		<include refid="selectAllTradeCouponTally" />
+		<![CDATA[WHERE COUPON_BATCH_ID = #couponBatchId# and BUYER_ID = #buyerId#]]>
+	</select>
+	
+	<select id="selectTradeCouponTally"  resultMap="TradeCouponTallyResult" parameterClass="TradeCouponTally">
+		<include refid="selectAllTradeCouponTally" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponBatchId">
+				<![CDATA[COUPON_BATCH_ID = #couponBatchId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponTally">
+				<![CDATA[COUPON_TALLY = #couponTally#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="tallyModifyDate">
+				<![CDATA[TALLY_MODIFY_DATE = #tallyModifyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertTradeCouponTally" parameterClass="TradeCouponTally">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_TRADE_COUPON_TALLY_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO TRADE_COUPON_TALLY (ID,COUPON_BATCH_ID,BUYER_ID,BUYER_NICK,COUPON_TALLY,TALLY_MODIFY_DATE,GMT_CREATE,GMT_MODIFY) VALUES (#id#,#couponBatchId#,#buyerId#,#buyerNick#,#couponTally#,#tallyModifyDate#,#gmtCreate#,#gmtModify#)]]>
+	</insert>
+
+	<update id="updateTradeCouponTally" parameterClass="TradeCouponTally">
+		<![CDATA[UPDATE TRADE_COUPON_TALLY]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="couponBatchId">
+				<![CDATA[COUPON_BATCH_ID = #couponBatchId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponTally">
+				<![CDATA[COUPON_TALLY = #couponTally#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="tallyModifyDate">
+				<![CDATA[TALLY_MODIFY_DATE = #tallyModifyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id#]]>
+	</update>
+</sqlMap>
+

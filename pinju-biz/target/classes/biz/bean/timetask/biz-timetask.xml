@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+<!-- 时间任务配置控制中心  -->
+ <bean id="timeTaskManager" class="com.yuwang.pinju.core.timetask.manager.impl.TimeTaskManagerImpl"></bean>
+ 
+<!-- 类目全量更新配置  -->
+	<bean id="loadCategoriesJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject"><ref bean="timeTaskManager"/></property>
+		<property name="targetMethod"><value>loadCategories</value></property>
+		 <property name="concurrent" value="false" />  
+	</bean>
+		
+	<bean id="loadCategoriesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" depends-on="loadCategoriesJobDetail">
+	    <property name="jobDetail"><ref bean="loadCategoriesJobDetail"/></property>
+	     <property name="cronExpression">
+	     	<!-- 每天晚上一点执行 -->
+	         <value>0 0 1 * * ? *</value>
+	     </property>
+	 </bean>
+<!-- 类目全量更新配置End  -->
+  
+<!-- 类目增量更新配置  -->
+	<bean id="incrLoadCategoriesJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject"><ref bean="timeTaskManager"/></property>
+		<property name="targetMethod"><value>incrLoadCategories</value></property>
+		 <property name="concurrent" value="false" />  
+	</bean>
+		
+	<bean id="incrLoadCategoriesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" depends-on="loadCategoriesJobDetail">
+	    <property name="jobDetail"><ref bean="incrLoadCategoriesJobDetail"/></property>
+	     <property name="cronExpression">
+	     	<!-- 每天晚上2点开始,四个小时执行一次 
+	 		<value>0 0/10 * * * ? *</value>
+	 		-->
+	 		<value>0 0 2/4 * * ? *</value>
+	     </property>
+	 </bean>
+<!-- 类目增量更新配置 End -->
+   
+<!-- 配置全量更新配置  -->
+	<bean id="loadConfigManagerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject"><ref bean="timeTaskManager"/></property>
+		<property name="targetMethod"><value>loadConfigManager</value></property>
+		 <property name="concurrent" value="false" />  
+	</bean>
+		
+	<bean id="loadConfigManagerCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" depends-on="loadCategoriesJobDetail">
+	    <property name="jobDetail"><ref bean="loadConfigManagerJobDetail"/></property>
+	     <property name="cronExpression">
+	    	 <!-- 每天晚上五点执行 -->
+	 		<value>0 0 5 * * ? *</value>
+	     </property>
+	 </bean>
+<!-- 配置全量更新配置END  -->
+  
+<!-- 配置增量更新配置  -->
+	<bean id="incrLoadConfigManagerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject"><ref bean="timeTaskManager"/></property>
+		<property name="targetMethod"><value>incrLoadConfigManager</value></property>
+		 <property name="concurrent" value="false" />  
+	</bean>
+		
+	<bean id="incrLoadConfigManagerCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" depends-on="loadCategoriesJobDetail">
+	    <property name="jobDetail"><ref bean="incrLoadConfigManagerJobDetail"/></property>
+	     <property name="cronExpression">
+	     	<!-- 十五分钟执行一次 -->
+	 		<value>0 0/15 0-2,4-23 * * ? *</value>
+	     </property>
+	 </bean>
+<!-- 配置增量更新配置END  -->
+ 
+  <bean id="jobDetailFactoryBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+         <property name="targetObject" ref="sensitiveWordManager"/>
+         <property name="targetMethod" value="initSensitiveWord"/>
+         <property name="concurrent" value="false"/>
+   </bean>
+   <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" >
+        <property name="jobDetail" ref="jobDetailFactoryBean"/>
+        <property name="cronExpression">
+            <!-- 每周三上午3:00执行 -->
+            <value>0 0 3 ? * 4</value>
+        </property>
+    </bean>
+    <!-- 积分字典 start-->
+    <bean id="pointsDictionaryUtil" class="com.yuwang.points.util.PointsDictionaryUtil"/>
+    
+    <bean id="jobDetailFactoryPointsDictionaryBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+         <property name="targetObject" ref="pointsDictionaryUtil"/>
+         <property name="targetMethod" value="init"/>
+         <property name="concurrent" value="false"/>
+   </bean>
+   <bean id="cronTriggerPointsDictionary" class="org.springframework.scheduling.quartz.CronTriggerBean" >
+        <property name="jobDetail" ref="jobDetailFactoryPointsDictionaryBean"/>
+        <property name="cronExpression">
+            <!-- 每天晚上00:00执行 -->
+            <value>0 0 0 * * ?</value>
+        </property>
+    </bean>
+    <!-- 积分字典end -->
+  <!-- 时间工厂,确认启动Trigger  -->  
+ <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+     <property name="triggers">
+         <list>
+             <ref local="loadCategoriesCronTrigger"/>
+             <ref local="incrLoadCategoriesCronTrigger"/>
+             <ref local="loadConfigManagerCronTrigger"/>
+             <ref local="incrLoadConfigManagerCronTrigger"/>
+             <ref local="cronTrigger"/>
+             <ref local="cronTriggerPointsDictionary"/>
+         </list>
+     </property>
+     <property name="autoStartup"><value>true</value></property>
+     <property name="schedulerName"><value>singleRunScheduler</value></property>
+  </bean>
+      
+</beans>

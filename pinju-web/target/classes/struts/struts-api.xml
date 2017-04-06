@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="api" namespace="/api" extends="struts-default">
+  
+    <!-- 盛大通行证定制注册昵称检查接口 -->
+    <action name="check-nick" class="com.yuwang.pinju.web.module.api.action.SndaCheckNickAction">
+      <result name="success" type="stream">
+        <param name="contentType">text/plain</param>
+        <param name="inputName">inputStream</param>
+      </result>
+    </action>
+    
+    <!-- 盛大通行证定制注册完成后昵称通知接口 -->
+    <action name="register-notify" class="com.yuwang.pinju.web.module.api.action.SndaRegisterNotifyAction">
+      <result name="success" type="stream">
+        <param name="contentType">text/plain</param>
+        <param name="inputName">inputStream</param>
+      </result>
+    </action>
+
+    <!-- 品聚社区读取会员信息接口 -->
+    <action name="member-info" class="com.yuwang.pinju.web.module.api.action.MemberReaderAction">
+      <result name="success" type="stream">
+        <param name="contentType">application/json</param>
+        <param name="inputName">inputStream</param>
+      </result>
+    </action>
+    
+    <!-- 品聚社区读取商品信息接口 -->
+    <action name="item-info" class="com.yuwang.pinju.web.module.api.action.ItemAjaxAction">
+      <result name="success" type="stream">
+        <param name="contentType">text/plain</param>
+        <param name="inputName">inputStream</param>
+      </result>
+    </action>
+    
+    <!-- 查询店铺相关信息 -->
+	<action name="queryShopHotGoodsAction" class="com.yuwang.pinju.web.module.shop.screen.ShopHotGoodsAction">
+  		 <result name="success" type="stream">
+  		 	<param name="contentType">application/json</param>
+        	<param name="inputName">jsonresult</param>
+  		 </result>
+	</action>
+  </package>
+  
+  <package name="openApi" namespace="/openApi" extends="struts-default">
+  	<action name="getSign" class="com.yuwang.api.GetCurrentSignAction">
+  		<result name="success" type="freemarker">/default/templates/screen/getSign.ftl</result>
+  	</action>
+  	<action name="resetPass" class="com.yuwang.api.GetCurrentSignAction" method="resetSecret">
+  		<result name="success" type="freemarker">/default/templates/screen/getSign.ftl</result>
+  	</action>
+  </package>
+</struts>

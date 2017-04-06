@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="itemDAO" class="com.yuwang.pinju.core.item.dao.impl.ItemDAOImpl" />
+	<bean id="categoryDAO" class="com.yuwang.pinju.core.item.dao.impl.CategoryDAOImpl" />
+	<bean id="categoryPropertyDAO"
+		class="com.yuwang.pinju.core.item.dao.impl.CategoryPropertyDAOImpl" />
+	<bean id="categoryPropertyValueDAO"
+		class="com.yuwang.pinju.core.item.dao.impl.CategoryPropertyValueDAOImpl" />
+	<bean id="baseValueDAO" class="com.yuwang.pinju.core.item.dao.impl.BaseValueDAOImpl" />
+	<!--  <bean id="itemSnapshotDao" class="com.yuwang.pinju.core.item.dao.impl.ItemSnapshotDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClientMySQL" />
+	</bean>-->
+	<bean id="skuDAO" class="com.yuwang.pinju.core.item.dao.impl.SkuDAOImpl" />
+	<bean id="spuDAO" class="com.yuwang.pinju.core.item.dao.impl.SpuDaoImpl" />
+	<bean id="cpValueRelationDAO"
+		class="com.yuwang.pinju.core.item.dao.impl.CpValueRelationDAOImpl" />
+	<bean id="brandDAO" class="com.yuwang.pinju.core.item.dao.impl.BrandDAOImpl" />
+
+</beans>

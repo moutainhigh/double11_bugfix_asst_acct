@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="shopUserPage">
+
+	<resultMap id="ShopUserPageResult" class="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<result property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="userId" column="USER_ID" />
+		<result property="pageId" column="PAGE_ID" />
+		<result property="shopId" column="SHOP_ID" />
+		<result property="title" column="TITLE" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="status" column="STATUS" />
+		<result property="skinId" column="SKIN_ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="configuration" column="CONFIGURATION" />
+		<result property="saveStructure" column="SAVE_STRUCTURE" />
+		<result property="releaseStructure" column="RELEASE_STRUCTURE" />
+		<result property="releaseDate" column="RELEASE_DATE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllUserPage"><![CDATA[SELECT ID,NAME,USER_ID,PAGE_ID,SHOP_ID,TITLE,DESCRIPTION,STATUS,SKIN_ID,ORDER_ID,CONFIGURATION,SAVE_STRUCTURE,RELEASE_STRUCTURE,RELEASE_DATE,GMT_CREATE,GMT_MODIFIED FROM SHOP_USER_PAGE]]></sql>
+
+	<sql id="deleteAllUserPage"><![CDATA[DELETE FROM SHOP_USER_PAGE]]></sql>
+
+	<select id="selectAllShopUserPage" resultMap="ShopUserPageResult" parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<include refid="selectAllUserPage" />
+	</select>
+
+	<select id="selectShopUserPageById" resultMap="ShopUserPageResult">
+		<include refid="selectAllUserPage" />
+		WHERE ID=#id#
+	</select>
+	
+	<select id="selectShopUserCustomerPage" resultMap="ShopUserPageResult" parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<include refid="selectAllUserPage" />
+		WHERE PAGE_ID = 3 AND SHOP_ID = #shopId# ORDER BY ORDER_ID ASC
+	</select>
+
+	<select id="selectShopUserPage"  resultMap="ShopUserPageResult" parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<include refid="selectAllUserPage" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="name">
+				<![CDATA[NAME = #name#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pageId">
+				<![CDATA[PAGE_ID = #pageId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="description">
+				<![CDATA[DESCRIPTION = #description#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="skinId">
+				<![CDATA[SKIN_ID = #skinId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="releaseDate">
+				<![CDATA[RELEASE_DATE = #releaseDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+		 ORDER BY ORDER_ID ASC
+	</select>
+
+
+	<insert id="insertShopUserPage" parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<![CDATA[INSERT INTO SHOP_USER_PAGE (ID, NAME, USER_ID, PAGE_ID, SHOP_ID, TITLE, DESCRIPTION, STATUS, SKIN_ID, 
+		ORDER_ID, SAVE_STRUCTURE, RELEASE_STRUCTURE, CONFIGURATION, RELEASE_DATE, GMT_CREATE, GMT_MODIFIED) 
+		VALUES (SEQ_SHOP_USER_PAGE_ID.nextval,#name#,#userId#,#pageId#,#shopId#,#title#,#description#,#status#,#skinId#,
+		#orderId#,#saveStructure#,#releaseStructure#,#configuration#,#releaseDate#,SYSDATE,SYSDATE)]]>
+
+	</insert>
+
+	<delete id="deleteAllShopUserPage">
+		<include refid="deleteAllUserPage" />
+	</delete>
+
+	<delete id="deleteShopUserPage"  parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<include refid="deleteAllUserPage" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="name">
+				<![CDATA[NAME = #name#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pageId">
+				<![CDATA[PAGE_ID = #pageId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="description">
+				<![CDATA[DESCRIPTION = #description#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="skinId">
+				<![CDATA[SKIN_ID = #skinId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="saveStructure">
+				<![CDATA[SAVE_STRUCTURE = #saveStructure#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="releaseStructure">
+				<![CDATA[RELEASE_STRUCTURE = #releaseStructure#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="releaseDate">
+				<![CDATA[RELEASE_DATE = #releaseDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+	
+	<update id="updateShopUserPageByKey" parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<![CDATA[UPDATE SHOP_USER_PAGE]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="name">
+				<![CDATA[NAME = #name#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="pageId">
+				<![CDATA[PAGE_ID = #pageId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="description">
+				<![CDATA[DESCRIPTION = #description#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="skinId">
+				<![CDATA[SKIN_ID = #skinId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="saveStructure">
+				<![CDATA[SAVE_STRUCTURE = #saveStructure#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="releaseStructure">
+				<![CDATA[RELEASE_STRUCTURE = #releaseStructure#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="releaseDate">
+				<![CDATA[RELEASE_DATE = #releaseDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = SYSDATE]]>
+			</isNotEmpty>
+			<isNotParameterPresent  prepend="," >
+				<![CDATA[GMT_MODIFIED = SYSDATE]]>
+			</isNotParameterPresent>
+		</dynamic>
+		<![CDATA[WHERE ID = #id#]]>
+	</update>
+
+	<update id="updateShopUserPage" parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<![CDATA[UPDATE SHOP_USER_PAGE]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="name">
+				<![CDATA[NAME = #name#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="pageId">
+				<![CDATA[PAGE_ID = #pageId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="description">
+				<![CDATA[DESCRIPTION = #description#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="skinId">
+				<![CDATA[SKIN_ID = #skinId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="saveStructure">
+				<![CDATA[SAVE_STRUCTURE = #saveStructure#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="releaseStructure">
+				<![CDATA[RELEASE_STRUCTURE = #releaseStructure#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="releaseDate">
+				<![CDATA[RELEASE_DATE = #releaseDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = SYSDATE]]>
+			</isNotEmpty>
+			<isNotParameterPresent prepend=",">
+				<![CDATA[GMT_MODIFIED = SYSDATE]]>
+			</isNotParameterPresent>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="pageId">
+				<![CDATA[PAGE_ID = #pageId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<update id="releaseShopUserPage" parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<![CDATA[UPDATE SHOP_USER_PAGE 
+				SET RELEASE_STRUCTURE = SAVE_STRUCTURE, RELEASE_DATE = SYSDATE, GMT_MODIFIED = SYSDATE
+				WHERE USER_ID = #userId# AND SHOP_ID = #shopId#
+		]]>		
+	</update>	
+	
+	<update id="restoreDesignUserPage" parameterClass="com.yuwang.pinju.domain.shop.ShopUserPageDO">
+		<![CDATA[UPDATE SHOP_USER_PAGE 
+				SET SAVE_STRUCTURE = RELEASE_STRUCTURE, GMT_MODIFIED = SYSDATE
+				WHERE USER_ID = #userId# AND SHOP_ID = #shopId# AND RELEASE_STRUCTURE IS NOT NULL
+		]]>		
+	</update>	
+</sqlMap>
+

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="active" namespace="/active" extends="pinju-login">
+		<!-- 操作失败时跳转到列表页面，并显示错误信息${errorMessage} -->
+		<global-results>
+			<result name="errorMessage" type="chain">
+				<param name="actionName">listActivity</param>
+				<param name="namespace">/active</param>
+			</result>
+			<result name="failure" type="freemarker">/default/templates/screen/active/backInfo.ftl
+			</result>
+		</global-results>
+
+		<!-- 查看所有可参与活动 -->
+		<action name="listActive"
+			class="com.yuwang.pinju.web.module.active.screen.ActiveManagerAction"
+			method="listActive">
+			<result name="success" type="freemarker">/default/templates/screen/active/listActive.ftl
+			</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=list-active</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=list-active</result>
+	  		<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=list-active</result>
+		</action>
+
+		<!-- 活动详情 -->
+		<action name="showActive"
+			class="com.yuwang.pinju.web.module.active.screen.ActiveManagerAction"
+			method="showActive">
+			<result name="activeInfo" type="freemarker">/default/templates/screen/active/activeInfo.ftl
+			</result>
+			<result name="registInfo" type="freemarker">/default/templates/screen/active/registInfo.ftl
+			</result>
+		</action>
+
+		<!-- 报名详情 -->
+		<action name="showRegist"
+			class="com.yuwang.pinju.web.module.active.screen.ActiveManagerAction"
+			method="showActive">
+			<result name="success" type="freemarker">/default/templates/screen/active/registInfo.ftl
+			</result>
+		</action>
+
+		<!-- 活动报名 -->
+		<action name="registActive"
+			class="com.yuwang.pinju.web.module.active.screen.ActiveManagerAction"
+			method="registActive">
+			<result name="goodRegist" type="freemarker">/default/templates/screen/active/goodInfo.ftl
+			</result>
+			<result name="shopRegist" type="freemarker">/default/templates/screen/active/shopInfo.ftl
+			</result>
+			<result name="failure" type="freemarker">/default/templates/screen/active/backInfo.ftl
+			</result>
+		</action>
+
+		<!-- 报名 -->
+		<action name="regist"
+			class="com.yuwang.pinju.web.module.active.screen.ActiveManagerAction"
+			method="regist">
+			<result name="success" type="redirect">/active/listRegistInfo.htm?activeInfoId=${activeInfoId}
+			</result>
+			<result name="failure" type="chain">
+				<param name="actionName">registActive</param>
+				<param name="namespace">/active</param>
+			</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=list-active</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=list-active</result>
+	  		<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=list-active</result>
+		</action>
+
+		<!-- 查询已参与活动或已通过活动 -->
+		<action name="query"
+			class="com.yuwang.pinju.web.module.active.screen.ActiveManagerAction"
+			method="query">
+			<result name="passedActive" type="freemarker">/default/templates/screen/active/passedActive.ftl
+			</result>
+			<result name="registActive" type="freemarker">/default/templates/screen/active/registActive.ftl
+			</result>
+		</action>
+
+		<!-- 撤销 -->
+		<action name="cancel"
+			class="com.yuwang.pinju.web.module.active.screen.ActiveManagerAction"
+			method="cancel">
+			<result name="success" type="redirect">/active/listRegistInfo.htm?activeInfoId=${activeInfoId}
+			</result>
+			<result name="failure" type="freemarker">/default/templates/screen/active/backInfo.ftl
+			</result>
+		</action>
+		
+		<action name="listRegistInfo"
+			class="com.yuwang.pinju.web.module.active.screen.ActiveManagerAction"
+			method="listRegistInfo">
+			<result name="registInfo" type="freemarker">/default/templates/screen/active/registInfo.ftl
+			</result>
+			<result name="failure" type="freemarker">/default/templates/screen/active/backInfo.ftl
+			</result>
+		</action>
+
+		<!-- 限时打折 -->
+		<action name="promotionManager"
+			class="com.yuwang.pinju.web.module.active.action.ActivityDiscountAction"
+			method="promotionManager">
+			<result name="success" type="freemarker">/default/templates/screen/promotional/promotionManager.ftl
+			</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=promotion-manager</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=promotion-manager</result>
+	  		<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=promotion-manager</result>
+		</action>
+
+		<action name="addDiscount"
+			class="com.yuwang.pinju.web.module.active.action.ActivityDiscountAction"
+			method="addDiscount">
+			<result name="input" type="freemarker">/default/templates/screen/promotional/addTimeLimitedDiscount.ftl
+			</result>
+		</action>
+
+		<action name="updateActivityDiscount"
+			class="com.yuwang.pinju.web.module.active.action.ActivityDiscountAction"
+			method="updateActivityDiscount">
+			<result name="success" type="freemarker">/default/templates/screen/promotional/updateTimeLimitedDiscount.ftl
+			</result>
+			<result name="errorMessage" type="chain">
+				<param name="actionName">promotionManager</param>
+				<param name="namespace">/active</param>
+			</result>
+		</action>
+		
+		<action name="doUpdateActivityDiscount"
+			class="com.yuwang.pinju.web.module.active.action.ActivityDiscountAction"
+			method="doUpdateActivityDiscount">
+			<result name="success" type="redirect">
+              /active/promotionManager.htm
+            </result>
+            <result name="errorMessage" type="chain">
+				<param name="actionName">promotionManager</param>
+				<param name="namespace">/active</param>
+			</result>
+		</action>
+		
+		<action name="deleteActivityDiscount"
+			class="com.yuwang.pinju.web.module.active.action.ActivityDiscountAction"
+			method="deleteActivityDiscount">
+			<result name="success" type="redirect">
+              /active/promotionManager.htm
+            </result>
+            <result name="errorMessage" type="chain">
+				<param name="actionName">promotionManager</param>
+				<param name="namespace">/active</param>
+			</result>
+		</action>
+		
+		<action name="itemList"
+			class="com.yuwang.pinju.web.module.active.action.ActivityDiscountAction"
+			method="itemList">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+    
+        <action name="addActivityDiscount"
+			class="com.yuwang.pinju.web.module.active.action.ActivityDiscountAction"
+			method="addActivityDiscount">
+			<result name="error" type="freemarker">/default/templates/screen/active/active_error.ftl
+			</result>
+            <result name="success" type="redirect">
+              /active/promotionManager.htm
+            </result>
+		</action>
+	</package>
+</struts>

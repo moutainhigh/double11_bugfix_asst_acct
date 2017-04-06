@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="security" namespace="/security" extends="pinju-default">
+
+    <action name="email-link" class="com.yuwang.pinju.web.module.my.screen.SecurityEmailAction" method="emailLink">
+      <result name="success">/default/templates/screen/my/my-validate-email-success.ftl</result>
+      <result name="error" type="freemarker">/default/templates/screen/security/link-error.ftl</result>
+    </action>
+    
+     <action name="unband-email" class="com.yuwang.pinju.web.module.my.screen.SecurityEmailAction" method="unbandEmail">
+      <result name="success">/default/templates/screen/my/my-unbound-email-success.ftl</result>
+      <result name="error" type="freemarker">/default/templates/screen/security/link-error.ftl</result>
+    </action>
+
+    <!-- 邮件安全链接，success 规则：success_<LINK_TYPE> -->
+    <action name="link" class="com.yuwang.pinju.web.module.security.screen.SecurityLinkAction" method="execute">
+      <!-- 邮箱验证 -->
+      <result name="success_1" type="chain">
+        <param name="actionName">email-link</param>
+      </result>
+      <!-- 找回密码 -->
+      <result name="success_2" type="chain">
+        <param name="actionName">retrieve-password</param>
+      </result>
+      <!-- 邮箱解绑 -->
+      <result name="success_3" type="chain">
+         <param name="actionName">unband-email</param>
+      </result>
+      <result name="error" type="freemarker">/default/templates/screen/security/link-error.ftl</result>
+    </action>
+
+    <!-- 忘记密码 -->
+    <action name="forgot-password" class="com.yuwang.pinju.web.module.security.screen.ForgotPasswordAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/security/forgot-password.ftl</result>
+    </action>
+
+    <!-- 忘记密码发送邮件后 -->
+    <action name="forgot-password-do" class="com.yuwang.pinju.web.module.security.screen.ForgotPasswordAction" method="forgotPasswordEmail">
+      <result name="success-mobile" type="freemarker">/default/templates/screen/security/my-mobile-code-ret-pwd.ftl</result>
+      <result name="success" type="freemarker">/default/templates/screen/security/forgot-password-ok.ftl</result>
+      <result name="input" type="freemarker">/default/templates/screen/security/forgot-password.ftl</result>
+      <result name="not-allowed-method" type="redirectAction">
+        <param name="actionName">forgot-password</param>
+      </result>
+    </action>
+
+    <!-- 邮件链接进行修改密码 -->
+    <action name="retrieve-password" class="com.yuwang.pinju.web.module.security.screen.RetrievePasswordAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/security/retrieve-password.ftl</result>
+      <result name="error" type="freemarker">/default/templates/screen/security/retrieve-password-error.ftl</result>
+    </action>
+
+    <!-- 修改密码 -->
+    <action name="retrieve-password-do" class="com.yuwang.pinju.web.module.security.screen.RetrievePasswordAction" method="doRetrievePassword">
+      <result name="success" type="freemarker">/default/templates/screen/security/retrieve-password-ok.ftl</result>
+      <result name="input" type="freemarker">/default/templates/screen/security/retrieve-password.ftl</result>
+      <result name="error" type="freemarker">/default/templates/screen/security/retrieve-password-error.ftl</result>
+      <result name="login" type="redirectAction">
+        <param name="namespace">/member</param>
+        <param name="actionName">login</param>
+      </result>
+      <result name="not-allowed-method" type="redirectAction">
+        <param name="namespace">/member</param>
+        <param name="actionName">login</param>
+      </result>
+    </action>
+    
+    <!-- 
+    ==========================
+    [手机找回密码]
+    ==========================
+     -->
+     <action name="mobile-u-pwd" class="com.yuwang.pinju.web.module.security.screen.MobileFindPwdAction" method="execute">
+         <result name="success" type="chain">
+          <param name="actionName">retrieve-password</param>
+         </result>
+         <result name="input" type="freemarker">/default/templates/screen/security/my-mobile-code-ret-pwd.ftl</result>
+         <result name="error" type="freemarker">/default/templates/screen/security/retrieve-password-error.ftl</result>
+     </action>
+  </package>
+    
+</struts>

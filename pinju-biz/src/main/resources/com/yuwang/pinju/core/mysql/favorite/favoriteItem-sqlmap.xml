@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="favorite_item">
+
+	<typeAlias alias="FavoriteItem" type="com.yuwang.pinju.domain.favorite.FavoriteItemDO" />
+
+	<resultMap id="FavoriteItemResult" class="FavoriteItem">
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="itemId" column="ITEM_ID"/>
+		<result property="shopId" column="SHOP_ID" />
+		<result property="shopName" column="SHOP_NAME" />
+		<result property="categoryId" column="CATEGORY_ID" />
+		<result property="categoryName" column="CATEGORY_NAME"/>
+		<result property="collectionCount" column="COLLECTION_COUNT" />
+		<result property="titleIdList" column="TITLE_ID_LIST" />
+		<result property="favoriteDate" column="FAVORITE_DATE" />
+		<result property="configuration" column="CONFIGURATION" />
+		<result property="reamark" column="REAMARK" />
+		<result property="isDelete" column="IS_DELETE" />
+		<result property="modifiedDate" column="MODIFIED_DATE" />
+		<result property="createDate" column="CREATE_DATE" />
+	</resultMap>
+
+	<sql id="selectAllFavoriteItem"><![CDATA[SELECT ID,MEMBER_ID,ITEM_ID,SHOP_ID,SHOP_NAME,COLLECTION_COUNT,CATEGORY_ID,CATEGORY_NAME,TITLE_ID_LIST,FAVORITE_DATE,CONFIGURATION,REAMARK,IS_DELETE,MODIFIED_DATE,CREATE_DATE FROM FAVORITE_ITEM]]></sql>
+
+    <sql id="selectAllCategory"><![CDATA[SELECT DISTINCT CATEGORY_ID,CATEGORY_NAME FROM FAVORITE_ITEM]]></sql>
+
+	<select id="selectAllFavoriteItem" resultMap="FavoriteItemResult">
+		<include refid="selectAllFavoriteItem" />
+	</select>
+
+	<select id="selectFavoriteItemByid" resultMap="FavoriteItemResult"  parameterClass="Long">
+		<include refid="selectAllFavoriteItem" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectFavoriteItem"  resultMap="FavoriteItemResult" parameterClass="FavoriteItem">
+		<include refid="selectAllFavoriteItem" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryId">
+				<![CDATA[CATEGORY_ID = #categoryId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryName">
+				<![CDATA[CATEGORY_NAME = #categoryName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="collectionCount">
+				<![CDATA[COLLECTION_COUNT = #collectionCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="titleIdList">
+				<![CDATA[TITLE_ID_LIST = #titleIdList#]]>
+			</isNotEmpty>
+		   <isNotEmpty prepend="AND" property="favoriteDateStr">
+				<![CDATA[LEFT(FAVORITE_DATE,10)= #favoriteDateStr#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="reamark">
+				<![CDATA[REAMARK = #reamark#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isDelete">
+				<![CDATA[IS_DELETE = #isDelete#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="modifiedDate">
+				<![CDATA[MODIFIED_DATE = #modifiedDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createDate">
+				<![CDATA[CREATE_DATE = #createDate#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[ ORDER BY FAVORITE_DATE  DESC  LIMIT #startRow#, #pageCount# ]]>
+	</select>
+	
+	<select id="queryFavoriteItem"  resultMap="FavoriteItemResult" parameterClass="FavoriteItem">
+		<include refid="selectAllFavoriteItem" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryId">
+				<![CDATA[CATEGORY_ID = #categoryId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryName">
+				<![CDATA[CATEGORY_NAME = #categoryName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="collectionCount">
+				<![CDATA[COLLECTION_COUNT = #collectionCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="titleIdList">
+				<![CDATA[TITLE_ID_LIST = #titleIdList#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="favoriteDateStr">
+				<![CDATA[LEFT(FAVORITE_DATE,10)= #favoriteDateStr#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="reamark">
+				<![CDATA[REAMARK = #reamark#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isDelete">
+				<![CDATA[IS_DELETE = #isDelete#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="modifiedDate">
+				<![CDATA[MODIFIED_DATE = #modifiedDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createDate">
+				<![CDATA[CREATE_DATE = #createDate#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertFavoriteItem" parameterClass="FavoriteItem">
+		<![CDATA[INSERT INTO FAVORITE_ITEM (ID,MEMBER_ID,ITEM_ID,SHOP_ID,SHOP_NAME,CATEGORY_ID,CATEGORY_NAME,COLLECTION_COUNT,TITLE_ID_LIST,FAVORITE_DATE,CONFIGURATION,REAMARK,IS_DELETE,MODIFIED_DATE,CREATE_DATE) VALUES (#id#,#memberId#,#itemId#,#shopId#,#shopName#,#categoryId#,#categoryName#,#collectionCount#,#titleIdList#,#favoriteDate#,#configuration#,#reamark#,#isDelete#,#modifiedDate#,#createDate#)]]>
+	     <selectKey resultClass="long" type="post" keyProperty="id">
+       <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+        </selectKey>
+	</insert>
+
+	<sql id="deleteAllFavoriteItem"><![CDATA[DELETE FROM FAVORITE_ITEM]]></sql>
+
+	<delete id="deleteAllFavoriteItem">
+		<include refid="deleteAllFavoriteItem" />
+	</delete>
+
+	<delete id="deleteFavoriteItemByid" parameterClass="Long">
+		<include refid="deleteAllFavoriteItem" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteFavoriteItem"  parameterClass="FavoriteItem">
+		<include refid="deleteAllFavoriteItem" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryId">
+				<![CDATA[CATEGORY_ID = #categoryId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryName">
+				<![CDATA[CATEGORY_NAME = #categoryName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="collectionCount">
+				<![CDATA[COLLECTION_COUNT = #collectionCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="titleIdList">
+				<![CDATA[TITLE_ID_LIST = #titleIdList#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="favoriteDate">
+				<![CDATA[FAVORITE_DATE = #favoriteDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="reamark">
+				<![CDATA[REAMARK = #reamark#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isDelete">
+				<![CDATA[IS_DELETE = #isDelete#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="modifiedDate">
+				<![CDATA[MODIFIED_DATE = #modifiedDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createDate">
+				<![CDATA[CREATE_DATE = #createDate#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateFavoriteItem" parameterClass="FavoriteItem">
+		<![CDATA[UPDATE FAVORITE_ITEM]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryId">
+				<![CDATA[CATEGORY_ID = #categoryId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryName">
+				<![CDATA[CATEGORY_NAME = #categoryName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="collectionCount">
+				<![CDATA[COLLECTION_COUNT = #collectionCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="titleIdList">
+				<![CDATA[TITLE_ID_LIST = #titleIdList#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="favoriteDate">
+				<![CDATA[FAVORITE_DATE = #favoriteDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="reamark">
+				<![CDATA[REAMARK = #reamark#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isDelete">
+				<![CDATA[IS_DELETE = #isDelete#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="modifiedDate">
+				<![CDATA[MODIFIED_DATE = #modifiedDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="createDate">
+				<![CDATA[CREATE_DATE = #createDate#]]>
+			</isNotEmpty>
+		</dynamic>
+
+	</update>
+	
+	<select id="queryCount" resultClass="java.lang.Integer" parameterClass="FavoriteItem">
+    <![CDATA[SELECT COUNT(*) FROM FAVORITE_ITEM ]]>
+    <dynamic prepend="WHERE">
+       		 <isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryId">
+				<![CDATA[CATEGORY_ID = #categoryId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryName">
+				<![CDATA[CATEGORY_NAME = #categoryName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="collectionCount">
+				<![CDATA[COLLECTION_COUNT = #collectionCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="titleIdList">
+				<![CDATA[TITLE_ID_LIST = #titleIdList#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="favoriteDateStr">
+				<![CDATA[LEFT(FAVORITE_DATE,10)= #favoriteDateStr#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="reamark">
+				<![CDATA[REAMARK = #reamark#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="isDelete">
+				<![CDATA[IS_DELETE = #isDelete#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="modifiedDate">
+				<![CDATA[MODIFIED_DATE = #modifiedDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createDate">
+				<![CDATA[CREATE_DATE = #createDate#]]>
+			</isNotEmpty>
+    </dynamic>
+  </select>
+	<delete id="deleteFavoriteItemByList" parameterClass="java.util.Map">
+	   <include refid="deleteAllFavoriteItem" />
+		<dynamic prepend="WHERE">
+				<iterate conjunction="OR  ID="  prepend="" property="idList" open="ID=" close="">
+				    #idList[]#
+			   </iterate>
+			   <isNotEmpty prepend="and" property="memberId">
+			      <![CDATA[AND MEMBER_ID = #memberId#]]>
+			    </isNotEmpty>
+		</dynamic>
+	</delete>
+	
+	<resultMap id="FavoriteItemCategoryResult" class="FavoriteItem">
+		<result property="categoryId" column="CATEGORY_ID" />
+		<result property="categoryName" column="CATEGORY_NAME"/>
+	</resultMap>
+	
+	<select id="queryFavoriteItemCategorys" resultMap="FavoriteItemCategoryResult" parameterClass="java.lang.Long">
+	   <include refid="selectAllCategory"/>
+			  <![CDATA[WHERE MEMBER_ID = #memberId#]]>
+	</select>
+</sqlMap>
+

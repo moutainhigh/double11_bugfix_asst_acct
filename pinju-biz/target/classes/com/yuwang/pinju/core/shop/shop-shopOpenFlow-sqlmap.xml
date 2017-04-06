@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="shopOpenFlow">
+
+	<resultMap id="ShopOpenFlowResult" class="com.yuwang.pinju.domain.shop.ShopOpenFlowDO">
+		<result property="id" column="ID" />
+		<result property="userId" column="USER_ID" />
+		<result property="sellerType" column="SELLER_TYPE" />
+		<result property="isAgreement" column="IS_AGREEMENT" />
+		<result property="isFillInfo" column="IS_FILL_INFO" /> 
+		<result property="auditStatus" column="AUDIT_STATUS" />
+		<result property="isKa" column="IS_KA" />
+		<result property="isBlack" column="IS_BLACK" />
+		<result property="auditDate" column="AUDIT_DATE" />
+		<result property="auditCount" column="AUDIT_COUNT" />
+		<result property="auditProgress" column="AUDIT_PROGRESS" />
+		<result property="isOnlineAuditEnd" column="IS_ONLINE_AUDIT_END" />
+		<result property="isPostalAuditEnd" column="IS_POSTAL_AUDIT_END" />
+		<result property="isSampleAuditEnd" column="IS_SAMPLE_AUDIT_END" />
+		<result property="noPassReason" column="NO_PASS_REASON" />
+		<result property="reviewer" column="REVIEWER" />
+		<result property="configuration" column="CONFIGURATION" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+
+	<sql id="shopOpenFlowSelectAll">
+	<![CDATA[SELECT id,user_id,seller_type,is_agreement,is_fill_info,audit_status,is_ka,is_black,audit_date,audit_count,audit_progress,is_online_audit_end,
+	  is_postal_audit_end,is_sample_audit_end,no_pass_reason,reviewer,configuration,gmt_create,gmt_modified  FROM shop_open_flow]]>
+	</sql>
+
+
+	<select id="selectAllShopOpenFlow" resultMap="ShopOpenFlowResult">
+		<include refid="shopOpenFlowSelectAll" />
+	</select>
+	
+	<select id="queryShopOpenFlowByUserId2"  resultMap="ShopOpenFlowResult" parameterClass="java.util.Map">
+		<include refid="shopOpenFlowSelectAll" /><![CDATA[ WHERE USER_ID = #userId#]]>
+		
+	</select>
+
+	<insert id="saveShopOpenFlow" parameterClass="com.yuwang.pinju.domain.shop.ShopOpenFlowDO">
+		<!-- sql -->
+		<selectKey resultClass="int" keyProperty="id">
+			SELECT SEQ_SHOP_OPEN_FLOW_ID.nextval AS id FROM dual
+        </selectKey>
+
+		<![CDATA[INSERT INTO SHOP_OPEN_FLOW (REVIEWER,CONFIGURATION,GMT_CREATE,GMT_MODIFIED,IS_ONLINE_AUDIT_END,IS_POSTAL_AUDIT_END,IS_SAMPLE_AUDIT_END,NO_PASS_REASON,ID,USER_ID,SELLER_TYPE,IS_AGREEMENT,IS_FILL_INFO,AUDIT_STATUS,IS_KA,IS_BLACK,AUDIT_DATE,AUDIT_COUNT,AUDIT_PROGRESS) VALUES (#reviewer#,#configuration#,#gmtCreate#,#gmtModified#,#isOnlineAuditEnd#,#isPostalAuditEnd#,#isSampleAuditEnd#,#noPassReason#,#id#,#userId#,#sellerType#,#isAgreement#,#isFillInfo#,#auditStatus#,#isKa#,#isBlack#,#auditDate#,#auditCount#,#auditProgress#)]]>
+
+	</insert>
+
+	<update id="updateShopOpenFlow" parameterClass="com.yuwang.pinju.domain.shop.ShopOpenFlowDO">
+		<![CDATA[UPDATE SHOP_OPEN_FLOW]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="userId">
+				<![CDATA[USER_ID = #userId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerType">
+				<![CDATA[SELLER_TYPE = #sellerType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isAgreement">
+				<![CDATA[IS_AGREEMENT = #isAgreement#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isFillInfo">
+				<![CDATA[IS_FILL_INFO = #isFillInfo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="auditStatus">
+				<![CDATA[AUDIT_STATUS = #auditStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isKa">
+				<![CDATA[IS_KA = #isKa#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isBlack">
+				<![CDATA[IS_BLACK = #isBlack#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="auditDate">
+				<![CDATA[AUDIT_DATE = #auditDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="auditCount">
+				<![CDATA[AUDIT_COUNT = #auditCount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="auditProgress">
+				<![CDATA[AUDIT_PROGRESS = #auditProgress#]]>
+			</isNotEmpty>
+
+			<isNotEmpty prepend="," property="isOnlineAuditEnd">
+				<![CDATA[IS_ONLINE_AUDIT_END = #isOnlineAuditEnd#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isPostalAuditEnd">
+				<![CDATA[IS_POSTAL_AUDIT_END = #isPostalAuditEnd#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="isSampleAuditEnd">
+				<![CDATA[IS_SAMPLE_AUDIT_END = #isSampleAuditEnd#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="noPassReason">
+				<![CDATA[NO_PASS_REASON = #noPassReason#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="reviewer">
+				<![CDATA[REVIEWER = #reviewer#]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[configuration = #configuration#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[gmt_modified = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+
+		</dynamic>
+		<![CDATA[WHERE user_id = #userId#]]>
+	</update>
+	
+	 <delete id="deleteShopOpenFlowByUserId"  parameterClass="java.util.Map" >
+        <![CDATA[DELETE FROM SHOP_OPEN_FLOW WHERE USER_ID=#userId#]]>
+      </delete>
+</sqlMap>
+

@@ -1,0 +1,13 @@
+span.hong { color:red; }
+.ui-datepicker { width:250px; }
+.Personal form div { float:left; }
+.Personal form .normal { border:1px solid gray; }
+.Personal form input.focus, .Personal form textarea.focus { border:1px solid gray; background-color:#fdfcdc; }
+.Personal form input.error, .Personal form select.error, .Personal form textarea.error { border-color:#EA0000; background-color:#FFD2D2; }
+.Personal form span.message { color:#1D95C7; margin-left:10px; }
+.Personal form span.error { color:#EA0000; }
+.Personal form label[for] { cursor:pointer; }
+div.message { padding:10px 0; text-align:center; border:1px solid green; color:green; font-size:18px; font-weight:bold; background:#FFFFBB; display:none; }
+form li { height:26px; clear:both;}
+form li.address { height:110px; }
+form textarea { margin-bottom:10px; }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MemberPayment">
+
+  <typeAlias alias="memberPayment" type="com.yuwang.pinju.domain.member.MemberPaymentDO" />
+
+  <resultMap id="memberPayment" class="memberPayment">
+    <result column="ID" property="id" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="INSTITUTION" property="institution" />
+    <result column="ACCOUNT_NO" property="accountNO" />
+    <result column="ACCOUNT_TYPE" property="accountType" />
+    <result column="ACTIVE_STATUS" property="activeStatus" />
+    <result column="BOUND_STATUS" property="bondStatus" />
+    <result column="OUT_USER" property="outUser" />
+    <result column="SIGN_AGREEMENT" property="signAgreement" />
+    <result column="SIGN_AGREEMENT_TIME" property="signAgreementTime" />
+    <result column="VERSION" property="version" />
+  </resultMap>
+
+  <sql id="getAllMemberPayment">
+    <![CDATA[SELECT ID, MEMBER_ID, INSTITUTION, ACCOUNT_NO, ACCOUNT_TYPE, ACTIVE_STATUS, BOUND_STATUS, OUT_USER, SIGN_AGREEMENT, SIGN_AGREEMENT_TIME, VERSION FROM MEMBER_MEMBER_PAYMENT]]>
+  </sql>
+
+  <select id="findBoundMemberPayment" resultMap="memberPayment" parameterClass="memberPayment">
+    <include refid="getAllMemberPayment" />
+    <![CDATA[WHERE MEMBER_ID = #memberId# AND ACTIVE_STATUS = 1 AND BOUND_STATUS = 1 AND INSTITUTION = #institution#]]>
+  </select>
+  
+  <select id="validateBoundMemberPayment" resultMap="memberPayment" parameterClass="memberPayment">
+    <include refid="getAllMemberPayment" />
+    <![CDATA[WHERE ACTIVE_STATUS = 1 AND BOUND_STATUS = 1 AND ACCOUNT_NO=#accountNO# AND INSTITUTION = #institution#]]>
+  </select>
+  
+  <select id="findTenPayBoundMemberPayment" resultMap="memberPayment" parameterClass="memberPayment">
+    <include refid="getAllMemberPayment" />
+    <![CDATA[WHERE MEMBER_ID = #memberId# AND INSTITUTION = #institution#]]>
+  </select>
+  
+  <select id="getPaymentDOByAccountNo" resultMap="memberPayment" >
+    <include refid="getAllMemberPayment" />
+    <![CDATA[WHERE ACCOUNT_NO = #accountNO# AND ACTIVE_STATUS = 1 AND BOUND_STATUS = 1 AND SIGN_AGREEMENT = 0 AND INSTITUTION = 'TENPAY']]>
+  </select>
+
+  <insert id="persistMemberPayment" parameterClass="memberPayment">
+    <![CDATA[
+    INSERT INTO MEMBER_MEMBER_PAYMENT (
+      MEMBER_ID, INSTITUTION, ACCOUNT_NO, ACCOUNT_TYPE, ACTIVE_STATUS, BOUND_STATUS, OUT_USER, GMT_CREATE, GMT_MODIFIED
+    ) VALUES (
+      #memberId#, #institution#, #accountNO#, #accountType#, #activeStatus#, #bondStatus#, #outUser#, now(), now()
+    )
+    ]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>    
+  </insert>
+
+  <update id="updateMemberPayment" parameterClass="memberPayment" >
+    <![CDATA[UPDATE MEMBER_MEMBER_PAYMENT SET GMT_MODIFIED = now(), VERSION = VERSION + 1]]>
+    <isNotEmpty prepend="," property="institution">
+      <![CDATA[INSTITUTION = #institution#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="accountNO">
+      <![CDATA[ACCOUNT_NO = #accountNO#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="accountType">
+      <![CDATA[ACCOUNT_TYPE = #accountType#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="activeStatus">
+      <![CDATA[ACTIVE_STATUS = #activeStatus#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="bondStatus">
+      <![CDATA[BOUND_STATUS = #bondStatus#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="outUser">
+      <![CDATA[OUT_USER = #outUser#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="signAgreement">
+      <![CDATA[SIGN_AGREEMENT = #signAgreement#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="signAgreementTime">
+      <![CDATA[SIGN_AGREEMENT_TIME = #signAgreementTime#]]>
+    </isNotEmpty>
+    <![CDATA[WHERE ID = #id# AND MEMBER_ID = #memberId# AND VERSION = #version#]]>
+  </update>
+  
+  <update id="updateMemberPaymentByAccountNo" parameterClass="memberPayment" >
+    <![CDATA[UPDATE MEMBER_MEMBER_PAYMENT SET GMT_MODIFIED = now() ]]>
+    <isNotEmpty prepend="," property="accountNO">
+      <![CDATA[ACCOUNT_NO = #accountNO#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="activeStatus">
+      <![CDATA[ACTIVE_STATUS = #activeStatus#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="bondStatus">
+      <![CDATA[BOUND_STATUS = #bondStatus#]]>
+    </isNotEmpty>
+    <![CDATA[WHERE MEMBER_ID = #memberId# AND INSTITUTION=#institution#]]>
+  </update>
+
+</sqlMap>

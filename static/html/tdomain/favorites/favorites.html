@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>品聚官方网站pinju.com-全球最大的品质交易平台 | 快乐网购平台 | 天下无假  爱上网购</title>
+<link media="screen" type="text/css" href="http://static.pinju.com/css/pj_base.css" rel="stylesheet">
+<link href="http://static.pinju.com/css/tdomain/favorites.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+</head>
+
+<body>
+<div class="top_bar">
+	<div class="top_bar_box cf">
+		<div class="login_status">
+			<span><a href="#">请登录</a></span> 
+			<span><a href="#">免费注册</a></span>
+		</div>
+		<div class="liaison">
+			<a href="#" target="_blank">我的品聚</a>
+			<a href="#" target="_blank">我是买家</a>
+			<a href="#" target="_blank">我是卖家</a>
+			<a href="http://job.pinju.com/" target="_blank">加入品聚</a>
+			<a href="http://www.pinju.com/cms/html/about/contact/" target="_blank">联系我们</a>
+			<a href="#" target="_blank">帮助中心</a>
+		</div>
+	</div>
+</div>
+<div class="header">
+	<div class="masthead cf">
+		<div class="logo">
+			<a href="http://www.pinju.com/">
+				<img class="logo_pic" width="326" height="54" src="http://static.pinju.com/images/pj_logo_17.gif" />
+			</a>
+		</div>
+		<div class="eye">
+			<div class="share2sns">
+				<span class="title"> 分享到&nbsp;&nbsp;
+				<input type="hidden" id="newsTitle" value="告别淘假货的时代,10月上&quot;品聚网&quot;买真货！">
+				<input type="hidden" id="_pic" value="http://static.pinju.com/images/pj_logo_17.gif">
+				<a id="share_tsina" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s01.png" /></a> <a id="share_tqq" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s02.png" /></a> <a id="share_qzone" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s03.png" /></a> <a id="share_renren" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s04.png" /></a> <a id="share_kaixin001" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s05.png" /></a> <a id="share_t163" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s06.png" /></a> <a id="share_tsohu" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s07.png" /></a> <a id="share_txpengyou" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s08.png" /></a> <a id="share_douban" href="javascript:" target="_blank"><img src="http://static.pinju.com/img/share2sns/s09.png" /></a> </span> 
+			</div>
+		</div>
+	</div>
+</div>
+<div class="wrapfull navfull">
+	<div class="pj_nav">
+		<ul class="nav_list">
+			<li class="current"><a href="#">首　页</a></li>
+			<li><a href="#">体验购</a></li>
+			<li><a href="#">品聚新闻</a></li>
+			<li><a href="#">聚 伙 伴</a></li>
+			<li><a href="#">盛大招商</a></li>
+			<li><a href="#">帮助中心</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- content -->
+<div class="wrap cf">
+	<div class="wrap-border cf">
+		<div class="bar-left">
+			<!-- left -->
+			<ul class="bar-list">
+				<!--商品管理-->
+				<h3>商品管理</h3>
+				<li><a href="/itemReleased/categoryList.htm">发布商品</a></li>
+
+				<li name = "sell_item"><a href="/item/itemList.htm?itemQuery.type=0">出售中的商品</a></li>
+				<li name = "storage_item"><a href="/item/itemList.htm?itemQuery.type=2">仓库中的商品</a></li>
+				<!--交易管理-->
+				<h3>交易管理</h3>
+				<li name="logistics-tool"><a href="/logistics/listTemplateTool.htm">物流工具</a></li>
+				<!--店铺管理-->
+				<h3>店铺管理</h3>
+				<li name="red_shopOpen"><a href="/shop/showShopOpenAction.htm">我要开店</a></li>
+				<li><a href="/shopDecoration/viewShop.htm" target="_blank">查看我的店铺</a></li>
+				<li><a href="/shopDecoration/shopDecorationAction.htm" target="_blank">店铺装修</a></li>
+				<li name="red_shopCategory"><a href="/shop/shopCategory.htm">店铺分类管理</a></li>
+				<li name="red_shopInfo"><a id="shopBaseInfoId" href="/shop/showShopInfo.htm">店铺基本设置</a></li>
+				<!--分销管理-->
+				<!--退款维权-->
+				<!-- 保证金管理 -->
+
+				<!--
+				<h3>保证金管理</h3>
+				<li name="mymargin">
+				<a href="/margin/mymargin.htm">我的保证金</a>
+				</li>
+				-->
+				<!--营销中心-->
+			</ul>
+		</div>  
+		<div class="contents">
+			<div class="domain-map">
+				<span>您的位置：</span><a href="#">我是买家</a> &gt; <span class="current">我的收藏</span>
+			</div>
+			<ul class="favorites-tabs cf">
+				<li class="goodsFav current">商品收藏</li>
+				<li class="shopFav">店铺收藏</li>
+			</ul>
+			<div class="favoritesGoods">
+				<div class="favorites-category">
+					<h3 class="title">收藏分类</h3>
+					<div class="list-box cf">
+						<span class="nameSpan show">所有商品</span>
+						<a class="nameLink" href="#">所有商品</a>
+						<ul class="list">
+							<li><a href="#">女装/女士精品</a>( 3 )</li>
+							<li><a href="#">内衣/男士内衣/...</a>( 3 )</li>
+							<li><a href="#">女装/女士精品</a>( 3 )</li>
+							<li><a href="#">内衣/男士内衣/...</a>( 3 )</li>
+							<li><a href="#">女装/女士精品</a>( 3 )</li>
+							<li><a href="#">内衣/男士内衣/...</a>( 3 )</li>
+						</ul>
+					</div>
+				</div>
+				<div class="favoritesGoods-info cf">
+					<div class="favorites-checkall cf">
+						<div class="left">
+							<label for="favoritesGoodsCheckallTop">
+								<input id="favoritesGoodsCheckallTop" class="favoritesGoodsCheckall" type="checkbox" />全选
+							</label>
+							<a class="favoritesGoodsDel" href="#">删除</a>
+						</div>
+						<div class="right">
+							<div class="skipto">
+								到第 <input id="" name="" class="pagenum"> 页 <button class="btn-sgray">确定</button>
+							</div>
+							<div class="pagination" id="Pagination">
+								<a href="#" class="current prev">上一页</a>
+								<a href="#" class="prev">上一页</a>
+								<span class="current">1</span>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#" class="next">下一页</a>
+								<a href="#" class="current next">下一页</a>
+							</div>
+						</div>
+					</div>
+					<ul class="favorites-titles">
+						<li class="long">商品信息</li>
+						<li>单价（元）</li>
+						<li>收藏时间</li>
+						<li>收藏人气</li>
+						<li>操作</li>
+					</ul>
+					<ul class="favorites-list" id="favoritesGoodsList">
+						<li>
+							<input class="chk" type="checkbox" />
+							<dl class="list">
+								<dt>
+									<div class="img"><a href="#"><img src="http://static.pinju.com/img/shareBuying/list-img.jpg" /></a></div>
+									<div class="text">
+										<a class="name" href="#">confg2011夏男士牛仔裤浅色牛仔短裤 男直筒中腰 五分裤2件包邮五分裤2件包邮</a>
+										<span class="shop">店铺：<a href="#">我型我秀旗舰店</a></span>
+										<span class="num">已售出：<em>99999</em>件</span>
+									</div>
+								</dt>
+								<dd>
+									<span class="price">189.00</span>
+								</dd>
+								<dd>
+									<span class="time">2011-07-14</span>
+								</dd>
+								<dd><span class="renqi">9999</span></dd>
+								<dd>
+									<a class="add" href="#"></a>
+									<a class="goodsDel" href="#">删除</a>
+									<a class="buy" href="#">立即购买</a>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<input class="chk" type="checkbox" />
+							<dl class="list">
+								<dt>
+									<div class="img"><a href="#"><img src="http://static.pinju.com/img/shareBuying/list-img.jpg" /></a></div>
+									<div class="text">
+										<a class="name" href="#">confg2011夏男士牛仔裤浅色牛仔短裤 男直筒中腰 五分裤2件包邮五分裤2件包邮</a>
+										<span class="shop">店铺：<a href="#">我型我秀旗舰店</a></span>
+										<span class="num">已售出：<em>99999</em>件</span>
+									</div>
+								</dt>
+								<dd>
+									<span class="price">189.00</span>
+								</dd>
+								<dd>
+									<span class="time">2011-07-14</span>
+								</dd>
+								<dd><span class="renqi">9999</span></dd>
+								<dd>
+									<a class="add" href="#"></a>
+									<a class="goodsDel" href="#">删除</a>
+									<a class="buy" href="#">立即购买</a>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<input class="chk" type="checkbox" />
+							<dl class="list">
+								<dt>
+									<div class="img"><a href="#"><img src="http://static.pinju.com/img/shareBuying/list-img.jpg" /></a></div>
+									<div class="text">
+										<a class="name" href="#">confg2011夏男士牛仔裤浅色牛仔短裤 男直筒中腰 五分裤2件包邮五分裤2件包邮</a>
+										<span class="shop">店铺：<a href="#">我型我秀旗舰店</a></span>
+										<span class="num">已售出：<em>99999</em>件</span>
+									</div>
+								</dt>
+								<dd>
+									<span class="price">189.00</span>
+								</dd>
+								<dd>
+									<span class="time">2011-07-14</span>
+								</dd>
+								<dd><span class="renqi">9999</span></dd>
+								<dd>
+									<a class="add" href="#"></a>
+									<a class="goodsDel" href="#">删除</a>
+									<a class="buy" href="#">立即购买</a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<div class="favorites-checkall cf">
+						<div class="left">
+							<label for="favoritesGoodsCheckallBottom">
+								<input id="favoritesGoodsCheckallBottom" class="favoritesGoodsCheckall" type="checkbox" />全选
+							</label>
+							<a class="favoritesGoodsDel" href="#">删除</a>
+						</div>
+						<div class="right">
+							<div class="skipto">
+								到第 <input id="" name="" class="pagenum"> 页 <button class="btn-sgray">确定</button>
+							</div>
+							<div class="pagination" id="Pagination">
+								<a href="#" class="current prev">上一页</a>
+								<a href="#" class="prev">上一页</a>
+								<span class="current">1</span>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#" class="next">下一页</a>
+								<a href="#" class="current next">下一页</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="favoritesShop">
+				<div class="favorites-category">
+					<h3 class="title">收藏分类</h3>
+					<div class="list-box cf">
+						<span class="nameSpan show">所有店铺</span>
+						<a class="nameLink" href="#">所有店铺</a>
+						<ul class="list">
+							<li><a href="#">女装/女士精品</a>( 3 )</li>
+							<li><a href="#">内衣/男士内衣/...</a>( 3 )</li>
+							<li><a href="#">女装/女士精品</a>( 3 )</li>
+							<li><a href="#">内衣/男士内衣/...</a>( 3 )</li>
+							<li><a href="#">女装/女士精品</a>( 3 )</li>
+							<li><a href="#">内衣/男士内衣/...</a>( 3 )</li>
+						</ul>
+					</div>
+				</div>
+				<div class="favoritesShop-info cf">
+					<div class="favorites-checkall cf">
+						<div class="left">
+							<label for="favoritesShopCheckallTop">
+								<input id="favoritesShopCheckallTop" class="favoritesShopCheckall" type="checkbox" />全选
+							</label>
+							<a class="favoritesShopDel" href="#">删除</a>
+						</div>
+						<div class="right">
+							<div class="skipto">
+								到第 <input id="" name="" class="pagenum"> 页 <button class="btn-sgray">确定</button>
+							</div>
+							<div class="pagination" id="Pagination">
+								<a href="#" class="current prev">上一页</a>
+								<a href="#" class="prev">上一页</a>
+								<span class="current">1</span>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#" class="next">下一页</a>
+								<a href="#" class="current next">下一页</a>
+							</div>
+						</div>
+					</div>
+					<ul class="favorites-titles">
+						<li class="long">店铺信息</li>
+						<li>商品数量</li>
+						<li>收藏时间</li>
+						<li>收藏人气</li>
+						<li>操作</li>
+					</ul>
+					<ul class="favorites-list" id="favoritesShopList">
+						<li>
+							<input class="chk" type="checkbox" />
+							<dl class="list">
+								<dt>
+									<div class="img"><a href="#"><img src="http://static.pinju.com/img/shareBuying/list-img.jpg" /></a></div>
+									<div class="text">
+										<span class="shopName">店铺：<a href="#">我型我秀旗舰店我型我秀旗舰店</a></span>
+										<span class="shopType">店铺类型：<img src="http://static.pinju.com/img/goods/icon-flagship.png" /></span>
+									</div>
+								</dt>
+								<dd>
+									999
+								</dd>
+								<dd>
+									<span class="time">2011-07-14</span>
+								</dd>
+								<dd><span class="renqi">9999</span></dd>
+								<dd>
+									<a class="shopDel" href="#">删除</a>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<input class="chk" type="checkbox" />
+							<dl class="list">
+								<dt>
+									<div class="img"><a href="#"><img src="http://static.pinju.com/img/shareBuying/list-img.jpg" /></a></div>
+									<div class="text">
+										<span class="shopName">店铺：<a href="#">我型我秀旗舰店我型我秀旗舰店</a></span>
+										<span class="shopType">店铺类型：<img src="http://static.pinju.com/img/goods/icon-brand.png" /></span>
+									</div>
+								</dt>
+								<dd>
+									999
+								</dd>
+								<dd>
+									<span class="time">2011-07-14</span>
+								</dd>
+								<dd><span class="renqi">9999</span></dd>
+								<dd>
+									<a class="shopDel" href="#">删除</a>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<input class="chk" type="checkbox" />
+							<dl class="list">
+								<dt>
+									<div class="img"><a href="#"><img src="http://static.pinju.com/img/shareBuying/list-img.jpg" /></a></div>
+									<div class="text">
+										<span class="shopName">店铺：<a href="#">我型我秀旗舰店我型我秀旗舰店</a></span>
+										<span class="shopType">店铺类型：<img src="http://static.pinju.com/img/goods/icon-general.png" /></span>
+									</div>
+								</dt>
+								<dd>
+									999
+								</dd>
+								<dd>
+									<span class="time">2011-07-14</span>
+								</dd>
+								<dd><span class="renqi">9999</span></dd>
+								<dd>
+									<a class="shopDel" href="#">删除</a>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<input class="chk" type="checkbox" />
+							<dl class="list">
+								<dt>
+									<div class="img"><a href="#"><img src="http://static.pinju.com/img/shareBuying/list-img.jpg" /></a></div>
+									<div class="text">
+										<span class="shopName">店铺：<a href="#">我型我秀旗舰店我型我秀旗舰店</a></span>
+										<span class="shopType">店铺类型：<img src="http://static.pinju.com/img/goods/icon-ishop.png" /></span>
+									</div>
+								</dt>
+								<dd>
+									999
+								</dd>
+								<dd>
+									<span class="time">2011-07-14</span>
+								</dd>
+								<dd><span class="renqi">9999</span></dd>
+								<dd>
+									<a class="shopDel" href="#">删除</a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+					<div class="favorites-checkall cf">
+						<div class="left">
+							<label for="favoritesShopCheckallBottom">
+								<input id="favoritesShopCheckallBottom" class="favoritesShopCheckall" type="checkbox" />全选
+							</label>
+							<a class="favoritesGoodsDel" href="#">删除</a>
+						</div>
+						<div class="right">
+							<div class="skipto">
+								到第 <input id="" name="" class="pagenum"> 页 <button class="btn-sgray">确定</button>
+							</div>
+							<div class="pagination" id="Pagination">
+								<a href="#" class="current prev">上一页</a>
+								<a href="#" class="prev">上一页</a>
+								<span class="current">1</span>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#" class="next">下一页</a>
+								<a href="#" class="current next">下一页</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- content -->
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		<ul class="foot_nav">
+			<li><a href="/cms/html/about/" title="关于品聚" target="_blank">关于品聚</a></li>
+			<li><a href="http://service.pinju.com/cms/html/quality/" title="品聚品质保障服务" target="_blank">品聚品质保障服务</a></li>
+			<li><a href="http://service.pinju.com/" title="新手帮助" target="_blank">新手帮助</a></li>
+			<li><a href="/cms/html/about/contact/" title="联系我们" target="_blank">联系我们</a></li>
+			<li><a href="http://job.pinju.com/" title="品聚招聘" target="_blank">品聚招聘</a></li>
+			<li class="last">客服邮箱：<a href="mailto:kf@pinju.com" title="客服邮箱" target="_blank">kf@pinju.com</a></li>
+		</ul>
+		<p class="copyright">上海御网信息技术有限公司  版权所有&nbsp;&nbsp; 
+			&nbsp;&nbsp;沪ICP备11032558号</p>
+		<p class="copyright">
+			<span>媒体联系：media@pinju.com</span>丨 <span>商户加盟： business@pinju.com</span>丨 <span>聚伙伴加盟：jhb@pinju.com</span> | <span>城市分站加盟：yinlijun@pinju.com</a></span></p>
+		<p><span class="test">test.pinju.com</span></p>
+	</div>
+</div>
+<script>
+$(function() {
+	/* tab切换--商品售出 店铺收藏 */
+	$('.favorites-tabs .goodsFav').click(function() {
+		$('.favoritesShop').hide();
+		$('.favoritesGoods').show();
+		$('.favorites-tabs li').removeClass('current');
+		$(this).addClass('current');
+	});
+	$('.favorites-tabs .shopFav').click(function() {
+		$('.favoritesGoods').hide();
+		$('.favoritesShop').show();
+		$('.favorites-tabs li').removeClass('current');
+		$(this).addClass('current');
+	});
+	
+	/* 分类链接切换 */
+	$('.favorites-category .list li a').click(function() {
+		$('.favorites-category .nameSpan').hide();
+		$('.favorites-category .nameLink').show();
+	});
+	$('.favorites-category .nameLink').click(function() {
+		$('.favorites-category .nameLink').hide();
+		$('.favorites-category .nameSpan').show();
+	});
+	
+	/* 全选效果 */
+	$('.favoritesGoodsCheckall').change(function() {
+		if($(this).attr('checked') == 'checked') {
+			$('#favoritesGoodsList').find('.chk').attr('checked', 'checked');
+			$('.favoritesGoodsCheckall').attr('checked', 'checked');
+		} else {
+			$('#favoritesGoodsList').find('.chk').removeAttr('checked');
+			$('.favoritesGoodsCheckall').removeAttr('checked');
+		}
+	});
+	$('#favoritesGoodsList .chk').change(function() {
+		var length = $('#favoritesGoodsList .chk').length;
+		var lengthchk = $('#favoritesGoodsList .chk:checked').length;
+		if(length == lengthchk) {
+			$('.favoritesGoodsCheckall').attr('checked', 'checked');
+		} else {
+			$('.favoritesGoodsCheckall').removeAttr('checked');
+		}
+	});
+	
+	$('.favoritesShopCheckall').change(function() {
+		if($(this).attr('checked') == 'checked') {
+			$('#favoritesShopList').find('.chk').attr('checked', 'checked');
+			$('.favoritesShopCheckall').attr('checked', 'checked');
+		} else {
+			$('#favoritesShopList').find('.chk').removeAttr('checked');
+			$('.favoritesShopCheckall').removeAttr('checked');
+		}
+	});
+	$('#favoritesShopList .chk').change(function() {
+		var length = $('#favoritesShopList .chk').length;
+		var lengthchk = $('#favoritesShopList .chk:checked').length;
+		if(length == lengthchk) {
+			$('.favoritesShopCheckall').attr('checked', 'checked');
+		} else {
+			$('.favoritesShopCheckall').removeAttr('checked');
+		}
+	});
+});
+</script>
+</body>
+</html>

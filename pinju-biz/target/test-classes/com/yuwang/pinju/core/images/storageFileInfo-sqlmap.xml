@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="storageFileInfo" >
+
+  <typeAlias alias="storageFileInfo" type="com.yuwang.pinju.domain.images.StorageFileInfoDO"/>
+
+  <resultMap id="storageFileInfo" class="storageFileInfo">
+    <result column="ID" property="id" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="NAME" property="name" />
+    <result column="PATH" property="path" />
+    <result column="TYPE" property="type" />
+    <result column="MEMBER_NAME" property="memberName" />
+    <result column="GMT_CREATE" property="gmtCreate" javaType="java.util.Date" />
+    <result column="GMT_MODIFIED" property="gmtModified" javaType="java.util.Date" />
+    <result column="SIZE" property="size" />
+    <result column="FILENAME" property="fileName" />
+    <result column="DIMENSION" property="dimension" />
+    <result column="IMAGECATEGORYID" property="imageCategoryId" />
+    <result column="STATUS" property="status" />
+  </resultMap>
+
+  <sql id="getAllStorageFileList">
+    <![CDATA[SELECT ID,MEMBER_ID,NAME, PATH, TYPE, MEMBER_NAME, GMT_CREATE, GMT_MODIFIED, SIZE, FILENAME, DIMENSION, IMAGECATEGORYID, STATUS FROM STORAGE_FILE_INFO]]>
+  </sql>
+  
+  <select id="getStorageFileList" resultMap="storageFileInfo">
+    <include refid="getAllStorageFileList" />
+    <dynamic prepend="WHERE">
+    <isNotEmpty prepend="AND" property="fileName">
+      <![CDATA[FILENAME = #fileName#]]>
+    </isNotEmpty>  
+    <isNotEmpty prepend="AND" property="imageCategoryId">
+      <![CDATA[IMAGECATEGORYID = #imageCategoryId#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="memberId">
+      <![CDATA[MEMBER_ID = #memberId#]]>
+    </isNotEmpty>
+     <isNotEmpty prepend="AND" property="gmtCreate">
+      <![CDATA[GMT_CREATE = #gmtCreate#]]>
+    </isNotEmpty>
+    </dynamic>
+   <![CDATA[ORDER BY #orderBy# LIMIT #startRow#, #pageCount#]]>
+  </select>
+
+<select id="queryCount" resultMap="storageFileInfo">
+    <![CDATA[SELECT COUNT(*) FROM STORAGE_FILE_INFO ]]>
+    <dynamic prepend="WHERE">
+    <isNotEmpty prepend="AND" property="fileName">
+      <![CDATA[FILENAME = #fileName#]]>
+    </isNotEmpty>  
+    <isNotEmpty prepend="AND" property="imageCategoryId">
+      <![CDATA[IMAGECATEGORYID = #imageCategoryId#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="AND" property="memberId">
+      <![CDATA[MEMBER_ID = #memberId#]]>
+    </isNotEmpty>
+     <isNotEmpty prepend="AND" property="gmtCreate">
+      <![CDATA[GMT_CREATE = #gmtCreate#]]>
+    </isNotEmpty>
+    </dynamic>
+   <![CDATA[ORDER BY #orderBy#]]>
+  </select>
+  <select id="queryStorageFileInfo" resultMap="storageFileInfo"  parameterClass="java.lang.Long">
+    <include refid="getAllStorageFileList" />
+    <![CDATA[WHERE NAME =#name#]]>
+  </select>
+ 
+  <insert id="insertStorageFileInfo" parameterClass="storageFileInfo">
+		<![CDATA[INSERT INTO STORAGE_FILE_INFO (ID,MEMBER_ID,NAME,TYPE,PATH,MEMBER_NAME,GMT_CREATE,GMT_MODIFIED,SIZE,IMAGECATEGORYID,STATUS,DIMENSION,FILENAME)
+		 VALUES (#id#,#memberId#,#name#,#type#,#path#,#memberName#,#gmtCreate#,#gmtModified#,#size#,#imageCategoryId#,#status#,#dimension#,#fileName#)]]>
+  </insert>
+  
+    <update id="updateStorageFileInfo" parameterClass="storageFileInfo" >
+    <![CDATA[UPDATE STORAGE_FILE_INFO SET]]>    
+    <![CDATA[GMT_MODIFIED = now()]]>
+    <isNotEmpty prepend="," property="fileName">
+      <![CDATA[FILENAME = #fileName#]]>
+    </isNotEmpty>  
+    <isNotEmpty prepend="," property="imageCategoryId">
+      <![CDATA[IMAGECATEGORYID = #imageCategoryId#]]>
+    </isNotEmpty>
+    <isNotEmpty prepend="," property="status">
+      <![CDATA[STATUS = #status#]]>
+    </isNotEmpty>
+    <![CDATA[WHERE ID = #id#]]>
+  </update>
+  
+   <update id="updateImageCategoryIdById" parameterClass="java.util.Map" >
+    <![CDATA[UPDATE STORAGE_FILE_INFO SET]]>    
+    <![CDATA[GMT_MODIFIED = now(),IMAGECATEGORYID=#imageCategoryId#]]>
+    <dynamic prepend="WHERE">	
+				<![CDATA[NAME]]>
+				<iterate conjunction="OR NAME=" open="=" close="">
+			       #idList[]#
+				</iterate>
+		</dynamic>	
+  </update>
+  
+  <update id="updateImageCategoryId" parameterClass="java.util.Map" >
+    <![CDATA[UPDATE STORAGE_FILE_INFO SET]]>    
+    <![CDATA[GMT_MODIFIED = now(),IMAGECATEGORYID=#imageCategoryIdMod# WHERE MEMBER_ID = #memberId# and IMAGECATEGORYID=#imageCategoryId#]]>
+  </update>
+  
+   <delete id="deleteFileByCategId"  parameterClass="java.util.List" >
+    <![CDATA[DELETE FROM STORAGE_FILE_INFO]]>
+      <dynamic prepend="WHERE">	
+				<![CDATA[IMAGECATEGORYID]]>
+				<iterate conjunction="OR IMAGECATEGORYID=" open="=" close="">
+			       #imageCategoryIds[]#
+				</iterate>
+		</dynamic>	
+   </delete>
+   
+    <delete id="deleteFileByNames"  parameterClass="java.util.List" >
+    <![CDATA[DELETE FROM STORAGE_FILE_INFO]]>
+      <dynamic prepend="WHERE">	
+				<![CDATA[NAME]]>
+				<iterate conjunction="OR NAME=" open="=" close="">
+			       #idList[]#
+				</iterate>
+		</dynamic>	
+   </delete>
+   
+  <select id="querySizeByName" resultClass="java.lang.Long"  parameterClass="java.util.List">
+    <![CDATA[SELECT SUM(SIZE) FROM STORAGE_FILE_INFO WHERE]]>
+       <![CDATA[NAME IN]]>
+			<iterate conjunction="," open="(" close=")" >
+			     #idList[]#
+		   </iterate>
+  </select>
+  
+    <select id="querySizeByCateoryIds" resultClass="java.lang.Long"  parameterClass="java.util.List">
+    <![CDATA[SELECT SUM(SIZE) FROM STORAGE_FILE_INFO WHERE]]>
+       <![CDATA[IMAGECATEGORYID IN]]>
+		 <iterate conjunction="," open="(" close=")" >
+			     #imageCategoryList[]#
+		 </iterate>
+   </select>
+</sqlMap>

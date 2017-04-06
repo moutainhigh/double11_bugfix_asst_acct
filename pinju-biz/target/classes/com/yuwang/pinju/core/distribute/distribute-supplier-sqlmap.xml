@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="distribute_supplier">
+
+	<typeAlias alias="DistributeSupplierDo"
+		type="com.yuwang.pinju.domain.distribute.DistributeSupplierDO" />
+	<typeAlias alias="DistributeSupplier"
+		type="com.yuwang.pinju.domain.distribute.DistributeSupplierParamDO" />
+
+	<resultMap id="DistributeSupplierResult" class="DistributeSupplierDo">
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="nickName" column="NICKNAME" />
+		<result property="shopId" column="SHOP_ID" />
+		<result property="applyTitle" column="APPLY_TITLE" />
+		<result property="applyContent" column="APPLY_CONTENT" />
+		<result property="status" column="STATUS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllDistributeSupplier">
+	<![CDATA[SELECT ID,MEMBER_ID,NICKNAME,SHOP_ID,APPLY_TITLE,
+				APPLY_CONTENT,CONFIGURATION,STATUS,GMT_CREATE,GMT_MODIFIED 
+				FROM DISTRIBUTE_SUPPLIER]]>
+	</sql>
+
+	<select id="selectAllDistributeSupplier" resultMap="DistributeSupplierResult">
+		<include refid="selectAllDistributeSupplier" />
+	</select>
+
+	<select id="selectDistributeSupplierByid" resultMap="DistributeSupplierResult"
+		parameterClass="long">
+		<include refid="selectAllDistributeSupplier" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectDistributeSupplier" resultMap="DistributeSupplierResult"
+		parameterClass="DistributeSupplier">
+		<include refid="selectAllDistributeSupplier" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="nickName">
+				<![CDATA[NICKNAME = #nickName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyTitle">
+				<![CDATA[APPLY_TITLE = #applyTitle#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyContent">
+				<![CDATA[APPLY_CONTENT = #applyContent#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="selectDistributeSupplierByItemId" resultMap="DistributeSupplierResult"
+		parameterClass="DistributeSupplier">
+		SELECT
+			DS.ID,
+			DS.MEMBER_ID,
+			DS.NICKNAME,
+			DS.SHOP_ID,
+			DS.APPLY_TITLE,
+			DS.APPLY_CONTENT,
+			DS.CONFIGURATION,
+			DS.STATUS,
+			DS.GMT_CREATE,
+			DS.GMT_MODIFIED
+		FROM
+			DISTRIBUTE_SUPPLIER DS LEFT JOIN DISTRIBUTE_SUPPLIER_GOODS DSG ON DS.ID = DSG.SUPPLIER_ID
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[DSG.ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[DSG.STATUS = #status#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="selectAllDistributeSupplierInfo" resultClass="DistributeSupplierDo"
+		parameterClass="DistributeSupplier">
+		SELECT
+		IFNULL(goods.MIN_REWARD,0) AS "minReward",
+		IFNULL(goods.MAX_REWARD,0) AS "maxReward",
+		IFNULL(goods.COUNT,0) AS "Count",
+		supplier.SHOP_ID AS "shopId",
+		supplier.ID AS "id"
+		FROM
+		(SELECT SUPPLIER_ID,
+		MIN(REWARD) AS "MIN_REWARD",
+		MAX(REWARD) AS "MAX_REWARD",
+		COUNT(ITEM_ID) AS "COUNT"
+		FROM DISTRIBUTE_SUPPLIER_GOODS GROUP BY SUPPLIER_ID) AS goods
+		RIGHT JOIN
+		(SELECT SHOP_ID, ID FROM DISTRIBUTE_SUPPLIER GROUP BY ID LIMIT
+		#start#,#itemsPerPage#) AS supplier
+		ON supplier.ID = goods.SUPPLIER_ID
+	</select>
+
+	<select id="selectDistributeSupplierByIds" resultClass="DistributeSupplierDo"
+		parameterClass="java.util.Map">
+		SELECT
+		IFNULL(goods.MIN_REWARD,0) AS "minReward",
+		IFNULL(goods.MAX_REWARD,0) AS "maxReward",
+		IFNULL(goods.COUNT,0) AS "Count",
+		supplier.SHOP_ID AS "shopId",
+		supplier.ID AS "id"
+		FROM
+		(SELECT SUPPLIER_ID,
+		MIN(REWARD) AS "MIN_REWARD",
+		MAX(REWARD) AS "MAX_REWARD",
+		COUNT(ITEM_ID) AS "COUNT"
+		FROM DISTRIBUTE_SUPPLIER_GOODS
+		WHERE STATUS = 0
+		GROUP BY SUPPLIER_ID) AS goods
+		RIGHT JOIN
+		(SELECT SHOP_ID, ID FROM DISTRIBUTE_SUPPLIER
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="ids">
+				<iterate prepend="AND" open="(" close=")" property="ids"
+					conjunction="OR">
+							<![CDATA[
+								SHOP_ID = #ids[]#
+							]]>
+				</iterate>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+		</dynamic>
+		GROUP BY ID) AS supplier
+		ON supplier.ID = goods.SUPPLIER_ID
+	</select>
+
+	<select id="selectSupplierShopIdByIds" resultClass="DistributeSupplierDo"
+		parameterClass="java.util.Map">
+		SELECT DISTINCT SHOP_ID AS "shopId", ID AS "id", MEMBER_ID AS "memberId" FROM DISTRIBUTE_SUPPLIER
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="ids">
+				<iterate prepend="AND" open="(" close=")" property="ids"
+					conjunction="OR">
+							<![CDATA[
+								MEMBER_ID = #ids[]#
+							]]>
+				</iterate>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="count" resultClass="Integer" parameterClass="DistributeSupplier">
+		SELECT COUNT(*) AS "value" FROM DISTRIBUTE_SUPPLIER
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="nickName">
+				<![CDATA[NICKNAME = #nickName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyTitle">
+				<![CDATA[APPLY_TITLE = #applyTitle#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyContent">
+				<![CDATA[APPLY_CONTENT = #applyContent#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertDistributeSupplier" parameterClass="DistributeSupplierDo">
+		<![CDATA[INSERT INTO DISTRIBUTE_SUPPLIER (MEMBER_ID,NICKNAME,SHOP_ID,APPLY_TITLE,APPLY_CONTENT) 
+			VALUES (#memberId#,#nickName#,#shopId#,#applyTitle#,#applyContent#)]]>
+		  <selectKey resultClass="int" keyProperty="id"> 
+             <![CDATA[SELECT @@IDENTITY AS ID]]>
+          </selectKey>  
+	</insert>
+
+	<sql id="deleteAllDistributeSupplier"><![CDATA[DELETE FROM DISTRIBUTE_SUPPLIER]]></sql>
+
+	<delete id="deleteAllDistributeSupplier">
+		<include refid="deleteAllDistributeSupplier" />
+	</delete>
+
+	<delete id="deleteDistributeSupplierByid" parameterClass="long">
+		<include refid="deleteAllDistributeSupplier" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteDistributeSupplier" parameterClass="DistributeSupplierDo">
+		<include refid="deleteAllDistributeSupplier" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="nickName">
+				<![CDATA[NICKNAME = #nickName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyTitle">
+				<![CDATA[APPLY_TITLE = #applyTitle#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="applyContent">
+				<![CDATA[APPLY_CONTENT = #applyContent#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateDistributeSupplier" parameterClass="DistributeSupplierDo">
+		<![CDATA[UPDATE DISTRIBUTE_SUPPLIER SET GMT_MODIFIED = NOW()]]>
+		<isNotEmpty prepend="," property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="nickName">
+				<![CDATA[NICKNAME = #nickName#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="applyTitle">
+				<![CDATA[APPLY_TITLE = #applyTitle#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="applyContent">
+				<![CDATA[APPLY_CONTENT = #applyContent#]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+		</isNotEmpty>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+</sqlMap>
+

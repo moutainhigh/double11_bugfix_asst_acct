@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="shopUserModuleParam">
+
+	<select id="queryShopUserModuleParam" resultClass="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO" parameterClass="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO">
+		<![CDATA[
+		SELECT ID, MODULE_ID AS MODULEID, USER_PAGE_ID AS USERPAGEID, SAVE_CONFIG, RELEASE_CONFIG, SAVE_HTML, RELEASE_HTML
+			FROM SHOP_USER_MODULE_PARAM 
+		WHERE USER_PAGE_ID=#userPageId#
+ 			AND MODULE_ID=#moduleId#
+		]]>
+	</select>
+
+	<update id="updateShopUserModuleParam" parameterClass="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO">
+		<![CDATA[UPDATE SHOP_USER_MODULE_PARAM ]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="save_config">
+				<![CDATA[SAVE_CONFIG = #save_config#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="release_config">
+				<![CDATA[RELEASE_CONFIG = #release_config#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="save_html">
+				<![CDATA[SAVE_HTML = #save_html#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="release_html">
+				<![CDATA[RELEASE_HTML = #release_html#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[
+			,GMT_MODIFIED=SYSDATE
+			WHERE USER_PAGE_ID=#userPageId#
+ 				AND MODULE_ID=#moduleId#
+		]]>
+	</update>
+
+	<update id="deleteShopUserModuleParam" parameterClass="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO">
+		<![CDATA[
+		DELETE SHOP_USER_MODULE_PARAM
+ 			WHERE USER_PAGE_ID=#userPageId#
+ 				AND MODULE_ID=#moduleId#
+		]]>
+	</update>
+
+	<update id="deleteShopUserModuleParamByPage" parameterClass="java.lang.Long">
+		<![CDATA[
+		DELETE SHOP_USER_MODULE_PARAM
+ 			WHERE USER_PAGE_ID=#userPageId#
+		]]>
+	</update>
+	
+	<insert id="insertShopUserModuleParam" parameterClass="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO">
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT
+			SEQ_SHOP_USER_MODULE_PARAM_ID.NEXTVAL AS id FROM dual
+        </selectKey>
+		<![CDATA[INSERT INTO SHOP_USER_MODULE_PARAM
+  			(ID, MODULE_ID, USER_PAGE_ID, SAVE_CONFIG, SAVE_HTML, RELEASE_HTML, GMT_CREATE, GMT_MODIFIED)
+  			 VALUES (#id#, #moduleId#,  #userPageId#, #save_config#, #save_html#, #release_html#, SYSDATE, SYSDATE)
+		]]>
+	</insert>
+	
+	<update id="releaseShopUserModule" parameterClass="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO">
+		<![CDATA[UPDATE SHOP_USER_MODULE_PARAM 
+				SET RELEASE_CONFIG = SAVE_CONFIG, RELEASE_HTML = SAVE_HTML 
+				WHERE USER_PAGE_ID IN (
+				SELECT ID FROM SHOP_USER_PAGE WHERE USER_ID = #userId# AND SHOP_ID = #shopId#)
+		]]>		
+	</update>	
+
+	<update id="restoreUserModule" parameterClass="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO">
+		<![CDATA[UPDATE SHOP_USER_MODULE_PARAM 
+				SET SAVE_CONFIG = RELEASE_CONFIG, SAVE_HTML = RELEASE_HTML 
+				WHERE USER_PAGE_ID IN (
+				SELECT ID FROM SHOP_USER_PAGE WHERE USER_ID = #userId# AND SHOP_ID = #shopId#)
+		]]>		
+	</update>
+</sqlMap>
+

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_pic">
+
+	<typeAlias alias="ItemPic" type="com.yuwang.pinju.domain.item.ItemPicDO" />
+
+	<resultMap id="ItemPicResult" class="ItemPic">
+		<result property="id" column="ID" />
+		<result property="picUrl" column="PIC_URL" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="picLength" column="PIC_LENGTH" />
+		<result property="picWidth" column="PIC_WIDTH" />
+		<result property="picSize" column="PIC_SIZE" />
+		<result property="sort" column="SORT" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+	</resultMap>
+
+	<sql id="selectAllItemPic"><![CDATA[SELECT ID,PIC_URL,ITEM_ID,PIC_LENGTH,PIC_WIDTH,PIC_SIZE,SORT,GMT_MODIFIED,GMT_CREATE FROM ITEM_PIC]]></sql>
+
+	<select id="selectAllItemPic" resultMap="ItemPicResult">
+		<include refid="selectAllItemPic" />
+	</select>
+
+	<select id="selectItemPic"  resultMap="ItemPicResult" parameterClass="ItemPic">
+		<include refid="selectAllItemPic" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picUrl">
+				<![CDATA[PIC_URL = #picUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picLength">
+				<![CDATA[PIC_LENGTH = #picLength#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picWidth">
+				<![CDATA[PIC_WIDTH = #picWidth#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picSize">
+				<![CDATA[PIC_SIZE = #picSize#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sort">
+				<![CDATA[SORT = #sort#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getItemPicByItemId" resultMap="ItemPicResult"  parameterClass="long">
+		<include refid="selectAllItemPic" />
+		<![CDATA[WHERE ITEM_ID = #itemId# order by SORT]]>
+	</select>
+
+	<insert id="insertItemPic" parameterClass="ItemPic">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_ITEM_PIC_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO ITEM_PIC (ID,PIC_URL,ITEM_ID,PIC_LENGTH,PIC_WIDTH,PIC_SIZE,SORT,GMT_MODIFIED,GMT_CREATE) VALUES (#id#,#picUrl#,#itemId#,#picLength#,#picWidth#,#picSize#,#sort#,#gmtModified#,#gmtCreate#)]]>
+	</insert>
+
+	<sql id="deleteAllItemPic"><![CDATA[DELETE FROM ITEM_PIC]]></sql>
+
+	<delete id="deleteAllItemPic">
+		<include refid="deleteAllItemPic" />
+	</delete>
+
+	<delete id="deleteItemPic"  parameterClass="ItemPic">
+		<include refid="deleteAllItemPic" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picUrl">
+				<![CDATA[PIC_URL = #picUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picLength">
+				<![CDATA[PIC_LENGTH = #picLength#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picWidth">
+				<![CDATA[PIC_WIDTH = #picWidth#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picSize">
+				<![CDATA[PIC_SIZE = #picSize#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sort">
+				<![CDATA[SORT = #sort#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateItemPic" parameterClass="ItemPic">
+		<![CDATA[UPDATE ITEM_PIC]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="picUrl">
+				<![CDATA[PIC_URL = #picUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="picLength">
+				<![CDATA[PIC_LENGTH = #picLength#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="picWidth">
+				<![CDATA[PIC_WIDTH = #picWidth#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="picSize">
+				<![CDATA[PIC_SIZE = #picSize#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sort">
+				<![CDATA[SORT = #sort#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+		</dynamic>
+
+	</update>
+</sqlMap>
+

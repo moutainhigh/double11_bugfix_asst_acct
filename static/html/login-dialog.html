@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="expires" content="0" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="baiduspider" content="all" />
+	<meta name="keywords" content="品聚小喇叭" />
+	<meta name="description" content="品聚小喇叭，专门播放最新功能，最新活动神马的……" />
+	<title>品聚 - 品聚小喇叭</title>
+	<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+	<link href="http://static.pinju.com/css/base.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="http://static.pinju.com/css/common.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="http://static.pinju.com/css/mypj/mypj.css" rel="stylesheet" type="text/css" media="screen" />
+	<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+	<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=pinjulogin"></script>
+	<script>
+		$(function() {
+			$('#J_login').click(function(e) {
+				e.preventDefault();
+				art.dialog({
+					id: 'login',
+					title: '',
+					content: $('#J_loginDialog')[0]
+				});
+				$('#J_loginDialog .textbox')[0].focus();
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="top_bar">
+		<div class="top_bar_box cf">
+			<div class="login_status">
+				<span class="welcome">您好！欢迎来到品聚</span>
+				<span>[ <a href="#">注册</a> ]</span>
+				<span>[ <a href="#" id="J_login">登陆</a> ]</span>
+			</div>
+			<div class="liaison">
+				<a href="#">加入我们</a>|<a href="#">联系我们</a>
+			</div>
+		</div>
+	</div>
+	<div id="J_loginDialog" class="login-dialog" style="display:none;">
+		<ul>
+			<li><label>登录帐号: </label><input class="textbox" type="text" /></li>
+			<li><label>密 码: </label><input class="textbox" type="password" /></li>
+			<li class="captcha"><label>验证码: </label><input class="textbox" type="password" />
+				<img src="http://static.pinju.com/img/login/captcha.png" width="62" height="30" />
+				<a class="reload" href="#">看不清<br />换一张</a>
+			</li>
+			<li><label>&nbsp;</label><input class="btn" type="submit" value="" /><a href="#">忘记密码？</a> <a href="#">免费注册</a></li>
+		</ul>
+	</div>
+</body>
+</html>

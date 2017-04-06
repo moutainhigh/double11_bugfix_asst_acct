@@ -1,0 +1,122 @@
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_sku">
+
+	<typeAlias alias="ItemSku" type="com.yuwang.pinju.domain.item.SkuDO" />
+
+	<resultMap id="ItemSkuResult" class="ItemSku">
+		<result property="id" column="ID" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="salePv1" column="SALE_PV_1" />
+		<result property="salePv2" column="SALE_PV_2" />
+		<result property="salePv3" column="SALE_PV_3" />
+		<result property="salePv4" column="SALE_PV_4" />
+		<result property="price" column="PRICE" />
+		<result property="oriStock" column="ORI_STOCK" />
+		<result property="currentStock" column="CURRENT_STOCK" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="status" column="STATUS" />
+		<result property="sellerCode" column="SELLER_CODE" />
+	</resultMap>
+
+	<sql id="selectAllItemSku">
+		<![CDATA[
+			SELECT ID,SELLER_ID,ITEM_ID,SALE_PV_1,SALE_PV_2,SALE_PV_3,SALE_PV_4,PRICE,ORI_STOCK,CURRENT_STOCK,GMT_CREATE,GMT_MODIFIED,STATUS,SELLER_CODE
+			FROM ITEM_SKU
+		]]>
+	</sql>
+	
+	<select id="getItemSkuById" resultMap="ItemSkuResult"  parameterClass="long">
+		<include refid="selectAllItemSku" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="getItemSkuByItemId" resultMap="ItemSkuResult"  parameterClass="long">
+		<include refid="selectAllItemSku" />
+		<![CDATA[WHERE ITEM_ID = #itemId# AND STATUS = 1]]>
+	</select>
+
+	<select id="getItemSku"  resultMap="ItemSkuResult" parameterClass="ItemSku">
+		<include refid="selectAllItemSku" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="itemId">
+				<![CDATA[ITEM_ID = #itemId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="salePv1">
+				<![CDATA[SALE_PV_1 = #salePv1#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="salePv2">
+				<![CDATA[SALE_PV_2 = #salePv2#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="salePv3">
+				<![CDATA[SALE_PV_3 = #salePv3#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="salePv4">
+				<![CDATA[SALE_PV_4 = #salePv4#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="price">
+				<![CDATA[PRICE = #price#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriStock">
+				<![CDATA[ORI_STOCK = #oriStock#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="currentStock">
+				<![CDATA[CURRENT_STOCK = #currentStock#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerCode">
+				<![CDATA[SELLER_CODE = #sellerCode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="createItemSku" parameterClass="ItemSku">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_ITEM_SKU_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO ITEM_SKU (ID,SELLER_ID,ITEM_ID,SALE_PV_1,SALE_PV_2,SALE_PV_3,SALE_PV_4,PRICE,ORI_STOCK,CURRENT_STOCK,GMT_CREATE,GMT_MODIFIED,STATUS,SELLER_CODE) VALUES (#id#,#sellerId#,#itemId#,#salePv1#,#salePv2#,#salePv3#,#salePv4#,#price#,#oriStock#,#currentStock#,#gmtCreate#,#gmtModified#,#status#,#sellerCode#)]]>
+	</insert>
+	
+	<update id="deleteItemSku" parameterClass="long">
+		<![CDATA[UPDATE ITEM_SKU SET STATUS = 0 WHERE ITEM_ID = #itemId#]]>
+	</update>
+
+	<update id="updateItemSku" parameterClass="ItemSku">
+		<![CDATA[UPDATE ITEM_SKU]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="price">
+				<![CDATA[PRICE = #price#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="oriStock">
+				<![CDATA[ORI_STOCK = #oriStock#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="currentStock">
+				<![CDATA[CURRENT_STOCK = #currentStock#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerCode">
+				<![CDATA[SELLER_CODE = #sellerCode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id#]]>
+	</update>
+	
+</sqlMap>
+
+

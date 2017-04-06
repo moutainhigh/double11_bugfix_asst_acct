@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_security">
+
+	<typeAlias alias="MemberSecurity" type="com.yuwang.pinju.domain.member.security.MemberSecurityDO" />
+
+	<resultMap id="MemberSecurityResult" class="MemberSecurity">
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="loginName" column="LOGIN_NAME" />
+		<result property="securityAuthMask" column="SECURITY_AUTH_MASK" />
+		<result property="lastLoginTime" column="LAST_LOGIN_TIME" />
+		<result property="lastLoginIp" column="LAST_LOGIN_IP" />
+		<result property="currentLoginTime" column="CURRENT_LOGIN_TIME" />
+		<result property="currentLoginIp" column="CURRENT_LOGIN_IP" />
+		<result property="version" column="VERSION" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllMemberSecurity"><![CDATA[SELECT ID,MEMBER_ID,LOGIN_NAME,SECURITY_AUTH_MASK,LAST_LOGIN_TIME,LAST_LOGIN_IP,CURRENT_LOGIN_TIME,CURRENT_LOGIN_IP,VERSION,GMT_CREATE,GMT_MODIFIED FROM MEMBER_SECURITY]]></sql>
+
+	<select id="getSecurityByMid" resultMap="MemberSecurityResult" parameterClass="long">
+    <include refid="selectAllMemberSecurity" />
+    <![CDATA[WHERE MEMBER_ID = #memberId#]]>
+  </select>
+
+	<insert id="addMemberSecurity" parameterClass="MemberSecurity">
+		<![CDATA[INSERT INTO MEMBER_SECURITY (MEMBER_ID,LOGIN_NAME,SECURITY_AUTH_MASK,LAST_LOGIN_TIME,LAST_LOGIN_IP,CURRENT_LOGIN_TIME,CURRENT_LOGIN_IP,VERSION,GMT_CREATE,GMT_MODIFIED) VALUES (#memberId#,#loginName#,#securityAuthMask#,#lastLoginTime#,#lastLoginIp#,#currentLoginTime#,#currentLoginIp#,#version#,#gmtCreate#,#gmtModified#)]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+      <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+	</insert>
+
+  <update id="updateSecurityMask" parameterClass="MemberSecurity" >
+    <![CDATA[
+    UPDATE MEMBER_SECURITY
+       SET SECURITY_AUTH_MASK = #securityAuthMask#, GMT_MODIFIED = #gmtModified#, VERSION = VERSION + 1
+     WHERE MEMBER_ID = #memberId# AND VERSION = #version#]]>
+  </update>
+
+  <update id="updateLastLoginTime" parameterClass="MemberSecurity" >
+    <![CDATA[
+    UPDATE MEMBER_SECURITY
+       SET LAST_LOGIN_TIME = CURRENT_LOGIN_TIME,
+           LAST_LOGIN_IP = CURRENT_LOGIN_IP,
+           CURRENT_LOGIN_TIME = #currentLoginTime#,
+           CURRENT_LOGIN_IP = #currentLoginIp#,
+           GMT_MODIFIED = #gmtModified#,
+           VERSION = VERSION + 1
+     WHERE MEMBER_ID = #memberId#]]>
+  </update>
+</sqlMap>
+

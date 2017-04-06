@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ <bean id="zmemcachedClientBuilder"
+  class="com.snda.cache.client.zmemcached.ZmemcachedClientBuilder">
+  <property name="zmemcachedClientFactory">
+   <!--fallbackAddresses 后备地址，当index server失效时使用,指向的是memcached的地址 -->
+   <bean class="com.snda.cache.client.zmemcached.ZmemcachedClientFactory"
+    p:indexKey="com.yuwang.cache.index" p:fallbackAddresses="10.245.130.182:11211">
+    <property name="indexFetcher">
+     <!-- xmemcached作为index fetcher -->
+      <bean
+      class="com.snda.cache.client.zmemcached.index.DirectSocketIndexFetcher">
+      <property name="indexServer">
+       <bean class="java.net.InetSocketAddress">
+        <constructor-arg value="10.245.130.182" />
+        <constructor-arg value="11211" type="int" />
+       </bean>
+      </property>
+     </bean>
+    </property>
+   </bean>
+  </property>
+  <!--
+  如果你需要定制zmecached内部的xmemcached，请使用MemcachedClientBuilder
+  <property name="backendMemcachedClientBuilder"> <bean ="net.rubyeye.xmemcached.XMemcachedClientBuilder"/> </property>
+   -->
+</bean>
+<bean id="memcachedClient" factory-bean="zmemcachedClientBuilder" factory-method="build" destroy-method="shutdown" /> </beans>

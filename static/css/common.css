@@ -1,0 +1,320 @@
+/*表单*/
+.text {
+	height: 20px;
+	width: 240px;
+	padding: 3px 2px 0 2px;
+	border: 1px solid #999;
+}
+
+/*整体主容器定义*/
+.wrap, .wrap-border,.wrap-fullcon {
+	clear: both;
+	margin: 0 auto;
+}
+
+.wrap {
+	width: 1000px;
+}
+
+.wrap-border {
+	width: 998px;
+	border: 1px solid #DADADA;
+	background: url(http://static.pinju.com/img/line.png) repeat-y 149px 0;
+}
+
+.wrap-fullcon {
+	width: 999px;
+	border: 1px solid #DADADA;
+	border-right:0 none;
+	background: url(http://static.pinju.com/img/line.png) repeat-y 149px 0;
+}
+
+/*页面左右容器*/
+.bar-left{
+	overflow: hidden;
+}
+
+.contents {
+	width: 828px;
+	float: right;
+	padding: 10px;
+	min-height:360px;
+	_height:360px;
+	/*overflow-x: hidden;*/
+}
+
+.main-box {
+	width: 828px;
+	float: right;
+	padding: 10px;
+}
+
+.bar-left {
+	width: 149px;
+	float: left;
+}
+
+.bar-topic {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 6px 0 5px;
+	text-align: center;
+	text-align: left;
+	text-indent: 20px;
+}
+
+.bar-list {
+	text-align: center;
+	padding: 0 0 5px;
+}
+
+.bar-list h3, .bar-list li {
+	text-align: left;
+	text-indent: 20px;
+}
+
+.bar-list h3 {
+	background: #F8F8F8;
+	padding: 8px 0 4px;
+	font-weight: bold;
+	border: 1px solid #FFF;
+	color: #000;
+	border-top: 1px solid #e9e9e9;
+}
+
+.bar-list li {
+	display: block;
+	line-height: 23px;
+	padding: 3px 0;
+	color: #999;
+}
+
+.bar-list li a {
+	color: #333;
+	display: block;
+	margin: 0 3px;
+}
+
+.bar-list .count a {
+	background: url(http://static.pinju.com/img/button.png) no-repeat 0 -200px;
+	text-decoration: none;
+	color: #FFF;
+}
+
+/*页头顶端条定义*/
+.top-bar {
+	height: 32px;
+	overflow: hidden;
+	background: url(http://static.pinju.com/img/header-sub.png) repeat-x 0 0 #F4F4F4;
+}
+
+.top-bar div {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 8px;
+}
+
+.top-bar div a {
+	font-weight: bold;
+	padding: 0 10px;
+}
+
+/*页头*/
+#HeaderSub {
+	height: 85px;
+}
+
+#HeaderSub ul {
+	display: block;
+}
+
+#HeaderSub .logo {
+	float: left;
+	padding: 15px 0 0 10px;
+}
+
+#HeaderSub .option {
+	float: right;
+	padding: 20px 0 0 10px;
+}
+
+#HeaderSub .option li {
+	display: block;
+	text-align: right;
+	padding-bottom: 10px;
+	color: #555e87;
+}
+
+#HeaderSub .option li img {
+	padding-left: 5px;
+	margin-top: -8px;
+}
+
+/*导航*/
+#Nav {
+	height: 37px;
+	background: url(http://static.pinju.com/img/header-sub.png) repeat-x 0 -50px #C00;
+}
+
+#Nav .left {
+	width: 10px;
+	height: 37px;
+	background: url(http://static.pinju.com/img/header-sub.png) no-repeat 0 -100px;
+}
+
+#Nav ul {
+	background: url(http://static.pinju.com/img/header-sub.png) no-repeat right -150px;
+	height: 37px;
+	overflow: hidden;
+}
+
+#Nav li {
+	display: block;
+	float: left;
+	padding-right: 10px;
+	margin-right: 20px;
+}
+
+#Nav li a {
+	color: #F8F8F8;
+	font-weight: bold;
+	padding: 12px 0 8px 10px;
+}
+
+#Nav li a {
+	display: block;
+	float: left;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+#Nav .count {
+	background: url(http://static.pinju.com/img/header-sub.png) no-repeat right -250px;
+}
+
+#Nav .count a {
+	color: #C00;
+	background: url(http://static.pinju.com/img/header-sub.png) no-repeat 0 -200px;
+}
+
+/*页码分页*/
+.button_next {
+	width: 16px;
+	background: url(http://static.pinju.com/img/button.png) no-repeat 0 -700px;
+	border: none;
+	cursor: pointer;
+}
+
+.button_next_none {
+	width: 16px;
+	background: url(http://static.pinju.com/img/button.png) no-repeat 0 -750px;
+	border: none;
+	cursor: pointer;
+	height:20px;
+}
+
+.button_previous {
+	width: 52px;
+	background: url(http://static.pinju.com/img/button.png) no-repeat -30px -700px;
+	border: none;
+	cursor: pointer;
+	
+}
+
+.button_previous_none {
+	width: 52px;
+	background: url(http://static.pinju.com/img/button.png) no-repeat -30px -750px;
+	border: none;
+	cursor: pointer;
+	height:20px;
+}
+/*页码*/
+.page-coder{ height:60px; background:#FFF; padding-top:10px;}
+.page-coder ul{ padding:0 10px; width:500px; margin:0 auto; display:block; height:30px;}
+.page-coder ul li{ display:block; float:left; margin-left:5px; line-height:23px; padding-top:10px;}
+.page-coder ul li input{ border:1px solid #999; width:20px; height:15px; margin:0 -3px;}
+.page-coder ul li a{ border:1px solid #CCC; text-align:center; padding:3px 5px; line-height:15px; background:#F4F4F4;}
+.page-coder ul li a:hover{ background:#C00; color:#FFF; text-decoration:none;}
+
+/*页脚*/
+#footer{ border-top: 1px solid #EEE; margin-top:50px; padding-top:15px; height:100px;}
+#footer ul{ display:block; clear:both;}
+#footer li{ display:block; float:left;}
+#footer .linker{ padding-left:240px; height:30px;}
+#footer .linker li{ padding-right:40px;}
+#footer .company-info{ height:22px; padding-left:340px;}
+#footer .company-info li{ padding-right:10px; color:#999;}
+
+/* tips & skip pages */
+.tipswrap {background-color:#fff; padding:10px;}
+.tipswrap h2 { background:transparent url(http://static.pinju.com/img/bg_wraptitle.gif) no-repeat scroll left bottom; font-size:16px; font-weight:bold; color:#000; padding:0 0 10px 10px;}
+.tipswrap .infocat { background:transparent url(http://static.pinju.com/img/icons.gif) no-repeat scroll right 66px; float:left; height:66px; width:20%;}
+.tipswrap .error {background-position:right 20px;}
+.tipswrap .warn {background-position:right -80px;}
+.tipswrap .right {background-position:right -180px;}
+.tipswrap .content {height:120px; padding:30px 10px 10px 22%; *padding:35px 10px 10px 10px;}
+.tipswrap .content h3 {font-size:16px; font-weight:bold; color:#000;}
+.tipswrap .content h3 strong {color:#fe0000;}
+.tipswrap .content ul {padding:10px 0;}
+.tipswrap .content ul li {color:#666; line-height:25px;}
+
+/* 登录弹出框 */
+.login-dialog {padding: 10px 20px;}
+.login-dialog li {margin-bottom: 15px;}
+.login-dialog label {
+	width: 70px;
+	font-size: 14px;
+	color: #4c4c4c;
+	text-align: right;
+	padding: 0 20px 0 0;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+}
+.login-dialog .textbox {
+	width: 200px;
+	border: 1px solid #d4d4d4;
+	background-color:#fff;
+	font-family: "sans serif",tahoma,verdana,helvetica;
+	font-size: 12px;
+	line-height: 19px;
+	height: 19px;
+	padding: 2px 4px;
+	margin-right: 50px;
+	vertical-align: middle;
+}
+.login-dialog .captcha .textbox {width: 100px;margin-right:5px;}
+.login-dialog .captcha img {vertical-align: middle; border: 1px solid #ccc; padding: 1px; background: #fff;}
+.login-dialog a {
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+}
+.login-dialog .btn {
+	width: 74px;
+	height: 23px;
+	margin-right: 15px;
+	background-image:url(../img/login/login-btn.png);
+	background-repeat:no-repeat;
+}
+.login-dialog a {margin-right: 10px;}
+
+/* 全屏加载中效果 */
+.loading-mask {background-color : #FFF; filter : alpha(opacity=50); opacity : 0.5}
+.loading-description {
+	background-image:url(../showloading/images/loading.gif);
+	background-repeat:no-repeat;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666;
+	padding-left: 36px;
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+	height:31px;
+	line-height: 31px;
+}

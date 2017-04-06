@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="open_api_application">
+
+	<typeAlias alias="OpenApiApplication"
+		type="com.yuwang.api.domain.OpenApiApplicationDO" />
+
+	<resultMap id="OpenApiApplicationResult" class="OpenApiApplication">
+		<result property="id" column="ID" />
+		<result property="title" column="TITLE" />
+		<result property="secret" column="SECRET" />
+		<result property="picUrl" column="PIC_URL" />
+		<result property="promPos" column="PROM_POS" />
+		<result property="releasePos" column="RELEASE_POS" />
+		<result property="flux" column="FLUX" />
+		<result property="configuration" column="CONFIGURATION" />
+	</resultMap>
+
+	<sql id="selectAllOpenApiApplication"><![CDATA[SELECT ID,TITLE,SECRET,PIC_URL,PROM_POS,RELEASE_POS,FLUX,CONFIGURATION FROM OPEN_API_APPLICATION]]></sql>
+
+	<select id="selectAllOpenApiApplication" resultMap="OpenApiApplicationResult">
+		<include refid="selectAllOpenApiApplication" />
+	</select>
+
+	<select id="selectOpenApiApplicationByid" resultMap="OpenApiApplicationResult"
+		parameterClass="long">
+		<include refid="selectAllOpenApiApplication" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectOpenApiApplication" resultMap="OpenApiApplicationResult"
+		parameterClass="OpenApiApplication">
+		<include refid="selectAllOpenApiApplication" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="secret">
+				<![CDATA[SECRET = #secret#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picUrl">
+				<![CDATA[PIC_URL = #picUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="promPos">
+				<![CDATA[PROM_POS = #promPos#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="releasePos">
+				<![CDATA[RELEASE_POS = #releasePos#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="flux">
+				<![CDATA[FLUX = #flux#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertOpenApiApplication" parameterClass="OpenApiApplication">
+		<![CDATA[INSERT INTO OPEN_API_APPLICATION (ID,TITLE,SECRET,PIC_URL,PROM_POS,RELEASE_POS,FLUX,CONFIGURATION) VALUES (#id#,#title#,#secret#,#picUrl#,#promPos#,#releasePos#,#flux#,#configuration#)]]>
+	</insert>
+
+	<sql id="deleteAllOpenApiApplication"><![CDATA[DELETE FROM OPEN_API_APPLICATION]]></sql>
+
+	<delete id="deleteAllOpenApiApplication">
+		<include refid="deleteAllOpenApiApplication" />
+	</delete>
+
+	<delete id="deleteOpenApiApplicationByid" parameterClass="long">
+		<include refid="deleteAllOpenApiApplication" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteOpenApiApplication" parameterClass="OpenApiApplication">
+		<include refid="deleteAllOpenApiApplication" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="secret">
+				<![CDATA[SECRET = #secret#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="picUrl">
+				<![CDATA[PIC_URL = #picUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="promPos">
+				<![CDATA[PROM_POS = #promPos#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="releasePos">
+				<![CDATA[RELEASE_POS = #releasePos#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="flux">
+				<![CDATA[FLUX = #flux#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateOpenApiApplication" parameterClass="OpenApiApplication">
+		<![CDATA[UPDATE OPEN_API_APPLICATION]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="title">
+				<![CDATA[TITLE = #title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="secret">
+				<![CDATA[SECRET = #secret#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="picUrl">
+				<![CDATA[PIC_URL = #picUrl#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="promPos">
+				<![CDATA[PROM_POS = #promPos#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="releasePos">
+				<![CDATA[RELEASE_POS = #releasePos#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="flux">
+				<![CDATA[FLUX = #flux#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	<update id="resetApplicationSecretById" parameterClass="OpenApiApplication">
+		<![CDATA[UPDATE OPEN_API_APPLICATION SET SECRET = #secret# WHERE ID = #id#]]>
+	</update>
+</sqlMap>
+

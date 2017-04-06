@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 分销商 author:caiwei -->
+	<package name="distributor" namespace="/distributor" extends="pinju-login" >
+		<!-- 欢迎首页面 -->
+		<action name="index" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="index">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor.ftl</result>
+			<result name="welcome" type="redirectAction">welcome</result>
+		</action>
+	    <!--分销商欢迎页面  -->
+	    <action name="welcome" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="welcome">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/distributor-welcome.ftl</result>
+		</action>
+		<!-- 申请分销商资质 -->
+		<action name="applyAuthority" class="com.yuwang.pinju.web.module.distribute.action.DistributorAction" method="applyAuthority">
+			<result name="json" type="json"/>
+		</action>
+		<!-- 绑了定分销商财付通帐号页面 -->
+		<action name="bindAccount" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="bindAccount">
+	  		<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-bind-account.ftl</result>
+		</action>
+		<!-- 申请分销商页面 -->
+		<action name="applyDistributor" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="applyDistributor">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-apply.ftl</result>
+		</action>
+		<!-- 申请分销商 -->
+		<action name="apply" class="com.yuwang.pinju.web.module.distribute.action.DistributorAction" method="apply">
+			<result name="json" type="json"/>
+		</action>
+		<!-- 撤消申请分销商 -->
+		<action name="cancelApply" class="com.yuwang.pinju.web.module.distribute.action.DistributorAction" method="cancelApply">
+			<result name="success" type="redirectAction">applyManager</result>
+		</action>
+		<!-- 分销商商品管理[商品分销] -->
+		<action name="sold" class="com.yuwang.pinju.web.module.distribute.action.DistributorAction" method="sold">
+			<result name="json" type="json"/>
+		</action>
+		<action name="checkPic" class="com.yuwang.pinju.web.module.distribute.action.DistributorAction" method="checkPic">
+			<result name="json" type="json"/>
+		</action>
+		<!-- 分销商商品管理[商品停止分销] -->
+		<action name="unsold" class="com.yuwang.pinju.web.module.distribute.action.DistributorAction" method="unsold">
+			<result name="json" type="json"/>
+		</action>
+		<!-- 供应商商品展示 [招募|商品]-->
+		<action name="supplierItems" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="supplierItemList">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-supplier-items.ftl</result>
+		</action>
+		<!-- 招草书 [关注|私信]-->
+		<action name="sendConcern" class="com.yuwang.pinju.web.module.distribute.action.DistributorAction" method="sendConcern">
+			<result name="json" type="json"/>
+		</action>
+		<action name="sendMail" class="com.yuwang.pinju.web.module.distribute.action.DistributorAction" method="sendMail">
+			<result name="json" type="json"/>
+		</action>
+		<!-- 供应商商品列表 [单独商品列表]-->
+		<action name="supplierItemList" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="supplierItemList">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-supplier-item-list.ftl</result>
+		</action>
+		<!-- 供应商招募书展示 -->
+		<action name="supplierRelease" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="supplierRelease">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-supplier-release.ftl</result>
+		</action>
+		<!-- 分销管理[供应商管理:申请中] -->
+		<action name="applyManager" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="applyManager">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-manager-supplier-apply.ftl</result>
+			<result name="error" type="redirectAction">index</result>
+		</action>
+		<!-- 分销管理[供应商管理:合作中] -->
+		<action name="alignmentManager" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="alignmentManager">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-manager-supplier-alignment.ftl</result>
+			<result name="error" type="redirectAction">index</result>
+		</action>
+		<!-- 分销管理[供应商管理:合作中] -->
+		<action name="historyManager" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="historyManager">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-manager-supplier-history.ftl</result>
+			<result name="error" type="redirectAction">index</result>
+		</action>
+		<!-- 分销商品管理[已分销商品] -->
+		<action name="soldManager" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="soldManager">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-manager-item-sold.ftl</result>
+			<result name="error" type="redirectAction">index</result>
+		</action>
+		<!-- 分销商品管理[未分销商品] -->
+		<action name="unsoldManager" class="com.yuwang.pinju.web.module.distribute.screen.DistributorAction" method="unsoldManager">
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distributor-manager-item-unsold.ftl</result>
+			<result name="error" type="redirectAction">index</result>
+		</action>
+		<!-- 分销商订单 -->
+		<action name="getOrders" class="com.yuwang.pinju.web.module.distribute.screen.SupplierOrderManagerAction" method="getOrders">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/distribute-order-manager.ftl</result>
+	  		 <result name="error" type="redirectAction">index</result>
+		</action>
+		
+		<!-- 分享购页面设置 -->
+		<action name="setShareDesign" class="com.yuwang.pinju.web.module.distribute.action.ShareShoppingDesignAction" method="execute" />
+		<action name="getShareDesign" class="com.yuwang.pinju.web.module.distribute.action.ShareShoppingDesignAction" method="getShareDesign">
+	  		<result name="error" type="redirectAction">index</result>
+			<result name="success" type="freemarker">/default/templates/screen/distribute/distribute-share-pagedesign.ftl</result>
+		</action>
+		<action name="checkUploadImage" class="com.yuwang.pinju.web.module.distribute.action.ShareShoppingDesignAction" method="validateUploadImage" />
+	</package>
+	
+	<!-- 格子铺 author:caiwei -->
+	<package name="ShowCase" namespace="/ShowCase" extends="pinju-default" >
+		<!-- 格子铺展示 -->
+		<action name="show" class="com.yuwang.pinju.web.module.api.action.ShowCaseAction" method="show">
+			<result name="json" type="json"/>
+		</action>
+		<!-- 格子铺商品反馈  -->
+		<action name="interact" class="com.yuwang.pinju.web.module.api.action.ShowCaseAction" method="interact">
+			<result name="json" type="json"/>
+		</action>
+	</package>
+	
+	<!-- 供应商 author:xiazhenyu -->
+	<package name="supplier" namespace="/supplier" extends="pinju-login" >
+      	<!--申请供应商  -->
+        <action name="applySupplier" class="com.yuwang.pinju.web.module.distribute.screen.SupplierApplyAction" method="applySupplier">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-welcome.ftl</result>
+	  		 <result name="NOT_APPLY" type="freemarker">/default/templates/screen/distribute/distributor.ftl</result>
+		</action>
+		
+		<action name="apply" class="com.yuwang.pinju.web.module.distribute.screen.SupplierApplyAction" method="apply">
+	  		 <result name="json" type="json"/>
+		</action>
+		
+		<action name="welcome" class="com.yuwang.pinju.web.module.distribute.screen.SupplierApplyAction" method="welcome">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-welcome.ftl</result>
+		</action>
+		
+		<!--分销商品管理  -->
+		<action name="getAllItem" class="com.yuwang.pinju.web.module.distribute.screen.SupplierItemManagerAction" method="getAllItem">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-item-manager.ftl</result>
+	  		 <result name="NOT_APPLY" type="freemarker">/default/templates/screen/distribute/distributor.ftl</result>
+		</action>
+		
+		<action name="getDistributeItem" class="com.yuwang.pinju.web.module.distribute.screen.SupplierItemManagerAction" method="getDistributeItem">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-item-manager.ftl</result>
+	  		 <result name="NOT_APPLY" type="freemarker">/default/templates/screen/distribute/distributor.ftl</result>
+		</action>
+		
+		<action name="saveItems" class="com.yuwang.pinju.web.module.distribute.screen.SupplierItemManagerAction" method="saveItems">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-item-manager.ftl</result>
+	  		 <result name="NOT_APPLY" type="freemarker">/default/templates/screen/distribute/distributor.ftl</result>
+		</action>
+		
+		<!--发布招募  -->
+		<action name="release" class="com.yuwang.pinju.web.module.distribute.screen.SupplierReleaseAction" method="release">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-release.ftl</result>
+	  		 <result name="error" type="freemarker">/default/templates/screen/distribute/supplier-release.ftl</result>
+		</action>
+		
+		<action name="getRelease" class="com.yuwang.pinju.web.module.distribute.screen.SupplierReleaseAction" method="getRelease">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-release.ftl</result>
+	  		 <result name="NOT_APPLY" type="freemarker">/default/templates/screen/distribute/distributor.ftl</result>
+		</action>
+		
+		<!-- 供应商订单 -->
+		<action name="getOrders" class="com.yuwang.pinju.web.module.distribute.screen.SupplierOrderManagerAction" method="getOrders">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/distribute-order-manager.ftl</result>
+	  		 <result name="NOT_APPLY" type="freemarker">/default/templates/screen/distribute/distributor.ftl</result>
+		</action>
+		
+		<!-- 分销商管理 -->
+		<action name="getApplier" class="com.yuwang.pinju.web.module.distribute.screen.SupplierDistributeManagerAction" method="getApplier">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-distribute-manager.ftl</result>
+	  		 <result name="NOT_APPLY" type="freemarker">/default/templates/screen/distribute/distributor.ftl</result>
+		</action>
+		
+		<action name="getCooperator" class="com.yuwang.pinju.web.module.distribute.screen.SupplierDistributeManagerAction" method="getCooperator">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-distribute-manager.ftl</result>
+		</action>
+		
+		<action name="getExpire" class="com.yuwang.pinju.web.module.distribute.screen.SupplierDistributeManagerAction" method="getExpire">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-distribute-manager.ftl</result>
+		</action>
+		
+		<action name="pass" class="com.yuwang.pinju.web.module.distribute.screen.SupplierDistributeManagerAction" method="pass">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-distribute-manager.ftl</result>
+		</action>
+		
+		<action name="refuse" class="com.yuwang.pinju.web.module.distribute.screen.SupplierDistributeManagerAction" method="refuse">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-distribute-manager.ftl</result>
+		</action>
+		
+		<action name="popup" class="com.yuwang.pinju.web.module.distribute.screen.SupplierDistributeManagerAction" method="popup">
+	  		 <result name="success" type="freemarker">/default/templates/screen/distribute/supplier-distribute-popup.ftl</result>
+		</action>
+      </package>
+</struts>

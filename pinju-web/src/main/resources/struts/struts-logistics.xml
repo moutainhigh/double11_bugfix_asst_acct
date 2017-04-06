@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="logistics" namespace="/logistics" extends="pinju-auth">
+	
+		<interceptors>
+      		<interceptor name="logistics-interceptor" class="com.yuwang.pinju.web.interceptor.LogisticsInterceptor" />
+      		<interceptor-stack name="pinju-logistics-interceptor">
+		        <interceptor-ref name="pinju-auth-interceptor" />
+		        <interceptor-ref name="logistics-interceptor" />
+      		</interceptor-stack>
+    	</interceptors>
+
+		<global-results>    
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=category_List</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=category_List</result>
+	  		<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=category_List</result>
+		</global-results>
+
+		<action name="createTemplate" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateAction" method="execute">
+			<interceptor-ref name="pinju-logistics-interceptor" />
+			<result name="input" type="freemarker">/default/templates/screen/logistics/createTemplate.ftl</result>
+		</action>
+		
+		<action name="editTemplate" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateAction" method="editTemplate">
+			<result name="success" type="freemarker">/default/templates/screen/logistics/createTemplate.ftl</result>
+		</action>
+		
+		<action name="deleteTemplate" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateAction" method="deleteTemplate">
+			<result name="success" type="redirect">/logistics/listTemplate.htm</result>
+		</action>
+		
+		<action name="saveTemplate" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateAction" method="saveTemplate">
+			<result name="success" type="redirect">/logistics/listTemplate.htm</result>
+			<result name="input" type="freemarker">/default/templates/screen/logistics/createTemplate.ftl</result>
+		</action>
+
+		<action name="listTemplate" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateListAction" method="execute">
+			<interceptor-ref name="pinju-logistics-interceptor" />
+			<result name="success" type="freemarker">/default/templates/screen/logistics/listTemplate.ftl</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=category_List</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=category_List</result>
+	  		<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=category_List</result>
+		</action>
+		
+		<action name="areaCarriage" class="com.yuwang.pinju.web.module.logistics.action.AreaCarriageAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/logistics/areaCarriage.ftl</result>
+		</action>
+		
+		<action name="listTemplateAjax" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateListAjaxAction" method="execute">
+			<result name="success" type="json"></result>
+		</action>
+		
+		<!-- 
+		<action name="listTemplateAjax" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateListAjaxAction" method="execute">
+			<result name="success" type="json">
+				<param name="root">templateList</param>
+			</result>
+		</action>
+		 -->
+		 
+		<action name="itemInfoLogisticsAjax" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateListAjaxAction" method="itemInfoLogistics">
+			<result name="success" type="json"></result>
+		</action>
+		
+		<action name="areaLogisticsAjax" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateListAjaxAction" method="queryAreaLogisticsInfo">
+			<result name="success" type="json">
+				<param name="root">logisticsAreaCarriageList</param>
+			</result>
+		</action>
+		
+		<action name="logisticsCarriageAjax" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateListAjaxAction" method="queryLogisticsCarriage">
+			<result name="success" type="json">
+				<param name="root">carriageList</param>
+			</result>
+		</action>
+		
+		<action name="checkTempName" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateAction" method="checkTempName"></action>
+		<action name="checkLogisticsTemplate" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateAction" method="checkLogisticsTemplate"></action>	
+		
+		<!--  update mayuanchao -->
+		<action name="logisticsTrack" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTrackAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/logistics/logisticsTrack.ftl</result>
+		</action>
+		<action name="getLogisticsInfo" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTrackAction" method="getLogisticsInfo">
+			<result name="success" type="json">
+				<param name="root">logisticsServiceDO</param>
+			</result>
+		</action>
+		<!-- end updated -->
+		
+	</package>
+	
+	<package name="logisticsAjax" namespace="/logisticsAjax"  extends="pinju-default">
+		<action name="queryAreaCarriage" class="com.yuwang.pinju.web.module.logistics.action.LogisticsTemplateListAjaxAction" method="queryAreaCarriage">
+			<result name="success" type="json">
+				<param name="root">regionCarriage</param>
+			</result>
+		</action>
+		
+		
+		
+	</package>
+</struts>

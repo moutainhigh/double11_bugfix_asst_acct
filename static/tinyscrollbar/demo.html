@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Demo</title>
+		<link href="http://static.pinju.com/css/pj_base.css" rel="stylesheet" />
+		<link href="http://static.pinju.com/css/hp923.css" rel="stylesheet" />
+		<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+		<script src="http://static.pinju.com/switchable/jquery.switchable.js"></script>
+		<script src="http://static.pinju.com/tinyscrollbar/jquery.tinyscrollbar.js"></script>
+		<style>
+			img {
+				border: 0;
+			}
+			.desc p {
+				border: 1px solid #333;
+				width: 500px;
+				height: 100px;
+				margin: 5px;
+			}
+			.scrollbar {
+				position: relative;
+				background: #eee;
+				height: 50px;
+				width: 500px;
+			}
+			.scrollbar .track {
+				position: relative;
+				height: 50px;
+			}
+			.scrollbar .thumb {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 50px;
+				height: 50px;
+				background:#000;
+			}
+			.slide-panel div {
+				width: 5000px;
+			}
+			.slide-panel a {
+				display: inline;
+			}
+			.slide-trigger {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+
+		<h3>广告循环播放</h3>
+		<div class="slide-container">
+			<div class="slide-panel clearfix">
+				<div>
+					<a href="#"><img src="http://static.pinju.com/media/banner1000x290-01.jpg" width="1000" height="290" /></a><a href="#"><img src="http://static.pinju.com/media/banner1000x290-02.jpg" width="1000" height="290" /></a><a href="#"><img src="http://static.pinju.com/media/banner1000x290-03.jpg" width="1000" height="290" /></a><a href="#"><img src="http://static.pinju.com/media/banner1000x290-01.jpg" width="1000" height="290" /></a><a href="#"><img src="http://static.pinju.com/media/banner1000x290-01.jpg" width="1000" height="290" /></a><a href="#"><img src="http://static.pinju.com/media/banner1000x290-01.jpg" width="1000" height="290" /></a>
+				</div>
+			</div>
+			<div class="slide-trigger"></div>
+		</div>
+	
+		<div id="scrollbar1">
+			<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+		</div>
+
+		<script>
+			$(function() {
+				$('.slide-trigger').switchableScrollbar({
+					scrollbarWrapper : $('#scrollbar1'),
+					viewport : $('.slide-container'),
+					overview : $('.slide-panel > div'),
+					container : $('.slide-panel > div > a')
+				});
+			});
+		</script>
+
+	</body>
+</html>

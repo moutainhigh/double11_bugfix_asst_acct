@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings cacheModelsEnabled="false" enhancementEnabled="false"
+		lazyLoadingEnabled="false" maxRequests="3000" maxSessions="3000"
+		maxTransactions="3000" useStatementNamespaces="true" />
+
+	<!--
+		user sqlmap <sqlMap resource="com/yuwang/pinju/core/user/user-sqlmap.xml" />
+	-->
+
+	<!--item sqlmap-->
+	<sqlMap resource="com/yuwang/pinju/core/item/item-baseProperty-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-baseValue-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-category-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-categoryProperty-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-categoryPropertyValue-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-pic-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-sku-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-spu-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-cpValueRelation-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/item/item-brand-sqlmap.xml" />
+    <sqlMap resource="com/yuwang/pinju/core/item/item-salesStat-sqlMap.xml"/>
+	<!--item sqlmap end  -->
+	
+
+	<!-- shop sqlmap -->
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-shopBaseInfo-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-shopOpenFlow-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-shopInfoForOpen-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-category-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-pagePrototype-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-modulePrototype-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-shopPageLayout-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-shopUserModuleParam-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/shop/shop-shopUserPage-sqlmap.xml" />
+	<!--shop sqlmap end -->
+	
+	
+	<!-- order sqlmap -->
+	<sqlMap resource="com/yuwang/pinju/core/order/order-orderManager.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/order/order-orderItemManager.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/order/order-orderLogisticsManager.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/order/order-orderChannelManager.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/order/order-orderLogManager.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/order/order_tradeAdManager.xml" />
+	<!--order sqlmap end -->
+	
+	
+	 <!-- 退款 -->
+	<sqlMap resource="com/yuwang/pinju/core/refund/refund-leaveword.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/refund/refund-refund.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/refund/refund-logistics.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/refund/TradeRefundManual.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/trade/trade-refund-log-sqlmap.xml" />
+	<!--refund sqlmap end -->
+	
+	
+	<!--logistics sqlmap end -->
+	<sqlMap resource="com/yuwang/pinju/core/logistics/logistics-template.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/logistics/logistics-carriage.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/logistics/logistics-areaCarriage.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/logistics/logistics-cityip.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/logistics/logistics-corp.xml"/>
+	<!--logistics sqlmap end -->
+	
+	
+	<!-- 消保维权Add By ShiXing@2011.06.29 -->
+	<sqlMap resource="com/yuwang/pinju/core/rights/trade-rights-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/rights/trade-rights-message-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/rights/trade-rights-logistics-sqlmap.xml" />
+	<!-- ShiXing end! -->
+	
+	
+	<!-- 商品限时打折 活动 start -->
+    <sqlMap resource="com/yuwang/pinju/core/activity/item_activityDiscount_sqlMap.xml"/>
+    <sqlMap resource="com/yuwang/pinju/core/activity/item_activityDiscountStat_sqlMap.xml"/>
+    <!-- 商品限时打折 活动 end  -->
+    
+    
+    <sqlMap resource="com/yuwang/pinju/core/logistics/logistics-sellerDelivery.xml"/>
+    
+    <!-- 保证金 Add By LingJianTao@2011.08.02 -->
+    <sqlMap resource="com/yuwang/pinju/core/margin/trade-margin-seller-sqlmap.xml"/>
+    <sqlMap resource="com/yuwang/pinju/core/margin/trade-margin-seller-order-sqlmap.xml"/>
+    <sqlMap resource="com/yuwang/pinju/core/margin/trade-margin-pinju-sqlmap.xml"/>
+    <sqlMap resource="com/yuwang/pinju/core/margin/trade-margin-pinju-order-sqlmap.xml"/> 
+    <sqlMap resource="com/yuwang/pinju/core/trade/trade-direct-pay-send-log-sqlmap.xml"/>
+    <sqlMap resource="com/yuwang/pinju/core/trade/trade-direct-pay-rev-log-sqlmap.xml"/> 
+    <sqlMap resource="com/yuwang/pinju/core/trade/trade-direct-pay-biz-order-sqlmap.xml"/> 
+    <sqlMap resource="com/yuwang/pinju/core/trade/trade-direct-pay-pay-order-sqlmap.xml"/> 
+    <!-- 保证金 End -->
+    
+    <!-- 支付日志 Add By HeYong@2011.09.15 -->
+    <sqlMap resource="com/yuwang/pinju/core/trade/trade-vouch-pay-back-log-sqlmap.xml"/> 
+    <sqlMap resource="com/yuwang/pinju/core/trade/trade-vouch-pay-send-log-sqlmap.xml"/> 
+    <sqlMap resource="com/yuwang/pinju/core/trade/trade-vouch-pay-pay-sqlmap.xml"/> 
+    <!-- 支付日志 end -->
+     
+    
+    <!-- 限购特供 -->
+	<sqlMap resource="com/yuwang/pinju/core/sales/item-xiangou-sqlmap.xml" />
+	<sqlMap resource="com/yuwang/pinju/core/sales/item-xiangou-use-sqlmap.xml" />
+	<!-- 限购特供  end-->
+	
+	
+    <!-- 财务处理工单 -->
+	<sqlMap resource="com/yuwang/pinju/core/rights/trade-rights-work-order-sqlmap.xml" />
+	<!-- 财务处理工单 end-->
+
+    <!-- 图片空间 -->
+    <sqlMap resource="com/yuwang/pinju/core/images/imagesCategory-sqlmap.xml"/>
+    <sqlMap resource="com/yuwang/pinju/core/images/storageFileInfo-sqlmap.xml"/>
+     
+    <!-- 图片空间 End -->
+<!-- 配置信息 -->
+    <sqlMap resource="com/yuwang/pinju/core/config/config-manager-sqlmap.xml"/>    
+    <!--配置信息 End -->
+</sqlMapConfig>

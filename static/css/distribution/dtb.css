@@ -1,0 +1,75 @@
+/* 分销样式 */
+.wrap-dtb .welcome { padding:10px; }
+.wrap-dtb .welcome p { color:#666; }
+.wrap-dtb .title { border:1px solid #d4d4d4; padding:10px; }
+.wrap-dtb .title h2 { color:#666; font-size:14px; font-weight:bold;}
+.wrap-dtb .content { padding:50px 120px 10px; }
+.wrap-dtb .content .tips { padding:0 0 20px; }
+.wrap-dtb .content .tips p { color:#000; font-size:14px; font-weight:bold; }
+.wrap-dtb .content .step {  color:#000; font-size:14px; }
+.wrap-dtb .content .step li { border:1px solid #f9e0b7; background-color:#ffffe1; margin:0 0 10px; padding:20px; }
+.wrap-dtb .content .step .normal { border:0 none; background-color:transparent; margin:0 0 10px; padding:0; }
+.wrap-dtb .content .step .bottom{ border:0 none; background-color:transparent; margin:0 0 10px; padding:30px 0 0;}
+.wrap-dtb .content .step .btn-wrap { padding:10px 0 20px 160px; }
+.wrap-dtb .content .step .btn-wrap p { color:#999; font-size:12px; padding:10px 0; }
+.wrap-dtb .content .step .step1,
+.wrap-dtb .content .step .step2 {
+	background:#ffffe1 url(http://static.pinju.com/img/dtb-step.png) no-repeat 0 0;
+	padding-left:55px;
+}
+.wrap-dtb .content .step .step1 span,
+.wrap-dtb .content .step .step2 span {
+	background:transparent url(http://static.pinju.com/img/icon-succeed.png) no-repeat 4px 0;
+	color:#3e7d08;
+	font-size:12px;
+	padding:0 0 0 22px;
+}
+.wrap-dtb .content .step .step1 { background-position:20px 15px; }
+.wrap-dtb .content .step .step2 { background-position:20px -85px; }
+.btn-orange-long {
+	background:transparent url(http://static.pinju.com/img/acc_set_btn_09.gif) no-repeat 0 0;
+	border:0 none;
+	color:#fff;
+	font-size:12px;
+	height:23px;
+	line-height:23px;
+	text-align:center;
+	width:109px;
+}
+.btn-red-large {
+	background:transparent url(http://static.pinju.com/img/next_btn.gif) no-repeat 0 0;
+	border:0 none;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+	height:29px;
+	line-height:29px;
+	text-align:center;
+	width:109px;
+}
+.msg-error {
+	background:#ffe5e6 url(http://static.pinju.com/images/pot_03.gif) no-repeat 5px 5px;
+	border:1px solid #ff999a;
+	margin:0 0 5px;
+	padding:5px 5px 5px 25px;
+}
+.msg-error p { color:#666; float:left; font-size:12px; }
+.msg-error .close { 
+	background: url("http://static.pinju.com/img/close_03.gif") no-repeat scroll 0 0 transparent;
+    float: right;
+	color:transparent;
+	font-size:0;
+    height: 15px;
+	overflow:hidden;
+    width: 15px;
+}
+.msg-error .close span { 
+    float: left;
+	text-indent:999px;
+    height: 15px;
+    width: 15px;
+}
+
+
+
+

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeRightsLogistics">
+
+    <typeAlias alias="RightsLogisticsDO" type="com.yuwang.pinju.domain.rights.RightsLogisticsDO" />
+
+	<resultMap id="rightsLogisticsMap" class="RightsLogisticsDO" >
+		<result property="id" column="ID" />
+		<result property="voucherId" column="VOUCHER_ID" />
+		<result property="logisticsId" column="LOGISTICS_ID" />
+		<result property="logisticsName" column="LOGISTICS_NAME" />
+		<result property="billNo" column="BILL_NO" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="comments" column="COMMENTS" />
+		<result property="buySendDate" column="BUY_SEND_DATE" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="sellerConfirmDate" column="SELLER_CONFIRM_DATE" />
+		<result property="buyerReturnState" column="BUYER_RETURN_STATE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+    <sql id="voucherLogisticsPrefix">
+         V.ID,
+         V.VOUCHER_ID,
+         V.LOGISTICS_ID,
+         V.LOGISTICS_NAME,
+         V.BILL_NO,
+         V.BUYER_ID,
+         V.COMMENTS,
+         V.BUY_SEND_DATE,
+         V.SELLER_ID,
+         V.SELLER_CONFIRM_DATE,
+         V.BUYER_RETURN_STATE,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED
+	     FROM TRADE_RIGHTS_LOGISTICS V
+    </sql>
+   
+	<select id="TradeRightsLogistics.getRightsLogisticsDO"  parameterClass="RightsLogisticsDO" resultMap="rightsLogisticsMap">
+        SELECT <include refid="voucherLogisticsPrefix"/>
+        <dynamic prepend="WHERE">
+      	    <isNotEmpty property="id" prepend="AND"> V.ID=#id# </isNotEmpty>
+      	    <isNotEmpty property="voucherId" prepend="AND"> V.VOUCHER_ID=#voucherId# </isNotEmpty>
+      	    <isNotEmpty property="buyerId" prepend="AND"> V.BUYER_ID=#buyerId# </isNotEmpty>
+      	    <isNotEmpty property="sellerId" prepend="AND"> V.SELLER_ID=#sellerId# </isNotEmpty>
+      	    <isNotEmpty property="logisticsId" prepend="AND"> V.LOGISTICS_ID=#logisticsId# </isNotEmpty>
+      	    <isNotEmpty property="billNo" prepend="AND"> V.BILL_NO=#billNo# </isNotEmpty>
+      	</dynamic>
+	</select>
+	
+	<insert id="TradeRightsLogistics.insertLogisticsRecord" parameterClass="RightsLogisticsDO">
+		<selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_RIGHTS_LOGISTICS_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_RIGHTS_LOGISTICS 
+	    (
+           ID,
+           VOUCHER_ID,
+           LOGISTICS_ID,
+           LOGISTICS_NAME,
+           BILL_NO,
+           BUYER_ID,
+           COMMENTS,
+           BUY_SEND_DATE,
+           SELLER_ID,
+           SELLER_CONFIRM_DATE,
+           BUYER_RETURN_STATE,
+	       GMT_CREATE,
+	       GMT_MODIFIED
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+	        #voucherId#,
+	        #logisticsId#,
+	        #logisticsName#,
+	        #billNo#,
+	        #buyerId#,
+	        #comments#,
+	        #buySendDate#,
+	        #sellerId#,
+	        #sellerConfirmDate#,
+	        #buyerReturnState#,
+			sysdate,
+			sysdate
+	    )
+	</insert>
+	
+	<update id="TradeRightsLogistics.updateRightsLogisticsRecord" parameterClass="RightsLogisticsDO">
+		UPDATE TRADE_RIGHTS_LOGISTICS T SET T.GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotNull property="buyerReturnState">
+				,T.BUYER_RETURN_STATE = #buyerReturnState#
+			</isNotNull>
+			<isNotNull property="sellerConfirmDate">
+				,T.SELLER_CONFIRM_DATE = #sellerConfirmDate#
+			</isNotNull>
+			<isNotNull property="logisticsId">
+				,T.LOGISTICS_ID = #logisticsId#
+			</isNotNull>
+			<isNotNull property="logisticsName">
+				,T.LOGISTICS_NAME = #logisticsName#
+			</isNotNull>
+			<isNotNull property="billNo">
+				,T.BILL_NO = #billNo#
+			</isNotNull>
+		</dynamic>
+		WHERE T.ID = #id#
+	</update>
+	
+</sqlMap>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+  <bean id="activeManager" class="com.yuwang.pinju.core.active.manager.impl.ActiveManagerImpl" />
+  
+  <bean id="activityDiscountManager" class="com.yuwang.pinju.core.active.manager.impl.ActivityDiscountManagerImpl" />
+  <bean id="activityDiscountStatManager" class="com.yuwang.pinju.core.active.manager.impl.ActivityDiscountStatManagerImpl" />
+  <bean id="activityDiscountMapManager" class="com.yuwang.pinju.core.active.manager.impl.ActivityDiscountMapManagerImpl" />
+</beans>

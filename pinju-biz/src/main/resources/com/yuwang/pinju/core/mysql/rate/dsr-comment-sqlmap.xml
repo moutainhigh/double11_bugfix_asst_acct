@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rate_dsr_comment">
+
+	<typeAlias alias="RateDsrComment" type="com.yuwang.pinju.domain.rate.DsrCommentDO" />
+
+	<resultMap id="RateDsrCommentResult" class="RateDsrComment">
+		<result property="id" column="ID" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="itemId" column="ITEM_ID" />
+		<result property="itemTitle" column="ITEM_TITLE" />
+		<result property="itemImgUrl" column="ITEM_IMG_URL" />
+		<result property="itemSkuId" column="ITEM_SKU_ID" />
+		<result property="itemSkuAttributes" column="ITEM_SKU_ATTRIBUTES" />
+		<result property="itemOrignalPrice" column="ITEM_ORIGNAL_PRICE" />
+		<result property="itemOrderPrice" column="ITEM_ORDER_PRICE" />
+		<result property="buyerComment" column="BUYER_COMMENT" />
+		<result property="dsrRate" column="DSR_RATE" />
+		<result property="tradeSuccessTime" column="TRADE_SUCCESS_TIME" />
+		<result property="commentTime" column="COMMENT_TIME" />
+		<result property="anonymous" column="ANONYMOUS" />
+		<result property="shareSns" column="SHARE_SNS" />
+		<result property="status" column="STATUS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllRateDsrComment"><![CDATA[SELECT ID,BUYER_ID,BUYER_NICK,SELLER_ID,SELLER_NICK,ORDER_ID,ITEM_ID,ITEM_TITLE,ITEM_IMG_URL,ITEM_SKU_ID,ITEM_SKU_ATTRIBUTES,ITEM_ORIGNAL_PRICE,ITEM_ORDER_PRICE,BUYER_COMMENT,DSR_RATE,TRADE_SUCCESS_TIME,COMMENT_TIME,ANONYMOUS,SHARE_SNS,STATUS,GMT_CREATE,GMT_MODIFIED FROM RATE_DSR_COMMENT]]></sql>
+
+  <sql id="countAllRateDsrComment"><![CDATA[SELECT count(*) FROM RATE_DSR_COMMENT]]></sql>
+
+  <sql id="countItemComments"><![CDATA[SELECT COMM_NUM FROM MV_ITEM_COMM]]></sql>
+  <sql id="countSellerComments"><![CDATA[SELECT COMM_NUM FROM MV_SELLER_COMM]]></sql>
+
+	<select id="selectAllRateDsrComment" resultMap="RateDsrCommentResult">
+		<include refid="selectAllRateDsrComment" />
+	</select>
+
+  <!-- using MySQL write database -->
+	<insert id="insertDsrComment" parameterClass="RateDsrComment">
+		<![CDATA[INSERT INTO RATE_DSR_COMMENT (BUYER_ID,BUYER_NICK,SELLER_ID,SELLER_NICK,ORDER_ID,ITEM_ID,ITEM_TITLE,ITEM_IMG_URL,ITEM_SKU_ID,ITEM_SKU_ATTRIBUTES,ITEM_ORIGNAL_PRICE,ITEM_ORDER_PRICE,BUYER_COMMENT,DSR_RATE,TRADE_SUCCESS_TIME,COMMENT_TIME,ANONYMOUS,SHARE_SNS,STATUS,GMT_CREATE,GMT_MODIFIED) VALUES (#buyerId#,#buyerNick#,#sellerId#,#sellerNick#,#orderId#,#itemId#,#itemTitle#,#itemImgUrl#,#itemSkuId#,#itemSkuAttributes#,#itemOrignalPrice#,#itemOrderPrice#,#buyerComment#,#dsrRate#,#tradeSuccessTime#,#commentTime#,#anonymous#,#shareSns#,#status#,#gmtCreate#,#gmtModified#)]]>
+	</insert>
+
+  <!-- using MySQL read database -->
+  <select id="pagingDsrCommentByItem" resultMap="RateDsrCommentResult" parameterClass="com.yuwang.pinju.core.rate.dao.page.ItemCommentsPage">
+    <include refid="selectAllRateDsrComment" />
+    <![CDATA[WHERE ITEM_ID = #itemId# AND STATUS = 0 ORDER BY ID DESC LIMIT #startOffset#, #pageSize#]]>
+  </select>
+
+  <!-- using MySQL read database -->
+  <select id="countDsrCommentByItemRealtime" resultClass="long" parameterClass="long">
+    <include refid="countAllRateDsrComment" />
+    <![CDATA[WHERE ITEM_ID = #itemId# AND STATUS = 0 LIMIT 1]]>
+  </select>
+
+  <!-- using Oracle read database -->
+  <select id="countDsrCommentByItem" resultClass="long" parameterClass="long">
+    <include refid="countItemComments" />
+    <![CDATA[WHERE ITEM_ID = #itemId# AND ROWNUM = 1]]>
+  </select>
+
+  <!-- using MySQL read database -->
+  <select id="pagingDsrCommentBySellerId" resultMap="RateDsrCommentResult" parameterClass="com.yuwang.pinju.core.rate.dao.page.SellerCommentsPage">
+    <include refid="selectAllRateDsrComment" />
+    <![CDATA[WHERE SELLER_ID = #sellerId# AND STATUS = 0 ORDER BY ID DESC LIMIT #startOffset#, #pageSize#]]>
+  </select>
+
+  <!-- using MySQL read database -->
+  <select id="countDsrCommentBySellerIdRealtime" resultClass="long" parameterClass="long">
+    <include refid="countAllRateDsrComment" />
+    <![CDATA[WHERE SELLER_ID = #sellerId# AND STATUS = 0 LIMIT 1]]>
+  </select>
+
+  <!-- using Oracle read database -->
+  <select id="countDsrCommentBySellerId" resultClass="long" parameterClass="long">
+    <include refid="countSellerComments" />
+    <![CDATA[WHERE SELLER_ID = #sellerId# AND ROWNUM = 1]]>
+  </select>  
+</sqlMap>
+

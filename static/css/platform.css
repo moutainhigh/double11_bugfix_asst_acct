@@ -1,0 +1,44 @@
+/*--  页面颜色样式 --*/
+.cheng{color:#fc4c0f;}
+.hong{color:#be0000;}
+.lan{color: #00F}
+a.lan{color:#2953A6;}
+a:hover.lan{color:#cc6600;}
+.huang{color:#e0b700;}
+.hui{color:#999;}
+.lvse{ color:#390}
+.title15{ font-size:15px;font-weight:bold;color:#333; margin:10px 0 0 15px;}
+/*--  平台活动详情样式 --*/
+.pl-aleft{ width:828px;text-align: center;}
+.pl-act{ border-bottom:1px solid #c4d5e0; display:block; height:30px;}
+.pl-act li{ float:left;width:90px; background:#f9fafc;border-top:1px solid #c4d5e0;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; margin-right:8px;height:16px;text-align:center; padding:4px 10px; margin-top:5px;}
+.pl-act .pl-here{background:#ffffff;border-top:3px solid #D72426;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; padding:3px 10px 4px; font-weight:bold;}
+/*--  我参与的活动样式 --*/
+table th tr td{text-align:center;}
+.pl-table{ width:825px; margin-top:10px; color:#999;}
+.pl-actr{text-align:center;}
+.pl-table th { background:#f9fafc; padding:10px 0; color:#666;border-bottom:3px solid #000;}
+.pl-table td { vertical-align:top; line-height:2em; padding:10px 0; border-bottom:1px dashed #dadada;}
+.pl-table td span{ word-break:break-all; word-wrap:break-word;}
+/*--  活动详情+我的报名样式 --*/
+.pl-content li{ margin:10px 0 10px 31px;line-height:19px;}
+.pl-lileft{ margin-right:25px; width:90px; text-align:right; float:left;}
+.pl-con{margin:5px; height: auto;}
+.pl-signtable{width:100%; margin-top:10px; color:#999;text-align:center;}
+.pl-signtable th{background:#f9fafc; text-align:center;line-height:17px;color:#666;border-bottom:1px solid #c4d5e0;padding:5px 10px 2px;height:15px; font-weight:normal;}
+.pl-signtable td{padding-left:10px;}
+.pl-line{ border-bottom:1px dashed #c4d5e0; line-height:35px;}
+/*--  商品信息+店铺信息样式 --*/
+.pl-store{float:left; margin:10px 0;}
+.pl-store li{ font-size:12px;line-height:29px;float:left;width:800px;}
+.pl-store input{ margin-right:10px;}
+.pl-store textarea{ width:300px; height:80px; overflow-y:auto; overflow-x:hidden;word-wrap: break-word;word-break:keep-all;}
+.pl-footer{ clear:both; margin-left:90px;}
+.pl-footer input{ margin-right:15px;}
+/*-- 按纽样式 --*/
+.pl-btn{ background:url(../images/pl-button.gif);}
+.pl-btn-hui{ background:url(../images/btn-gray.gif); font-weight:bold;color:#666;width:72px;height:25px; border:none;}
+.pl-btn-juse{ background:url(../images/juse.gif); font-weight:bold;color:#fff;width:72px;height:25px; border:none; }
+/*-- 面包屑样式 --*/
+.active-nav { background: none repeat scroll 0 0 #FFFFE0; border: 1px solid #F9DFB2; height: 28px; line-height: 28px; margin-bottom: 9px; padding: 0; text-indent: 12px;}
+.active-nav a { color: #0066CC;}

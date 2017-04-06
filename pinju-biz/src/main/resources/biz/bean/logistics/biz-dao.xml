@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="logisticsTemplateDAO" class="com.yuwang.pinju.core.logistics.dao.impl.LogisticsTemplateDAOImpl" />
+	<bean id="logisticsCarriageDAO" class="com.yuwang.pinju.core.logistics.dao.impl.LogisticsCarriageDAOImpl" />
+	<bean id="logisticsAreaCarriageDAO" class="com.yuwang.pinju.core.logistics.dao.impl.LogisticsAreaCarriageDAOImpl" />
+	<bean id="logisticsCityIpDAO" class="com.yuwang.pinju.core.logistics.dao.impl.LogisticsCityIpDAOImpl"></bean>
+	
+	<bean id="logisticsSellerDeliveryDAO" class="com.yuwang.pinju.core.logistics.dao.impl.LogisticsSellerDeliveryDAOImpl"></bean>
+	
+	<bean id="logisticsCorpDAO" class="com.yuwang.pinju.core.logistics.dao.impl.LogisticsCorpDAOImpl"></bean>
+</beans>

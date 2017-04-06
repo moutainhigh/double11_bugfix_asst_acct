@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings cacheModelsEnabled="false" enhancementEnabled="false"
+		lazyLoadingEnabled="false" maxRequests="3000" maxSessions="3000"
+		maxTransactions="3000" useStatementNamespaces="true" />
+
+  <!-- 会员 MEMBER -->
+  <!-- <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-sequence-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-info-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-delivery-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-payment-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-login-his-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-seller-quality-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-dsr-stat-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-sns-info-sqlmap.xml" /> -->
+  <sqlMap resource="com/yuwang/pinju/core/mysql/member/member-pinju-login-sqlmap.xml" />
+
+  <!-- 动态评分 DSR -->
+ <!-- <sqlMap resource="com/yuwang/pinju/core/mysql/rate/dsr-result-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/rate/dsr-dimension-sqlmap.xml" />-->
+
+  <!-- 商品快照 -->
+  <!--<sqlMap resource="com/yuwang/pinju/core/item/item-snapshot-sqlmap.xml" />-->
+
+  <!-- bi库 -->
+  <!--<sqlMap resource="com/yuwang/pinju/core/mysql/bi/bi-salesRank-sqlmap.xml" />-->
+  
+
+  <!-- 活动管理 -->
+  <!--<sqlMap resource="com/yuwang/pinju/core/mysql/active/active-info-sqlmap.xml" />-->
+  <!--  
+  <sqlMap resource="com/yuwang/pinju/core/mysql/active/active-desc-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/mysql/active/active-regt-sqlmap.xml" />
+  -->
+  <!--<sqlMap resource="com/yuwang/pinju/core/storage/storage-file-info-sqlmap.xml" />-->
+	
+	<!-- 图片空间 -->
+    <sqlMap resource="com/yuwang/pinju/core/images/imagesCategory-sqlmap.xml"/>
+    <sqlMap resource="com/yuwang/pinju/core/images/storageFileInfo-sqlmap.xml"/>
+  
+  <sqlMap resource="com/yuwang/pinju/core/distribute/distribute-distributor-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/distribute/distribute-supplier-items-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/distribute/distribute-channel-sqlmap.xml" />
+  <sqlMap resource="com/yuwang/pinju/core/distribute/distribute-supplier-sqlmap.xml" />
+  
+  <!-- 敏感词 -->
+  <sqlMap resource="com/yuwang/pinju/core/mysql/word/sensitive-word-sqlmap.xml" />
+</sqlMapConfig>

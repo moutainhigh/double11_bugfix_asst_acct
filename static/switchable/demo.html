@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Demo</title>
+		<style>
+			img {
+				border: 0;
+			}
+			.desc p {
+				border: 1px solid #333;
+				width: 500px;
+				height: 100px;
+				margin: 5px;
+			}
+		</style>
+		<link href="http://static.pinju.com/css/pj_base.css" rel="stylesheet" />
+		<link href="http://static.pinju.com/css/hp923.css" rel="stylesheet" />
+		<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+		<script src="http://static.pinju.com/switchable/jquery.switchable.js"></script>
+	</head>
+	<body>
+
+		<h3>广告循环播放</h3>
+		<div class="slide-container">
+			<div class="slide-panel clearfix">
+				<div>
+					<a href="#"><img src="http://static.pinju.com/media/banner1000x290-01.jpg" width="1000" height="290" /></a>
+					<a href="#"><img src="http://static.pinju.com/media/banner1000x290-02.jpg" width="1000" height="290" /></a>
+					<a href="#"><img src="http://static.pinju.com/media/banner1000x290-03.jpg" width="1000" height="290" /></a>
+				</div>
+			</div>
+			<div class="slide-trigger"></div>
+		</div>
+		<script>
+			$(function() {
+				$('.slide-trigger').switchable('.slide-panel > div > a', {
+					effect : "scroll",
+					speed : .4,
+					vertical : true
+				}).autoplay(5).carousel();
+			});
+		</script>
+
+		<h3>Tab切换</h3>
+		<ul class="tabs">
+			<li><a class="current" href="#tabcon-a" title="全国招商推广会">全国招商推广会</a></li>
+			<li><a href="#tabcon-b" title="最新资讯">最新资讯</a></li>
+			<li><a href="#tabcon-c" title="安全入驻">安全入驻</a></li>
+		</ul>
+		<div class="container">
+			内容1
+		</div>
+		<div class="container" style="display:none;">
+			内容2
+		</div>
+		<div class="container" style="display:none;">
+			内容3
+		</div>
+		<script>
+			$(function() {
+				$('.tabs').switchable('.container', { triggers: "a", initIndex: 0});
+			});
+		</script>
+
+		<h3>图片提示</h3>
+		<div class="images">
+			<a href="#"><img src="http://static.pinju.com/highlight/images/1-220-140.jpg" width="220" height="140" /></a>
+			<a href="#"><img src="http://static.pinju.com/highlight/images/2-220-140.jpg" width="220" height="140" /></a>
+			<a href="#"><img src="http://static.pinju.com/highlight/images/3-220-140.jpg" width="220" height="140" /></a>
+		</div>
+		<div class="desc">
+			<p>
+				123
+			</p>
+			<p>
+				456
+			</p>
+			<p>
+				789
+			</p>
+		</div>
+		<script>
+			$(function() {
+				$('div.images').switchable('div.desc > p', {
+					initIndex : -1
+				});
+			});
+		</script>
+	</body>
+</html>

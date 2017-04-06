@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN" "http://ibatis.apache.org/dtd/abator-config_1_0.dtd" >
+<abatorConfiguration >
+  <abatorContext >
+    <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@db.zba.com:1521:coredb" userId="bill" password="hello1" >
+      <classPathEntry location="C:\Documents and Settings\mike\.m2\repository\com\oracle\ojdbc14\10.1.0.5\ojdbc14-10.1.0.5.jar" />
+    </jdbcConnection>
+    <javaModelGenerator targetPackage="test" targetProject="pinju-biz" />
+    <sqlMapGenerator targetPackage="test" targetProject="pinju-biz" />
+    <daoGenerator targetPackage="test" targetProject="pinju-biz" type="IBATIS" />
+    <table  tableName="SHOP_CATEGORY" >
+      
+    </table>
+  </abatorContext>
+</abatorConfiguration>

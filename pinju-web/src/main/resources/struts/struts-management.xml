@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="management" namespace="/management" extends="pinju-login" >
+		<!-- 个人信息主页面 -->
+		<action name="account"
+			class="com.yuwang.pinju.web.module.my.screen.MyMainAction" method="account">
+			<result name="success" type="freemarker">/default/templates/screen/management/account-main.ftl</result>
+		</action>
+		<action name="buy"
+			class="com.yuwang.pinju.web.module.my.screen.MyMainAction" method="buy">
+			<result name="success" type="freemarker">/default/templates/screen/management/buy-main.ftl
+			</result>
+		</action>
+		<action name="sell"
+			class="com.yuwang.pinju.web.module.my.screen.MyMainAction" method="sell">
+			<result name="success" type="freemarker">/default/templates/screen/management/sell-main.ftl
+			</result>
+		</action>
+		<action name="listupload" class="com.yuwang.pinju.web.module.fileupload.screen.ListUploadAction" method="execute">
+	      <result name="success" type="freemarker">/default/templates/screen/index/fileupload.ftl</result>
+	    </action>
+		<action name="fileupload" class="com.yuwang.pinju.web.module.fileupload.action.FilesUploadAction" method="execute">
+			<!-- 动态设置Action的属性值 -->
+			<param name="savePath">D:/temp/upload</param>
+			<!-- 配置Struts2默认的视图页面 -->
+			<result name="success" type="freemarker">/default/templates/screen/index/fileupload.ftl</result>
+		</action>
+	</package>
+	
+</struts>

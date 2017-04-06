@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<script type="text/javascript" src="default/js/domain.js"></script>
+<script type="text/javascript" src="default/js/pinju-global.js"></script>
+<script type="text/javascript" src="default/js/cookie.js"></script>
+<script type="text/javascript">
+function checkstat(stat) {
+  if(stat.CAS_LOGIN_STATE == "1") {
+    PinjuCookie.writeSdoCookie(5);
+    var href = top.location.href;
+    if(href.indexOf('/login.htm') > 0) {
+      RegExp.lastIndex = 0;
+      /returnUrl=([^&]+)/.exec(href);
+      var returnUrl = RegExp.$1;
+      if(!returnUrl) {
+        href = PJ.ROOT;
+      } else {
+        href = returnUrl;
+      }
+    }
+    top.location.href = "http://cas.sdo.com/cas/login?service=" + encodeURIComponent("http://www.pinju.com/member/auth.htm?returnUrl=" + href);
+  }
+}
+</script>
+<script type="text/javascript" src="https://cas.sdo.com/cas/loginStateService?method=checkstat"></script>
+</body>
+</html>

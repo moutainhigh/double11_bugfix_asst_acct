@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="DsrDimension" >
+
+  <typeAlias alias="dsrDimension" type="com.yuwang.pinju.domain.rate.DsrDimensionDO"/>
+
+  <resultMap id="dsrDimension" class="dsrDimension">
+    <result column="ID" property="id" />
+    <result column="NAME" property="name" />
+    <result column="ALIAS" property="alias" />
+    <result column="STATUS" property="status" />
+    <result column="MEMO1" property="memo1" />
+    <result column="MEMO2" property="memo2" />
+    <result column="MEMO3" property="memo3" />
+    <result column="MEMO4" property="memo4" />
+    <result column="MEMO5" property="memo5" />
+    <result column="DSR_TYPE" property="dsrType" />
+    <result column="SORT_ORDER" property="sortOrder" />
+    <result column="SORT_TYPE" property="sortType" />
+    <result column="GMT_CREATE" property="gmtCreate" javaType="java.util.Date" />
+    <result column="GMT_MODIFIED" property="gmtModified" javaType="java.util.Date" />
+  </resultMap>
+
+  <sql id="getAllDsrDimension">
+    <![CDATA[SELECT ID, NAME, ALIAS, STATUS, MEMO1, MEMO2, MEMO3, MEMO4, MEMO5, DSR_TYPE, SORT_ORDER, SORT_TYPE, GMT_CREATE, GMT_MODIFIED FROM RATE_DSR_DIMENSION]]>
+  </sql>
+
+  <select id="getValidDsrDimensions" resultMap="dsrDimension">
+    <include refid="getAllDsrDimension" />
+    <![CDATA[WHERE STATUS = 1 ORDER BY SORT_ORDER]]>
+  </select>
+
+</sqlMap>

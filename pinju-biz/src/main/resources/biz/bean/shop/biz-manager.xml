@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+   	<bean id="shopShowInfoManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopShowInfoManagerImpl">
+   	</bean>
+   	
+
+   	<bean id="shopOpenManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopOpenManagerImpl"/>
+
+   	
+   	<bean id="shopCategoryManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopCategoryManagerImpl"/>
+   	
+   	<bean id="shopPageLayoutManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopPageLayoutManagerImpl"/>
+
+   	<bean id="shopPagePrototypeManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopPagePrototypeManagerImpl"/>
+   	<bean id="shopModulePrototypeManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopModulePrototypeManagerImpl"/>
+
+	
+	<bean id="shopModulePictureRotationManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopModulePictureRotationManagerImpl"/>
+
+   	<bean id="shopUserModuleParamManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopUserModuleParamManagerImpl"/>
+
+	<bean id="shopCustomPageManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopCustomPageManagerImpl"/>
+	
+	<bean id="shopLeftCategoryModuleManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopLeftCategoryModuleManagerImpl"/>
+	<bean id="shopLeftSearchModuleManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopLeftSearchModuleManagerImpl"/>
+	<bean id="shopTopSearchModuleManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopTopSearchModuleManagerImpl"/>
+	<bean id="shopTopShopSignModuleManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopTopShopSignModuleManagerImpl"/>
+
+	<bean id="shopDesignBestSellerManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopDesignBestSellerManagerImpl"/>
+	<bean id="shopDesignItemPromoteManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopDesignItemPromoteManagerImpl"/>
+	<bean id="shopDesignkeeperPromoteManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopDesignkeeperPromoteManagerImpl"/>
+	
+	<bean id="shopUserPageManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopUserPageManagerImpl"/>
+	
+	<bean id="shopShieldManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopShieldManagerImpl"/>
+	<bean id="shopDomainManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopDomainManagerImpl"/>
+	<bean id="shopLabelManager" class="com.yuwang.pinju.core.shop.manager.impl.ShopLabelManagerImpl"></bean>
+</beans>

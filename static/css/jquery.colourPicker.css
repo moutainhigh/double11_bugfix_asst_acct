@@ -1,0 +1,9 @@
+.pickcolor input {float: left; border: 1px solid #839ADC; padding:2px 3px; }
+.pickcolor a {float: left; height:20px; margin:0 0 0 5px; }
+#jquery-colour-picker { background: #fff; width: 180px; padding: 5px 5px 5px 10px; border: 1px solid #666; z-index: 99; }
+#jquery-colour-picker h2 { margin: 0 0 5px 0; font-size: 12px; }
+#jquery-colour-picker ul { margin: 0; padding: 0; list-style-type: none; *zoom: 1; }
+#jquery-colour-picker ul:after { content: "."; display: block; height: 0; visibility: hidden; clear: both; }
+#jquery-colour-picker ul li { float: left; margin: 0 5px 5px 0; overflow:hidden; }
+#jquery-colour-picker ul li a { display: block; width: 13px; height: 13px; text-decoration: none; text-indent: -999px; outline: 0; border: 1px solid #aaa; }
+#jquery-colour-picker ul li a:hover { border-color: #000; }

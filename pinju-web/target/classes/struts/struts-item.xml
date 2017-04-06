@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="category" namespace="/category" extends="pinju-login">
+		<action name="getSonPro"
+			class="com.yuwang.pinju.web.module.item.action.CategoryAction"
+			method="getSonPro" />
+	</package>
+
+
+	<package name="itemReleased" namespace="/itemReleased" extends="pinju-auth">
+
+		<!-- 发布商品 -->
+		<action name="itemReleased"
+			class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction"
+			method="showItemReleased">
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=category_List</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=category_List</result>
+	  		<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=category_List</result>
+			<result name="categoryList" type="redirect">/itemReleased/categoryList.htm
+			</result>
+			<result name="success" type="freemarker">/default/templates/screen/itemReleased/itemReleased.ftl
+			</result>
+			<result name="successUpdate" type="freemarker">/default/templates/screen/itemReleased/itemUpdate.ftl
+			</result>
+			<result name="validateError" type="freemarker">/default/templates/screen/itemReleased/itemReleasedError.ftl
+			</result>
+			<result name="nickname" type="redirectAction">
+				<param name="namespace">/my</param>
+				<param name="actionName">info</param>
+				<param name="returnUrl">${returnUrl}</param>
+			</result>
+
+		</action>
+
+		<!-- 商品发布 -->
+		<action name="released"
+			class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction"
+			method="itemReleased">
+			<result name="validateError" type="freemarker">/default/templates/screen/itemReleased/itemReleasedError.ftl
+			</result>
+			<result name="repeat-submit" type="freemarker">/default/templates/screen/itemReleased/itemReleasedError.ftl
+			</result>
+			<result name="error" type="freemarker">/default/templates/screen/error/error.ftl
+			</result>
+			<result name="successStorage" type="redirect">/item/itemList.htm?itemQuery.type=2</result>
+			<result name="success" type="redirect">/item/itemList.htm</result>
+		</action>
+		
+		<!-- 敏感词验证 -->
+		<action name="validateSensitiveWord"
+			class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction"
+			method="validateSensitiveWord" >
+		</action>
+
+		<!-- 图片验证 -->
+		<action name="validateUploadImage"
+			class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction"
+			method="validateUploadImage" >
+		</action>
+		
+		<!-- 发布商品 类目选择  -->
+		<action name="categoryList"
+			class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction"
+			method="showCategoryList">
+			<!-- <result name="validateError" type="redirect">/item/itemList.htm</result> -->
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=category_List</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=category_List</result>
+	  		<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=category_List</result>
+			<result name="success" type="freemarker">/default/templates/screen/item/categoryList.ftl
+			</result>
+		</action>
+
+		<!-- 显示商品修改页   -->
+		<action name="*"
+			class="com.yuwang.pinju.web.module.item.action.ItemUpdateAction"
+			method="getUpdate">
+			<param name="itemInput.id">{1}</param>
+			<result name="categoryList" type="redirect">/itemReleased/categoryList.htm
+			</result>
+			<result name="nickname" type="redirectAction">
+				<param name="namespace">/my</param>
+				<param name="actionName">info</param>
+				<param name="returnUrl">${returnUrl}</param>
+			</result>
+			<result name="success" type="freemarker">/default/templates/screen/itemReleased/itemUpdate.ftl
+			</result>
+			<result name="itemForward" type="freemarker">/default/templates/screen/item/itemForwardShop.ftl
+			</result>
+		</action>
+
+		<!-- 商品修改 -->
+		<action name="itemUpdate"
+			class="com.yuwang.pinju.web.module.item.action.ItemUpdateAction"
+			method="itemUpdate">
+			<result name="validateError" type="freemarker">/default/templates/screen/itemReleased/itemReleasedError.ftl
+			</result>
+			<result name="repeat-submit" type="freemarker">/default/templates/screen/itemReleased/itemReleasedError.ftl
+			</result>
+			<result name="error" type="freemarker">/default/templates/screen/error/error.ftl
+			</result>
+			<result name="successStorage" type="redirect">/item/itemList.htm?itemQuery.type=2</result>
+			<result name="success" type="redirect">/item/itemList.htm</result>
+			
+		</action>
+
+	</package>
+
+	<package name="item" namespace="/item" extends="pinju-auth">
+
+		<action name="getCategoryList"
+			class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction"
+			method="getItemCategory" />
+			
+		<action name="getCategoryListByPath"
+			class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction"
+			method="getItemCategoryByPath" />
+
+		<action name="getSpu"
+			class="com.yuwang.pinju.web.module.item.action.ItemReleasedAction"
+			method="getSpu" />
+
+		<action name="itemList"
+			class="com.yuwang.pinju.web.module.item.screen.ItemListAction"
+			method="itemList">
+			<result name="success" type="freemarker">/default/templates/screen/item/itemList.ftl
+			</result>
+			<result name="NOT_OPEN_SELL" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=sell_item</result>
+			<result name="IS_CLOSE_SELL" type="redirect">/shopMessage/shopIsClose.htm?red_shop=sell_item</result>
+	  		<result name="NOT_EXIST_SELL" type="redirect">/shopMessage/shopNotExist.htm?red_shop=sell_item</result>
+	  		<result name="NOT_OPEN_STORAGE" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=storage_item</result>
+			<result name="IS_CLOSE_STORAGE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=storage_item</result>
+			<result name="NOT_EXIST_STORAGE" type="redirect">/shopMessage/shopNotExist.htm?red_shop=storage_item</result>
+			<!-- <result name="validateError" type="freemarker">/default/templates/screen/shop/shopNotOpen.ftl
+			</result> -->
+		</action>
+
+		<action name="userDelItem"
+			class="com.yuwang.pinju.web.module.item.screen.ItemListAction"
+			method="userDelItem">
+			<result name="success" type="freemarker">/default/templates/screen/item/itemList.ftl
+			</result>
+		</action>
+
+		<action name="userAddShelfItem"
+			class="com.yuwang.pinju.web.module.item.screen.ItemListAction"
+			method="userAddShelfItem">
+			<result name="success" type="freemarker">/default/templates/screen/item/itemList.ftl
+			</result>
+		</action>
+
+		<action name="userDelShelfItem"
+			class="com.yuwang.pinju.web.module.item.screen.ItemListAction"
+			method="userDelShelfItem">
+			<result name="success" type="freemarker">/default/templates/screen/item/itemList.ftl
+			</result>
+		</action>
+
+		<action name="userDelItemExt"
+			class="com.yuwang.pinju.web.module.item.screen.ItemListAction"
+			method="userDelItemExt">
+			<result name="success" type="freemarker">/default/templates/screen/item/itemForwardShop.ftl
+			</result>
+		</action>
+
+		<action name="userDelShelfItemExt"
+			class="com.yuwang.pinju.web.module.item.screen.ItemListAction"
+			method="userDelShelfItemExt">
+			<result name="success" type="freemarker">/default/templates/screen/item/itemForwardShop.ftl
+			</result>
+		</action>
+	</package>
+	<package name="detail" namespace="/detail" extends="pinju-default">
+		<action name="*"
+			class="com.yuwang.pinju.web.module.item.screen.ItemDetail" method="execute">
+			<param name="itemId">{1}</param>
+			<result name="success" type="freemarker">/default/templates/screen/item/itemDetail.ftl
+			</result>
+			<result name="debug" type="freemarker">/default/templates/screen/item/itemDetail_bak.ftl
+			</result>
+			<result name="error" type="freemarker">/default/templates/screen/error/error.ftl
+			</result>
+		</action>
+		<action name="shopItemList" class="com.yuwang.pinju.web.module.shop.screen.ShopItemListAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/shop/shopItemList.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+        
+	</package>
+  
+    <package name="snapshot" namespace="/snapshot" extends="pinju-default">
+      <action name="itemSnapshot" class="com.yuwang.pinju.web.module.item.screen.ItemSnapshotDetail">
+          <result name="success" type="freemarker">/default/templates/screen/item/itemSnapshotDetail.ftl</result>
+          <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+      </action>
+    </package>
+
+</struts>

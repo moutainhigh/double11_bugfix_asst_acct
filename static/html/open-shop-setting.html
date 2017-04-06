@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="expires" content="0" />
+<meta name="robots" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="baiduspider" content="all" />
+<meta name="keywords" content="页面关键字" />
+<meta name="description" content="页面描述" />
+<title>模板页面</title>
+<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link media="screen" type="text/css" href="http://static.pinju.com/css/pj_base.css" rel="stylesheet">
+<link href="http://static.pinju.com/css/open.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/js/shop/preshop.js"></script>
+<script src="http://static.pinju.com/image-preview/jquery.image-preview.js"></script>
+</head>
+<body>
+<!-- START <MODULE-NAME> -->
+<div class="top_bar">
+	<div class="top_bar_box cf">
+		topbar demo
+	</div>
+</div>
+<div class="header cf">
+	<div class="masthead cf">
+		header
+	</div>
+</div>
+
+<div class="wrapfull navfull">
+	<div class="pj_nav">
+		nav
+	</div>
+</div>
+        
+<!-- START <普通店资料提交> -->
+<div class="wrap cf">
+<div class="wrap-border cf">
+
+	<div class="bar-left">
+		bar-left
+		
+	</div>
+
+	<div class="contents">
+
+		<div class="openshop">
+
+			<div class="ptitle">
+				<h1>店铺基本设置 <em>( <span class="required">*</span> 为必填项 )</em></h1>
+				<span class="eye"><a href="#">返回</a></span>
+			</div>
+			<p class="exinfo">您可以在以下设置中编辑您的店铺信息。</p>
+			
+			<div class="stepwrap">
+			<form action="">
+
+				<div class="info shopinfo">
+					<div class="updatelogo">
+						<div class="logoph"><img id="shoplogo" src="/media/shopicon80x80.jpg" alt="" /></div>
+						<a herf="##">上传图片<input type="file" id="slogoUpload" value="" /></a>
+					</div>
+
+					<fieldset>
+						<table>
+							<tr>
+								<th>店铺名称</th>
+								<td>
+									<input name="" type="text" class="text" disabled="disabled">
+								</td>
+							</tr>
+							<tr>
+								<th>店铺类目</th>
+								<td>
+									<select name="" disabled="disabled">
+										<option>男人袜专卖</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<th>卖家类型</th>
+								<td>
+									<select name="" disabled="disabled">
+										<option>男装</option>	
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<th>店铺简介</th>
+								<td>
+								<input name="" type="text" class="text" value="男人袜专卖店专卖女人袜">
+								</td>
+							</tr>
+							<tr>
+								<th>主要货源</th>
+								<td class="mcheckbox">
+									<div>
+										<label for="hy1"><input id="hy1" name="huoyuan" type="radio"> 线下批发市场</label>
+										<label for="hy2"><input id="hy2" name="huoyuan" type="radio"> 网络批发</label>
+										<label for="hy3"><input id="hy3" name="huoyuan" type="radio"> 自己生产</label>
+										<label for="hy4"><input id="hy4" name="huoyuan" type="radio"> 货源还未确定</label>
+									</div>
+									<div>
+										<label for="hy5"><input id="hy5" name="huoyuan" type="radio"> 实体店铺拿货</label>
+										<label for="hy6"><input id="hy6" name="huoyuan" type="radio"> 代工生产</label>
+										<label for="hy7"><input id="hy7" name="huoyuan" type="radio"> 自身公司渠道</label>
+										<label for="hy8"><input id="hy8" name="huoyuan" type="radio"> 分销/代销</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>店铺介绍</th>
+								<td>
+								<textarea name="" cols="" rows="">调取后来数值男人袜专卖店专卖女人袜</textarea>
+								<p>(500字以内)</p>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+					
+					<fieldset>
+						<legend>商户信息</legend>
+						<table>
+							<tr>
+								<th>是否有其他网店:</th>
+								<td>
+									<label for="elseshopYes"><input id="elseshopYes" name="elseshop" type="radio"> 有</label>
+									<label for="elseshopNo"><input id="elseshopNo" name="elseshop" type="radio"> 没有</label>
+								</td>
+							</tr>
+						</table>
+						<table id="othershop">
+							<tr>
+								<th>网上店铺地址:</th>
+								<td>
+									<input name="" type="text" class="text" value="http://abcd888.taobao.com">
+									<p>淘宝、拍拍等网店地址，<br />例如：http://shop.xxx.com/123456或者http://123456.xxx.com/</p>
+								</td>
+							</tr>
+							<tr>
+								<th>店铺等级:</th>
+								<td>
+									<label for="shopclass1"><input id="shopclass1" name="shopclass" type="radio"> 商城</label>
+									<label for="shopclass2"><input id="shopclass2" name="shopclass" type="radio"> 皇冠以上</label>
+									<label for="shopclass3"><input checked id="shopclass3" name="shopclass" type="radio"> 皇冠以下</label>
+									<label for="shopclass4"><input id="shopclass4" name="shopclass" type="radio"> 无</label>
+								</td>
+							</tr>
+							<tr>
+								<th>年销售规模:</th>
+								<td>
+									<label for="salesize1"><input checked id="salesize1" name="salesize" type="radio"> 十万</label>
+									<label for="salesize2"><input id="salesize2" name="salesize" type="radio"> 百万</label>
+									<label for="salesize3"><input id="salesize3" name="salesize" type="radio"> 千万</label>
+									<label for="salesize4"><input id="salesize4" name="salesize" type="radio"> 亿</label>
+								</td>
+							</tr>
+							<tr>
+								<th>是否入驻过B2C:</th>
+								<td>
+									<label for="joinedb2cYes"><input checked id="joinedb2cYes" name="joinedb2c" type="radio"> 有</label>
+									<label for="joinedb2cNo"><input id="joinedb2cNo" name="joinedb2c" type="radio"> 没有</label>
+									<br />
+									<p>例如京东、当当、麦考林、易迅等大型B2C平台</p>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+
+					<fieldset>
+						<legend>店铺联系人信息</legend>
+						<table>
+							<tr>
+								<th><span class="required">*</span> 姓名:</th>
+								<td>
+									<input name="" type="text" class="text" value="招财猫">
+								</td>
+							</tr>
+							<tr>
+								<th><span class="required">*</span> 电话:</th>
+								<td>
+									<input name="" type="text" class="text" value="0316-58585588">
+									<p>如：021-12345678</p>
+								</td>
+							</tr>
+							<tr>
+								<th><span class="required">*</span> 手机:</th>
+								<td>
+									<input name="" type="text" class="text" value="13958585588">
+								</td>
+							</tr>
+							<tr>
+								<th><span class="required">*</span> 邮箱:</th>
+								<td>
+									<input name="" type="text" class="text" value="kk@163.com">
+								</td>
+							</tr>
+							<tr>
+								<th>联系地址:</th>
+								<td>
+									<input name="" type="text" class="text" value="上海市浦东新区富翁路888号88层8楼">
+								</td>
+							</tr>
+							<tr>
+								<th>传真:</th>
+								<td>
+									<input name="" type="text" class="text">
+								</td>
+							</tr>
+							<tr>
+								<th>QQ:</th>
+								<td>
+									<input name="" type="text" class="text">
+								</td>
+							</tr>
+							<tr>
+								<th>MSN:</th>
+								<td>
+									<input name="" type="text" class="text">
+								</td>
+							</tr>
+							<tr>
+								<th>&nbsp;</th>
+								<td class="btn-imgtext">
+									<button title="保存信息" type="submit" class="btn-saveinfo"><span>保存信息</span></button>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</div>
+			</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+<script>
+	$(function() {
+		$.imagePreview({
+			file : $('#slogoUpload'),
+			img : $('#shoplogo'),
+			maxWidth : 80,
+			maxHeight : 80
+		});
+	});
+</script>
+</body>    
+</html>

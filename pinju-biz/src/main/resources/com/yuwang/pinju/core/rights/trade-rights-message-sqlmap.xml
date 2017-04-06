@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeRightsMsg">
+
+    <typeAlias alias="RightsMessageDO" type="com.yuwang.pinju.domain.rights.RightsMessageDO" />
+    <typeAlias alias="RightsMessageQuery" type="com.yuwang.pinju.domain.rights.RightsMsgQuery" />
+
+	<resultMap id="rightsMessageMap" class="RightsMessageDO" >
+		<result property="id" column="ID" />
+		<result property="userId" column="MEMBER_ID" />
+		<result property="userNick" column="MEMBER_NICK" />
+		<result property="content" column="CONTENT" />
+		<result property="voucherId" column="VOUCHER_ID" />
+		<result property="voucherPic1" column="VOUCHER_PIC1" />
+		<result property="voucherPic2" column="VOUCHER_PIC2" />
+		<result property="voucherPic3" column="VOUCHER_PIC3" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+    <sql id="voucherMsgPrefix">
+         V.ID,
+         V.MEMBER_ID,
+         V.MEMBER_NICK,
+         V.CONTENT,
+         V.VOUCHER_ID,
+         V.VOUCHER_PIC1,
+         V.VOUCHER_PIC2,
+         V.VOUCHER_PIC3,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED
+    </sql>
+   
+   <select id="TradeRightsMsg.getRightsMsgsCount"  parameterClass="RightsMessageQuery" resultClass="java.lang.Integer">
+		 SELECT COUNT(*) FROM TRADE_RIGHTS_MESSAGE WHERE VOUCHER_ID=#voucherId# 
+	</select>
+   
+	<select id="TradeRightsMsg.getRightsMessageDOs"  parameterClass="RightsMessageQuery" resultMap="rightsMessageMap">
+		 SELECT <include refid="voucherMsgPrefix"/> 
+		  FROM (SELECT RID
+		          FROM (SELECT A.RID, ROWNUM RN
+		                  FROM (SELECT ROWID RID FROM TRADE_RIGHTS_MESSAGE
+		                         WHERE VOUCHER_ID = #voucherId#
+		                         ORDER BY GMT_CREATE) A
+		                 WHERE rownum &lt;= #endRow#)
+		         WHERE RN &gt;= #startRow#) T,
+		       TRADE_RIGHTS_MESSAGE V
+		 WHERE V.ROWID = T.RID
+	</select>
+	
+	<insert id="TradeRightsMsg.insertMessageRecord" parameterClass="RightsMessageDO">
+		<selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_RIGHTS_MESSAGE_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_RIGHTS_MESSAGE 
+	    (
+	        ID,
+	        MEMBER_ID,
+	        MEMBER_NICK,
+	        CONTENT,
+	        VOUCHER_ID,
+	        VOUCHER_PIC1,
+	        VOUCHER_PIC2,
+	        VOUCHER_PIC3,
+		    GMT_CREATE,
+		    GMT_MODIFIED
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#userId#,
+			#userNick#,
+			#content#,
+			#voucherId#,
+			#voucherPic1#,
+			#voucherPic2#,
+			#voucherPic3#,
+			SYSDATE,
+			SYSDATE
+	    )
+	</insert>
+	
+</sqlMap>

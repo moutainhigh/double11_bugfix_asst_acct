@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_sales_stat">
+
+  <typeAlias alias="itemSalesStat"
+    type="com.yuwang.pinju.domain.item.ItemSalesStatDO" />
+
+  <resultMap id="itemSalesStatResult" class="itemSalesStat">
+    <result property="itemId" column="ITEM_ID" />
+    <result property="buyNum" column="BUY_NUM" />
+    <result property="orderItemPrice" column="ORDER_ITEM_PRICE" />
+    <result property="orderCount" column="ORDER_COUNT" />
+  </resultMap>
+
+  <sql id="selectItemSalesStat">select ITEM_ID,BUY_NUM,ORDER_ITEM_PRICE,ORDER_COUNT
+    from
+    MV_ITEM_SALES_STAT</sql>
+
+  <select id="selectItemSoldById" resultMap="itemSalesStatResult"
+    parameterClass="long">
+    <include refid="selectItemSalesStat" />
+    WHERE ITEM_ID = #itemId#
+  </select>
+
+</sqlMap>
+

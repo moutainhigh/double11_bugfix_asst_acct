@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CityStation_MYSQL">
+
+	<typeAlias alias="CityStation" type="com.yuwang.pinju.domain.citystation.CityStationDO" />
+	<typeAlias alias="CityOrderQuery" type="com.yuwang.pinju.domain.citystation.CityOrderQuery" />
+
+	<resultMap id="CityStationResult" class="CityStation">
+		<result property="id" column="ID" />
+		<result property="provName" column="PROV_NAME" />
+		<result property="cityName" column="CITY_NAME" />
+		<result property="cityUrl" column="CITY_URL" />
+		<result property="adCode" column="AD_CODE" />
+		<result property="comments" column="COMMENTS" />
+		<result property="operateId" column="OPERATE_ID" />
+		<result property="operateName" column="OPERATE_NAME" />
+		<result property="status" column="STATUS" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+	</resultMap>
+
+	<sql id="selectAllCityStation"><![CDATA[SELECT ID,PROV_NAME,CITY_NAME,CITY_URL,AD_CODE,COMMENTS,OPERATE_ID,OPERATE_NAME,STATUS,MEMBER_ID,NICKNAME,GMT_MODIFIED,GMT_CREATE FROM CITY_STATION]]></sql>
+
+	<select id="selectAllCityStation" resultMap="CityStationResult">
+		<include refid="selectAllCityStation" />
+		ORDER BY STATUS DESC, GMT_CREATE
+	</select>
+	
+	<select id="selectCityStationByCityName"  resultMap="CityStationResult" parameterClass="map">
+		<include refid="selectAllCityStation" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="provName">
+				<![CDATA[PROV_NAME = #provName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cityName">
+				<![CDATA[CITY_NAME = #cityName#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="selectCityStationByMemberId"  resultMap="CityStationResult" parameterClass="long">
+		<include refid="selectAllCityStation" />
+		<![CDATA[WHERE MEMBER_ID = #memberId#]]>
+	</select>
+</sqlMap>
+

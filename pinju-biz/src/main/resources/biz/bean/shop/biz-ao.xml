@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="shopShowInfoAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopShowInfoAOImpl"/>
+	
+	<bean id="shopOpenAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopOpenAoImpl"/> 
+	
+	
+	<bean id="shopInfoDO" class="com.yuwang.pinju.domain.shop.ShopInfoDO"/>
+	
+	<bean id="shopCustomerInfoDO" class="com.yuwang.pinju.domain.shop.ShopCustomerInfoDO"/>
+	<bean id="shopBusinessInfoDO" class="com.yuwang.pinju.domain.shop.ShopBusinessInfoDO"/>
+	<bean id="shopIshopInfoDO" class="com.yuwang.pinju.domain.shop.ShopIshopInfoDO"/>
+	
+
+	<bean id="shopOpenFlowDO" class="com.yuwang.pinju.domain.shop.ShopOpenFlowDO"/>
+	
+	
+	<!--shop category  -->
+	<bean id="shopCategoryAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopCategoryAOImpl"/>
+	
+	<bean id="shopPageLayoutAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopPageLayoutAOImpl"/>
+	
+	<!-- ShopPagePrototype -->
+	<bean id="shopPagePrototypeAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopPagePrototypeAOImpl"/>
+	
+	<!-- ShopModulePrototype -->
+	<bean id="shopModulePrototypeAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopModulePrototypeAOImpl"/>
+
+	<bean id="shopModulePictureRotationDO" class="com.yuwang.pinju.domain.shop.ShopModulePictureRotationDO"/>
+
+	<!-- ShopCustomPage -->
+	
+	<bean id="shopUserPageDO" class="com.yuwang.pinju.domain.shop.ShopUserPageDO"/>
+	
+	<bean id="shopUserModuleParamDO" class="com.yuwang.pinju.domain.shop.ShopUserModuleParamDO"/>
+	
+	<bean id="shopUserModuleAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopUserModuleAOImpl"/>
+	
+	<bean id="shopUserPageAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopUserPageAOImpl"/>
+	
+	<bean id="shopShieldAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopShieldAOImpl"/>
+	<bean id="shopDomainAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopDomainAOImpl"/>
+	<bean id="shopLabelAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopLabelAOImpl"/>
+	<bean id="shopInfoMemcacheAO" class="com.yuwang.pinju.core.shop.ao.impl.ShopInfoMemcacheAOImpl"/>
+</beans>

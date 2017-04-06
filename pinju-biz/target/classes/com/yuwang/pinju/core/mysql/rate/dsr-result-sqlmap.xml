@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="DsrResult" >
+
+  <typeAlias alias="dsrResult" type="com.yuwang.pinju.domain.rate.DsrResultDO"/>
+
+  <resultMap id="dsrResult" class="dsrResult">
+    <result column="ID" property="id" />
+    <result column="SENDER_ID" property="senderId" />
+    <result column="SENDER_NICK" property="senderNick" />
+    <result column="RECEIVER_ID" property="receiverId" />
+    <result column="RECEIVER_NICK" property="receiverNick" />
+    <result column="ORDER_ID" property="orderId" />
+    <result column="ITEM_ID" property="itemId" />
+    <result column="ITEM_TITLE" property="itemTitle" />
+    <result column="DIMENSION_ID" property="dimensionId" />
+    <result column="DIMENSION_NAME" property="dimensionName" />
+    <result column="RATE" property="rate" />
+    <result column="RATE_TIME" property="rateTime" />
+    <result column="ANONYMOUS" property="anonymous" />
+    <result column="STATUS" property="status" />
+    <result column="GMT_CREATE" property="gmtCreate" javaType="java.util.Date" />
+    <result column="GMT_MODIFIED" property="gmtModified" javaType="java.util.Date" />
+  </resultMap>
+
+  <sql id="getAllDsrResult">
+    <![CDATA[
+    SELECT ID, SENDER_ID, SENDER_NICK, RECEIVER_ID, RECEIVER_NICK, ORDER_ID, ITEM_ID, ITEM_TITLE, DIMENSION_ID, DIMENSION_NAME, RATE, RATE_TIME, ANONYMOUS, STATUS, GMT_CREATE, GMT_MODIFIED
+      FROM RATE_DSR_RESULT
+    ]]>
+  </sql>
+
+  <select id="getDsrResultById" resultMap="dsrResult"  parameterClass="long">
+    <include refid="getAllDsrResult" />
+    <![CDATA[WHERE ID = #id#]]>
+  </select>
+
+  <insert id="saveDsrResult" parameterClass="dsrResult">
+    <![CDATA[
+    INSERT INTO RATE_DSR_RESULT (
+      SENDER_ID, SENDER_NICK, RECEIVER_ID, RECEIVER_NICK, ORDER_ID,
+      ITEM_ID, ITEM_TITLE, DIMENSION_ID, DIMENSION_NAME, RATE, RATE_TIME,
+      ANONYMOUS, STATUS, GMT_CREATE, GMT_MODIFIED
+    ) VALUES (
+      #senderId#, #senderNick#, #receiverId#, #receiverNick#, #orderId#,
+      #itemId#, #itemTitle#, #dimensionId#, #dimensionName#, #rate#, #rateTime#,
+      #anonymous#, #status#, #gmtCreate#, #gmtModified#
+    )
+    ]]>
+    <selectKey resultClass="long" type="post" keyProperty="id">
+    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+  </insert>
+
+</sqlMap>

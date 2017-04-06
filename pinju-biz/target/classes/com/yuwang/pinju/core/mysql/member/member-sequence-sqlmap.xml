@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MemberSequence" >
+
+  <typeAlias alias="sequence" type="com.yuwang.pinju.domain.member.MemberSequenceDO" />
+
+  <resultMap id="sequence" class="sequence">
+    <result column="ID" property="id" />
+    <result column="NAME" property="name" />
+    <result column="NEXT_SEQ" property="nextSeq" />
+    <result column="SEQ_STEP" property="seqStep" />
+  </resultMap>
+
+  <select id="findMemberSequence" resultMap="sequence"  parameterClass="string">
+    <![CDATA[
+    SELECT ID, NAME, NEXT_SEQ, SEQ_STEP
+      FROM MEMBER_SEQUENCE
+     WHERE NAME = #name#
+    ]]>
+  </select>
+
+  <update id="updateMemberSequence" parameterClass="sequence" >
+    <![CDATA[
+    UPDATE MEMBER_SEQUENCE
+       SET NEXT_SEQ = NEXT_SEQ + SEQ_STEP
+     WHERE NAME = #name#
+       AND NEXT_SEQ = #nextSeq#
+    ]]>
+  </update>
+
+</sqlMap>

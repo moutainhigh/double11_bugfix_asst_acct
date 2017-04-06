@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <!--
+        	对不同属性分组,将一组相关的配置放在一起,比如日志相关的都放入log中,具体参考DEMO group的配置.
+        	add by @liuboen (配置有问题可以找我)
+        	
+        	注意事项:五个在XML文档中预定义好的实体,将你的参数中对应的xml特殊字符修改
+        		修改为		原型
+	        	&lt;    	<   	小于号
+	        	&gt;		>		大于号
+	        	&amp;		&		和(网页中链接)
+	        	&apos;		'		单引号
+	        	&quot;		"		双引号
+        -->
+
+  <group name="demo" description="示例用组,大家可以参考">
+    <!-- 定义属性配置，这些属性将自动生成到配置文件里 如果在配置文件里不存在，maven会在构建阶段提示输入 -->
+    <property name="test.do.ths" defaultValue="222" description="属性描述" />
+  </group>
+
+  <group name="message.queue" description="消息队列配置">
+    <property name="rate.order.comment.mq.name" defaultValue="SNS.PINJU.SHOP.COMMENT" description="订单评价 MQ 名称" />
+    <property name="rate.order.comment.mq.url"  defaultValue="failover:(tcp://10.245.135.235:11628)?randomize=false&amp;timeout=3000" description="订单评价 MQ 服务器 URL" />
+
+    <property name="pmessage.order.comment.mq.name" defaultValue="SNS.PRIVATEMESSAGE.ADD" description="私信MQ 名称" />
+    <property name="pmessage.order.comment.mq.url"  defaultValue="failover:(tcp://10.245.135.235:11628)?randomize=true&amp;timeout=3000" description="私信 MQ 服务器 URL" />
+  </group>
+
+  <group name="dsr.rate" description="DSR 评论配置">
+    <property name="comments.item.default.page.size" defaultValue="10" description="商品评论默认每页数量" />
+    <property name="comments.item.days" defaultValue="30" description="商品评论页：选取多少天以内的评论" />
+    <property name="comments.seller.default.page.size" defaultValue="10" description="卖家评论默认每页数量" />
+    <property name="comments.seller.days" defaultValue="30" description="卖家资质评论页：选取多少天以内的评论" />
+  </group>
+
+  <group name="pinju" description="平台整体配置">
+    <property name="default.charset" defaultValue="UTF-8" description="平台默认字符编码" />
+    <property name="static.server" defaultValue="http://static.pinju.com" description="静态资源服务器地址" />
+    <property name="pinju.server" defaultValue="http://www.pinju.com" description="品聚服务器地址" />
+    <property name="search.server" defaultValue="http://www.pinju.com" description="搜索服务器地址"/>
+    <property name="development" defaultValue="true" description="是否为开发模式" />
+    <property name="pinju.company.ips" defaultValue="127.0.0.1,10.245.131.153,10.245.131.29,10.245.135.71,10.245.135.101,10.245.131.53,10.245.135.91,10.245.135.234,10.245.135.121,172.77.14.1" description="品聚公司内网IP地址串(用于访问页面白名单,用英文逗号隔开)"/>
+  </group>
+
+  <group name="member.security" description="会员安全配置">
+    <property name="email.link.expire.days" defaultValue="1" description="邮件链接过期时间（天）" />
+    <property name="email.system.address" defaultValue="noreply@pinju.com" description="系统邮件地址"></property>
+    <property name="email.system.from.name" defaultValue="noreply@pinju.com" description="系统邮件名称"></property>
+
+    <property name="auth.encrypt.algorithm" defaultValue="AES" description="对称加密算法" />
+    <property name="auth.encrypt.mode" defaultValue="ECB" description="加密算法模式" />
+    <property name="auth.encrypt.padding" defaultValue="PKCS5Padding" description="加密填充模式" />
+    <property name="auth.encrypt.key" defaultValue="OOuK2dTyA8NOkKuKDfRF5A==" description="加密密钥" />
+    <property name="auth.sign.mac.algorithm" defaultValue="HmacSHA1" description="MAC 签名算法" />
+    <property name="auth.sign.mac.key" defaultValue="ppRbjBwXx/9J0qO67f7B12TbxcJRi+A9+dxmlxsDTx7fsBWV6JZ0wKyLgJM98b3FqSuFCb/oef4NhZDM0snfjw==" description="MAC 签名密钥" />
+    <property name="auth.rsa.private.key" description="RSA 1024私钥（该值修改后需要同时修改 http://static.pinju.com/js/member/key.js 中 MODULES 值，以及相关脚本引用的时间戳）" defaultValue="MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKeqC3SJ4ZjixAJ3G0EebGwHUChTTQizy91GZ5MnMaEuoilRUSP1MdHAsQeEWtNzi7cjdfGFDhrSXHbKqskEcCOJ6j3DqrggQtVllp2/3kg6dnO0waCnw+ciIt/cDf0bqkah5Q2831I9JRB2aKQYgidqiAnGh+adVAe1EtecIv99AgMBAAECgYEAnwpH73XTD0kbkRMWQUDwq9CMEpRh4D1cxjrAiO+GvlQT8ol2JFuztDnKM00zMpzKDSCQAleqN3sPxoccVa3mB+WNKXsozpYcJuvKOynxnkuK3MWsiyiVtnNwtQw5JufCdhMAOo8EhsyefZ0CO2hDP2Q4CGwjU3qgtNNBToDRQEECQQDhxZo5KP5Oet6E9vdLDeyQXOrwkiroPhE4iwfzxkvnCmFwmCLEN7aZmwhAyOo0Yp/BeukVPkwGAI4oO5s/BjgZAkEAvhzJIP52GWPkfrFUOiuWX8xDPnOqzMVdKvMJ67rozZpYSwdM92xPNk7QbdO+Or0WFoKg1gEz4UbG8bLM+Jv/BQJANxhap2JKlOpFDRubg3RVa3FRX/27fMtQtoSvHx0f/rS4zJpDubCC3f9IR08AYGJE7BlLcgSu1rQh/M12+C1TWQJBAJArPi9CKQc6JJYbHfd7BG8jdL8Qci8VYIDoi9ZzCIaajGhhYfGj9jIF9LPExla++9gYOaXwhYpJ5SZ3ZE8H5Y0CQCQHrtlos+nukgCqwCRtFRYNGJI0Wp3ORCp4Dg4APWE0Z9c+kU9xtD1oBMbZuNQ8TCGUbveaAnidJk0GxD+HDsM=" />
+
+    <property name="mobile.code.expire.seconds" defaultValue="300" description="短信验证码有效时间（秒）" />
+    <property name="mobile.code.length" defaultValue="6" description="短信验证码字符数" />
+    <property name="mobile.code.daily.max.count" defaultValue="5" description="短信验证码每天的发送次数（按功能分）" />
+    <property name="mobile.number.pattern" defaultValue="1[3458][0-9]{9}" description="手机号码正则表达式" />
+  </group>
+
+  <group name="datebase.oracle" description="oracle数据库配置">
+    <property name="jdbc.oracle.driver" defaultValue="oracle.jdbc.driver.OracleDriver" description="驱动" />
+    <property name="pinju.oracle.jdbc.url" defaultValue="jdbc\:oracle\:thin\:@rd-db.dev-pinju.com\:1521\:rddb" description="数据库地址信息" />
+    <property name="pinju.oracle.jdbc.port" defaultValue="1521" description="端口号" />
+    <property name="pinju.oracle.jdbc.username" defaultValue="bill" description="数据库用户名" />
+    <property name="pinju.oracle.jdbc.password" defaultValue="hello1" description="数据库密码" />
+    <!-- dbcp -->
+    <property name="pinju.dbcp.oracle.initialSize" defaultValue="1" description="" />
+    <property name="pinju.dbcp.oracle.maxIdle" defaultValue="10" description="" />
+    <property name="pinju.dbcp.oracle.minIdle" defaultValue="1" description="" />
+    <property name="pinju.dbcp.oracle.maxActive" defaultValue="5" description="" />
+    <property name="pinju.dbcp.oracle.removeAbandoned" defaultValue="true" description="" />
+    <property name="pinju.dbcp.oracle.removeAbandonedTimeout" defaultValue="60" description="" />
+    <property name="pinju.dbcp.oracle.maxWait" defaultValue="1000" description="" />
+  </group>
+
+  <group name="datebase.mysql" description="mysql数据库配置">
+    <property name="c3p0.jdbcUrl" defaultValue="jdbc:mysql://rd-db.dev-pinju.com:3306/pinju?useUnicode=true&amp;characterEncoding=utf8" description="驱动" />
+    <property name="read.c3p0.jdbcUrl" defaultValue="jdbc:mysql://rd-db.dev-pinju.com:3306/pinju?useUnicode=true&amp;characterEncoding=utf8" description="驱动" />
+    <property name="c3p0.driverClass" defaultValue="com.mysql.jdbc.Driver" description="驱动" />
+    <property name="c3p0.user" defaultValue="pinju" description="" />
+    <property name="c3p0.password" defaultValue="123" description="" />
+    <property name="c3p0.initialPoolSize" defaultValue="1" description="" />
+    <property name="c3p0.minPoolSize" defaultValue="1" description="" />
+    <property name="c3p0.maxPoolSize" defaultValue="5" description="" />
+    <property name="c3p0.maxIdleTime" defaultValue="300" description="" />
+    <property name="c3p0.acquireRetryAttempts" defaultValue="3" description="" />
+	<property name="c3p0.acquireRetryDelay" defaultValue="1000" description="" />
+	<property name="c3p0.checkoutTimeout" defaultValue="10000" description="" />
+	<property name="c3p0.maxStatements" defaultValue="100" description="" />
+	<property name="c3p0.numHelperThreads" defaultValue="3" description="" />
+	<property name="c3p0.testConnectionOnCheckin" defaultValue="true" description="" />
+	<property name="c3p0.preferredTestQuery" defaultValue="SELECT 1 AS TEST" description="" />
+  </group>
+
+  <group name="webservice" description="webservice配置">
+    <property name="pinju.logisticsWebServiceURL" defaultValue="http://211.154.151.55:22220/wlt/GetExpressTrack" description="服务地址" />
+    <property name="pinju.logisticsWebServiceKEY" defaultValue="72d3f35fe39ae849842f9037f6695f0" description="key" />
+    <property name="pinju.margin.service.url" defaultValue="http://webservice.com:9999/axis2/services/AxisService" description="保证金服务地址"/>
+    <property name="pinju.margin.service.namespace" defaultValue="http://ws.apache.org/axis2" description="保证金服务命名空间"/>
+    
+    <property name="pinju.hundred.logisticsWebServiceURL" defaultValue="http://api.kuaidi100.com/api" description="100快递服务地址" />
+    <property name="pinju.hundred.logisticsWebServiceKEY" defaultValue="3d945b49b6d7be0b" description="100快递 key" />
+  </group>
+
+  <group name="search" description="搜索配置">
+    <property name="search.httpclient.serverUrl" defaultValue="http://search.pinju.com/search/" description="服务地址" />
+    <property name="search.httpclient.updateServerUrl" defaultValue="http://search.pinju.com:8080/search/" description="更新索引服务地址" />
+    <property name="search.httpclient.connectTimeout" defaultValue="5000" description="连接超时时间" />
+    <property name="search.httpclient.soTimeout" defaultValue="5000" description="数据等待超时时间" />
+    <property name="search.httpclient.maxConnectionsPerHost" defaultValue="50" description="" />
+    <property name="search.httpclient.maxTotalConnections" defaultValue="500" description="" />
+  </group>
+
+  <group name="log" description="日志配置">
+    <property name="log.root.path" defaultValue="D:/log/pinju" description="日志输出根路径" />
+    <property name="log.root.level" defaultValue="INFO" description="日志打印级别" />
+    <property name="log.sql.level" defaultValue="DEBUG" description="日志数据库打印级别" />
+    <property name="log.yuwang.level" defaultValue="DEBUG" description="日志打印级别" />
+  </group>
+
+  <group name="cache" description="缓存配置">
+    <property name="category.cache.storedir" defaultValue="d:/forest/" description="本地缓存保存位置" />
+    <property name="memcache.item.cache.indexkey" defaultValue="com.yuwang.item.cache.indexkey" description="商品相关缓存" />
+    <property name="memcache.ip" defaultValue="rd-memcached1.dev-pinju.com" description="memcache ip或域名" />
+    <property name="memcache.fall.ip" defaultValue="rd-memcached1.dev-pinju.com:11211" description="memcache ip或域名" />
+    <property name="memcache.port" defaultValue="11211" description="memcache 端口号" />
+
+    <!-- 验证码 -->
+    <property name="memcached.indexkey.pinju.captcha" defaultValue="com.yuwang.cache.index.pinju.captcha" description="验证码值" />
+    <property name="memcached.ip.pinju.captcha" defaultValue="rd-memcached1.dev-pinju.com" description="验证码 memcached ip或域名" />
+    <property name="memcached.port.pinju.captcha" defaultValue="11211" description="验证码 memcached 端口号" />
+    <property name="memcached.fall.pinju.captcha" defaultValue="rd-memcached1.dev-pinju.com:11211" description="验证码 memcached 备用服务器" />
+
+    <!-- 店铺资质信息及 DSR 评分 -->
+    <property name="memcached.indexkey.pinju.qualitity" defaultValue="com.yuwang.cache.index.qualitity" description="店铺资质信息 index key" />
+    <property name="memcached.ip.pinju.qualitity" defaultValue="rd-memcached1.dev-pinju.com" description="店铺资质信息 memcached ip或域名" />
+    <property name="memcached.port.pinju.qualitity" defaultValue="11211" description="店铺资质信息 memcached 端口号" />
+    <property name="memcached.fall.pinju.qualitity" defaultValue="rd-memcached1.dev-pinju.com:11211" description="店铺资质信息 memcached 备用服务器" />
+    <property name="memcached.expires.pinju.qualitity" defaultValue="7200" description="缓存时效（秒）" />
+
+    <!-- 商品购买 DSR 评价缓存 -->
+    <property name="memcached.indexkey.pinju.dsr.comments" defaultValue="com.yuwang.cache.index.dsr.comments" description="商品购买评价" />
+    <property name="memcached.ip.pinju.dsr.comments" defaultValue="rd-memcached1.dev-pinju.com" description="商品购买评价 memcached ip或域名" />
+    <property name="memcached.port.pinju.dsr.comments" defaultValue="11211" description="login memcached 端口号" />
+    <property name="memcached.fall.pinju.dsr.comments" defaultValue="rd-memcached1.dev-pinju.com:11211" description="商品购买评价  memcached 备用服务器" />
+    <property name="memcached.expires.pinju.dsr.comments" defaultValue="7200" description="缓存时效（秒）" />
+
+    <!-- 错误登录次数 -->
+    <property name="memcached.indexkey.pinju.login" defaultValue="com.yuwang.cache.index.pinju.login" description="登录错误次数记录" />
+    <property name="memcached.ip.pinju.login" defaultValue="rd-memcached1.dev-pinju.com" description="login memcached ip或域名" />
+    <property name="memcached.port.pinju.login" defaultValue="11211" description="login memcached 端口号" />
+    <property name="memcached.fall.pinju.login" defaultValue="rd-memcached1.dev-pinju.com:11211" description="登录错误次数 memcached 备用服务器" />
+    
+    <!-- 店铺 -->
+    <property name="memcached.indexkey.pinju.shop" defaultValue="com.yuwang.cache.index.shop" description="店铺缓存的键值" />
+    <property name="memcached.ip.pinju.shop" defaultValue="rd-memcached1.dev-pinju.com" description="店铺memcached ip或域名" />
+    <property name="memcached.port.pinju.shop" defaultValue="11212" description="店铺 memcached 端口号" />
+    <property name="memcached.fall.pinju.shop" defaultValue="rd-memcached1.dev-pinju.com:11212" description="店铺 memcached 备用服务器" />
+    
+    <!-- ip库  -->
+    <property name="memcached.indexkey.pinju.ip" defaultValue="com.yuwang.cache.ip" description="ip库缓存的键值" />
+    <property name="memcached.ip.pinju.ip" defaultValue="rd-memcached1.dev-pinju.com" description="ip库memcached ip或域名" />
+    <property name="memcached.port.pinju.ip" defaultValue="11212" description="ip库memcached 端口号" />
+    <property name="memcached.fall.pinju.ip" defaultValue="rd-memcached1.dev-pinju.com:11212" description="ip库 memcached 备用服务器" />
+    
+    <!-- 物流 -->
+    <property name="memcached.indexkey.pinju.logistics" defaultValue="com.yuwang.cache.logistics" description="运费模板缓存的键值" />
+    <property name="memcached.ip.pinju.logistics" defaultValue="rd-memcached1.dev-pinju.com" description="运费模板memcached ip或域名" />
+    <property name="memcached.port.pinju.logistics" defaultValue="11212" description="运费模板memcached 端口号" />
+    <property name="memcached.fall.pinju.logistics" defaultValue="rd-memcached1.dev-pinju.com:11212" description="运费模板 memcached 备用服务器" />
+  
+  	<property name="memcached.indexkey.pinju.itembuynum" defaultValue="com.yuwang.cache.index.pinju.itembuynum" description="商品购买数量缓存的键值" />
+    <property name="memcached.ip.pinju.itembuynum" defaultValue="rd-memcached1.dev-pinju.com" description="商品购买数量缓存memcached ip或域名" />
+    <property name="memcached.port.pinju.itembuynum" defaultValue="11212" description="商品购买数量缓存memcached 端口号" />
+    <property name="memcached.fall.pinju.itembuynum" defaultValue="rd-memcached1.dev-pinju.com:11212" description="商品购买数量缓存 memcached 备用服务器" />
+    
+    <!-- 手机号码发送频率限制 -->
+    <property name="memcached.indexkey.pinju.mobile.frequency" defaultValue="com.yuwang.cache.index.pinju.mobile.frequency" description="手机号码发送频率限制" />
+    <property name="memcached.ip.pinju.mobile.frequency" defaultValue="rd-memcached1.dev-pinju.com" description="手机号码发送频率限制memcached ip或域名" />
+    <property name="memcached.port.pinju.mobile.frequency" defaultValue="11212" description="手机号码发送频率限制memcached 端口号" />
+    <property name="memcached.fall.pinju.mobile.frequency" defaultValue="rd-memcached1.dev-pinju.com:11212" description="手机号码发送频率限制 memcached 备用服务器" />
+    <property name="memcached.expires.pinju.mobile.frequency" defaultValue="60" description="缓存时效（秒）" />
+    
+    <!-- 手机号码日发送限制 -->
+    <property name="memcached.indexkey.pinju.mobile.daily" defaultValue="com.yuwang.cache.index.pinju.mobile.daily" description="手机号码日发送次数限制" />
+    <property name="memcached.ip.pinju.mobile.daily" defaultValue="rd-memcached1.dev-pinju.com" description="手机号码日发送次数限制memcached ip或域名" />
+    <property name="memcached.port.pinju.mobile.daily" defaultValue="11212" description="手机号码日发送次数限制memcached 端口号" />
+    <property name="memcached.fall.pinju.mobile.daily" defaultValue="rd-memcached1.dev-pinju.com:11212" description="手机号码日发送次数限制 memcached 备用服务器" />
+    <property name="memcached.expires.pinju.mobile.daily" defaultValue="86400" description="缓存时效（秒）" />
+
+    <!-- 登录页面图片数据 -->
+    <property name="memcached.indexkey.pinju.login.page" defaultValue="com.yuwang.cache.index.pinju.login.page" description="登录页面图片数据" />
+    <property name="memcached.ip.pinju.login.page" defaultValue="rd-memcached1.dev-pinju.com" description="登录页面图片数据memcached ip或域名" />
+    <property name="memcached.port.pinju.login.page" defaultValue="11212" description="登录页面图片数据memcached 端口号" />
+    <property name="memcached.fall.pinju.login.page" defaultValue="rd-memcached1.dev-pinju.com:11212" description="登录页面图片数据 memcached 备用服务器" />
+    <property name="memcached.expires.pinju.login.page" defaultValue="3600" description="缓存时效（秒）" />
+
+    <!-- 商品购买数量缓存 -->
+  	<property name="memcached.indexkey.pinju.itembuynum" defaultValue="com.yuwang.cache.index.pinju.itembuynum" description="商品购买数量缓存的键值" />
+    <property name="memcached.ip.pinju.itembuynum" defaultValue="rd-memcached1.dev-pinju.com" description="商品购买数量缓存memcached ip或域名" />
+    <property name="memcached.port.pinju.itembuynum" defaultValue="11212" description="商品购买数量缓存memcached 端口号" />
+    <property name="memcached.fall.pinju.itembuynum" defaultValue="rd-memcached1.dev-pinju.com:11212" description="商品购买数量缓存 memcached 备用服务器" />
+
+    <!-- 用于数据传输密钥缓存 -->
+    <property name="memcached.indexkey.pinju.trans.key" defaultValue="com.yuwang.cache.indexkey.pinju.trans.key" description="加密数据传输密钥" />
+    <property name="memcached.ip.pinju.trans.key" defaultValue="rd-memcached1.dev-pinju.com" description="加密数据传输密钥 memcached ip或域名" />
+    <property name="memcached.port.pinju.trans.key" defaultValue="11211" description="加密数据传输密钥 memcached 端口号" />
+    <property name="memcached.fall.pinju.trans.key" defaultValue="rd-memcached1.dev-pinju.com:11211" description="加密数据传输密钥 memcached 备用服务器" />
+    <property name="memcached.expires.pinju.trans.key" defaultValue="120" description="缓存时效（秒）" />
+
+    <!-- 子账号权限数据 -->
+    <property name="memcached.indexkey.pinju.asst.perm" defaultValue="com.yuwang.cache.indexkey.pinju.asst.perm" description="子账号权限数据" />
+    <property name="memcached.ip.pinju.asst.perm" defaultValue="rd-memcached1.dev-pinju.com" description="子账号权限数据 memcached ip或域名" />
+    <property name="memcached.port.pinju.asst.perm" defaultValue="11212" description="子账号权限数据 memcached 端口号" />
+    <property name="memcached.fall.pinju.asst.perm" defaultValue="rd-memcached1.dev-pinju.com:11212" description="子账号权限数据 memcached 备用服务器" />
+    <property name="memcached.expires.pinju.asst.perm" defaultValue="7200" description="缓存时效（秒）" />
+  </group>
+
+  <group name="captcha" description="验证码相关配置">
+    <property name="captcha.memcached.timeout" defaultValue="1200" description="验证码缓存有效时间（秒）" />
+  </group>
+
+  <group name="pinju.login" description="登录相关配置">
+    <property name="pinju.login.error.count.captcha" defaultValue="5" description="登录密码错误超过多少次时出现验证码" />
+    <property name="pinju.login.error.count.timeout" defaultValue="86400" description="登录密码错误超过多少次时出现验证码的超时时间（秒）" />
+  </group>
+  
+  <group name="sina.login" description="新浪weibo登录">
+    <property name="sina.weibo.clientid" defaultValue="995171698" description="申请应用时分配的AppKey "/>
+    <property name="sina.weibo.client.sercret" defaultValue="78c2ef024cc33d65a27b65ed386cac66" description="申请应用时分配的AppSecret"/>
+    <property name="sina.weibo.redirect.uri" defaultValue="http://www.pinju.com/member/sina-weibo-login.htm" description="回调地址"/>
+    <property name="sina.weibo.getuid.url" defaultValue="https://api.weibo.com/account/get_uid.json" description="查询用户UID"/>
+    <property name="sina.weibo.getuser.url" defaultValue="https://api.weibo.com/users/show.json" description="查询用户信息"/>
+    <property name="sina.weibo.accesstoken.url" defaultValue="https://api.weibo.com/oauth2/access_token" description="获取Access Token的地址"/>
+    <property name="sina.weibo.authorize.url" defaultValue="https://api.weibo.com/oauth2/authorize" description="引导需要授权的用户地址"/>
+    <property name="sina.weibo.connecttimeout" defaultValue="30000" description="链接超时为30s"/>
+    <property name="sina.weibo.readtimeout" defaultValue="30000" description="读取超时时间为30s"/>
+  </group>
+
+  <group name="file.server" description="文件服务器配置">
+    <property name="file.server" defaultValue="http://10.245.135.202:8180/storage-ws/rest" description="文件服务器地址" />
+    <property name="image.server" defaultValue="http://10.245.135.202:8180/storage-ws/rest/img" description="图片服务器地址" />
+    <property name="file.temp.path" defaultValue="D:/temp/" description="文件临时路径" />
+    <property name="view.image.server" defaultValue="http://img.pinju.com/storage-ws/rest/img" description="读取图片服务器地址" />
+  </group>
+ 
+  <group name="snda.api" description="盛大开放API相关配置">
+    <property name="snda.api.app.key" defaultValue="37adf553b771507c9d723f1462ee111c" description="SNDA 开放 API 应用 KEY" />
+    <property name="snda.api.app.secret.key" defaultValue="837830b1c406c0f17c45b6b8d9a9063b" description="SNDA 开放 API 应用安全 KEY" />
+    <!-- 文档地址：http://code.snda.com/index/oauth#systemtoken -->
+    <property name="snda.api.system.token.url" defaultValue="http://oauth.snda.com/oauth/token" description="SNDA 开放 API System Token 获取 URL" />
+    <!-- 测试地址（需要登录）：http://open.snda.com/apitools/index/?appkey=37adf553b771507c9d723f1462ee111c&group=sdo.account.account -->
+    <property name="snda.api.query.user.info" defaultValue="sdo.account.account.QueryUserInfo" description="根据盛大通行证数据账号查询用户其他账号 SNDA 开放 API 调用的方法名" />
+    <property name="snda.api.invoke.url" defaultValue="http://vip.api.snda.com" description="SNDA 开放 API 调用 URL" />
+    <property name="snda.api.query.user.info.key" defaultValue="1\,3\,4\,5" description="查询用户账号的参数 key 值" />
+    <property name="snda.api.invoke.timeout" defaultValue="10000" description="盛大开放 API 调用时 connect 和 read 超时时间（毫秒）" />
+    <property name="api.snda.register.notify.sign.key" defaultValue="YCVw5jXyyqXIpMnlbTs0tsTGilI4FSbKSG5RBy87" description="盛大通行证定制注册后通知接口进行签名的 KEY" />
+    <property name="api.sns.sign.key" defaultValue="yJmQmHt4yctGPjpzDaxmdHuQpy6LVZVhgp3gH0y0" description="用于社区的 API 的数据签名 KEY" />
+  </group>
+
+  <!-- 盛付通即时到账相关配置Add By ShiXing@2011.08.11 -->
+  <group>
+     <property name="shengpay.directpay.merchantno" defaultValue="800015" description="品聚在盛付通的商户号"/>
+     <!-- <property name="shengpay.directpay.payurl" defaultValue="http://pre.netpay.sdo.com/paygate/default.aspx" description="盛付通即时到账网关地址,线上为http://netpay.sdo.com/paygate/default.aspx"/> -->
+     <property name="shengpay.directpay.payurl" defaultValue="http://pre.netpay.sdo.com/moni/reciveNotifyForShengPay.htm" description="盛付通即时到账网关地址,线上为http://netpay.sdo.com/paygate/default.aspx"/>
+     <property name="shengpay.directpay.postbackurl" defaultValue="http://www.pinju.com/orderPay/sdoDirectPostBack.htm" description="客户端回调地址,支付成功后,将附带回调数据跳转到此页面"/>
+     <property name="shengpay.directpay.notifyurl" defaultValue="http://www.pinju.com/orderPay/sdoDirectNotify.htm" description="服务端通知地址,支付成功后,盛付通发支付成功到此地址"/>
+     <property name="shengpay.directpay.currencytype" defaultValue="RMB" description="货币类型，仅支持人民币，必须传入RMB"/>
+     <property name="shengpay.directpay.notifyurltype" defaultValue="http" description="发货通知方式tcp，http，https等。一般为http"/>
+     <property name="shengpay.directpay.version" defaultValue="3.0" description="盛付通当前版本号,目前为3.0"/>
+     <property name="shengpay.directpay.md5key" defaultValue="abcdef" description="md5加密KEY,需要生成后上传到盛付通网站"/>
+     <property name="shengpay.directpay.signtype" defaultValue="2" description="md5加密KEY,需要生成后上传到盛付通网站2为md5"/>
+     <property name="shengpay.directpay.successmsg" defaultValue="OK" description="盛付通通知成功后回传消息"/>
+     <property name="shengpay.directpay.paychannel" defaultValue="04\,14" description="盛付通支付渠道"/>
+     <property name="shengpay.directpay.pinju.sellerid" defaultValue="999999999" description="品聚sellerId"/>
+     <property name="shengpay.directpay.pinju.sellernick" defaultValue="pinju" description="品聚sellerNick"/>
+     <property name="shengpay.directpay.pinju.payaccount" defaultValue="shixing@zba.com" description="品聚盛付通账号"/>
+  </group>
+  
+    <!-- 财付通即时到账相关配置Add By DuCheng@2011.08.31 -->
+  <group>
+     <property name="tenpay.directpay.partner" defaultValue="1211842201" description="品聚在财付通的测试商户号,必填"/>
+     <property name="tenpay.directpay.md5key" defaultValue="43fa78b1d727f5a37b5b5f10f0f0d50b" description="品聚在财付通的测试md5加密KEY,必填"/>
+     <property name="tenpay.directpay.payurl" defaultValue="https://gw.tenpay.com/gateway/pay.htm" description="财付通即时到账网关地址,必填线上为http://gw.tenpay.com/moni/reciveNotifyForTenPay.htm"/>
+     <property name="tenpay.directpay.returnurl" defaultValue="http://www.pinju.com/orderPay/tenDirectPostBack.htm" description="客户端回调地址,支付成功后,将附带回调数据跳转到此页面,必填"/>
+  	 <property name="tenpay.directpay.notifyurl" defaultValue="http://www.pinju.com/orderPay/tenDirectNotify.htm" description="后台回调地址,支付成功后,将附带回调数据跳转到此,必填"/>
+	 <property name="tenpay.directpay.feetype" defaultValue="1" description="货币类型，取值：1（人民币）,默认值是1，暂只支持1,必填"/>
+     <property name="tenpay.directpay.signtype" defaultValue="MD5" description="财富通签名加密类型,默认：MD5,非必须"/>
+     <property name="tenpay.directpay.inputcharset" defaultValue="UTF-8" description="财富通使用字符集,默认：GBK,非必须"/>
+     <property name="tenpay.directpay.banktype" defaultValue="DEFAULT" description="财富通支付渠道,默认为“DEFAULT”－财付通支付中心,非必须"/>
+     <property name="tenpay.directpay.pinju.sellerid" defaultValue="999999999" description="品聚sellerId"/>
+     <property name="tenpay.directpay.pinju.sellernick" defaultValue="pinju" description="品聚sellerNick"/>
+     <!-- 回调 -->
+     <property name="tenpay.directpay.trademode" defaultValue="1" description="财富通交易模式 1-即时到账"/>
+     <property name="tenpay.directpay.tradestate" defaultValue="0" description="财富通支付结果：0—成功,1—失败"/>
+     <property name="tenpay.directpay.success" defaultValue="success" description="财富通通知成功后回传消息:处理成功，财付通系统收到此结果后不再进行后续通知"/>
+     <property name="tenpay.directpay.fail" defaultValue="fail" description="财富通通知成功后回传消息:处理不成功，财付通收到此结果或者没有收到任何结果，系统通过补单机制"/>
+     <property name="tenpay.bind.gateurl" defaultValue="https://www.tenpay.com/cgi-bin/v1.0/service_gate.cgi" description="财富通绑定账号网关地址"/>
+     <property name="tenpay.inquire.relation.gateurl" defaultValue="https://mch.tenpay.com/cgi-bin/inquire_entrust_relation.cgi" description="财富通委托关系查询接口网关地址"/>
+     <property name="tenpay.certificate.path" defaultValue="d:/certificate/" description="财富通证书路径"/>
+     <property name="tenpay.cacert.name" defaultValue="cacert.pem" description="财富通cacert证书名称"/>
+  </group>
+  
+  <!-- 财付通订单查询相关配置Add By LiXin@2011.09.09 -->
+  <group>
+  	<property name="tenpay.searchorder.version" defaultValue="4" description="版本号必须填4" />
+  	<property name="tenpay.searchorder.cmdno" defaultValue="96" description="业务代码, 财付通查询接口填 96" />
+  	<property name="tenpay.searchorder.returnurl" defaultValue="http://127.0.0.1/" description="后台回调地址，查询成功后，将附带回调数据跳转到此，必填" />
+  	<property name="tenpay.searchorder.searchurl" defaultValue="https://mch.tenpay.com/cgi-bin/inquire_refund.cgi" description="查询请求地址"></property>
+  </group>
+
+  <!-- 财付通单笔支付与合并支付相关配置Add By shihongbo -->
+  <group>
+     <property name="tenpay.pay.partner" defaultValue="1900000107" description="品聚在财付通的分账商户号,必填"/>
+     <property name="tenpay.pay.md5key" defaultValue="82d2f8b9fd7695aec51415ab2900a755" description="品聚在财付通的测试md5加密KEY,必填"/>
+     <property name="tenpay.pay.payurl" defaultValue="https://www.tenpay.com/cgi-bin/v1.0/pay_gate.cgi" description="财付通单笔支付与合并支付网关地址,必填线上为https://www.tenpay.com/cgi-bin/v1.0/pay_gate.cgi,测试为http://gw.tenpay.com/moni/combinedPaymentAction.htm"/>     
+     <property name="tenpay.pay.returnurl" defaultValue="http://www.pinju.com/mergePayPostBack/tenpayMergePostBack.htm" description="客户端回调地址,支付成功后,将附带回调数据跳转到此页面,必填"/>
+  	 <property name="tenpay.pay.notifyurl" defaultValue="http://www.pinju.com/mergePayPostBack/tenpayMergeAfterPostBack.htm" description="后台回调地址,支付成功后,将附带回调数据跳转到此,必填,暂时没用到，用return_url代替notify_url"/>
+  	 <property name="tenpay.pay.ver" defaultValue="1" description="版本号,1"/>
+  	 <property name="tenpay.pay.cmdno" defaultValue="1" description="业务代码, 财付通支付支付接口填  1  "/>
+  	 <property name="tenpay.pay.banktype" defaultValue="0" description="银行类型:财付通支付填0"/>
+	 <property name="tenpay.pay.feetype" defaultValue="1" description="现金支付币种，目前只支持人民币1"/>
+     <property name="tenpay.pay.cs" defaultValue="utf-8" description="desc字符编码名称: gb2312, utf-8"/>
+     <property name="tenpay.pay.pinju.account" defaultValue="pinjuzf05@163.com" description="担保交易品聚财付通分账账户pinjufz@pinju.com"/>
+     <!-- 回调 -->
+     <property name="tenpay.pay.tradestate" defaultValue="0" description="财富通支付结果：0—成功,1—失败"/>
+  </group>
+
+  <!-- 财付通分账账相关配置Add By heyong@2011.09.09 -->
+  <group>
+    <property name="tenpay.split.patmentgatewayurl" defaultValue="https://mch.tenpay.com/cgi-bin/split.cgi" description="财付通分账网关地址,必填线上为http://gw.tenpay.com:8088/moni/split.htm"/>
+    <property name="tenpay.split.returnurl" defaultValue="http://127.0.0.1/" description="客户端回调地址,支付成功后,将附带回调数据跳转到此页面,必填"/>
+    <property name="tenpay.split.cmdno" defaultValue="3" description="业务代码, 财付通分账接口填  3  "/>
+    <property name="tenpay.split.bustype" defaultValue="97" description="业务类型，整数值，代表分账处理规则与业务参数编码规则，暂固定为97"/>
+    <property name="tenpay.split.version" defaultValue="4" description="版本号,4"/>
+    <property name="tenpay.pay.input.charset.gbk" defaultValue="GBK" description="编码字符，分账和退款使用此编码字符"/>
+  </group>
+
+  <!-- 财付通平台退款相关配置Add By MaYuanChao@2011-09-13 -->
+  <group>
+     <property name="tenpay.platformrefund.refundgatewayurl" defaultValue="https://mch.tenpay.com/cgi-bin/refund_b2c_split.cgi" description="财付通平台退款网关地址,必填线上为http://gw.tenpay.com/moni/reciveNotifyForTenPay.htm"/>
+     <property name="tenpay.platformrefund.returnurl" defaultValue="http://127.0.0.1/" description="客户端回调地址,退款成功后,将附带回调数据跳转到此页面,必填"/>
+  	 <property name="tenpay.platformrefund.version" defaultValue="4" description="版本号,4"/>
+  	 <property name="tenpay.platformrefund.cmdno" defaultValue="93" description="业务代码, 财付通退款业务号接口填  93  "/>
+     <property name="tenpay.platformrefund.codes" defaultValue="109" description="退款单ID，生成规则:109＋spid+YYYYMMDD+7位流水号 109"/>
+  </group>
+  
+  <!-- 财付通分账回退相关配置Add By caoxiao@2011-09-16 -->
+  <group>
+     <property name="tenpay.splitrefund.refundgatewayurl" defaultValue="https://mch.tenpay.com/cgi-bin/split_rollback.cgi" description="财付通分账回退网关地址,必填线上为http://gw.tenpay.com/moni/reciveNotifyForTenPay.htm"/>
+     <property name="tenpay.splitrefund.returnurl" defaultValue="http://127.0.0.1" description="客户端回调地址,分账回退成功后,将附带回调数据跳转到此页面,必填"/>
+     
+  	 <property name="tenpay.splitrefund.version" defaultValue="4" description="版本号,4"/>
+  	 <property name="tenpay.splitrefund.cmdno" defaultValue="95" description="业务代码, 财付通分账回退业务号接口填  95  "/>
+  	 <property name="tenpay.splitrefund.bustype" defaultValue="97" description="业务类型，整数值，代表分账回退处理规则与业务参数编码规则，暂固定为97"/>
+     <property name="tenpay.splitrefund.refundid" defaultValue="109" description="退款单ID，生成规则:109＋spid+YYYYMMDD+7位流水号 109"/>
+  </group>
+  
+  <!-- bonecp general config -->
+  <group>
+    <property name="bonecp.idleMaxAge" defaultValue="240" description="" />
+    <property name="bonecp.partitionCount" defaultValue="3" description="" />
+    <property name="bonecp.acquireIncrement" defaultValue="5" description="" />
+    <property name="bonecp.statementCacheSize" defaultValue="300" description="" />
+    <property name="bonecp.releaseHelperThreads" defaultValue="3" description="" />
+    <property name="bonecp.maxConnectionsPerPartition" defaultValue="5" description="最大连接数" />
+    <property name="bonecp.minConnectionsPerPartition" defaultValue="1" description="最小维持的连接数" />
+    <property name="bonecp.idleConnectionTestPeriod" defaultValue="60" description="空闲连接间隔多长（s)时间校验正确性，异步执行" />
+  </group>
+  
+  <!-- bonecp-mysql-write-config -->
+  <group>
+  	<property name="bonecp.mysql.write.jdbcUrl" defaultValue="jdbc:mysql://rd-db.dev-pinju.com:3306/pinju?useUnicode=true&amp;characterEncoding=utf8" description="驱动" />
+  </group>
+  
+  <!-- bonecp-mysql-read-config -->
+  <group>
+    <property name="bonecp.mysql.driverClass" defaultValue="com.mysql.jdbc.Driver" description="驱动" />
+  	<property name="bonecp.mysql.read.jdbcUrl" defaultValue="jdbc:mysql://rd-db.dev-pinju.com:3306/pinju?useUnicode=true&amp;characterEncoding=utf8" description="驱动" />
+    <property name="bonecp.mysql.user" defaultValue="pinju" description="数据库用户名" />
+    <property name="bonecp.mysql.password" defaultValue="123" description="数据库密码" />
+  </group>
+  
+  <!-- bonecp-oracle-read-config -->
+  <group>
+    <property name="bonecp.oracle.driverClass" defaultValue="oracle.jdbc.driver.OracleDriver" description="驱动" />
+  	<property name="bonecp.oracle.read.jdbcUrl" defaultValue="jdbc\:oracle\:thin\:@rd-db.dev-pinju.com\:1521\:rddb" description="数据库地址信息" />
+    <property name="bonecp.oracle.user" defaultValue="bill" description="数据库用户名" />
+    <property name="bonecp.oracle.password" defaultValue="hello1" description="数据库密码" />
+  </group>
+  
+  <!-- bonecp-oracle-write-config -->
+  <group>
+  	<property name="bonecp.oracle.write.jdbcUrl" defaultValue="jdbc\:oracle\:thin\:@rd-db.dev-pinju.com\:1521\:rddb" description="数据库地址信息" />
+  </group>
+  
+  <group>
+  	<property name="shop.business.margin" defaultValue="1000000" description="店铺品牌旗舰店保证金金额,1000000分" />
+  </group>
+  
+  <!-- 在配置阶段，执行一些操作 -->
+
+    <script>
+                <!--
+                    通过模板生成目标文件
+                    template：相对于auto-config.xml所在目录
+                    destfile：相对于auto-config.xml所在项目根目录或jar的根目录
+                
+    <generate template="test.properties.vm" destfile="src/main/webapp/WEB-INF/autoconfig/test.properties" charset="UTF-8" />
+    <generate template="test.properties.vm" destfile="target/pinju/WEB-INF/autoconfig/test.properties" charset="UTF-8" />-->
+    <generate template="pinju.properties.ftl" destfile="src/main/webapp/WEB-INF/classes/pinju.properties" charset="UTF-8" />
+    <generate template="cfg.properties.ftl" destfile="src/main/webapp/WEB-INF/classes/cfg.properties" charset="UTF-8" />
+    <generate template="log4j.xml.ftl" destfile="src/main/webapp/WEB-INF/classes/log4j.xml" charset="UTF-8" />
+    <generate template="c3p0.properties.ftl" destfile="src/main/webapp/WEB-INF/classes/c3p0.properties" charset="UTF-8" />
+  </script>
+</config>

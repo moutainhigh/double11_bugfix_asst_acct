@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeMarginSeller">
+
+    <typeAlias alias="MarginSellerDO" type="com.yuwang.pinju.domain.margin.MarginSellerDO" />
+
+	<resultMap id="marginSellerMap" class="MarginSellerDO" >
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="memberNick" column="MEMBER_NICK" />
+		<result property="cpType" column="CP_TYPE" />
+		<result property="categoryId" column="CATEGORY_ID" />
+		<result property="categoryName" column="CATEGORY_NAME" />
+		<result property="pinjuMargin" column="PINJU_MARGIN" />
+		<result property="currentMargin" column="CURRENT_MARGIN" />
+		<result property="version" column="VERSION" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+    <sql id="marginSellerPrefix">
+         V.ID,
+         V.MEMBER_ID,
+         V.MEMBER_NICK,
+         V.CP_TYPE,
+         V.CATEGORY_ID,
+         V.CATEGORY_NAME,
+         V.PINJU_MARGIN,
+         V.CURRENT_MARGIN,
+         V.VERSION,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED
+    </sql>
+   
+	<select id="TradeMarginSeller.getMarginSellerDOBySellerId"  parameterClass="java.lang.Long" resultMap="marginSellerMap">
+        SELECT <include refid="marginSellerPrefix"/> FROM TRADE_MARGIN_SELLER V WHERE V.MEMBER_ID=#value# 
+	</select>
+		
+	<insert id="TradeMarginSeller.insertMarginSellerRecord" parameterClass="MarginSellerDO">
+	    <selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_MARGIN_SELLER_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_MARGIN_SELLER 
+	    (
+	         ID,
+	         MEMBER_ID, 
+	         MEMBER_NICK,   
+			 CP_TYPE,       
+			 CATEGORY_ID,   
+			 CATEGORY_NAME, 
+			 PINJU_MARGIN,  
+			 CURRENT_MARGIN,
+			 VERSION,       
+		     GMT_CREATE,
+		     GMT_MODIFIED
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#memberId#,
+			#memberNick#,
+			#cpType#,
+			#categoryId#,
+			#categoryName#,
+			#pinjuMargin#,
+			#currentMargin#,
+			0,
+			sysdate,
+			sysdate
+	    )
+	</insert>
+
+	<update id="TradeMarginSeller.updateMarginSellerRecord" parameterClass="MarginSellerDO" >
+		<![CDATA[UPDATE TRADE_MARGIN_SELLER]]> SET GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotEmpty prepend="," property="currentMargin">
+				<![CDATA[CURRENT_MARGIN = #currentMargin#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="cpType">
+				<![CDATA[CP_TYPE = #cpType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="categoryId">
+				<![CDATA[CATEGORY_ID = #categoryId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="categoryName">
+				<![CDATA[CATEGORY_NAME = #categoryName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="version">
+				<![CDATA[VERSION = #version#+1]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id# AND VERSION < #version#+1 ]]>
+	</update>	
+	
+	<select id="selectSeqIndexCount" resultClass="java.lang.Long">
+		<![CDATA[SELECT SEQ_INDEX_COUNT.nextval as ID from dual]]>
+	</select>
+	
+</sqlMap>

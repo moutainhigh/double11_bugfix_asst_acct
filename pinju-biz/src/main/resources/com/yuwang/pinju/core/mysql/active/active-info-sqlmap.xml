@@ -1,0 +1,365 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ActiveInfo">
+
+	<typeAlias alias="ActiveInfoDO"
+		type="com.yuwang.pinju.domain.active.ActiveInfoDO" />
+	<typeAlias alias="ActiveDescDO"
+		type="com.yuwang.pinju.domain.active.ActiveDescDO" />
+	<typeAlias alias="ActiveRegistDO"
+		type="com.yuwang.pinju.domain.active.ActiveRegtDO" />
+	<typeAlias alias="ActiveInfoQuery"
+		type="com.yuwang.pinju.domain.active.ActiveInfoQuery" />
+
+	<resultMap id="ActiveInfoResult" class="ActiveInfoDO">
+		<result property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="activeStartTime" column="ACTIVE_START_TIME" />
+		<result property="activeEndTime" column="ACTIVE_END_TIME" />
+		<result property="registStartTime" column="REGIST_START_TIME" />
+		<result property="registEndTime" column="REGIST_END_TIME" />
+		<result property="points" column="POINTS" />
+		<result property="brief" column="BRIEF" />
+		<result property="memo" column="MEMO" />
+		<result property="logoUrl" column="LOGO_URL" />
+		<result property="totalNum" column="TOTAL_NUM" />
+		<result property="individualNum" column="INDIVIDUAL_NUM" />
+		<result property="shopType" column="SHOP_TYPE" />
+		<result property="shopLevel" column="SHOP_LEVEL" />
+		<result property="cpType" column="CP_TYPE" />
+		<result property="categoryIds" column="CATEGORY_IDS" />
+		<result property="discountRate" column="DISCOUNT_RATE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="registNum" column="REGISTE_NUM" />
+		<result property="reviewPassNum" column="REVIEW_PASS_NUM" />
+		<result property="publishStatus" column="PUBLISH_STATUS" />
+		<result property="registType" column="REGIST_TYPE" />
+	</resultMap>
+
+	<resultMap id="ActiveDescResult" class="ActiveDescDO">
+		<result property="id" column="ID" />
+		<result property="activityId" column="ACTIVITY_ID" />
+		<result property="registType" column="REGIST_TYPE" />
+		<result property="auctionUrl" column="AUCTION_URL" />
+		<result property="auctionTitle" column="AUCTION_TITLE" />
+		<result property="salePic" column="SALE_PIC" />
+		<result property="oriPrice" column="ORI_PRICE" />
+		<result property="salePrice" column="SALE_PRICE" />
+		<result property="auctionNum" column="AUCTION_NUM" />
+		<result property="isIsbn" column="IS_ISBN" />
+		<result property="otherInfo" column="OTHER_INFO" />
+		<result property="shopTitle" column="SHOP_TITLE" />
+		<result property="shopPic" column="SHOP_PIC" />
+		<result property="shopUrl" column="SHOP_URL" />
+		<result property="shopInfo" column="SHOP_INFO" />
+	</resultMap>
+
+	<resultMap id="ActiveRegistResult" class="ActiveRegistDO">
+		<result property="id" column="ID" />
+		<result property="activityId" column="ACTIVITY_ID" />
+		<result property="registType" column="REGIST_TYPE" />
+		<result property="auctionUrl" column="AUCTION_URL" />
+		<result property="auctionTitle" column="AUCTION_TITLE" />
+		<result property="salePic" column="SALE_PIC" />
+		<result property="oriPrice" column="ORI_PRICE" />
+		<result property="salePrice" column="SALE_PRICE" />
+		<result property="auctionNum" column="AUCTION_NUM" />
+		<result property="isIsbn" column="IS_ISBN" />
+		<result property="otherInfo" column="OTHER_INFO" />
+		<result property="shopTitle" column="SHOP_TITLE" />
+		<result property="shopPic" column="SHOP_PIC" />
+		<result property="shopUrl" column="SHOP_URL" />
+		<result property="shopInfo" column="SHOP_INFO" />
+		<result property="checkStatus" column="CHECK_STATUS" />
+		<result property="checkNick" column="CHECK_NICK" />
+		<result property="checkId" column="CHECK_ID" />
+		<result property="nickName" column="NICKNAME" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="agio" column="AGIO" />
+		<result property="saleInfo" column="SALE_INFO" />
+		<result property="categoryId" column="CATEGORY_ID" />
+		<result property="shopName" column="SHOP_NAME" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllActiveInfo">
+  	<![CDATA[
+  		SELECT I.ID,I.NAME,I.ACTIVE_START_TIME,I.ACTIVE_END_TIME,
+  			I.REGIST_START_TIME,I.REGIST_END_TIME,I.POINTS,BRIEF,
+  			I.MEMO,I.LOGO_URL,I.TOTAL_NUM,I.INDIVIDUAL_NUM,I.SHOP_TYPE,
+  			I.SHOP_LEVEL,I.CP_TYPE,I.CATEGORY_IDS,I.DISCOUNT_RATE,
+  			I.GMT_CREATE,I.GMT_MODIFIED,I.REGISTE_NUM,I.REVIEW_PASS_NUM,
+  			I.PUBLISH_STATUS,I.REGIST_TYPE
+  		FROM ACTIVITY_INFO I
+  	]]>
+	</sql>
+
+	<select id="selectAllActiveInfo" resultMap="ActiveInfoResult">
+		<include refid="selectAllActiveInfo" />
+	</select>
+
+	<select id="selectActiveInfoById" resultMap="ActiveInfoResult"
+		parameterClass="long">
+		<include refid="selectAllActiveInfo" />
+		<![CDATA[WHERE I.ID= #id#]]>
+	</select>
+
+	<select id="selectActiveInfoList" resultMap="ActiveInfoResult"
+		parameterClass="ActiveInfoQuery">
+		<include refid="selectAllActiveInfo" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="publishStatus">
+	        <![CDATA[I.PUBLISH_STATUS = #publishStatus# AND I.TOTAL_NUM - I.REVIEW_PASS_NUM > 0]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="registStartTime">
+	        <![CDATA[I.REGIST_START_TIME <= #registStartTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="registEndTime">
+	        <![CDATA[I.REGIST_END_TIME >= #registEndTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryId">
+	        <![CDATA[IF(I.CATEGORY_IDS IS NULL OR TRIM(I.CATEGORY_IDS) = '', 1, LOCATE(#categoryId#, I.CATEGORY_IDS))]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopLevel">
+	        <![CDATA[IF(I.SHOP_LEVEL IS NULL OR TRIM(I.SHOP_LEVEL) = '', 1, LOCATE(#shopLevel#, I.SHOP_LEVEL))]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cpType">
+	        <![CDATA[IF(I.CP_TYPE IS NULL OR TRIM(I.CP_TYPE) = '', 1, LOCATE(#cpType#, I.CP_TYPE))]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopType">
+	        <![CDATA[IF(I.SHOP_TYPE IS NULL OR TRIM(I.SHOP_TYPE) = '', 1, LOCATE(#shopType#, I.SHOP_TYPE))]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="activityId">
+	        <![CDATA[I.ID = #activityId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+	        <![CDATA[I.INDIVIDUAL_NUM > (SELECT IFNULL(COUNT(R.ID),0) FROM ACTIVITY_REGIST_INFO R WHERE R.ACTIVITY_ID = I.ID AND R.MEMBER_ID = #memberId#)]]>
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY I.GMT_CREATE DESC
+		LIMIT #start#, #itemsPerPage#
+	</select>
+	
+	<select id="selectActiveInfoCount" resultClass="int"
+		parameterClass="ActiveInfoQuery">
+		SELECT COUNT(*) FROM ACTIVITY_INFO I
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="publishStatus">
+	        <![CDATA[I.PUBLISH_STATUS = #publishStatus# AND I.TOTAL_NUM - I.REVIEW_PASS_NUM > 0]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="registStartTime">
+	        <![CDATA[I.REGIST_START_TIME <= #registStartTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="registEndTime">
+	        <![CDATA[I.REGIST_END_TIME >= #registEndTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="categoryId">
+	        <![CDATA[IF(I.CATEGORY_IDS IS NULL OR TRIM(I.CATEGORY_IDS) = '', 1, LOCATE(#categoryId#, I.CATEGORY_IDS))]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopLevel">
+	        <![CDATA[IF(I.SHOP_LEVEL IS NULL OR TRIM(I.SHOP_LEVEL) = '', 1, LOCATE(#shopLevel#, I.SHOP_LEVEL))]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cpType">
+	        <![CDATA[IF(I.CP_TYPE IS NULL OR TRIM(I.CP_TYPE) = '', 1, LOCATE(#cpType#, I.CP_TYPE))]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopType">
+	        <![CDATA[IF(I.SHOP_TYPE IS NULL OR TRIM(I.SHOP_TYPE) = '', 1, LOCATE(#shopType#, I.SHOP_TYPE))]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="activityId">
+	        <![CDATA[I.ID = #activityId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+	        <![CDATA[I.INDIVIDUAL_NUM > (SELECT IFNULL(COUNT(R.ID),0) FROM ACTIVITY_REGIST_INFO R WHERE R.ACTIVITY_ID = I.ID AND R.MEMBER_ID = #memberId#)]]>
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY I.GMT_CREATE DESC
+	</select>
+	
+	<!-- 需要改进   分页显示 -->
+	<select id="selectActiveInfoPageList" resultMap="ActiveInfoResult"
+		parameterClass="ActiveInfoQuery">
+		<include refid="selectAllActiveInfo" />
+		WHERE I.ID IN (
+		SELECT R.ACTIVITY_ID FROM ACTIVITY_REGIST_INFO R
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="memberId">
+		        <![CDATA[R.MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="checkStatus">
+		        <![CDATA[R.CHECK_STATUS = #checkStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+		)
+		ORDER BY I.GMT_CREATE DESC
+		LIMIT #start#, #itemsPerPage#
+	</select>
+
+	<select id="selectActiveInfoPageCount" resultClass="int"
+		parameterClass="ActiveInfoQuery">
+		SELECT COUNT(*) FROM ACTIVITY_INFO I
+		WHERE I.ID IN ( SELECT R.ACTIVITY_ID FROM	ACTIVITY_REGIST_INFO R
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="memberId">
+		        <![CDATA[R.MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="checkStatus">
+		        <![CDATA[R.CHECK_STATUS = #checkStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+		) ORDER BY I.GMT_CREATE DESC
+	</select>
+	
+
+	<sql id="selectActiveDesc">
+		<![CDATA[
+	  		SELECT ID,ACTIVITY_ID,REGIST_TYPE,AUCTION_URL,
+	  			AUCTION_TITLE,SALE_PIC,ORI_PRICE,SALE_PRICE,
+	  			AUCTION_NUM,IS_ISBN,OTHER_INFO,SHOP_TITLE,SHOP_PIC,
+	  			SHOP_URL,SHOP_INFO
+	  		FROM ACTIVITY_REGIST_DESCRIPTION
+		]]>
+	</sql>
+
+	<select id="selectActiveDescByActiveInfo" resultMap="ActiveDescResult"
+		parameterClass="ActiveInfoDO">
+		<include refid="selectActiveDesc" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+	        <![CDATA[ACTIVITY_ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="registType">
+	        <![CDATA[REGIST_TYPE = #registType#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertActiveRegist" parameterClass="ActiveRegistDO">
+		<!--  
+		<selectKey resultClass="long" keyProperty="id">
+	      <![CDATA[SELECT (max(ID) + 1) AS id FROM ACTIVITY_REGIST_INFO]]>
+		</selectKey>
+		-->
+	    <![CDATA[
+	    INSERT INTO ACTIVITY_REGIST_INFO (
+	    	ACTIVITY_ID,REGIST_TYPE,AUCTION_URL,
+	  		AUCTION_TITLE,SALE_PIC,ORI_PRICE,SALE_PRICE,
+	  		AUCTION_NUM,IS_ISBN,OTHER_INFO,SHOP_TITLE,SHOP_PIC,
+	  		SHOP_URL,SHOP_INFO,CHECK_STATUS,CHECK_NICK,CHECK_ID,
+	  		NICKNAME,MEMBER_ID,AGIO,SALE_INFO,CATEGORY_ID,SHOP_NAME,GMT_CREATE,GMT_MODIFIED
+	    ) VALUES (
+		    #activityId#, #registType#, #auctionUrl#, 
+		    #auctionTitle#, #salePic#, #oriPrice#, #salePrice#, 
+		    #auctionNum#, #isIsbn#, #otherInfo#, #shopTitle#, #shopPic#,
+		    #shopUrl#, #shopInfo#, #checkStatus#, #checkNick#, #checkId#,
+		    #nickName#, #memberId#, #agio#, #saleInfo#, #categoryId#, #shopName#, #gmtCreate#, #gmtModified#
+	     )
+	    ]]>
+	    <selectKey resultClass="long" type="post" keyProperty="id">
+	    <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+	    </selectKey> 
+	</insert>
+
+	<sql id="selectActiveRegt">
+		<![CDATA[
+	  		SELECT ID,ACTIVITY_ID,REGIST_TYPE,AUCTION_URL,
+	  			AUCTION_TITLE,SALE_PIC,ORI_PRICE,SALE_PRICE,
+	  			AUCTION_NUM,IS_ISBN,OTHER_INFO,SHOP_TITLE,SHOP_PIC,
+	  			SHOP_URL,SHOP_INFO,CHECK_STATUS,CHECK_NICK,CHECK_ID,
+	  			NICKNAME,MEMBER_ID,AGIO,SALE_INFO,CATEGORY_ID,SHOP_NAME,GMT_CREATE,GMT_MODIFIED
+	  		FROM ACTIVITY_REGIST_INFO
+		]]>
+	</sql>
+
+	<select id="selectActiveRegtByActiveInfo" resultMap="ActiveRegistResult"
+		parameterClass="ActiveInfoDO">
+		<include refid="selectActiveRegt" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+	        <![CDATA[ACTIVITY_ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="registType">
+	        <![CDATA[REGIST_TYPE = #registType#]]>
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY GMT_CREATE DESC
+	</select>
+
+	<select id="selectActiveRegtByActiveQuery" resultMap="ActiveRegistResult"
+		parameterClass="ActiveInfoQuery">
+		<include refid="selectActiveRegt" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="activityId">
+	        <![CDATA[ACTIVITY_ID = #activityId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="registType">
+	        <![CDATA[REGIST_TYPE = #registType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="nickName">
+		        <![CDATA[NICKNAME = #nickName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+		        <![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="checkStatus">
+		        <![CDATA[CHECK_STATUS = #checkStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY GMT_CREATE DESC
+	</select>
+
+	<update id="updateActiveRegistStatus" parameterClass="ActiveRegistDO">
+    <![CDATA[UPDATE ACTIVITY_REGIST_INFO]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="checkStatus">
+        <![CDATA[CHECK_STATUS = #checkStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+    <![CDATA[WHERE ID = #id#]]>
+	</update>
+
+	<delete id="deleteActiveRegistInfoById" parameterClass="long">
+		<![CDATA[
+			DELETE FROM ACTIVITY_REGIST_INFO WHERE ID = #id#
+		]]>
+	</delete>
+
+	<sql id="selectActiveRegistActivityId">
+		<![CDATA[
+	  		SELECT ACTIVITY_ID FROM ACTIVITY_REGIST_INFO
+		]]>
+	</sql>
+
+	<!--
+		查询所有卖家可报名总数（商品报名） <select id="checkCanRegistGoodNum"> </select>
+	-->
+
+	<!-- 可报名数量为活动剩余参与数量和卖家剩余报名数量两者中最小的值 -->
+	<!-- 该活动总参与数限额 - 该活动所有参与数量并且审核通过的 = 该活动所有卖家还可参与总数-->
+	<!-- 该活动卖家可参与数限额 - 该活动卖家已参与数量（未审核，已通过和未通过） = 该活动该卖家还可参与总数 -->
+	<select id="checkMemberCanRegistGoodNum" resultClass="int"
+		parameterClass="ActiveInfoQuery">
+		SELECT
+		LEAST(A.TOTAL_NUM, B.TOTAL_NUM)
+		FROM (SELECT
+		(I.TOTAL_NUM - (SELECT IFNULL(COUNT(R.ID),0) FROM ACTIVITY_REGIST_INFO R
+		WHERE R.ACTIVITY_ID = I.ID AND R.CHECK_STATUS = 1 ) ) AS TOTAL_NUM,
+		I.ID AS ID
+		FROM ACTIVITY_INFO I
+		WHERE I.ID = #activityId#) A,
+		(SELECT
+		(I.INDIVIDUAL_NUM - (SELECT IFNULL(COUNT(R.ID),0) FROM ACTIVITY_REGIST_INFO R
+		WHERE R.ACTIVITY_ID = I.ID AND R.MEMBER_ID = #memberId# ) ) AS TOTAL_NUM,
+		I.ID AS ID
+		FROM ACTIVITY_INFO I
+		WHERE I.ID = #activityId#) B
+		WHERE A.ID = B.ID
+	</select>
+	
+	<!-- 更新活动报名数量信息 -->
+	<update id="updateActiveInfoRegistNum" parameterClass="map">
+    <![CDATA[UPDATE ACTIVITY_INFO SET REGISTE_NUM = REGISTE_NUM + #num# ]]>
+    <![CDATA[WHERE ID = #id#]]>
+	</update>
+</sqlMap>

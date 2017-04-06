@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="distribute_channel">
+
+	<typeAlias alias="DistributeChannelDo" type="com.yuwang.pinju.domain.distribute.DistribureChannelDO" />
+	<typeAlias alias="DistributeChannel" type="com.yuwang.pinju.domain.distribute.DistribureChannelParamDO" />
+	<typeAlias alias="DistributorItemQuery" type="com.yuwang.pinju.domain.distribute.DistributorItemQuery" />
+	<typeAlias alias="DistributeDistributorDO" type="com.yuwang.pinju.domain.distribute.DistributeDistributorDO" />
+
+
+	<resultMap id="DistributeChannelResult" class="DistributeChannelDo">
+		<result property="id" column="ID" />
+		<result property="distributorId" column="CHANNEL_ID" />
+		<result property="supplierId" column="SUPPLIER_ID" />
+		<result property="cooperateMonth" column="COOPERATE_MONTH" />
+		<result property="agreeDate" column="AGREE_DATE" />
+		<result property="status" column="STATUS" />
+		<result property="remark" column="REMARK" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="version" column="VERSION" />
+		<result property="distributeDistributorDO" column="CHANNEL_ID"  select="distribute_channel.getDistributorById"/>
+	</resultMap>
+	
+	<resultMap id="DistributorDOResult" class="DistributeDistributorDO">
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="nickName" column="NICKNAME" />
+		<result property="configuration" column="CONFIGURATION" />
+	</resultMap>
+
+	<sql id="selectAllDistributeChannel"><![CDATA[SELECT ID,CHANNEL_ID,SUPPLIER_ID,COOPERATE_MONTH,AGREE_DATE,STATUS,REMARK,GMT_CREATE,GMT_MODIFIED,CONFIGURAION,VERSION FROM DISTRIBUTE_CHANNEL ]]></sql>
+
+	<!-- 在合作状态并且没有超过期限的分销商,表的别名为[DC],两边没有加括号如果后面还有查询条件的话一定要加上括号！ -->
+	<sql id="regularDistributeChannelConditionAlias">
+		<![CDATA[((DATE_ADD(DC.AGREE_DATE, INTERVAL DC.COOPERATE_MONTH MONTH) > SYSDATE() AND DC.COOPERATE_MONTH > 0) OR DC.COOPERATE_MONTH = 0) AND DC.STATUS = 1]]>
+	</sql>
+	<!-- 在合作状态并且没有超过期限的分销商,没有加表别名,两边没有加括号如果后面还有查询条件的话一定要加上括号！ -->
+	<sql id="regularDistributeChannelCondition">
+		<![CDATA[((DATE_ADD(AGREE_DATE, INTERVAL COOPERATE_MONTH MONTH) > SYSDATE() AND COOPERATE_MONTH > 0) OR COOPERATE_MONTH = 0) AND STATUS = 1]]>
+	</sql>
+	<!-- 不在合作状态[撤消或是主动拒绝的分销商]或者在合作状态但是超过期限的分销商,没有加表别名,两边没有加括号如果后面还有查询条件的话一定要加上括号！-->
+	<sql id="historyDistributeChannelCondition">
+		<![CDATA[(DATE_ADD(AGREE_DATE, INTERVAL COOPERATE_MONTH MONTH) < SYSDATE() AND COOPERATE_MONTH > 0 AND STATUS = 1) OR STATUS = 2 OR STATUS = 3]]>
+	</sql>
+	<!-- 在合作状态并且没有超期限的分销商及在申请中的分销商,没有加表的别名,两边没有加括号如果后面还有查询条件的话一定要加上括号！ -->
+	<sql id="applyDistributeChannelCondition">
+		<![CDATA[(STATUS = 1 AND (DATE_ADD(AGREE_DATE, INTERVAL COOPERATE_MONTH MONTH) >= SYSDATE() OR COOPERATE_MONTH = 0)) OR STATUS = 0]]>
+	</sql>
+	<!-- 在合作状态并且已经过期的或者在申请时被拒绝的分销商,没有加表的别名,两边没有加括号如果后面还有查询条件的话一定要加上括号！ -->
+	<sql id="terminateDistributeChannelCondition">
+		<![CDATA[(DATE_ADD(AGREE_DATE, INTERVAL COOPERATE_MONTH MONTH) < SYSDATE() AND COOPERATE_MONTH > 0 AND STATUS = 1) OR STATUS = 2]]>
+	</sql>
+	
+	
+	<select id="selectAllDistributeChannel" resultMap="DistributeChannelResult">
+		<include refid="selectAllDistributeChannel" />
+	</select>
+
+	<select id="selectDistributeChannelByid" resultMap="DistributeChannelResult"  parameterClass="long">
+		<include refid="selectAllDistributeChannel" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectDistributeChannel"  resultMap="DistributeChannelResult" parameterClass="DistributeChannel">
+		<include refid="selectAllDistributeChannel" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="distributorId">
+				<![CDATA[CHANNEL_ID = #distributorId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplierId">
+				<![CDATA[SUPPLIER_ID = #supplierId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cooperateMonth">
+				<![CDATA[COOPERATE_MONTH = #cooperateMonth#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="agreeDate">
+				<![CDATA[AGREE_DATE = #agreeDate#]]>
+			</isNotEmpty>
+			<isNotEmpty property="status">
+				<!-- 状态为0：表示[申请中] -->
+				<isEqual prepend="AND" property="status" compareValue="0" open="(" close=")">
+					<![CDATA[STATUS = #status#]]>
+				</isEqual>
+				<!-- 状态为1：表示[合作中并且没有过期或者是永久期限的] -->
+				<isEqual prepend="AND" property="status" compareValue="1" open="(" close=")">
+					<include refid="regularDistributeChannelCondition" />
+				</isEqual>
+				<!-- 状态为-1：表示[历史供应商包括申请被拒绝和撤消申请以及过期的分销商] -->
+				<isEqual prepend="AND" property="status" compareValue="-1" open="(" close=")">
+					<include refid="historyDistributeChannelCondition" />
+				</isEqual>
+				<!-- 状态为-2：表示[在合作中的没有超过期限的以及在申请中的分销商] -->
+				<isEqual prepend="AND" property="status" compareValue="-2" open="(" close=")">
+					<include refid="applyDistributeChannelCondition" />
+				</isEqual>
+				<!-- 状态为-3：表示[终止合作的分销商包括超过期限的和拒绝其申请的分销商] -->
+				<isEqual prepend="AND" property="status" compareValue="-3" open="(" close=")">
+					<include refid="terminateDistributeChannelCondition" />
+				</isEqual>
+				<!-- 状态为2：表示[被拒绝申请的分销商] -->
+				<isGreaterEqual prepend="AND" property="status" compareValue="2" open="(" close=")">
+					<![CDATA[STATUS = #status#]]>
+				</isGreaterEqual>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="remark">
+				<![CDATA[REMARK = #remark#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[ORDER BY GMT_CREATE LIMIT #start#,#itemsPerPage#]]>  
+	</select>
+	
+	<select id="findDistributeChannel"  resultMap="DistributorDOResult" parameterClass="DistributeChannel">
+		<![CDATA[ SELECT DISTINCT ID, MEMBER_ID, NICKNAME ,CONFIGURATION FROM (
+		select ID, NICKNAME, MEMBER_ID, CONFIGURATION from DISTRIBUTE_DISTRIBUTOR AS DD
+		JOIN (select DISTINCT CHANNEL_ID,SUPPLIER_ID from DISTRIBUTE_CHANNEL where SUPPLIER_ID = #supplierId# and status = 1) AS DC
+		ON DD.ID = DC.CHANNEL_ID
+		) AS DDC ]]>   
+	</select>
+	
+	<select id="getDistributorById" parameterClass="int" resultMap="DistributorDOResult">   
+	  <![CDATA[   
+	  	select ID,MEMBER_ID,NICKNAME,CONFIGURATION FROM DISTRIBUTE_DISTRIBUTOR WHERE ID = #value#
+	  ]]>   
+	  </select>
+	  
+	   <select id="getDistributorByMemberId" parameterClass="long" resultMap="DistributorDOResult">   
+	  <![CDATA[   
+	  	select ID,MEMBER_ID,NICKNAME,CONFIGURATION FROM DISTRIBUTE_DISTRIBUTOR WHERE MEMBER_ID = #value#
+	  ]]>   
+	  </select>
+	
+	<select id="selectDistributeChannelInfo"  resultClass="com.yuwang.pinju.domain.distribute.DistributeSupplierDO" parameterClass="DistributeChannel">
+		SELECT 
+			DS.ID AS "id",
+			DC.ID AS "channelId",
+			DS.SHOP_ID AS "shopId",
+			DC.STATUS AS "status",
+			DSG.COUNT AS "count",
+			DS.MEMBER_ID AS "memberId",
+			DS.NICKNAME AS "nickName",
+			DC.COOPERATE_MONTH AS "cooperateMonth",
+			DC.AGREE_DATE AS "agreeDate",
+			DC.GMT_CREATE AS "gmtCreate"
+		FROM 
+		(SELECT SUPPLIER_ID,COUNT(ITEM_ID) AS "COUNT"
+		 FROM DISTRIBUTE_SUPPLIER_GOODS 
+		 	WHERE STATUS = 0
+		  GROUP BY SUPPLIER_ID) AS DSG
+		RIGHT JOIN 
+		(SELECT ID,SHOP_ID,MEMBER_ID,NICKNAME FROM DISTRIBUTE_SUPPLIER) DS
+		ON DS.ID = DSG.SUPPLIER_ID
+		JOIN 
+		(
+		SELECT ID,SUPPLIER_ID,COOPERATE_MONTH,AGREE_DATE,STATUS,GMT_CREATE,CHANNEL_ID FROM DISTRIBUTE_CHANNEL
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="distributorId">
+				<![CDATA[CHANNEL_ID = #distributorId#]]>
+			</isNotEmpty>
+			<isNotEmpty property="status">
+				<!-- 状态为0：表示[申请中] -->
+				<isEqual prepend="AND" property="status" compareValue="0" open="(" close=")">
+					<![CDATA[STATUS = #status#]]>
+				</isEqual>
+				<!-- 状态为1：表示[合作中并且没有过期或者是永久期限的] -->
+				<isEqual prepend="AND" property="status" compareValue="1" open="(" close=")">
+					<include refid="regularDistributeChannelCondition" />
+				</isEqual>
+				<!-- 状态为-1：表示[历史供应商包括申请被拒绝和撤消申请以及过期的分销商] -->
+				<isEqual prepend="AND" property="status" compareValue="-1" open="(" close=")">
+					<include refid="historyDistributeChannelCondition" />
+				</isEqual>
+				<!-- 状态为2：表示[被拒绝申请的分销商] -->
+				<isGreaterEqual prepend="AND" property="status" compareValue="2" open="(" close=")">
+					<![CDATA[STATUS = #status#]]>
+				</isGreaterEqual>
+			</isNotEmpty>
+		</dynamic>
+		LIMIT #start#,#itemsPerPage#) DC 
+		ON DC.SUPPLIER_ID = DS.ID
+		ORDER BY DC.GMT_CREATE
+	</select>
+	
+	<select id="findDistributeChannelInfo"  resultClass="com.yuwang.pinju.domain.distribute.DistributeSupplierDO" parameterClass="DistributeChannel">
+ <![CDATA[
+SELECT 
+  SHOP_ID as "shopId",
+  MEMBER_ID as "memberId"
+FROM
+  (SELECT 
+    ID,
+    SHOP_ID,
+    MEMBER_ID
+  FROM
+    DISTRIBUTE_SUPPLIER AS DS 
+    JOIN 
+      (SELECT 
+        SUPPLIER_ID 
+      FROM
+        DISTRIBUTE_CHANNEL 
+      WHERE CHANNEL_ID = #distributorId#
+        AND (STATUS = 1)) AS DC 
+      ON DS.ID = DC.SUPPLIER_ID) AS DSC
+		]]>
+	</select>
+	
+	<select id="selectDistributeChannelInfoCount"  resultClass="Integer" parameterClass="DistributeChannel">
+		SELECT COUNT(ID)
+		FROM DISTRIBUTE_CHANNEL
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="distributorId">
+				<![CDATA[CHANNEL_ID = #distributorId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplierId">
+				<![CDATA[SUPPLIER_ID = #supplierId#]]>
+			</isNotEmpty>
+			<isNotEmpty property="status">
+				<!-- 状态为0：表示[申请中] -->
+				<isEqual prepend="AND" property="status" compareValue="0" open="(" close=")">
+					<![CDATA[STATUS = #status#]]>
+				</isEqual>
+				<!-- 状态为1：表示[合作中并且没有过期或者是永久期限的] -->
+				<isEqual prepend="AND" property="status" compareValue="1" open="(" close=")">
+					<include refid="regularDistributeChannelCondition" />
+				</isEqual>
+				<!-- 状态为-1：表示[历史供应商包括申请被拒绝和撤消申请以及过期的分销商] -->
+				<isEqual prepend="AND" property="status" compareValue="-1" open="(" close=")">
+					<include refid="historyDistributeChannelCondition"/>
+				</isEqual>
+				<!-- 状态为-3：表示[终止合作的分销商包括超过期限的和拒绝其申请的分销商] -->
+				<isEqual prepend="AND" property="status" compareValue="-3" open="(" close=")">
+					<include refid="terminateDistributeChannelCondition" />
+				</isEqual>
+				<!-- 状态为2：表示[被拒绝申请的分销商] -->
+				<isGreaterEqual prepend="AND" property="status" compareValue="2" open="(" close=")">
+					<![CDATA[STATUS = #status#]]>
+				</isGreaterEqual>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="selectAllowedDistributeChannelGoodList" resultMap="DistributeChannelResult" parameterClass="DistributorItemQuery">
+		<include refid="selectAllDistributeChannel" />
+			WHERE (<include refid="regularDistributeChannelCondition" />)
+			<isNotEmpty prepend="AND" property="distributorId">
+				<![CDATA[CHANNEL_ID = #distributorId#]]>
+			</isNotEmpty>
+		ORDER BY GMT_CREATE
+	</select>
+	
+	<!-- 二个供应商 -->
+	<select id="findShowCaseByCondition" resultClass="DistributeChannelDo" parameterClass="com.yuwang.pinju.domain.distribute.ShowCaseQueryDO">
+			SELECT 
+				DD.ID AS "distributorId",
+				DD.CONFIGURATION AS "configuration"
+			FROM  DISTRIBUTE_DISTRIBUTOR DD
+			<isNotEmpty prepend="WHERE" property="memberId">
+				<![CDATA[DD.MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+	</select>
+
+	<insert id="insertDistributeChannel" parameterClass="DistributeChannelDo">
+		<![CDATA[INSERT INTO DISTRIBUTE_CHANNEL (ID,CHANNEL_ID,SUPPLIER_ID,COOPERATE_MONTH,AGREE_DATE,STATUS,REMARK,GMT_CREATE,GMT_MODIFIED,VERSION) VALUES (#id#,#distributorId#,#supplierId#,#cooperateMonth#,#agreeDate#,#status#,#remark#,#gmtCreate#,#gmtModified#,#newVersion#)]]>
+	</insert>
+
+	<update id="updateDistributeChannel" parameterClass="DistributeChannelDo">
+		<![CDATA[UPDATE DISTRIBUTE_CHANNEL]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="distributorId">
+				<![CDATA[CHANNEL_ID = #distributorId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="supplierId">
+				<![CDATA[SUPPLIER_ID = #supplierId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="cooperateMonth">
+				<![CDATA[COOPERATE_MONTH = #cooperateMonth#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="agreeDate">
+				<![CDATA[AGREE_DATE = #agreeDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="remark">
+				<![CDATA[REMARK = #remark#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<update id="updateDistributeChannelStatus" parameterClass="DistributeChannelDo">
+		<![CDATA[UPDATE DISTRIBUTE_CHANNEL]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="id">
+				<![CDATA[GMT_MODIFIED = SYSDATE()]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="remark">
+				<![CDATA[REMARK = #remark#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="cooperateMonth">
+				<![CDATA[COOPERATE_MONTH = #cooperateMonth#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="id">
+				<![CDATA[AGREE_DATE = SYSDATE()]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="id">
+				<![CDATA[VERSION = #newVersion#]]>
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="oldStatus">
+				<![CDATA[STATUS = #oldStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<update id="updateDistributeChannelGoods" parameterClass="DistributeChannelDo">
+		<![CDATA[UPDATE DISTRIBUTE_CHANNEL]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="distributorId">
+				<![CDATA[GMT_MODIFIED = SYSDATE()]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="distributorId">
+				<![CDATA[VERSION = #newVersion#]]>
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="distributorId">
+				<![CDATA[CHANNEL_ID = #distributorId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplierId">
+				<![CDATA[SUPPLIER_ID = #supplierId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="version">
+				<![CDATA[VERSION = #version#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+	
+	<update id="discardDistributeChannelGood" parameterClass="DistributeChannelDo">
+		<![CDATA[UPDATE DISTRIBUTE_CHANNEL DC]]>
+		<!-- <dynamic prepend="SET">
+			<isNotEmpty prepend="," property="goodsList">
+				<![CDATA[DC.GOODS_LIST = REPLACE(DC.GOODS_LIST,#goodsList#,'') ]]>
+			</isNotEmpty>
+		</dynamic> -->
+		<![CDATA[ WHERE DC.SUPPLIER_ID = #supplierId# AND DC.STATUS = 1]]>
+			<isNotEmpty prepend="AND" property="goodsList">
+				<![CDATA[POSITION(#goodsList# IN DC.GOODS_LIST) > 0]]>
+			</isNotEmpty>
+	</update>
+</sqlMap>
+

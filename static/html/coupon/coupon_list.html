@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>限时打折活动列表</title>
+<meta name="keywords" content="网上购物,网络购物平台,服装,配件,鞋,珠宝,饰品,数码,电器,家居,食品,保健,配件,玩乐,文化,最低价,爆品,排名,品聚网" />
+<meta name="description" content="盛大品聚网,真品汇聚的网上购物商城,产品包括男装、女装、数码、家电、家居、食品、化妆品等数万种商品,上千家名品店,同时提供全面的安全交易保障服务,让你在品聚商城安心享受网上购物乐趣!" />
+<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="http://static.pinju.com/css/pj_base.css" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=pj"></script>
+<script type="text/javascript" src="http://static.pinju.com/showloading/jquery.showFullLoading.js"></script>
+
+</head>
+
+<body>
+<!-- top nav  -->
+<script src="http://static.pinju.com/js/pinju-global-min.js?t=20111111.js"></script>
+<script src="http://static.pinju.com/js/cookie-min.js?t=20111111.js"></script>
+<script src="http://static.pinju.com/js/cart/loadcart.js?t=20111116.js"></script>
+
+<link rel="stylesheet" href="http://static.pinju.com/css/cart.css" type="text/css" media="screen" />
+
+<div class="top_bar cf">
+  <div class="top_bar_box cf">
+
+    <div class="login_status">
+      <script>
+        var pc = new PinjuCookie('http://www.pinju.com');
+        pc.showLoginNav();
+        var image_server = 'http://img.pinju.com/storage-ws/rest/img';
+      </script>
+    </div>
+    <div class="liaison">
+      <a href="http://www.pinju.com/my/info.htm" title="我的品聚">我的品聚</a>
+      <a href="http://www.pinju.com/orderBuyer/myBuyer.htm" title="我是买家">我是买家</a>
+      <a class="cart" href="/cart/shoppingCartDetail.htm" rel="nofollow" id="mycart" title="购物车"><span>购物车<strong id="carts">0</strong>件</span></a>
+
+      <a href="http://www.pinju.com/my/sell.htm" title="我是卖家">我是卖家</a>
+      <a href="http://job.pinju.com/" target="_blank" title="加入品聚">加入品聚</a>
+      <a href="http://service.pinju.com/" target="_blank" title="帮助中心">帮助中心</a>
+      
+      <input type="hidden" id="cart_url_base" value="" />
+    </div>
+    
+    <div id="cart_pop" class="cart_pop"  style="background:#fff; display:none; position:static; border:1px solid #dadada;"></div>
+    
+  </div>
+
+</div>
+
+<script type="text/javascript">
+(function(){$('#carts').text(pc.getShoppingCartCount());})()
+</script>
+<!-- // top nav  -->
+
+<!-- logo -->
+<div class="header cf">
+	<div class="masthead cf">
+		<div class="logo">
+			<a href="http://www.pinju.com">
+				<img class="logo_pic" width="326" height="54" src="http://static.pinju.com/images/pj_logo_17.gif?t=20111114.gif" alt="品聚网" title="点击回到品聚网首页" />
+			</a>
+
+		</div>
+		<div class="search-panel"> 
+			<div class="tabs" id="J_search_tabs">
+				<ul> 
+					<li><a id="itemPanel" data-type="goods" data-url="http://www.pinju.com/search/isbox.htm?callback=?" class="active">商品</a></li> 
+					<li><a id="shopPanel" data-type="shop" data-url="http://www.pinju.com/search/ssbox.htm?callback=?" >店铺</a></li> 
+					<input type="hidden" name="searchHidden" id="searchHidden" value="" /></li>
+				</ul> 
+			</div> 
+			<form name="search" id="J_search_form" method="GET"> 
+				<div class="search-fields"> 
+					<label for="J_search_keyword" >搜索你要找的内容</label> 
+					<input id="J_search_keyword" name="q" value="" maxLength="50" autocomplete="off"/>
+
+				</div> 
+				<input type="submit" value="搜&nbsp;&nbsp;索" class="btn" id="J_search_btn" />
+			</form>
+			<input name="type" type="hidden" id="J_search_type" value="goods" />
+			<input name="type" type="hidden" id="J_base_url" value="" />
+		</div>
+	</div>
+</div>
+<link href="http://static.pinju.com/suggest/jquery.suggest.css" rel="stylesheet" />
+<script src="http://static.pinju.com/suggest/jquery.suggest.js"></script>
+
+<script>
+	$(function() {
+		var form = $('#J_search_form'),
+			label = form.find('label'),
+			keyword = $('#J_search_keyword'),
+			baseUrl = $('#J_base_url').val();
+		$('#J_search_tabs a').click(function() {
+			$('#J_search_tabs a').removeClass('active');
+			$(this).addClass('active');
+			var type = $(this).attr('data-type');
+			$('#J_search_type').val(type);
+			if (type == 'goods') {
+				form.attr('action', 'http://www.pinju.com/search/search.htm');
+			} else if (type == 'shop') {
+				form.attr('action', 'http://www.pinju.com/search/shopSearch.htm');
+			}
+			keyword.unbind();
+			keyword.suggest($(this).attr('data-url'), {
+				onSelect : function() {
+					form.submit();
+				}
+			});
+			keyword.focus(function() {
+				label.hide();
+			}).blur(function() {
+				if ($.trim(keyword.val()) === '') {
+					label.show();
+				}
+			});
+		});
+		var currentIndex = $('#J_search_type').val() == 'shop' ? 1 : 0;
+		$('#J_search_tabs a').eq(currentIndex).click();
+	});
+</script><!-- // logo -->
+
+<!-- nav -->
+<div class="wrapfull navfull_1018">
+	<div class="pj_nav">
+		<ul class="nav_list">
+        	<li id="nobodyno"></li>
+            <li ><a href="http://www.pinju.com/index.html" title="首页">首&nbsp;&nbsp;页</a></li>
+			<li ><a href="http://ti.pinju.com" title="体验购">体&nbsp;验&nbsp;购</a></li> 
+			<li ><a href="http://mingdian.pinju.com" title="名店街">名&nbsp;店&nbsp;街</a></li>              
+            <!-- <li ><a href="###" title="特价折扣" >特价折扣</a></li> -->
+
+            <li ><a href="http://pinpai.pinju.com" title="网货品牌">网货品牌</a></li>
+           
+            <!-- <li ><a href="###" title="名人坊">名&nbsp;人&nbsp;坊</a></li> -->
+            <!-- <li ><a href="###" title="艺术廊">艺&nbsp;术&nbsp;廊</a></li> -->
+            <li ><a id="subStation" href="javascript:void(0);" title="城市分站">城市分站</a></li>
+            <!-- <li style="float:right;"><a class="nav_right" href="###" title="商户入驻">商户入驻</a></li> -->
+
+		</ul>
+	</div>
+
+</div>
+<!-- 城市分站弹出层 -->
+<div id="chooseLocal" class="citylist" style="display:none;">
+	<div class="text">
+		<p>欢迎您访问城市分站，推荐给您的城市是<span name="defaultCity">上海</span>，请进入 <a id="defaultUrl" href="http://www.pinju.com/"><span name="defaultCity">上海</span>分站</a> >></p>
+	</div>
+	<div class="list">
+
+		<ul id="cityUL">
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	(function(){
+		$("#subStation").bind("click",
+			function(){
+				$.ajax({
+					method: "POST",
+					url: "http://www.pinju.com/async/substation/getAllCityStations.htm",
+					dataType: "JSONP",
+					jsonp : "callBack", 
+					cache: false,
+					success: function(data){
+						var cityList = eval(data);
+						var tips = "<li>";
+						var len = 0;
+						if(cityList && cityList.length > 0){
+							len = cityList.length;
+							$.each(cityList, function(index, city) {
+							
+								if(city.status && city.cityUrl){
+									tips = tips + "<span><a href='" + city.cityUrl
+										+ "'>" + city.cityName + "</a></span>";
+								}else{
+									tips = tips + "<span>" + city.cityName + "（敬请期待）</span>";
+								}
+								if((index + 1) % 3 == 0){
+									tips = tips + "</li><li>";
+								}
+								
+							});
+						}else{
+							tips = tips + "<span>暂无分站，敬请期待</span>";
+						}
+						tips = tips + "</li>";
+						$("#cityUL").html(tips);
+						var dialogHeight = (len / 3 + 1) * 50;
+						$.dialog({
+							id: "SubStation",
+							padding: 0,
+							// follow: document.getElementById('subStation'),
+							title: "请选择您要前往的城市分站",
+							drag: false,
+		    				resize: false,
+							content: document.getElementById('chooseLocal')
+						});
+					}
+				});
+				
+			}
+		);
+	})();
+</script><!-- // nav -->
+
+<!-- content -->
+<div class="wrap cf">
+<div class="wrap-border cf">
+  <div class="bar-left">
+    <!-- left -->
+
+    <ul class="bar-list">
+      <!--商品管理-->
+<h3>商品管理</h3>
+<li name = "category_List"><a href="/itemReleased/categoryList.htm">发布商品</a></li>
+<li name = "sell_item"><a href="/item/itemList.htm?itemQuery.type=0">出售中的商品</a></li>
+<li name = "storage_item"><a href="/item/itemList.htm?itemQuery.type=2">仓库中的商品</a></li>
+      <!--交易管理-->
+<h3>交易管理</h3>
+<li name="logistics-tool"><a href="/logistics/listTemplate.htm">物流工具</a></li>
+
+<li name="Orderbuy-tool"><a href="/orderSeller/ordermanagesell.htm">已卖出的商品</a></li>
+      <!--店铺管理-->
+      <h3>店铺管理</h3>
+     
+     <li name="red_shopOpen"><a href="/shop/showShopOpenAction.htm">我要开店</a></li>
+     <li name="red_shop"><a href="/shopDecoration/viewShop.htm" target="_blank">查看我的店铺</a></li>
+     <li name="red_shopImages"><a href="/images/queryStorageAction.htm" target="_blank">图片空间</a></li>
+     <li name="red_shopDecoration"><a href="/shopDecoration/shopDecorationAction.htm" target="_blank">店铺装修</a></li>
+
+     <li name="red_shopCategory"><a href="/shop/shopCategory.htm">店铺分类管理</a></li>
+     <li name="red_shopInfo"><a id="shopBaseInfoId" href="/shop/showShopInfo.htm">店铺基本设置</a></li>
+     <li name="red_shopDomain"><a href="/shopDomain/showDomainSettingPageAction.htm">域名设置</a></li>
+      <!--分销管理-->
+     <h3>云营销</h3>
+     <li id="welcome"><a href="/supplier/applySupplier.htm">申请成为供应商</a></li>
+
+     <li id="itemManagerSupplier"><a href="/supplier/getAllItem.htm">分销商品管理</a></li>
+     <li id="distributorManager"><a href="/supplier/getApplier.htm">我的分销商</a></li>
+     <li id="releaseSupplier"><a href="/supplier/getRelease.htm">发布招募</a></li>
+     <li id="orderManager"><a href="/supplier/getOrders.htm?type=1">分销订单</a></li>
+       <!--积分管理-->
+      <h3>积分管理</h3>
+
+     <li  name="red_sellpoints"><a href="/points/showAccountInfo.htm">我的积分</a></li>      <!--退款维权-->
+      <h3>退款维权</h3>
+     <li name="seller-refund-management"><a href="/refund/sellerRefundList.htm">退款管理</a></li>
+     <li name="sellerRightsList"><a href="/rights/sellerRightsList.htm">维权管理</a></li>
+     <!--<li><a href="/rights/rightsList.htm">维权管理</a></li>-->
+      <!-- 保证金管理 -->
+
+ <h3>保证金管理</h3>
+ <li name="mymargin">
+    <a href="/margin/mymargin.htm">我的保证金</a>
+ </li>
+      <!--营销中心-->
+<h3>营销中心</h3>
+<li name="list-active"><a href="/active/listActive.htm">活动管理</a></li>
+<li name="promotion-manager"><a href="/active/promotionManager.htm">促销管理</a></li>
+
+<li name="simpleReport-manager"><a href="/sellReport/simpleReport.htm">销售报表</a></li>
+
+     </ul>
+  </div>
+
+  <div class="contents">
+    <!-- right -->
+    	
+	<link rel="icon" href="http://static.pinju.com/img/favicon.ico"
+	  type="image/x-icon" />
+	<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico"
+	  type="image/x-icon" />
+	<link href="http://static.pinju.com/css/rao/common.css" rel="stylesheet"
+	  type="text/css" media="screen" />
+
+	<link href="http://static.pinju.com/css/rao/drape.css" rel="stylesheet"
+	  type="text/css" media="screen" />
+    <script src="/default/js/datePicker/WdatePicker.js"></script>
+	<style type="text/css">
+	html {
+	  margin: 0;
+	}
+	h3 {font-size: 12px;}
+	.buy-nav {
+	    background: none repeat scroll 0 0 #FFFFE0;
+	    border: 1px solid #F9DFB2;
+	    height: 28px;
+	    line-height: 28px;
+	    margin-bottom: 9px;
+	    padding: 0;
+	    text-indent: 12px;
+	}
+	</style>
+	
+<div class="drape-right">
+  	<div class="buy-nav">
+     	 您的位置：我是卖家 > 营销中心 > <span><a style="color:red;" href="/active/promotionManager.htm">促销管理</a></span>
+    </div>
+
+    <ul class="act">
+      <li class=""><a href="/active/promotionManager.htm">限时打折</a></li>
+	  <li class="here"><a href="#">优惠券</a></li>
+    </ul>
+	<div class="y-module cf">
+		<ul class="y-tab cf">
+			<li class="hover">优惠券活动</li>
+			<li>优惠券统计</li>
+		</ul>
+		<div class="help">
+			<a href="#">使用帮助</a>
+		</div>
+		<div class="y-bcon">
+			<div class=" cf">
+				<a href="#" class="ylist-btn crbtn">创建店铺优惠券</a>
+				<a href="#" class="ylist-btn delbtn">删除所有失效优惠券</a>
+			</div>
+			<ul class="list-t cf" >
+				<li class="l1">优惠券预览</li>
+				<li class="l2">优惠券描述</li>
+				<li class="l3">活动状态</li>
+				<li class="l4">有效期</li>
+				<li class="l5">操作</li>
+			</ul>
+			<table class="y-table">
+				<tr>
+					<td class="t1">
+						<div class="y-box">
+							<p class="val">8888</p>
+							<a href="#" class="y-lq">立即领取</a>
+							<p>HI，我是条件你要是不遵守就不让你用，哼~！HI，我是条件你要是不遵守	</p>
+						</div>
+					</td>
+					<td class="t2">
+						<p>批次编号：1234</p>
+						<p>面额：20元</p>
+						<p>使用条件：满<span>199</span>元</p>
+						<p>每人限领：<span>1</span>张</p>
+						<p>剩余：<span>4999</span>/5000</p>
+					</td>
+					<td class="t3">领取中</td>
+					<td class="t4">2011年7月31日</td>
+					<td class="t5">
+						<p><a href="#">编辑</a> | <a href="#">失效</a></p>
+						<p><a href="#">复制代码</a> | <a href="#">复制链接</a></p>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="t1">
+						<div class="y-box y-style2">
+							<p class="val">8888</p>
+							<a href="#" class="y-lq">立即领取</a>
+							<p>HI，我是条件你要是不遵守就不让你用，哼~！HI，我是条件你要是不遵守	</p>
+						</div>
+					</td>
+					<td class="t2">
+						<p>批次编号：1234</p>
+						<p>面额：20元</p>
+						<p>使用条件：满<span>199</span>元</p>
+						<p>每人限领：<span>1</span>张</p>
+						<p>剩余：<span>4999</span>/5000</p>
+					</td>
+					<td class="t3"><span>领完了</span></td>
+					<td class="t4">2011年7月31日</td>
+					<td class="t5">
+						<p><a href="#">删除</a></p>
+					</td>
+				</tr>				
+			</table>
+			
+			
+		</div>
+		<div class="cbottom imgbtn">
+			<div class="skipto">
+				到第 <input id="" name="" class="pagenum"> 页 <button class="btn-sgray">确定</button>
+			</div>
+			<div class="pagination" id="Pagination">
+				<a href="#" class="current prev">上一页</a>
+				<a href="#" class="prev">上一页</a>
+				<span class="current">1</span>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#" class="next">下一页</a>
+				<a href="#" class="current next">下一页</a>
+			</div>
+		</div>
+	</div>
+    	<div class="sel-ye">
+	      <form action="" method="post" id="pageForm">
+<link href="http://static.pinju.com/css/page.css" rel="stylesheet" type="text/css" />
+
+<script src="http://static.pinju.com/js/jquery.cookie.js"></script>
+<script src="http://static.pinju.com/js/jquery.myPagination.js" type="text/javascript"></script> 
+
+<input type="hidden" name="currentPage" id="currentPage" value="0">
+<input type="hidden" name="pages" id="pages" value="0">
+<div id="Pagination" class="pagination"></div>
+
+<script>
+
+</script>	      </form>
+    	</div>
+  	</div>
+
+
+
+
+  </div>
+</div>
+</div>
+
+<!-- // content -->
+
+<!-- footer -->
+<noscript>
+<style>
+	.wrapfull, .navfull, .wrap, .search-panel, .login_box, .cart {display:none;}
+	.noscript-content {width: 1000px;margin:50px auto 300px;}
+	.noscript-content:after {clear: both;content: "...";display: block;height: 0;visibility: hidden;}
+	.noscript-content .ns-tipswrap {background-color:#fff;padding:10px;}
+	.noscript-content .ns-tipswrap h2 {background:transparent url(http://static.pinju.com/img/bg_wraptitle.gif) no-repeat scroll left bottom;font-size:16px;font-weight:bold;color:#000;padding:0 0 10px 10px;margin-bottom:50px;}
+	.noscript-content .ns-tipswrap .ns-infocat {background:transparent url(http://static.pinju.com/img/icons.gif) no-repeat scroll right 66px;float:left;height:66px;width:20%;}
+	.noscript-content .ns-tipswrap .ns-error {background-position:right 20px;}
+	.noscript-content .ns-tipswrap .ns-content {height:120px;padding:30px 10px 10px 22%;*padding:35px 10px 10px 10px;}
+	.noscript-content .ns-tipswrap .ns-content p {line-height:2;}
+	.noscript-content .ns-tipswrap .ns-content h3 {font-size:14px;font-weight:bold;color:#000;margin-bottom:15px;}
+	.noscript-content .ns-tipswrap .ns-content h3 strong {color:#be0000;}
+</style>
+<div class="noscript-content">
+	<div class="ns-tipswrap">
+		<h2>错误提示</h2>
+		<div class="ns-infocat ns-error"></div>
+		<div class="ns-content">
+			<h3>您的浏览器禁用了JavaScript脚本，这会影响您正常浏览品聚网。 </h3>
+			<h3>启用JavaScript，您将拥有更好的浏览体验。 </h3>
+			<p><a href="http://service.pinju.com/cms/html/2011/teach_1103/99.html">查看这里</a>来启用脚本，更好的浏览品聚网。</p>
+		</div>
+	</div>
+</div>
+</noscript>
+
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		<ul class="foot_nav">
+			<li><a target="_blank" title="首页" href="http://www.pinju.com/">首页</a></li>
+			<li><a href="http://news.pinju.com/cms/html/join_in/" target="_blank" title="盛大招商">盛大招商</a></li>
+
+			<li><a target="_blank" title="关于品聚" href="http://www.pinju.com/cms/html/about/">关于品聚</a></li>
+			<li><a href="http://jhb.pinju.com" title="聚伙伴" target="_blank">聚伙伴</a></li>
+			<li><a target="_blank" title="品聚品质保障服务" href="http://service.pinju.com/cms/html/quality/">品聚品质保障服务</a></li>
+			<li><a target="_blank" title="新手帮助" href="http://service.pinju.com/">新手帮助</a></li>
+			<li><a target="_blank" title="联系我们" href="http://www.pinju.com/cms/html/about/contact/">联系我们</a></li>
+			<li><a target="_blank" title="品聚招聘" href="http://job.pinju.com/">品聚招聘</a></li>
+
+			<li><a target="_blank" title="品聚招聘" href="http://www.pinju.com/cms/html/friendslink/">友情链接</a></li>
+		</ul>
+		<p class="copyright"><span>客服邮箱：<a target="_blank" title="客服邮箱" href="mailto:kf@pinju.com">kf@pinju.com</a></span> | <span>客服电话：4008-211-588</span>丨 <span>服务时间: 每天9:00-21:00</span></p>
+		<p class="copyright">上海御网信息技术有限公司  版权所有&nbsp;&nbsp;&nbsp;&nbsp;沪ICP备11032558号 </p>
+
+		<p class="copyright">
+			<span>媒体联系：media@pinju.com</span>丨 <span>商户加盟： business@pinju.com</span>丨 <span>聚伙伴加盟：jhb@pinju.com</span> | <span>城市分站加盟：yinlijun@pinju.com</span></p>
+			    <span class="test">as4.s77.pinju.cc</span>
+	</div>
+
+</div>
+<script src="http://static.pinju.com/urchin/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_userv=0;
+urchinTracker();
+</script>
+<div style="display:none;">
+<script>
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F53ae450288274c4c28220e420d9dab85' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+<!-- // footer -->
+
+<script type="text/javascript">
+pinju.Person.focusNav('seller-nav');
+pinju.Person.link();
+</script>
+</body>
+</html>
+

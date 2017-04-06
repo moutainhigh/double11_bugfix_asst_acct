@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trade_coupon">
+
+	<typeAlias alias="TradeCoupon" type="com.yuwang.pinju.domain.coupon.TradeCouponDO" />
+	<typeAlias alias="TradeCouponQueryDO" type="com.yuwang.pinju.domain.coupon.TradeCouponQueryDO" />
+
+	<resultMap id="TradeCouponResult" class="TradeCoupon">
+		<result property="id" column="ID" />
+		<result property="couponBatchId" column="COUPON_BATCH_ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="useStatus" column="USE_STATUS" />
+		<result property="couponStatus" column="COUPON_STATUS" />
+		<result property="buyerId" column="BUYER_ID" />
+		<result property="buyerNick" column="BUYER_NICK" />
+		<result property="invalidDate" column="INVALID_DATE" />
+		<result property="couponCreateDate" column="COUPON_CREATE_DATE" />
+		<result property="couponModifyDate" column="COUPON_MODIFY_DATE" />
+		<result property="couponAttributes" column="COUPON_ATTRIBUTES" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModify" column="GMT_MODIFY" />
+		<result property="couponMoney" column="COUPON_MONEY" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="sellerNick" column="SELLER_NICK" />
+		<result property="shopId" column="SHOP_ID" />
+		<result property="shopName" column="SHOP_NAME" />
+		<result property="useCondition" column="USE_CONDITION" />
+	</resultMap>
+
+	<sql id="selectAllTradeCoupon"><![CDATA[SELECT ID,COUPON_BATCH_ID,ORDER_ID,USE_STATUS,COUPON_STATUS,BUYER_ID,BUYER_NICK,INVALID_DATE,COUPON_CREATE_DATE,COUPON_MODIFY_DATE,COUPON_ATTRIBUTES,GMT_CREATE,GMT_MODIFY,COUPON_MONEY,SELLER_ID,SELLER_NICK,SHOP_ID,SHOP_NAME,USE_CONDITION FROM TRADE_COUPON]]></sql>
+
+	<select id="selectAllTradeCoupon" resultMap="TradeCouponResult">
+		<include refid="selectAllTradeCoupon" />
+	</select>
+
+	<select id="selectTradeCouponByid" resultMap="TradeCouponResult"  parameterClass="long">
+		<include refid="selectAllTradeCoupon" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+	
+	<select id="selectTradeCouponByOrderid" resultMap="TradeCouponResult"  parameterClass="long">
+		<include refid="selectAllTradeCoupon" />
+		<![CDATA[WHERE ORDER_ID = #id#]]>
+	</select>
+
+	<select id="selectTradeCoupon"  resultMap="TradeCouponResult" parameterClass="TradeCoupon">
+		<include refid="selectAllTradeCoupon" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponBatchId">
+				<![CDATA[COUPON_BATCH_ID = #couponBatchId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="useStatus">
+				<![CDATA[USE_STATUS = #useStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponStatus">
+				<![CDATA[COUPON_STATUS = #couponStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="invalidDate">
+				<![CDATA[INVALID_DATE = #invalidDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponCreateDate">
+				<![CDATA[COUPON_CREATE_DATE = #couponCreateDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponModifyDate">
+				<![CDATA[COUPON_MODIFY_DATE = #couponModifyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponAttributes">
+				<![CDATA[COUPON_ATTRIBUTES = #couponAttributes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponMoney">
+				<![CDATA[COUPON_MONEY = #couponMoney#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- AddByLixin 2011-11-24 -->
+	<select id="selectTradeCouponForList"  resultMap="TradeCouponResult" parameterClass="TradeCouponQueryDO">
+		<![CDATA[ 
+			select * from(select rownum r, a.* from (
+		]]>
+		<include refid="selectAllTradeCoupon" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponBatchId">
+				<![CDATA[COUPON_BATCH_ID = #couponBatchId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="useStatus">
+				<![CDATA[USE_STATUS = #useStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponStatus">
+				<![CDATA[COUPON_STATUS = #couponStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="invalidDate">
+				<![CDATA[INVALID_DATE = #invalidDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponCreateDate">
+				<![CDATA[COUPON_CREATE_DATE = #couponCreateDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponModifyDate">
+				<![CDATA[COUPON_MODIFY_DATE = #couponModifyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponAttributes">
+				<![CDATA[COUPON_ATTRIBUTES = #couponAttributes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponMoney">
+				<![CDATA[COUPON_MONEY = #couponMoney#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+		</dynamic>
+		 <![CDATA[
+		 	AND COUPON_STATUS != 40 order by USE_STATUS asc,INVALID_DATE asc,GMT_CREATE desc) a where rownum
+		 	<= #endRow#) where r >= #startRow#
+		]]>
+	</select>
+	
+	<select id="selectValidCouponList"  resultMap="TradeCouponResult" parameterClass="TradeCoupon">
+		<include refid="selectAllTradeCoupon" />
+		<![CDATA[
+			WHERE 
+				buyer_id = #buyerId# AND 
+				SHOP_ID = #shopId# AND 
+				USE_STATUS = 10 AND
+				COUPON_STATUS = 10 AND
+				INVALID_DATE > sysdate
+			ORDER BY 
+				INVALID_DATE
+		]]>	
+	</select>
+	
+	<select id="selectTimeoutCouponList"  resultMap="TradeCouponResult" parameterClass="TradeCouponQueryDO">
+		<include refid="selectAllTradeCoupon" />
+		<![CDATA[
+			WHERE 
+				INVALID_DATE <= sysdate
+		]]>	
+	</select>
+	
+	
+	
+	<!-- AddByLixin 2011-11-24 -->
+	<select id="selectTradeCouponForListNum"  resultClass="int"  parameterClass="TradeCouponQueryDO">
+		<![CDATA[ 
+			SELECT COUNT(*)  FROM TRADE_COUPON
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponBatchId">
+				<![CDATA[COUPON_BATCH_ID = #couponBatchId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="useStatus">
+				<![CDATA[USE_STATUS = #useStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponStatus">
+				<![CDATA[COUPON_STATUS = #couponStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="invalidDate">
+				<![CDATA[INVALID_DATE = #invalidDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponCreateDate">
+				<![CDATA[COUPON_CREATE_DATE = #couponCreateDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponModifyDate">
+				<![CDATA[COUPON_MODIFY_DATE = #couponModifyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponAttributes">
+				<![CDATA[COUPON_ATTRIBUTES = #couponAttributes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponMoney">
+				<![CDATA[COUPON_MONEY = #couponMoney#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[AND COUPON_STATUS != 40]]>
+	</select>
+	
+
+	<insert id="insertTradeCoupon" parameterClass="TradeCoupon">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_TRADE_COUPON_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO TRADE_COUPON (ID,COUPON_BATCH_ID,ORDER_ID,USE_STATUS,COUPON_STATUS,BUYER_ID,BUYER_NICK,INVALID_DATE,COUPON_CREATE_DATE,COUPON_MODIFY_DATE,COUPON_ATTRIBUTES,GMT_CREATE,GMT_MODIFY,COUPON_MONEY,SELLER_ID,SELLER_NICK,SHOP_ID,SHOP_NAME,USE_CONDITION) VALUES (#id#,#couponBatchId#,#orderId#,#useStatus#,#couponStatus#,#buyerId#,#buyerNick#,#invalidDate#,#couponCreateDate#,#couponModifyDate#,#couponAttributes#,#gmtCreate#,#gmtModify#,#couponMoney#,#sellerId#,#sellerNick#,#shopId#,#shopName#,#useCondition#)]]>
+	</insert>
+
+	<sql id="deleteAllTradeCoupon"><![CDATA[DELETE FROM TRADE_COUPON]]></sql>
+
+	<delete id="deleteAllTradeCoupon">
+		<include refid="deleteAllTradeCoupon" />
+	</delete>
+
+	<delete id="deleteTradeCouponByid" parameterClass="long">
+		<include refid="deleteAllTradeCoupon" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteTradeCoupon"  parameterClass="TradeCoupon">
+		<include refid="deleteAllTradeCoupon" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponBatchId">
+				<![CDATA[COUPON_BATCH_ID = #couponBatchId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="useStatus">
+				<![CDATA[USE_STATUS = #useStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponStatus">
+				<![CDATA[COUPON_STATUS = #couponStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="invalidDate">
+				<![CDATA[INVALID_DATE = #invalidDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponCreateDate">
+				<![CDATA[COUPON_CREATE_DATE = #couponCreateDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponModifyDate">
+				<![CDATA[COUPON_MODIFY_DATE = #couponModifyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponAttributes">
+				<![CDATA[COUPON_ATTRIBUTES = #couponAttributes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="couponMoney">
+				<![CDATA[COUPON_MONEY = #couponMoney#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateTradeCoupon" parameterClass="TradeCoupon">
+		<![CDATA[UPDATE TRADE_COUPON]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="couponBatchId">
+				<![CDATA[COUPON_BATCH_ID = #couponBatchId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="useStatus">
+				<![CDATA[USE_STATUS = #useStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponStatus">
+				<![CDATA[COUPON_STATUS = #couponStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="invalidDate">
+				<![CDATA[INVALID_DATE = #invalidDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponCreateDate">
+				<![CDATA[COUPON_CREATE_DATE = #couponCreateDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponModifyDate">
+				<![CDATA[COUPON_MODIFY_DATE = #couponModifyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponAttributes">
+				<![CDATA[COUPON_ATTRIBUTES = #couponAttributes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponMoney">
+				<![CDATA[COUPON_MONEY = #couponMoney#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id#]]>
+
+	</update>
+	
+	<update id="updateCouponOrder" parameterClass="TradeCoupon">
+		<![CDATA[UPDATE TRADE_COUPON]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="couponBatchId">
+				<![CDATA[COUPON_BATCH_ID = #couponBatchId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="orderId">
+				<![CDATA[ORDER_ID = #orderId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="useStatus">
+				<![CDATA[USE_STATUS = #useStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponStatus">
+				<![CDATA[COUPON_STATUS = #couponStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerId">
+				<![CDATA[BUYER_ID = #buyerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="buyerNick">
+				<![CDATA[BUYER_NICK = #buyerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="invalidDate">
+				<![CDATA[INVALID_DATE = #invalidDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponCreateDate">
+				<![CDATA[COUPON_CREATE_DATE = #couponCreateDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponModifyDate">
+				<![CDATA[COUPON_MODIFY_DATE = #couponModifyDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponAttributes">
+				<![CDATA[COUPON_ATTRIBUTES = #couponAttributes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModify">
+				<![CDATA[GMT_MODIFY = #gmtModify#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="couponMoney">
+				<![CDATA[COUPON_MONEY = #couponMoney#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="sellerNick">
+				<![CDATA[SELLER_NICK = #sellerNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopId">
+				<![CDATA[SHOP_ID = #shopId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="shopName">
+				<![CDATA[SHOP_NAME = #shopName#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id# AND USE_STATUS = 10 AND COUPON_STATUS = 10 AND INVALID_DATE > SYSDATE ]]>
+	</update>
+	
+	<update id="buyerDeleteCoupon" parameterClass="TradeCoupon">
+		<![CDATA[UPDATE TRADE_COUPON]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="couponStatus">
+				<![CDATA[COUPON_STATUS = #couponStatus#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[,GMT_MODIFY = sysdate WHERE ID = #id#]]>
+	</update>
+</sqlMap>
+

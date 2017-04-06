@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>品聚网</title>
+<meta name="keywords" content="快乐电商 品聚 品聚网 盛大品聚 电子商务 诚信 打假 放心购物 葛斌斌 老葛 天下无假 斗鲨鱼 20亿 盛付通 盛大在线" >
+<meta name="description" content="《品聚网》全球最大的品质网购平台。由原盛大旗下金酷游戏CEO葛斌斌(2010年年度营销人物，一次斗鲨鱼,让中国网民认识了他；2006年草根出生,却在网游界用神奇模式创造了奇迹)于2011年创办。其带领品聚网以一个全新的商业模式进军电子商务领域。力求给中国以及世界的网购用户,提供一个快乐的购物环境。'天下无假,爱上网购'是品聚网所追求的运营宗旨。2012年品聚网势必联合盛大网络携手盛付通,以20亿的投资、数亿的营销投入，改变电子商务格局。同时品聚网将带领'聚伙伴'拓展市场,谱写新的电商奇迹。">	
+<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="http://static.pinju.com/css/pj_base.css" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=pj"></script>
+</head>
+
+<body>
+<!-- top nav  -->
+<script src="http://static.pinju.com/js/pinju-global-min.js?t=20111111.js"></script>
+<script src="http://static.pinju.com/js/cookie-min.js?t=20111111.js"></script>
+<script src="http://static.pinju.com/js/cart/loadcart.js"></script>
+
+<link rel="stylesheet" href="http://static.pinju.com/css/cart.css" type="text/css" media="screen" />
+
+<div class="top_bar cf">
+  <div class="top_bar_box cf">
+    <div class="login_status">
+      <script>
+        var pc = new PinjuCookie('http://www.pinju.com');
+        pc.showLoginNav();
+        var image_server = 'http://img.pinju.com/storage-ws/rest/img';
+      </script>
+
+    </div>
+    <div class="liaison">
+      <a href="http://www.pinju.com/my/info.htm" title="我的品聚">我的品聚</a>
+      <a href="http://www.pinju.com/orderBuyer/myBuyer.htm" title="我是买家">我是买家</a>
+      <a class="cart" href="/cart/shoppingCartDetail.htm" rel="nofollow" id="mycart" title="购物车"><span>购物车<strong id="carts">0</strong>件</span></a>
+      <a href="http://www.pinju.com/my/sell.htm" title="我是卖家">我是卖家</a>
+
+      <a href="http://job.pinju.com/" target="_blank" title="加入品聚">加入品聚</a>
+      <a href="http://service.pinju.com/" target="_blank" title="帮助中心">帮助中心</a>
+   
+      <input type="hidden" id="cart_url_base" value="" />
+    </div>
+    
+    <div id="cart_pop" class="cart_pop"  style="background:#fff; display:none; position:static; border:1px solid #dadada;"></div>
+    
+  </div>
+</div>
+
+<script type="text/javascript">
+(function(){$('#carts').text(pc.getShoppingCartCount());})()
+
+
+</script>
+<!-- // top nav  -->
+
+<!-- logo -->
+<div class="header cf">
+	<div class="masthead cf">
+		<div class="logo">
+			<a href="http://www.pinju.com/">
+				<img class="logo_pic" width="326" height="54" src="http://static.pinju.com/images/pj_logo_17.gif" alt="品聚网" title="点击回到品聚网首页" />
+			</a>
+		</div>
+
+		<div class="search-panel"> 
+		</div>
+	</div>
+</div>
+
+<!-- nav -->
+<div class="wrapfull navfull_1018">
+	<div class="pj_nav">
+		<ul class="nav_list">
+        	<li id="nobodyno"></li>
+            <li ><a href="http://www.pinju.com/index.html" title="首页">首&nbsp;&nbsp;页</a></li>
+
+			<li ><a href="http://ti.pinju.com" title="体验购">体&nbsp;验&nbsp;购</a></li> 
+			<li ><a href="http://mingdian.pinju.com" title="名店街">名&nbsp;店&nbsp;街</a></li>              
+            <!-- <li ><a href="###" title="特价折扣" >特价折扣</a></li> -->
+            <li ><a href="http://pinpai.pinju.com" title="网货品牌">网货品牌</a></li>
+            <!-- <li ><a href="###" title="名人坊">名&nbsp;人&nbsp;坊</a></li> -->
+
+            <!-- <li ><a href="###" title="艺术廊">艺&nbsp;术&nbsp;廊</a></li> -->
+            <!-- <li ><a href="javascript:void(0);" id="subStation" title="城市分站">城市分站</a></li> -->
+            <!-- <li style="float:right;"><a class="nav_right" href="###" title="商户入驻">商户入驻</a></li> -->
+		</ul>
+	</div>
+</div>
+
+<style type="text/css">
+/* error info */
+.error_info {height:480px; margin-top:50px;}
+.error_info h2 { background:transparent url(http://static.pinju.com/cms/images/pinju/d20110810_others/bg_wraptitle.gif) no-repeat left bottom; font-size:16px; font-weight:bold; color:#000; padding:0 0 10px 10px;}
+.error_info .content { background:transparent url(http://static.pinju.com/cms/images/pinju/d20110810_others/icons.gif) no-repeat 75px 45px; padding:60px 0 0 140px; }
+.error_info .content h3 {font-size:16px; font-weight:bold; color:#000;}
+.error_info .content ul {padding:10px 0;}
+.error_info .content ul li {color:#666; line-height:25px;}
+</style>
+<div class="wrap">
+	<div class="error_info">
+
+		<h2>
+			错误提示</h2>
+		<div class="content">
+			<h3>
+				很抱歉，您要访问的页面不存在。</h3>
+			<ul>
+				<li>
+					您现在可以：</li>
+
+				<li>
+					1) 检查您是否地址输入正确</li>
+				<li>
+					2) 返回 <a href="http://www.pinju.com" title="品聚首页">品聚首页</a></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		<ul class="foot_nav">
+
+			<li><a href="/cms/html/about/" title="关于品聚" target="_blank">关于品聚</a></li>
+			<li><a href="http://seller.pinju.com" title="商户平台" target="_blank">商户平台</a></li>
+			<li><a href="http://jhb.pinju.com" title="聚伙伴" target="_blank">聚伙伴</a></li>
+
+			<li><a href="http://service.pinju.com/cms/html/quality/" title="品聚品质保障服务" target="_blank">品聚品质保障服务</a></li>
+			<li><a href="http://service.pinju.com/" title="新手帮助" target="_blank">新手帮助</a></li>
+			<li><a href="/cms/html/about/contact/" title="联系我们" target="_blank">联系我们</a></li>
+
+			<li><a href="http://job.pinju.com/" title="品聚招聘" target="_blank">品聚招聘</a></li>
+			<li class="last">客服邮箱：<a href="mailto:kf@pinju.com" title="客服邮箱" target="_blank">kf@pinju.com</a></li>
+
+		</ul>
+		<p class="copyright"> <span>客服电话：4008-211-588</span>丨 <span>服务时间: 每天9:00-21:00</span></p>
+		<p class="copyright">上海御网信息技术有限公司  版权所有&nbsp;&nbsp;&nbsp;&nbsp;沪ICP备11032558号 </p>
+
+		<p class="copyright">
+			<span>媒体联系：media@pinju.com</span>丨 <span>商户加盟： business@pinju.com</span>丨 <span>聚伙伴加盟：jhb@pinju.com</span> | <span>城市分站加盟：yinlijun@pinju.com</span></p>
+
+			    <span class="test">ft-as1.qa-pinju.com</span>
+	</div>
+</div>
+<!-- // footer -->
+</body>
+</html>

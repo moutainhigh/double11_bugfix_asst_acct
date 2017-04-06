@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>品聚 - 权限管理 - 员工账号管理</title>
+<link media="screen" type="text/css" href="http://static.pinju.com/css/pj_base.css" rel="stylesheet">
+<link media="screen" type="text/css" href="http://static.pinju.com/css/member/subaccount.css" rel="stylesheet">
+<link rel="stylesheet" href="http://static.pinju.com/css/page/pagination.css" type="text/css" media="screen" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=pj"></script>
+</head>
+
+<body>
+<div class="top_bar">
+	<div class="top_bar_box cf">
+		topbar
+	</div>
+</div>
+<div class="header">
+	<div class="masthead cf">
+		header
+	</div>
+</div>
+<div class="wrapfull navfull">
+	nav
+</div>
+
+<!-- content -->
+<div class="wrap cf">
+<div class="wrap-border cf">
+	
+	<div class="bar-left">
+		left
+	</div>
+	<div class="contents">
+		<div class="titletop">
+			<h1>权限管理</h1>
+		</div>
+		
+		<ul class="tab-secondary">
+			<li class="active"><a href="#">员工账号管理</a></li>
+			<li><a href="#">角色设置</a></li>
+		</ul>
+		
+		<div class="subaccount">
+			
+			<div class="formbox">
+			
+				<div class="title">
+					<h2>新增店铺员工账号</h2>
+				</div>
+				
+				<div class="content cf">
+					<div style="padding:0 0 0 90px;">
+						<div class="tips-normal">
+							<p>提示性提示</p>
+						</div>
+					</div>
+					<div style="padding:0 0 0 90px;">
+						<div class="tips-error">
+							<p>错误提示</p>
+						</div>
+					</div>
+					<div class="row">
+						<label><em>*</em> 会员名：</label> 
+						<input class="error" type="text" name="" id="" /> 
+						<span class="tips tips-error">您要设为员工的会员账号已经存在，请您重新填写会员名</span>
+					</div>
+					<div class="row">
+						<label><em>*</em> 会员名：</label> 
+						<input type="text" name="" id="" /> 
+						<span class="tips">您的员工可以使用此会员名登陆</span>
+					</div>
+					<div class="row">
+						<label><em>*</em> 密码：</label> 
+						<input type="text" name="" id="" />
+						<span class="tips">4-20个字符，支持中英文，数字，下划线或减号</span>
+					</div>
+					<div class="row">
+						<label><em>*</em> 重复输入密码：</label> 
+						<input type="text" name="" id="" />
+						<span class="tips">请再次输入密码</span>
+					</div>
+					<div class="row">
+						<label><em>*</em> 设置角色：</label> 
+						<div class="checkboxrow">
+							<div class="row">
+								<label for="selectall"><input type="checkbox" name="" id="selectall" /> 全选</label>
+							</div>
+							<div class="row">
+								<label for="role1"><input type="checkbox" name="role1" id="role1" /> 角色1</label> 
+								<label for="role2"><input type="checkbox" name="role2" id="role2" /> 角色2</label> 
+								<label for="role3"><input type="checkbox" name="role3" id="role3" /> 角色3</label> 
+								<label for="role4"><input type="checkbox" name="role4" id="role4" /> 角色4</label> 
+								<label for="role5"><input type="checkbox" name="role5" id="role5" /> 角色5</label> 
+								<label for="role6"><input type="checkbox" name="role6" id="role6" /> 角色6</label> 
+								<label for="role7"><input type="checkbox" name="role7" id="role7" /> 角色7</label> 
+								<label for="role8"><input type="checkbox" name="role8" id="role8" /> 角色8</label> 
+							</div>
+							<div class="row exinfo">
+								<p>什么是角色？<br />								角色是您设置的一个拥有不同权限的虚拟名称，您可以为角色赋予不同的权限，然后将角色赋予您的您的员工账号，该员工账号将获得角色的权限，一个员工账号可以有多个角色。您可以点击此处设置角色 <a href="#">设置角色</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<label><em>*</em> 描述：</label> 
+						<input class="roleinfo" value="最多输入20个汉字，您可以描述该账号信息" type="text" name="" id="" />
+					</div>
+					
+					<div class="row btnrow btnbkd">
+						<button class="btn-l4" type="button">完成</button>
+					</div>
+
+				</div>
+				
+			</div>
+			
+			
+		</div>
+	</div>
+
+	</div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		footer
+	</div>
+</div>
+
+<script>
+$(function() {
+ 		$('.oddrow tr:even').addClass("odd");
+ 	});
+</script>
+</body>
+</html>

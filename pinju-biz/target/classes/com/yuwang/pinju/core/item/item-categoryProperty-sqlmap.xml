@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="item_category_property">
+
+	<typeAlias alias="ItemCategoryProperty"
+		type="com.yuwang.pinju.domain.item.CategoryPropertyDO" />
+
+
+	<resultMap id="ItemCategoryPropertyResult" class="ItemCategoryProperty">
+		<result property="isActivities" column="IS_ACTIVITIES" />
+		<result property="maxValue" column="MAX_VALUE" />
+		<result property="minValue" column="MIN_VALUE" />
+		<result property="features" column="FEATURES" />
+		<result property="inputType" column="INPUT_TYPE" />
+		<result property="lenLimit" column="LEN_LIMIT" />
+		<result property="name" column="NAME" />
+		<result property="id" column="ID" />
+		<result property="parentId" column="PARENT_ID" />
+		<result property="categoryId" column="CATEGORY_ID" />
+		<result property="propertyId" column="PROPERTY_ID" />
+		<result property="isSelleProperty" column="IS_SELLE_PROPERTY" />
+		<result property="isKeyProperty" column="IS_KEY_PROPERTY" />
+		<result property="isEnumerate" column="IS_ENUMERATE" />
+		<result property="isBrandProperty" column="IS_BRAND_PROPERTY" />
+		<result property="required" column="REQUIRED" />
+		<result property="isMultipleChoice" column="IS_MULTIPLE_CHOICE" />
+		<result property="isAcceptsInput" column="IS_ACCEPTS_INPUT" />
+		<result property="isSpuKey" column="IS_SPU_KEY" />
+		<result property="status" column="STATUS" />
+		<result property="isSellCustom" column="IS_SELL_CUSTOM" />
+	</resultMap>
+
+	<sql id="selectAllItemCategoryProperty">
+		<![CDATA[
+			SELECT IS_ACTIVITIES,MAX_VALUE,MIN_VALUE,FEATURES,INPUT_TYPE,LEN_LIMIT,NAME,ID,PARENT_ID,CATEGORY_ID,PROPERTY_ID,
+				IS_SELLE_PROPERTY,IS_KEY_PROPERTY,IS_ENUMERATE,REQUIRED,IS_MULTIPLE_CHOICE,IS_ACCEPTS_INPUT,IS_SPU_KEY,STATUS,IS_BRAND_PROPERTY,IS_SELL_CUSTOM
+			FROM ITEM_CATEGORY_PROPERTY
+		]]>
+	</sql>
+
+	<select id="getCategoryPropertyById" resultMap="ItemCategoryPropertyResult"
+		parameterClass="long">
+		<include refid="selectAllItemCategoryProperty" />
+		<![CDATA[
+			WHERE CATEGORY_ID = #categoryId#
+			AND STATUS = 1
+			ORDER BY SORT_ORDER
+		]]>
+	</select>
+
+	<select id="selectItemCategoryPropertyByCateProId" resultMap="ItemCategoryPropertyResult"
+		parameterClass="long">
+		<include refid="selectAllItemCategoryProperty" />
+		<![CDATA[WHERE ID = #cateProId#]]>
+	</select>
+
+	<resultMap id="getPropertyNameListByIdsResult" class="ItemCategoryProperty">
+		<result property="id" column="ID" />
+		<result property="name" column="NAME" />
+	</resultMap>
+
+	<select id="getPropertyNameListByIds" resultMap="getPropertyNameListByIdsResult"
+		parameterClass="java.util.List">
+		<![CDATA[
+			SELECT ID,NAME FROM ITEM_CATEGORY_PROPERTY
+			WHERE STATUS = 1 AND ID IN 
+		]]>
+		<iterate open="(" close=")" conjunction=",">
+			<![CDATA[
+				 #propertyIdList[]#
+			]]>
+		</iterate>
+		<![CDATA[
+			ORDER BY SORT_ORDER
+		]]>
+	</select>
+
+</sqlMap>
+

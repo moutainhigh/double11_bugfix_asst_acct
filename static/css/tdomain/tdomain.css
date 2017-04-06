@@ -1,0 +1,325 @@
+.domain-map {
+    background: #FFFFE0;
+    border: 1px solid #F9DFB2;
+    clear: both;
+    line-height: 25px;
+    margin-bottom: 8px;
+    padding-left: 12px;
+}
+.domain-map .current {
+    color: #c00000;
+	font-weight: 700;
+}
+.domain-set-tip {
+	padding-bottom: 9px;
+	border-bottom: 1px solid #d4d4d4;
+	width: 828px;
+}
+.domain-set-tip .img-tip {
+	float: left;
+}
+.domain-set-tip .word-tip {
+	float: left;
+	width: 800px;
+	margin-top: 5px;
+}
+.domain-set-tip .word-tip span {
+	float: left;
+	color: #666;
+}
+.domain-set-tip .word-tip a {
+	float: right;
+}
+.domain-box-modify {
+	padding: 20px 30px;
+}
+.domain-box-after {
+	height: 30px;
+	line-height: 30px;
+	color: white;
+	background: #fc7d00;
+	padding-left: 20px;
+	margin-top: 10px;
+}
+.domain-box-rule {
+	padding: 10px 0;
+}
+.domain-box-ok {
+	padding: 20px 30px;
+	text-align: center;
+}
+.domain-normal {
+	height: 23px;
+	line-height: 23px;
+	color: black;
+	margin-bottom: 2px;
+}
+.domain-normal span, .domain-normal a {
+	float: left;
+}
+.domain-normal .common {
+	width: 170px;
+	text-align: right;
+}
+.domain-normal .common em {
+	font-size: 12px;
+	font-style: normal;
+}
+.domain-normal .ft14 {
+	font-size: 14px;
+}
+.domain-normal .red {
+	color: red;
+}
+.domain-normal .gray {
+	color: #666;
+}
+.domain-normal .modidy-btn {
+	width: 84px;
+	height: 23px;
+	background: url(http://static.pinju.com/img/tdomain/s-btn.gif) no-repeat 0 0;
+	text-align: center;
+	color: white;
+	margin: 0 10px;
+}
+.domain-normal .modidy-btn:hover {
+	text-decoration: none;
+}
+.domain-modify {
+	height: 23px;
+	color: black;
+	position: relative;
+}
+.domain-modify .input {
+	width: 174px;
+	height: 17px;
+	padding: 3px 2px;
+	background: url(http://static.pinju.com/img/tdomain/input-bg.gif) no-repeat 0 0;
+	float: left;
+}
+.domain-modify .input input {
+	width: 174px;
+	height: 17px;
+	line-height: 17px;
+	font-size: 14px;
+	padding: 0;
+	border: 0;
+}
+.domain-modify span {
+	line-height: 23px;
+	float: left;
+	margin: 0 15px 0 5px;
+	font-size: 14px;
+}
+.domain-modify a.inquiry {
+	line-height: 23px;
+	float: left;
+	width: 123px;
+	height: 23px;
+	background: url(http://static.pinju.com/img/tdomain/inquiry-btn.gif) no-repeat 0 0;
+	text-align: center;
+	color: white;
+}
+.domain-modify a.banding {
+	line-height: 23px;
+	display: block;
+	width: 84px;
+	height: 23px;
+	background: url(http://static.pinju.com/img/tdomain/s-btn.gif) no-repeat 0 0;
+	text-align: center;
+	color: white;
+	font-size: 12px;
+	position: absolute;
+	left: 400px;
+	top: 73px;
+}
+.domain-modify a:hover {
+	text-decoration: none;
+}
+.domain-modify .tip-yellow {
+	width: 320px;
+	padding: 6px 6px 6px 30px;
+	line-height: 17px;
+	color: #666;
+	border: 1px solid #fadfb2;
+	background: #ffffdf url(http://static.pinju.com/img/tdomain/tip-yellow.gif) no-repeat 8px 8px;
+	position: absolute;
+	left: 400px;
+	top: 0;
+}
+.domain-modify .tip-green {
+	width: 500px;
+	padding: 12px 5px 12px 40px;
+	line-height: 23px;
+	height: 23px;
+	font-size: 14px;
+	border: 1px solid #7eb732;
+	background: #dbfab6 url(http://static.pinju.com/img/tdomain/tip-green.gif) no-repeat 18px 17px;
+	position: absolute;
+	left: 0;
+	top: 60px;
+}
+.domain-modify .tip-red {
+	width: 500px;
+	padding: 15px 5px 15px 40px;
+	line-height: 17px;
+	font-size: 14px;
+	border: 1px solid #ff999a;
+	background: #ffe5e6 url(http://static.pinju.com/img/tdomain/tip-red.gif) no-repeat 18px 17px;
+	position: absolute;
+	left: 0;
+	top: 60px;
+}
+.domain-modify .tip-red em {
+	color: #bd0000;
+	font-style: normal;
+	font-size: 12px;
+	margin-left: 20px;
+}
+.domain-rule-tip span {
+	float: left;
+	padding: 5px 20px;
+	height: 17px;
+	line-height: 17px;
+	color: #bf0101;
+	font-weight: 700;
+	border: 1px solid #fadfb2;
+	background: #ffffe1;
+	margin-right: 20px;
+}
+.domain-rule-tip a {
+	float: left;
+	padding: 6px 0;
+	height: 17px;
+	line-height: 17px;
+}
+.domain-rule-outer {
+	width: 826px;
+	height: 405px;
+	border: 1px solid #d4d4d4;
+	margin-top: 10px;
+	overflow-y: auto;
+}
+.domain-rule-inner {
+	padding: 10px;
+	color: black;
+}
+.domain-rule-inner h3 {
+	font-size: 14px;
+	font-weight: 700;
+	height: 20px;
+	line-height: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.domain-rule-inner p {
+	margin: 1em 0;
+	line-height: 17px;
+}
+.domain-rule-inner p.tin {
+	text-indent: 2em;
+}
+.confirm-rule {
+	height: 29px;
+	margin-top: 10px;
+}
+.confirm-rule .i-confirm {
+	float: left;
+	height: 23px;
+	padding-top: 6px;
+	margin-left: 270px;
+	display: inline;
+	color: black;
+}
+.confirm-rule .i-confirm input {
+	margin-right: 8px;
+	vertical-align: -2px;
+}
+.confirm-rule .i-confirm label {
+	
+}
+.confirm-rule .b-btn-normal, .confirm-rule .b-btn-ok {
+	float: left;
+	height: 29px;
+	width: 103px;
+	background: url(http://static.pinju.com/img/tdomain/b-btn-normal.gif) no-repeat 0 0;
+	border: 0;
+	margin-left: 30px;
+}
+.confirm-rule .b-btn-ok {
+	background: url(http://static.pinju.com/img/tdomain/b-btn-ok.gif) no-repeat 0 0;
+}
+.domain-box-ok .domain-normal {
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+}
+.binding-ok, .binding-no {
+	height: 46px;
+	width: 460px;
+	margin: 0 auto 25px;
+}
+.binding-ok img, .binding-no img {
+	float: left;
+	margin-right: 30px;
+}
+.binding-ok h3, .binding-no h3 {
+	float: left;
+	font-size: 16px;
+	line-height: 18px;
+	font-weight: 700;
+	color: black;
+	margin-top: 15px;
+}
+.binding-no {
+	width: 410px;
+}
+.binding-no a {
+	float: left;
+	font-weight: 700;
+	margin: 17px 0 0 15px;
+}
+.wrap .domain-error {
+	height: 390px;
+	width: 600px;
+	padding-top: 50px;
+}
+
+/* 我要开店--待审核页面 */
+.kaidian-tip {padding: 5px 10px; border: 1px solid #f9e1b5; background: #ffffe1; line-height: 19px;}
+.kaidian-tip p {margin-left: 20px;}
+.kaidian-table {width: 828px; margin-top: 10px;}
+.kaidian-table th {padding: 8px 10px; border: 1px solid #ebebeb; border-top: 1px solid #c80000; background: #ebebeb; font-size: 12px; font-weight: 700; text-align: left;}
+.kaidian-table td {padding: 10px; border: 1px solid #ebebeb;}
+.kaidian-table .bg td {background: #f8f8f8;}
+.kaidian-table div.type {width: 195px; padding-left: 40px; line-height: 19px;}
+.kaidian-table div.qijian {background: url(http://static.pinju.com/img/tdomain/qijian.gif) no-repeat 0 0;}
+.kaidian-table div.pinpai {background: url(http://static.pinju.com/img/tdomain/pinpai.gif) no-repeat 0 0;}
+.kaidian-table div.putong {background: url(http://static.pinju.com/img/tdomain/putong.gif) no-repeat 0 0;}
+.kaidian-table div.ixiaopu {background: url(http://static.pinju.com/img/tdomain/ixiaopu.gif) no-repeat 0 0;}
+.kaidian-table div h3 {font-size: 18px; font-weight: 700; line-height: 21px;}
+.kaidian-table ul li {padding-left: 8px; color: #666666; line-height: 19px; background: url(http://static.pinju.com/img/tdomain/square.gif) no-repeat left center;}
+.kaidian-table .price {color: #c80000; font-size: 15px; font-weight: 700;}
+.kaidian-table .ruzhu {width: 88px; height: 26px; line-height: 26px; display: block; background: url(http://static.pinju.com/img/tdomain/ruzhu1.gif) no-repeat 0 0;}
+.kaidian-table .ruzhu:hover {background: url(http://static.pinju.com/img/tdomain/ruzhu2.gif) no-repeat 0 0;}
+.kaidian-qa {margin-top: 20px;}
+.kaidian-qa .title {padding: 8px 20px; height: 17px; line-height: 17px; font-size: 14px; border-top: 1px solid #e9e9e9; background: #f8f8f8;}
+.kaidian-qa .list {line-height: 19px; margin: 10px 10px 20px 20px; color: #666666;}
+.kaidian-qa .list strong {font-weight: 700; display: block; color: #333333;}
+.kaidian-qa .list span {color: #0067cb;}
+
+.pending-title {height: 42px; line-height: 42px; padding-left: 60px; margin: 30px 0 5px 25px; font-size: 16px; font-weight: 700; background: url(http://static.pinju.com/img/tdomain/pending-time.gif) no-repeat left center;}
+.pending-tip {padding: 5px 20px; margin: 0 55px 10px 85px; border: 1px solid #f9e1b5; background: #ffffe1; line-height: 23px; font-size: 14px;}
+.pending-tip h3 {margin-bottom: 8px;}
+.pending-tip li {padding-left: 14px; background: url(http://static.pinju.com/img/tdomain/square.gif) no-repeat 5px center;}
+.pending-tip li .gray {font-size: 12px; margin-left: 20px; color: #666666;}
+.pending-tip li .red {font-size: 12px; margin-left: 20px; color: #ff0103;}
+.pending-info {padding: 5px 20px 15px; margin: 0 55px 10px 85px; border: 1px solid #ebebeb; background: #f8f8f8; line-height: 19px;}
+.pending-info h3 {font-size: 14px; font-weight: 700; margin: 12px 0 7px;}
+.pending-info li {font-weight: 700; margin: 7px 0; padding-left: 14px; background: url(http://static.pinju.com/img/tdomain/square.gif) no-repeat 5px center;}
+.pending-info li span {font-size: 12px; font-weight: normal;}
+.pending-info p {line-height: 17px;}
+.pending-info p.ti {text-indent: 2em;}
+
+div.checkOkTitle {background: url(http://static.pinju.com/img/tdomain/checkOkTip.gif) no-repeat left center;}
+.jiaonabzj {width: 98px; height: 26px; display: block; margin: 20px 0 20px 85px; background: url(http://static.pinju.com/img/tdomain/jiaonabzj.gif) no-repeat left center;}

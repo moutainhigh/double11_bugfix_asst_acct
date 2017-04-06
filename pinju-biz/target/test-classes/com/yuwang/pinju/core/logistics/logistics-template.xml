@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="trade_logistics_template">
+
+	<typeAlias alias="TradeLogisticsTemplate" type="com.yuwang.pinju.domain.logistics.LogisticsTemplateDO" />
+
+	<resultMap id="TradeLogisticsTemplateResult" class="TradeLogisticsTemplate">
+		<result property="id" column="ID" />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="templateName" column="TEMPLATE_NAME" />
+		<result property="memo" column="MEMO" />
+		<result property="state" column="STATE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllTradeLogisticsTemplate"><![CDATA[SELECT ID,SELLER_ID,TEMPLATE_NAME,MEMO,STATE,GMT_CREATE,GMT_MODIFIED FROM TRADE_LOGISTICS_TEMPLATE]]></sql>
+	
+	<sql id="selectAllTradeLogisticsTemplateField"><![CDATA[SELECT ID,SELLER_ID,TEMPLATE_NAME,MEMO,STATE,GMT_CREATE,GMT_MODIFIED ]]></sql>
+
+	<select id="selectAllTradeLogisticsTemplate" resultMap="TradeLogisticsTemplateResult">
+		<include refid="selectAllTradeLogisticsTemplate" />
+	</select>
+
+	<select id="selectTradeLogisticsTemplateByid" resultMap="TradeLogisticsTemplateResult"  parameterClass="long">
+		<include refid="selectAllTradeLogisticsTemplate" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectTradeLogisticsTemplate"  resultMap="TradeLogisticsTemplateResult" parameterClass="TradeLogisticsTemplate">
+		<include refid="selectAllTradeLogisticsTemplate" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="templateName">
+				<![CDATA[TEMPLATE_NAME = #templateName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo">
+				<![CDATA[MEMO = #memo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="state">
+				<![CDATA[STATE = #state#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertTradeLogisticsTemplate" parameterClass="TradeLogisticsTemplate">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_TRADE_LOGISTICS_TEMPLATE.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO TRADE_LOGISTICS_TEMPLATE (ID,SELLER_ID,TEMPLATE_NAME,MEMO,STATE,GMT_CREATE,GMT_MODIFIED) VALUES (#id#,#sellerId#,#templateName#,#memo#,#state#,#gmtCreate#,#gmtModified#)]]>
+	</insert>
+
+  
+  
+  <select id="selectTradeLogisticsTemplateList" resultMap="TradeLogisticsTemplateResult"
+    parameterClass="com.yuwang.pinju.domain.logistics.LogisticsTemplateQuery">
+    
+    <include refid="selectAllTradeLogisticsTemplateField" />
+    FROM 
+    (
+    	SELECT rid from
+    	(
+    		SELECT 
+    			one.rid,
+    			ROWNUM RN 
+    		from
+	    	(
+	    		SELECT
+	    			rowid rid,
+	    			gmt_modified
+				FROM
+	    			TRADE_LOGISTICS_TEMPLATE
+	    		<dynamic prepend="WHERE">
+			     	<isNotEmpty prepend="AND" property="id">
+			        	<![CDATA[ID = #id#]]>
+			      	</isNotEmpty>
+			      	<isNotEmpty prepend="AND" property="sellerId">
+			        	<![CDATA[SELLER_ID = #sellerId#]]>
+			      	</isNotEmpty>
+
+	    		</dynamic>
+	    		ORDER BY
+					gmt_modified desc
+	    	) one
+		    WHERE 
+		    	rownum <![CDATA[<=]]> #endRow#
+		)
+		WHERE 
+			RN <![CDATA[>=]]> #startRow#
+	) T,
+	TRADE_LOGISTICS_TEMPLATE a 
+	WHERE 
+		a.rowid = t.rid
+	ORDER BY
+		gmt_modified desc
+		  </select>
+  
+  
+  	<select id="selectTradeLogisticsTemplateCount" resultClass="int"
+    	parameterClass="com.yuwang.pinju.domain.logistics.LogisticsTemplateQuery">
+    	SELECT COUNT(ID) FROM TRADE_LOGISTICS_TEMPLATE
+			<dynamic prepend="WHERE">
+		     	<isNotEmpty prepend="AND" property="id">
+		        	<![CDATA[ID = #id#]]>
+		      	</isNotEmpty>
+		      	<isNotEmpty prepend="AND" property="sellerId">
+		        	<![CDATA[SELLER_ID = #sellerId#]]>
+		      	</isNotEmpty>
+				<isNotEmpty prepend="AND" property="templateName">
+		        	<![CDATA[TEMPLATE_NAME = #templateName#]]>
+		      	</isNotEmpty>
+		      	
+	    	</dynamic>
+	</select>
+  
+  
+	<sql id="deleteAllTradeLogisticsTemplate"><![CDATA[DELETE FROM TRADE_LOGISTICS_TEMPLATE]]></sql>
+
+	<delete id="deleteAllTradeLogisticsTemplate">
+		<include refid="deleteAllTradeLogisticsTemplate" />
+	</delete>
+
+	<delete id="deleteTradeLogisticsTemplateByid" parameterClass="long">
+		<include refid="deleteAllTradeLogisticsTemplate" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteTradeLogisticsTemplate"  parameterClass="TradeLogisticsTemplate">
+		<include refid="deleteAllTradeLogisticsTemplate" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="templateName">
+				<![CDATA[TEMPLATE_NAME = #templateName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo">
+				<![CDATA[MEMO = #memo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="state">
+				<![CDATA[STATE = #state#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	<update id="updateTradeLogisticsTemplate" parameterClass="TradeLogisticsTemplate">
+		<![CDATA[UPDATE TRADE_LOGISTICS_TEMPLATE]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="templateName">
+				<![CDATA[TEMPLATE_NAME = #templateName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="memo">
+				<![CDATA[MEMO = #memo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="state">
+				<![CDATA[STATE = #state#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+		
+		<![CDATA[ WHERE ID = #id#]]>
+	</update>
+</sqlMap>
+

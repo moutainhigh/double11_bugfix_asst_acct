@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+  <struts>
+      <package name="points" namespace="/points" extends="pinju-login" >
+      	<!--显示我的积分信息页  -->
+        <action name="showAccountInfo" class="com.yuwang.pinju.web.module.points.AccountDetailAction" method="queryAccountDetail">
+	  		 <result name="success" type="freemarker">/default/templates/screen/pointAccount/showPointList.ftl</result>
+	  		 <result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_sellpoints</result>
+			 <result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_sellpoints</result>
+			 <result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_sellpoints</result>
+		</action>
+      </package>
+      <package name="accountpoints" namespace="/accountpoints"  extends="struts-default">
+		 <action name="addAccountPoints" class="com.yuwang.pinju.web.module.points.AddActionPointsAction" method="add">
+	  		 <result name="success" type="freemarker">/default/templates/screen/addPoints/addPoint.ftl</result>
+		</action>
+		 <action name="addAccountPointsByMq" class="com.yuwang.pinju.web.module.points.AddActionPointsAction" method="addByMQ">
+	  		 <result name="success" type="freemarker">/default/templates/screen/addPoints/addPoint.ftl</result>
+		</action>
+      </package>
+  </struts>

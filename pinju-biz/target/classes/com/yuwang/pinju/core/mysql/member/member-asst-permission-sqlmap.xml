@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_asst_permission">
+
+	<typeAlias alias="MemberAsstPermission" type="com.yuwang.pinju.domain.member.asst.MemberAsstPermissionDO" />
+
+	<resultMap id="MemberAsstPermissionResult" class="MemberAsstPermission">
+		<result property="id" column="ID" />
+		<result property="target" column="TARGET" />
+		<result property="action" column="ACTION" />
+		<result property="targetDesc" column="TARGET_DESC" />
+		<result property="actionDesc" column="ACTION_DESC" />
+		<result property="permissionDesc" column="PERMISSION_DESC" />
+		<result property="status" column="STATUS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllMemberAsstPermission"><![CDATA[SELECT ID,TARGET,ACTION,TARGET_DESC,ACTION_DESC,PERMISSION_DESC,STATUS,GMT_CREATE,GMT_MODIFIED FROM MEMBER_ASST_PERMISSION]]></sql>
+
+	<select id="selectAllMemberAsstPermission" resultMap="MemberAsstPermissionResult">
+		<include refid="selectAllMemberAsstPermission" />
+	</select>
+
+  <select id="getValidAsstPermissions" resultMap="MemberAsstPermissionResult">
+    <include refid="selectAllMemberAsstPermission" />
+    <![CDATA[WHERE STATUS = 0 ORDER BY TARGET, ACTION]]>
+  </select>
+</sqlMap>
+

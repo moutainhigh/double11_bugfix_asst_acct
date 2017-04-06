@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="expires" content="0" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="baiduspider" content="all" />
+	<meta name="keywords" content="页面关键字" />
+	<meta name="description" content="页面描述" />
+	<title>品聚 - 店铺搜索</title>
+	<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+	<link href="http://static.pinju.com/css/base.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="http://static.pinju.com/css/common.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="http://static.pinju.com/css/search/search-bak.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+
+	<div class="top_bar">
+		<div class="top_bar_box cf">
+			<div class="login_status">
+				<span class="welcome">您好！欢迎来到品聚</span>
+				<span>[ <a href="#">注册</a> ]</span>
+				<span>[ <a href="#">登陆</a> ]</span>
+			</div>
+			<div class="liaison">
+				<a href="#">加入我们</a>|<a href="#">联系我们</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
+		<div class="logo">
+			<img class="logo_pic" width="147" height="47" src="http://static.pinju.com/img/logo_redtext.png" />
+		</div>
+		
+		<div class="search-panel"> 
+			<div class="tabs"> 
+				<ul> 
+					<li><a href="##">宝贝</a></li> 
+					<li><a href="##" class="active">店铺</a></li> 
+				</ul> 
+			</div> 
+			<form name="search" action=""> 
+				<div class="search-fields"> 
+					<label class="hidden" for="q"></label> 
+					<input value="请输入" accesskey="s" id="q" name="q">
+				</div> 
+				<input type="submit" value="搜&nbsp;&nbsp;索" class="btn">
+			</form>
+		</div> 
+	</div>
+	
+	<div class="pj_nav">
+		<div class="nav_l"></div>
+		<ul class="nav_list">
+
+			<li class="focus"><a href="#">首　页</a></li>
+			<li><a href="#">品聚新闻</a></li>
+			<li><a href="#">账号管理</a></li>
+			<li><a href="#">我是商户</a></li>
+			<li><a href="#">聚 伙 伴</a></li>
+			<li><a href="#">立即入驻</a></li>
+			<li class="help"><a href="#">帮助中心</a></li>
+		</ul>
+		<div class="nav_r"></div>
+	</div>
+	
+	<div class="wrap breadcrumbs">
+		您的位置：
+		<a href="">品聚首页</a><span>&gt;</span>
+		店铺搜索
+	</div>
+	
+	<div class="wrap sp-search cf">
+		<div class="bar-left">
+			<div class="box">
+				<h2 class="bar-topic">店铺</h2>
+				<div class="ct">
+					<!-- filter form start -->
+					<form method="get" action="" name="filterForm">
+						<fieldset>
+							<ul class="fullwidth">
+								<li>
+									<label>关键字</label> <input type="text" size="10" id="filterKeywords" name="q" value="aa">
+								</li>
+								<li>
+									<label>类　目</label> <select id="filterCategorySelector" name="cat" gtbfieldid="13">
+											<option value="">所有类目</option>
+											<option value="">女装/女士精品</option>
+											<option value="">男装</option>
+											<option value="">女鞋</option>
+										</select>
+									<input type="hidden" name="catName" value="" id="filterCategoryName">
+									<input type="hidden" value="" id="filterCategoryParent" name="rootCat">
+								</li>
+							</ul>
+							<ul>
+								<li><input type="checkbox" id="filterActionShopName" name="title" value="title" checked=""><label for="filterActionShopName">店铺名</label></li>
+								<li><input type="checkbox" id="filterActionShopkeeper" name="nick" value="nick" checked=""><label for="filterActionShopkeeper">掌柜名</label></li>
+								<li><input type="checkbox" id="filterActionItemName" name="tag" value="tag" checked=""><label for="filterActionItemName">主营宝贝</label></li>
+							</ul>
+						</fieldset>
+						<fieldset>
+							<legend>消保类型</legend>
+							<ul>
+								<li><input type="checkbox" id="filterProtectionTruth" name="isprepay" value="1"><label for="filterProtectionTruth">如实描述</label></li>
+								<li><input type="checkbox" id="filterProtectionReturn" name="filterProtection1" value="4"><label for="filterProtectionReturn">7天退换</label></li>
+								<li><input type="checkbox" id="filterProtectionAuthentic" name="filterProtection2" value="2"><label for="filterProtectionAuthentic">假一赔三</label></li>
+								<li><input type="checkbox" id="filterProtectionQuality" name="isb" value="1"><label for="filterProtectionQuality">正品保障</label></li>
+								<li><input type="checkbox" id="filterProtectionGuarantee" name="filterProtection4" value="16"><label for="filterProtectionGuarantee">30天维修</label></li>
+								<li><input type="checkbox" id="filterProtectionThunder" name="filterProtection3" value="8"><label for="filterProtectionThunder">闪电发货</label></li>
+							</ul>
+						</fieldset>
+						<fieldset class="center">
+							<input class="btn" type="submit" value="确　定" />
+						</fieldset>
+					</form>
+					<!-- filter form end -->
+				</div>
+			</div>
+		</div>
+		<div class="contents">
+			<ul class="tabbar">
+				<li class="item"><a href="#">所有店铺</a></li>
+				<li class="pageitem">
+					<div class="pagination" id="Pagination">
+						<span>1/100</span>
+						<span class="prev" title="上一页"></span>
+						<a class="next" href="#" title="下一页"></a>
+					</div>
+				</li>
+            </ul>
+			
+			<ul class="shoplist-title cf">
+				<li class="mode">店铺信息</li>
+				<li class="amount">
+					<span>商品数量</span>
+				</li>
+				<li class="shopowner">
+					<span>卖家</span>
+				</li>
+				<li class="location">
+					<form action="" method="get" name="filterLocationForm">
+						<select name="loc" gtbfieldid="11">
+							<option selected="" value="">所在地</option>
+							<option value="北京">北京</option>
+							<option value="重庆">重庆</option>
+							<option value="other">其它</option>
+						</select>
+					</form>
+				</li>
+				<li class="order"><span>排序</span> <span id="ordercd">默认排序</span>
+					<ul id="ordercdlist">
+						<li class="pricelow">价格从低到高</li>
+						<li class="pricehigh">价格从高到低</li>
+						<li class="pricehigh">先确定下是否这样做，再继续搞样式。</li>
+					</ul>
+				</li>
+    		</ul>
+			
+			<ul class="shoplist-view cf">
+				<li class="item">
+					<div class="mode">
+						<div class="img">
+							<img src="media/shop-icon.jpg" width="70" height="70" alt="text" />
+						</div>
+						<dl>
+							<dt><a href="#" title="text">悄悄家居<strong>旗舰店</strong>：一年5皇冠，专业努力书写奇迹！</a></dt>
+							<dd>主营商品： <a href="#" title="text">包邮</a> <a href="#" title="text">打死打死</a> <a href="#" title="text">0123</a> <a href="#" title="text">0000</a> <a href="#" title="text">夏日星空</a></dd>
+							<dd>
+								<ul class="exinfo">
+									<li><span class="q_p"></span></li>
+									<li><span class="q_7"></span></li>
+									<li><span class="q_t">包邮</span></li>
+									<li><span class="q_t">上不封顶</span></li>
+									<li><span class="q_ts">精美挂件一份</span></li>
+								</ul>
+							</dd>
+						</dl>
+						
+					</div>
+					<div class="amount">
+						<span>21201</span>
+					</div>
+					<div class="shopowner">
+						<a href="#" title="text">第一八佰伴</a>
+					</div>
+					<div class="location">
+						<span>浙江金华</span>
+					</div>
+				</li>
+				<li class="item">
+					<div class="mode">
+						<div class="img">
+							<img src="media/shop-icon.jpg" width="70" height="70" alt="text" />
+						</div>
+						<dl>
+							<dt><a href="#" title="text">悄悄家居<strong>旗舰店</strong>：一年5皇冠，专业努力书写奇迹！</a></dt>
+							<dd>主营商品： <a href="#" title="text">包邮</a> <a href="#" title="text">打死打死</a> <a href="#" title="text">0123</a> <a href="#" title="text">0000</a> <a href="#" title="text">夏日星空</a></dd>
+							<dd>
+								<ul class="exinfo">
+									<li><span class="q_p"></span></li>
+									<li><span class="q_7"></span></li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="amount">
+						<span>6999</span>
+					</div>
+					<div class="shopowner">
+						<a href="#" title="text">杜月笙</a>
+					</div>
+					<div class="location">
+						<span>浙江金华</span>
+					</div>
+				</li>
+				<li class="item">
+					<div class="mode">
+						<div class="img">
+							<img src="media/shop-icon.jpg" width="70" height="70" alt="text" />
+						</div>
+						<dl>
+							<dt><a href="#" title="text">悄悄家居<strong>旗舰店</strong>：一年5皇冠，专业努力书写奇迹！</a></dt>
+							<dd>主营商品： <a href="#" title="text">包邮</a> <a href="#" title="text">打死打死</a> <a href="#" title="text">0123</a> <a href="#" title="text">0000</a> <a href="#" title="text">夏日星空</a></dd>
+							<dd>
+								<ul class="exinfo">
+									<li><span class="q_p"></span></li>
+									<li><span class="q_7"></span></li>
+									<li><span class="q_t">包邮</span></li>
+									<li><span class="q_t">上不封顶</span></li>
+								</ul>
+							</dd>
+						</dl>
+						
+					</div>
+					<div class="amount">
+						<span>21201</span>
+					</div>
+					<div class="shopowner">
+						<a href="#" title="text">第一八佰伴</a>
+					</div>
+					<div class="location">
+						<span>浙江金华</span>
+					</div>
+				</li>
+				<li class="item">
+					<div class="mode">
+						<div class="img">
+							<img src="media/shop-icon.jpg" width="70" height="70" alt="text" />
+						</div>
+						<dl>
+							<dt><a href="#" title="text">悄悄家居<strong>旗舰店</strong>：一年5皇冠，专业努力书写奇迹！</a></dt>
+							<dd>主营商品： <a href="#" title="text">包邮</a> <a href="#" title="text">打死打死</a> <a href="#" title="text">0123</a> <a href="#" title="text">0000</a> <a href="#" title="text">夏日星空</a></dd>
+							<dd>
+								<ul class="exinfo">
+									<li><span class="q_p"></span></li>
+									<li><span class="q_7"></span></li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="amount">
+						<span>6999</span>
+					</div>
+					<div class="shopowner">
+						<a href="#" title="text">杜月笙</a>
+					</div>
+					<div class="location">
+						<span>浙江金华</span>
+					</div>
+				</li>
+				<li class="item">
+					<div class="mode">
+						<div class="img">
+							<img src="media/shop-icon.jpg" width="70" height="70" alt="text" />
+						</div>
+						<dl>
+							<dt><a href="#" title="text">悄悄家居<strong>旗舰店</strong>：一年5皇冠，专业努力书写奇迹！</a></dt>
+							<dd>主营商品： <a href="#" title="text">包邮</a> <a href="#" title="text">打死打死</a> <a href="#" title="text">0123</a> <a href="#" title="text">0000</a> <a href="#" title="text">夏日星空</a></dd>
+							<dd>
+								<ul class="exinfo">
+									<li><span class="q_p"></span></li>
+									<li><span class="q_7"></span></li>
+									<li><span class="q_t">包邮</span></li>
+									<li><span class="q_ts">精美挂件一份</span></li>
+								</ul>
+							</dd>
+						</dl>
+						
+					</div>
+					<div class="amount">
+						<span>21201</span>
+					</div>
+					<div class="shopowner">
+						<a href="#" title="text">第一八佰伴</a>
+					</div>
+					<div class="location">
+						<span>浙江金华</span>
+					</div>
+				</li>
+    		</ul>
+			
+			<div class="pagination" id="Pagination">
+				<span>上一页</span>
+				<span class="current">1</span>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#" class="next"><span>下一页</span></a>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="footer_main">
+			<ul class="foot_nav">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">关于品聚</a></li>
+				<li><a href="#">加入我们</a></li>
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">用户协议</a></li>
+				<li><a href="#">新手帮助</a></li>
+			</ul>
+			<p class="copyright">上海御网信息技术有限公司  版权所有</p>
+			<p class="copyright"><span>媒体联系：PR@zba.com</span>丨  <span>商户加盟： business@zba.com</span>  丨<span>  聚伙伴加盟：jupartner@zba.com</span></p>
+		</div>
+	</div>
+<!--[if lt IE 9]><script src="http://static.pinju.com/js/html5.js"></script><![endif]-->
+<script type="text/javascript" src="http://static.pinju.com/js/jq.js"></script>
+<script type="text/javascript" src="http://static.pinju.com/js/jqui.js"></script>
+<script type="text/javascript">
+	/*
+	 * TODO: code here~
+	 */
+</script>    
+
+</body>
+</html>

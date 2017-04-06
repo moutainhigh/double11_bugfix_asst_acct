@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Demo</title>
+		<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+		<script src="http://static.pinju.com/image-preview/jquery.image-preview.js"></script>
+		<script>
+			$(function() {
+				$.imagePreview({
+					file : $('#file1'),
+					img : $('#img1'),
+					maxWidth : 100,
+					maxHeight : 100
+				});
+				$.imagePreview({
+					file : $('#file2'),
+					img : $('#img2'),
+					maxWidth : 100,
+					maxHeight : 100
+				});
+				$.imagePreview({
+					file : $('#file3'),
+					img : $('#img3'),
+					maxWidth : 100,
+					maxHeight : 100
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<p>
+			<img id="img1" src="" alt="" />
+			<input type="file" id="file1" value="" />
+		</p>
+		<p>
+			<img id="img2" src="" alt="" />
+			<input type="file" id="file2" value="" />
+		</p>
+		<p>
+			<img id="img3" src="" alt="" />
+			<input type="file" id="file3" value="" />
+		</p>
+	</body>
+</html>

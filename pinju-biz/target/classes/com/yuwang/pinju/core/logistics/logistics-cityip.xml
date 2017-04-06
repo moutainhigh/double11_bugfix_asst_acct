@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- 省份IP段 -->
+<sqlMap namespace="trade_logistics_city_ip">
+
+	<typeAlias alias="TradeLogisticsCityIp" type="com.yuwang.pinju.domain.logistics.LogisticsCityIpDO" />
+
+    <!-- all Result -->
+	<resultMap id="TradeLogisticsCityIpResult" class="TradeLogisticsCityIp">
+		<result property="id" column="ID" />
+		<result property="startIp" column="START_IP" />
+		<result property="endIp" column="END_IP" />
+		<result property="province" column="PROVINCE" />
+		<result property="city" column="CITY" />
+		<result property="isp" column="ISP" />
+		<result property="startIp1" column="START_IP1" />
+		<result property="endIp1" column="END_IP1" />
+	</resultMap>
+	
+	<!-- Province result -->
+	<resultMap id="TradeLogisticsCityIpProvince" class="TradeLogisticsCityIp">
+		<result property="province" column="PROVINCE" />
+	</resultMap>
+
+    <!-- select  trade_logistics_city_ip all-->
+	<sql id="selectAllTradeLogisticsCityIp"><![CDATA[SELECT ID,START_IP,END_IP,PROVINCE,CITY,ISP,START_IP1,END_IP1 FROM TRADE_LOGISTICS_CITY_IP]]></sql>
+	
+	<!-- select by condition -->
+	<select id="selectTradeLogisticsCityIpByIp" resultMap="TradeLogisticsCityIpProvince"  parameterClass="long">
+		<![CDATA[ SELECT DISTINCT PROVINCE FROM TRADE_LOGISTICS_CITY_IP WHERE START_IP <= #ip# AND END_IP >= #ip# ]]>
+	</select>
+	
+</sqlMap>
+

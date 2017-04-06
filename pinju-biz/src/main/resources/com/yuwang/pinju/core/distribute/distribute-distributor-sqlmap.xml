@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="distribute_distributor">
+
+	<typeAlias alias="DistributeDistributor" type="com.yuwang.pinju.domain.distribute.DistributeDistributorDO" />
+
+	<resultMap id="DistributeDistributorResult" class="DistributeDistributor">
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="nickName" column="NICKNAME" />
+		<result property="configuration" column="CONFIGURATION" />
+	</resultMap>
+
+	<sql id="selectAllDistributeDistributor"><![CDATA[SELECT ID,MEMBER_ID,CONFIGURATION,NICKNAME FROM DISTRIBUTE_DISTRIBUTOR]]></sql>
+
+	<select id="selectAllDistributeDistributor" resultMap="DistributeDistributorResult">
+		<include refid="selectAllDistributeDistributor" />
+	</select>
+
+	<select id="selectDistributeDistributorByid" resultMap="DistributeDistributorResult"  parameterClass="long">
+		<include refid="selectAllDistributeDistributor" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+	
+	<select id="selectDistributeDistributorByMemberId" resultMap="DistributeDistributorResult"  parameterClass="long">
+		<include refid="selectAllDistributeDistributor" />
+		<![CDATA[WHERE MEMBER_ID = #value#]]>
+	</select>
+
+	<select id="selectDistributeDistributor"  resultMap="DistributeDistributorResult" parameterClass="DistributeDistributor">
+		<include refid="selectAllDistributeDistributor" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id">
+				<![CDATA[ID = #id#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<insert id="insertDistributeDistributor" parameterClass="DistributeDistributor">
+		<![CDATA[INSERT INTO DISTRIBUTE_DISTRIBUTOR (MEMBER_ID,NICKNAME) VALUES (#memberId#,#nickName#)]]>
+	<selectKey resultClass="long" type="post" keyProperty="id">
+    	<![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+    </selectKey>
+	</insert>
+
+	<update id="updateDistributeDistributor" parameterClass="DistributeDistributor">
+		<![CDATA[UPDATE DISTRIBUTE_DISTRIBUTOR]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="configuration">
+				<![CDATA[CONFIGURATION = #configuration#]]>
+			</isNotEmpty>
+		</dynamic>
+
+	</update>
+
+	<update id="setShareDesign" parameterClass="DistributeDistributor">
+		<![CDATA[UPDATE DISTRIBUTE_DISTRIBUTOR SET CONFIGURATION = #configuration# WHERE ID = #id#]]>
+	</update>
+</sqlMap>
+

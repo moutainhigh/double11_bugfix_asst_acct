@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="imagesJson" namespace="/images" extends="json-default">
+		<action name="getImagesCategoryJsonActon" class="com.yuwang.pinju.web.module.images.action.ImageJsonActon" method="getImagesCategoryJsonString">
+			<result type="json">
+				<param name="root">jsonString</param>
+			</result>
+		</action>
+		
+		<action name="getStorageFileInfoJsonActon" class="com.yuwang.pinju.web.module.images.action.ImageJsonActon" method="getStorageFileInfoJsonString">
+			<result type="json">
+				<param name="root">jsonString</param>
+			</result>
+		</action>
+		<!-- 异步修改图片名称 -->
+  			<action name="updateStorageFileNameAction"
+			class="com.yuwang.pinju.web.module.images.action.StorageFileInfoAction"
+			method="updateStorageFileName">
+			 <result type="json">
+		  		 	<param name="root">result</param>
+		  	 </result>
+		    <result name="error" type="freemarker">/default/templates/screen/error/error.ftl</result>
+		</action>
+	</package>
+
+	<package name="images" namespace="/images" extends="pinju-auth">
+		<!--图片分类-->
+		<action name="imagesCategoryAction"
+			class="com.yuwang.pinju.web.module.images.action.ImagesCategoryAction"
+			method="toImageCategory">
+			<result name="success" type="freemarker">/default/templates/screen/images/imagesCategory.ftl</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopImages</result>
+			<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shopImages</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopImages</result>
+		</action>
+		<action name="updateImageCateGoryAction"
+			class="com.yuwang.pinju.web.module.images.action.ImagesCategoryAction"
+			method="updateImagesCategory">
+			<result name="success" type="freemarker">/default/templates/screen/images/imagesCategory.ftl
+			</result>
+		</action>
+		<action name="queryStorageAction"
+			class="com.yuwang.pinju.web.module.images.action.StorageFileInfoAction"
+			method="queryStorageFileList">
+			<result name="success" type="freemarker">/default/templates/screen/images/storageFileList.ftl</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopImages</result>
+			<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shopImages</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopImages</result>
+		</action>
+		<action name="queryStorageByCateorgIdAction"
+			class="com.yuwang.pinju.web.module.images.action.StorageFileInfoAction"
+			method="queryStorageByCateorgId">
+			<result name="success" type="freemarker">/default/templates/screen/images/storageFileList.ftl</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopImages</result>
+			<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shopImages</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopImages</result>
+		</action>
+		<action name="queryStorageFileInfoAction"
+			class="com.yuwang.pinju.web.module.images.action.StorageFileInfoAction"
+			method="queryStorageFileInfo">
+			<result name="success" type="freemarker">/default/templates/screen/images/storageFileDetail.ftl</result>
+			<result name="error" type="freemarker">/default/templates/screen/images/storageFileList.ftl</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopImages</result>
+			<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shopImages</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopImages</result>
+		</action>
+		
+		<action name="deleteStorageFileInfoAction" class="com.yuwang.pinju.web.module.images.action.StorageFileInfoAction" method="deleteStorageFileInfo">
+		    <result name="success" type="redirect">queryStorageAction.htm</result>
+		    <result name="error" type="freemarker">/default/templates/screen/images/storageFileDetail.ftl</result>
+		</action>
+		<action name="imagesUpLoadAction"
+			class="com.yuwang.pinju.web.module.images.action.ImagesUpLoadAction">
+			<result name="success" type="freemarker">/default/templates/screen/images/imagesUpload.ftl</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopImages</result>
+			<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shopImages</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopImages</result>
+			<result name="json" type="freemarker">/default/templates/screen/images/json.ftl</result>
+			<!-- result name="json" type="json">
+				<param name="root">errorMessage</param>
+			</result> -->
+		</action>
+		<action name="viewImagesUpLoadAction"
+			class="com.yuwang.pinju.web.module.images.action.ImagesUpLoadAction"
+			method="view">
+			<result name="success" type="freemarker">/default/templates/screen/images/imagesUpload.ftl</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopImages</result>
+			<result name="NOT_EXIST" type="redirect">/shopMessage/shopNotExist.htm?red_shop=red_shopImages</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopImages</result>
+		</action>
+		<action name="removeFileInfoAction" class="com.yuwang.pinju.web.module.images.action.StorageFileInfoAction" method="removeStorageFile">
+		    <result name="success" type="redirect">queryStorageAction.htm</result>
+		    <result name="error" type="freemarker">/default/templates/screen/images/storageFileDetail.ftl</result>
+		</action>
+	</package>
+</struts>

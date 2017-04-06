@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="asst" namespace="/asst" extends="pinju-auth">
+    <action name="asst-relation-list" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/asst/member_asst_relation_list.ftl</result>
+    </action>
+
+    <action name="asst-role-list" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstRoleAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/asst/member_asst_role_list.ftl</result>
+    </action>
+
+    <action name="go-asst-role" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstRoleAction" method="asstRole">
+      <result name="success" type="freemarker">/default/templates/screen/asst/asst_role.ftl</result>
+    </action>
+
+    <action name="go-eidt-asst-role" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstRoleAction" method="eidtRoleView">
+      <result name="success" type="freemarker">/default/templates/screen/asst/eidt_asst_role.ftl</result>
+      <result name="input" type="chain">
+         <param name="actionName">asst-role-list</param>
+         <param name="namespace">/asst</param>
+      </result>
+    </action>
+
+    <action name="eidt-asst-role" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstRoleAction" method="eidtRole">
+       <result name="success" type="chain">
+         <param name="actionName">asst-role-list</param>
+         <param name="namespace">/asst</param>
+       </result>
+       <result name="input" type="freemarker">/default/templates/screen/asst/asst_role.ftl</result>
+    </action>
+
+    <action name="add-asst-role" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstRoleAction" method="addAsstRole">
+      <result name="success" type="chain">
+         <param name="actionName">asst-role-list</param>
+         <param name="namespace">/asst</param>
+      </result>
+      <result name="input" type="freemarker">/default/templates/screen/asst/asst_role.ftl</result>
+    </action>
+    
+    <action name="go-asst-relation" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstManagerAction" method="execute">
+       <result name="success" type="freemarker">/default/templates/screen/asst/asst_relation.ftl</result>
+    </action>
+    
+     <action name="add-asst-relation" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstManagerAction" method="asstRegister">
+       <result name="input" type="freemarker">/default/templates/screen/asst/asst_relation.ftl</result>
+       <result name="success" type="chain">
+           <param name="actionName">asst-relation-list</param>
+           <param name="namespace">/asst</param>
+       </result>
+    </action>
+    
+    <action name="go-edit-asst-relation" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstManagerAction" method="findMemberAsst">
+       <result name="success" type="freemarker">/default/templates/screen/asst/edit_asst_relation.ftl</result>
+       <result name="input" type="chain">
+          <param name="actionName">asst-relation-list</param>
+          <param name="namespace">/asst</param>
+       </result>
+    </action>
+    
+    <action name="edit-asst-relation" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstAction" method="editMemberAsst">
+       <result name="success" type="chain">
+           <param name="actionName">asst-relation-list</param>
+           <param name="namespace">/asst</param>
+       </result>
+       <result name="input" type="freemarker">/default/templates/screen/asst/edit_asst_relation.ftl</result>
+    </action>
+    
+    <action name="find-oper-log" class="com.yuwang.pinju.web.module.member.screen.asst.MemberAsstOperLogAction" method="execute">
+       <result name="input" type="chain">
+          <param name="actionName">asst-relation-list</param>
+          <param name="namespace">/asst</param>
+       </result>
+       <result name="success" type="freemarker">/default/templates/screen/asst/asst_relation_log.ftl</result>
+    </action>
+  </package>
+</struts>

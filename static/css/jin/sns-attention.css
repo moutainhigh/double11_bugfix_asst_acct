@@ -1,0 +1,181 @@
+﻿
+/************************************************************************************************************/
+/************************************************************************************************************/
+
+
+/*************************************我的关注***********************************************************************/
+
+					
+/**********右栏-左*************/
+.right_850px .left_610px .left_610px_content { float:left;width:588px;padding:20px 10px 10px 10px; border-left:1px solid #dadada;border-right:1px solid #dadada; background:#f5f5f5;}
+
+/****标签*****/
+	    .publish_lablebox{ float:left; width:588px;background:url(http://static.pinju.com/base-images/bg_hui.gif) repeat-x bottom;}
+		 .publish_lablebox a { color:#000; text-decoration:none;}
+		  .publish_lablebox a:hover { color:#000; font-weight:bold; text-decoration:none;}
+		  
+		.publish_lable01{float:left;height:20px; text-align:center;  background:#FFF;padding:5px 15px 1px;border-top: 1px solid #dadada;border-left: 1px solid #dadada;border-right: 1px solid #dadada; }							
+		.publish_lable02{float:left;height:20px; text-align:center;padding:5px 15px 1px;}
+		.publish_lable_space { float:left; width:10px; height:26px;}						
+		.publish_inputbox{ width:588px;}
+		
+		
+		
+	
+/****发布-输入框*****/
+	.right_850px .left_610px .left_610px_content .publish_inputbox {float:left; width:566px; padding:10px 10px; border-left:1px solid #dadada;border-right: 1px solid #dadada; background:#FFF;}
+	  .right_850px .left_610px .left_610px_content .publish_inputbox_style { float:left;width:562px; height:94px; overflow:hidden; border:1px solid #7f9db9;}
+	  
+/****发布-按钮一栏*****/	
+	.right_850px .left_610px .left_610px_content .publish_buttonbox {float:left; margin-bottom:10px; width:566px;padding:5px 10px;border-left:1px solid #dadada;border-right: 1px solid #dadada;border-bottom: 1px solid #dadada;background:#FFF; overflow:hidden;}
+		.publish_buttonbox ul{width: 400px;padding:0 0;}
+		.publish_buttonbox li{ float:left; padding-right:5px;}
+		.publish_buttonbox .publish_button { float:right;width:69px; height:23px;  no-repeat; color:#FFF; font-size:14px; font-weight:bold; border:0; cursor:pointer;display:inline;}
+		
+/****用户动态behavior*****/
+	.right_850px .left_610px .left_610px_content .behavior_mainbox	{ float:left; width:588px; padding:10px 0px;}
+	/****用户动态标签*****/
+	    .behavior_lablebox{ float:left; width:588px;background:url(http://static.pinju.com/base-images/lable_box_bg_01.gif) repeat-x bottom;}
+		.behavior_lablebox a:hover { font-weight:bold; text-decoration:none;}
+		
+		.behavior_lablebox_none{ float:left; width:588px;}
+		
+		.behavior_lable01{float:left;height:20px; text-align:center; padding:5px 15px 1px;border-top: 1px solid #c1c1c1;border-left: 1px solid #c1c1c1;border-right: 1px solid #c1c1c1; background:#f5f5f5;}						
+		.behavior_lable02{float:left;height:20px; text-align:center;padding:5px 15px 1px;}
+		.behavior_lable03{float:left;height:20px; text-align:center;padding:5px 15px 1px; background:url(http://static.pinju.com/base-images/list_style_01.gif) left no-repeat;}
+			.behavior_lablebox ul { padding:0;}
+			.behavior_lablebox li { float:left;list-style:url(http://static.pinju.com/base-images/list_style_01.gif); pannding-left:10px;}		
+		
+		.head_image { float:left;width:60px; height:60px; padding:4px; background: url(http://static.pinju.com/base-images/head_pic_box.gif) no-repeat;}
+		.head_image .head_image_container {width:60px; height:60px; position:relative;}
+		
+		
+		
+		
+
+
+/**********右栏-右*************/
+.right_850px .right_240px .right_240px_content{ float:left;width:230px; padding:20px 0 0 10px;}
+
+		.right_240px_content .right_head_box { float:left; width:230px;}
+			.right_240px_content .right_head_pic_box {float:left; width:60px; margin-bottom:5px;}
+			.right_240px_content .right_head_pic_blank { text-align:center; }
+				.right_head_pic_blank a { text-decoration:none}
+				.right_head_pic_blank a:hover { text-decoration:underline}			
+		    .right_240px_content .right_head_infor_box {float:left; width:160; margin-left:20px; padding:10px 0;}
+				.right_head_infor_box ul { padding:0;}
+				.right_head_infor_box li { padding:5px 0;}
+		
+		.right_240px_content .right_yellow_box { float:left; width:226px; background:#ffffe9; border:2px solid #f9dfb2; margin-top:10px;}
+			.right_240px_content .right_yellow_box a { color:#666;}
+			.right_240px_content .right_yellow_box a:hover { color: #39F;}
+			.right_yellow_box .right_yellow_dashed_box {float:left;width:196px; border-bottom:1px dashed #f9dfb2;padding:10px 15px;}
+			.right_yellow_box .right_yellow_nodashed_box {float:left;width:196px;padding:10px 15px;}
+			
+		.right_240px_content .right_someone_box { float:left;width:230px; display:none;}
+			.right_someone_box_title { float:left;width:230px; border-bottom:1px solid #dadada; padding:10px 0 5px 0; margin:10px 0 10px 0; font-weight:bold; }
+			.right_someone_pic_mainbox {float:left;width:62px; margin:7px; display:inline;}
+				.right_someone_pic {float:left; width:60px; height:60px; padding:1px; background:url(http://static.pinju.com/base-images/someone.jpg) no-repeat;}
+				.right_someone_text {float:left;text-align:center; width:62px; margin-top:5px;}
+				
+			
+
+/*--------------0720更新--------------*/
+
+
+
+/*-------------白色对话框---------------*/
+.massagebox_white_mainbox {width:508px;border:1px solid #dadada;  background:#FFF;}
+.massagebox_white_dadi {position:relative;width:490px; padding:10px;right:0;top:0;}
+.massagebox_white_dadi .massagebox_white_son01{width:0px; height:0px; font-size:0; overflow:hidden; position:absolute;	border-width:8px;border-style:dashed solid dashed dashed;border-color:transparent #dadada transparent transparent;left:-16px;top:10px; z-index:1;position:absolute;}
+
+.massagebox_white_dadi .massagebox_white_son02{width:0px; height:0px; font-size:0; overflow:hidden; position:absolute;border-width:8px;border-style: dashed solid dashed dashed;border-color:transparent #ffffff transparent transparent;left:-15px;top:10px;z-index:2;position:absolute;} 
+/*↑↑↑白盒子↑↑↑*/
+
+.massagebox_gray_mainbox { float:right; width:508px; border:1px solid #dadada; background:#f0f0f0;}
+.massagebox_gray_dadi {position:relative;width:490px; padding:10px;right:0;top:0;}
+.massagebox_gray_dadi .massagebox_gray_son01{width:0px; height:0px; font-size:0; overflow:hidden; position:absolute;	border-width:8px;border-style:dashed solid dashed dashed;border-color:transparent #dadada transparent transparent;left:-16px;top:10px; z-index:1; position:absolute;}
+.massagebox_gray_dadi .massagebox_gray_son02{width:0px; height:0px; font-size:0; overflow:hidden; position:absolute;border-width:8px;border-style: dashed solid dashed dashed;border-color:transparent #f0f0f0 transparent transparent;left:-15px;top:10px;z-index:2;position:absolute;} 
+.massagebox_gray_dadi .massagebox_gray_son03{ width:32px; height:32px; padding:1px;font-size:12px; font-weight:bold; color: #999; overflow:hidden;right:2px;top:1px;z-index:3;position:absolute;filter:Alpha(Opacity="85");} 
+.massagebox_gray_dadi .massagebox_gray_son03 a{ color:#F00; text-decoration:none;}
+.massagebox_gray_dadi .massagebox_gray_son03 a:hover{ color:#F00; text-decoration:none;}
+/*↑↑↑灰盒子↑↑↑*/
+.letterbox_main { float:left;width:588px; padding:10px 0; color:#666}
+
+
+.letterbox_main ul{ padding:0;}
+.letterbox_main li{ padding:5px 0; display:inline-block;}
+
+.letterbox_gray { float:left;width:568px; padding:10px;border-bottom:1px dashed #dadada; background:#CCC;}
+.letterbox_none { float:left;width:568px; padding:10px;}
+.letterbox_white {float:left;width:568px; padding:10px;border-bottom:1px dashed #dadada; background:#FFF;}
+
+.letterbox_person { float:left;width:50px; padding:10px 0; text-align:left; vertical-align:top;}
+.letterbox_person a { color:#39F; font-weight:bold;text-decoration:none}
+.letterbox_person a:hover { color:#39F; font-weight:bold;text-decoration:none}
+
+.letterbox_text { float:left; width:498px; padding:10px; position:relative;}
+.letterbox_text a { color: #F00; font-weight:bold;text-decoration:none}
+.letterbox_text a:hover { color: #F00; font-weight:bold;text-decoration:none}
+
+.letter_delete { width:32px; height:32px; padding:1px; font-size:16px; font-weight:bold;overflow:hidden;right:-10px;top:-10px;z-index:3;position:absolute;filter:Alpha(Opacity="85"); } 
+
+/*↑↑↑私信的套套↑↑↑*/
+
+.massagebox_white_title { float:left;width:480px; line-height:25px; display: inline-block;color:#999; padding:0 5px;}
+.massagebox_white_massage {float:left;width:480px; line-height:20px;display: inline-block;color: #666; padding:0 5px;}
+.massagebox_white_boxxx01 {float:left;width:480px; padding:0 5px; line-height:25px;display: inline-block; }
+.massagebox_white_boxxx02 {float:left;width:480px;display: inline-block; margin:10px 0;}
+
+.massagebox_white_boxxx03 {float:left;width:480px;display: inline-block; margin:0 0 10px 0;color: #666; padding:0 5px;}
+	.boxxx03_minibox  { float:left; padding:0 10px 0 0;}
+	
+.massagebox_white_boxxx04 {float:left; width:480px; display:inline-block; padding:0 5px;}	
+	.boxxx04_textbox { width:480px; padding:10px 0;}
+	.massagebox_white_boxxx04 ul{ padding:0;}
+	.massagebox_white_boxxx04 li { padding:5px; width:470px;border-bottom:1px #dadada dashed; display:inline-block; line-height:20px;color: #666;}
+	.massagebox_white_boxxx04 li.gray_area { width:470px;display:inline-block;background:#fafafa; display:inline-block;}
+	.massagebox_white_boxxx04 li.gray_area .boxxx04_left { float:left; width:400px;display:inline-block;}
+	.massagebox_white_boxxx04 li.gray_area .boxxx04_right { float:right; width:55x; text-align:center; display:inline-block; padding-left:2px;}
+	.massagebox_white_boxxx04 li.stylenone { border:0;}
+	
+.massagebox_white_boxxx05 {float:left; width:480px; display:inline-block; padding:0 5px 10px 5px;}	
+	.boxxx05_triangle_box {float:left; width:480px;display:inline-block;}
+		.boxxx05_triangle {float:left; width:0px; height:0px; font-size:0; overflow:hidden;border-width:8px;border-style:  dashed dashed solid dashed;border-color: transparent  transparent #eef3f7 transparent; margin-left:30px;}
+	.boxxx05_triangle_text{float:left; width:460px; padding:0 10px;background:#eef3f7; display:inline-block;}
+		.boxxx05_triangle_text_title{width:460px;color:#999; padding:10px 0;display:inline-block;}
+		.boxxx05_triangle_text_body{ width:460px;color: #666; padding-bottom:10px;display:inline-block;}
+		.boxxx05_triangle_text_bottom{ width:460px; padding-bottom:10px;display:inline-block;}
+.massagebox_white_boxxx05 a{ text-decoration:none;color: #999;}
+.massagebox_white_boxxx05 a:hover{color: #999;}
+
+/*************************************我的问答***********************************************************************/
+/*------------sns-我的问答（待回答问题）（from2011-7-11）----------------*/
+.right_850px .right_850px_border1px { float:left;width:828px; border-right:1px solid #dadada;border-left:1px solid #dadada;border-bottom:1px solid #dadada; padding:10px;} 
+
+.right_850px  .content_box_830px { float:left; width:830px; overflow:hidden;}
+		.content_box_830px table td { padding:10px;table-layout:fixed; border:0px; vertical-align:middle; text-align:center;}
+		.content_box_830px table tr { border-bottom:1px dashed #dadada; }
+		.table_tr_style01 {background:url(http://static.pinju.com/lable_box_bg_01.gif) bottom repeat-x; font-weight:bold;}
+		
+		.table_goods_box { float:none; width:60px; height:60px;padding:3px; border:1px solid #dadada; width:60px; }
+		.table_goods_box .table_goods_box_container { position:relative;width:60px; height:60px;}
+		.table_goods_box .table_goods_box_container .flip_goods_infor01 { position:absolute;padding:5px; border:2px solid #dadada; width:248px; left:-5px; top:-5px; background:#FFF; }
+						.table_goods_box .table_goods_box_container  .flip_goods_infor01 .flip_goods_infor01_left { float:left; padding:3px; border:1px solid #dadada; width:60px;}
+						.table_goods_box .table_goods_box_container  .flip_goods_infor01 .flip_goods_infor01_right { float:right; padding:0 0 0 6px; width:160px; text-align:left;}
+	
+
+/************************************************************************************************************/
+
+/************************************************************************************************************/
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/
+
+/*----------------------------*/

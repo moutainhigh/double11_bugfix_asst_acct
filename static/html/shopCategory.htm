@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>店铺分类管理</title>
+<meta name="keywords" content="网上购物,网络购物平台,服装,配件,鞋,珠宝,饰品,数码,电器,家居,食品,保健,配件,玩乐,文化,最低价,爆品,排名,品聚网" />
+<meta name="description" content="盛大品聚网,真品汇聚的网上购物商城,产品包括男装、女装、数码、家电、家居、食品、化妆品等数万种商品,上千家名品店,同时提供全面的安全交易保障服务,让你在品聚商城安心享受网上购物乐趣!" />
+<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="http://static.pinju.com/css/pj_base.css" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+
+</head>
+
+<body>
+<!-- top nav  -->
+<link rel="stylesheet" href="http://static.pinju.com/css/cart.css" type="text/css" media="screen" />
+
+<div class="top_bar cf">
+  <div class="top_bar_box cf">
+    topbar
+    
+  </div>
+</div>
+
+<!-- logo -->
+<div class="header cf">
+	<div class="masthead cf">
+		header
+	</div>
+</div>
+
+<!-- nav -->
+<div class="wrapfull navfull_1018">
+	<div class="pj_nav">
+		nav
+	</div>
+</div>
+<!-- 城市分站弹出层 -->
+<div id="chooseLocal" class="citylist" style="display:none;">
+	<div class="text">
+		<p>欢迎您访问城市分站，推荐给您的城市是<span name="defaultCity">上海</span>，请进入 <a id="defaultUrl" href="http://www.pinju.com/"><span name="defaultCity">上海</span>分站</a> >></p>
+	</div>
+	<div class="list">
+		<ul id="cityUL">
+		</ul>
+	</div>
+</div>
+
+<div class="wrap cf">
+<div class="wrap-border cf">
+  <div class="bar-left">
+    <!-- left -->
+    <ul class="bar-list">
+      <!--商品管理-->
+<h3>商品管理</h3>
+<li name = "category_List"><a href="/itemReleased/categoryList.htm">发布商品</a></li>
+<li name = "sell_item"><a href="/item/itemList.htm?itemQuery.type=0">出售中的商品</a></li>
+<li name = "storage_item"><a href="/item/itemList.htm?itemQuery.type=2">仓库中的商品</a></li>
+      <!--交易管理-->
+<h3>交易管理</h3>
+<li name="logistics-tool"><a href="/logistics/listTemplate.htm">物流工具</a></li>
+<li name="Orderbuy-tool"><a href="/orderSeller/ordermanagesell.htm">已卖出的商品</a></li>
+      <!--店铺管理-->
+      <h3>店铺管理</h3>
+     
+     <li name="red_shopOpen"><a href="/shop/showShopOpenAction.htm">我要开店</a></li>
+     <li name="red_shop"><a href="/shopDecoration/viewShop.htm" target="_blank">查看我的店铺</a></li>
+     <li name="red_shopImages"><a href="/images/queryStorageAction.htm" target="_blank">图片空间</a></li>
+     <li name="red_shopDecoration"><a href="/shopDecoration/shopDecorationAction.htm" target="_blank">店铺装修</a></li>
+     <li name="red_shopCategory"><a href="/shop/shopCategory.htm">店铺分类管理</a></li>
+     <li name="red_shopInfo"><a id="shopBaseInfoId" href="/shop/showShopInfo.htm">店铺基本设置</a></li>
+     <li name="red_shopDomain"><a href="/shopDomain/showDomainSettingPageAction.htm">域名设置</a></li>
+      <!--分销管理-->
+     <h3>云营销</h3>
+     <li id="welcome"><a href="/supplier/applySupplier.htm">申请成为供应商</a></li>
+     <li id="itemManagerSupplier"><a href="/supplier/getAllItem.htm">分销商品管理</a></li>
+     <li id="distributorManager"><a href="/supplier/getApplier.htm">我的分销商</a></li>
+     <li id="releaseSupplier"><a href="/supplier/getRelease.htm">发布招募</a></li>
+     <li id="orderManager"><a href="/supplier/getOrders.htm?type=1">分销订单</a></li>
+       <!--积分管理-->
+      <h3>积分管理</h3>
+     <li  name="red_sellpoints"><a href="/points/showAccountInfo.htm">我的积分</a></li>      <!--退款维权-->
+      <h3>退款维权</h3>
+     <li name="seller-refund-management"><a href="/refund/sellerRefundList.htm">退款管理</a></li>
+     <li name="sellerRightsList"><a href="/rights/sellerRightsList.htm">维权管理</a></li>
+     <!--<li><a href="/rights/rightsList.htm">维权管理</a></li>-->
+      <!-- 保证金管理 -->
+ <h3>保证金管理</h3>
+ <li name="mymargin">
+    <a href="/margin/mymargin.htm">我的保证金</a>
+ </li>
+      <!--营销中心-->
+<h3>营销中心</h3>
+<li name="list-active"><a href="/active/listActive.htm">活动管理</a></li>
+<li name="promotion-manager"><a href="/active/promotionManager.htm">促销管理</a></li>
+<li name="simpleReport-manager"><a href="/sellReport/simpleReport.htm">销售报表</a></li>
+
+     </ul>
+  </div>
+
+  <div class="contents">
+    <!-- right -->
+    
+<link href="http://static.pinju.com/css/sell.css" rel="stylesheet" />
+<link href="http://static.pinju.com/css/open.css" rel="stylesheet" type="text/css" media="screen" />
+    <div class="shop-set">  
+    	<h3><strong>店铺分类管理</strong></h3>
+        <ul class="tab-main">
+        	<li class="count"><a href="javascript:void(0);">编辑分类</a></li>
+        	<li><a href="/shop/itemCategorize.htm">商品归类</a></li>
+        </ul>
+		<div class="tips-pop hide"><p>保存成功！</p></div>
+  
+  <form style="margin:0;padding:0;" method="post" action="insertShopCategory.htm" name="CatelogEditor" id="CatelogEditor" onsubmit="return saveCatelog();">
+     <input type="hidden" value="red_shopCategory" id="my-page" />
+     <table width="100%" cellspacing="0" cellpadding="0" border="0" class="bbfl">
+       <tbody><tr class="bbfl-hd">
+         <td>分类名称</td>
+         <td>添加子分类</td>
+         <td>展开子分类</td>
+         <td>上移</td>
+         <td>下移</td>
+         <td>删除</td>
+       </tr>
+     <input  type="hidden" name="sequenceId" value="10415"/>
+	     <!--展现开始-->
+				<tr class="catelog-row prt-catelog">
+					<td><input name="" type="text" value="就就" size="26" class="catelog-name" id="27981" /></td>
+					<td class="bbfl-sub"><a href="#" class="add-child-catelog">添加子分类</a></td>
+					<td class="bbfl-open"><input type="checkbox" value="" checked="checked" class="catelog-expanded" /></td>
+					<td class="bbfl-up"><a href="#" class="mu-prt-catelog"></a></td>
+					<td class="bbfl-down"><a href="#" class="md-prt-catelog"></a></td>
+					<td class="bbfl-delete"><a href="#" class="del-prt-catelog"></a></td>
+					<td>&nbsp;</td>
+				</tr>
+						 
+					<tr class="catelog-row chi-catelog">
+						<td align="right" class="blff-zi"><i></i><input type="text" value="商品分类2-1" size="20" class="catelog-name" id="27982" /></td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td class="bbfl-up"><a href="#" class="mu-chi-catelog"></a></td>
+						<td class="bbfl-down"><a href="#" class="md-chi-catelog"></a></td>
+						<td class="bbfl-delete"><a href="#" class="del-chi-catelog"></a></td>
+					</tr>
+				<tr class="catelog-row prt-catelog">
+					<td><input name="" type="text" value="dfsadf" size="26" class="catelog-name" id="32173" /></td>
+					<td class="bbfl-sub"><a href="#" class="add-child-catelog">添加子分类</a></td>
+					<td class="bbfl-open"><input type="checkbox" value="" checked="checked" class="catelog-expanded" /></td>
+					<td class="bbfl-up"><a href="#" class="mu-prt-catelog"></a></td>
+					<td class="bbfl-down"><a href="#" class="md-prt-catelog"></a></td>
+					<td class="bbfl-delete"><a href="#" class="del-prt-catelog"></a></td>
+					<td>&nbsp;</td>
+				</tr>
+						 
+	  <!--展现结束-->
+       
+       <tr class="bbfl-botomm" id="CatelogEditorBottom">
+         <td colspan="9"><input type="button" value="添加新分类" id="AddParentCatelog"></td>
+        </tr>
+     </tbody></table>
+	<input id="SaveAll" type="submit" value="保存" />
+  </div>
+<input type="hidden" value="" name="firstCategory" id="FirstCategory" />
+<input type="hidden" value="" name="categoryList" id="CategoryList" />
+</form>
+
+
+<textarea id="ParentCatelogTpl" style="display:none;">
+<tr class="catelog-row prt-catelog">
+	<td><input name="" type="text" value="" size="26" class="catelog-name" id="0"/></td>
+	<td class="bbfl-sub"><a href="#" class="add-child-catelog">添加子分类</a></td>
+	<td class="bbfl-open"><input type="checkbox" value="" checked="checked" class="catelog-expanded" /></td>
+	<td class="bbfl-up"><a href="#" class="mu-prt-catelog"></a></td>
+	<td class="bbfl-down"><a href="#" class="md-prt-catelog"></a></td>
+	<td class="bbfl-delete"><a href="#" class="del-prt-catelog"></a></td>
+	<td>&nbsp;</td>
+</tr>
+</textarea>
+<textarea id="ChildCatelogTpl" style="display:none;">
+<tr class="catelog-row chi-catelog">
+	<td align="right" class="blff-zi"><i></i><input type="text" value="" size="20" class="catelog-name" id="0"/></td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td class="bbfl-up"><a href="#" class="mu-chi-catelog"></a></td>
+	<td class="bbfl-down"><a href="#" class="md-chi-catelog"></a></td>
+	<td class="bbfl-delete"><a href="#" class="del-chi-catelog"></a></td>
+</tr>
+</textarea>
+
+  </div>
+</div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		<ul class="foot_nav">
+			<li><a target="_blank" title="首页" href="http://www.pinju.com/">首页</a></li>
+			<li><a href="http://news.pinju.com/cms/html/join_in/" target="_blank" title="盛大招商">盛大招商</a></li>
+			<li><a target="_blank" title="关于品聚" href="http://www.pinju.com/cms/html/about/">关于品聚</a></li>
+			<li><a href="http://jhb.pinju.com" title="聚伙伴" target="_blank">聚伙伴</a></li>
+			<li><a target="_blank" title="品聚品质保障服务" href="http://service.pinju.com/cms/html/quality/">品聚品质保障服务</a></li>
+			<li><a target="_blank" title="新手帮助" href="http://service.pinju.com/">新手帮助</a></li>
+			<li><a target="_blank" title="联系我们" href="http://www.pinju.com/cms/html/about/contact/">联系我们</a></li>
+			<li><a target="_blank" title="品聚招聘" href="http://job.pinju.com/">品聚招聘</a></li>
+			<li><a target="_blank" title="品聚招聘" href="http://www.pinju.com/cms/html/friendslink/">友情链接</a></li>
+		</ul>
+		<p class="copyright"><span>客服邮箱：<a target="_blank" title="客服邮箱" href="mailto:kf@pinju.com">kf@pinju.com</a></span> | <span>客服电话：4008-211-588</span>丨 <span>服务时间: 每天9:00-21:00</span></p>
+		<p class="copyright">上海御网信息技术有限公司  版权所有&nbsp;&nbsp;&nbsp;&nbsp;沪ICP备11032558号 </p>
+		<p class="copyright">
+			<span>媒体联系：media@pinju.com</span>丨 <span>商户加盟： business@pinju.com</span>丨 <span>聚伙伴加盟：jhb@pinju.com</span> | <span>城市分站加盟：yinlijun@pinju.com</span></p>
+			    <span class="test">as1.s77.pinju.cc</span>
+	</div>
+</div>
+
+<script>
+$(function() {
+ 		$(".tips-pop").removeClass('hide');
+		setTimeout(function(){
+			$(".tips-pop").fadeOut('slow');
+		}, 1000);
+		
+ 	});
+</script>
+
+</body>
+</html>

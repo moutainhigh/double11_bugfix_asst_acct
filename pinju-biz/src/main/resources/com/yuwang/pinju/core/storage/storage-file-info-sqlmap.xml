@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="storage_file_info">
+
+	<typeAlias alias="StorageFileInfo" type="com.yuwang.pinju.domain.storage.FileInfoDO" />
+
+	<resultMap id="StorageFileInfoResult" class="StorageFileInfo">
+		<result property="id" column="ID" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="name" column="NAME" />
+		<result property="path" column="PATH" />
+		<result property="type" column="TYPE" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="gmtCreate" column="GMT_CREATE" javaType="java.util.Date" />
+		<result property="gmtModified" column="GMT_MODIFIED" javaType="java.util.Date" />
+		<result property="size" column="SIZE"/>
+	</resultMap>
+
+	<sql id="selectAllStorageFileInfo"><![CDATA[SELECT ID,MEMBER_ID,NAME,PATH,TYPE,MEMBER_NAME,GMT_CREATE,GMT_MODIFIED,SIZE FROM STORAGE_FILE_INFO]]></sql>
+
+	<select id="selectAllStorageFileInfo" resultMap="StorageFileInfoResult">
+		<include refid="selectAllStorageFileInfo" />
+	</select>
+	
+	<select id="getFileInfoByMemberId" resultMap="StorageFileInfoResult" parameterClass="long">
+		<include refid="selectAllStorageFileInfo" /> WHERE MEMBER_ID = #memberId#
+	</select>
+
+	<insert id="insertStorageFileInfo" parameterClass="StorageFileInfo">
+		<![CDATA[INSERT INTO STORAGE_FILE_INFO (ID,MEMBER_ID,NAME,TYPE,PATH,MEMBER_NAME,GMT_CREATE,GMT_MODIFIED,SIZE)
+		 VALUES (#id#,#memberId#,#name#,#type#,#path#,#memberName#,#gmtCreate#,#gmtModified#,#size#)]]>
+	</insert>
+
+</sqlMap>

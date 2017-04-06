@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Demo</title>
+		<style>
+			.banner {
+				zoom: 1;
+			}
+			.banner:after {
+				content: '\20';
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			.banner .left {
+				float: left;
+			}
+			.banner .right {
+				float: left;
+			}
+			.banner img {
+				display: block;
+				border: 0;
+			}
+			.text div {
+				border: 1px solid #333;
+				width: 500px;
+				height: 100px;
+				margin: 5px;
+			}
+		</style>
+		<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+		<script src="http://static.pinju.com/highlight/jquery.highlight.js"></script>
+		<script>
+			$(function() {
+				$('div.banner img').highlight();
+				$('div.text div').highlight();
+			});
+		</script>
+	</head>
+	<body>
+		<h3>img</h3>
+		<div class="banner">
+			<div class="left">
+				<a href="#"><img src="http://static.pinju.com/highlight/images/0.jpg" width="560" height="420" /></a>
+			</div>
+			<div class="right">
+				<a href="#"><img src="http://static.pinju.com/highlight/images/1-220-140.jpg" width="220" height="140" /></a>
+				<a href="#"><img src="http://static.pinju.com/highlight/images/2-220-140.jpg" width="220" height="140" /></a>
+				<a href="#"><img src="http://static.pinju.com/highlight/images/3-220-140.jpg" width="220" height="140" /></a>
+			</div>
+		</div>
+		<h3>div</h3>
+		<div class="text">
+			<div>
+				123
+			</div>
+			<div>
+				456
+			</div>
+			<div>
+				789
+			</div>
+		</div>
+	</body>
+</html>

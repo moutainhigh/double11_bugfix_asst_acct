@@ -1,0 +1,227 @@
+/* 图片空间 css/imghost/style.css */
+/* .footer { background: none repeat scroll 0 0 #014877; border-top: 20px solid #012238; } */
+
+/* imghost layout */
+.nav-imghost { background-color:#efefef; height:35px; }
+.nav-imghost .eye { float:right; padding:10px 20px 0 0; }
+.nav-wrap { float:left; background-color:#fff; }
+.nav-wrap li { float:left; margin:0 10px 0 0; }
+.nav-wrap li a { background-color:#efefef; color:#666; float:left; font-size:14px; font-weight:bold; padding:10px 40px; }
+.nav-wrap .current a { color:#fff; background-color:#3d6094; }
+
+.sidebar { float:left; width:170px; margin:0 10px 0 0; }
+.sidebar .title { background-color:#9cadc8; text-align:center; padding:10px; }
+.sidebar .title h2 { color:#fff; font-size:14px; font-weight:bold; }
+.sidebar .box { margin:0 0 10px 0; }
+.sidebar .content { background-color:#efefef; }
+.sidebar .content p { color:#757575; padding:10px; line-height:2em; }
+.sidebar .content p strong { color:#c00; font-weight:bold; }
+
+.imgcat { float:left; padding:0 0 10px; width:170px; }
+.imgcat a { color:#757575; line-height:2em; text-decoration:none; }
+.imgcat li { float:left; padding:5px 10px 0 33px; width:127px; word-break:break-all; word-wrap:break-word; }
+.imgcat li.hover { background-color:#3d6094; color:#fff; }
+.imgcat li.hover a { color:#fff; }
+.imgcat li li { float:left; padding-left:60px; width:100px; }
+.imgcat li ul { float:left; display:none; margin:0 0 0 -33px; _margin:0 0 0 -20px;}
+.imgcat li.hover li.hover { background-color:#9cadc8; color:#fff; }
+.imgcat li.active ul { display:block; }
+.imgcat .accordion {
+	background:transparent url(http://static.pinju.com/img/imghost/bg-imgcat.png) no-repeat 0 0;
+	cursor:pointer;
+	float:left;
+	height:12px;
+	margin:6px 0 0 -18px;
+	width:12px;
+}
+.imgcat .active .accordion { background-position:0 -12px;}
+
+.contents { float:left; padding:0; width:820px;}
+
+/*------------------宝贝分类-------------------*/
+table.bbfl { width:100%; }
+.bbfl td { padding:8px 10px; border-bottom:1px solid #efefef; }
+.bbfl th {
+	background:#7793bc;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+	padding:10px;
+	text-align:left;
+}
+.bbfl-sub a,.bbfl-up i,.bbfl-up a,.bbfl-down a,.bbfl-down i,.bbfl-delete a,.blff-zi i {
+	background:transparent url(http://static.pinju.com/img/imghost/icons.png) no-repeat 0 0;
+}
+.bbfl td.blff-zi { padding-left:30px; }
+.bbfl-sub a{background-position:0 -26px; height:10px; padding-left:18px; overflow:hidden;}
+.bbfl-sub,.bbfl-up,.bbfl-down,.bbfl-delete{ }
+.bbfl-up a{background-position:-18px -40px; width:18px; height:18px; display:block; overflow:hidden;}
+.bbfl-up i{background-position:0 -40px; width:18px; height:18px; display:block; overflow:hidden;}
+.bbfl-down a{background-position:-18px -58px; width:18px; height:18px; display:block; overflow:hidden;}
+.bbfl-down i{background-position:0 -58px; width:18px; height:18px; display:block; overflow:hidden;}
+.bbfl-delete a{background-position:0 -77px; width:18px; height:18px; display:block; overflow:hidden;}
+.blff-zi i{width:13px; height:12px; display:inline-block; overflow:hidden; vertical-align:top;}
+.bbfl-botomm td { border-bottom:0 none; }
+.agreement p{padding-bottom:10px;}
+.agreement .are{margin-bottom:10px; padding:10px;}
+.agreement .are input{margin-right:8px;}
+
+/* 图片上传 */
+.pic-space{ margin-bottom:10px;}
+.pic-space p{ color:#757575; font-size:14px; padding-left:20px; font-weight:bold;}
+.image-upload {padding:10px 0 0 45px; border-top:1px solid #dadada;}
+.image-upload-sort{ margin-bottom:18px;}
+.image-upload-sort input {border:#7f9db9 solid 1px; }
+.image-upload-sort select{ margin:0 7px;}
+.image-upload-sort button{margin-left:7px; width:66px; height:18px;border:#7f9db9 solid 1px;}
+.image-upload-bar{ padding-left:47px;}
+.image-upload-bar ul{ float:left; overflow:hidden;_zoom:1; width: 700px;}
+.image-upload-bar ul li { margin-bottom:12px; height:26px;}
+.image-upload-bar .image-file {vertical-align:middle;height:26px;}
+.image-upload-bar .tips { color:#f00; }
+.image-upload-bar .tips-text {width: 400px;}
+.image-upload-bar .tips-error,.image-upload-bar .tips-right {display:inline-block;*display:inline;overflow:hidden;zoom:1;vertical-align:middle;margin:0 0 0 10px;}
+.image-upload-bar .point{ color:#3d6094; float:left; width:160px; margin:40px 0 0 45px; _display:inline; line-height:2; }
+.image-upload-bar .image-upload-btn {
+	border:0 none;
+	background:transparent url(http://static.pinju.com/img/imghost/buttons.png) no-repeat 0 0;
+	color:#fff;
+	height:30px;
+	font-weight:bold;
+	width:120px;
+}
+.bd{ font-weight:bold; }
+
+/* 图片管理 */
+.image-demand{ margin-bottom:10px;}
+.image-demand input{ border:#7f9db9 solid 1px; padding:2px; width:120px;}
+.image-modify{}
+.image-modify span.title { float:left; line-height:2.5; margin-right:15px;}
+.image-modify ul { border:#7f9db9 solid 1px; float:left; padding:5px;}
+.image-modify ul li{float:left;}
+.image-modify ul li a{ margin:0 10px;}
+.actionbar { padding:10px 0; }
+.actionbar .eye { float:right; display:inline;}
+.upload-img{padding:55px 0 10px 190px; color:#000; font-size:14px; font-weight:bold; background:url(http://static.pinju.com/images/err_5_03.gif) no-repeat 125px 30px; overflow:hidden; _zoom:1;}
+.upload-img a{ float:left; text-decoration:underline; }
+.upload-img a label{ cursor:pointer;}
+.upload-img span{ float:left;}
+.bd{ font-weight:bold; }
+.fl{ float:left;}
+.fr{ float:right;}
+.pagination { margin: 0;}
+
+.imgwrap { border-bottom:1px solid #efefef; }
+.imgwrap li { float:left; height:256px; width:182px; padding:5px 10px 10px;overflow:hidden; }
+.imgwrap li .img {
+	border:1px solid #efefef;
+	width:160px;
+	height:160px;
+	overflow:hidden;
+	padding:5px 10px;
+	position:relative; 
+}
+.imgwrap li .img a {
+	width:160px;
+	height:160px;
+	display: table-cell;
+	text-align:center;
+    vertical-align: middle;
+	*display: block;
+    *font-size: 129px;
+}
+.imgwrap li .img img { vertical-align:middle; }
+.imgwrap li .act, .imgwrap li .edit { display:none; }
+.imgwrap li.hover .img { border:1px solid #fff; }
+.imgwrap li.hover { background-color:#efefef; }
+.imgwrap li.hover .act { display:block; }
+.imgwrap li p { line-height:1.6em; text-align:center; width:180px; clear:both; }
+.imgwrap li .name { text-align:left; padding:5px 0 0; }
+.imgwrap li .name .title { float:left; display:inline-block; width:100px; height:20px; overflow:hidden; }
+.imgwrap li .name .size { display:inline-block; width:160px; }
+.title-edit {
+	background:transparent url(http://static.pinju.com/img/imghost/icons.png) no-repeat 0 -100px;
+	cursor: pointer;
+    display: none;
+	height: 15px;
+    margin-left: 8px;
+    width: 15px;
+}
+.hover .title-edit { display:inline-block; float:right; }
+.img-select { position:absolute; left:10px; top:150px; *left:5px; *top:145px; padding:0; margin:0; }
+.imgwrap li .edit input { width:120px; }
+
+/* 图片详情 */
+.imgdetails .topbar { border-bottom:1px solid #efefef; height:36px; }
+.topbar .imgtitle { float:left; padding:5px 0; width:500px; }
+.topbar .name .title { color:#333; font-size:14px; font-weight:bold; }
+.topbar .name .title-edit { display:inline-block; }
+.topbar .imgtitle .edit { display:none; }
+.topbar .imgtitle .edit input { width:300px; }
+.topbar .eye { float:right; }
+a.delete {
+	background:transparent url(http://static.pinju.com/img/imghost/buttons.png) no-repeat 0 -30px;
+	color:#fff;
+	height:23px;
+	float:left;
+	margin:0 5px 0 0;
+	padding:7px 0 0 45px;
+	text-decoration:none;
+	width:75px;
+}
+a.back {
+	background:transparent url(http://static.pinju.com/img/imghost/buttons.png) no-repeat 0 -60px;
+	height:23px;
+	float:left;
+	padding:7px 0 0 45px;
+	text-decoration:none;
+	width:75px;
+}
+.imgdetails .main { padding:10px 0; }
+.imgdetails .main .imgwrap { float:left; width:332px; padding:0 20px 0 0; }
+.imgdetails .main .img {
+	border:1px solid #efefef;
+	width:310px;
+	height:310px;
+	display: table-cell;
+	overflow:hidden;
+	padding:10px;
+	text-align:center;
+    vertical-align: middle;
+	*display: block;
+    *font-size: 259px;
+    *padding:5px;
+}
+.imgdetails .main .img img { vertical-align:middle; }
+.imgdetails .main .text { border:0 none; float:left; padding:0; width:468px; }
+.imgdetails .main .text ul li { line-height:2em; }
+.imgdetails .main .text ul li.cat { padding:0 0 10px; }
+.imgdetails .sizeshow { background-color:#efefef; margin:20px 0 0; padding:10px; }
+.imgdetails .sizeshow h3 { color:#333; font-size:14px; font-weight:bold; padding:0 0 10px; }
+.imgdetails .sizeshow ul li { line-height:1.4em !important; margin:0 0 10px; }
+.imgdetails .sizeshow ul li span.size {
+	border-right:1px solid #000;
+	display:inline-block;
+	margin:0 10px 0 0;
+	width:110px;
+}
+.imgdetails .sizeshow ul li a {	margin:0 10px 0 0; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

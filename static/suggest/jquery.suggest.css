@@ -1,0 +1,44 @@
+
+.ac_results {
+	font: 12px/1 tahoma,simsun;
+	border:1px solid #ccc;
+	background-color:#fff;
+	color: #101010;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	position: absolute;
+	z-index: 10000;
+	display: none;
+}
+.ac_results li {
+	white-space: nowrap;
+	line-height:24px;
+	height:24px;
+	clear: both;
+}
+.ac_results .ac_key {
+	float: left;
+	padding-left: 5px;
+	text-align: left;
+}
+.ac_results .ac_right_result {
+	float: right;
+	text-align: right;
+	color: green;
+	padding-right: 5px;
+	visibility: hidden;
+}
+.ac_results .ac_over .ac_key ,
+.ac_results .ac_over .ac_right_result {
+	color: #FFF;
+}
+.ac_results .ac_over {
+	cursor: pointer;
+	background-color:#d72426;
+	color:#fff;
+}
+.ac_results .ac_match {
+	font-weight: bold;
+}
+

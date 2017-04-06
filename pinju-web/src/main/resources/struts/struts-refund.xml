@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<!-- 买家退款 -->
+	<package name="buyerRefund" namespace="/refund" extends="pinju-login">
+
+		<interceptors>
+	    	
+      		<interceptor name="refund-user-interceptor" class="com.yuwang.pinju.web.module.refund.action.RefundUserInterceptor" />
+      		
+      		<interceptor-stack name="pinju-refund-interceptor">
+		        <interceptor-ref name="pinju-login-interceptor" />
+		        <interceptor-ref name="refund-user-interceptor" />
+      		</interceptor-stack>
+      
+    	</interceptors>
+
+		<default-interceptor-ref name="pinju-refund-interceptor" /> 
+
+		<global-results>    
+			<result name="invalidSellerRefund" type="freemarker">/default/templates/screen/refund/invalidSellerRefund.ftl</result>
+			<result name="invalidBuyerRefund" type="freemarker">/default/templates/screen/refund/invalidBuyerRefund.ftl</result>
+			<result name="buyerReplyTimeout" type="freemarker">/default/templates/screen/refund/buyerReplyTimeout.ftl</result>
+		</global-results>
+ 	
+		<!-- **************************************买家的退款action 开始******************************************************** -->
+		<!-- 买家申请退款 -->
+		<action name="apply" class="com.yuwang.pinju.web.module.refund.action.RefundApplyAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/refund/apply.ftl</result>
+			<result name="waitSellerAgree" type="redirect">checkApply.htm?id=${refundDO.id}</result>
+			<result name="orderError" type="freemarker">/default/templates/screen/refund/orderError.ftl</result>
+			<result name="input" type="freemarker">/default/templates/screen/refund/buyerRefundError.ftl</result>
+		</action>
+		
+		<!--买家修改 退款申请   -->
+		<action name="updateApply" class="com.yuwang.pinju.web.module.refund.action.RefundApplyAction" method="updateRefundApply">
+			<result name="success" type="freemarker">/default/templates/screen/refund/apply.ftl</result>
+			<result name="input" type="freemarker">/default/templates/screen/refund/buyerRefundError.ftl</result>
+			<result name="orderError" type="freemarker">/default/templates/screen/refund/orderError.ftl</result>
+		</action>
+		
+		 
+		<!-- 买家申请退款##取消退款申请 -->
+		<action name="cancelRefundApply" class="com.yuwang.pinju.web.module.refund.action.BuyerRefundManageAction" method="buyerCancelRefundApply">
+			<result name="success" type="redirect">buyerViewRefundClosed.htm?id=${refundId}</result>
+			<result name="sellerReplyTimeout" type="freemarker">/default/templates/screen/refund/sellerReplyTimeout.ftl</result>
+			<result name="input" type="freemarker">/default/templates/screen/refund/buyerRefundError.ftl</result>
+		</action>
+		
+		<!-- 买家确认退货 -->
+		<action name="deliverGoods" class="com.yuwang.pinju.web.module.refund.action.BuyerRefundManageAction" method="buyerDeliverGoods">
+      		<result name="success" type="redirect">buyerWaitSellerDeliveryGoods.htm?id=${refundId}</result>
+      		<result name="input" type="freemarker">/default/templates/screen/refund/buyerRefundError.ftl</result>
+      		<result name="buyerReplyTimeout" type="freemarker">/default/templates/screen/refund/buyerReplyTimeout.ftl</result>
+		</action>
+		
+		<!-- 买家保存退款申请 -->
+		<action name="saveApply" class="com.yuwang.pinju.web.module.refund.action.RefundApplyAction" method="saveOrUpdateApply">
+      		<result name="success" type="redirect">checkApply.htm?id=${refundDO.id}</result>
+      		<result name="error" type="freemarker">/default/templates/screen/refund/apply.ftl</result>
+      		<result name="input" type="freemarker">/default/templates/screen/refund/buyerRefundError.ftl</result>
+		</action>
+
+		 <!-- 更新退款物流信息## -->
+		 <action name="updateGoodsWuliuInfo" class="com.yuwang.pinju.web.module.refund.action.RefundCheckApplyAjaxAction" method="updateGoodsWuliuInfo">
+		 	<result name="success" type="json"></result>
+		 </action>
+		 
+		<!-- 买家查看退款##退款关闭   -->
+		 <action name="buyerViewRefundClosed" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="buyerViewRefundClosed">
+			<result name="success" type="freemarker">/default/templates/screen/refund/buyerViewRefundClosed.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 买家查看申请退款## 退款申请中-->
+		<action name="checkApply" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/refund/checkApply.ftl</result>
+			<result name="sellerReplyTimeout" type="freemarker">/default/templates/screen/refund/sellerReplyTimeout.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 买卖家留言模块 -->
+		 <action name="saveLeaveWord" class="com.yuwang.pinju.web.module.refund.action.LeaveWordAction" method="execute" />
+		<action name="validateRefundUploadImage" class="com.yuwang.pinju.web.module.refund.action.LeaveWordAction" method="validateUploadImage" />
+		
+		<!-- 买家同意退货#等待卖家确认收货-->
+		<action name="buyerWaitSellerDeliveryGoods" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="buyerViewSellerConfirmGoods">
+			<result name="success" type="freemarker">/default/templates/screen/refund/buyerWaitSellerDeliveryGoods.ftl</result>
+			<result name="sellerConfirmGoodsTimeout" type="freemarker">/default/templates/screen/refund/sellerConfirmGoodsTimeout.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 卖家同意退款#等待买家退货-->
+		<action name="buyerViewWaitGoodsReturn" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="buyerViewWaitGoodsReturn">
+			<result name="success" type="freemarker">/default/templates/screen/refund/successApply.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+			<result name="buyerReplyTimeout" type="freemarker">/default/templates/screen/refund/buyerReplyTimeout.ftl</result>
+		</action>
+		
+		
+		<!-- 买家查看退款# 退款成功 -->
+		<action name="buyerViewRefundSuccess" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="buyerViewRefundSuccess">
+			<result name="success" type="freemarker">/default/templates/screen/refund/buyerViewRefundSuccess.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 买家查看退款# 退款失败 -->
+		<action name="buyerViewRefundFail" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="buyerViewRefundFail">
+			<result name="success" type="freemarker">/default/templates/screen/refund/buyerViewRefundFail.ftl</result>
+			<result name="wait" type="freemarker">/default/templates/screen/refund/buyerViewRefundFailWait.ftl</result>
+			<result name="exist" type="freemarker">/default/templates/screen/refund/buyerViewRefundManualExist.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 买家查看退款##退款协议达成   -->
+		<action name="buyerViewRefundProtocalAgree" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="buyerViewRefundProtocalAgree">
+			<result name="success" type="freemarker">/default/templates/screen/refund/buyerViewRefundProtocalAgree.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 买家查看退款##卖家拒绝退款申请 -->
+		<action name="buyerViewSellerRefuseRefund" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="buyerViewSellerReject">
+			<result name="success" type="freemarker">/default/templates/screen/refund/buyerViewSellerRefuseRefund.ftl</result>
+			<result name="buyerReplyTimeout" type="freemarker">/default/templates/screen/refund/buyerReplyTimeout.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 买家查看退款## 客户介入中 -->
+		<action name="buyerViewCustProcessRefund" class="com.yuwang.pinju.web.module.refund.action.BuyerViewRefundAction" method="buyerViewRefundCustProcess">
+			<result name="success" type="freemarker">/default/templates/screen/refund/buyerViewCustProcessRefund.ftl</result>
+			<result name="input" type="redirect">${returnUrl}</result>
+		</action>
+		
+		<!-- 买家申请 客户介入  -->
+		<action name="custProcess" class="com.yuwang.pinju.web.module.refund.action.BuyerRefundManageAction" method="buyerApplyCustProcess">
+			<result name="success" type="redirect">buyerViewCustProcessRefund.htm?id=${refundId}</result>
+			<result name="buyerReplyTimeout" type="freemarker">/default/templates/screen/refund/buyerReplyTimeout.ftl</result>
+			<result name="input" type="freemarker">/default/templates/screen/refund/buyerRefundError.ftl</result>
+		</action>
+		
+		<!-- 买家填写银行账户更新手工单 -->
+		<action name="saveWorkOrder" class="com.yuwang.pinju.web.module.refund.action.RefundManualAction" method="saveWorkOrder">
+		     <result name="success" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">buyerViewRefundFail</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+			<result name="error" type="freemarker">/default/templates/screen/refund/refundManualError.ftl</result>
+		</action>
+		
+		<action name="buyerRefundList" class="com.yuwang.pinju.web.module.refund.action.BuyerRefundListAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/refund/BuyerRefundList.ftl</result>
+		</action>
+		
+	</package>
+	
+	
+	<!-- 卖家退款 -->
+	<package name="sellerRefund" namespace="/refund" extends="pinju-auth">
+	
+		<interceptors>
+      		<interceptor name="refund-user-interceptor" class="com.yuwang.pinju.web.module.refund.action.RefundUserInterceptor" />
+      		<interceptor-stack name="pinju-refund-interceptor">
+		        <interceptor-ref name="pinju-auth-interceptor" />
+		        <interceptor-ref name="refund-user-interceptor" />
+      		</interceptor-stack>
+    	</interceptors>
+
+		<default-interceptor-ref name="pinju-refund-interceptor" /> 
+
+		<global-results>    
+			<result name="invalidSellerRefund" type="freemarker">/default/templates/screen/refund/invalidSellerRefund.ftl</result>
+			<result name="invalidBuyerRefund" type="freemarker">/default/templates/screen/refund/invalidBuyerRefund.ftl</result>
+			<result name="buyerReplyTimeout" type="freemarker">/default/templates/screen/refund/buyerReplyTimeout.ftl</result>
+		</global-results>
+		
+		<!-- 卖家查看退款## 退款申请中 -->
+		<action name="sellerCheck" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerCheck.ftl</result>
+			<result name="sellerReplyTimeout" type="freemarker">/default/templates/screen/refund/sellerReplyTimeout.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+		
+		 <!-- 卖家查看退款## 退款申请中 留言## 先留言后拒绝退款-->
+		 <action name="saveLeaveWordBeforeSellerReject" class="com.yuwang.pinju.web.module.refund.action.LeaveWordAction" method="leaveWordForSell">
+      		<result name="success" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerRejectRefundApply</param>
+        		<param name="refundId">${refundId}</param>
+      		</result>
+      		<result name="input" type="freemarker">/default/templates/screen/refund/sellerViewRefundStateError.ftl</result>
+		</action>
+		
+
+		<!-- 卖家查看退款## 卖家拒绝退款 -->
+		<action name="viewSellerReject" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="viewSellerReject">
+			<result name="success" type="freemarker">/default/templates/screen/refund/viewSellerReject.ftl</result>
+			<result name="buyerReplyTimeout" type="freemarker">/default/templates/screen/refund/buyerReplyTimeout.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+		
+		<!-- 卖家查看退款##退款关闭   -->
+		<action name="sellerViewRefundClosed" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="sellerViewRefundClosed">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerViewRefundClosed.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+		
+		<!-- 卖家查看退款##退款成功   -->
+		<action name="sellerViewRefundSuccess" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="sellerViewRefundSuccess">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerViewRefundSuccess.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+		
+		<!-- 卖家查看退款##退款协议达成   -->
+		<action name="sellerViewRefundProtocalAgree" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="sellerViewRefundProtocalAgree">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerViewRefundProtocalAgree.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+		
+		<!-- 卖家查看退款##退款失败   -->
+		<action name="sellerViewRefundFail" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="sellerViewRefundFail">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerViewRefundFail.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+		
+		<!-- 卖家查看退款##客服介入中   -->
+		<action name="sellerViewRefundCustProcess" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="sellerViewRefundCustProcess">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerViewRefundCustProcess.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+	
+		<!-- 卖家查看退款##等待卖家确认收货   -->
+		<action name="sellerViewConfirmGoods" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="sellerViewConfirmGoods">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerViewConfirmGoods.ftl</result>
+			<result name="sellerConfirmGoodsTimeout" type="freemarker">/default/templates/screen/refund/sellerConfirmGoodsTimeout.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+		
+		<!-- 卖家查看退款##等待货物退回   -->
+		<action name="sellerViewWaitGoodsReturn" class="com.yuwang.pinju.web.module.refund.action.SellerRefundViewAction" method="sellerViewWaitGoodsReturn">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerViewWaitGoodsReturn.ftl</result>
+			<result name="refundStateError" type="redirect">${tipRefundUrl}</result>
+		</action>
+		
+		<!--  卖家确认收货  -->
+		<action name="sellerConfirmReceiveGoods" class="com.yuwang.pinju.web.module.refund.action.SellerRefundManageAction" method="confirmReceiveGoods">
+			<result name="success" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerViewRefundProtocalAgree</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+      		
+      		<result name="refundRequest" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerViewRefundSuccess</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+            
+            <result name="manaulRequest"  type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerViewRefundFail</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+            
+            <result name="sellerConfirmGoodsTimeout" type="freemarker">/default/templates/screen/refund/sellerConfirmGoodsTimeout.ftl</result>
+            
+            <result name="input" type="freemarker">/default/templates/screen/refund/sellerViewRefundStateError.ftl</result>
+		</action>
+		
+
+		<!--  卖家申请客服介入  -->
+		<action name="sellerApplyCustProcess" class="com.yuwang.pinju.web.module.refund.action.SellerRefundManageAction" method="sellerApplyCustProcess">
+			<result name="success" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerViewRefundCustProcess</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+      		<result name="sellerConfirmGoodsTimeout" type="freemarker">/default/templates/screen/refund/sellerConfirmGoodsTimeout.ftl</result>
+      		<result name="input" type="freemarker">/default/templates/screen/refund/sellerViewRefundStateError.ftl</result>
+		</action>
+
+		<!--  卖家同意退款  -->
+		<action name="sellerAgreeRefundApply" class="com.yuwang.pinju.web.module.refund.action.SellerRefundManageAction" method="sellerAgreeRefundApply">
+			
+			<result name="wait" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerViewWaitGoodsReturn</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+      		
+			<result name="success" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerViewRefundProtocalAgree</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+      		
+      		<result name="refundRequest" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerViewRefundSuccess</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+            
+            <result name="manaulRequest"  type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">sellerViewRefundFail</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+      		
+      		<!-- 
+             <result name="refundRequest" type="chain">
+             	  <param name="namespace">/orderPay</param>
+                  <param name="actionName">tenpayplatformRefundRequest</param>
+             </result>
+              -->
+			<result name="input" type="freemarker">/default/templates/screen/refund/sellerViewRefundStateError.ftl</result>
+		</action>
+		
+		<!--  卖家拒绝退款   -->
+		<action name="sellerRejectRefundApply" class="com.yuwang.pinju.web.module.refund.action.SellerRefundManageAction" method="sellerRejectRefundApply">
+			<result name="success" type="redirectAction">
+        		<param name="namespace">/refund</param>
+        		<param name="actionName">viewSellerReject</param>
+        		<param name="id">${refundId}</param>
+      		</result>
+      		<result name="sellerReplyTimeout" type="freemarker">/default/templates/screen/refund/sellerReplyTimeout.ftl</result>
+      		<result name="input" type="freemarker">/default/templates/screen/refund/sellerViewRefundStateError.ftl</result>
+		</action>
+
+
+		
+		<action name="sellerRefundList" class="com.yuwang.pinju.web.module.refund.action.SellerRefundListAction" method="execute">
+			<result name="success" type="freemarker">/default/templates/screen/refund/sellerRefundList.ftl</result>
+		</action>
+		
+		<!-- 退款物流信息显示  By ColleyMa-->
+		<action name="viewRefundLogisticsinfo" class="com.yuwang.pinju.web.module.refund.action.RefundLogisticsAction">
+			<result name="success" type="freemarker">/default/templates/screen/refund/refundLogisticsInfo.ftl</result>
+		</action>
+		
+	</package>
+
+</struts>

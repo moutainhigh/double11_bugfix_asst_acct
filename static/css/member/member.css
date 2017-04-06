@@ -1,0 +1,124 @@
+/* member style #latest updated by LinTao */
+
+/* --------------------- member in single page ------------------------ */
+/* my info */
+.mbmsg { height:325px; padding-top:50px; color:#666; }
+.mbmsg .shadow1 { height:418px; }
+.btn_orange { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat left -50px; border:0 none; color:#fff; cursor:pointer; font-size:14px; font-weight:bold; height:32px; width:168px;}
+a.btn_orange { cursor:pointer; display:block; line-height:32px; text-align:center; text-decoration:none; }
+.li_i .btn_gray { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat left -100px; border:0 none; width:93px; height:31px;}
+.li_i .texthalf { width:100px; }
+.li_i input.disable { color:#999; }
+.fullrow { width:auto;}
+.li_i span.text { font-size:14px; line-height:30px; }
+.li_i span.text a { margin:0 0 0 20px; }
+.li_i span.text strong { font-weight:bold; }
+
+/* tips */
+.tipswrap {padding:0 0 0 80px; }
+.welcome .tipswrap { background-color:transparent; padding:50px 0 20px 80px; border-bottom:1px solid #ccc; margin:0 auto; width:850px; }
+.welcome .col2 { margin:10px 0 0; }
+.welcome .col2 .tipswrap { float:left; width:391px; border-right:1px solid #ccc; border-bottom:0 none; }
+.welcome .col2 .last { border-right:0 none;}
+.welcome .button,.mbmsg .button { padding:20px 0 0 0; }
+.tipswrap .infocat { float:left; height:150px; width:150px; }
+.mbmsg .err_box { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat 20px -350px; border:0 none; line-height:45px; padding:0 0 20px 84px; margin-top:0; font-size:14px; font-weight:bold; color:#be0000; width:500px; }
+.tipswrap .msg { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat 60px -150px;}
+.tipswrap .msgemail { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat -170px top;}
+.tipswrap .msgmphone { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat -170px -700px;}
+.tipswrap .msgcaution { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat 60px -350px;}
+.tipswrap .content { color:#666; float:left; height:auto; padding:0; line-height:2em; width:700px; }
+.col2 .tipswrap .content { width:240px; }
+.tipswrap .content h3 { font-size:14px; font-weight:bold; }
+.tipswrap .content h3 strong {  color:#be0000; }
+.tipswrap .content h3.key { color:#be0000; }
+
+/* --------------------- member in right contents ------------------------ */
+/* my info */
+span.hong { color:red; }
+.ui-datepicker { width:250px; }
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year { width:35%; }
+select { size:portrait; }
+.Personal form div { float:left; }
+.Personal form textarea { font-size:12px; }
+.Personal form input.hover, .Personal form select.hover, .Personal form textarea.hover { background:#fdfcdc; }
+.Personal form input.focus, .Personal form select.focus, .Personal form textarea.focus { border:1px solid gray; background:#fdfcdc; }
+form input.error,form select.error,form textarea.error { border:1px solid #EA0000; background:#FFD2D2; }
+.Personal form .normal { border:1px solid gray; resize:none; }
+.Personal form span.message { color:#1D95C7; margin-left:10px; }
+.Personal form span.error { color:#EA0000; }
+.Personal form label[for] { cursor:pointer; }
+div.message { padding:10px 0; text-align:center; border:1px solid green; color:green; font-size:18px; font-weight:bold; background:#FFFFBB; display:none; }
+form li { height:26px; clear:both;}
+form li.address { height:110px; }
+form textarea { margin-bottom:10px; }
+.Personal .err_box { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat 40px -330px; line-height:45px; padding:20px 0 20px 110px; margin-top:0; font-size:14px; font-weight:bold; color:#be0000; }
+#emailForm input#email { padding:5px; width:240px; }
+#emailForm li { padding:10px; }
+#emailForm li.tips { height:auto; margin-top:30px; }
+
+.contents .tipswrap .content { width:auto; padding:20px 0 0; }
+.contents .tipswrap .msgemail { background:transparent url(http://static.pinju.com/images/member/icon.png) no-repeat -170px -130px; height:170px; }
+
+/* --------------------- bind tenpay ------------------------ */
+.bdtenpay {font-size:14px; margin:0 0 10px; padding:10px 0;}
+.bdtenpay .item {
+	background:transparent url(http://static.pinju.com/img/bg-bindtenpay.png) no-repeat left top;
+	float:left;
+	height:221px;
+	width:400px;
+	overflow:hidden;
+}
+.bdtenpay .last { margin:0 0 0 28px; _margin:0 0 0 20px;}
+
+.bdtenpay .item .title { height:60px; padding:10px 10px 0; position:relative; }
+.bdtenpay .item .title .tipswrap {
+	background-color: #FFFFE0;
+    border: 1px solid #F9DFB2;
+	height:15px;
+	padding:5px 10px;
+	position:absolute;
+	top:38px;
+	left:60px;
+	font-size:12px;
+}
+.tipswrap .text p { float:left; margin:0 5px 0 0; }
+.tipswrap .text .close {
+	background:transparent url(http://static.pinju.com/img/bg-bindtenpay.png) no-repeat right -230px;
+	float:left;
+	cursor:pointer;
+	height:12px;
+	width:12px;
+}
+.tipswrap .arrow {
+	background:transparent url(http://static.pinju.com/img/bg-bindtenpay.png) no-repeat left -250px;
+	float:left;
+	height:12px;
+	width:100px;
+	left:0;
+	top:25px;
+	position:absolute;
+}
+.bdtenpay .item .title strong { color:#ff6400; }
+.bdtenpay .item .title input {vertical-align:middle;}
+.bdtenpay .item .row { padding:0 20px 20px; }
+.bdtenpay .item .row label { float:left; width:130px; line-height:30px; text-align:right; }
+.bdtenpay .item .row input {
+	background:url(http://static.pinju.com/img/bg-rowtitle.png) repeat-x left -31px;
+	border:1px solid #a8acad;
+	float:left;
+	width:210px;
+	padding:5px;
+}
+.bdtenpay .item .row input:focus { border-color:#FF6400; color:#333; }
+.bdtenpay .item .row input.error { border-color:#f00; color:#f00;}
+.bdtenpay .item .tips { font-size:12px; color:#f00; margin: 0 10px; padding:10px; overflow:hidden; }
+
+.bdtenpay .disabled-wrap {opacity:0.6; filter:alpha(opacity=60);}
+.disabled-wrap .tipswrap { display:none; }
+.bdtenpay .row .title { background-color:#f8f8f8; border-top:1px solid #e9e9e9; padding:10px 20px; margin:0 0 20px; }
+.bdtenpay .row ul { font-size:12px; line-height:1.5em; padding:0 20px; }
+.bdtenpay .row ul li { padding:0 0 20px; }
+.bdtenpay .row ul li span { color:#06c; }
+.bdtenpay .btnrow { clear:both; line-height:36px; text-align:right; padding:20px 0 40px;}
+button.confirmbind {background-position:0 -356px; width:129px; height:32px; margin:0 0 0 10px; vertical-align:middle;}

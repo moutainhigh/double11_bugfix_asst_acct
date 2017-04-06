@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Scroll News</title>
+		<style>
+			.news {
+				font: 14px/1.5 "sans serif",tahoma,verdana,helvetica;
+				border: 1px solid #aaa;
+				width: 300px;
+				margin: 10px;
+				height: 100px;
+				position: relative;
+				overflow: hidden;
+			}
+			.news a {
+				color: #337FE5;
+				text-decoration: none;
+			}
+			.news a:hover {
+				text-decoration: underline;
+			}
+			.news ul {
+				margin: 0;
+				padding: 0 10px;
+				list-style: none;
+				position: absolute;
+			}
+		</style>
+		<script src="../jquery/jquery-1.6.2.min.js"></script>
+		<script src="jquery.scroll-news.js"></script>
+		<script>
+			$(function() {
+				$('.news').scrollNews();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="news">
+			<ul>
+				<li><a href="#">马云:年轻人发展五步1</a></li>
+				<li><a href="#">乌镇整体入驻淘宝旅行2</a></li>
+				<li><a href="#">Tmall 改版强化品牌3</a></li>
+				<li><a href="#">住丽江客栈九成是淘友4</a></li>
+				<li><a href="#">马云:年轻人发展五步5</a></li>
+				<li><a href="#">乌镇整体入驻淘宝旅行6</a></li>
+				<li><a href="#">Tmall 改版强化品牌7</a></li>
+				<li><a href="#">住丽江客栈九成是淘友8</a></li>
+				<li><a href="#">马云:年轻人发展五步9</a></li>
+				<li><a href="#">乌镇整体入驻淘宝旅行10</a></li>
+			</ul>
+		</div>
+		<div class="news">
+			<ul>
+				<li><a href="#">马云:年轻人发展五步1</a></li>
+				<li><a href="#">乌镇整体入驻淘宝旅行2</a></li>
+				<li><a href="#">Tmall 改版强化品牌3</a></li>
+				<li><a href="#">住丽江客栈九成是淘友4</a></li>
+				<li><a href="#">马云:年轻人发展五步5</a></li>
+				<li><a href="#">乌镇整体入驻淘宝旅行6</a></li>
+				<li><a href="#">Tmall 改版强化品牌7</a></li>
+				<li><a href="#">住丽江客栈九成是淘友8</a></li>
+				<li><a href="#">马云:年轻人发展五步9</a></li>
+				<li><a href="#">乌镇整体入驻淘宝旅行10</a></li>
+			</ul>
+		</div>
+		<div class="news">
+			<ul>
+				<li><a href="#">马云:年轻人发展五步1</a></li>
+				<li><a href="#">乌镇整体入驻淘宝旅行2</a></li>
+				<li><a href="#">Tmall 改版强化品牌3</a></li>
+				<li><a href="#">住丽江客栈九成是淘友4</a></li>
+			</ul>
+		</div>
+	</body>
+</html>

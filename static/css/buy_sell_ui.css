@@ -1,0 +1,118 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.buy_sell_box { width: 828px; float: right; background:#fff;}
+.buy_tx_box,.sell_tx_box { height:28px; border:1px solid #f9dfb2; background:#ffffe0; padding:0 0 0 0; line-height:28px; text-indent:12px; margin-bottom:9px; }
+.buy_tx_box a,.sell_tx_box a{ color:#333;}
+.buy_tx_box a:hover{ text-decoration:none;}
+
+/*订单切换&&卖家状态切换*/
+.order_tab_box,.order_tab,.sell_tab{border-bottom:solid 1px #c4c4c4;}
+.order_tab_list li,.sell_tab_list li{ float:left; margin-right:6px;border:1px solid #c4c4c4;background:#f6f6f6;position:relative; top:1px; border-bottom:none;height:25px;padding:0 12px;}
+.order_tab_list li a,.sell_tab_list li a{ line-height:25px; color:#666666; text-decoration:none; }
+.order_tab_list li.cur,.sell_tab_list li.cur{background:#FFF; border-top:#d72426 solid 2px;  font-weight:bold;}
+.order_tab_list li.cur a ,.sell_tab_list li.cur a{color:#000;}
+
+.item_search,.sell_item_search{border:1px solid #c4c4c4; border-width:0 1px; padding:12px 0 18px;}
+.search_list{line-height:20px;}
+.search_list li{ float:left;} 
+.search_list li.txt{margin-left:18px;_display:inline;}
+.search_list li.bar,.search_list li.but{margin-left:12px;_display:inline;}
+.search_list li.bar input{ width:300px;}
+.search_bar{ line-height:21px; border:1px solid #d4d4d4;}
+.but .search_but,.roll_box .roll_but{background:url(http://static.pinju.com/images/search_but.gif) no-repeat; width:69px; height:23px; display:block;color:#000; line-height:23px; text-align:center; text-decoration:none;}
+
+
+/*商品列表*/
+.order_box{border:solid #c4c4c4; border-width:0 1px 0 1px;}
+.order_table{ width:100%;border-top:1px solid #dadada;}
+.order_table th{ text-align:center; background:#f6f6f6; line-height:27px; height:27px;}
+/*.order_table th.order_bar6 select{width:75px;}*/
+.item_list_box{margin-bottom:15px; border:solid #dadada; border-width:0 1px 0 1px;}
+/*
+.order_bar1{ width:30%}
+.order_bar2{width:11%}
+.order_bar4{width:12%}
+.order_bar5{width:13%}
+.order_bar7{width:8%;}
+.order_bar3{width:8%}
+.order_bar6{width:10%}
+.order_bar8{width:8%}
+*/
+.order_bar1{ width:30%}
+.order_bar2{width:11%}
+.order_bar3{width:12%}
+.order_bar4{width:12%}
+.order_bar5{width:13%}
+.order_bar6{width:10%}
+.order_bar7{width:12%;}
+
+
+/*
+.order_bar1{ width:40%}
+.order_bar2{width:11%}
+.order_bar5{width:12%}
+.order_bar7{width:14%;}
+.order_bar3{width:10%}
+.order_bar6{width:13%;}
+*/
+
+.order_time{ float:left; margin-right:105px; line-height:30px;}
+.order_num{float:left; margin:0 45px 0 11px; line-height:30px;_display:inline;}
+.shop_info{ float:left;line-height:30px;}
+.shop_info a:hover{ color:#ff6600}
+.item_table{ border:solid #c4c4c4; border-width:1px 0 1px 0; width:100%;}
+.item_table td{border:1px solid #c4c4c4; border-width:0 1px 1px 0;   vertical-align:top; }
+.item_table td.nobor{border-right:none;}
+.item_order{background:#f6f6f6}
+.item_table .item_order td{border-right:none;}
+.items{padding:0 0 11px 9px; overflow:hidden; _zoom:1}
+.items_pic{ border:1px solid #c4c4c4; width:84px; height:84px; margin-right:10px;}
+.items_pic a{width:84px; height:84px;vertical-align:middle; display:table-cell; text-align:center; *display:block;*font-size:73px;*font-family:Arial;}
+.items_pic img{vertical-align:middle;}
+.items_txt{ width:130px;_margin-right:-3px;}
+.items_link{height:60px;  display:block; overflow:hidden;width:130px; line-height:15px;}
+.qr_but{ background:url(http://static.pinju.com/images/qr_but_03.gif) no-repeat; display:block; width:69px; height:23px; margin:0 auto; line-height:23px;}
+.order_bar6 a,.order_bar6 span,.order_bar4 a,.order_bar4 span,.order_bar5 a,.order_bar5 span{ display:block; line-height:20px;}
+.order_bar2,.order_bar3,.order_bar4,.order_bar5,.order_bar6,.order_bar7,.order_bar8{ text-align:center;}
+
+
+
+.select_all{background:#f6f6f6; padding:7px 0 7px 13px;border:solid #c4c4c4; border-width:0 1px 1px 1px;}
+.select_all input{position:relative; top:2px;}
+
+
+
+.noinput { position:relative; top:-2px;}
+/*翻页*/
+.roll_box{padding-right:7px;}
+.topage{ margin-right:10px; _display:inline; color:#000;}
+.topage input{ line-height:18px; width:33px; border:1px solid #7f9db9}
+.page_roll{margin-right:10px; _display:inline;}
+.page_roll a{ float:left; border:1px solid #c4c4c4; height:20px; width:20px; text-align:center; line-height:20px; color:#666666; margin-right:3px;}
+.page_roll a.xz{border:1px solid #d72426; background:#d72426; font-weight:bold; color:#FFF; }
+.page_roll a.next{width:auto; padding:0 5px;}
+
+/*卖家搜索box*/
+
+.sell_search_box{border:1px solid #c4c4c4; margin-bottom:10px; padding:14px 0 10px 35px;}
+.sell_search_box p{ margin-bottom:5px; line-height:23px;} 
+.sell_search_box input{ height:16px;}
+.text_bar77{ width:77px;}
+.text_bar40{ width:40px;}
+.text_bar101{ width:101px;}
+.text_bar260{ width:260px;}
+.sell_search_but_box{margin-right:20px; _display:inline;}
+.sell_search_but_box .sell_search_but{ height:23px;}
+
+/*公共*/
+.lh20{ line-height:20px;}
+.col1{color:#666666}
+.col2{color:#FFF;}
+.col3{ color:#be0000;}
+.fl{ float:left;}
+.fr{ float:right;}
+.red { color:#BE0000; }
+.mr10 { margin-right:10px; }
+.pt20{padding-top:20px;}
+.tc{text-align:center;}
+.bd{ font-weight:bold;}

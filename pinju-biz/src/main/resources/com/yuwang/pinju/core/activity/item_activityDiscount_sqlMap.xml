@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="activity_discount">
+
+	<typeAlias alias="ActivityDiscountDO" type="com.yuwang.pinju.domain.active.ActivityDiscountDO" />
+	<typeAlias alias="ActivityDiscountQuery" type="com.yuwang.pinju.domain.active.ActivityDiscountQuery" />
+
+	<resultMap id="ActivityDiscountResult" class="ActivityDiscountDO">
+		<result property="id" column="ID" />
+		<result property="actName" column="ACT_NAME" />
+		<result property="startTime" column="START_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="itemList" column="ITEM_LIST" />
+		<result property="itemCount" column="ITEM_COUNT" />
+		<result property="discountList" column="DISCOUNT_LIST" />
+		<result property="discountDefault" column="DISCOUNT_DEFAULT" />
+		<result property="limitList" column="LIMIT_LIST" />
+		<result property="memberNick" column="MEMBER_NICK" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="status" column="STATUS" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+
+	<insert id="insertActivityDiscount" parameterClass="ActivityDiscountDO">
+		<selectKey resultClass="long" keyProperty="id" >
+			<![CDATA[SELECT SEQ_ACTIVITY_DISCOUNT_ID.NEXTVAL AS id FROM DUAL]]>
+		</selectKey>
+		<![CDATA[INSERT INTO ACTIVITY_DISCOUNT (ID,ACT_NAME,START_TIME,END_TIME,ITEM_LIST,ITEM_COUNT,DISCOUNT_LIST,DISCOUNT_DEFAULT,LIMIT_LIST,MEMBER_NICK,MEMBER_ID,STATUS,GMT_CREATE,GMT_MODIFIED) VALUES (#id#,#actName#,#startTime#,#endTime#,#itemList#,#itemCount#,#discountList#,#discountDefault#,#limitList#,#memberNick#,#memberId#,#status#,sysdate,sysdate)]]>
+	</insert>
+	
+	<sql id="selectAllActivityDiscount"><![CDATA[SELECT ID,ACT_NAME,START_TIME,END_TIME,ITEM_LIST,ITEM_COUNT,DISCOUNT_LIST,DISCOUNT_DEFAULT,LIMIT_LIST,MEMBER_NICK,MEMBER_ID,STATUS,GMT_CREATE,GMT_MODIFIED FROM ACTIVITY_DISCOUNT]]></sql>
+
+	<select id="selectAllActivityDiscount" resultMap="ActivityDiscountResult">
+		<include refid="selectAllActivityDiscount" />
+	</select>
+
+	<select id="selectActivityDiscountById" resultMap="ActivityDiscountResult"  parameterClass="long">
+		<include refid="selectAllActivityDiscount" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+	
+	<select id="queryActivityDiscountPageList" resultMap="ActivityDiscountResult"
+		parameterClass="ActivityDiscountQuery">
+
+		SELECT
+		a.ID,a.ACT_NAME,a.START_TIME,a.END_TIME,a.ITEM_LIST,a.ITEM_COUNT,a.DISCOUNT_LIST,a.DISCOUNT_DEFAULT,a.LIMIT_LIST,a.MEMBER_NICK,a.MEMBER_ID,a.STATUS,a.GMT_CREATE,a.GMT_MODIFIED
+		FROM (
+		SELECT rid from
+		(SELECT one.rid,ROWNUM RN from
+		(SELECT rowid rid FROM ACTIVITY_DISCOUNT
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="startTime">
+					<![CDATA[START_TIME >= #startTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endTime">
+				<![CDATA[END_TIME <= #endTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberNick">
+				<![CDATA[MEMBER_NICK = #memberNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+					<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isEmpty prepend="AND" property="status">
+					<![CDATA[STATUS != 3]]>
+			</isEmpty>
+			<isEqual prepend="AND" property="status" compareValue="0">
+				<![CDATA[
+					START_TIME >= #checkTime#
+				]]>
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="1">
+				<![CDATA[
+					START_TIME <= #checkTime# AND END_TIME >= #checkTime#
+				]]>
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="2">
+				<![CDATA[
+					END_TIME <= #checkTime#
+				]]>
+			</isEqual>
+		</dynamic>
+		ORDER BY GMT_CREATE DESC) one WHERE rownum <![CDATA[<=]]> #endRow#)
+		WHERE RN <![CDATA[>=]]> #startRow#) T,ACTIVITY_DISCOUNT a WHERE a.rowid = t.rid
+		ORDER BY GMT_CREATE DESC
+	</select>
+	
+	<select id="queryActivityDiscountPageCount" resultClass="Integer" parameterClass="ActivityDiscountQuery">
+		SELECT COUNT(*) FROM ACTIVITY_DISCOUNT
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="startTime">
+					<![CDATA[START_TIME >= #startTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endTime">
+				<![CDATA[END_TIME <= #endTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberNick">
+				<![CDATA[MEMBER_NICK = #memberNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memberId">
+					<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<isEmpty prepend="AND" property="status">
+					<![CDATA[STATUS != 3]]>
+			</isEmpty>
+			<isEqual prepend="AND" property="status" compareValue="0">
+				<![CDATA[
+					START_TIME >= #checkTime#
+				]]>
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="1">
+				<![CDATA[
+					START_TIME <= #checkTime# AND END_TIME >= #checkTime#
+				]]>
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="2">
+				<![CDATA[
+					END_TIME <= #checkTime#
+				]]>
+			</isEqual>
+		</dynamic>
+	</select>
+	
+	<sql id="deleteAllActivityDiscount"><![CDATA[DELETE FROM ACTIVITY_DISCOUNT]]></sql>
+
+	<delete id="deleteAllActivityDiscount">
+		<include refid="deleteAllActivityDiscount" />
+	</delete>
+
+	<delete id="deleteActivityDiscountById" parameterClass="long">
+		<include refid="deleteAllActivityDiscount" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+	
+	<update id="updateActivityDiscountStatus" parameterClass="long">
+    	<![CDATA[UPDATE ACTIVITY_DISCOUNT SET STATUS = 3 WHERE ID = #id#]]>
+	</update>
+	
+	<update id="endActivityDiscountStatus" parameterClass="map">
+    	<![CDATA[UPDATE ACTIVITY_DISCOUNT SET STATUS = #status#,GMT_MODIFIED = #gmtModified# WHERE ID = #id# and STATUS=0]]>
+	</update>
+
+	<update id="updateActivityDiscount" parameterClass="ActivityDiscountDO">
+		<![CDATA[UPDATE ACTIVITY_DISCOUNT]]>
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="actName">
+				<![CDATA[ACT_NAME = #actName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="startTime">
+				<![CDATA[START_TIME = #startTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="endTime">
+				<![CDATA[END_TIME = #endTime#]]>
+			</isNotEmpty>
+			<isNotNull prepend="," property="itemList">
+				<![CDATA[ITEM_LIST = #itemList#]]>
+			</isNotNull>
+			<isNotEmpty prepend="," property="itemCount">
+				<![CDATA[ITEM_COUNT = #itemCount#]]>
+			</isNotEmpty>
+			<isNotNull prepend="," property="discountList">
+				<![CDATA[DISCOUNT_LIST = #discountList#]]>
+			</isNotNull>
+			<isNotEmpty prepend="," property="discountDefault">
+				<![CDATA[DISCOUNT_DEFAULT = #discountDefault#]]>
+			</isNotEmpty>
+			<isNotNull prepend="," property="limitList">
+				<![CDATA[LIMIT_LIST = #limitList#]]>
+			</isNotNull>
+			<isNotEmpty prepend="," property="memberNick">
+				<![CDATA[MEMBER_NICK = #memberNick#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="memberId">
+				<![CDATA[MEMBER_ID = #memberId#]]>
+			</isNotEmpty>
+			<!-- 
+			<isNotEmpty prepend="," property="status">
+				<![CDATA[STATUS = #status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="gmtCreate">
+				<![CDATA[GMT_CREATE = #gmtCreate#]]>
+			</isNotEmpty>
+			-->
+			<isNotEmpty prepend="," property="gmtModified">
+				<![CDATA[GMT_MODIFIED = #gmtModified#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE id = #id#]]>
+	</update>
+</sqlMap>
+

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="open_api_session">
+
+	<typeAlias alias="OpenApiSession" type="com.yuwang.api.domain.OpenApiSessionDO" />
+
+	<resultMap id="OpenApiSessionResult" class="OpenApiSession">
+	    <result property="id" column="ID"  />
+		<result property="sellerId" column="SELLER_ID" />
+		<result property="nickName" column="NICK_NAME" />
+		<result property="appid" column="APPID" />
+		<result property="sessionKey" column="SESSIONKEY" />
+		<result property="gmtCreated" column="GMT_CREATED" />
+		<result property="invokeDate" column="INVOKE_DATE" />
+	</resultMap>
+
+	<sql id="selectAllOpenApiSession"><![CDATA[SELECT ID,SELLER_ID,NICK_NAME,APPID,SESSIONKEY,GMT_CREATED,INVOKE_DATE FROM OPEN_API_SESSION]]></sql>
+
+	<select id="selectAllOpenApiSession" resultMap="OpenApiSessionResult">
+		<include refid="selectAllOpenApiSession" />
+	</select>
+
+	<select id="selectOpenApiSessionByid" resultMap="OpenApiSessionResult"
+		parameterClass="long">
+		<include refid="selectAllOpenApiSession" />
+		<![CDATA[WHERE ID = #id#]]>
+	</select>
+
+	<select id="selectOpenApiSession" resultMap="OpenApiSessionResult"
+		parameterClass="OpenApiSession">
+		<include refid="selectAllOpenApiSession" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="nickName">
+				<![CDATA[NICK_NAME = #nickName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="appid">
+				<![CDATA[APPID = #appid#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sessionKey">
+				<![CDATA[SESSIONKEY = #sessionKey#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreated">
+				<![CDATA[GMT_CREATED = #gmtCreated#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="invokeDate">
+				<![CDATA[INVOKE_DATE = #invokeDate#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="selectOpenApiSessionBysessionKey" resultMap="OpenApiSessionResult"
+		parameterClass="java.util.Map" >
+		<include refid="selectAllOpenApiSession" />
+		<![CDATA[WHERE APPID = #appid# AND SESSIONKEY = #sessionKey#]]>
+		<isNotEmpty prepend="AND" property="expireTime">
+			<![CDATA[INVOKE_DATE >= DATE_ADD(NOW(), INTERVAL -#expireTime# MINUTE) ]]>
+		</isNotEmpty>
+	</select>
+
+
+	<insert id="insertOpenApiSession" parameterClass="OpenApiSession">
+		<![CDATA[INSERT INTO OPEN_API_SESSION (SELLER_ID,NICK_NAME,APPID,SESSIONKEY,GMT_CREATED,INVOKE_DATE) VALUES (#sellerId#,#nickName#,#appid#,#sessionKey#,now(),now())]]>
+	   <selectKey resultClass="long" type="post" keyProperty="id">
+       <![CDATA[SELECT LAST_INSERT_ID() AS ID]]>
+        </selectKey>
+	</insert>
+
+	<sql id="deleteAllOpenApiSession"><![CDATA[DELETE FROM OPEN_API_SESSION]]></sql>
+
+	<delete id="deleteAllOpenApiSession">
+		<include refid="deleteAllOpenApiSession" />
+	</delete>
+
+	<delete id="deleteOpenApiSessionByid" parameterClass="long">
+		<include refid="deleteAllOpenApiSession" />
+		<![CDATA[WHERE ID = #id#]]>
+	</delete>
+
+	<delete id="deleteOpenApiSession" parameterClass="OpenApiSession">
+		<include refid="deleteAllOpenApiSession" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="nickName">
+				<![CDATA[NICK_NAME = #nickName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="appid">
+				<![CDATA[APPID = #appid#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sessionKey">
+				<![CDATA[SESSIONKEY = #sessionKey#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="gmtCreated">
+				<![CDATA[GMT_CREATED = #gmtCreated#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="invokeDate">
+				<![CDATA[INVOKE_DATE = #invokeDate#]]>
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+	
+	<update id="updateOpenApiSession" parameterClass="OpenApiSession">
+		<![CDATA[UPDATE OPEN_API_SESSION SET INVOKE_DATE = now()]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="sessionKey">
+				<![CDATA[SESSIONKEY = #sessionKey#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="appid">
+				<![CDATA[APPID = #appid#]]>
+			</isNotEmpty>
+		</dynamic>
+	</update>
+</sqlMap>
+

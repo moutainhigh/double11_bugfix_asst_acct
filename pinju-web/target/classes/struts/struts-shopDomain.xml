@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="ajaxShopDomain" namespace="/shopDomain" extends="json-default">
+		<!-- 异步验证域名已被绑定 -->
+		<action name="checkDomainIsBindAction"
+			class="com.yuwang.pinju.web.module.shop.screen.ShopDomainSettingAction"
+			method="checkDomainIsBindAjax">
+			<result type="json">
+				<param name="root">jsonResult</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="shopDomain" namespace="/shopDomain"
+		extends="pinju-auth">
+		<!-- 显示域名设置页 -->
+		<action name="showDomainSettingPageAction"
+			class="com.yuwang.pinju.web.module.shop.screen.ShopDomainSettingAction"
+			method="showDomainSettingPage">
+			<result name="shopDomainBind" type="freemarker">/default/templates/screen/shopDomain/shopDomainBindPage.ftl
+			</result>
+			<result name="shopDomainIsBind" type="freemarker">/default/templates/screen/shopDomain/shopDomainIsBindPage.ftl
+			</result>
+			<result name="error" type="freemarker">/default/templates/screen/shopDomain/domainError.ftl
+			</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopDomain</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopDomain</result>
+		</action>
+
+		<!-- 点击更改域名按钮操作 -->
+		<action name="showChangeDomainPageAction"
+			class="com.yuwang.pinju.web.module.shop.screen.ShopDomainSettingAction"
+			method="showChangeDomainPage">
+			<result name="changeDomainPage" type="freemarker">/default/templates/screen/shopDomain/shopDomainBindPage.ftl
+			</result>
+			<result name="error" type="freemarker">/default/templates/screen/shopDomain/domainError.ftl
+			</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopDomain</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopDomain</result>
+		</action>
+
+		<!-- 设置域名(绑定,解绑,更改) -->
+		<action name="settingDomainAction"
+			class="com.yuwang.pinju.web.module.shop.screen.ShopDomainSettingAction"
+			method="settingDomain">
+			<result name="shopDomainBind" type="freemarker">/default/templates/screen/shopDomain/shopDomainBindPage.ftl
+			</result>
+			<result name="shopDomainIsBind" type="freemarker">/default/templates/screen/shopDomain/shopDomainIsBindPage.ftl
+			</result>
+			<result name="error" type="freemarker">/default/templates/screen/shopDomain/domainError.ftl
+			</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopDomain</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopDomain</result>
+		</action>
+		
+		<!-- 进入同意协议页面 -->
+		<action name="showDomainBindAgreePageAction"
+			class="com.yuwang.pinju.web.module.shop.screen.ShopDomainSettingAction"
+			method="showDomainBindAgreePage">
+			<result name="success" type="freemarker">/default/templates/screen/shopDomain/shopDomainAgreementPage.ftl
+			</result>
+			<result name="error" type="freemarker">/default/templates/screen/shopDomain/domainError.ftl
+			</result>
+			<result name="NOT_OPEN" type="redirect">/shopMessage/shopNotOpen.htm?red_shop=red_shopDomain</result>
+			<result name="IS_CLOSE" type="redirect">/shopMessage/shopIsClose.htm?red_shop=red_shopDomain</result>
+		</action>
+		
+	</package>
+
+</struts>

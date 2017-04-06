@@ -1,0 +1,47 @@
+﻿body{position:relative;font-size:12px;margin:0;padding:0;border:0px;}
+#login_frame{position:relative;overflow:visible;}
+.user_name_title{position:absolute;left:14px;top:15px;}
+.user_name_input{position:absolute;left:62px;top:9px; padding-bottom:20px; padding-right:20px; background-image:url('../images/sdo_login_title.png'); background-position:left 27px; background-repeat:no-repeat;}
+.user_pwd_title{position:absolute;left:14px;top:60px;}
+.user_pwd_input{position:absolute;left:62px;top:55px;}
+.login_btn{position:absolute;left:62px;top:92px;}
+.forget_pwd_link{position:absolute;left:156px;top:99px;}
+.forget_pwd_link a{color:#07679c; font-size:12px; text-decoration:none;}
+.forget_pwd_link a:hover{color:#F60;}
+.wap_reg_link{position:absolute;left:178px;top:32px;display:none;}
+.btn_reg_frame{position:absolute;left:172px;top:6px;display:none;}
+.inputtxt{border:1px #bbb solid;width:138px;height:20px;line-height:20px;vertical-align:-4px;}
+.btn_user_login{line-height:18px;width:58px;font-size:13px;}
+#user_info_frame{position:relative;}
+.welcome_info{position:absolute;left:0;top:0;}
+.user_name{position:absolute;left:56px;top:0;}
+.welcome_info{position:absolute;left:0;top:0;}
+.user_name{position:absolute;left:56px;top:0;}
+.logout_btn_frm{position:absolute;left:0;top:23px;}
+.msg{position:absolute;left:70px;top:23px;}
+.user_title{position:absolute;top:48px;left:0;}
+.user_rank{font-weight:bold;position:absolute;top:48px;left:70px;}
+.last_login_time_title, .user_welcome_info{position:absolute;top:70px;left:0;}
+.last_login_time{position:absolute;top:70px;left:127px;}
+.pwd_title{position:absolute;left:0;top:2px;}
+.pwd_input_frame{position:absolute;left:80px;top:0;}
+.challenge_title, .challenge_tip{position:absolute;left:0;top:25px;}
+.challenge_num{position:absolute;left:80px;top:25px;}
+.btn_login_frame{position:absolute;left:0;top:45px;}
+.btn_user_login{border-style:none;border-color:inherit;border-width:0;background-color:transparent;background-image:url('../images/sdo_login_btn.png');background-position:left top;background-repeat:no-repeat;display:block;width:88px;height:27px;vertical-align:-2px;font-size:12px;font-weight:bold;color:white;cursor:pointer;}
+a.btn_user_login:hover{background-position:left -40px;}
+.link_check_frame{position:absolute;left:80px;top:50px;}
+.link_loss_frame{position:absolute;left:120px;top:50px;}
+.link_unbind_frame{position:absolute;left:160px;top:50px;}
+.link_fax_frame{position:absolute;left:200px;top:50px;}
+.ecard_po_1{position:absolute;left:22px;top:5px;}
+.ecard_po_2{position:absolute;left:88px;top:5px;}
+.ecard_po_3{position:absolute;left:153px;top:5px;}
+.ecard_position_1{position:absolute;left:37px;top:30px;}
+.ecard_position_2{position:absolute;left:107px;top:30px;}
+.ecard_position_3{position:absolute;left:167px;top:30px;}
+.btn_ecard_login{position:absolute;left:14px;top:56px;}
+.link_ecard_unbind{position:absolute;left:142px;top:59px;}
+.link_ecard_use{position:absolute;left:108px;top:59px;}
+.link_ecard_exchange{position:absolute;left:76px;top:59px;}
+.link_ecard_repay{position:absolute;left:176px;top:59px;}

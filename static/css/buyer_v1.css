@@ -1,0 +1,117 @@
+/* buyer */
+.colsub { float:left; width:150px; }
+.colsub .box { border:1px solid #dadada; float:left; width:148px; margin:0 0 10px; }
+.colsub dl ul { padding:5px 0 10px; }
+.colsub dl dt {
+    background-color:#F8F8F8;
+    border-top:1px solid #e9e9e9;
+    color: #000;
+    font-weight: bold;
+    padding: 8px 20px;
+}
+.colsub dl dd {
+    color: #999999;
+    line-height: 1.8em;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.colsub dl dd a { color: #333333; }
+
+.colmain { float: right; width:840px; }
+.colmain .main { float: left; width:640px; }
+.colmain .sidebar { float: right; width:190px; }
+
+.userpannel { background-color:#f8f8f8; border:1px solid #dadada; padding:10px; margin:0 0 10px; }
+.avatar { float:left; width:75px; }
+.avatar .img { float:left; border:1px solid #dadada; padding:2px; }
+.userpannel .text { float:left; width:535px;  }
+.userpannel .text .title { float:left; width:535px; margin:0 0 10px; }
+.userpannel .text .sayhi { float:left; width:250px; }
+.userpannel .text .sayhi p { color:#000; font-size:14px; font-weight:bold; line-height:16px; }
+.userpannel .text .eye { float:right; }
+.userpannel .text .eye ul { float:left; }
+.userpannel .text .eye ul li { float:left; margin:0 0 0 10px; }
+.userpannel .text .eye ul li a { float:left; }
+.userpannel .text .eye ul li span {
+	float:left;
+	margin:0 5px 0 0;
+	border:0 none;
+	height:16px;
+	width:16px;
+}
+.icon-edit { background:transparent url(http://static.pinju.com/img/hot_grid_ui/hot_grid_ui.png) no-repeat scroll right -120px; }
+.icon-mlist { background:transparent url(http://static.pinju.com/img/hot_grid_ui/hot_grid_ui.png) no-repeat scroll right -150px; }
+
+.userpannel .text .tips { float:left; width:519px; border:1px solid #f9dfb2; background-color:#ffffe0; padding:0 8px; }
+.userpannel .text .tips ul { float:left; line-height:2.2em; }
+.userpannel .text .tips ul li { float:left; width:128px; }
+.userpannel .text .tips a { color:#666; }
+.userpannel .text .tips .last { border-top:1px dashed #f9dfb2; }
+.userpannel .text .tips .hasnews a { font-weight:bold; color:#be0000; }
+
+.colmain .main .row {
+	border-top:1px solid #dadada;
+	padding:0 0 10px;
+}
+.colmain .main .row .title {
+	background:transparent url(http://static.pinju.com/img/bg-rowtitle.png) repeat-x scroll 0 0;
+	height:60px;
+}
+.colmain .main .row .title h2 { color:#000; font-weight:bold; line-height:30px; padding:0 10px; }
+.row .title .subcon { height:30px; overflow:hidden; }
+.row .title .subcon ul { padding:0 10px; }
+.row .title .subcon ul li { display:inline; line-height: 30px; margin:0 10px 0; }
+.row .title .subcon .eye { float:right; }
+.colmain .main .row .order-list { border-bottom:1px solid #dadada; padding:10px 0; }
+.cbottom { height:60px; }
+.cbottom .skipto .pagenum { width:36px; }
+.btn-swhite {
+	background:transparent url(http://static.pinju.com/img/hot_grid_ui/hot_grid_ui.png) no-repeat scroll 0 -107px;
+	border:0 none;
+	height:23px;
+	width:69px;
+}
+
+.order-list table { width:100%; border-collapse:collapse; }
+.order-list table td { border-bottom:1px dashed #d4d4d4; }
+.order-list table .last td { border-bottom:0 none; }
+.order-list table td { color:#000; text-align:center; line-height:1.8em; }
+.order-list .img { width:90px; }
+.order-list .desc { width:240px; text-align:left; }
+button.btn-sorange {
+	background:transparent url(http://static.pinju.com/img/hot_grid_ui/hot_grid_ui.png) no-repeat scroll 0 -130px;
+	border:0 none;
+	color:#fff;
+	height:23px;
+	width:69px;
+}
+
+strong { font-weight:bold; }
+.sidebar .box { 
+	background-color:#fff;
+	border:1px solid #d4d4d4;
+	margin:0 0 10px;
+}
+.sidebar .box h2 {
+	background-color:#F8F8F8;
+    border-top:1px solid #e9e9e9;
+	font-weight:bold;
+	padding:5px 10px;
+}
+.sidebar .box .shopcart { text-align:center; }
+.sidebar .box .img { margin:2px; border-bottom:1px dashed #d4d4d4;}
+.sidebar .text { padding:10px; }
+.sidebar .text p { line-height:1.6em; }
+.sidebar ul { color:#666; line-height:1.8em; }
+.sidebar ul a { color:#666; }
+.sidebar .news li { border-bottom:1px dashed #d4d4d4; }
+.sidebar .more { text-align:right;}
+
+
+
+
+
+
+
+

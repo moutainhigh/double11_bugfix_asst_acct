@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="member" namespace="/member" extends="pinju-default">
+
+    <!-- 进入用户注册页面 -->
+    <action name="register" class="com.yuwang.pinju.web.module.member.screen.MemberRegisterAction" method="execute">
+      <param name="aliases">#{ 'p' : 'code' }</param>
+      <interceptor-ref name="pinju-default-interceptor" />
+      <interceptor-ref name="alias"/>
+      <result name="success" type="freemarker">/default/templates/screen/member/register.ftl</result>      
+    </action>
+
+    <!-- 用户注册处理 -->
+    <action name="register-do" class="com.yuwang.pinju.web.module.member.screen.MemberRegisterAction" method="register">
+      <param name="aliases">#{ 'p' : 'code' }</param>
+      <interceptor-ref name="pinju-default-interceptor" />
+      <interceptor-ref name="alias"/>
+      <result name="input" type="freemarker">/default/templates/screen/member/register.ftl</result>
+      <result name="success" type="freemarker">/default/templates/screen/member/success-register.ftl</result>
+    </action>
+
+    <!-- 用户注册成功
+    <action name="register-success" class="com.yuwang.pinju.web.module.member.screen.MemberRegisterAction" method="registerSuccess">
+      <result name="success" type="freemarker">/default/templates/screen/member/success-register.ftl</result>
+    </action>
+     -->
+
+    <!-- 进入用户登录页面 -->
+    <action name="login" class="com.yuwang.pinju.web.module.member.screen.MemberLoginAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/member/member-login.ftl</result>
+    </action>
+
+    <!-- 用户登录处理 -->
+    <action name="login-dox" class="com.yuwang.pinju.web.module.ajax.member.login.AsyncLoginAction" method="execute">
+      <result name="invalid-request" type="httpheader">
+        <param name="status">404</param>
+      </result>
+      <result name="success" type="json">
+        <param name="noCache">true</param>
+        <param name="root">result</param>
+        <param name="excludeNullProperties">true</param>
+      </result>
+      <result name="error" type="json">
+        <param name="noCache">true</param>
+        <param name="root">result</param>
+        <param name="excludeNullProperties">true</param>
+      </result>
+    </action>
+    
+    <action name="token" class="com.yuwang.api.OpenApiTokenAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/member/open-api-login.ftl</result>
+    </action>
+    
+    <!--
+    <action name="login-do" class="com.yuwang.pinju.web.module.member.screen.MemberLoginAction" method="doLogin">
+      <result name="input" type="freemarker">/default/templates/screen/member/member-login.ftl</result>
+      <result name="success" type="redirect">${returnUrl}</result>
+      <result name="open-api" type="freemarker">/default/templates/screen/member/open-api-login.ftl</result>
+    </action>
+    -->
+
+    <!-- 第三方登录验证 -->
+    <action name="auth" class="com.yuwang.pinju.web.module.member.action.MemberAuthAction" method="execute">
+      <result name="success" type="redirect">${returnUrl}</result>      
+    </action>
+
+    <!-- 退出 -->
+    <action name="logout" class="com.yuwang.pinju.web.module.member.action.MemberLogoutAction" method="execute">
+      <result name="success" type="redirect">${returnUrl}</result>
+      <result name="sdo-success" type="redirect">https://cas.sdo.com/cas/logout?url=${returnUrl}</result>
+    </action>
+
+    <action name="-_-|||" class="com.yuwang.pinju.web.module.member.screen.TestAction" method="execute">
+      <result name="success" type="freemarker">/default/templates/screen/member/test.ftl</result>
+    </action>
+    
+    <!-- 支付账号绑定签约 -->
+    <action name="bound-sign" class="com.yuwang.pinju.web.module.member.action.MemberSignAction" method="execute">
+    </action>
+    
+    <action name="sina-weibo-login" class="com.yuwang.pinju.web.module.member.screen.MemberSinaLoginAction" method="execute">
+       <result name="success" type="redirect">${returnUrl}</result>
+       <result name="sina-login" type="freemarker">/default/templates/screen/member/sina-login.ftl</result>
+       <result name="error" type="freemarker">/default/templates/screen/member/sina-login-error.ftl</result>
+    </action>
+    
+    <action name="sina-register" class="com.yuwang.pinju.web.module.member.screen.MemberSinaLoginAction" method="sinaRegister">
+       <result name="input" type="freemarker">/default/templates/screen/member/sina-login.ftl</result>
+       <result name="success" type="redirect">${returnUrl}</result>
+    </action>
+    
+  </package>
+
+  <package name="agreement" namespace="/agreement" extends="pinju-login">
+    <!-- 用户协议 -->
+    <action name="index" class="com.yuwang.pinju.web.module.member.screen.MemberAgreementAction">
+      <result name="success" type="freemarker">/default/templates/screen/member/agreement.ftl</result>
+    </action>
+
+    <!-- 用户同意用户协议 -->
+    <action name="accept" class="com.yuwang.pinju.web.module.member.screen.MemberAgreementAction" method="accept">
+      <result name="error" type="freemarker">/default/templates/screen/member/agreement.ftl</result>
+      <result name="input" type="freemarker">/default/templates/screen/member/agreement.ftl</result>
+      <result name="success" type="redirect">${returnUrl}</result>
+    </action>
+  </package>
+
+  <package name="credit" namespace="/credit" extends="pinju-default">
+    <action name="*" class="com.yuwang.pinju.web.module.rate.screen.ShopCreditAction" method="execute">
+      <param name="encodeMemberId">{1}</param>
+      <result name="success" type="freemarker">/default/templates/screen/rate/credit.ftl</result>
+    </action>
+  </package>
+</struts>

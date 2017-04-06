@@ -1,0 +1,84 @@
+.cart-content{margin:20px auto 0; width:950px; min-height:600px; _height:600px;}
+
+.cart-tip{background:#fff8de; border:1px solid #ffb71c; padding:10px 0; margin-bottom:20px;}
+
+.cart-tip ol{padding:5px 10px; height:12px; display:block;}
+
+.cart-tip ol li{float:left; width:50%;}
+
+.cart-tip ol li input{margin-left:18px;}
+
+.cartli .total-price{margin:0 8px; font-size:20px; display:inline-block; color:#FF6600;}
+
+.cartli td a{color:#3f64ec;}
+
+.cartli td a:hover{color:#ff6600;}
+
+.cartli table{margin:5px auto;}
+
+.cartli table td{padding:5px; border-bottom:1px solid #ccc;}
+
+td.pic img{border: 1px solid #E9E9E9; float: left; height: 50px; width: 50px; margin-right:5px;}
+
+.cartli table td.pic p{margin-top:5px; color:#999;}
+
+.cartli table td.pic p span{margin-right:10px;}
+
+.cartli table td.s-amount a{background: none repeat scroll 0 0 white; border: 1px solid #DBDBDB; color: #555555; display: inline-block; font-family: arial; height: 9px; line-height: 9px; margin: 5px 0 0; overflow: hidden; text-align: center; width: 9px;}
+
+.cartli table td.s-amount a.no-minus{color: #DBDBDB; cursor: default; margin-left: 0; margin-right: 3px; text-indent: 1px;}
+
+.cartli table td.s-amount a.plus{margin-left: 5px;}
+
+.cartli table td.s-amount .text{color: #666666; display: inline-block; padding: 1px 3px; text-align: right; width: 28px; height:16px; border: 1px solid #A7A6AA; background:url(../images/T1jvdUXhhjXXXXXXXX-800-500.png) no-repeat;}
+
+.cartli table .hd{background:#f7f7f7;}
+
+.cartprice{text-align:right;}
+
+.cartprice p{margin-right:18px; height:26px;}
+
+.upprice{color:#999; text-decoration:line-through; display:block;}
+
+.danger{display:block; border-radius:2px 2px 2px 2px; color:#fff; padding:5px 8px; margin:3px auto; background:#d11a07; width:70%;}
+
+.cart-jr{width:50%; margin:50px auto; text-align:center; padding:40px 0; line-height:26px;}
+
+/*-----------------------Ω·À„------------------------------------*/
+.consignee{margin-bottom:20px; line-height:22px; border-bottom:2px solid #dcdcdc; text-indent:8px;}
+
+.consignee h3{font-size:13px; padding-bottom:2px;}
+
+.consignee-list li{line-height:24px;}
+
+.consignee-list .tjyc{display:inline; margin-left:15px;}
+
+.consignee-list .tjyc a{margin-right:5px; color:#3f64ec;}
+
+.consignee-list .new-address{margin:10px auto;}
+
+.consignee-list .new-address td{padding:4px 2px;}
+
+.consignee-list .new-address td input,.consignee-list .new-address td select{margin:0 5px;}
+
+.beizhu{color:#999; display:inline; margin-left:5px; vertical-align:top;}
+
+
+.cart_pop{width:282px; border:1px solid #dadada;padding:10px;color:#3e3e3e; font-family:Arial; display:none;}
+.cart_pop_tit{ font-weight:bold; margin-bottom:12px;}
+.cart_pop_items_list{line-height:20px;}
+.cart_pop_items_list li{ float:left; margin-bottom:10px;width:282px; }
+.cart_pop_items_pic{ width:40px; float:left; margin-right:8px; border:solid 1px #C4C4C4;}
+.cart_pop_items_pic a{background:#FFF;width:40px; height:40px;display:table-cell;text-align:center; vertical-align:middle; *display:block;*font-size:35px;*font-family:Arial;}
+.cart_pop_items_pic a img{ vertical-align:middle;}
+.cart_pop_items_tit{ width:170px; overflow:hidden; float:left;}
+.cart_pop_items_tit a{	overflow:hidden;color:#3e3e3e;}
+.cart_pop_items_tit a:hover{color:#ff5500;}
+.cart_pop_items_tit p,.cart_pop_items_price{ color:#999999}
+.cart_pop_items_price{ display:block;}
+.cart_pop_items_r{ float:right; text-align:right;}
+.cart_pop_items_price b{ color:#ff6600;margin-left:5px; font-weight:bold; }
+.cart_pop_items_f{padding-top:10px; text-align:right; border-top:solid 1px #dadada;}
+.cart_pop_items_f p{ font-weight:bold;}
+.cart_pop_items_but{ margin-top:15px; float:right; background:url(http://static.pinju.com/images/cart_but1_24.gif) no-repeat; width:113px; height:20px; display:block; color:#FFF; text-align:center; line-height:20px;}
+.cart_pop_items_but:hover{ text-decoration:none;}

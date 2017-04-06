@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Demo</title>
+		<style>
+			.search-keyword {
+				width: 500px;
+			}
+		</style>
+		<script src="../jquery/jquery-1.6.2.min.js"></script>
+		<link rel="stylesheet" href="jquery.suggest.css" />
+		<script src="jquery.suggest.js"></script>
+		<script>
+			$(function() {
+				$('#J_keyword').suggest('http://static.pinju.com/suggest/data.jsonp?callback=?', {
+					onSelect : function() {
+						alert(this.value);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="text" id="J_keyword" class="search-keyword" value="" />
+		<div>
+			<select><option>请选择</option></select>
+		</div>
+	</body>
+</html>

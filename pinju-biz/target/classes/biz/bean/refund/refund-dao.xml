@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="tradeRefundLeavewordDAO" class="com.yuwang.pinju.core.refund.dao.impl.TradeRefundLeavewordDAOImpl"/>
+	<bean id="refundLogisticsDAO" class="com.yuwang.pinju.core.refund.dao.impl.RefundLogisticsDAOImpl"/>
+	<bean id="refundDAO" class="com.yuwang.pinju.core.refund.dao.impl.RefundDAOImpl"/>
+	<bean id="refundManualDAO" class="com.yuwang.pinju.core.refund.dao.impl.TradeRefundManualDAOImpl"/>
+	<bean id="refundManualUpDateDAO" class="com.yuwang.pinju.core.refund.dao.impl.TradeRefundManualUpDateDAOImpl" />
+	<bean id="refundManualQueryDAO" class="com.yuwang.pinju.core.refund.dao.impl.TradeRefundManualQueryDAOImpl" />
+	<bean id="refundQueryDAO" class="com.yuwang.pinju.core.refund.dao.impl.RefundQueryDAOImpl" />
+</beans>

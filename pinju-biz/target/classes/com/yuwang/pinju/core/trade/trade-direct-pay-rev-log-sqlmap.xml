@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeDirectPayRevLog">
+
+    <typeAlias alias="DirectPayRevLogDO" type="com.yuwang.pinju.domain.trade.DirectPayRevLogDO" />
+
+	<resultMap id="directPayRevLogDOMap" class="DirectPayRevLogDO" >
+		<result property="id" column="ID" />
+        <result property="payOrderId" column="PAY_ORDER_ID" />
+		<result property="detail" column="DETAIL" />
+		<result property="receiveTime" column="RECEIVE_TIME" />
+        <result property="bizType" column="BIZ_TYPE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+    <sql id="directPayRevLogPrefix">
+         V.ID,
+         V.PAY_ORDER_ID,
+         V.DETAIL,
+         V.RECEIVE_TIME,
+         V.BIZ_TYPE,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED
+    </sql>
+   
+	<select id="getDirectPayRevLogDOById"  parameterClass="java.lang.Long" resultMap="directPayRevLogDOMap">
+        SELECT <include refid="directPayRevLogPrefix"/> FROM TRADE_DIRECT_PAY_REV_LOG V WHERE V.ID=#value# 
+	</select>
+	
+	<insert id="insertdirectPayRevLogRecord" parameterClass="DirectPayRevLogDO">
+	    <selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_DP_REV_LOG_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_DIRECT_PAY_REV_LOG 
+	    (
+        	ID,
+            PAY_ORDER_ID,
+         	DETAIL,
+         	RECEIVE_TIME,
+            BIZ_TYPE,
+	     	GMT_CREATE,
+	     	GMT_MODIFIED
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+            #payOrderId#,
+			#detail#,
+			sysdate,
+            #bizType#,
+			sysdate,
+			sysdate
+	    )
+	</insert>
+	
+</sqlMap>

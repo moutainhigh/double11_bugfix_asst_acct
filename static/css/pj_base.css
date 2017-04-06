@@ -1,0 +1,434 @@
+/* reset style */
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,iframe,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+body,button,input,select,textarea{font:12px/15px tahoma,simsun,arial;color:#333;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+address,cite,dfn,em,var{font-style:normal;}
+code,kbd,pre,samp{font-family:courier new,courier,monospace;}
+small{font-size:12px;}
+ul,ol{list-style:none;}
+a{color:#06C;text-decoration:none;}
+a:hover{text-decoration:underline;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+legend{color:#000;}
+fieldset,img{border:0;}
+button,input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+button, .btn {cursor: pointer;}
+input.btn {border:0 none;}
+iframe {overflow:hidden;border:0 none;background:transparent;}
+.cf:after {content: "...";display: block;height: 0;clear: both;visibility: hidden;}
+.cf {zoom: 1;}
+
+/*addon*/
+.fl {float:left;}
+.fr {float:right;}
+.bd{ font-weight:bold;}
+.hph {color: #999 !important;}
+.dom-tpl {display: none;}
+.hide {display: none !important;}
+#Console {padding: 3px;height: 400px;overflow: auto;border: 2px solid #999;}
+#PageLoading {padding: 5px 5px 5px 21px;line-height: 13px;position: absolute;top: 0px;left: 0px;background: #FF6 url(../img/page-loading.gif) no-repeat 3px center;}
+.mb10 {margin-bottom:10px;}
+.mt10 {margin-top:10px;}
+ol.dstyle {padding:0 0 0 20px;color:#666;line-height:2em;}
+ol.dstyle, ol.dstyle li {list-style: outside decimal;}
+#html_id ul,#pd_description ul { list-style: disc outside none; margin: 12px 0; padding-left: 40px; }
+#html_id ol,#pd_description ol { list-style: decimal outside none; margin: 12px 0; padding-left: 40px;}
+#html_id,#pd_description {line-height:1.5;}
+#html_id img,#pd_description img {vertical-align: top;}
+#html_id blockquote,#pd_description blockquote {padding:0 0 0 30px;}
+#html_id em,#pd_description em {font-style:italic;}
+
+/* table diffrent color row */
+.oddrow {width:100%; margin:0 0 10px;}
+.oddrow th, .oddrow td {padding:5px;}
+.bigrow th, .bigrow td {padding:10px 5px;}
+.oddrow tr.first td {padding-top:20px;}
+.oddrow td {vertical-align: top;}
+.oddrow th { background-color:#f0f0f0; border-bottom:1px solid #ccc; font-weight:normal;}
+.oddrow .odd td {background-color:#f7f7f7;}
+.tleft {text-align:left;}
+.tcenter {text-align:center;}
+.tright {text-align:right;}
+th.selectcol, td.selectcol { padding-left:25px; text-align:left; vertical-align:middle;}
+
+/* form */
+input.text {height:20px; width:240px; padding:3px 2px 0 2px; border:1px solid #999;}
+input.ntext {padding:2px 3px;}
+input.w5numb {width:40px; padding:2px 3px;}
+input.w10numb {width:80px; padding:2px 3px;}
+input.w15text { padding:3px; width:150px;}
+
+/* form for popup */
+.required { color:#fe0000; font-weight:bold; }
+.formwrap { padding:20px; }
+.formwrap .title { font-size:14px; padding:10px; border-bottom:1px solid #dadada; }
+.formwrap .title em { color:#666; }
+.formwrap .row { float:left; width:560px; padding:10px 0; }
+.formwrap .row label { float:left; width:120px; padding:0 10px 0 0; text-align:right; }
+.formwrap .row input, .formwrap .row select, .formwrap .row textarea, .formwrap .row span {float:left; margin:0 10px 0 0; }
+.formwrap .row input, .formwrap .row textarea { width:360px; }
+
+/*button*/
+.btnrow { padding:10px 0; text-align:center; }
+.imgbtn {margin: 0 0 10px;}
+button.disabled {filter:alpha(opacity=50);opacity:0.5; cursor:not-allowed;}
+button.disabled span {filter:alpha(opacity=50);}
+.imgbtn button {background:transparent url("http://static.pinju.com/img/mbuttons.png") no-repeat scroll left top;border: 0 none;margin: 0 10px 0 0;}
+.imgbtn .btn-xsgray {background-position:-172px 0;height:24px;width: 62px;}
+.imgbtn .btn-xslorange {background-position:-172px -24px;color:#eb6d00;height:24px;width: 62px;}
+.imgbtn .btn-sgray {background-position:0 0;height:23px;width: 69px;}
+.imgbtn .btn-sorange {background-position:0 -23px;color:#fff;height:23px;width: 69px;}
+.imgbtn .btn-lred {background-position:-69px 0;color:#fff;font-size:14px;font-weight:bold;height:29px;width: 103px;}
+.imgbtn .btn-lorange {background-position:-69px -29px;color:#fff;font-size:14px;font-weight:bold;height:29px;width: 103px;line-height:29px;}
+a.back-to-list-btn {font-size:14px;}
+
+/* free width small button */
+.imgsfbtn button {
+	background:transparent url("http://static.pinju.com/img/btn_h12.png") no-repeat scroll left top;
+	border:0 none;
+	height:23px;
+	margin:0 5px 0 0;
+	overflow: visible;
+	padding:0 0 0 4px;
+	position:relative;
+}
+.imgsfbtn button span {
+	background:transparent url("http://static.pinju.com/img/btn_h12.png") no-repeat scroll right -23px;
+	display: block; 
+	padding:5px 10px 0 6px;
+	height:18px;
+	position: relative;
+	white-space: nowrap;
+	text-align:center;
+}
+.imgsfbtn button::-moz-focus-inner { border: none; padding:0;}
+.imgsfbtn .btn-orange { background-position:0 0;}
+.imgsfbtn .btn-orange span { background-position:right -24px;color:#fff;}
+.imgsfbtn .btn-gray { background-position:0 -50px;}
+.imgsfbtn .btn-gray span { background-position:right -74px;color:#333;}
+.imgsfbtn .btn-red { background-position:0 -100px;}
+.imgsfbtn .btn-red span { background-position:right -124px;color:#fff;}
+
+/* free width large button */
+.imglfbtn button {
+	background:transparent url("http://static.pinju.com/img/btn_h14.png") no-repeat scroll left top;
+	border:0 none;
+	height:30px;
+	margin:0 5px 0 0;
+	overflow:visible;
+	padding:0 0 0 4px;
+	position:relative;
+}
+.imglfbtn button span {
+	background:transparent url("http://static.pinju.com/img/btn_h14.png") no-repeat scroll right -30px;
+	display: block;
+	font-size:14px;
+	font-weight:bold;
+	height:23px;
+	padding:7px 20px 0 16px;
+	position: relative;
+	white-space: nowrap;
+	text-align:center;
+}
+.imglfbtn button::-moz-focus-inner { border: none; padding:0;}
+.imglfbtn .btn-orange { background-position:0 0;}
+.imglfbtn .btn-orange span  { color:#fff; background-position:right -31px;}
+.imglfbtn .btn-red { background-position:0 -70px;}
+.imglfbtn .btn-red span { color:#fff; background-position:right -101px;}
+
+.btn_orange {display:inline-block; background:transparent url(http://static.pinju.com/img/btn_h12.png) no-repeat scroll left top; color:#fff; padding-left:4px; *display:inline; *zoom:1;}
+.btn_orange span {display:inline-block; background:transparent url(http://static.pinju.com/img/btn_h12.png) no-repeat scroll right -23px;  height:19px; padding:4px 5px 0 2px;*display:inline; *zoom:1;}
+
+.btn_gray { display:inline-block; background:transparent url(http://static.pinju.com/img/btn_h12.png) no-repeat scroll left -100px; color:#000; padding-left:4px;*display:inline; *zoom:1;}
+.btn_gray span {display:inline-block; background:transparent url(http://static.pinju.com/img/btn_h12.png) no-repeat scroll right -123px;  height:19px; padding:4px 5px 0 2px;*display:inline; *zoom:1;}
+
+/* button for backend new */
+.btnbkd button {
+	background:transparent url("http://static.pinju.com/img/btn-backend.png") no-repeat scroll left top;
+	border:0 none;
+	margin:0 5px 0 0;
+}
+.btnbkd .btn-l4,.btnbkd .btn-l8 {color:#fff;height:38px; font-size:14px; font-weight:bold; line-height:38px;}
+.btnbkd .btn-l4 {background-position:0 -66px; width:100px;}
+.btnbkd .btn-l8 {background-position:-100px -66px; width:160px;}
+.btnbkd .btn-m2, .btnbkd .btn-m4, .btnbkd .btn-m6, .btnbkd .btn-m8 {color:#333;height:26px; font-size:14px; font-weight:bold; line-height:26px;}
+.btnbkd .btn-m2 {background-position:0 0; width:70px;}
+.btnbkd .btn-m4 {background-position:-70px 0; width:100px;}
+.btnbkd .btn-m6 {background-position:-170px 0; width:130px;}
+.btnbkd .btn-m8 {background-position:-300px 0; width:160px;}
+.btnbkd .btn-sgray2, .btnbkd .btn-sgray4, .btnbkd .btn-sgray6, .btnbkd .btn-sgray8 {color:#666;height:20px; line-height:20px;}
+.btnbkd .btn-sorange2{background-position:0 -26px; width:43px;}
+.btnbkd .btn-sorange4{background-position:-43px -26px; width:66px;}
+.btnbkd .btn-sorange6{background-position:-109px -26px; width:92px;}
+.btnbkd .btn-sorange8{background-position:-201px -26px; width:115px;}
+.btnbkd .btn-sorange2, .btnbkd .btn-sorange4, .btnbkd .btn-sorange6, .btnbkd .btn-sorange8 {color:#ec6d02;height:20px; line-height:20px;}
+.btnbkd .btn-sgray2{background-position:0 -46px; width:43px;}
+.btnbkd .btn-sgray4{background-position:-43px -46px; width:66px;}
+.btnbkd .btn-sgray6{background-position:-109px -46px; width:92px;}
+.btnbkd .btn-sgray8{background-position:-201px -46px; width:115px;}
+
+/* button for input tag */
+.btn-single-sgray {background:transparent url("http://static.pinju.com/img/mbuttons.png") no-repeat scroll left top;border: 0 none;background-position:0 0;height:23px;width: 69px;}
+.btn-single-sorange {background:transparent url("http://static.pinju.com/img/mbuttons.png") no-repeat scroll left top;border: 0 none;background-position:0 -23px;color:#fff;height:23px;width: 69px;}
+.btn-single-lred {background:transparent url("http://static.pinju.com/img/mbuttons.png") no-repeat scroll left top;border: 0 none;background-position:-69px 0;color:#fff;font-weight:bold;height:29px;width: 103px;}
+.btn-single-lorange {background:transparent url("http://static.pinju.com/img/mbuttons.png") no-repeat scroll left top;border: 0 none;background-position:-69px -29px;color:#fff;font-weight:bold;height:29px;width: 103px;}
+
+.btn-imgtext button { 
+	background:transparent url(http://static.pinju.com/img/buttons-text.png) no-repeat scroll 0 0;
+	border:0 none;
+	margin-right:5px;
+	overflow:hidden;
+}
+.btn-imgtext button span {display:block; text-indent:-999px;}
+.btn-center {text-align:center; margin:20px 0;}
+
+/*wrap*/
+.wrapfull {text-align:center;}
+.wrapfull .wrap, .wrapfull .wrap950 {text-align:left;}
+.wrap, .wrap950,.wrap-bor,.wrap-border {margin:0 auto 10px;}
+.wrap {width:1000px;}
+.wrap950 {width:950px;}
+.wrap .left_layout {width:230px;float:left;}
+.wrap .right_layout {width:760px;float:right;}
+.wrap950 .left_layout {width:190px;float:left;}
+.wrap950 .right_layout {width:750px;float:right;}
+.wrap-border {width: 998px;border: 1px solid #DADADA;background: url(http://static.pinju.com/img/line.png) repeat-y 149px 0;}
+.wrap-bor {width: 998px;border: 1px solid #DADADA;}
+/*top_bar*/
+.top_bar {background: url("http://static.pinju.com/img/bg-topbar923.png") repeat-x scroll center top #FDFDFD;color: #676767;}
+.top_bar_box {width:1000px;height: 33px;line-height: 33px;margin:0 auto;}
+.login_status {float:left;}
+.login_status .welcome {margin:0 10px;}
+.login_status span {margin:0 15px 0 0;}
+.login_status a {color: #676767;}
+.login_status .welcome a {margin-right:5px;}
+.login_status a:hover {color: #D72426;}
+.top_bar_box .liaison {float:right;color:#d4d4d4;}
+.liaison li {
+	float:left;
+	height:21px;
+	line-height:21px;
+	margin:6px 0 0 10px;
+	padding:0 16px 0 0;
+}
+.liaison a {color: #676767;}
+.liaison a:hover {color: #D72426;}
+.liaison a.cart {float:left;background:transparent url("http://static.pinju.com/img/bg-topbar923.png") no-repeat scroll left -80px;padding-left:28px;padding-right:0;}
+.liaison a.cart span {float:left;background:transparent url("http://static.pinju.com/img/bg-topbar923.png") no-repeat scroll right -110px;padding-right:20px;}
+.liaison a.cart strong {font-weight:bold;color:#d62326;}
+
+.liaison .menu-item {margin-left:5px;padding-right:0;}
+.liaison .menu {position:relative;z-index:1499;}
+.liaison .menu-hd  {display:block;position:relative;width:70px;padding:0 5px;z-index:2;}
+.liaison .hover .menu-hd {border:1px solid #d4d4d4;border-bottom:0;background-color:#f0f0f0;margin:-1px;height:28px;}
+.liaison .menu-hd span {background:transparent url("http://static.pinju.com/img/bg-topbar923.png") no-repeat scroll right -48px;padding-right: 20px;}
+.liaison .menu-bd {position:absolute;display:block;top:27px;left:-1px;_left:0;display:none;border:1px solid #d4d4d4;background-color:#f0f0f0;z-index:1;}
+.liaison .hover .menu-bd {display:block;width:90px;}
+.liaison .menu-bd li {float:none;padding:0;margin:0 0 5px 5px;}
+
+/* 登录弹出框 */
+.login-dialog {padding: 10px 20px;}
+.login-dialog li {margin-bottom: 15px;}
+.login-dialog label {width: 70px;font-size: 14px;color: #4c4c4c;text-align: right;padding: 0 20px 0 0;display: inline-block;vertical-align: middle;zoom: 1;*display: inline;
+}
+.login-dialog .textbox {width: 200px;border: 1px solid #d4d4d4;background-color:#fff;font-family: "sans serif", tahoma, verdana, helvetica;font-size: 12px;line-height: 19px;height: 19px;padding: 2px 4px;margin-right: 50px;vertical-align: middle;}
+.login-dialog .captcha .textbox {width: 100px;margin-right:5px;}
+.login-dialog .captcha img {vertical-align: middle;border: 1px solid #ccc;padding: 1px;background: #fff;}
+.login-dialog a {display: inline-block;vertical-align: middle;zoom: 1;*display: inline;
+}
+.login-dialog .btn {width: 74px;height: 23px;margin-right: 15px;background-image:url(../img/login/login-btn.png);background-repeat:no-repeat;}
+.login-dialog a {margin-right: 10px;}
+
+/*header*/
+.header {width:1000px;margin:0 auto;}
+.masthead {height:95px;}
+.masthead .logo {float:left;margin:16px 0 0 0;}
+.masthead .eye {float:right;width:360px;}
+.share2sns {float: right;padding: 60px 10px 0 0;}
+.share2sns .title {color: #999;font-size: 14px;font-weight: bold;background:#fff;}
+
+/*search panel in head*/
+.search-panel {float:right;width:570px;padding:16px 16px 0 5px;}
+.search-panel form {float:left; width:570px;}
+.search-panel .tabs {float:left;width:570px;}
+.search-panel .tabs ul {float:left;width:560px;padding:0 0 0 10px;line-height:21px;}
+.search-panel .tabs ul li {float:left;}
+.search-panel .tabs ul li a {color:#000;float:left;height:21px;text-align:center;text-decoration:none;width:49px;font-family:simsun,arial; cursor:pointer;}
+.search-panel .tabs ul li a:hover {color:#d72426;text-decoration:none;}
+.search-panel .tabs ul li a.active {background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll 0 -50px;color:#fff;}
+.search-panel .tabs ul li a.active:hover {color:#fff;}
+.search-fields {background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll 0 0;float:left;height:18px;width:434px;padding:6px 6px 6px 30px;position:relative;}
+.search-fields label {color:#999;height:18px;line-height:18px;position:absolute;top:5px;left:30px;z-index:5;font-family:simsun,arial;}
+.search-fields input {background-color:transparent;border:0 none;height:18px;line-height:18px;position:absolute;top:7px;left:30;width:434px;z-index:10;}
+.search-fields input:focus {outline: none;}
+.search-panel .btn {background:transparent url(http://static.pinju.com/img/search.png) no-repeat scroll right 0;color:#fff;font-size:14px;font-weight:bold;float:left;height:30px;margin:0 0 0 6px;width:93px;}
+.suggestwrap {background-color:#fff;border:1px solid #ccc;overflow:hidden;position:absolute;top:28px;left:0;height:196px;width:470px;z-index:100;}
+.suggestlist {padding:0 20px 10px;}
+.suggestlist li {line-height:24px;height:24px;clear:both;padding:0 10px;}
+.suggestlist li.hover {background-color:#dedede;color:#000;font-weight:bold;}
+.suggestlist .name {float:left;}
+.suggestlist .count {float:right;}
+
+/*nav*/
+.navfull {background:#be0000 url("http://static.pinju.com/img/bg-nav923.png") repeat-x scroll 0 0;height: 35px;margin-bottom: 10px;}
+.pj_nav {background:transparent none no-repeat scroll 0 0;height: 35px;margin:0 auto;width:1000px;}
+.nav_list {float: left;margin: 0;width: 1000px;_display:inline;}
+.nav_list li {color: #fff;height: 35px;margin-left: 0;text-align: center;width: auto;}
+.nav_list li, .nav_list li a {float: left;font-size: 14px;line-height:1.5;}
+.nav_list li a {background:transparent url("http://static.pinju.com/img/bg-923hp.png") no-repeat scroll right 0;border-top:2px solid #f22c2c;color:#FFF;height:27px;overflow:hidden;padding:5px 15px 0 15px;text-decoration:none;white-space:nowrap;}
+.nav_list li.current a, .nav_list li a:hover {background:#420500 none no-repeat scroll 0 0;border-top:2px solid #120200;}
+.position_r {position:relative;}
+.head_img {position: absolute;width: 433px;height: 85px;right: 0;top: -85px;}
+.hot_0822 {position:absolute;width:43px;height:23px;background:url("http://static.pinju.com/img/hot_0822.png") no-repeat;left:550px;top:-5px;_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static.pinju.com/img/hot_0822.png');/* IE6 */
+_background-image: none;/* IE6 */}
+/* new nav */
+.navfull_1018 {height: 35px;background: url(http://static.pinju.com/img/bg-nav1018.png) repeat-x scroll 0 0;}
+.nav_list li a.nav_right {background:none;border-top:2px solid #f22c2c; height:27px; overflow:hidden; padding:5px 15px 0 15px;text-decoration:none; font-weight:bold; }
+
+/* breadcrumb */
+.breadcrumbs {margin-top:10px;}
+.contents ul.breadcrumb { background-color:#f8f8f8; padding:9px 12px; }
+.contents ul.breadcrumb li { color:#666; display:inline; }
+.contents .exinfo { color: #666666; padding: 0 12px; margin:0 0 10px; }
+
+/*mian content*/
+.bar-left {overflow: hidden;}
+.contents {width: 828px;float: right;padding: 10px;min-height:360px;_height:360px;}
+.contents .ptitle {float:left;width:828px;border-bottom:2px solid #dadada;color:#000;margin:0 0 10px;}
+.contents .ptitle h1 {float:left;border-bottom:2px solid #d72426;bottom:-2px;font-weight:bold; position:relative;padding:5px 20px;}
+.contents .titletop {float:left; border-bottom:1px solid #dadada; width:804px; margin:0 0 10px; padding:5px 12px;}
+.contents .titletop h1 {float:left; font-size:14px; line-height:24px;}
+.contents .eye {float:right; padding:5px 0 0;}
+.row, .splitrow {clear:both;}
+.splitrow {margin:0 0 10px;}
+.contents .blockwrap { background-color:#f8f8f8; width:670px; margin:0 auto; padding:20px 30px; }
+.main-box {width: 828px;float: right;padding: 10px;}
+.bar-left {width: 149px;float: left;}
+.bar-topic {font-size: 14px;font-weight: bold;padding: 6px 0 5px;text-align: center;text-align: left;text-indent: 20px;}
+.bar-list {text-align: center;padding: 0 0 5px;}
+.bar-list h3, .bar-list li {text-align: left;text-indent: 20px;}
+.bar-list h3 {background: #F8F8F8;padding: 8px 0 4px;font-weight: bold;border: 1px solid #FFF;color: #000;border-top: 1px solid #e9e9e9;}
+.bar-list li {display: block; padding: 3px 0;color: #999;}
+.bar-list li a {color: #333;display: block; height:23px; line-height:23px; *padding:2px; margin:0 3px;}
+.bar-list li a img {vertical-align:text-top;}
+.bar-list .count a {background: url(http://static.pinju.com/img/button.png) no-repeat 0 -200px;text-decoration: none;color: #FFF;}
+
+/* tabs in content */
+.contents .mainwrap { clear: both; padding:10px;}
+.tab-primary {background: url(http://static.pinju.com/img/tabs.png) no-repeat 0 0; float:left; height:34px; width:782px; margin:0 0 10px; padding:4px 0 0 26px;}
+.tab-primary li, .tab-secondary li {float:left;}
+.tab-primary li a {border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; color:#333; float:left; padding:9px 22px 0; height:25px; text-decoration:none; }
+.tab-primary li a:hover {text-decoration:underline;}
+.tab-primary li.active a {background-color:#fff; border-top:1px solid #eb8900; font-weight:bold; padding-top:8px; }
+.tab-secondary {border-bottom:2px solid #f5c99d; float:left; width:808px; margin:0 0 10px; padding:10px 10px 0; }
+.mainwrap .tab-secondary {width:788px;}
+.tab-secondary li {margin:0 6px 0 0;}
+.tab-secondary li a {background: url(http://static.pinju.com/img/tabs.png) no-repeat 0 -38px; color:#333; float:left; height:20px; padding:9px 0 0; width:101px; text-align:center;}
+.tab-secondary li.active a {background-position:-101px -38px; color:#eb6d00; font-weight:bold;}
+
+/* query list */
+.contents .queryfilterwrap {border:1px solid #ccc; clear:both; margin:0 0 10px; padding:10px 0; width:826px;}
+.queryfilter th {font-weight:normal; text-align:right;}
+.queryfilter th, .queryfilter td {padding:5px;}
+
+/*footer*/
+.footer {background:#fff url("http://static.pinju.com/img/bg-footer923.png") repeat-x scroll center top;border-top: 0 none transparent;padding-top: 5px;}
+.footer .copyright {text-align:center;margin-bottom:12px;}
+.footer .test {color:#fff;}
+.footer_main {padding:0 43px 10px;width:916px;margin:0 auto;color: #949494;}
+.foot_nav {text-align:center;margin-bottom:10px;padding-top: 10px;}
+.foot_nav li {border-right:1px solid #949494;display:inline-block;margin: 0;padding: 0 10px;*display:inline;
+_zoom:1;}
+.foot_nav li.last {border-right:0 none;}
+.foot_nav li a {color: #949494;}
+
+/*header 950px*/
+.logo_bar950 {width:950px;margin:0 auto;height:85px;}
+.logo_pic950 {float:left;margin:16px 0 0 22px;}
+.store_info {float:left;margin-left:18px;_display:inline;width:190px;}
+.store_info .h_bor {background:url(http://static.pinju.com/images/store_t.gif) no-repeat center top;height:2px;overflow:hidden;}
+.store_info .f_bor {background:url(http://static.pinju.com/images/store_f.gif) no-repeat center top;height:2px;overflow:hidden;}
+.store_info_content {background:#f5f5f5;border:solid #dadada;border-width:0 1px;overflow:hidden;height:53px;}
+
+/* storelevel 32px in header */
+.storelevel32_0 {background: url("http://static.pinju.com/img/store_level.png") no-repeat scroll -50px top transparent;width:32px;height:32px;float:left;margin:9px 0 0 27px;_display:inline;}
+.storelevel32_1 {background: url("http://static.pinju.com/img/store_level.png") no-repeat scroll -50px -32px transparent;width:32px;height:32px;float:left;margin:9px 0 0 27px;_display:inline;}
+.storelevel32_2 {background: url("http://static.pinju.com/img/store_level.png") no-repeat scroll -50px -64px transparent;width:32px;height:32px;float:left;margin:9px 0 0 27px;_display:inline;}
+.storelevel32_3 {background: url("http://static.pinju.com/img/store_level.png") no-repeat scroll -50px -96px transparent;width:32px;height:32px;float:left;margin:9px 0 0 27px;_display:inline;}
+.storelevel32_4 {background: url("http://static.pinju.com/img/store_level.png") no-repeat scroll -50px -128px transparent;width:32px;height:32px;float:left;margin:9px 0 0 27px;_display:inline;}
+.store_type {width:77px;height:21px;background:url(http://static.pinju.com/images/store_info_bg.gif) no-repeat;margin:5px 0 0 78px;text-align:center;color:#FFF;line-height:21px;}
+.store_name {margin:6px 0 0 78px;color:#000;}
+
+/* tips & skip pages */
+.tipswrap {background-color:#fff;padding:10px;}
+.tipswrap h2 {background:transparent url(http://static.pinju.com/img/bg_wraptitle.gif) no-repeat scroll left bottom;font-size:16px;font-weight:bold;color:#000;padding:0 0 10px 10px;}
+.tipswrap .infocat {background:transparent url(http://static.pinju.com/img/icons.gif) no-repeat scroll right 66px;float:left;height:66px;width:20%;}
+.tipswrap .error {background-position:right 20px;}
+.tipswrap .warn {background-position:right -80px;}
+.tipswrap .right {background-position:right -180px;}
+.tipswrap .content {height:120px;padding:30px 10px 10px 22%;*padding:35px 10px 10px 10px;
+}
+.tipswrap .content p {line-height:2;}
+.tipswrap .content h3 {font-size:16px;font-weight:bold;color:#000;margin-bottom:15px;}
+.tipswrap .content h3 strong {color:#be0000;}
+.tipswrap .content ul {padding:10px 0;}
+.tipswrap .content ul li {color:#666;line-height:25px;}
+
+.tips-normal, .tips-error, .tips-right {color:#666;clear:both;line-height:18px;overflow:hidden;padding:3px 8px 3px 25px;margin:0 0 10px;}
+.tips-normal a, .tips-error a, .tips-right a {color:#06c;font-weight:bold;}
+.tips-normal strong, .tips-error strong, .tips-right strong {color:#be0000;font-weight:bold;}
+.tips-normal {
+	background:#ffffe0 url(http://static.pinju.com/img/icon-tipsdefault.png) no-repeat scroll 5px 5px;
+	border:1px solid #f9dfb2;
+}
+.tips-error {
+	background:#ffe5e6 url(http://static.pinju.com/img/icon-tipserror.png) no-repeat scroll 5px 5px;
+	border:1px solid #ff999a;
+}
+.tips-right {
+	background:#dafab6 url(http://static.pinju.com/img/icon-succeed.png) no-repeat scroll 5px 5px;
+	border:1px solid #7db831;
+}
+.tips-text {background-color:#ffffe0;border:1px solid #f9dfb2;color:#666;clear:both;padding:3px 8px;line-height:1.8em;margin:0 0 10px;}
+.tips-text strong {color:#333;font-weight:bold;}
+.tips-text .eye {padding:0;}
+.tips-bottom {clear:both;}
+.tips-bottom .title {padding:5px 0;  }
+.tips-bottom .contentwrap { border-top:1px solid #ccc; color:#666; line-height:1.6em;  padding:5px 0;}
+
+/*common.css*/
+/*页头*/
+#HeaderSub {height: 85px;}
+#HeaderSub ul {display: block;}
+#HeaderSub .logo {float: left;padding: 15px 0 0 10px;}
+#HeaderSub .option {float: right;padding: 20px 0 0 10px;}
+#HeaderSub .option li {display: block;text-align: right;padding-bottom: 10px;color: #555e87;}
+#HeaderSub .option li img {padding-left: 5px;margin-top: -8px;}
+/*导航*/
+#Nav {height: 37px;background: url(http://static.pinju.com/img/header-sub.png) repeat-x 0 -50px #C00;}
+#Nav .left {width: 10px;height: 37px;background: url(http://static.pinju.com/img/header-sub.png) no-repeat 0 -100px;}
+#Nav ul {background: url(http://static.pinju.com/img/header-sub.png) no-repeat right -150px;height: 37px;overflow: hidden;}
+#Nav li {display: block;float: left;padding-right: 10px;margin-right: 20px;}
+#Nav li a {color: #F8F8F8;font-weight: bold;padding: 12px 0 8px 10px;}
+#Nav li a {display: block;float: left;font-size: 14px;line-height: 17px;}
+#Nav .count {background: url(http://static.pinju.com/img/header-sub.png) no-repeat right -250px;}
+#Nav .count a {color: #C00;background: url(http://static.pinju.com/img/header-sub.png) no-repeat 0 -200px;}
+/*页码分页*/
+.button_next {width: 16px;background: url(http://static.pinju.com/img/button.png) no-repeat 0 -700px;border: none;cursor: pointer;}
+.button_next_none {width: 16px;background: url(http://static.pinju.com/img/button.png) no-repeat 0 -750px;border: none;cursor: pointer;height:20px;}
+.button_previous {width: 52px;background: url(http://static.pinju.com/img/button.png) no-repeat -30px -700px;border: none;cursor: pointer;}
+.button_previous_none {width: 52px;background: url(http://static.pinju.com/img/button.png) no-repeat -30px -750px;border: none;cursor: pointer;height:20px;}
+/*页码*/
+.page-coder {height:60px;background:#FFF;padding-top:10px;}
+.page-coder ul {padding:0 10px;width:500px;margin:0 auto;display:block;height:30px;}
+.page-coder ul li {display:block;float:left;margin-left:5px;line-height:23px;padding-top:10px;}
+.page-coder ul li input {border:1px solid #999;width:20px;height:15px;margin:0 -3px;}
+.page-coder ul li a {border:1px solid #CCC;text-align:center;padding:3px 5px;line-height:15px;background:#F4F4F4;}
+.page-coder ul li a:hover {background:#C00;color:#FFF;text-decoration:none;}
+
+/* 全屏加载中效果 */
+.loading-mask {background-color:#FFF; filter:alpha(opacity=50);opacity:0.5}
+.loading-description {background-image:url(../showloading/images/loading.gif);background-repeat:no-repeat;font-size: 14px;font-weight: bold;color: #666;padding-left: 36px;display: -moz-inline-stack;display: inline-block;vertical-align: middle;zoom: 1;*display: inline;
+height:31px;line-height: 31px;}

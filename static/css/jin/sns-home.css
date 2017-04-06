@@ -1,0 +1,126 @@
+﻿
+/*-----------------------sns个人首页--Ver.20110803-Ver----------------------*/
+/*-----------------------sns个人首页-------------------------*/
+/*-----------------------sns个人首页-------------------------*/
+.sns_home_main { float:left;width:100%; min-width:800px;}
+.sns_home_main  a { color:#39F; text-decoration:none;}
+.sns_home_main  a:hover { color:#39F; text-decoration: underline;}
+/*--------------sns个人首页-头部banner----------------*/
+.sns_home_main  .sns_head_box {background:url(http://static.pinju.com/base-images/sns_home_banner_bg.gif) repeat-x top; }
+	.sns_home_main .sns_head_box .sns_head_floaton { position:relative;height:61px;}
+			.sns_head_floaton .sns_head_button_logo { float:left;width:56px; height:61px; background: url(http://static.pinju.com/base-images/sns_home_banner_bg.gif) no-repeat none;}
+			.sns_head_floaton { padding:0px;}
+			.sns_head_floaton li {float:left; width:114px; height:61px;display:inline-block; font-weight:bold;}
+			.sns_head_floaton li a{ width:116px; *width:114px; height:61px; line-height:61px;font-size:14px; color:#FFF; text-align:center; text-decoration:none;background:url(../../sns-ground/sns_single_nav_none.gif) no-repeat left; display:inline-block;}
+			.sns_head_floaton li a:hover{ width:116px;*width:114px; height:61px; line-height:61px;font-size:14px; color:#FFF; text-align:center; text-decoration:none; background:url(http://static.pinju.com/sns-ground/sns_single_nav_effects.gif) no-repeat left; display:inline-block;}		
+			
+			.sns_head_floaton li span{ width:116px;*width:114px; height:61px; line-height:61px;font-size:14px; color:#FFF; text-align:center; text-decoration:none; background:url(http://static.pinju.com/sns-ground/sns_single_nav_effects.gif) no-repeat; display:inline-block;}
+			
+			
+	.sns_home_main .sns_head_box .sns_head_floaton .sns_head_floaton_bannershadow { position:absolute; width:100%;height:14px; background:#dadada; left:0; bottom:-14px; filter: progid:DXImageTransform.Microsoft.Alpha(startX=100, startY=100, finishX=100, finishY=0,style=1,opacity=0,finishOpacity=100);}
+
+	.sns_home_main .sns_head_box .sns_head_floaton .sns_head_rightbutton {position:absolute;right:50px; bottom:20px; color:#FFF; border:0px; cursor:pointer;}
+	
+/*--------------sns个人首页-左侧----------------*/
+.sns_home_main  .sns_left_main { float:left; width:240px;background: url(http://static.pinju.com/base-images/sns_home_left_bg1px.jpg) repeat-y; 0; border-bottom:1px solid #dadada;}
+	.sns_home_main  .sns_left_main ul { padding:10px; }
+	.sns_home_main  .sns_left_main ul li { padding:20; text-align: center;}
+	.sns_home_main  .sns_left_main a { color:#39F;text-decoration:none;}
+	.sns_home_main  .sns_left_main a:hover{ color:#39F;text-decoration:underline;}
+
+
+/*头像*/
+	.sns_home_main  .sns_left_main .sns_left_box_blank01 { float:left; width:220px; padding:15px 10px; text-align:center; vertical-align:middle;}
+	.sns_home_main  .sns_left_main .sns_left_headimg_box { float:left; width:106px; height:112px; background: url(http://static.pinju.com/base-images/sns_home_headimg_box.jpg) no-repeat; margin-top:20px; margin-left:48px;}
+	 		.sns_left_headimg_box .sns_left_headimg_floatdadi { position:relative; width:100px; padding: 3px 3px 9px 3px;}
+			.sns_left_headimg_box .sns_left_headimg_floatdadi 						.sns_left_headimg_floaton_son { position:absolute; width:100px; height:22px; background: #FFF; left:3px; bottom:8px;filter:alpha(opacity=50););overflow:hidden;
+} 
+			.sns_left_headimg_box .sns_left_headimg_floatdadi 						.sns_left_headimg_floaton_son02 { position:absolute; width:100px; height:30px; text-align:center;left:3px; bottom:-30px;}
+
+
+/*按钮*/
+	 .sns_left_redbutton01{ width:63px; height:23px; line-height:23px;background:url(http://static.pinju.com/button-images/sns_home_redbutton01.jpg) no-repeat; border:0; cursor:pointer;color:#FFF;}
+	 .sns_left_graybutton01{ width:63px; height:23px; line-height:23px; background:url(http://static.pinju.com/button-images/sns_home_graybutton01.jpg)  no-repeat;border:0;cursor:pointer; color: #666;}
+	 
+/*ta系列*/
+	.sns_home_main  .sns_left_main .sns_left_TA_box { float:left; width:240px;}
+	.sns_home_main  .sns_left_main .sns_left_TA_box ul{ padding:0px;}	
+	.sns_home_main  .sns_left_main .sns_left_TA_box li{width:250px; *width:190px; height:34px; line-height:34px; text-align:left; font-size:14px; display:inline-block; position:relative; text-indent:60px; *padding-left:60px; }
+	.sns_home_main  .sns_left_main .sns_left_TA_box li a{ color:#000;width:250px; height:31px;line-height:31px; text-indent:0px;}
+	.sns_home_main  .sns_left_main .sns_left_TA_box li a:hover{position:absolute; width:250px; height:31px; line-height:31px; left:0px; top:0px; text-indent:60px; text-decoration:none; background: url(http://static.pinju.com/button-images/sns_home_banner_red.jpg) no-repeat; color:#FFF; font-weight:bold; font-size:14px; border:0; z-index:994;}
+	
+	.sns_home_main  .sns_left_main .sns_left_TA_box li span{position:absolute; width:250px; height:31px; line-height:31px; left:0px; top:0px; text-indent:60px; text-decoration:none; background: url(http://static.pinju.com/button-images/sns_home_banner_red.jpg) no-repeat; color:#FFF; font-weight:bold; font-size:14px; border:0; z-index:995;}
+	
+
+			
+/*那些花儿*/
+.sns_home_main  .sns_left_main .sns_left_horizon01 { float:left; width:240px; height:1px;background:#dadada;filter : progid:DXImageTransform.Microsoft.Alpha(startX=0, finishX=100,style=1,opacity=0,finishOpacity=100); overflow:hidden;}
+.sns_home_main  .sns_left_main .sns_left_horizon02 { float:left; width:239px; height:1px;background:#FFF;filter : progid:DXImageTransform.Microsoft.Alpha(startX=50, finishX=100, style=1,opacity=0,finishOpacity=100);overflow:hidden;}
+
+	.sns_home_main  .sns_left_main .sns_left_someone_box	{float:left; width:221px; padding:5px 0 5px 18px; border-left:1px solid #FFF; text-align:justify;}	
+	.sns_home_main  .sns_left_main .sns_left_someone_box .sns_left_someone_imagebox { float:left;width:40px; height:50px; display:inline-block; padding:0 5px; text-align:center; vertical-align:top; }
+
+
+
+/*--------------sns个人首页-右侧----------------*/
+.sns_right_main { float:left; width:68%; }
+
+/*右侧标签*/
+.sns_home_lablebox01{ margin:20px 0 0 20px; height:30px;background:url(http://static.pinju.com/base-images/lable_box_bg_01.gif) repeat-x bottom #e5e5e5;min-width:780px; width:100%}
+.sns_home_lablebox01 a { color: #36F;text-decoration:none;}
+.sns_home_lablebox01 a:hover { font-weight:bold; text-decoration:none;}
+		.sns_home_lable01{float:left;height:29px; line-height:30px; text-align:center; padding:0 35px;border-top: 1px solid #c1c1c1;border-left: 1px solid #c1c1c1;border-right: 1px solid #c1c1c1; background:#f5f5f5;}						
+		.sns_home_lable02{float:left;height:30px; line-height:30px; text-align:center;padding:0 15px ;}
+		.sns_home_lable03{float:left;height:30px; line-height:30px; text-align:center;padding:0px 15px; background:url(http://static.pinju.com/base-images/list_style_01.gif) left no-repeat;}
+
+/*------------TA的动态----------------*/
+
+
+/*------------TA的格子铺----------------*/
+.sns_right_main .sns_gezipu {padding:20px; text-align:justify;}
+
+.sns_right_main .sns_gezipu .gezipu_goods_mainbox { width:160px; *width:175px; padding-bottom:20px;display:inline-block; line-height:22px;}
+ 	.gezipu_goods_imgbox { width:150px; height:150px; text-align:center;border:3px solid #dddddd; background:#FFF;}
+
+.rate01 { width:70px; display:inline-block; background: url(http://static.pinju.com/icon-images/star_gray.gif) 0 1px repeat-x; margin-right:5px; }
+.rate01 b { height:14px; display:inline-block; background: url(http://static.pinju.com/icon-images/star_yellow.gif) 0 1px repeat-x; overflow:hidden; }
+
+
+/*------------TA的购买记录----------------*/
+
+/*------------TA的圈子----------------*/
+
+/*------------TA关注的----------------*/
+/*人*/
+.sns_table01 { float:left; padding:20px 0; margin-left:20px; border-bottom:1px dashed #dadada;min-width:780px;width:100%}
+ .sns_table01_left { float:left; min-width:62px; width:10%; text-align:center;}
+ .sns_table01_right { float:right;min-width:670px; width:90%;  min-width:300px;position: relative; z-index:2;} 	
+ 	.sns_table01_right_dadi{width:600px; padding-left:10px; min-width:300px; position: relative; z-index:2} 	
+ 	.sns_table01_right ul{ padding:0;}
+	.sns_table01_right li{ padding-bottom:10px;}
+	.sns_table01_right .payattion{ width:60px; position:absolute; padding:10px; right:0; top:0; z-index:900;}
+
+/*商品*/
+.sns_table02 { float:left; padding:20px 0; margin-left:20px; min-width:780px; width:100%}
+
+	.sns_table02 table {min-width:780px; width:100%}
+	.sns_table02 table tr td { padding:10px 5px;border-bottom:1px dashed #dadada;}
+	.sns_table02 p { padding:5px 0;}
+	
+/*店铺*/
+/*框架用table01*/
+.sns_table03 { float:left; padding:20px 0; margin-left:20px; border-bottom:1px dashed #dadada;min-width:780px;width:100%}
+	.sns_table03_left { float:left; width:10%; min-width:52px;}
+	.sns_table03_center{ float:left; width:70%; min-width:528px; padding:0 10px 20px 10px;}
+	.sns_table03_right{ float:left; width:10%; min-width:180px; text-align:center;}
+
+	/*.sns_table03_center p{padding:5px;}*/
+	.sns_table03_box{ float:left;width:100%; min-width:528px; padding: 0 10px;min-height:25px;}
+	.sns_table03_title {display:inline-block; line-height:25px;}
+	.sns_table03_goodsbox {display:inline-block; float:left;width:56px;  text-align:center; padding:10px;}
+	.sns_table03_goods { width:50px; height:50px; padding:2px; background: #FFF; border:1px solid #dadada; }
+	
+/*动态*/	
+.ta_attention01 { float:left;width:460px; padding:0 10px; margin:5px 0; line-height:20px;display: inline-block;color: #666; background:#f0f0f0; border:1px solid #dadada;}
+.ta_attention01 p{ float:left; width:460px; padding:5px;}
+.ta_attention01_goodsbox { float:left; width:50px; height:50px; padding:2px; margin:4px; border:1px solid #dadada; background:#FFF; display:inline-block;}	

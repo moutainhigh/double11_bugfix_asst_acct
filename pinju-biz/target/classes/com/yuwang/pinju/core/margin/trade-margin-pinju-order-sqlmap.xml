@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeMarginPJOrder">
+
+    <typeAlias alias="MarginPJOrderDO" type="com.yuwang.pinju.domain.margin.MarginPinjuOrderDO" />
+    <typeAlias alias="MarginPinJuOrderQuery" type="com.yuwang.pinju.domain.margin.query.MarginPinJuOrderQuery" />
+
+	<resultMap id="marginPJOrderMap" class="MarginPJOrderDO" >
+		<result property="id" column="ID" />
+		<result property="invMemberId" column="INVOLVED_MEMBER_ID" />
+		<result property="invMemberNick" column="INVOLVED_MEMBER_NICK" />
+		<result property="invMemberPayment" column="INVOLVED_MEMBER_PAYMENT" />
+		<result property="operateType" column="OPERATE_TYPE" />
+		<result property="amount" column="AMOUNT" />
+		<result property="payOrderId" column="PAY_ORDER_ID" />
+		<result property="orderId" column="ORDER_ID" />
+		<result property="outOrderId" column="OUT_ORDER_ID" />
+		<result property="rightsId" column="RIGHTS_ID" />
+		<result property="refundId" column="REFUND_ID" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+	
+    <sql id="marginPJOrderPrefix">
+         V.ID,
+         V.INVOLVED_MEMBER_ID,
+         V.INVOLVED_MEMBER_NICK,
+         V.INVOLVED_MEMBER_PAYMENT,
+         V.OPERATE_TYPE,
+         V.AMOUNT,
+         V.PAY_ORDER_ID,
+         V.ORDER_ID,
+         V.OUT_ORDER_ID,
+         V.RIGHTS_ID,
+         V.REFUND_ID,
+	     V.GMT_CREATE,
+	     V.GMT_MODIFIED
+    </sql>
+	
+	<select id="TradeMarginPJOrder.getMarginPJOrderDOById"  parameterClass="java.lang.Long" resultMap="marginPJOrderMap">
+        SELECT <include refid="marginPJOrderPrefix"/> FROM TRADE_MARGIN_PINJU_ORDER V WHERE V.INVOLVED_MEMBER_ID=#value# 
+	</select>
+	
+	<select id="TradeMarginPJOrder.getMarginPJOrderDOsCount"  parameterClass="MarginPinJuOrderQuery" resultClass="java.lang.Integer">
+		 SELECT COUNT(*) FROM TRADE_MARGIN_PINJU_ORDER 
+         <dynamic prepend="WHERE">
+      	    <isNotEmpty property="invMemberId" prepend="AND"> INVOLVED_MEMBER_ID=#invMemberId# </isNotEmpty>
+      	    <isNotEmpty property="invMemberNick" prepend="AND"> INVOLVED_MEMBER_NICK=#invMemberNick# </isNotEmpty>
+      	    <isNotEmpty property="rightsId" prepend="AND"> RIGHTS_ID=#rightsId# </isNotEmpty>
+      	    <isNotEmpty property="refundId" prepend="AND"> REFUND_ID=#refundId# </isNotEmpty>
+         </dynamic>
+	</select>
+	
+	<select id="TradeMarginPJOrder.getMarginPJOrderDOs"  parameterClass="MarginPinJuOrderQuery" resultMap="marginPJOrderMap">
+		SELECT <include refid="marginPJOrderPrefix"/>
+		FROM (SELECT RID
+	 		FROM (SELECT A.RID, ROWNUM RN
+	      		FROM (SELECT ROWID RID FROM TRADE_MARGIN_PINJU_ORDER
+            		<dynamic prepend="WHERE">
+			      	    <isNotEmpty property="invMemberId" prepend="AND"> INVOLVED_MEMBER_ID=#invMemberId# </isNotEmpty>
+			      	    <isNotEmpty property="invMemberNick" prepend="AND"> INVOLVED_MEMBER_NICK=#invMemberNick# </isNotEmpty>
+			      	    <isNotEmpty property="rightsId" prepend="AND"> RIGHTS_ID=#rightsId# </isNotEmpty>
+			      	    <isNotEmpty property="refundId" prepend="AND"> REFUND_ID=#refundId# </isNotEmpty>
+					</dynamic>
+              		ORDER BY GMT_CREATE DESC) A
+	          	WHERE rownum &lt;= #endRow#)
+	    	WHERE RN &gt;= #startRow#) T,
+		TRADE_MARGIN_PINJU_ORDER V
+		WHERE V.ROWID = T.RID
+	</select>
+	
+	<insert id="TradeMarginPJOrder.insertMarginPJOrderRecord" parameterClass="MarginPJOrderDO">
+		<selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_MARGIN_PJ_ORDER_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_MARGIN_PINJU_ORDER 
+	    (
+			ID,
+	        INVOLVED_MEMBER_ID,
+	        INVOLVED_MEMBER_NICK,
+	        INVOLVED_MEMBER_PAYMENT,
+	        OPERATE_TYPE,
+	        AMOUNT,
+	        PAY_ORDER_ID,
+	        ORDER_ID,
+         	OUT_ORDER_ID,
+	        RIGHTS_ID,
+	        REFUND_ID,
+		    GMT_CREATE,
+		    GMT_MODIFIED
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#invMemberId#,
+			#invMemberNick#,
+			#invMemberPayment#,
+			#operateType#,
+			#amount#,
+			#payOrderId#,
+			#orderId#,
+			#outOrderId#,
+			#rightsId#,
+			#refundId#,
+			sysdate,
+			sysdate
+	    )
+	</insert>
+
+	<update id="TradeMarginPJOrder.updateMarginPJOrderRecord" parameterClass="MarginPJOrderDO" >
+		<![CDATA[UPDATE TRADE_MARGIN_PINJU_ORDER]]> SET
+			GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotEmpty prepend="," property="amount">
+				<![CDATA[AMOUNT = #amount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="operateType">
+				<![CDATA[OPERATE_TYPE = #operateType#]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id#]]>
+	</update>
+</sqlMap>

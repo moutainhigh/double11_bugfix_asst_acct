@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="DsrStat" >
+
+  <typeAlias alias="dsrStat" type="com.yuwang.pinju.domain.member.DsrStatDO"/>
+
+  <resultMap id="dsrStat" class="dsrStat">
+    <result column="ID" property="id" />
+    <result column="MEMBER_ID" property="memberId" />
+    <result column="DIMENSION_ID" property="dimensionId" />
+    <result column="DIMENSION_NAME" property="dimensionName" />
+    <result column="NUMBER1" property="number1" />
+    <result column="NUMBER2" property="number2" />
+    <result column="NUMBER3" property="number3" />
+    <result column="NUMBER4" property="number4" />
+    <result column="NUMBER5" property="number5" />
+    <result column="TOTAL_SCORE" property="totalScore" />
+    <result column="TOTAL_NUMBER" property="totalNumber" />
+    <result column="DIMENSION_AVG" property="dimensionAvg" />
+    <result column="PERCENT1" property="percent1" />
+    <result column="PERCENT2" property="percent2" />
+    <result column="PERCENT3" property="percent3" />
+    <result column="PERCENT4" property="percent4" />
+    <result column="PERCENT5" property="percent5" />
+    <result column="GMT_CREATE" property="gmtCreate" javaType="java.util.Date" />
+    <result column="GMT_MODIFIED" property="gmtModified" javaType="java.util.Date" />
+  </resultMap>
+
+  <sql id="getAllDsrStat">
+    <![CDATA[SELECT ID, MEMBER_ID, DIMENSION_ID, DIMENSION_NAME, DIMENSION_STATUS, DIMENSION_ORDER, NUMBER1, NUMBER2, NUMBER3, NUMBER4, NUMBER5, TOTAL_SCORE, TOTAL_NUMBER, DIMENSION_AVG, PERCENT1, PERCENT2, PERCENT3, PERCENT4, PERCENT5, GMT_CREATE, GMT_MODIFIED FROM MEMBER_DSR_STAT]]>
+  </sql>
+
+  <select id="getDsrStatsByMemberId" resultMap="dsrStat" parameterClass="long">
+    <include refid="getAllDsrStat" />
+    <![CDATA[WHERE MEMBER_ID = #memberId# AND DIMENSION_STATUS = 1 ORDER BY DIMENSION_ORDER]]>
+  </select>
+</sqlMap>

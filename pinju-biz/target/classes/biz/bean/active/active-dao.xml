@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+  <bean id="activeDao" class="com.yuwang.pinju.core.active.dao.impl.ActiveDaoImpl">
+    <property name="sqlMapClient" ref="sqlMapClientMySQL" />
+  </bean>
+  <bean id="activityDiscountDAO" class="com.yuwang.pinju.core.active.dao.impl.ActivityDiscountDAOImpl"/>
+  <bean id="activityDiscountStatDAO" class="com.yuwang.pinju.core.active.dao.impl.ActivityDiscountStatDAOImpl"></bean>
+  <bean id="activityDiscountMapDAO" class="com.yuwang.pinju.core.active.dao.impl.ActivityDiscountMapDAOImpl"></bean>
+</beans>

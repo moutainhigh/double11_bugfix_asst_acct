@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="biSalesRank">
+
+  <typeAlias alias="biShopSalesRankDO" type="com.yuwang.pinju.domain.bi.ShopSalesRankDO" />
+  <resultMap id="shopSalesRankDOResult" class="biShopSalesRankDO">
+    <result column="USER_ID" property="memberId" />
+    <result column="SHOP_ID" property="shopId" />
+    <result column="ITEM_ID" property="itemId" />
+    <result column="TITLE" property="itemName" />
+    <result column="PRICE" property="itemPrice" />
+    <result column="PIC_URL" property="itemPicUrl" />
+    <result column="BUY_NUM" property="itemSaleCount" />
+    <result column="RANK_TYPE" property="rankType" />
+  </resultMap>
+
+  <sql id="getAllShopSalesRank">
+     <![CDATA[SELECT * FROM(SELECT ROWNUM R, A.* FROM MV_BI_SHOP_SALESRANK A]]>
+  </sql>
+
+ 	<select id="findShopSalesRank" resultMap="shopSalesRankDOResult" parameterClass="java.util.HashMap">
+ 		<include refid="getAllShopSalesRank" />
+  		<dynamic prepend="WHERE">
+		    <isNotEmpty prepend="AND" property="memberId" >
+		        A.USER_ID = #memberId#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="shopId" >
+		         A.SHOP_ID = #shopId#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="rankType" >
+		         A.RANK_TYPE = #rankType#
+		    </isNotEmpty>
+		    <isNotEmpty prepend=" " property="rowNum" >
+		    	<![CDATA[ ORDER BY  A.BUY_NUM DESC )WHERE R <= #rowNum#]]>
+		    </isNotEmpty>
+   		 </dynamic>
+    </select>
+</sqlMap>
+    

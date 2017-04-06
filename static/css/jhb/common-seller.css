@@ -1,0 +1,252 @@
+.contents{ float:right; padding:10px; width:770px; }
+
+/*表单*/
+.write { padding:4px; border: 1px solid #999; line-height:19px;}
+.text, .text-m, .text-s, .text-l{ height:16px; padding:4px 4px 0 4px; border: 1px solid #999; line-height:13px; margin-right:5px;}
+.text-l { width:100px; margin-left:5px;}
+.text-m { width:40px;}
+.text-s { width:20px;}
+.textarea { padding:4px 4px 0 4px; border: 1px solid #999; line-height:17px;}
+.file, .file input { display: block; width: 62px; height: 22px; text-align:center; line-height:20px;}
+.file { position: relative;	overflow: hidden; background: url(http://static.pinju.com/img/seller/form.png) no-repeat 0 -200px;}
+.file:hover{ position: relative; overflow: hidden; background: url(http://static.pinju.com/img/seller/form.png) no-repeat 0 -250px;}
+.file input { clear: both; top:0; right:0;	position: absolute;	opacity: 0;	filter: alpha(opacity = 0);	cursor:pointer;}
+
+.button{ width:80px; height:25px; background:url(http://static.pinju.com/img/seller/form.png) no-repeat 0 -700px; color:#333; border:none; cursor:pointer; font-size:14px; font-weight:bold;}
+
+.button-g{ width:120px; height:31px; background:url(http://static.pinju.com/img/seller/form.png) no-repeat; color:#666; border:none; cursor:pointer; font-size:14px; font-weight:bold;}
+.button-g:hover{ background:url(http://static.pinju.com/img/seller/form.png) no-repeat 0 -50px; color:#000;}
+
+.button-m{ width:120px; height:31px; background:url(http://static.pinju.com/img/seller/form.png) no-repeat 0 -100px; color:#C00; border:none; cursor:pointer; font-size:14px; font-weight:bold;}
+.button-m:hover{ background:url(http://static.pinju.com/img/seller/form.png) no-repeat 0 -150px; color:#F00;}
+
+
+
+/*整体主容器定义*/
+#Nav, #Nav ul{ height: 42px;}
+#Nav{ background:url(http://static.pinju.com/img/seller/nav.png) repeat-x;}
+#Nav ul{ background:url(http://static.pinju.com/img/seller/nav.png) no-repeat 0 -50px; overflow: hidden;}
+#Nav ul li{ display:block; float:left;}
+#Nav ul li{ background:url(http://static.pinju.com/img/seller/nav.png) no-repeat 0 -150px;}
+#Nav ul li a{ display:block; font-size:14px; color:#888; font-weight:bold; line-height:15px; padding:15px 20px 12px;}
+#Nav ul li a:hover{ color:#000;}
+#Nav ul .first{ background:url(http://static.pinju.com/img/seller/nav.png) no-repeat 0 -50px;}
+#Nav ul .last{ background:url(http://static.pinju.com/img/seller/nav.png) no-repeat right -100px; float:right;}
+#Nav ul .count{ background:url(http://static.pinju.com/img/seller/nav.png) no-repeat right -250px; padding-right:5px;}
+#Nav ul .count a{ background:url(http://static.pinju.com/img/seller/nav.png) no-repeat 0 -200px; color:#FFF; padding:15px 15px 12px 20px;}
+#Nav ul .count a:hover{ color:#FFF; text-decoration:none;}
+
+#NavSub{ background:url(http://static.pinju.com/img/seller/nav.png) repeat-x 0 -300px; height:38px; margin-bottom:10px;}
+#NavSub ul{ padding:12px 15px 0;}
+#NavSub ul li{ display:block; float:left;}
+#NavSub ul li a{ display:block; padding:0 15px; font-size:14px; font-weight:bold; color:#333; padding-bottom:10px;}
+#NavSub ul li a:hover{ text-decoration:none; background:url(http://static.pinju.com/img/seller/icon.png) no-repeat center -133px;}
+#NavSub ul li .count, #NavSub ul li .count:hover{ background:url(http://static.pinju.com/img/seller/icon.png) no-repeat center -83px;}
+
+/*提示信息*/
+.tips {background: #ffffe0; color: #333; border: 1px solid #efce9a; padding: 5px; margin-bottom: 10px;}
+.tips strong { font-weight: bold;}
+
+.tips-right{background: #ddffdd; color: #333; border: 1px solid #3e994d; padding: 5px; margin: 30px 0; text-align:center;}
+.tips-right strong { display:block; padding:20px 0; font-weight: bold; font-size:20px; line-height:23px;}
+
+
+/*品聚商户页头*/
+#Header{ height:80px;}
+#Header .logo{ float: left; margin:20px 0 0 0;}
+
+#Header .search{ float:right; width:460px; height:60px; overflow:hidden; margin:12px 0 0 0;}
+#Header .search li{ display:block; float:left;}
+#Header .search .tab{ background:url(http://static.pinju.com/img/seller/header.png) repeat-x 0 22px; height:23px;}
+
+#Header .search .tab a{ display:block; color:#999; line-height:13px; padding:5px 10px 3px; margin-right:10px;}
+#Header .search .tab a:hover{ color:#222;}
+#Header .search .tab .count{ border-top:1px solid #DADADA; border-left:1px solid #DADADA; border-right:1px solid #DADADA; border-bottom:1px solid #EBEBEB;}
+
+#Header .search .tab .count, #Header .search .form{ background:#EBEBEB; color:#222;}
+#Header .search .tab .count:hover{ text-decoration:none;}
+#Header .search .form{ height:27px; border-left:1px solid #DADADA; border-right:1px solid #DADADA; border-bottom:1px solid #DADADA;}
+#Header .search .form{ padding:6px 0 0 5px;}
+#Header .search .form .txt, #Header .search .form .btn{ overflow:hidden;}
+
+#Header .search .form .txt{ width:375px; height:21px; background:url(http://static.pinju.com/img/seller/header.png) no-repeat 5px -50px;}
+#Header .search .form .txt input{ border:none; background:none; width:335px; margin-left:32px; padding-top:3px; line-height:15px;}
+#Header .search .form .btn input{ width:68px; height:21px; border:none; background:url(http://static.pinju.com/img/seller/header.png) no-repeat 0 -100px #393939; cursor:pointer; color:#F2F2F2; font-weight:bold; line-height:13px; font-size:12px;}
+#Header .search .form .btn input:hover{ background:url(http://static.pinju.com/img/seller/header.png) no-repeat -100px -100px #393939; color:#FFF;}
+
+/*面包屑*/
+#Path{ height:30px; margin-bottom:10px; background:url(http://static.pinju.com/img/seller/header.png) repeat-x 0 -150px #F1F1F1; border:1px solid #E8E8E8;}
+#Path ul{ height:30px; background:url(http://static.pinju.com/img/seller/header.png) no-repeat 0 -200px; overflow:hidden;}
+#Path ul li{ display:block; float:left; background:url(http://static.pinju.com/img/seller/header.png) no-repeat 0 -250px; padding:10px 6px 8px 20px; line-height:13px;}
+#Path ul li a{ color:#888; display:block;}
+#Path ul .first{ background:none; padding:10px 6px 8px 10px;}
+#Path ul .first a{ color:#F66;}
+
+/*展位导航*/
+#NavShow{ height:40px; margin-bottom:10px; background:url(http://static.pinju.com/img/seller/header.png) repeat-x 0 -300px #303030; overflow:hidden;}
+#NavShow ul{ display:block; height:40px; overflow:hidden;}
+#NavShow ul li{ display:block; float:left; font-size:14px; font-weight:bold;}
+#NavShow ul li, #NavShow ul li a{ line-height:15px;}
+
+#NavShow ul li a{ color:#F4F4F4; display:block; padding:15px 15px 10px;}
+#NavShow ul li span{ color:#333; display:block; margin:15px -10px 0 20px;}
+#NavShow ul li a:hover{ color:#FFF;}
+#NavShow ul li a:hover, #NavShow ul li .count{ background:url(http://static.pinju.com/img/seller/icon.png) no-repeat center 35px; text-decoration:none;}
+
+#NavShow .main{ width:600px; float:left;}
+#NavShow .editer{ width:400px; float:right;}
+#NavShow .editer{ background:url(http://static.pinju.com/img/seller/header.png) no-repeat 0 -350px;}
+
+/*主按钮*/
+#main-button{ height:80px;}
+#main-button { width:430px; display:block; margin:0 auto; padding-top:30px;}
+#main-button input{ margin-right:10px;}
+
+/*展位首页招牌*/
+#ShowTopic{ background:#e7e8ed; height:140px; overflow:hidden;}
+#ShowTopic .edit-btn{ display:block; width:370px; height:130px; margin:10px auto 0;}
+#ShowTopic .edit-btn{ background:url(http://static.pinju.com/img/seller/notic-info.png) no-repeat 0 0;}
+.edit{ padding:10px; height:120px;}
+.edit h3{ font-weight:bold; color:#333; padding:10px 0 10px; font-size:14px;}
+.edit h3 span{ font-weight:normal; color:#C00; padding:5px 10px 0; font-size:12px;}
+.edit li{ display:block; margin-left:100px;}
+.edit li .picture{ width:500px; margin-bottom:5px;}
+.edit .tips{ width:490px;}
+.edit .main-button{}
+.edit .main-button .button{ margin: 0 10px 10px 0;}
+
+
+/*自定义区域*/
+#ShowContents{ background:#e7e8ed; overflow:hidden;}
+#ShowContents .edit-btn{ display:block; width:370px; height:300px; margin:10px auto 0;}
+#ShowContents .edit-btn{ background:url(http://static.pinju.com/img/seller/notic-info.png) no-repeat 0 -200px;}
+
+/*主选项卡*/
+#MainTab{ background:#e7e8ed; height:52px; overflow:hidden;}
+#MainTab ul{ background:url(http://static.pinju.com/img/seller/header.png) repeat-x 0 -400px; height:42px; margin-top:10px; padding:0 10px; overflow:hidden;}
+#MainTab ul li{ display:block; float:left; margin-right:3px; background:#FFF;}
+#MainTab ul li a{ display:block; font-size:14px; font-weight:bold; line-height:15px; padding:12px 15px 11px 15px;}
+#MainTab ul li a{ border-top:3px solid #afb4c3; border-bottom:1px solid #afb4c3; border-right:1px solid #afb4c3; border-left:1px solid #afb4c3;}
+
+#MainTab .aro li a{ background:url(http://static.pinju.com/img/seller/icon.png) no-repeat right -33px; padding:12px 21px 11px 15px;}
+
+#MainTab ul li .count{ color:#222; text-decoration:none;}
+#MainTab ul li .count{ border-top:3px solid #363636; border-bottom:1px solid #FFF; border-right:1px solid #afb4c3; border-left:1px solid #afb4c3;}
+
+/*列表表单*/
+.table-lister{ width:99%; margin:10px auto;}
+.table-lister th{ background:url(http://static.pinju.com/img/seller/header.png) repeat-x 0 -450px; text-align:left; font-size:14px; font-weight:bold; color:#666; border-bottom:1px solid #ccc;}
+.table-lister th, .table-lister td{ padding:10px;}
+.table-lister td{ vertical-align:top; border-bottom:1px dashed #DADADA;word-wrap: break-word;}
+.table-lister .th01{ width:100px; text-align:center;}
+.table-lister .th02{ width:620px;}
+.table-lister .th03{ width:300px;}
+.table-lister .th04{ width:200px;}
+.table-lister .img{ text-align:right;}
+.table-lister .img img{ width:90px; height:90px; padding:2px; border:1px solid #DADADA;}
+.table-lister .img a:hover img{ border:1px solid #333;}
+.table-lister td h4{ font-size:14px; font-weight:bold; padding-top:10px;}
+.table-lister td p{ padding:10px 0 6px; color:#888; margin-right:40px; width:400px;}
+.table-lister td span{ display:block; color:#333;}
+.table-lister .number{ color:#666; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:20px; line-height:23px; color:#666; padding-top:20px; font-weight:bold;}
+.table-lister .option{ padding-top:20px;}
+.table-lister .option span, .table-lister .option a{ display:block; float:left; margin-right:5px; width:30px; height:30px; background-image: url(http://static.pinju.com/img/seller/form.png); background-repeat:no-repeat;}
+
+.table-lister .option .aroup-no{ background-position:0 -350px;}
+.table-lister .option .aroup-mid{ background-position:0 -300px;}
+.table-lister .option .arodown-no{ background-position:0 -450px;}
+.table-lister .option .arodown-mid{ background-position:0 -400px;}
+.table-lister .option .del{ background-position:0 -500px;}
+.table-lister .option .edit{ background-position:0 -600px;}
+
+/*页码*/
+.page-coder{ height:60px; background:#FFF; padding-top:10px;}
+.page-coder ul{ padding:10px 0; display:block; width:500px; margin:0 auto; display:block; height:30px;}
+.page-coder ul li{ display:block; float:left; margin-left:5px; line-height:23px; padding-top:10px;}
+.page-coder ul li span{ font-size:14px; font-weight:bold; line-height:23px; padding:0 5px;}
+.page-coder ul li input{ border:1px solid #999; width:20px; height:15px; margin:0 -3px;}
+.page-coder ul li a{ border:1px solid #CCC; text-align:center; padding:3px 5px; line-height:15px; background:#F4F4F4;}
+.page-coder ul li a:hover{ background:#333; border:1px solid #333; color:#FFF; text-decoration:none;}
+
+/*右侧菜单*/
+.left-bar{ width:198px; float:left; }
+.left-bar{ border-bottom:1px solid #afb4c3;}
+.left-bar ul{ border-left:1px solid #afb4c3; border-right:1px solid #afb4c3; padding-bottom:5px; display:block; float:left; width:100%;}
+.left-bar ul h3{ border-top:2px solid #363636; border-bottom:1px solid #DDD; font-weight:bold; padding:8px 10px 7px 10px; background:#F6F6F6;}
+.left-bar ul h3 cite{ float:right;}
+.left-bar ul h3 cite a{ font-style:normal; font-weight:normal;}
+.left-bar ul li{ display:block; padding:5px 10px;}
+.left-bar ul .pro{ display:block; height:55px; overflow:hidden; margin:10px 0; clear:both;}
+.left-bar ul .pro a img{ width:50px; height:50px; border:1px solid #CCC; float:left; margin-right:8px;}
+.left-bar ul .pro a:hover img{ width:50px; height:50px; border:1px solid #333;}
+.left-bar ul .pro h4, .left-bar ul .pro p{ display: block; float:left; width:110px; overflow:hidden;}
+
+/*服务产品详细页*/
+.detail{ float:right; border:5px solid #e7e8ed; padding:10px; width:760px; margin-bottom:10px;}
+.detail .main-img{ float:left; overflow:hidden;}
+.detail .main-img a, .detail .main-img a input{ width:106px; height:22px; display:block; text-align:center; line-height:23px; }
+.detail .main-img a{ border:1px solid #FC9; background:#FFC; position: relative; overflow: hidden;}
+.detail .main-img a input{ clear: both; top:0; right:0;	position: absolute;	opacity: 0;	filter: alpha(opacity = 0);	cursor:pointer;}
+
+.detail .main-img img{ width:100px; height:100px; padding:3px; border:1px solid #CCC;}
+.detail .main-img p{ width:100px; padding-top:10px; line-height:15px; color:#999;}
+.detail .conts{ float:right; width:600px; padding-right:40px;}
+.detail .conts li{ display:block; margin:10px 0;word-wrap: break-word;}
+.detail .conts p{ color:#999; padding-top:5px;}
+.detail .conts .title{ font-size:22px; font-family:Tahoma,simsun; line-height:25px; padding:5px 0 15px; margin-top:-2px;}
+.detail .conts .title .text{ margin-right:10px; width:200px;}
+.detail .conts .title a{ font-size:12px; padding:0 10px; line-height:25px;}
+.detail .conts .txt{ color:#888; padding-top:10px;}
+.detail .conts .txt span{ font-size:14px; padding:0 5px; line-height:32px;}
+.detail .conts .button-m{ margin-bottom:10px;}
+.detail .conts .write{ width:400px; height:300px;}
+
+/*入驻流程*/
+#Steper01, #Steper02{ height:45px; background-image:url(http://static.pinju.com/img/seller/steper.png); background-repeat:no-repeat;}
+#Steper01{ background-position:0 0;}
+#Steper02{ background-position:0 -50px;}
+
+/*页面内容开始*/
+.contents-box{ border:6px solid #EEE; width:988px; margin:0 auto;}
+.contents-box .box{ border:1px solid #CCC; padding:10px;}
+
+/*入驻表格*/
+.topic{ font-size:14px; line-height:17px; height:17px; overflow:hidden; font-weight:bold; text-align:left; padding:10px 0 10px 20px;}
+.topic{ background:url(http://static.pinju.com/img/seller/header.png) repeat-x 0 -450px; border:1px solid #DADADA;}
+.topic span { font-size:12px; font-weight:normal; padding-left:10px; color:#F60;}
+.topic span strong{ font-size:30px; color:#F30;}
+
+.yellow{ background:#FFC; border:1px #F90 solid;}
+.steptable{ width:90%; margin:0 auto 10px; border-bottom:1px #DADADA dashed;}
+.steptable caption{ font-weight:bold; text-align:left; font-size:14px; color:#F60; line-height:19px; padding:10px 0 8px;}
+.steptable caption span{ font-weight: normal; font-size:12px; color:#888; padding-left:10px;}
+.steptable th, .steptable td{ vertical-align:top; text-align:19px;}
+.steptable th{ text-align:right; width:20%; padding:6px; font-weight:normal;}
+.steptable td{ padding:6px 0;}
+.steptable th span{ display:block; float:right; font-size:20px; color:#F30; font-weight:bold; text-align:right; width:8px; height:10px;}
+.steptable td span{ color:#F00; margin-left:10px; }
+.steptable td p{ color:#888; padding:3px 4px;}
+.steptable .text{ width:200px;}
+.steptable .textarea { width:400px; height:200px;}
+.steptable label{ padding-right:15px;}
+
+
+.login{ padding:10px;}
+.login li{ display:block; padding:5px 0; clear:both;}
+.login li strong, .login li input{ display:block; float:left;}
+.login li strong{ color:#F00; font-weight:normal;}
+.login li .first{ float:left; color:#000; text-align:right; width:160px; padding-right:6px;line-height:20px;}
+.login li .desc{ clear:both; float:left; padding:5px 6px 0 166px; }
+.login li .first b{ font-size:18px; color:#F00; padding-right:3px;}
+.login li .text{ width:200px;}
+.login h4{ text-align:left; clear:both; font-weight:bold; text-align:left; font-size:14px; color:#F60; line-height:19px; padding:25px 0 0 10px;}
+.login h4 span{ font-weight: normal; font-size:12px; color:#888; padding-left:10px;}
+.login .textarea{ width:300px; height:200px;}
+
+/*入驻完成提示信息*/
+.completion{ padding:10px;}
+.completion li{ display:block; padding-bottom:10px;}
+.completion .main{ background:url(http://static.pinju.com/img/seller/steper.png) no-repeat 0 -100px; width:470px; height:200px; margin:0 auto;}
+.completion .linker{ width:500px; margin:10px auto; padding:0 0 10px 200px;}
+.completion .linker input{ margin-right:15px;}
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member_asst_oper_log">
+
+	<typeAlias alias="MemberAsstOperLog" type="com.yuwang.pinju.domain.member.asst.MemberAsstOperLogDO" />
+
+	<resultMap id="MemberAsstOperLogResult" class="MemberAsstOperLog">
+		<result property="id" column="ID" />
+		<result property="masterMemberId" column="MASTER_MEMBER_ID" />
+        <result property="masterLoginName" column="MASTER_LOGIN_NAME" />
+		<result property="asstMemberId" column="ASST_MEMBER_ID" />
+		<result property="asstLoginName" column="ASST_LOGIN_NAME" />
+		<result property="target" column="TARGET" />
+		<result property="action" column="ACTION" />
+        <result property="targetDesc" column="TARGET_DESC" />
+        <result property="actionDesc" column="ACTION_DESC" />
+		<result property="operationLog" column="OPERATION_LOG" />
+		<result property="operationIp" column="OPERATION_IP" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+	</resultMap>
+
+	<sql id="selectAllMemberAsstOperLog"><![CDATA[SELECT ID,MASTER_MEMBER_ID,MASTER_LOGIN_NAME,ASST_MEMBER_ID,ASST_LOGIN_NAME,TARGET,ACTION,TARGET_DESC,ACTION_DESC,OPERATION_LOG,OPERATION_IP,GMT_CREATE,GMT_MODIFIED FROM MEMBER_ASST_OPER_LOG]]></sql>
+
+	<select id="selectAllMemberAsstOperLog" resultMap="MemberAsstOperLogResult">
+		<include refid="selectAllMemberAsstOperLog" />
+	</select>
+	
+	<select id="selectMemberAsstOperLogCount" resultClass="int" parameterClass="com.yuwang.pinju.domain.member.asst.MemberAsstOperLogQuery">
+	   <![CDATA[SELECT COUNT(ID) FROM MEMBER_ASST_OPER_LOG WHERE MASTER_MEMBER_ID = #masterMemberId# AND ASST_MEMBER_ID = #asstMemberId#]]>
+	      <isNotEmpty prepend="AND" property="target">
+            <![CDATA[TARGET = #target#]]>
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="paction">
+            <![CDATA[ACTION = #paction#]]>
+	      </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="startTime">
+            <![CDATA[GMT_CREATE >= #startTime#]]>
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="endTime">
+	        <![CDATA[GMT_CREATE < date_add(#endTime#,INTERVAL 1 day)]]>
+	      </isNotEmpty>
+	</select>
+
+	<select id="selectMemberAsstOperLog"  resultMap="MemberAsstOperLogResult" parameterClass="com.yuwang.pinju.domain.member.asst.MemberAsstOperLogQuery">
+		<include refid="selectAllMemberAsstOperLog" />
+		<![CDATA[WHERE MASTER_MEMBER_ID = #masterMemberId# AND ASST_MEMBER_ID = #asstMemberId# ]]>
+	     <isNotEmpty prepend="AND" property="target">
+            <![CDATA[TARGET = #target#]]>
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="paction">
+            <![CDATA[ACTION = #paction#]]>
+	      </isNotEmpty>
+	    <isNotEmpty prepend="AND" property="startTime">
+            <![CDATA[GMT_CREATE >= #startTime#]]>
+	    </isNotEmpty>
+	    <isNotEmpty prepend="AND" property="endTime">
+	        <![CDATA[GMT_CREATE < date_add(#endTime#,INTERVAL 1 day)]]>
+	    </isNotEmpty>
+	    <![CDATA[ ORDER BY ID DESC LIMIT #start#, #itemsPerPage#]]>
+	</select>
+
+	<insert id="insertMemberAsstOperLog" parameterClass="MemberAsstOperLog">
+		<![CDATA[INSERT INTO MEMBER_ASST_OPER_LOG (MASTER_MEMBER_ID,MASTER_LOGIN_NAME,ASST_MEMBER_ID,ASST_LOGIN_NAME,TARGET,ACTION,TARGET_DESC,ACTION_DESC,OPERATION_LOG,OPERATION_IP,GMT_CREATE,GMT_MODIFIED) VALUES (#masterMemberId#,#masterLoginName#,#asstMemberId#,#asstLoginName#,#target#,#action#,#targetDesc#,#actionDesc#,#operationLog#,#operationIp#,#gmtCreate#,#gmtModified#)]]>
+	</insert>
+</sqlMap>
+

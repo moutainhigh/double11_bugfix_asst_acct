@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="sdoDirectPayAO" class="com.yuwang.pinju.core.trade.ao.impl.SdoDirectPayAOImpl"/>
+    <bean id="tenDirectPayAO" class="com.yuwang.pinju.core.trade.ao.impl.TenDirectPayAOImpl"/>
+	<bean id="tenSearchOrderAO" class="com.yuwang.pinju.core.trade.ao.impl.TenSearchOrderAOImpl" />
+    <bean id="tenpaySinglepayAO" class="com.yuwang.pinju.core.trade.ao.impl.TenpaySinglepayAOImpl"/>
+    <bean id="tenpayMergepayAO" class="com.yuwang.pinju.core.trade.ao.impl.TenpayMergepayAOImpl"/>
+    <bean id="tenpayMergepayNotifyAO" class="com.yuwang.pinju.core.trade.ao.impl.TenpayMergepayNotifyAOImpl"/>
+	<bean id="tenSubAccountAO" class="com.yuwang.pinju.core.trade.ao.impl.TenSubAccountAOImpl" />
+	<bean id="tenPlatformRefundAO" class="com.yuwang.pinju.core.trade.ao.impl.TenPlatformRefundAOImpl" />
+	<bean id="tenSplitRollBackAO" class="com.yuwang.pinju.core.trade.ao.impl.TenSplitRollBackAOImpl" />
+	
+</beans>

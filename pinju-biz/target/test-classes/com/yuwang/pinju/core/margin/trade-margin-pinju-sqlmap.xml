@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TradeMarginPinJu">
+
+	<typeAlias alias="MarginPinJuDO" type="com.yuwang.pinju.domain.margin.MarginPinJuDO" />
+
+	<resultMap id="marginPinJuMap" class="MarginPinJuDO" >
+		<result property="id" column="ID" />
+		<result property="curBalAmount" column="CURRENT_BALANCE" />
+		<result property="gmtCreate" column="GMT_CREATE" />
+		<result property="gmtModified" column="GMT_MODIFIED" />
+		<result property="version" column="VERSION" />
+	</resultMap>
+	
+	<sql id="tradeMarginPinJuSql">
+         V.ID,
+         V.CURRENT_BALANCE,
+         V.GMT_CREATE,
+         V.GMT_MODIFIED,
+         V.VERSION
+    </sql>
+	
+	<select id="TradeMarginPinJu.getTradeMarginPinJuDOById"  parameterClass="java.lang.Long" resultMap="marginPinJuMap">
+        SELECT <include refid="tradeMarginPinJuSql"/> FROM TRADE_MARGIN_PINJU V WHERE V.ID=#value# 
+	</select>
+	
+	<select id="TradeMarginPinJu.getTradeMarginPinJuDOs"  resultMap="marginPinJuMap">
+        SELECT <include refid="tradeMarginPinJuSql"/> FROM TRADE_MARGIN_PINJU V 
+	</select>
+	
+	<insert id="TradeMarginPinJu.insertTradeMarginPinJuRecord" parameterClass="MarginPinJuDO">
+	    <selectKey keyProperty="id" resultClass="long">
+			SELECT SEQ_TRADE_MARGIN_PINJU_ID.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO TRADE_MARGIN_PINJU 
+	    (
+         	ID,             
+			CURRENT_BALANCE,
+			GMT_CREATE,     
+			GMT_MODIFIED,   
+			VERSION        
+	    )
+	    VALUES
+	    (
+	        #id:NUMBER#,
+			#curBalAmount#,
+			sysdate,
+			sysdate,
+			0
+	    )
+	</insert>
+	
+	<update id="TradeMarginPinJu.updateTradeMarginPinJuRecord" parameterClass="MarginPinJuDO" >
+		<![CDATA[UPDATE TRADE_MARGIN_PINJU]]> SET GMT_MODIFIED = SYSDATE
+		<dynamic>
+			<isNotEmpty prepend="," property="curBalAmount">
+				<![CDATA[CURRENT_BALANCE = #curBalAmount#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="version">
+				<![CDATA[VERSION = #version#+1]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[WHERE ID = #id# AND VERSION < #version#+1 ]]>
+	</update>
+	
+	
+	
+
+</sqlMap>

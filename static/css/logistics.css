@@ -1,0 +1,1051 @@
+/*��������ʾ*/
+.tips {
+	background: #ffffe0;
+	color: #333;
+	border: 1px solid #efce9a;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.tips strong {
+	font-weight: bold;
+}
+
+/*ģ�����*/
+.title-goods {
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	padding: 6px 0 5px 10px;
+}
+
+.bar-left .title-goods {
+	font-size: 12px;
+}
+
+/*ģ�����*/
+.goods-class-lister {
+	display: block;
+}
+
+.goods-class-lister li {
+	padding: 5px 10px;
+}
+
+.goods-class-lister li strong {
+	font-weight: bold;
+	color: #888;
+}
+
+.goods-class-lister li span {
+	padding: 0 3px;
+	font-size: 16px;
+	color: #999;
+}
+
+/*��Ʒ��Ϣ���*/
+.goods-info-lister {
+	width: 100%;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #DADADA;
+}
+
+.goods-info-lister th, .goods-info-lister td {
+	padding: 8px 5px;
+}
+
+.goods-info-lister th {
+	font-weight: normal;
+	width: 15%;
+	text-align: right;
+}
+
+.goods-info-lister th cite {
+	color: #F00;
+	float: right;
+	display: block;
+	font-weight: bold;
+	font-size: 18px;
+	width: 16px;
+}
+
+.goods-info-lister td {
+	padding: 5px;
+}
+
+.goods-info-lister td label {
+	height: 20px;
+	line-height: 23px;
+	overflow: hidden;
+	display: block;
+	float: left;
+	padding-right: 10px;
+}
+
+.goods-info-lister td label {
+	word-wrap: normal;
+	word-break: keep-all;
+	zoom: 1;
+}
+
+.goods-info-lister td label input {
+	margin-right: 5px;
+}
+
+.goods-info-lister .goods-lister {
+	background: #F6F6F6;
+	width: 90%;
+	border: 1px solid #DADADA;
+	padding: 5px;
+}
+
+.goods-info-lister .goods-lister ul {
+	display: block;
+}
+
+.goods-info-lister .goods-lister li {
+	display: block;
+	clear: both;
+}
+
+.goods-info-lister .goods-lister select {
+	margin-right: 10px;
+}
+
+.goods-info-lister .goods-lister .text {
+	width: auto;
+}
+
+.goods-info-lister .goods-lister .traffic {
+	background: #FFF;
+	border: 1px solid #EEE;
+	padding: 10px;
+}
+
+.goods-info-lister .goods-lister .traffic span {
+	display: block;
+	clear: both;
+	padding-bottom: 10px;
+}
+
+.goods-info-lister .goods-lister .traffic span p {
+	display: block;
+	clear: both;
+	text-indent: 20px;
+}
+
+.goods-info-lister .goods-lister .traffic .text {
+	width: 100px;
+}
+
+.goods-info-lister .traffic .lay {
+	width:400px;
+	border:#98AEBC 4px  solid;
+	padding:1px;
+	background:#FFF;
+	position:absolute;
+}
+.goods-info-lister .traffic .lay .pager ul{
+	padding:5px 0 10px 100px;		
+}
+.goods-info-lister .traffic .lay .pager ul input{
+	margin:10px 0;
+	border:1px solid #999;
+	background:#d8e9f7;
+	cursor:pointer;
+}
+.goods-info-lister .traffic .lay .pager ul b{
+	padding:0 10px;
+}
+.goods-info-lister .traffic .lay h3{
+	display:block;
+	height:23px;
+	line-height:23px;
+	padding:5px;
+	background:#d8e9f7;
+	font-weight:bold;
+}
+.goods-info-lister .traffic .lay h3 cite{
+	display:block;
+	float:right;
+}
+.goods-info-lister .traffic .lay h3 cite a{
+	font-weight:normal;
+}
+.goods-info-lister .traffic .lay dl{
+	padding:6px;	
+}
+.goods-info-lister .traffic .lay dt{
+	display:block;
+	padding:5px 0;
+	border-bottom:1px dashed #DADADA;
+	height:22px;
+}
+.goods-info-lister .traffic .lay dt cite{
+	display:block;
+	float:right;
+}
+.goods-info-lister .traffic .lay cite{
+	font-style:normal;
+	text-decoration:none;	
+}
+.goods-info-lister .traffic .lay dt cite a{
+	padding-left:10px;
+}
+.goods-info-lister .traffic .lay dt span{
+	display:block;
+	float:left;
+	width:300px;
+}
+
+.goods-info-lister .text {
+	margin-right: 5px;
+}
+
+.goods-info-lister .short .text {
+	width: 80px;
+}
+
+.goods-info-lister textarea {
+	width: 500px;
+	height: 160px;
+}
+
+.goods-info-lister .radio-lister ul {
+}
+
+.goods-info-lister .radio-lister li {
+	display: block;
+	padding: 10px 0;
+}
+
+.goods-info-lister .radio-lister li select {
+	width: 150px;
+}
+
+.goods-info-lister .year {
+	width: 150px;
+	margin: 0 5px;
+}
+
+.goods-info-lister .month {
+	width: 40px;
+	margin: 0 5px;
+}
+
+.goods-info-lister .shop-class {
+	width: 600px;
+	height: 230px;
+	overflow-y: scroll;
+	background: #F6F6F6;
+	overflow-x: hidden;
+	border: 1px solid #DADADA;
+	padding: 10px;
+}
+
+.goods-info-lister .shop-class ul {
+	padding-bottom: 15px;
+	display: block;
+}
+
+.goods-info-lister .shop-class ul li {
+	display: block;
+	padding: 3px 0;
+	clear: both;
+}
+
+.goods-info-lister .l-table {
+	width: auto;
+	float: left;
+}
+
+.goods-info-lister .l-table th, .goods-info-lister .l-table td {
+	border: 1px solid #DADADA;
+}
+
+.goods-info-lister .l-table th {
+	text-align: center;
+	background: #f0f0f0;
+	font-weight: bold;
+	width: 40px;
+}
+
+.goods-info-lister .l-table td .text {
+	width: 60px;
+}
+
+.goods-info-lister .pic-box {
+	height: 130px;
+	width: 685px;
+	padding: 10px;
+	overflow: hidden;
+	border: 1px solid #DADADA;
+	background: #FFF;
+	margin-right: 2px;
+}
+
+.goods-info-lister .pic-box li {
+	width: 100px;
+	display: block;
+	float: left;
+}
+
+.goods-info-lister .pic-box li {
+	margin-right: 10px;
+}
+
+.goods-info-lister .pic-box img {
+	width: 70px;
+	height: 70px;
+}
+
+.goods-info-lister .pic-box .header {
+	width: 120px;
+	height: 125px;
+	background: url(http://static.pinju.com/img/goods-header.jpg) no-repeat 0 -150px;
+}
+
+.goods-info-lister .pic-box .header span {
+	width: 90px;
+	height: 90px;
+	display: block;
+	margin: 5px;
+}
+
+.goods-info-lister .pic-box li img {
+	width: 100px;
+	height: 100px;
+	border: 1px solid #CCC;
+}
+
+.goods-info-lister .pic-box li a {
+	display: block;
+	clear: both;
+	width: 102px;
+	height: 26px;
+	margin-top: 3px;
+}
+
+.goods-info-lister .pic-box li a {
+	position: relative;
+	overflow: hidden;
+	background: url(../img/button.png) no-repeat 0 -650px;
+}
+
+.goods-info-lister .pic-box li a input {
+	display: block;
+	clear: both;
+	width: 102px;
+	height: 26px;
+}
+
+.goods-info-lister .pic-box li a input {
+	visibility: hidden;
+	position: absolute;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+/*�ϴ���Ʒҳͷ*/
+#sale-header {
+	height: 80px;
+}
+
+#sale-header {
+	background: url(http://static.pinju.com/img/goods-header.jpg) no-repeat;
+}
+
+#sale-header {
+	text-align: right;
+}
+
+#sale-header ul {
+	padding-top: 60px;
+}
+
+#sale-header ul li {
+	display: block;
+	float: right;
+	padding-left: 20px;
+}
+
+/*��Ϣ�ϴ�ʧ����ʾ*/
+.goods-notic {
+	border: 1px solid #ff8080;
+	background: #fff2f2;
+	padding: 10px;
+}
+
+.goods-notic h3 {
+	font-size: 16px;
+	line-height: 21px;
+	font-weight: bold;
+	color: #f50;
+	padding: 6px 0 8px 6px;
+}
+
+.goods-notic li {
+	background: #FFF;
+	padding: 8px 5px 6px 20px;
+}
+
+/*��Ʒ��Ŀ*/
+#wrap-gray {
+	background: #f2f2f2;
+	height: 320px;
+}
+
+.choose-class {
+	margin: 0 auto;
+}
+
+.choose-class {
+	width: 930px;
+	height: 40px;
+	clear: both;
+}
+
+.choose-class ul {
+	padding-left: 90px;
+	font-size: 16px;
+	line-height: 23px;
+	font-family: "΢���ź�";
+	font-weight: bold;
+}
+
+.choose-class ul select {
+	width: 500px;
+}
+
+.select-frame {
+	width: 924px;
+	height: 278px;
+	background: #FFF;
+	border: 1px solid #DADADA;
+	margin-top: 20px;
+	overflow: hidden;
+	float: left;
+	position: relative;
+	z-index: 65534;
+}
+
+.select-box {
+	width: 1340px;
+	height: 280px;
+	position: absolute;
+	top: -1px;
+	left: -1px;
+}
+
+.select-box ul {
+	width: 230px;
+	height: 278px;
+	border: 1px solid #CCC;
+	background: #FFF;
+	margin-left: -1px;
+	position: relative;
+	z-index: 1;
+	display: block;
+	float: left;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.select-box .first {
+	margin-left: 0;
+}
+
+.select-button {
+	width: 35px;
+	height: 45px;
+	overflow: hidden;
+	float: left;
+	margin-top: 130px;
+}
+
+.select-button .left, .select-button .right {
+	width: 35px;
+	height: 45px;
+	border: none;
+	cursor: pointer;
+}
+
+.select-button .left {
+	background: url(http://static.pinju.com/img/button.png) no-repeat 16px -550px;
+}
+
+.select-button .right {
+	background: url(http://static.pinju.com/img/button.png) no-repeat 0 -600px;
+}
+
+.select-box ul li, .select-box ul li a {
+	display: block;
+}
+
+.select-box ul li {
+	padding: 1px 3px;
+}
+
+.select-box ul li a {
+	padding: 5px;
+	color: #333;
+}
+
+.select-box ul li a:hover {
+	padding: 4px;
+	border: 1px solid #DADADA;
+	text-decoration: none;
+	background: url(http://static.pinju.com/img/icon-option.png) no-repeat right -544px #F4F4F4;
+}
+
+.select-box ul .count a{
+	background: url(http://static.pinju.com/img/icon-option.png) no-repeat right -644px #ffe2e2;
+	border:1px solid #f99;
+}
+
+.select-box ul li a.selected {
+	padding: 4px;
+	border: 1px solid #DAA;
+	text-decoration: none;
+	background: url(http://static.pinju.com/img/icon-option.png) no-repeat right -544px #FEE;
+}
+
+.select-box ul .top-search {
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+}
+
+.select-box ul .top-search {
+	padding: 5px;
+	background: #FFF;
+	position: absolute;
+	width: 188px;
+	height: 22px;
+	overflow: hidden;
+}
+
+.select-box ul .top-search-bg {
+	height: 30px;
+}
+
+.select-box ul .top-search input {
+	display: block;
+	float: left;
+}
+
+.select-box ul .top-search .t {
+	background: url(http://static.pinju.com/img/icon-option.png) no-repeat 3px -598px #FFF;
+}
+
+.select-box ul .top-search .t {
+	padding: 3px 0 0 25px;
+	border: 1px solid #CCC;
+}
+
+.select-box ul .top-search .t {
+	height: 18px;
+	width: 165px;
+	margin-right: 5px;
+}
+
+.button-main {
+	height: 100px;
+	padding-top: 30px;
+	text-align: center;
+}
+
+.button-main .button, .button-main .undo{
+	width: 195px;
+	height: 43px;
+	border: none;
+}
+
+.button-main .button, .button-main .undo{
+	color: #FFF;
+	font-size: 14px;
+	font-family: "΢���ź�";
+	font-weight: bold;
+	cursor: pointer;
+}
+.button-main .button{
+	background: url(http://static.pinju.com/img/button.png) no-repeat 0 -350px;
+}
+
+.button-main .button:hover {
+	background: url(http://static.pinju.com/img/button.png) no-repeat 0 -400px;
+}
+.button-main .undo{
+	background: url(http://static.pinju.com/img/button.png) no-repeat 0 -800px;
+	color:#999;
+}
+
+
+.button-main p {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.button-group {
+	padding-left: 210px;
+}
+
+.button-group li {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.button-group li input {
+	width: 60px;
+	height: 30px;
+}
+
+/*��ǰ��Ŀ*/
+.class-count {
+	background: #ffffe0;
+	border-bottom: 1px solid #efce9a;
+	padding-top: 10px;
+	height: 30px;
+}
+
+.class-count {
+	font-weight: normal;
+	color: #999;
+	padding-left: 20px;
+}
+
+.class-count li{
+	display:block;
+	float:left;
+}
+
+.class-count strong {
+	font-weight: bold;
+	color: #F60;
+	font-family: "΢���ź�";
+}
+
+.class-count strong, .class-count a, .class-count span {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	font-size: 14px;
+	line-height: 23px;
+}
+
+.class-count b {
+	color: #F00;
+	font-size: 16px;
+}
+
+/*��ǰ��Ŀ*/
+
+.goods-title {
+	padding: 10px;
+}
+
+.goods-title span {
+	font-size: 12px;
+	color: #F00;
+	line-height: 17px;
+	padding-left:20px;
+}
+
+/*������Ŀ*/
+#class-search {
+	background: url(http://static.pinju.com/img/header-sub.png) repeat-x 0 -450px;
+}
+
+#class-search {
+	height: 90px;
+}
+
+#class-search div {
+	background: url(http://static.pinju.com/img/header-sub.png) no-repeat 0 -350px;
+}
+
+#class-search div {
+	display: block;
+	height: 90px;
+}
+
+#class-search ul {
+	display: block;
+	height: 90px;
+	overflow: hidden;
+}
+
+#class-search ul {
+	background: url(http://static.pinju.com/img/header-sub.png) no-repeat right -550px;
+}
+
+#class-search ul li {
+	display: block;
+	float: left;
+	margin-top: 22px;
+}
+
+#class-search ul .search-title {
+	width: 230px;
+	text-align: right;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#class-search ul .search-title {
+	background: url(http://static.pinju.com/img/goods-header.jpg) no-repeat 130px -100px;
+	padding: 10px;
+}
+
+#class-search ul .search-text {
+	width: 480px;
+}
+
+#class-search ul .search-text input {
+	width: 470px;
+	border: 1px solid #999;
+	padding: 3px 0 0 3px;
+	height: 27px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#class-search ul .search-text input {
+	background: url(http://static.pinju.com/img/header-sub.png) repeat-x 0 -300px #FFF;
+}
+
+#class-search ul .search-text p {
+	color: #666;
+	padding-top: 5px;
+}
+
+#class-search ul .search-button input {
+	width: 90px;
+	height: 33px;
+	color: #333;
+	font-size: 14px;
+	font-weight: bold;
+	border: 1px solid #CCC;
+	cursor: pointer;
+}
+
+#class-search ul .search-button input {
+	background: url(http://static.pinju.com/img/button.png) repeat-x 0 -250px #FFF;
+	margin-right: 10px;
+}
+
+/*��ѡ�*/
+.tab-main{ height:36px; display:block; background:url( http://static.pinju.com/img/line.png) repeat-x 0 35px;}
+.tab-main li{ display:block; float:left; margin-right:5px;}
+.tab-main li a{ display:block; background:#F4F4F4; padding:10px 15px 8px; border-bottom:1px solid #DADADA; border-left:1px solid #DADADA; border-right:1px solid #DADADA; border-top:2px solid #d72426; color:#333;}
+.tab-main .count a{ border-bottom:1px solid #FFF; background:#FFF; font-weight:bold;}
+
+
+/*�˷�ģ��*/
+.transport {
+	background: #FFF;
+	padding: 10px;
+}
+
+.transport h3 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.transport h3 span {
+	font-size: 12px;
+	font-weight: normal;
+	color: #999;
+}
+
+.transport ul li p {
+	color: #888;
+}
+
+.transport .transport-table{
+	border: 1px solid #b7cceb;
+	width: 100%;
+	margin-top: 15px;
+	text-align: center;
+}
+.transport .transport-table .last{
+	width:120px;
+}
+
+.transport .transport-table .caption {
+	background: #f2f6fc;
+	width: 750px;
+	color: #009;
+	padding: 5px 0 5px 20px;
+	text-align: left;
+	font-weight: bold;
+}
+.transport .transport-table .caption strong{
+	display:block;
+	float:left;
+	width:300px;
+	overflow:hidden;
+}
+.transport .transport-table .caption cite{
+	display:block;
+	float:right;
+	color:#999;
+	overflow:hidden;
+	font-weight:normal;
+	font-style:normal;
+	text-decoration:none;
+}
+.transport .transport-table .caption cite a{
+	padding:0 5px;
+	line-height:21px;
+}
+
+.transport .transport-table th {
+	color: #888;
+	background: #F4F4F4;
+}
+
+.transport .transport-table th {
+	padding: 5px 0;
+}
+
+.transport .transport-table td {
+	padding: 5px 10px 5px 5px;
+	border: 1px solid #DADADA;
+}
+
+.transport .transport-table .explan {
+	padding: 5px 5px 5px 20px;
+	border: 1px solid #DADADA;
+	color: #888;
+	text-align: left;
+}
+.transport .transport-table .explan input{
+	background: url(http://static.pinju.com/img/button.png) repeat-x 0 -150px;
+	font-weight:bold;
+	float:right;
+	margin:5px 5px 5px 10px;
+	font-size:14px;
+	line-height:17px;
+	height:37px;
+	width:120px;
+	border:none;
+	color:#333;
+	cursor:pointer;
+}
+.transport .transport-table .explan input:hover{
+	background: url(http://static.pinju.com/img/button.png) repeat-x 0 -100px;
+}
+
+.transport .transport-table .explan strong {
+	font-weight: bold;
+	color: #000;
+}
+
+.transport .transpor-tinfo {
+	border: none;
+	padding-bottom:10px;
+	border-bottom: 1px dashed #CCC;
+}
+.transport .transpor-tinfo h3{
+	padding:20px 0 10px 5px;
+	font-weight:normal;
+}
+.transport .transpor-tinfo ul{
+	padding:8px;
+}
+.transport .transpor-tinfo li{
+	padding:5px;
+}
+
+.transport .transpor-tinfo li label {
+	padding-left: 40px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+.transport .transpor-tinfo #Maintext, .transport .transpor-tinfo #MaintextRed , .transport .transpor-tinfo #MaintextGreen{
+	margin-left:35px;
+}
+.transport .pay-info #Maintext, .transport .pay-info #MaintextRed , .transport .pay-info #MaintextGreen{
+	margin-left:0;
+}
+.transport .transpor-tinfo #MaintextRed {
+	border: 1px solid #F00;
+}
+
+.transport .transpor-tinfo #tipTemplateName  {
+	text-indent: 20px;
+	font-weight: bold;
+	background: #ffffe0;
+	border: 1px solid #f9dfb2;
+	margin-left:5px;
+}
+
+.transport .transpor-tinfo #tipLogisticsType {
+	text-indent: 20px;
+	font-weight: bold;
+	background: #ffffe0;
+	border: 1px solid #f9dfb2;
+	margin-left:5px;
+}
+
+.transport .transpor-tinfo #tipPostFeeIncrease,#tipPostFee,#tipCourierFeeIncrease,#tipCourierFee,#tipEmsFee,#tipEmsFeeIncrease,#tipTemplateMemo {
+	text-indent: 20px;
+	font-weight: bold;
+	background: #ffffe0;
+	border: 1px solid #f9dfb2;
+	margin-left:0px;
+}
+
+.transport .transpor-tinfo #tipPostArea,#tipCourierArea,#tipEmsArea  {
+	text-indent: 20px;
+	font-weight: bold;
+	background: #ffffe0;
+	border: 1px solid #f9dfb2;
+	margin-left:0px;
+}
+
+.transport .transpor-tinfo #tipTemplateNameExist  {
+	text-indent: 20px;
+	font-weight: bold;
+	background: #ffffe0;
+	border: 1px solid #f9dfb2;
+	margin-left:5px;
+}
+
+.transport .transpor-tinfo #MaintextGreen {
+	border: 1px solid #393;
+}
+
+.transport .transpor-tinfo .pay-info {
+	border: 1px solid #CCC;
+	background: #F4F4F4;
+	padding: 10px;
+	margin: 0 20px 0 40px;
+	position:relative;
+	z-index:1;
+	display:none;
+}
+.transport .transpor-tinfo .pay-info .text{
+	width:60px;
+	margin-right:5px;
+}
+.transport .transpor-tinfo .pay-info p{
+	padding:10px 0 0 0;
+}
+.transport .transpor-tinfo .explain{
+	padding:10px 0 0 40px;
+}
+.transport .transpor-tinfo .explain textarea{
+	width: 500px;
+	height:100px;
+}
+.transport .transpor-tinfo .explain textarea{
+	width: 500px;
+	height:100px;
+}
+
+.transport .transpor-tinfo .pay-info .first{
+	background: #FFF;
+	padding: 10px;
+	margin-bottom:2px;
+	border:1px solid #DADADA;
+}
+.transport .transpor-tinfo .pay-info .lister{
+	padding:5px 5px 5px 30px;
+	margin-bottom:2px;
+}
+.transport .transpor-tinfo .pay-info .lister a{
+	padding-left:20px;
+}
+
+
+.transport #Button{
+	border:none;
+}
+.transport #Button P{
+	padding:10px 0 10px 396px;
+}
+.transport #Button input{
+	margin-right:10px;
+}
+
+.transport-area{
+	border:1px solid #CCC;
+	width:420px;
+	padding:5px 5px 10px 5px;
+	background:#FFF;
+	position:absolute;
+	z-index:99;
+	display:none;
+}
+.transport-area table{
+	width:420px;
+	border-bottom:1px dashed #DADADA;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	clear:both;
+}
+.transport-area td{
+	width:90px;
+	padding:1px; 
+}
+.transport-area td input{
+	margin-right:5px;
+}
+.transport-area p{
+	line-height:18px;
+	font-weight:bold;
+	height:18px;
+	border-bottom:1px solid #ccc;
+	padding-bottom:8px;
+	margin-bottom:10px;
+}
+.transport-area p cite{
+	float:right;
+}
+.transport-area p .cancel{
+	background: url(http://static.pinju.com/img/icon-option.png) repeat-x 0 -250px;
+	display:block;
+	width:16px;
+	height:16px;
+}
+.transport-area p cite a:hover{
+	background: url(http://static.pinju.com/img/icon-option.png) repeat-x 0 -200px;
+}
+
+.trans-way{
+	width:300px;
+	margin:10px auto;
+	margin-top:20px;
+}
+.trans-way select{
+	width:200px;
+}
+.trans-way .text{
+	width:194px;
+}
+.trans-way td{
+	padding:8px 0;
+}
+.transport .button-main .button, .trans-way .button{
+	width:120px;
+	height:30px;
+	border:none;
+	color:#FFF;
+	font-weight:bold;
+	background: url(http://static.pinju.com/img/button.png) repeat-x 0 0;
+	cursor:pointer;
+}
+.trans-way .button:hover, .transport .button-main .button:hover{
+	background: url(http://static.pinju.com/img/button.png) repeat-x 0 -50px;
+}
+
+.cheng{
+    color: #FF7F00;
+}

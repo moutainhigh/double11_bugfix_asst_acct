@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- spring加载多有业务的配置文件 Add By ShiXing@2011.09.14 -->
+
+  <!-- 异步执行器 -->
+  <import resource="classpath:/biz/bean/executor/executor-*.xml" />
+
+	<!-- 用户管理 -->
+	<import resource="classpath:/biz/bean/user/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/user/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/user/biz-manager.xml" />
+
+	<!-- 店铺管理 -->
+	<import resource="classpath:/biz/bean/shop/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/shop/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/shop/biz-manager.xml" />
+
+	<!-- 商品管理 -->
+	<import resource="classpath:/biz/bean/item/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/item/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/item/biz-manager.xml" />
+	<import resource="classpath:/biz/bean/item/biz-service.xml" />
+
+	<!-- 订单管理  -->
+	<import resource="classpath:/biz/bean/order/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/order/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/order/biz-manager.xml" />
+
+	<!-- 支付管理 -->
+	<import resource="classpath:/biz/bean/trade/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/trade/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/trade/biz-manager.xml" />
+
+	<!-- 退款管理  -->
+	<import resource="classpath:/biz/bean/refund/refund-ao.xml" />
+	<import resource="classpath:/biz/bean/refund/refund-dao.xml" />
+	<import resource="classpath:/biz/bean/refund/refund-manager.xml" />
+
+	<!-- 物流管理 -->
+	<import resource="classpath:/biz/bean/logistics/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/logistics/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/logistics/biz-manager.xml" />
+
+	<!-- ApiApplication -->
+	<import resource="classpath:/biz/api/apiapplication/apiapplication-ao.xml" />
+	<import resource="classpath:/biz/api/apiapplication/apiapplication-dao.xml" />
+	<import resource="classpath:/biz/api/apiapplication/apiapplication-manager.xml" />
+	
+	<!-- ApiMethod -->
+	<import resource="classpath:/biz/api/apimethod/apimethod-ao.xml" />
+	<import resource="classpath:/biz/api/apimethod/apimethod-dao.xml" />
+	<import resource="classpath:/biz/api/apimethod/apimethod-manager.xml" />
+	
+	<!-- ApiSession -->
+    <import resource="classpath:/biz/api/apisession/apisession-ao.xml" />
+	<import resource="classpath:/biz/api/apisession/apisession-dao.xml" />
+	<import resource="classpath:/biz/api/apisession/apisession-manager.xml" />
+
+	<import resource="classpath:/biz/bean/member/member-ao.xml" />
+	<import resource="classpath:/biz/bean/member/member-dao.xml" />
+	<import resource="classpath:/biz/bean/member/member-manager.xml" />
+
+	<!-- bi -->
+	<import resource="classpath:/biz/bean/bi/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/bi/biz-manager.xml" />
+
+	<!-- 文件上传 -->
+	<import resource="classpath:/biz/bean/storage/biz-ao.xml" />
+	<import resource="classpath:/biz/bean/storage/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/storage/biz-manager.xml" />
+
+	<!-- 维权 Add By ShiXing@2011.06.29 -->
+	<import resource="classpath:/biz/bean/rights/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/rights/biz-manager.xml" />
+	<import resource="classpath:/biz/bean/rights/biz-ao.xml" />
+    
+	<!-- 消保 Add By ShiXing@2011.08.02 -->
+	<import resource="classpath:/biz/bean/margin/biz-dao.xml" />
+	<import resource="classpath:/biz/bean/margin/biz-manager.xml" />
+	<import resource="classpath:/biz/bean/margin/biz-ao.xml" />
+	
+	<!-- 报表查询 -->
+	<import resource="classpath:/biz/bean/report/biz-ao.xml"/>
+	<import resource="classpath:/biz/bean/report/biz-dao.xml"/>
+	<import resource="classpath:/biz/bean/report/biz-manager.xml"/>
+
+	<!-- 盛大缓存 -->
+	<import resource="classpath:/snda-xmemcache-shop.xml" />
+  <import resource="classpath:/snda-xmemcached.xml" />
+
+	<!--时间任务 -->
+	<import resource="classpath:/biz/bean/timetask/biz-timetask.xml" />
+
+	<!-- 活动管理 -->
+	<import resource="classpath:/biz/bean/active/active-ao.xml" />
+  	<import resource="classpath:/biz/bean/active/active-dao.xml" />
+  	<import resource="classpath:/biz/bean/active/active-manager.xml" />
+	<!-- 搜索 Add By liming@2011-07-19 -->
+	<import resource="classpath:/biz/bean/search/biz-manager.xml" />
+	<import resource="classpath:/biz/bean/httpclient/biz-service.xml" />
+	<!-- 搜索关键词 -->
+	<import resource="classpath:/biz/bean/search/keyword/keyword-dao.xml" />
+	<import resource="classpath:/biz/bean/search/keyword/keyword-manager.xml" />
+	<import resource="classpath:/biz/bean/search/keyword/keyword-ao.xml" />
+	<!-- 搜索关键词End -->
+	
+	<!-- 分销商供应商 -->
+	<import resource="classpath:/biz/bean/distribute/biz-ao.xml"/>
+	<import resource="classpath:/biz/bean/distribute/biz-dao.xml"/>
+	<import resource="classpath:/biz/bean/distribute/biz-manager.xml"/>
+	<!-- 限购特供 -->
+  	<import resource="classpath:/biz/bean/sales/biz-dao.xml"/>
+  	<import resource="classpath:/biz/bean/sales/biz-manager.xml"/>
+  	<import resource="classpath:/biz/bean/sales/biz-ao.xml"/>
+  	<!-- 即时到账 End -->
+	
+	<!-- 图片空间 -->
+  	<import resource="classpath:/biz/bean/images/biz-ao.xml"/>
+  	<import resource="classpath:/biz/bean/images/biz-manager.xml"/>
+  	<import resource="classpath:/biz/bean/images/biz-dao.xml"/>
+  	
+	<!-- 缓存 -->
+	<import resource="classpath:/biz/bean/cache/*.xml"/>
+	
+	<!-- 验证码 -->
+	<import resource="classpath:/biz/bean/captcha/*.xml"/>
+	
+	 <!-- 平台服务费 -->
+	<import resource="classpath:/biz/bean/servicefee/*.xml"/>
+	
+	<import resource="classpath:/applicationContext-activemqpoints.xml" />
+	
+	<!-- 发送邮箱 -->
+	<import resource="classpath:/applicationContext-message.xml"/>
+	
+	<!-- 城市分站 -->
+	<import resource="classpath:/biz/bean/citystation/biz-ao.xml"/>
+	<import resource="classpath:/biz/bean/citystation/biz-manager.xml"/>
+	<import resource="classpath:/biz/bean/citystation/biz-dao.xml"/>
+	
+	<!-- 配置信息 -->
+	<import resource="classpath:/biz/bean/config/biz-ao.xml"/>
+	<import resource="classpath:/biz/bean/config/biz-dao.xml"/>
+	<import resource="classpath:/biz/bean/config/biz-manager.xml"/>
+
+	<!-- 优惠券 -->
+	<import resource="classpath:/biz/bean/coupon/biz-ao.xml"/>
+	<import resource="classpath:/biz/bean/coupon/biz-dao.xml"/>
+	<import resource="classpath:/biz/bean/coupon/biz-manager.xml"/>
+	
+		<!-- 访问统计 -->
+	<import resource="classpath:/biz/bean/index/index-ao.xml"/>
+	<import resource="classpath:/biz/bean/index/index-dao.xml"/>
+	<import resource="classpath:/biz/bean/index/index-manager.xml"/>
+
+  <!-- 验证码 -->
+  <import resource="classpath:/biz/bean/captcha/*.xml"/>
+  
+   <!-- 平台服务费 -->
+  <import resource="classpath:/biz/bean/servicefee/*.xml"/>
+  
+  <import resource="classpath:/applicationContext-activemqpoints.xml" />
+
+  <!-- 发送邮箱 -->
+  <import resource="classpath:/applicationContext-message.xml"/>
+  
+  <!-- 城市分站 -->
+  <import resource="classpath:/biz/bean/citystation/biz-ao.xml"/>
+  <import resource="classpath:/biz/bean/citystation/biz-manager.xml"/>
+  <import resource="classpath:/biz/bean/citystation/biz-dao.xml"/>
+
+  <!-- 配置信息 -->
+  <import resource="classpath:/biz/bean/config/biz-ao.xml"/>
+  <import resource="classpath:/biz/bean/config/biz-dao.xml"/>
+  <import resource="classpath:/biz/bean/config/biz-manager.xml"/>
+  
+  <!-- 消息发送 -->
+  <import resource="classpath:/biz/bean/message/*.xml" />
+  
+  <!-- 安全的数据传输 -->
+  <import resource="classpath:/biz/bean/transmission/*.xml" />
+	
+	<!-- 收藏夹 -->
+	<import resource="classpath:/biz/bean/favorite/biz-ao.xml"/>
+	<import resource="classpath:/biz/bean/favorite/biz-dao.xml"/>
+	<import resource="classpath:/biz/bean/favorite/biz-manager.xml"/>
+
+</beans>

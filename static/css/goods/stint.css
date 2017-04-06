@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+.map_bar{ background:#ffffe1; border:1px solid #fadfb2; padding:0 10px; line-height:2.5; margin:10px 0;}
+.stint_box_l{float:left; padding-right:10px; border-right:1px solid #dadada; width:600px;}
+.stint_box_r{float:left;padding-left:40px;}
+.stint_code{background:#ffffe1; border:1px solid #fadfb2; text-align:center; padding:20px 0; font-size:14px; line-height:1.5	; color:#000; clear:both; margin-bottom:10px;}
+.stint_code p{ font-weight:bold; margin-left:210px; padding-left:22px;text-align:left; }
+.stint_code p.point{ background:url(http://static.pinju.com/img/goods/stint_ui.png) no-repeat -89px -121px;}
+.stint_login{ float:right; color:#000;}
+.stint_login p{ line-height:1.5;}
+.get_stint_code{ background:url(http://static.pinju.com/img/goods/stint_bg.gif) no-repeat 10px 10px; width:522px; text-align:center; height:146px; border:1px solid #dadada; margin:0 auto;padding-top:20px;}
+.get_bar{margin:30px 0 0 238px; text-align:left;}
+.get_bar input{ width:65px; margin-right:10px;}
+.get_bar .code_pic{border:1px solid #dadada;margin-right:10px; display:inline-block;}
+.code_pic img{ vertical-align:middle; }
+.stint_pop{background:#e5e5e5; width:290px;padding:5px; }
+.stint_main{width:288px; border:1px solid #b2bdc5; position:relative; background:#FFF; }
+.stint_pop_close{ position:absolute; display:block; width:15px; height:14px; top:0px; right:0px;background:url(http://static.pinju.com/img/goods/stint_ui.png) no-repeat -229px -43px;}
+.stint_pop_tit{ text-indent:10px; background:#be0408; height:30px; line-height:30px; font-weight:bold; font-size:14px; color:#FFF;}
+.stint_cont{ height:105px; overflow:hidden;}
+.stint_cont .m30{ margin-top:30px;}
+.stint_cont .m12{ margin-top:12px;}
+.get_bar .btn1{ display:block; width:103px; height:22px; background:url(http://static.pinju.com/img/goods/stint_ui.png) no-repeat 0 -23px; margin-top:25px; text-align:center; color:#FFF; overflow:hidden; font-size:14px; font-weight:bold; padding-top:7px;}
+.stint_cont .btn1{display:block;width:69px; height:18px;background:url(http://static.pinju.com/img/goods/stint_ui.png) no-repeat 0 0; color:#000;text-align:center; padding-top:5px; margin:0 auto;}
+.stint_cont .btn2{display:block;width:73px; height:25px;background:url(http://static.pinju.com/img/goods/stint_ui.png) no-repeat 0 -52px; color:#FFF;text-align:center; padding-top:5px; margin:0 auto;font-weight:bold;}
+.stint_cont .m25{ margin-top:25px;}
+.stint_cont .text_bar{margin:12px auto 12px; display:block;}
+.stint_cont p{ text-align: center; color:#d82328;}
+.stint_box_r{float:left; padding-left:55px; float:left;}
+.stint_box_r .items{float:left; margin-right:50px; width:110px;}
+.stint_box_r .buy_btn{float:left;width:141px; height:30px; background:url(http://static.pinju.com/img/goods/stint_ui.png) no-repeat -103px 0;  text-align:center; color:#FFF; overflow:hidden; padding-top:13px; text-decoration:none; font-size:16px; font-weight:bold; }
+.items_box{ }
+.items p{ font-weight:bold; line-height:1.5; color:#000;}
+.items_pic{border:1px solid #dadada; height:110px;}
+.items_name{ color:#000; display:block; height:28px; overflow:hidden;}
+.blue{color:#06C;}
+.bd{ font-weight:bold;}
+.red{ color:#d82328;}

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="T_ORDER_ITEM_STAT">
+
+	<typeAlias alias="SellReportDO" type="com.yuwang.pinju.domain.report.SellReportDO" />
+	<typeAlias alias="ReportQueryDO" type="com.yuwang.pinju.domain.report.ReportQueryDO" />
+	<typeAlias alias="SellItemsReportDO" type="com.yuwang.pinju.domain.report.SellItemsReportDO"/>
+	<typeAlias alias="ItemCategoryReportDO" type="com.yuwang.pinju.domain.report.ItemCategoryDO"/>
+	<typeAlias alias="SellCategoryReportDO" type="com.yuwang.pinju.domain.report.SellCategoryReportDO"/>
+	
+	<resultMap id="tOrderItemStat_Result" class="SellReportDO">
+		<result column="STATE_MODIFY_TIME" property="stateModifyTime" />
+		<result column="ITEM_ID" property="itemId"/>
+		<result column="SELLER_ID" property="sellerId"/>
+		<result column="ORDER_ITEM_STATE" property="orderItemState"/>
+		<result column="BUY_NUM" property="buyNum"/>
+		<result column="ORDER_ITEM_PRICE" property="orderItemPrice"/>
+		<result column="CATEGORY_ID" property="categoryId"/>
+		<result column="ORDER_COUNT" property="orderCount"/>
+	</resultMap>
+	
+	<resultMap id="simpleReportQuery_Result" class="ReportQueryDO">
+		<result column="gp_state_modify_time" property="stateModifyTime" />
+		<result column="buy_num_count" property="buyNumCount"/>
+		<result column="order_item_price_count" property="orderItemPriceCount"/>
+	</resultMap>
+	
+	<resultMap id="simpleReportQuerySum_Result" class="ReportQueryDO">
+		<result column="but_num_sum" property="buyNumSum"/>
+		<result column="order_item_price_sum" property="orderItemPriceSum"/>
+	</resultMap>
+	
+	<sql id="SelectAlltOrderItemStat"><![CDATA[SELECT state_modify_time, item_id, seller_id, order_item_state, buy_num, order_item_price, category_id, order_count FROM MV_T_ORDER_ITEM_STAT_1]]></sql>
+	
+	 <select id="selectSimpleSellReport" resultMap="simpleReportQuery_Result" parameterClass="java.util.HashMap">
+       <![CDATA[ SELECT * FROM(SELECT rownum r, a.* FROM ( 
+		SELECT $state_modify_time$ gp_state_modify_time, sum(buy_num) buy_num_count,sum(order_item_price) order_item_price_count FROM MV_T_ORDER_ITEM_STAT_1]]>
+     	<dynamic prepend="where" >
+		 	<isNotEmpty prepend="and" property="sellerId" >
+				<![CDATA[seller_id = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="startDate" >
+				<![CDATA[state_modify_time >= TO_DATE(#startDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate" >
+			  <![CDATA[state_modify_time <= TO_DATE(#endDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>	
+			<![CDATA[
+				and order_item_state='5' GROUP BY $state_modify_time$ ORDER BY $orderField$ $orderStatus$) a WHERE rownum
+				<= #endNum#) WHERE r >= #startNum# 
+			]]>
+   		</dynamic>
+    </select>
+    
+    <select id="selectSimpleSellReportCount" resultClass="int" parameterClass="java.util.HashMap">
+       <![CDATA[SELECT count(count(*)) FROM MV_T_ORDER_ITEM_STAT_1]]>
+     	<dynamic prepend="where" >
+		 	<isNotEmpty prepend="and" property="sellerId" >
+				<![CDATA[seller_id = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="startDate" >
+				<![CDATA[state_modify_time >= TO_DATE(#startDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate" >
+			  <![CDATA[state_modify_time <= TO_DATE(#endDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>	
+   		</dynamic>
+   		<![CDATA[ and order_item_state='5' GROUP BY $state_modify_time$]]>
+    </select>
+    
+    <select id="selectSimpleSellReportCountSum" resultMap="simpleReportQuerySum_Result" parameterClass="java.util.HashMap">
+       <![CDATA[SELECT sum(buy_num) but_num_sum, sum(order_item_price) order_item_price_sum FROM MV_T_ORDER_ITEM_STAT_1]]>
+     	<dynamic prepend="where" >
+		 	<isNotEmpty prepend="and" property="sellerId" >
+				<![CDATA[seller_id = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="startDate" >
+				<![CDATA[state_modify_time >= TO_DATE(#startDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate" >
+			  <![CDATA[state_modify_time <= TO_DATE(#endDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>	
+			and order_item_state='5'
+   		</dynamic>
+    </select>
+	<!-- 热卖商品的 -->
+	<resultMap class="SellItemsReportDO" id="tOrderItemStat_HotSellItemResultMap">
+		<result property="itemId" column="ITEM_ID" />
+		<result property="itemSum" column="ITEM_SUM" />
+		<result property="priceAmount" column="PRICE_AMOUNT"/>
+		<result property="catetoryId" column="CATETORY_ID" />
+		<result property="title" column="TITLE" />
+		<result property="picUrl" column="PIC_URL" />
+		<!-- 
+		<result property="price" column="PRICE" />
+		<result property="spuId" column="SPU_ID" />
+		<result property="storeCategories" column="STORE_CATEGORIES" />
+		<result property="propertyValuePair" column="PROPERTY_VALUE_PAIR" />
+		<result property="itemType" column="ITEM_TYPE" />
+		 -->
+	</resultMap>
+	
+	<!-- 分类统计的 -->
+	<resultMap class="ItemCategoryReportDO" id="tOrderItemStat_ItemCategoryResultMap">
+		<result property="categoryId" column="ID"/>
+		<result property="name" column="NAME"/>
+		<result property="level1Name" column="L1_NAME"/>
+		<result property="level2Name" column="L2_NAME"/>
+		<result property="level3Name" column="L3_NAME"/>
+		<result property="level4Name" column="L4_NAME"/>
+	</resultMap>
+	
+	<resultMap class="SellCategoryReportDO" id="tOrderItemStat_SellCategoryResultMap">
+		<result property="itemSum" column="ITEM_SUM" />
+		<result property="priceAmount" column="PRICE_AMOUNT"/>
+		<result property="itemCategoryDO" column="CATEGORY_ID" select="T_ORDER_ITEM_STAT.getCategoryByCategoryId"/>   
+	</resultMap>
+	
+	<resultMap class="SellCategoryReportDO" id="tOrderItemStat_SellSumResultMap">
+		<result property="itemSum" column="ITEM_SUM" />
+		<result property="priceAmount" column="PRICE_AMOUNT"/>
+	</resultMap>
+	<select id="getCategoryByCategoryId" resultMap="tOrderItemStat_ItemCategoryResultMap" parameterClass="long">   
+		<![CDATA[SELECT C1.* from ITEM_CATEGORY_LEVEL C1 WHERE C1.ID=#vaule#]]>
+	</select>
+	
+	<sql id="selectSellCategoryReportList">
+		<![CDATA[SELECT A1.CATEGORY_ID AS CATEGORY_ID ,SUM(A1.BUY_NUM) AS ITEM_SUM ,SUM(A1.ORDER_ITEM_PRICE) AS PRICE_AMOUNT FROM  MV_T_ORDER_ITEM_STAT_1 A1]]>
+	</sql>
+	
+	<select id="selectHotSellCategoryReportsList" resultMap="tOrderItemStat_SellCategoryResultMap" parameterClass="com.yuwang.pinju.domain.report.SellReportQuery">
+	 	<![CDATA[SELECT A3.* FROM (SELECT A2.*,ROWNUM RN FROM (]]>
+		<include refid="selectSellCategoryReportList" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate">
+				<![CDATA[A1.STATE_MODIFY_TIME >= TO_DATE(#beginDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[A1.STATE_MODIFY_TIME <= TO_DATE(#endDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+			and order_item_state='5'  
+			<isNotEmpty prepend="" property="orderByKey">
+				<![CDATA[GROUP BY A1.CATEGORY_ID ORDER BY $orderByKey$]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="" property="sort">
+				<![CDATA[$sort$) A2) A3]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="" property="endRow">
+				<![CDATA[WHERE RN <= #endRow#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startRow">
+				<![CDATA[RN >= #startRow#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="selectHotSellCategoryReportsListCount" resultClass="int" parameterClass="com.yuwang.pinju.domain.report.SellReportQuery">
+		<![CDATA[SELECT COUNT(*) AS COUNT FROM ( ]]>
+		<include refid="selectSellCategoryReportList" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate">
+				<![CDATA[A1.STATE_MODIFY_TIME >= TO_DATE(#beginDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[A1.STATE_MODIFY_TIME <= TO_DATE(#endDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+		</dynamic>
+		<![CDATA[ and order_item_state='5' GROUP BY A1.CATEGORY_ID)]]>
+	</select>
+	
+	<!-- 统计总销售量和总销售额 -->
+	<select id="sellstatisticsItemAndPriceSum" resultMap="tOrderItemStat_SellSumResultMap" parameterClass="com.yuwang.pinju.domain.report.SellReportQuery">
+	 <![CDATA[SELECT SUM(A1.BUY_NUM) AS ITEM_SUM ,SUM(A1.ORDER_ITEM_PRICE) AS PRICE_AMOUNT FROM  MV_T_ORDER_ITEM_STAT_1 A1]]>
+	  <dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate">
+				<![CDATA[A1.STATE_MODIFY_TIME >= TO_DATE(#beginDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[A1.STATE_MODIFY_TIME <= TO_DATE(#endDate#,'yyyy-mm-dd')]]>
+			</isNotEmpty>
+			 and order_item_state='5' 
+		</dynamic>
+	</select>
+	
+	<!-- 分类统计结束 -->
+	
+	<sql id="selectSellOrderItemList"><![CDATA[SELECT A1.ITEM_ID AS ITEM_ID ,SUM(A1.BUY_NUM) AS ITEM_SUM ,SUM(A1.ORDER_ITEM_PRICE) AS PRICE_AMOUNT FROM  MV_T_ORDER_ITEM_STAT_1 A1]]></sql>
+		
+	<select id="selectHotSellItemsReportsList" resultMap="tOrderItemStat_HotSellItemResultMap" parameterClass="com.yuwang.pinju.domain.report.SellReportQuery">
+		<![CDATA[SELECT A3.*,A4.* FROM (SELECT A2.*,ROWNUM RN FROM (]]>
+		<include refid="selectSellOrderItemList" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			and order_item_state='5' 
+			<isNotNull prepend="AND" property="begDate">
+				<![CDATA[A1.STATE_MODIFY_TIME BETWEEN TO_DATE(#begDate#,'yyyy-mm-dd') AND SYSDATE]]>
+			</isNotNull>
+			<isNotEmpty prepend="" property="orderByKey">
+				<![CDATA[GROUP BY A1.ITEM_ID ORDER BY $orderByKey$]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="" property="sort">
+				<![CDATA[$sort$) A2) A3 JOIN ITEM_ITEM A4 ON A3.ITEM_ID=A4.ID]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="" property="endRow">
+				<![CDATA[WHERE RN <= #endRow#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startRow">
+				<![CDATA[RN >= #startRow#]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="selectHotSellItemsReportsListCount" resultClass="int" parameterClass="com.yuwang.pinju.domain.report.SellReportQuery">
+		<![CDATA[SELECT COUNT(*) AS COUNT FROM ( ]]>
+		<include refid="selectSellOrderItemList" />
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="sellerId">
+				<![CDATA[SELLER_ID = #sellerId#]]>
+			</isNotEmpty>
+			and order_item_state='5' 
+			<isNotNull prepend="AND" property="begDate">
+				<![CDATA[A1.STATE_MODIFY_TIME BETWEEN TO_DATE(#begDate#,'yyyy-mm-dd') AND SYSDATE]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[GROUP BY A1.ITEM_ID)]]>
+	</select>
+</sqlMap>

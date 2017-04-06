@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+   	<bean id="categoryCacheServer" class="com.yuwang.pinju.core.item.service.impl.DefaultCategoryCacheSever" init-method="init">
+   		<property name="storedir">
+   			<value>${category.cache.storedir}</value>
+   		</property>
+   	</bean>
+   	<bean id="CategoryCacheManager" class="com.yuwang.pinju.core.item.manager.impl.CategoryCacheManagerImpl"  depends-on="categoryCacheServer">
+   		
+   	</bean>
+</beans>

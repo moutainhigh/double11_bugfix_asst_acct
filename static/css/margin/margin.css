@@ -1,0 +1,85 @@
+/*--  页面整体样式 --*/
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px; vertical-align:middle;}
+body{font-size:12px; font-family:Arial, Helvetica, sans-serif;  margin:0 auto;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;vertical-align:middle;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ef9b11; text-decoration:underline;}
+table{border-collapse:collapse;border-spacing:0;}
+/*--  页面标题样式 --*/
+h3{ font-size:14xp;}
+/*--  页面颜色样式 --*/
+.cheng{color:#fc4c0f;}
+.hong{color:#be0000;}
+.lan{color: #00F}
+a.lan{color:#2953A6;}
+a:hover.lan{color:#cc6600;}
+.huang{color:#e0b700;}
+.hui{color:#999;}
+.lvse{ color:#390}
+.title15{ font-size:15px;font-weight:bold;color:#333; margin:10px 0 0 15px;}
+/*-- 按纽样式 --*/
+.pl-btn{ background:url(../images/pl-button.gif);}
+.pl-btn-hui{ background:url(../images/btn-gray.gif) no-repeat; font-weight:bold;color:#666;width:72px;height:25px; border:none;}
+.pl-btn-juse{ background:url(http://static.pinju.com/images/margin/juse.gif) no-repeat; font-weight:bold;color:#fff;width:72px;height:25px; border:none; }
+.btn-juselong{ background:url(../images/juselong.gif) no-repeat;color:#fff;width:126px;height:25px; border:none;text-align:center;line-height:25px;}
+.btn-graylong{ background:url(../images/graylong.gif) no-repeat;color:#666;width:126px;height:25px; border:none;text-align:center; line-height:25px;}
+.btn-dahong{ background:url(../images/hong.gif) no-repeat; width:132px; height:42px;border:none;}
+.btn-daju{ background:url(../images/daju.gif) no-repeat; width:132px; height:42px;border:none;}
+.nav0{ background:url(../images/navbj.gif) 0 -250px no-repeat; width:140px; height:35px;color:#fff; }
+.nav1{ background:url(../images/navbj.gif) 0 0 no-repeat; width:170px; height:35px;color:#666; }
+.nav2{ background:url(../images/navbj.gif) 0 -50px no-repeat; width:170px; height:35px;color:#666; }
+.nav3{ background:url(../images/navbj.gif) 0 -100px no-repeat; width:170px; height:35px;color:#fff;}
+.nav4{ background:url(../images/navbj.gif) 0 -150px no-repeat; width:170px; height:35px;color:#666; }
+.nav5{ background:url(../images/navbj.gif) 0 -200px no-repeat; width:170px; height:3 5px;color:#fff;}	
+
+/*-- 消保金状态 --*/
+.mrgin-left{ width:850px; float:left;}
+
+.mrgin-act{ border-bottom:1px solid #c4d5e0; display:block; height:30px;}
+
+.mrgin-act li{ float:left;width:120px; background:#f9fafc;border-top:1px solid #c4d5e0;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; margin-right:8px;height:16px;text-align:center; padding:4px 10px; margin-top:5px;}
+
+.mrgin-act .mrgin-here{background:#ffffff;border-top:3px solid #D72426;border-right:1px solid #c4d5e0;border-left:1px solid #c4d5e0; padding:3px 10px 4px; font-weight:bold;}
+
+.mrgin-left .title{ background:#f9fafc;border-bottom:1px solid #c4d5e0;line-height:23px; float:left; padding:4px 0 0 25px; width:97%;}
+
+.mrgin-left .tips{background:#FFFFE0;border:1px solid #F9DFB2;line-height:29px;padding:3px 10px; }
+
+.mrgin-manage { margin: 10px 0 10px 25px;color:#666;}
+
+.mrgin-manage  li{ line-height:15px; margin:5px 0; float:left; width:95%;}
+
+.mrgin-manage  li input{ margin:0 10px; font-weight:normal;}
+
+.mrgin-left h3{ font-weight:normal; font-size:12px; margin-top:10px;}
+
+.mrgin-nav{ width:100%; float:left; font-weight:bold; font-size:13px;}
+
+.mrgin-nav li{ float:left; text-align:center; line-height:29px;}
+
+.mrgin-left .choose{ float:left;}
+
+.mrgin-left .choose li{ width:45%; float:left; margin-left:2%; margin:10px 0 0 25px;}
+
+.mrgin-left .choose li strong{ font-size:14px;}
+
+.mrgin-left .choose li .bule-left{width:363px; height:120px; float:left; padding:20px 10px 0; line-height:23px; color:#666;}
+
+.mrgin-left .choose li .bule-right{ float:right; line-height:15px; margin-right:10px;}
+
+.mrgin-left .bulebj{ background:url(../images/bluebj.gif) no-repeat; width:383px; height:161px; margin:10px 0 10px -15px; float: left;}
+
+.mrgin-left .bold{ font-size:14px; font-weight:bold; color:#333; margin:5px 0 10px 40px; float:left;}
+
+.mrgin-left .bold li{ line-height:17px; margin:5px 0;}
+
+.mrgin-left .tip2{background:#FFFFE0;border: 1px solid #F9DFB2;float:left;width:95%; padding:5px 0 5px 15px;margin:0 0 20px 10px;color:#666;}	
+
+.mrgin-left .tip2 li{list-style:square ; line-height:15px; margin:2px 0 0 15px;} 
+
+.mrgin-left .btn-juselong{ margin-left:40px; float:left;}
+
+.mrgin-left .tip2 a.lan{ margin-left:30px;}

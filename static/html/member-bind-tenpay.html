@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>品聚官方网站pinju.com-全球最大的品质交易平台 | 快乐网购平台 | 天下无假  爱上网购</title>
+<link media="screen" type="text/css" href="http://static.pinju.com/css/pj_base.css" rel="stylesheet">
+<link media="screen" type="text/css" href="http://static.pinju.com/css/member/member.css" rel="stylesheet" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+</head>
+
+<body>
+<div class="top_bar">
+	<div class="top_bar_box cf">
+		text demo
+	</div>
+</div>
+<div class="header">
+	<div class="masthead cf">
+		text demo
+	</div>
+</div>
+<div class="wrapfull navfull">
+	text demo
+</div>
+
+<!-- content -->
+<div class="wrap cf">
+<div class="wrap-border cf">
+	
+	<div class="bar-left">
+		text demo
+	</div>
+	<div class="contents">
+		<div class="ptitle">
+			<h1>绑定财付通账户</h1>
+			<div class="eye">
+				<p><a href="#">如何注册财付通账户</a></p>
+			</div>
+		</div>
+		<div class="tips-text">
+			<div class="eye">
+				<p><strong>如果您还没有财付通账号，请立即<a href="#">注册财付通账户>></strong></a></p>
+			</div>
+			<p>绑定账户不可随意更换，请务必谨慎操作。</p>
+		</div>
+		
+		<div class="row bdtenpay">
+			<form action="">
+		
+				<div class="item">
+					<div class="title">
+						<input type="radio" id="accountType1" name="accountType" checked="checked" /> <label for="accountType1">绑定财付通<strong>企业账户</strong></label>
+						<div class="tipswrap">
+							<div class="text">
+								<p>带商户号的财付通企业账号无法绑定</p>
+								<span class="close"></span>
+							</div>
+							<span class="arrow"></span>
+						</div>
+					</div>
+					<div class="row cf">
+						<label>财付通企业账号：</label><input type="text" name="" id="" />
+					</div>
+					<div class="row cf">
+						<label>账号对应真实姓名：</label><input type="text" name="" id="" />
+					</div>
+					<div class="row tips">
+						<p>您的财付通账号无效,请登录 <a href="http://www.tenpay.com">www.tenpay.com</a> 验证或者拨打财付通客服热线0755-86013860确认账号有效性！</p>
+					</div>
+				</div>
+				
+				<div class="item last disabled-wrap">
+					<div class="title"><input type="radio" id="accountType2" name="accountType" /> <label for="accountType2">绑定财付通<strong>个人账户</strong></label></div>
+					<div class="row cf">
+						<label>财付通企业账号：</label><input type="text" name="" id="" />
+					</div>
+					<div class="row cf">
+						<label>账号对应真实姓名：</label><input type="text" name="" id="" />
+					</div>
+				</div>
+				
+				<div class="btnrow btn-imgtext">
+					<input type="checkbox" checked="checked" /> <label>我已经了解了<a href="#bindtips">绑定须知</a></label> 
+					<button class="confirmbind"><span>确定绑定</span></button>
+				</div>
+				
+			</form>	
+			<div class="row">
+				<div class="title"><a name="bindtips"></a><h3>绑定常见问题：</h3></div>
+				<ul>
+					<li><strong>1.入驻品聚网流程是怎样的？</strong><br />
+						<span>品聚天使</span>：您好，1. 在线提交入驻申请并签署相关协议条款； 2. 线下提交成为品聚网商户所需资质资料，并等待品聚网人工审核。</li>
+					<li><strong>2.个体工商户可以申请品聚开店吗?</strong><br />
+						<span>品聚天使</span>：您好，很抱歉，目前品聚招商的对象只针对企业性质的企业或者公司。</li>
+					<li><strong>3.申请入驻品聚网之后，企业相关信息变动，该怎么办？</strong><br /> 
+						<span>品聚天使</span>：您好，首先商家取得工商局的核准变更证明后申请第三方支付 账户对应公司名称的变更；其次品聚账户对应公司名完成变更后，应及时到品聚网或与品聚网联系办理资料变更手续。否则，商户对因此导致的损失自行承担责任。</li>
+				</ul>
+			</div>
+
+		</div>
+		
+	</div>
+
+</div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		text demo
+	</div>
+</div>
+<script>
+$(function() {
+	$('.bdtenpay input:radio').parents('.item').addClass('disabled-wrap');
+	$('.bdtenpay input:radio:checked').parents('.item').removeClass('disabled-wrap');
+	$('.disabled-wrap :text').prop('disabled', true).val('');
+	$('.bdtenpay input:radio').bind('click',function(){
+		$('.bdtenpay .item').addClass('disabled-wrap');
+		$('.disabled-wrap :text').prop('disabled', true).val('');
+		$(this).parents('.item').removeClass('disabled-wrap').find(".tipswrap").show();
+		$(this).parents('.item').find(':text').prop('disabled', false);
+	});
+	$(".tipswrap .close").bind('click',function(){
+		$(this).parents(".tipswrap").hide();
+	});
+});
+</script>
+</body>
+</html>

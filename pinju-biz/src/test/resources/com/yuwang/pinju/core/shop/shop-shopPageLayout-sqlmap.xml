@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="shopPageLayout">
+
+	<select id="queryUserPageLayout" resultClass="java.util.Hashtable" parameterClass="java.util.Map">
+		<![CDATA[SELECT ID,SAVE_STRUCTURE FROM SHOP_USER_PAGE ]]>
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="userPageId">
+				<![CDATA[ID = #userPageId# ]]>
+			</isNotEmpty>
+			<isNull property="userPageId">
+				<![CDATA[USER_ID= #userId# AND PAGE_ID = #pageId# AND SHOP_ID=#shopId#]]>
+			</isNull>
+		</dynamic>
+	</select>
+
+	<select id="queryPageLayout" resultClass="java.util.Hashtable" parameterClass="java.util.Map">
+		<![CDATA[SELECT ID,PAGE_STRUCTURE FROM SHOP_PAGE_PROTOTYPE WHERE PAGE_ID= #pageId# ]]>
+	</select>
+
+	<update id="saveUserPageLayout" parameterClass="java.util.Map">
+		<![CDATA[UPDATE SHOP_USER_PAGE SET SAVE_STRUCTURE=#saveStructure#,GMT_MODIFIED=sysdate  WHERE USER_ID= #userId# AND PAGE_ID = #pageId# AND SHOP_ID=#shopId#]]>
+	</update>
+	
+	<insert id="insertUserPageLayout" parameterClass="java.util.Map">
+		<![CDATA[
+		INSERT INTO SHOP_USER_PAGE (ID,USER_ID,PAGE_ID,SHOP_ID,SAVE_STRUCTURE,GMT_CREATE)
+		VALUES(SEQ_SHOP_USER_PAGE_ID.NEXTVAL,#userId#,#pageId#,#shopId#,#saveStructure#,sysdate)
+		]]>
+	</insert>
+</sqlMap>
+

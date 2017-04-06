@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		
+		<title>品聚网-真品汇聚的网上购物商城 品牌正品 品质保障 天下无假 爱上网购</title>
+		<meta name="keywords" content="网上购物,网络购物平台,服装,配件,鞋,珠宝,饰品,数码,电器,家居,食品,保健,配件,玩乐,文化,最低价,爆品,排名,品聚网" />
+<meta name="description" content="盛大品聚网,真品汇聚的网上购物商城,产品包括男装、女装、数码、家电、家居、食品、化妆品等数万种商品,上千家名品店,同时提供全面的安全交易保障服务,让你在品聚商城安心享受网上购物乐趣!" />
+<link rel="icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://static.pinju.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="http://static.pinju.com/css/pj_base.css" />
+<script src="http://static.pinju.com/jquery/jquery-1.6.2.min.js"></script>
+
+<script src="http://static.pinju.com/artdialog/jquery.artDialog.js?skin=pj"></script>
+		<link rel="stylesheet" href="http://static.pinju.com/css/page/pagination.css?t=20111124" type="text/css" media="screen" />
+		<link rel="stylesheet" href="http://static.pinju.com/css/search/search.css?t=20111130" type="text/css" media="screen" />
+		<link rel="stylesheet" href="http://static.pinju.com/suggest/jquery.suggest.css?t=20111124" />
+		<script src="http://static.pinju.com/js/jquery.pagination.js?t=20111124"></script>
+		<script src="http://static.pinju.com/js/search/search.js"?t=20111124></script>
+		<script src="http://static.pinju.com/js/jquery.lazyload.js?t=20111124"></script>
+
+		<script src="http://static.pinju.com/js/followpop.js?t=20111124"></script>
+		
+	</head>
+	<body>
+	
+		<!-- 顶部导航  -->
+<script src="http://static.pinju.com/js/pinju-global-min.js?t=20111111.js"></script>
+<script src="http://static.pinju.com/js/cookie-min.js?t=20111111.js"></script>
+<script src="http://static.pinju.com/js/cart/loadcart.js?t=20111116.js"></script>
+
+<link rel="stylesheet" href="http://static.pinju.com/css/cart.css" type="text/css" media="screen" />
+
+<div class="top_bar cf">
+  <div class="top_bar_box cf">
+    <div class="login_status">
+      <script>
+        var pc = new PinjuCookie('http://www.pinju.com');
+        pc.showLoginNav();
+        var image_server = 'http://img.pinju.com/storage-ws/rest/img';
+      </script>
+    </div>
+    <div class="liaison">
+      <a href="http://www.pinju.com/my/info.htm" title="我的品聚">我的品聚</a>
+      <a href="http://www.pinju.com/orderBuyer/myBuyer.htm" title="我是买家">我是买家</a>
+
+      <a class="cart" href="/cart/shoppingCartDetail.htm" rel="nofollow" id="mycart" title="购物车"><span>购物车<strong id="carts">0</strong>件</span></a>
+      <a href="http://www.pinju.com/my/sell.htm" title="我是卖家">我是卖家</a>
+      <a href="http://job.pinju.com/" target="_blank" title="加入品聚">加入品聚</a>
+      <a href="http://service.pinju.com/" target="_blank" title="帮助中心">帮助中心</a>
+      
+      <input type="hidden" id="cart_url_base" value="" />
+    </div>
+
+    
+    <div id="cart_pop" class="cart_pop"  style="background:#fff; display:none; position:static; border:1px solid #dadada;"></div>
+    
+  </div>
+</div>
+
+<script type="text/javascript">
+(function(){$('#carts').text(pc.getShoppingCartCount());})()
+</script>
+		
+		<!-- logo -->
+<div class="header cf">
+	<div class="masthead cf">
+		<div class="logo">
+							<a href="http://www.pinju.com">
+
+					<img class="logo_pic" width="326" height="54" src="http://static.pinju.com/images/pj_logo_17.gif?t=20111114.gif" alt="品聚网" title="点击回到品聚网首页" />
+				</a>
+		</div>
+		<div class="search-panel"> 
+			<div class="tabs" id="J_search_tabs">
+				<ul> 
+					<li><a id="itemPanel" data-type="goods" data-url="http://www.pinju.com/search/isbox.htm?callback=?" class="active">商品</a></li> 
+					<li><a id="shopPanel" data-type="shop" data-url="http://www.pinju.com/search/ssbox.htm?callback=?" >店铺</a></li>
+					<li><a id="hotPanel" data-type="hot" data-url="http://www.pinju.com/search/isbox.htm?callback=?" >热卖</a></li>
+
+					<li><a id="promotionPanel" data-type="promotion" data-url="http://www.pinju.com/search/isbox.htm?callback=?" >促销</a></li>
+					<input type="hidden" name="searchHidden" id="searchHidden" value="" /></li>
+				</ul> 
+			</div> 
+			<form name="search" id="J_search_form" method="GET"> 
+				<div class="search-fields"> 
+					<label for="J_search_keyword" style="display:none;">搜索你要找的内容</label> 
+					<input id="J_search_keyword" name="q" value="2342342342" maxLength="50" autocomplete="off"/>
+				</div> 
+				<input type="submit" value="搜&nbsp;&nbsp;索" class="btn" id="J_search_btn" />
+			</form>
+
+			<input name="type" type="hidden" id="J_search_type" value="1" />
+			<input name="type" type="hidden" id="J_base_url" value="" />
+		</div>
+	</div>
+</div>
+<link href="http://static.pinju.com/suggest/jquery.suggest.css" rel="stylesheet" />
+<script src="http://static.pinju.com/suggest/jquery.suggest.js"></script>
+<script>
+	$(function() {
+		var form = $('#J_search_form'),
+			label = form.find('label'),
+			keyword = $('#J_search_keyword'),
+			baseUrl = $('#J_base_url').val();
+			init = true;
+			
+		$('#J_search_tabs a').click(function() {
+			$('#J_search_tabs a').removeClass('active');
+			$(this).addClass('active');
+			var type = $(this).attr('data-type');
+			//$('#J_search_type').val(type);
+			if (type == 'goods') {
+				form.attr('action', 'http://www.pinju.com/search/search.htm');
+			} else if (type == 'shop') {
+				form.attr('action', 'http://www.pinju.com/search/shopSearch.htm');
+			} else if (type == 'hot') {
+				form.attr('action', 'http://www.pinju.com/hot/hot.htm');
+			}else if (type == 'promotion') {
+				form.attr('action', 'http://www.pinju.com/hot/promotion.htm');
+			}
+			keyword.unbind();
+			keyword.suggest($(this).attr('data-url'), {
+				onSelect : function() {
+					form.submit();
+				}
+			});
+			keyword.focus(function() {
+				label.hide();
+			}).blur(function() {
+				if ($.trim(keyword.val()) === '') {
+					label.show();
+				}
+			});
+			var q = keyword.val();
+			if(!init && q){
+				form.submit();
+			}
+		});
+		
+		var currentIndex = $('#J_search_type').val() ;
+		$('#J_search_tabs a').eq(currentIndex-1).click();
+		init = false;
+	});
+</script>		<!-- // logo -->
+		
+		<!-- nav -->
+
+<link rel="stylesheet" href="http://static.pinju.com/css/navdropdown.css?t=20111114" type="text/css" media="screen">
+
+<div class="wrapfull navfull_1018">
+	<div class="pj_nav">
+		<div id="goods-sort" class="goods-sort">
+			<a href="javascript:" class="gs-a">所有商品分类</a>
+		</div>
+			<div class="goods-sort-box" id="goods-sort-box" style="display: none;">
+				<ul class="goods-sort-list cf" id="goods-sort-list">
+					            	    					<li>
+
+						<h3>奢侈品</h3>
+						<p>
+							<a title="服饰\内衣\配件" href="http://www.pinju.com/shopDecoration/viewShop.htm?shopId=13443">服饰\内衣\配件</a>
+                            <a title="化妆品" href="http://www.pinju.com/shopDecoration/viewShop.htm?shopId=13443">化妆品</a>
+                            <a title="鞋\箱包" href="http://www.pinju.com/shopDecoration/viewShop.htm?shopId=13443">鞋\箱包</a>
+                            <a title="运动户外" href="http://www.pinju.com/shopDecoration/viewShop.htm?shopId=13443">运动户外</a>
+
+                            <a title="珠宝饰品\钟表眼镜" href="http://www.pinju.com/shopDecoration/viewShop.htm?shopId=13443">珠宝饰品\钟表眼镜</a>
+                            <a title="手机数码" href="http://www.pinju.com/shopDecoration/viewShop.htm?shopId=13443">手机数码</a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+						</p>
+					</li>
+
+                    					<li>
+						<h3>文化、玩乐</h3>
+						<p>
+							<a title="电子凭证" href="http://www.pinju.com/search/search.htm?cp=60004788">电子凭证</a>
+                            <a title="图书杂志" href="http://www.pinju.com/search/search.htm?cp=60004787">图书杂志</a>
+                            <a title="乐器" href="http://www.pinju.com/search/search.htm?cp=60004785">乐器</a>
+                            <a title="旅游" href="http://www.pinju.com/search/search.htm?cp=60004816">旅游</a>
+
+                            <a title="网络服务" href="http://www.pinju.com/search/search.htm?cp=60004783">网络服务</a>
+                            <a title="影视音乐" href="http://www.pinju.com/search/search.htm?cp=60004786">影视音乐</a>
+                            <a title="折扣券" href="http://www.pinju.com/search/search.htm?cp=60004782">折扣券</a>
+                            <a title="古董收藏" href="http://www.pinju.com/search/search.htm?cp=60004781">古董收藏</a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+						</p>
+
+					</li>
+                    					<li>
+						<h3>汽车、配件</h3>
+						<p>
+							<a title="全新整车" href="http://www.pinju.com/search/search.htm?cp=60004591">全新整车</a>
+                            <a title="车内用品" href="http://www.pinju.com/search/search.htm?cp=60004589">车内用品</a>
+                            <a title="GPS导航" href="http://www.pinju.com/search/search.htm?cp=60004588">GPS导航</a>
+
+                            <a title="车载影音" href="http://www.pinju.com/search/search.htm?cp=60004587">车载影音</a>
+                            <a title="配件" href="http://www.pinju.com/search/search.htm?cp=60004582">配件</a>
+                            <a title="常规养护" href="http://www.pinju.com/search/search.htm?cp=60006369">常规养护</a>
+                            <a title="清洗美容" href="http://www.pinju.com/search/search.htm?cp=60004585">清洗美容</a>
+                            <a title="外饰配件" href="http://www.pinju.com/search/search.htm?cp=60004583">外饰配件</a>
+                            <a title="" href=""></a>
+
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+						<h3>母婴用品</h3>
+						<p>
+							<a title="儿童玩具" href="http://www.pinju.com/search/search.htm?cp=60001066">儿童玩具</a>
+                            <a title="宝宝食品" href="http://www.pinju.com/search/search.htm?cp=60000799">宝宝食品</a>
+
+                            <a title="孕妈用品" href="http://www.pinju.com/search/search.htm?cp=60000817">孕妈用品</a>
+                            <a title="童装童鞋" href="http://www.pinju.com/search/search.htm?cp=60000813">童装童鞋</a>
+                            <a title="童车童床" href="http://www.pinju.com/search/search.htm?cp=60000810">童车童床</a>
+                            <a title="益智早教" href="http://www.pinju.com/search/search.htm?cp=60000811">益智早教</a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+						<h3>食品、保健</h3>
+						<p>
+							<a title="酒类饮品" href="http://www.pinju.com/search/search.htm?cp=60004020">酒类饮品</a>
+                            <a title="海鲜水产" href="http://www.pinju.com/search/search.htm?cp=60006449">海鲜水产</a>
+
+                            <a title="新鲜水果" href="http://www.pinju.com/search/search.htm?cp=60006418">新鲜水果</a>
+                            <a title="营养滋补" href="http://www.pinju.com/search/search.htm?cp=60004310">营养滋补</a>
+                            <a title="粮油调料" href="http://www.pinju.com/search/search.htm?cp=60004305">粮油调料</a>
+                            <a title="饼干糕点" href="http://www.pinju.com/search/search.htm?cp=60004311">饼干糕点</a>
+                            <a title="坚果干果" href="http://www.pinju.com/search/search.htm?cp=60004312">坚果干果</a>
+                            <a title="糖果蜜饯" href="http://www.pinju.com/search/search.htm?cp=60003934">糖果蜜饯</a>
+
+                            <a title="肉干果脯" href="http://www.pinju.com/search/search.htm?cp=60003189">肉干果脯</a>
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+						<h3>居家生活</h3>
+						<p>
+							<a title="精品家纺" href="http://www.pinju.com/search/search.htm?cp=60000878">精品家纺</a>
+
+                            <a title="布艺软饰" href="http://www.pinju.com/search/search.htm?cp=60000869">布艺软饰</a>
+                            <a title="居家饰品" href="http://www.pinju.com/search/search.htm?cp=60006419">居家饰品</a>
+                            <a title="居家日用" href="http://www.pinju.com/search/search.htm?cp=60000882">居家日用</a>
+                            <a title="厨房用品" href="http://www.pinju.com/search/search.htm?cp=60000873">厨房用品</a>
+                            <a title="家庭清洁" href="http://www.pinju.com/search/search.htm?cp=60000881">家庭清洁</a>
+                            <a title="个人洗护" href="http://www.pinju.com/search/search.htm?cp=60000877">个人洗护</a>
+
+                            <a title="宠物用品" href="http://www.pinju.com/search/search.htm?cp=60000871">宠物用品</a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+						<h3>家具、建材</h3>
+						<p>
+
+							<a title="精品家具" href="http://www.pinju.com/search/search.htm?cp=60002776">精品家具</a>
+                            <a title="家装主材" href="http://www.pinju.com/search/search.htm?cp=60002775">家装主材</a>
+                            <a title="基础建材" href="http://www.pinju.com/search/search.htm?cp=60002773">基础建材</a>
+                            <a title="电子电工" href="http://www.pinju.com/search/search.htm?cp=60002433">电子电工</a>
+                            <a title="五金工具" href="http://www.pinju.com/search/search.htm?cp=60002774">五金工具</a>
+                            <a title="" href=""></a>
+
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+						<h3>家用电器</h3>
+
+						<p>
+							<a title="取暖电器" href="http://www.pinju.com/search/search.htm?cp=60003241">取暖电器</a>
+                            <a title="大家电" href="http://www.pinju.com/search/search.htm?cp=60003228">大家电</a>
+                            <a title="个人护理" href="http://www.pinju.com/search/search.htm?cp=60003371">个人护理</a>
+                            <a title="生活电器" href="http://www.pinju.com/search/search.htm?cp=60003231">生活电器</a>
+                            <a title="厨房电器" href="http://www.pinju.com/search/search.htm?cp=60003234">厨房电器</a>
+
+                            <a title="影音设备" href="http://www.pinju.com/search/search.htm?cp=60003236">影音设备</a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+
+						<h3>手机、数码</h3>
+						<p>
+							<a title="手机" href="http://www.pinju.com/search/search.htm?cp=60004166">手机</a>
+                            <a title="笔记本" href="http://www.pinju.com/search/search.htm?cp=60005954">笔记本</a>
+                            <a title="相机" href="http://www.pinju.com/search/search.htm?cp=60004171">相机</a>
+                            <a title="平板电脑" href="http://www.pinju.com/search/search.htm?cp=60006259">平板电脑</a>
+
+                            <a title="手机配件" href="http://www.pinju.com/search/search.htm?cp=60004172">手机配件</a>
+                            <a title="电脑硬件" href="http://www.pinju.com/search/search.htm?cp=60005970">电脑硬件</a>
+                            <a title="移动存储" href="http://www.pinju.com/search/search.htm?cp=60006008">移动存储</a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+						</p>
+
+					</li>
+                    					<li>
+						<h3>运动、户外</h3>
+						<p>
+							<a title="运动鞋" href="http://www.pinju.com/search/search.htm?cp=60002141">运动鞋</a>
+                            <a title="运动服" href="http://www.pinju.com/search/search.htm?cp=60002128">运动服</a>
+                            <a title="运动用品" href="http://www.pinju.com/search/search.htm?cp=60002172">运动用品</a>
+
+                            <a title="户外" href="http://www.pinju.com/search/search.htm?cp=60000925">户外</a>
+                            <a title="健身器械 " href="http://www.pinju.com/search/search.htm?cp=60002182">健身器械 </a>
+                            <a title="跳舞毯" href="http://www.pinju.com/search/search.htm?cp=60002181">跳舞毯</a>
+                            <a title="运动护具" href="http://www.pinju.com/search/search.htm?cp=60002188">运动护具</a>
+                            <a title=" 野炊用具" href="http://www.pinju.com/search/search.htm?cp=60001596"> 野炊用具</a>
+                            <a title="垂钓用品" href="http://www.pinju.com/search/search.htm?cp=60001601 ">垂钓用品</a>
+
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+						<h3>珠宝、手表</h3>
+						<p>
+							<a title="珍珠" href="http://www.pinju.com/search/search.htm?cp=60004087">珍珠</a>
+                            <a title="项链" href="http://www.pinju.com/search/search.htm?cp=60004038">项链</a>
+
+                            <a title="珠宝" href="http://www.pinju.com/search/search.htm?cp=60004093">珠宝</a>
+                            <a title="钻石" href="http://www.pinju.com/search/search.htm?cp=60004092">钻石</a>
+                            <a title="手表" href="http://www.pinju.com/search/search.htm?cp=60004024">手表</a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+						<h3>鞋、箱包</h3>
+						<p>
+							<a title="女鞋" href="http://www.pinju.com/search/search.htm?cp=60000804">女鞋</a>
+                            <a title="男鞋" href="http://www.pinju.com/search/search.htm?cp=60000815">男鞋</a>
+
+                            <a title="箱包" href="http://www.pinju.com/search/search.htm?cp=60000798">箱包</a>
+                            <a title="女包" href="http://www.pinju.com/search/search.htm?cp=60000821">女包</a>
+                            <a title="男包" href="http://www.pinju.com/search/search.htm?cp=60000822">男包</a>
+                            <a title="拉杆箱" href="http://www.pinju.com/search/search.htm?cp=60002394">拉杆箱</a>
+                            <a title="背包" href="http://www.pinju.com/search/search.htm?cp=60002391">背包</a>
+                            <a title="" href=""></a>
+
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                    					<li>
+						<h3>服饰内衣</h3>
+						<p>
+							<a title="女装" href="http://www.pinju.com/search/search.htm?cp=60000847">女装</a>
+
+                            <a title="男装" href="http://www.pinju.com/search/search.htm?cp=60000833">男装</a>
+                            <a title="内衣" href="http://www.pinju.com/search/search.htm?cp=60000845">内衣</a>
+                            <a title="家居服" href="http://www.pinju.com/search/search.htm?cp=60002343">家居服</a>
+                            <a title="配件" href="http://www.pinju.com/search/search.htm?cp=60000850">配件</a>
+                            <a title="毛衣" href="http://www.pinju.com/search/search.htm?cp=60006403">毛衣</a>
+                            <a title="风衣" href="http://www.pinju.com/search/search.htm?cp=60001669">风衣</a>
+
+                            <a title="羽绒服" href="http://www.pinju.com/search/search.htm?cp=60006192">羽绒服</a>
+                            <a title="" href=""></a>
+                            <a title="" href=""></a>
+						</p>
+					</li>
+                            					
+				</ul>
+			</div>
+		
+		<ul class="nav_list">
+
+            <li><a title="首页" href="http://www.pinju.com/index.html">首&nbsp;&nbsp;页</a></li>
+			<li><a title="体验购" href="http://ti.pinju.com">体&nbsp;验&nbsp;购</a></li> 
+			<li><a title="名店街" href="http://mingdian.pinju.com">名&nbsp;店&nbsp;街</a></li>              
+            <!--<li ><a href="###" title="特价折扣" >特价折扣</a></li>-->
+            <li><a title="网货品牌" href="http://pinpai.pinju.com">网货品牌</a></li>
+
+            <!--<li ><a href="###" title="名人坊">名&nbsp;人&nbsp;坊</a></li>
+            <li ><a href="###" title="艺术廊">艺&nbsp;术&nbsp;廊</a></li>-->
+            <!--<li><a href="javascript:void(0);" id="subStation" title="城市分站">城市分站</a></li>-->
+            <li style="float:right;"><a title="商户入驻" href="http://www.pinju.com/shop/showShopOpenAction.htm" target="_blank" class="nav_right">商户入驻</a></li>
+		</ul>
+	</div>
+</div>
+<script>
+
+$(function() {
+	//
+	$("#itemList .item .img a").followPop();
+	
+	$("#goods-sort").hover(function(){
+		t=setTimeout(function(){
+				$("#goods-sort-box").show();
+				$(".gs-a").addClass("gs-a-h");							  
+		},150);
+	},function(){
+		h=setTimeout(function(){
+			$("#goods-sort-box").hide();
+			$(".gs-a").removeClass("gs-a-h");
+		},150);
+		return false
+	});
+	
+	$("#goods-sort-box").hover(function(){
+		clearTimeout(h)
+	},function(){
+		h=setTimeout(function(){
+			$("#goods-sort-box").hide();
+			$(".gs-a").removeClass("gs-a-h");
+		},150);
+		return false
+	});
+
+});
+</script>
+
+
+<!-- 城市分站弹出层 -->
+
+<!--
+<div id="chooseLocal" class="citylist" style="display:none;">
+	<div class="text">
+		<p>欢迎您访问城市分站，推荐给您的城市是<span name="defaultCity">上海</span>，请进入 <a id="defaultUrl" href="http://www.pinju.com/"><span name="defaultCity">上海</span>分站</a> >></p>
+	</div>
+	<div class="list">
+		<ul id="cityUL">
+		</ul>
+	</div>
+</div>
+-->
+<!--
+<script type="text/javascript">
+	(function(){
+		$("#subStation").bind("click",
+			function(){
+				$.ajax({
+					method: "POST",
+					url: "http://www.pinju.com/async/substation/getAllCityStations.htm",
+					dataType: "JSONP",
+					jsonp : "callBack", 
+					cache: false,
+					success: function(data){
+						var cityList = eval(data);
+						var tips = "<li>";
+						if(cityList && cityList.length > 0){
+							$.each(cityList, function(index, city) {
+								if(index % 3 == 0){
+									tips = tips + "</li><li>"
+								}
+							
+								if(city.status && city.status == "1"){
+									tips = tips + "<span><a href='" + city.cityUrl
+										+ "'>" + city.cityName + "</a></span>";
+								}else{
+									tips = tips + "<span>" + city.cityName + "（敬请期待）</span>";
+								}
+								
+							});
+						}else{
+							tips = tips + "<span>暂无分站，敬请期待</span>";
+						}
+						tips = tips + "</li>"
+						$("#cityUL").html(tips);
+						var dialogHeight = (cityList.length / 3 + 1) * 50;
+						$.dialog({
+							id: "SubStation",
+							padding: 0,
+							// follow: document.getElementById('subStation'),
+							title: "请选择您要前往的城市分站",
+							drag: false,
+		    				resize: false,
+							content: document.getElementById('chooseLocal')
+						});
+					}
+				});
+				
+			}
+		);
+	})();
+</script>
+-->		<!-- // nav -->
+		
+		<!-- content -->
+		
+<br/>
+
+<script src="http://static.pinju.com/js/search/searchUrl.js?t=20111124"></script>
+<script src="http://static.pinju.com/js/search/itemSearch.js?t=20111124"></script>
+
+<input type="hidden" id="prop_searchServer" value="" />
+<input type="hidden" id="prop_q" value="2342342342" /> 
+<input type="hidden" id="prop_filterExclude" value="" /> 
+<input type="hidden" id="prop_features" value="" /> 
+
+<input type="hidden" id="prop_cp" value="" /> 
+<input type="hidden" id="prop_sort" value="startTime-desc" /> 
+<input type="hidden" id="prop_city" value="" /> 
+<input type="hidden" id="prop_catetoryName" value="" /> 
+<input type="hidden" id="prop_startPrice" value="" /> 
+<input type="hidden" id="prop_endPrice" value="" /> 
+<input type="hidden" id="prop_start" value="0">
+<input type="hidden" id="prop_facetLimit" value="">
+<input type="hidden" id="pages" value="0">
+<input type="hidden" id="currPage" value="0">
+<input type="hidden" id="prop_style" value="grid">
+
+<div class="wrap sp-search cf">
+	<div class="plwrap cf">
+		<div class="bar-left">
+
+		<!-- 来源于首页 -->
+					<ul class="menu-pcat">
+							<li class="haschildren ">
+									<a href="/search/search.htm?cp=60004026" class="title" title="时尚饰品" >
+										时尚饰品
+										</a>
+										<ul>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004032" title="手镯\手链\脚链">
+
+																手镯\手链\脚链
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004078"
+															 title="脚链" >
+															脚链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004079"
+															 title="手镯" >
+
+															手镯
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004080"
+															 title="手链" >
+															手链
+														</a>
+													</li>
+													</ul>
+												</li>
+
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004035" title="施华洛世奇水晶">
+																施华洛世奇水晶
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004061"
+															 title="耳钉" >
+															耳钉
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004063"
+															 title="耳环" >
+															耳环
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004058"
+															 title="戒指" >
+															戒指
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004065"
+															 title="项坠" >
+															项坠
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004067"
+															 title="项链" >
+															项链
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004059"
+															 title="手链" >
+															手链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004057"
+															 title="摆件" >
+															摆件
+														</a>
+													</li>
+
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004034" title="发饰\发夹">
+																发饰\发夹
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004027" title="首饰盒">
+
+																首饰盒
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004037" title="银饰">
+																银饰
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004047"
+															 title="耳环" >
+
+															耳环
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004045"
+															 title="手链" >
+															手链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004043"
+															 title="手镯" >
+
+															手镯
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004044"
+															 title="戒指" >
+															戒指
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004048"
+															 title="项坠" >
+
+															项坠
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004049"
+															 title="项链" >
+															项链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004046"
+															 title="耳钉" >
+
+															耳钉
+														</a>
+													</li>
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004028" title="摆件">
+																摆件
+														</a>
+												</li>
+
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004029" title="胸针">
+																胸针
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004036" title="天然水晶">
+																天然水晶
+														</a>
+													<ul>
+
+													<li>
+														<a href="/search/search.htm?cp=60004052"
+															 title="手链" >
+															手链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004050"
+															 title="摆件" >
+															摆件
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004053"
+															 title="耳钉" >
+															耳钉
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004051"
+															 title="戒指" >
+															戒指
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004056"
+															 title="项链" >
+															项链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004055"
+															 title="项坠" >
+															项坠
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004054"
+															 title="耳环" >
+															耳环
+														</a>
+													</li>
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004031" title="耳钉\耳环">
+
+																耳钉\耳环
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004083"
+															 title="耳钉" >
+															耳钉
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004082"
+															 title="耳环" >
+
+															耳环
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004081"
+															 title="耳线" >
+															耳线
+														</a>
+													</li>
+													</ul>
+												</li>
+
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004030" title="戒指\指环">
+																戒指\指环
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004038" title="项链\项坠">
+																项链\项坠
+														</a>
+													<ul>
+
+													<li>
+														<a href="/search/search.htm?cp=60004040"
+															 title="纯银项链" >
+															纯银项链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004042"
+															 title="项链" >
+															项链
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004039"
+															 title="长颈链" >
+															长颈链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004041"
+															 title="项坠" >
+															项坠
+														</a>
+													</li>
+
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004033" title="情侣对饰">
+																情侣对饰
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004075"
+															 title="项链" >
+
+															项链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004077"
+															 title="对戒" >
+															对戒
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004073"
+															 title="其他饰品" >
+
+															其他饰品
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004076"
+															 title="手链" >
+															手链
+														</a>
+													</li>
+													</ul>
+												</li>
+
+										</ul>
+							</li>
+							<li class="haschildren ">
+									<a href="/search/search.htm?cp=60004025" class="title" title="珠宝首饰" >
+										珠宝首饰
+										</a>
+										<ul>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004088" title="天然玉石">
+
+																天然玉石
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004133"
+															 title="手镯" >
+															手镯
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004134"
+															 title="吊坠\项链" >
+
+															吊坠\项链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004130"
+															 title="戒指" >
+															戒指
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004129"
+															 title="其他首饰" >
+
+															其他首饰
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004131"
+															 title="耳环" >
+															耳环
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004132"
+															 title="手链" >
+
+															手链
+														</a>
+													</li>
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004090" title="黄金">
+																黄金
+														</a>
+													<ul>
+
+													<li>
+														<a href="/search/search.htm?cp=60004116"
+															 title="戒指" >
+															戒指
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004117"
+															 title="项链\项坠" >
+															项链\项坠
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004114"
+															 title="耳钉\耳环\耳饰" >
+															耳钉\耳环\耳饰
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004858"
+															 title="千金足 " >
+															千金足 
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004115"
+															 title="手镯\手链\脚链" >
+															手镯\手链\脚链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004120"
+															 title="24K黄金" >
+															24K黄金
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004118"
+															 title="18K白金" >
+															18K白金
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004113"
+															 title="首饰套装\情侣套装" >
+															首饰套装\情侣套装
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004119"
+															 title="18K黄金" >
+															18K黄金
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004112"
+															 title="摆件" >
+															摆件
+														</a>
+													</li>
+
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004087" title="天然珍珠\高档珍珠">
+																天然珍珠\高档珍珠
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004140"
+															 title="长颈链" >
+
+															长颈链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004141"
+															 title="项链\项坠" >
+															项链\项坠
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004138"
+															 title="戒指" >
+
+															戒指
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004137"
+															 title="手链" >
+															手链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004136"
+															 title="首饰套装" >
+
+															首饰套装
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004139"
+															 title="耳饰" >
+															耳饰
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004135"
+															 title="其他首饰" >
+
+															其他首饰
+														</a>
+													</li>
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004085" title="天然琥珀">
+																天然琥珀
+														</a>
+												</li>
+
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004086" title="铂金">
+																铂金
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004093" title="婚庆珠宝">
+																婚庆珠宝
+														</a>
+													<ul>
+
+													<li>
+														<a href="/search/search.htm?cp=60004096"
+															 title="婚嫁金戒" >
+															婚嫁金戒
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004097"
+															 title="结婚对戒" >
+															结婚对戒
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004094"
+															 title="婚嫁黄金套饰" >
+															婚嫁黄金套饰
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004095"
+															 title="婚嫁钻石套饰" >
+															婚嫁钻石套饰
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004098"
+															 title="结婚钻戒" >
+															结婚钻戒
+														</a>
+													</li>
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004092" title="钻石">
+
+																钻石
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004099"
+															 title="首饰套装\情侣套装" >
+															首饰套装\情侣套装
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004100"
+															 title="耳钉\耳环\耳饰" >
+
+															耳钉\耳环\耳饰
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004101"
+															 title="手镯\手链\脚链" >
+															手镯\手链\脚链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004103"
+															 title="裸钻定制" >
+
+															裸钻定制
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004102"
+															 title="项链\项坠" >
+															项链\项坠
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004104"
+															 title="戒指" >
+
+															戒指
+														</a>
+													</li>
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004084" title="红珊瑚">
+																红珊瑚
+														</a>
+												</li>
+
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004091" title="翡翠">
+																翡翠
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004105"
+															 title="摆件" >
+															摆件
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004106"
+															 title="裸石" >
+															裸石
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004107"
+															 title="首饰套装\情侣套装" >
+															首饰套装\情侣套装
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004108"
+															 title="耳钉\耳环\耳饰" >
+															耳钉\耳环\耳饰
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004109"
+															 title="戒指" >
+															戒指
+														</a>
+													</li>
+
+													<li>
+														<a href="/search/search.htm?cp=60004110"
+															 title="手镯\手链" >
+															手镯\手链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004111"
+															 title="项链\项坠" >
+															项链\项坠
+														</a>
+													</li>
+
+													</ul>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004089" title="宝石">
+																宝石
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004125"
+															 title="手镯\手链" >
+
+															手镯\手链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004124"
+															 title="情侣对饰" >
+															情侣对饰
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004122"
+															 title="首饰套装" >
+
+															首饰套装
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004123"
+															 title="胸针" >
+															胸针
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004128"
+															 title="项链" >
+
+															项链
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004121"
+															 title="其他首饰" >
+															其他首饰
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004126"
+															 title="戒指" >
+
+															戒指
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004127"
+															 title="耳环" >
+															耳环
+														</a>
+													</li>
+													</ul>
+												</li>
+
+										</ul>
+							</li>
+							<li class="haschildren ">
+									<a href="/search/search.htm?cp=60004023" class="title" title="眼镜火机" >
+										眼镜火机
+										</a>
+										<ul>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004160" title="太阳眼镜">
+
+																太阳眼镜
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004156" title="瑞士军刀">
+																瑞士军刀
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004154" title="酒具">
+
+																酒具
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004157" title="烟具">
+																烟具
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004155" title="打火机">
+
+																打火机
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004158" title="Zippo">
+																Zippo
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a class="title" href="/search/search.htm?cp=60004159" title="眼镜">
+
+																眼镜
+														</a>
+													<ul>
+													<li>
+														<a href="/search/search.htm?cp=60004161"
+															 title="眼镜配件\眼镜盒\护理剂" >
+															眼镜配件\眼镜盒\护理剂
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004162"
+															 title="框架眼镜" >
+
+															框架眼镜
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004164"
+															 title="眼镜架" >
+															眼镜架
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004165"
+															 title="近视镜片" >
+
+															近视镜片
+														</a>
+													</li>
+													<li>
+														<a href="/search/search.htm?cp=60004859"
+															 title="功能眼镜" >
+															功能眼镜
+														</a>
+													</li>
+													</ul>
+												</li>
+
+										</ul>
+							</li>
+							<li class="haschildren ">
+									<a href="/search/search.htm?cp=60004024" class="title" title="品牌手表\流行手表" >
+										品牌手表\流行手表
+										</a>
+										<ul>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004153" title="石英表">
+
+																石英表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004143" title="儿童表">
+																儿童表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004152" title="自动机械表">
+
+																自动机械表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004149" title="人工动能表">
+																人工动能表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004142" title="怀表">
+
+																怀表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004148" title="男表">
+																男表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004146" title="情侣对表">
+
+																情侣对表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004147" title="女表">
+																女表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004144" title="手表配件">
+
+																手表配件
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004151" title="电子表">
+																电子表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004145" title="中性表">
+
+																中性表
+														</a>
+												</li>
+													<li class="haschildren ">
+														<a  href="/search/search.htm?cp=60004150" title="光动能表">
+																光动能表
+														</a>
+												</li>
+										</ul>
+							</li>
+
+					</ul>
+		</div>
+		<div class="contents">
+			
+			<ul class="breadcrumbs-s"> 
+					<li><a href="javascript:" id="allResult">全部结果</a></li>
+					
+				<li>"2342342342"</li>
+				<li class="total">找到相关商品<strong>0</strong>件</li>
+
+			</ul>
+			<ul class="pviewmode cf">
+				<li class="pvmlarge"><a  href="javascript:" id="style-grid">大图模式</a></li>
+				<li class="pvmlist"><a  class="current" href="javascript:" id="style-list">列表模式</a></li>
+			</ul>
+			<div class="sfilter stitle cf">
+                <dl class="subfilter">
+					<dt>&nbsp;</dt>
+
+					<dd class="orderd" >
+						<a href="javascript:" class="sort-starttime  active">默认排序</a>
+					</dd>
+					<dd class="ordersale">
+						<a href="javascript:" class="sort-salesNum">销量</a>
+					</dd>
+					<dd class="orderprice">
+						<a  href="javascript:">价格</a>
+
+						<ul class="sortlist">
+							<li><a title="价格从低到高" href="#l2h" class="sort-price-asc l2h">价格从低到高</a></li>
+							<li><a title="价格从高到低" href="#h2l" class="sort-price-desc h2l">价格从高到低</a></li>
+						</ul>
+					</dd>
+					<dd id="selectLocal" class="localwrap">
+						<a src="javascript:" title="所在地" class="slocal">所在地</a>
+
+						<ul style="display: none;" id="selectLocal">
+							<li>
+								<a href="javascript:" p="1">所有地区</a>
+							</li>
+							<li>
+								<a href="javascript:" p="1">江浙沪</a>
+								<a href="javascript:" p="3">珠三角</a>
+
+								<a href="javascript:" p="5">港澳台</a>
+								<a href="javascript:" p="13">海外</a><br>
+								<a href="javascript:" p="1">北京</a>
+								<a href="javascript:" p="3">上海</a>
+								<a href="javascript:" p="5">广州</a>
+								<a href="javascript:" p="13">深圳</a>
+
+							</li>
+							<li>
+								<a href="javascript:">杭州</a>
+								<a href="javascript:">温州</a>
+								<a href="javascript:">宁波</a>
+								<a href="javascript:">南京</a>
+								<a href="javascript:">苏州</a>
+
+								<a href="javascript:">济南</a><br>
+								<a href="javascript:">青岛</a>
+								<a href="javascript:">大连</a>
+								<a href="javascript:">无锡</a>
+								<a href="javascript:">合肥</a>
+								<a href="javascript:">天津</a>
+
+								<a href="javascript:">长沙</a><br>
+								<a href="javascript:">武汉</a>
+								<a href="javascript:">郑州</a>
+								<a href="javascript:">石家庄</a>
+								<a href="javascript:">成都</a>
+								<a href="javascript:">重庆</a><br>
+
+								<a href="javascript:">西安</a>
+								<a href="javascript:">昆明</a>
+								<a href="javascript:">南宁</a>
+								<a href="javascript:">福州</a>
+								<a href="javascript:">厦门</a>
+								<a href="javascript:">南昌</a><br>
+
+								<a href="javascript:">东莞</a>
+								<a href="javascript:">沈阳</a>
+								<a href="javascript:">长春</a>
+								<a href="javascript:">哈尔滨</a>
+							</li>
+							<li>
+								<a href="javascript:">河北</a>
+
+								<a href="javascript:">河南</a>
+								<a href="javascript:">湖北</a>
+								<a href="javascript:">湖南</a>
+								<a href="javascript:">福建</a>
+								<a href="javascript:">江苏</a><br>
+								<a href="javascript:">江西</a>
+
+								<a href="javascript:">广东</a>
+								<a href="javascript:">广西</a>
+								<a href="javascript:">海南</a>
+								<a href="javascript:">浙江</a>
+								<a href="javascript:">安徽</a><br>
+								<a href="javascript:">吉林</a>
+
+								<a href="javascript:">辽宁</a>
+								<a href="javascript:">黑龙江</a>
+								<a href="javascript:">山东</a>
+								<a href="javascript:">山西</a><br>
+								<a href="javascript:">陕西</a>
+								<a href="javascript:">新疆</a>
+
+								<a href="javascript:">内蒙古</a>
+								<a href="javascript:">云南</a>
+								<a href="javascript:">贵州</a><br>
+								<a href="javascript:">四川</a>
+								<a href="javascript:">甘肃</a>
+								<a href="javascript:">宁夏</a>
+
+								<a href="javascript:">青海</a>
+								<a href="javascript:">西藏</a>
+								<a href="javascript:">香港</a><br>
+								<a href="javascript:">澳门</a>
+								<a href="javascript:">台湾</a>
+							</li>
+
+						</ul>
+					</dd>
+					
+				</dl>
+			</div>
+			
+			<div class="tips-text">
+					<p>非常抱歉，没有找到与 “<strong>2342342342</strong>” 相关的商品</p>
+				<br/>
+
+				&nbsp;&nbsp;&nbsp;&nbsp;建议您：<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;1、看看输入的文字是否有误<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;2、调整关键字，如：“nokiann9”改成“nokia n9”<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;3、去掉可能不必要的字词，如“的”、“什么”等
+			</div>
+			
+			<div class="stitle">
+				<h2>畅销精品</h2>
+			</div>
+			<div class="plist-view pv-large">
+				<ul class="lslist cf">
+					<li class="item">				
+						<div class="itemwrap">
+							<div class="img">
+								<a title="text" href="http://www.pinju.com"><img width="160" height="160" alt="text" src="http://static.pinju.com/media/pdemo_160x160.jpg"></a>
+							</div>
+							<ul>
+								<li class="titletext">
+									<a title="text" href="#">dshfaskdfaksfaksjfalsjfaksjfakjsfhl打扫吧vjhasdfkjh121212457aksjfhalsjfhlaskjfaskjflajsdfhljkasfh</a>
+								</li>
+								<li class="price">
+									￥ <strong>649000000.00</strong>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">				
+						<div class="itemwrap">
+							<div class="img">
+								<a title="text" href="http://www.pinju.com"><img width="160" height="160" alt="text" src="http://static.pinju.com/media/pdemo_160x160.jpg"></a>
+							</div>
+							<ul>
+								<li class="titletext">
+									<a title="text" href="#">dshfaskdfaksfaksjfalsjfaksjfakjsfhl打扫吧vjhasdfkjh121212457aksjfhalsjfhlaskjfaskjflajsdfhljkasfh</a>
+								</li>
+								<li class="price">
+									￥ <strong>649000000.00</strong>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">				
+						<div class="itemwrap">
+							<div class="img">
+								<a title="text" href="http://www.pinju.com"><img width="160" height="160" alt="text" src="http://static.pinju.com/media/pdemo_160x160.jpg"></a>
+							</div>
+							<ul>
+								<li class="titletext">
+									<a title="text" href="#">dshfaskdfaksfaksjfalsjfaksjfakjsfhl打扫吧vjhasdfkjh121212457aksjfhalsjfhlaskjfaskjflajsdfhljkasfh</a>
+								</li>
+								<li class="price">
+									￥ <strong>649000000.00</strong>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">				
+						<div class="itemwrap">
+							<div class="img">
+								<a title="text" href="http://www.pinju.com"><img width="160" height="160" alt="text" src="http://static.pinju.com/media/pdemo_160x160.jpg"></a>
+							</div>
+							<ul>
+								<li class="titletext">
+									<a title="text" href="#">dshfaskdfaksfaksjfalsjfaksjfakjsfhl打扫吧vjhasdfkjh121212457aksjfhalsjfhlaskjfaskjflajsdfhljkasfh</a>
+								</li>
+								<li class="price">
+									￥ <strong>649000000.00</strong>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">				
+						<div class="itemwrap">
+							<div class="img">
+								<a title="text" href="http://www.pinju.com"><img width="160" height="160" alt="text" src="http://static.pinju.com/media/pdemo_160x160.jpg"></a>
+							</div>
+							<ul>
+								<li class="titletext">
+									<a title="text" href="#">dshfaskdfaksfaksjfalsjfaksjfakjsfhl打扫吧vjhasdfkjh121212457aksjfhalsjfhlaskjfaskjflajsdfhljkasfh</a>
+								</li>
+								<li class="price">
+									￥ <strong>649000000.00</strong>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">				
+						<div class="itemwrap">
+							<div class="img">
+								<a title="text" href="http://www.pinju.com"><img width="160" height="160" alt="text" src="http://static.pinju.com/media/pdemo_160x160.jpg"></a>
+							</div>
+							<ul>
+								<li class="titletext">
+									<a title="text" href="#">dshfaskdfaksfaksjfalsjfaksjfakjsfhl打扫吧vjhasdfkjh121212457aksjfhalsjfhlaskjfaskjflajsdfhljkasfh</a>
+								</li>
+								<li class="price">
+									￥ <strong>649000000.00</strong>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">				
+						<div class="itemwrap">
+							<div class="img">
+								<a title="text" href="http://www.pinju.com"><img width="160" height="160" alt="text" src="http://static.pinju.com/media/pdemo_160x160.jpg"></a>
+							</div>
+							<ul>
+								<li class="titletext">
+									<a title="text" href="#">dshfaskdfaksfaksjfalsjfaksjfakjsfhl打扫吧vjhasdfkjh121212457aksjfhalsjfhlaskjfaskjflajsdfhljkasfh</a>
+								</li>
+								<li class="price">
+									￥ <strong>649000000.00</strong>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="item">				
+						<div class="itemwrap">
+							<div class="img">
+								<a title="text" href="http://www.pinju.com"><img width="160" height="160" alt="text" src="http://static.pinju.com/media/pdemo_160x160.jpg"></a>
+							</div>
+							<ul>
+								<li class="titletext">
+									<a title="text" href="#">dshfaskdfaksfaksjfalsjfaksjfakjsfhl打扫吧vjhasdfkjh121212457aksjfhalsjfhlaskjfaskjflajsdfhljkasfh</a>
+								</li>
+								<li class="price">
+									￥ <strong>649000000.00</strong>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+					
+				<div class="cbottom imgbtn">
+					<div class="skipto">
+						到第 <input class="pagenum" name="" id=""> 页 <button class="btn-sgray">确定</button>
+					</div>
+					<div id="Pagination" class="pagination">
+						<span class="current">1</span>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a class="next" href="#">下一页</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>	
+
+		<!-- // content -->
+
+		
+		<!-- footer -->
+<noscript>
+<style>
+	.wrapfull, .navfull, .wrap, .search-panel, .login_box, .cart {display:none;}
+	.noscript-content {width: 1000px;margin:50px auto 300px;}
+	.noscript-content:after {clear: both;content: "...";display: block;height: 0;visibility: hidden;}
+	.noscript-content .ns-tipswrap {background-color:#fff;padding:10px;}
+	.noscript-content .ns-tipswrap h2 {background:transparent url(http://static.pinju.com/img/bg_wraptitle.gif) no-repeat scroll left bottom;font-size:16px;font-weight:bold;color:#000;padding:0 0 10px 10px;margin-bottom:50px;}
+	.noscript-content .ns-tipswrap .ns-infocat {background:transparent url(http://static.pinju.com/img/icons.gif) no-repeat scroll right 66px;float:left;height:66px;width:20%;}
+	.noscript-content .ns-tipswrap .ns-error {background-position:right 20px;}
+	.noscript-content .ns-tipswrap .ns-content {height:120px;padding:30px 10px 10px 22%;*padding:35px 10px 10px 10px;}
+	.noscript-content .ns-tipswrap .ns-content p {line-height:2;}
+	.noscript-content .ns-tipswrap .ns-content h3 {font-size:14px;font-weight:bold;color:#000;margin-bottom:15px;}
+	.noscript-content .ns-tipswrap .ns-content h3 strong {color:#be0000;}
+</style>
+<div class="noscript-content">
+	<div class="ns-tipswrap">
+		<h2>错误提示</h2>
+		<div class="ns-infocat ns-error"></div>
+		<div class="ns-content">
+			<h3>您的浏览器禁用了JavaScript脚本，这会影响您正常浏览品聚网。 </h3>
+			<h3>启用JavaScript，您将拥有更好的浏览体验。 </h3>
+			<p><a href="http://service.pinju.com/cms/html/2011/teach_1103/99.html">查看这里</a>来启用脚本，更好的浏览品聚网。</p>
+		</div>
+	</div>
+</div>
+</noscript>
+
+<!-- footer -->
+<div class="footer">
+	<div class="footer_main">
+		<ul class="foot_nav">
+			<li><a target="_blank" title="首页" href="http://www.pinju.com/">首页</a></li>
+			<li><a href="http://news.pinju.com/cms/html/join_in/" target="_blank" title="盛大招商">盛大招商</a></li>
+
+			<li><a target="_blank" title="关于品聚" href="http://www.pinju.com/cms/html/about/">关于品聚</a></li>
+			<li><a href="http://jhb.pinju.com" title="聚伙伴" target="_blank">聚伙伴</a></li>
+			<li><a target="_blank" title="品聚品质保障服务" href="http://service.pinju.com/cms/html/quality/">品聚品质保障服务</a></li>
+			<li><a target="_blank" title="新手帮助" href="http://service.pinju.com/">新手帮助</a></li>
+			<li><a target="_blank" title="联系我们" href="http://www.pinju.com/cms/html/about/contact/">联系我们</a></li>
+			<li><a target="_blank" title="品聚招聘" href="http://job.pinju.com/">品聚招聘</a></li>
+
+			<li><a target="_blank" title="品聚招聘" href="http://www.pinju.com/cms/html/friendslink/">友情链接</a></li>
+		</ul>
+		<p class="copyright"><span>客服邮箱：<a target="_blank" title="客服邮箱" href="mailto:kf@pinju.com">kf@pinju.com</a></span> | <span>客服电话：4008-211-588</span>丨 <span>服务时间: 每天9:00-21:00</span></p>
+		<p class="copyright">上海御网信息技术有限公司  版权所有&nbsp;&nbsp;&nbsp;&nbsp;沪ICP备11032558号 </p>
+
+		<p class="copyright">
+			<span>媒体联系：media@pinju.com</span>丨 <span>商户加盟： business@pinju.com</span>丨 <span>聚伙伴加盟：jhb@pinju.com</span> | <span>城市分站加盟：yinlijun@pinju.com</span></p>
+			    <span class="test">sh-liming</span>
+	</div>
+
+</div>
+<script src="http://static.pinju.com/urchin/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_userv=0;
+urchinTracker();
+</script>
+<div style="display:none;">
+<script>
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F53ae450288274c4c28220e420d9dab85' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div>
+		<!-- // footer -->
+		
+</body>
+</html>
+  
+  
